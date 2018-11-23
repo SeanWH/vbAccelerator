@@ -1,0 +1,424 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Common Dialog/Direct</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+ name="sectop"></a>	
+
+<!-- SECTION:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	&nbsp;<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3&nbsp;</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>CommonDialog/Direct</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	<p>Take control over all the Windows Common Dialogs with this component</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\common_dialogs\common_dialog_direct\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<!-- INFO:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\cmdlgd.gif" alt="Common Dialog Image" width="426" height="285"></p>
+
+	<p>
+	<table border="0" cellspacing="0" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="5" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="cmdlgd.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="cmdlgd.zip">VB5 Control Binary (34kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="cmdlgd6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="cmdlgd6.zip">VB6 Control Binary (34kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="cmdlgdd.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="cmdlgdd.zip">VB5 Demonstration Project (15kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="cmdlgd6d.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="cmdlgd6d.zip">VB6 Demonstration Project (15kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="cmdlgds.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="cmdlgds.zip">VB5 Full Source Code (73kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="cmdlgd6s.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="cmdlgd6s.zip">VB6 Full Source Code (73kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>21 March 2000</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Added VB6 binary.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>1 November 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Added support for templates, based on the code written by Cayce Cochran.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>20 February 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The File Open Dialog did not return a usable result when set up to accept multiple
+		filenames (<i>OFN_ALLOWMULTISELECT</i> flag).  Now the filenames are returned and there is
+		a new method <i>ParseMultiFileName</i> to convert the return value into a directory
+		and an array of file titles.<br><br>
+		Thanks to Steve Lager for pointing out this problem.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Updated!</b> <i>10 December 1998</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+	Improved Hook Support.  Now all Common Dialogs (except the Print dialog) can be centred to a form or to the screen with just one line of code. See the
+	code article <a href="cmdlgct.htm">Centre a Common Dialog - The Easy and the Hard Way</a> for more details.
+	Hooks also allows you to capture
+	a Common Dialog into your own form - see <a href="cmdlghk.htm">create a VB style Open Project dialog</a>
+	for a demonstration.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+	Page Setup Dialog converted page sizes in inches into integer values.  A new Page Setup method, VBPageSetupDlg2 has been
+	added which correctly returns the values with decimal places. 
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">		
+	The Page Setup Dialog always overwrote default and minimum margins.  It now sets margins 
+	to the default unless you explicitly request it not to with the PSD_MINMARGINS/PSD_MARGINS flags.	
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+	Print and Page Setup dialogs used to ignore the flags parameter passed in. This meant, for example, it
+	was impossible to display the Print Setup dialog box (the Print dialog box was always shown).
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+	Print Setup failed to return number of copies and collation option when collation was turned on for
+	some printer drivers.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+	Thanks to Larry Kuhn for spotting these problems.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+<!-- INFO:END -->
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br>
+	<b>Overview</b><br>
+	Common Dialog/Direct is a new DLL or class library which shows how to completely replace COMDLG32.OCX through Visual Basic code. 
+	The main advantage of this is you no longer need to put a control on a form to use common dialogs - 
+	just declare an instance of the class and you have a straight replacement.  You can also incorporate the
+	Common Dialog/Direct code straight into your own project if you want to reduce dependency files when
+	you ship your project.  
+	<br><br>
+	This library is based on articles in <a href="..\..\linx.htm#secmsdn">MSDN</a> and the VB library provided
+	by Bruce McKinney in his excellent book <a href="..\..\linx.htm#sechcvb">Hardcore Visual Basic</a>.
+	It expands on both sources - the Hardcore VB library isn't a drop in replacement for the VB version, it has
+	a completely new interface, whilst the main MSDN version was <i>somewhat</i> bug-ridden.
+	<br><br>
+	<b>Features</b><br>
+	There are a number of areas where Common Dialog/Direct improves upon the implementation of COMDLG32.OCX.
+	<ul>
+	<li>Common Dialog hooks are supported.  It is possible to:
+	<ul>
+	<li>Confirm files being chosen before a file dialog is closed,
+	<li>Centre dialogs accurately to any object (see <a href="cmdlgct.htm">Centre a Common Dialog - The Easy and the Hard Way</a> for
+	more information on how to do this),
+	<li>Incorporate a common dialog into your own form, like the Add Form and New Project dialogs in VB5. (see 
+	<a href="cmdlghk.htm">Common Dialog and Hooks</a> for samples).	
+	</ul>
+	<li>Templates are supported (see <a href="cmdlgtp.htm">Common Dialog and Templates</a> for a sample)
+	<li>The file dialogs return the selected filter index when the user chooses a file.
+	<li>You can get and set the custom colours set up in the colour dialog.
+	<li>It is possible to show the Page Setup dialog for the printer.
+	</ul>
+	Here is a sample of how to use Common Dialog/Direct:
+	</p>
+	</font>
+<font face="Lucida Console,courier new" size="1">
+<p>
+&nbsp &nbsp Dim c As New cCommonDialog <br>
+&nbsp &nbsp With c <br>
+&nbsp &nbsp &nbsp &nbsp .DialogTitle = "Choose Text FIle" <br>
+&nbsp &nbsp &nbsp &nbsp .CancelError = True <br>
+&nbsp &nbsp &nbsp &nbsp .hWnd = Me.hWnd <br>
+&nbsp &nbsp &nbsp &nbsp .flags = OFN_FILEMUSTEXIST Or OFN_PATHMUSTEXIST <br>
+&nbsp &nbsp &nbsp &nbsp .InitDir = "C:\STEVEMAC" <br>
+&nbsp &nbsp &nbsp &nbsp .Filter = "Internet documents (*.HTM)|*.HTM|Text files (*.TXT)|*.TXT|All Files (*.*)|*.*" <br>
+&nbsp &nbsp &nbsp &nbsp .FilterIndex = 1 <br>
+&nbsp &nbsp &nbsp &nbsp .ShowOpen <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp txtFileName = .filename <br>
+&nbsp &nbsp &nbsp &nbsp txtFilter = .Filter <br>
+&nbsp &nbsp &nbsp &nbsp txtContents = GetFileText(.filename) <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp End With
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	The sample code in the download exercises all the different dialogs.
+	<br><br><br>
+
+	<p><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overlib.htm" target="vbamain">Code Libraries</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+	</p>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,429 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Multi-Threaded VB Using ActiveX EXEs</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<a name="sectop"></a>	
+
+<!-- SECTION:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	&nbsp;<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3&nbsp;</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Multi-Threaded VB Using ActiveX EXEs</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Run code asynchronously with this simple and elegant design model</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\threading\multi-threading_using_classes_in_activex_exes\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<!-- INFO:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\axexethr.gif" alt="ActiveX EXE Multi-Threading" width="147" height="119">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="axexethr.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="axexethr.zip">Download the Multi-Threaded EXE project (19kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Make sure you register <i>AsyncStartDemo.EXE</i> in the zip before running the main project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\..\typelib.htm#RUNNABLE">Runnable Type Library (Runnable.TLB)</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	<br>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+<!-- INFO:END -->
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Ever since VB5 service pack 2 was released, there has been the possibility of running 
+	VB applications multi-threaded by using ActiveX EXEs.  However, if you try and research
+	this you will find it is fiddly to get working.  I've never even begun to understand how
+	to get it working: you need to use CreateObject to make the object on a new thread, and
+	then you need to be very careful as to how you start the work you want to do asynchronously. 
+	Most times you find that VB blocks until the method call is complete regardless of whether
+	the object is in a new thread or not. 
+		<br><br>
+	What you want to be able to do is to say I want to perform some operation asynchronously and
+	I would like to be notified when it is complete.  This project demonstrates a tiny code
+	module and a type library you can add into your own ActiveX projects to do just that.  It is
+	based around a part of the <a href="..\submit\codeflow.zip">CodeFlow sample</a> released at 
+	the <a href="..\..\linxref.htm#secvbowner">VB Owner's Area</a>.
+		<br><br>
+		</font>
+		<br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Asynchronous Running - Just to get it Started</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The main problem with getting a multi-threaded application up and running is how to
+	call a method in VB without the caller being blocked.  It turns out there is a simple solution
+	to this problem.  The steps are as follows:
+		<ol>
+	<li>Put the method call into an ActiveX EXE, and make it private to the EXE.
+	<li>Create a new method to call.  On calling this method, enable a timer.  When the timer fires,
+	call the private method.
+		</ol>
+	This solves the problem because the method you call immediately yields control back to 
+	the caller, and then it is left to Windows pre-emptive multi-tasking to raise the timer event
+	and kick off the process within the ActiveX EXE.  There is no further interference because
+	the ActiveX EXE is running in a different process to the caller.	
+		</font>
+		<br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>In More Detail</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	To stop having to have a form in the ActiveX EXE, this solution is based on a Win32 API
+	timer.  Win32 API timers come in two flavours: either they notify the application when they
+	tick by posting a <i>WM_TIMER</i> message to a window, or they fire a callback interface.
+	This solution uses the callback interface, and as a consequence must be implemented within
+	a module (because VB will not provide the address of a function to callback to for 
+	a function within an object, only one in a module).  
+		<br><br>
+	Because the code to start the object is implemented in a module, the module must have a 
+	reference to the object instance it has to start when the timer fires.  To achieve this
+	without the possibility for errors, an interface is defined that the object can implement
+	and the module will only use this for communication.  In this sample, the interface is
+	defined in a Type Library called <a href="..\..\typelib.htm#secRUNNABLE">Runnable</a>.  This
+	allows you to reference the Type Library without having to declare it as a public class
+	from the ActiveX executable.
+		<br><br>
+	The final implementation feature is the use of the OLE/COM API call <i>CoLockObjectExternal</i>
+	to ensure that the object being started asynchronously isn't inadvertently terminated by the
+	caller before the timer has had a chance to be fired.
+		<br><br>
+	Here is the code in the <i>mStart.bas</i> module:
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' To prevent object going out of scope whilst the timer fires:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Declare Function CoLockObjectExternal Lib &quot;ole32&quot; ( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal pUnk As IUnknown, ByVal fLock As Long, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal fLastUnlockReleases As Long) As Long<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Timer API:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Declare Function SetTimer Lib &quot;user32&quot; (ByVal hWnd As Long, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal nIDEvent As Long, ByVal uElapse As Long, ByVal lpTimerFunc As Long) _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As Long<br>
+Private Declare Function KillTimer Lib &quot;user32&quot; (ByVal hWnd As Long, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal nIDEvent As Long) As Long<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Collection of Runnable items to start:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private m_colRunnables As Collection<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' The ID of our API Timer:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private m_lTimerID As Long<br>
+<br>
+Private Sub TimerProc(ByVal lHwnd As Long, ByVal lMsg As Long, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal lTimerID As Long, ByVal lTime As Long)<br>
+&nbsp;&nbsp;&nbsp;Dim this As Runnable<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Enumerate through the collection, firing the</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Runnable_Start method for each item in it and</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' releasing our extra lock on the object:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;With m_colRunnables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do While .Count &gt; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set this = .Item(1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Remove 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.Start<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">'Ask the system to release its lock on the object</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CoLockObjectExternal this, 0, 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loop<br>
+&nbsp;&nbsp;&nbsp;End With<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Remove the timer:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;KillTimer 0, lTimerID<br>
+&nbsp;&nbsp;&nbsp;m_lTimerID = 0<br>
+End Sub<br>
+<br>
+Public Sub Start(this As Runnable)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Ask the system to lock the object so that</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' it will still perform its work even if it</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' is released</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;CoLockObjectExternal this, 1, 1<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Add this to runnables:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;If m_colRunnables Is Nothing Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set m_colRunnables = New Collection<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;m_colRunnables.Add this<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Create a timer to start running the object:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;If Not m_lTimerID Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lTimerID = SetTimer(0, 0, 1, AddressOf TimerProc)<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Sub<br>
+<br>
+<br>
+
+</font>
+</p>
+		<br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>In Use</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	To create your own multi-threaded object, start a new ActiveX EXE project.  Make a
+	reference to Runnable.TLB and add mStart.bas as discussed above.  In your ActiveX EXE's
+	class, implement the Runnable interface: this only has one method called <i>Runnable_Start</i>
+	which is fired when the timer starts the object.  Now provide a public method to allow
+	your user to set the object running, and in this method call:
+	<br><br>
+</font>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;mStart.Start Me<br>
+	<br><br>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	The sample in the download demonstrates how to use the technique in a very simple object.
+	This object does nothing more than sleep for 2s but demonstrates using an event interface
+	to allow the ActiveX EXE object to be cancelled.
+
+		<br><br>
+		</font>
+		<br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overlib.htm">Library Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 1 January 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

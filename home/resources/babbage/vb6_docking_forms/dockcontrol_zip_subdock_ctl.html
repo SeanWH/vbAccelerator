@@ -1,0 +1,1330 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SubDock.ctl</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SubDock.ctl" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;SubDock.ctl</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="dockcontrol.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />DockControl</a> (190K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12483</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12483&type=zip&title=dockcontrol_2ezip_5fsubdock.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Mark Grimes</a></p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing Without The Crashes</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SubDock.ctl</h1><pre>VERSION 5.00
+Begin VB.UserControl SubDock 
+   Alignable       =   -1  'True
+   Appearance      =   0  'Flat
+   CanGetFocus     =   0   'False
+   ClientHeight    =   3600
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   4800
+   ControlContainer=   -1  'True
+   DrawStyle       =   6  'Inside Solid
+   ForwardFocus    =   -1  'True
+   MousePointer    =   99  'Custom
+   ScaleHeight     =   240
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   320
+   Begin VB.Label Label1 
+      Caption         =   "SubDock(1) Control"
+      Height          =   375
+      Left            =   0
+      TabIndex        =   0
+      Top             =   0
+      Width           =   4335
+   End
+End
+Attribute VB_Name = "SubDock"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+
+Implements ISubclass
+Private m_emr As EMsgResponse
+
+Private Const MinSize = 8
+
+Private MouseButton As Boolean
+Private SizeAction  As Integer
+Private MaxX        As Long
+Private MaxY        As Long
+Private MinX        As Long
+Private MinY        As Long
+Private XoffSet     As Integer
+Private SplitPosX   As Long
+Private SplitPosY   As Long
+Private PosRect     As RECT
+ 
+
+
+Private ChildMaxIndex       As Integer
+Private ClientRect          As RECT
+Private SizeRect            As RECT
+
+
+
+Private Di()                As DockInfo
+Private DiCount             As Integer
+
+Public DockCol              As New Collection
+Attribute DockCol.VB_VarDescription = "Collection of Child SubForms"
+Private m_SubClassed        As Boolean
+Private SizerSize           As Boolean
+
+
+Dim m_IsChildMax As Boolean
+
+
+Public Property Let AutoRefresh(ByVal New_State As Boolean)
+Attribute AutoRefresh.VB_Description = "Insures SubForm Redraw while
+ Appobj.Enabled=False"
+   Dim N As Integer
+    
+   If Not Extender.Visible Or DiCount = -1 Then Exit Property
+   
+   If Not m_IsChildMax Then
+    For N = 0 To DiCount
+     If DockCol(Di(N).DcColIndex).Docked Then
+      DockCol(Di(N).DcColIndex).AutoRefresh = New_State
+    Next
+   Else
+    DockCol(Di(ChildMaxIndex).DcColIndex).AutoRefresh = New_State
+   End If
+   
+End Property
+
+Public Function GetInsertPos(ByVal x As Long, ByVal y As Long, TLHit As
+ Boolean) As Integer
+Attribute GetInsertPos.VB_MemberFlags = "40"
+     
+     Dim N As Integer
+     
+     If Not Extender.Visible Then
+      GetInsertPos = DockCol.Count
+      Exit Function
+     End If
+     
+          
+     If Not m_IsChildMax And DiCount &gt; 0 Then
+      For N = 0 To DiCount
+       If Extender.Align &lt; vbAlignLeft Then
+        If N &lt; DiCount Then
+         If x &gt;= Di(N).ChildRect.Left And x &lt; Di(N + 1).ChildRect.Left Then
+           If x &lt;= Di(N).ChildRect.Left + Di(N).ChildRect.Width / 2 Then
+            GetInsertPos = N
+            TLHit = True
+            Exit Function
+           Else
+            GetInsertPos = N + 1
+            Exit Function
+           End If
+         End If
+    
+        Else
+         If x &lt;= Di(N).ChildRect.Left + Di(N).ChildRect.Width / 2 Then
+          GetInsertPos = N
+          TLHit = True
+          Exit Function
+         Else
+          GetInsertPos = N + 1
+          Exit Function
+         End If
+    
+        End If
+    
+       Else
+      
+        If N &lt; DiCount Then
+         If y &gt;= Di(N).ChildRect.Top And y &lt; Di(N + 1).ChildRect.Top Then
+           If y &lt;= Di(N).ChildRect.Top + Di(N).ChildRect.Height / 2 Then
+            GetInsertPos = N
+            TLHit = True
+            Exit Function
+           Else
+            GetInsertPos = N + 1
+            Exit Function
+           End If
+         End If
+    
+        Else
+         If y &lt;= Di(N).ChildRect.Top + Di(N).ChildRect.Height / 2 Then
+          GetInsertPos = N
+          TLHit = True
+          Exit Function
+         Else
+          GetInsertPos = N + 1
+          Exit Function
+         End If
+    
+        End If
+        
+       End If
+   
+      Next
+  
+   Else
+  
+      If DiCount = -1 Then
+       GetInsertPos = 0
+      
+      Else
+       
+       If Extender.Align &lt; vbAlignLeft Then
+        If x &lt;= ScaleWidth / 2 Then
+         GetInsertPos = DockCol(Di(ChildMaxIndex).DcColIndex).Pos
+         TLHit = True
+        Else
+         GetInsertPos = DockCol(Di(ChildMaxIndex).DcColIndex).Pos + 1
+        End If
+       Else
+        If y &lt;= ScaleHeight / 2 Then
+         GetInsertPos = DockCol(Di(ChildMaxIndex).DcColIndex).Pos
+         TLHit = True
+        Else
+         GetInsertPos = DockCol(Di(ChildMaxIndex).DcColIndex).Pos + 1
+        End If
+       
+       End If
+  
+    End If
+  
+   End If
+End Function
+
+Public Sub Hide()
+    If Extender.Visible Then
+     UnMaxChild
+     Extender.Visible = False
+    End If
+End Sub
+
+Public Function MaxChild(ByVal ChildPosToMax As Integer) As Boolean
+Attribute MaxChild.VB_MemberFlags = "40"
+    Dim N As Integer
+    
+    If DiCount = 0 Or m_IsChildMax Then Exit Function
+    ChildMaxIndex = ChildPosToMax
+    SizeRect = SizerAlign(Extender.Align, ScaleWidth, ScaleHeight, ClientRect)
+    
+    For N = 0 To DiCount
+     If N &lt;&gt; ChildMaxIndex Then
+      MoveWindow DockCol(Di(N).DcColIndex).hwnd,
+       DockCol(Di(N).DcColIndex).Left, DockCol(Di(N).DcColIndex).Top, 0, 0, 0
+     End If
+    Next
+    
+    m_IsChildMax = True
+    DockCol(Di(ChildMaxIndex).DcColIndex).MaxState = True
+      
+   ReFreshDock
+   MaxChild = True
+   
+End Function
+
+Public Function UnMaxChild() As Boolean
+Attribute UnMaxChild.VB_MemberFlags = "40"
+   
+    If Not m_IsChildMax Then Exit Function
+    
+    m_IsChildMax = False
+    DockCol(Di(ChildMaxIndex).DcColIndex).MaxState = False
+    ChildMaxIndex = 0
+    ReFreshDock
+    UnMaxChild = True
+    
+End Function
+
+Public Sub RemoveChild(ByVal ChildPos As Integer)
+Attribute RemoveChild.VB_MemberFlags = "40"
+      Dim N As Integer
+      Dim J As Integer
+      Dim Rindex As Integer
+      
+      Rindex = Di(ChildPos).DcColIndex
+      
+      If m_IsChildMax Then DockCol(Di(ChildPos).DcColIndex).MaxState = False
+      
+      DockCol(Di(ChildPos).DcColIndex).Visible = False
+      DockCol(Di(ChildPos).DcColIndex).IsHidden = True
+      
+      HideChild ChildPos
+      DockCol.Remove Rindex
+      
+      For N = 1 To DockCol.Count
+       DockCol(N).OrgPos = N - 1
+       
+       If Not DockCol(N).IsHidden Then
+        DockCol(N).Pos = J
+        Di(J).DcColIndex = N
+        J = J + 1
+       End If
+       
+      Next
+    
+    
+End Sub
+
+Public Sub InsertChild(ByVal NewPos As Integer, ByVal OldPos As Integer, TLHit
+ As Boolean)
+Attribute InsertChild.VB_MemberFlags = "40"
+ 
+ Dim Tmp()      As DockInfo
+ Dim N          As Integer
+ Dim OffX       As Long
+ Dim OffY       As Long
+ Dim Ecount     As Integer
+ Dim TmpObj     As Object
+ Dim J          As Integer
+ 
+   If Extender.Align &gt; vbAlignBottom Then
+    OffY = (Di(OldPos).SplitRect.Bottom - Di(OldPos).ChildRect.Top)
+   Else
+    OffX = (Di(OldPos).SplitRect.Right - Di(OldPos).ChildRect.Left)
+   End If
+ 
+ If NewPos &gt; OldPos And NewPos - OldPos &gt; 1 Then
+   GoSub DimTmps
+   
+   
+   If NewPos &gt; DiCount Then
+    Ecount = DiCount - 1
+    NewPos = DiCount
+   Else
+    Ecount = NewPos - 1
+    NewPos = Ecount
+   End If
+ 
+   For N = OldPos To Ecount
+    Tmp(N).SplitRect = Di(N + 1).SplitRect
+    OffsetRect Tmp(N).SplitRect, -OffX, -OffY
+   Next
+    
+   If NewPos &lt;&gt; DiCount Then
+    Tmp(N - 1).SplitRect = Di(NewPos).SplitRect
+   End If
+    
+   Set TmpObj = DockCol(Di(OldPos).DcColIndex)
+   DockCol.Remove Di(OldPos).DcColIndex
+   
+   
+   If TLHit And Di(NewPos).DcColIndex &lt;= DockCol.Count Then
+    If DockCol(Di(NewPos).DcColIndex).IsHidden Then
+      DockCol.Add TmpObj, , , Di(NewPos).DcColIndex
+     Else
+      DockCol.Add TmpObj, , , Di(NewPos).DcColIndex - 1
+    End If
+   Else
+    DockCol.Add TmpObj, , , Di(NewPos).DcColIndex - 1
+   End If
+    
+ ElseIf NewPos &lt; OldPos And OldPos - NewPos &gt; 0 Then
+  GoSub DimTmps
+  
+  Set TmpObj = DockCol(Di(OldPos).DcColIndex)
+  DockCol.Remove Di(OldPos).DcColIndex
+  
+   If Not TLHit And NewPos &gt; 0 Then
+    If DockCol(Di(NewPos - 1).DcColIndex + 1).IsHidden Then
+      DockCol.Add TmpObj, , Di(NewPos - 1).DcColIndex + 1
+     Else
+      DockCol.Add TmpObj, , Di(NewPos).DcColIndex
+    End If
+   Else
+    DockCol.Add TmpObj, , Di(NewPos).DcColIndex
+   End If
+  
+  If Extender.Align &gt; vbAlignBottom Then
+   Tmp(NewPos).SplitRect.Bottom = Di(NewPos).ChildRect.Top + OffY
+   Tmp(NewPos).SplitRect.Top = Tmp(NewPos).SplitRect.Bottom - 4
+  
+   For N = NewPos + 1 To OldPos - 1
+    Tmp(N).SplitRect.Top = Tmp(N - 1).SplitRect.Bottom + Di(N -
+     1).ChildRect.Height
+    Tmp(N).SplitRect.Bottom = Tmp(N).SplitRect.Top + 4
+   Next
+   
+  Else
+   Tmp(NewPos).SplitRect.Right = Di(NewPos).ChildRect.Left + OffX
+   Tmp(NewPos).SplitRect.Left = Tmp(NewPos).SplitRect.Right - 4
+  
+   For N = NewPos + 1 To OldPos - 1
+    Tmp(N).SplitRect.Left = Tmp(N - 1).SplitRect.Right + Di(N -
+     1).ChildRect.Width
+    Tmp(N).SplitRect.Right = Tmp(N).SplitRect.Left + 4
+   Next
+  End If
+  
+   
+ Else
+    
+  Exit Sub
+  
+ End If
+ 
+ 
+ 
+    SetRectsToSplits Tmp(), Extender.Align, DiCount
+    For N = 0 To DiCount
+     Di(N) = Tmp(N)
+    Next
+    
+    For N = 0 To DiCount
+          
+     If Extender.Align &gt; vbAlignBottom Then
+      Di(N).szPercent = Di(N).SplitRect.Top / ScaleHeight
+     Else
+      Di(N).szPercent = Di(N).SplitRect.Left / ScaleWidth
+     End If
+    
+    Next
+    
+    
+   
+    For N = 1 To DockCol.Count
+     DockCol(N).OrgPos = N - 1
+     If Not DockCol(N).IsHidden Then
+      DockCol(N).Pos = J
+      Di(J).DcColIndex = N
+      J = J + 1
+     End If
+    Next
+    
+    ReFreshDock
+    
+    ReDim Tmp(0 To 0)
+ 
+Exit Sub
+
+DimTmps:
+ 
+ ReDim Tmp(0 To DiCount)
+ For N = 0 To DiCount
+  Tmp(N) = Di(N)
+ Next
+
+Return
+
+End Sub
+
+
+
+Public Sub Show()
+ If DiCount &gt; -1 Then Extender.Visible = True
+End Sub
+
+Public Sub SubClassContainer()
+Attribute SubClassContainer.VB_MemberFlags = "40"
+ If Not m_SubClassed Then
+  m_SubClassed = True
+  AttachMessage Me, UserControl.hwnd, WM_WINDOWPOSCHANGED
+ End If
+End Sub
+
+Public Sub UnSubClassContainer()
+Attribute UnSubClassContainer.VB_MemberFlags = "40"
+ If m_SubClassed Then
+  m_SubClassed = False
+  DetachMessage Me, UserControl.hwnd, WM_WINDOWPOSCHANGED
+ End If
+End Sub
+
+
+Public Sub HideChild(ByVal ChildPos As Integer)
+Attribute HideChild.VB_MemberFlags = "40"
+    Dim Dc As Object
+    Dim N As Integer
+    Dim DiTmpCount As Integer
+    Dim DiTmp() As DockInfo
+    Dim J As Integer
+    
+    If Not SubFormsLoaded Then Exit Sub
+    
+    If DiCount = 0 Then Extender.Visible = 0: DiCount = -1: Exit Sub
+    
+    
+    DiTmpCount = -1
+    ReDim DiTmp(DiCount - 1)
+    
+    For N = 0 To DiCount
+     
+     If N &lt;&gt; ChildPos Then
+      DiTmpCount = DiTmpCount + 1
+      DiTmp(DiTmpCount).SplitRect = Di(N).SplitRect
+      DiTmp(DiTmpCount).ChildRect = Di(N).ChildRect
+      DiTmp(DiTmpCount).szPercent = Di(N).szPercent
+      DiTmp(DiTmpCount).DcColIndex = Di(N).DcColIndex
+     ElseIf N = ChildPos Then
+       If N = DiCount Then
+        DiTmp(DiTmpCount).szPercent = Di(N).szPercent
+        DiTmp(DiTmpCount).SplitRect = Di(N).SplitRect
+       ElseIf N = 0 Then
+        
+        If Extender.Align &lt; vbAlignLeft Then
+         Di(N + 1).ChildRect.Left = 0
+        Else
+         Di(N + 1).ChildRect.Top = 0
+        End If
+        
+       Else
+        If Extender.Align &lt; vbAlignLeft Then
+         DiTmp(DiTmpCount).SplitRect.Left = (DiTmp(DiTmpCount).SplitRect.Left +
+          Di(N).SplitRect.Left) / 2
+         DiTmp(DiTmpCount).SplitRect.Right = DiTmp(DiTmpCount).SplitRect.Left +
+          4
+         DiTmp(DiTmpCount).szPercent = DiTmp(DiTmpCount).SplitRect.Left /
+          ScaleWidth
+         
+        Else
+         DiTmp(DiTmpCount).SplitRect.Top = ((DiTmp(DiTmpCount).SplitRect.Top +
+          Di(N).SplitRect.Top) / 2)
+         DiTmp(DiTmpCount).SplitRect.Bottom = DiTmp(DiTmpCount).SplitRect.Top +
+          4
+         DiTmp(DiTmpCount).szPercent = DiTmp(DiTmpCount).SplitRect.Top /
+          ScaleHeight
+        End If
+        
+       End If
+      
+     End If
+    
+    Next
+    
+    For N = 1 To DockCol.Count
+     If Not DockCol(N).IsHidden Then
+      DockCol(N).Pos = J
+      Di(J).DcColIndex = N
+      If DockCol(N).MaxState Then ChildMaxIndex = J: m_IsChildMax = True
+      J = J + 1
+     End If
+    Next
+    
+    If DiTmpCount = 0 Then
+     DiTmp(0).ChildRect.Top = ClientRect.Top
+     DiTmp(0).ChildRect.Left = ClientRect.Left
+     DiTmp(0).ChildRect.Width = ClientRect.Right - ClientRect.Left
+     DiTmp(0).ChildRect.Height = ClientRect.Bottom - ClientRect.Top
+    End If
+    
+    DiCount = DiTmpCount
+    
+    For N = 0 To DiTmpCount
+     Di(N) = DiTmp(N)
+    Next
+    
+    SetRectsToSplits Di(), Extender.Align, DiCount
+    
+    ReFreshDock
+    
+    
+End Sub
+Public Sub TileSubDock()
+    Dim TmpRect As RECT
+    Dim N       As Integer
+    Dim J       As Integer
+    Dim pwWidth As Long
+     
+     DiCount = -1
+     For N = 1 To DockCol.Count
+      If Not DockCol(N).IsHidden Then
+       DiCount = DiCount + 1
+      End If
+     Next
+     
+     
+     If DiCount &lt; 0 Then Exit Sub
+     
+     If m_IsChildMax Then DockCol(Di(ChildMaxIndex).DcColIndex).MaxState = False
+     
+     SizeRect = SizerAlign(Extender.Align, ScaleWidth, ScaleHeight, ClientRect)
+     
+     ReDim Di(0 To DiCount)
+          
+     Select Case Extender.Align
+      Case vbAlignTop, vbAlignBottom
+       TmpRect = ClientRect
+       pwWidth = 4 + (((ClientRect.Right - ClientRect.Left) - (DiCount * 4)) /
+        (DiCount + 1))
+       
+       TmpRect.Right = pwWidth
+              
+       For N = 0 To DiCount
+         If N = DiCount Then
+          TmpRect.Right = (ClientRect.Right + 4)
+         End If
+          
+         Di(N).SplitRect = TmpRect
+         Di(N).SplitRect.Left = TmpRect.Right - 4
+         Di(N).SplitRect.Right = TmpRect.Right
+                  
+         Di(N).ChildRect.Left = TmpRect.Left
+         Di(N).ChildRect.Top = TmpRect.Top
+         Di(N).ChildRect.Width = (TmpRect.Right - 4) - TmpRect.Left
+         Di(N).ChildRect.Height = TmpRect.Bottom - TmpRect.Top
+         
+         Di(N).szPercent = Di(N).SplitRect.Left / ClientRect.Right
+         OffsetRect TmpRect, pwWidth, 0
+       Next
+       
+      Case Else
+      
+       TmpRect = ClientRect
+       pwWidth = 4 + (((ClientRect.Bottom - ClientRect.Top) - (DiCount * 4)) /
+        (DiCount + 1))
+       
+       TmpRect.Bottom = pwWidth
+       
+       
+       For N = 0 To DiCount
+         If N = DiCount Then
+          TmpRect.Bottom = (ClientRect.Bottom + 4)
+         End If
+                 
+         Di(N).SplitRect = TmpRect
+         Di(N).SplitRect.Top = TmpRect.Bottom - 4
+         Di(N).SplitRect.Bottom = TmpRect.Bottom
+         
+         Di(N).ChildRect.Left = TmpRect.Left
+         Di(N).ChildRect.Top = TmpRect.Top
+         Di(N).ChildRect.Width = (TmpRect.Right - TmpRect.Left)
+         Di(N).ChildRect.Height = (TmpRect.Bottom - 4) - TmpRect.Top
+         Di(N).szPercent = Di(N).SplitRect.Top / ClientRect.Bottom
+         OffsetRect TmpRect, 0, pwWidth
+       Next
+      
+     End Select
+     
+    For N = 1 To DockCol.Count
+     If Not DockCol(N).IsHidden Then
+      Di(J).DcColIndex = N
+      J = J + 1
+     End If
+    Next
+     
+  ReFreshDock
+ 
+End Sub
+
+Private Sub ReFreshDock()
+   Dim N As Integer
+    
+        
+   If Not m_IsChildMax Then
+    For N = 0 To DiCount
+      MoveWindow DockCol(Di(N).DcColIndex).hwnd, Di(N).ChildRect.Left,
+       Di(N).ChildRect.Top, Di(N).ChildRect.Width, Di(N).ChildRect.Height, 1
+    Next
+   Else
+    MoveWindow DockCol(Di(ChildMaxIndex).DcColIndex).hwnd, ClientRect.Left,
+     ClientRect.Top, (ClientRect.Right - ClientRect.Left), (ClientRect.Bottom -
+     ClientRect.Top), 1
+   End If
+      
+End Sub
+
+Private Sub H_MouseDown(ByVal y As Long)
+  
+ Dim wcRect As RECT
+ Dim CtlDims As CtlLengths
+ 
+ DoEvents
+ 
+
+ CtlDims = ControlDims()
+
+ If SizeAction = -1 Then
+  PosRect = SizeRect
+  XoffSet = SizeRect.Top
+    
+  If Extender.Align = vbAlignTop Then
+    MinY = (MinSize - ScaleHeight)
+    GetClientRect GetParent(UserControl.hwnd), wcRect
+    MaxY = (wcRect.Bottom - (CtlDims.TLength + CtlDims.BLength))
+   
+  ElseIf Extender.Align = vbAlignBottom Then
+    MaxY = ScaleHeight - MinSize
+    GetClientRect GetParent(UserControl.hwnd), wcRect
+    MinY = -(wcRect.Bottom - (CtlDims.TLength + CtlDims.BLength))
+   
+  End If
+ 
+ Else
+  
+   PosRect = Di(SizeAction).SplitRect
+   XoffSet = Di(SizeAction).SplitRect.Top
+   
+   MaxY = (Di(SizeAction + 1).SplitRect.Top - PosRect.Top) - MinSize
+   
+   If SizeAction = 0 Then
+    MinY = -(PosRect.Bottom) + MinSize
+   Else
+    MinY = -(PosRect.Top - Di(SizeAction - 1).SplitRect.Top) + MinSize
+   End If
+ 
+ 
+ End If
+ 
+  MouseButton = True
+  DragFocus UserControl.hwnd, PosRect, 1
+  SplitPosY = 0
+
+
+End Sub
+
+Private Sub V_MouseDown(ByVal x As Long)
+  
+ Dim wcRect As RECT
+ Dim CtlDims As CtlLengths
+ 
+ DoEvents
+ 
+
+ CtlDims = ControlDims()
+
+ If SizeAction = -1 Then
+  PosRect = SizeRect
+  XoffSet = SizeRect.Left
+    
+  If Extender.Align = vbAlignLeft Then
+    MinX = (MinSize - ScaleWidth)
+    GetClientRect GetParent(UserControl.hwnd), wcRect
+    MaxX = (wcRect.Right - (CtlDims.LLength + CtlDims.RLength))
+   
+  ElseIf Extender.Align = vbAlignRight Then
+    MaxX = ScaleWidth - MinSize
+    GetClientRect GetParent(UserControl.hwnd), wcRect
+    MinX = -(wcRect.Right - (CtlDims.LLength + CtlDims.RLength))
+   
+  End If
+ 
+ Else
+  
+   PosRect = Di(SizeAction).SplitRect
+   XoffSet = Di(SizeAction).SplitRect.Left
+   
+   MaxX = (Di(SizeAction + 1).SplitRect.Left - PosRect.Left) - MinSize
+   
+   If SizeAction = 0 Then
+    MinX = -(PosRect.Right) + MinSize
+   Else
+    MinX = -(PosRect.Left - Di(SizeAction - 1).SplitRect.Left) + MinSize
+   End If
+ 
+ 
+ End If
+ 
+  MouseButton = True
+  DragFocus UserControl.hwnd, PosRect, 1
+  SplitPosX = 0
+
+
+End Sub
+
+
+Private Sub H_MouseUp(ByVal y As Long)
+ Dim N As Integer
+ Dim ShiftDist As Long
+ Dim lpRect As RECT
+ 
+ If MouseButton Then
+  DragFocus UserControl.hwnd, PosRect, 1
+  MouseButton = False
+  
+  If y &lt;&gt; 0 Then
+   
+   If SizeAction = -1 Then
+    SizerSize = True
+    
+    Call SetRedraw(AppObj.hwnd, False)
+    
+    Select Case Extender.Align
+     Case vbAlignTop
+      Height = PosRect.Bottom * TwipsY
+      
+     Case vbAlignBottom
+      
+      MoveWindow UserControl.hwnd, Extender.Left \ TwipsX, Extender.Top \
+       TwipsY + PosRect.Top, ScaleWidth, ScaleHeight, 0
+      Height = Height - PosRect.Top * TwipsY
+    End Select
+     
+    SizeRect = SizerAlign(Extender.Align, ScaleWidth, ScaleHeight, ClientRect)
+     
+    For N = 0 To DiCount
+     Di(N).SplitRect.Top = ClientRect.Top
+     Di(N).SplitRect.Bottom = ClientRect.Bottom
+     Di(N).ChildRect.Top = ClientRect.Top
+     Di(N).ChildRect.Height = ClientRect.Bottom - ClientRect.Top
+    Next
+    
+    ReFreshDock
+    SizerSize = False
+    Call SetRedraw(AppObj.hwnd, True)
+    
+   Else
+    Call SetRedraw(UserControl.hwnd, False)
+    ShiftDist = Di(SizeAction).SplitRect.Top - PosRect.Top
+    Di(SizeAction).SplitRect = PosRect
+    Di(SizeAction).ChildRect.Height = Di(SizeAction).ChildRect.Height -
+     ShiftDist
+    Di(SizeAction + 1).ChildRect.Top = Di(SizeAction + 1).ChildRect.Top -
+     ShiftDist
+    Di(SizeAction + 1).ChildRect.Height = Di(SizeAction + 1).ChildRect.Height +
+     ShiftDist
+    ReFreshDock
+    Di(SizeAction).szPercent = Di(SizeAction).SplitRect.Top / ScaleHeight
+    Call SetRedraw(UserControl.hwnd, True)
+   End If
+   
+   
+   
+  End If
+     
+    
+ End If
+ 
+ 
+End Sub
+
+
+Private Sub V_MouseUp(ByVal x As Long)
+ Dim N As Integer
+ Dim ShiftDist As Long
+ Dim lpRect As RECT
+ 
+ If MouseButton Then
+  DragFocus UserControl.hwnd, PosRect, 1
+  MouseButton = False
+  
+  If x &lt;&gt; 0 Then
+    
+    
+   If SizeAction = -1 Then
+    SizerSize = True
+    Call SetRedraw(AppObj.hwnd, False)
+    
+    Select Case Extender.Align
+     Case vbAlignLeft
+      Width = PosRect.Right * TwipsX
+
+     Case vbAlignRight
+      MoveWindow UserControl.hwnd, Extender.Left \ TwipsX + PosRect.Left,
+       Extender.Top \ TwipsY, ScaleWidth, ScaleHeight, 0
+      Width = Width - PosRect.Left * TwipsX
+      
+      
+    End Select
+     
+    SizeRect = SizerAlign(Extender.Align, ScaleWidth, ScaleHeight, ClientRect)
+     
+    For N = 0 To DiCount
+     Di(N).SplitRect.Left = ClientRect.Left
+     Di(N).SplitRect.Right = ClientRect.Right
+     Di(N).ChildRect.Left = ClientRect.Left
+     Di(N).ChildRect.Width = ClientRect.Right - ClientRect.Left
+    Next
+    
+    ReFreshDock
+    SizerSize = False
+    Call SetRedraw(AppObj.hwnd, True)
+    
+   Else
+    Call SetRedraw(UserControl.hwnd, False)
+    ShiftDist = Di(SizeAction).SplitRect.Left - PosRect.Left
+    Di(SizeAction).SplitRect = PosRect
+    Di(SizeAction).ChildRect.Width = Di(SizeAction).ChildRect.Width - ShiftDist
+    Di(SizeAction + 1).ChildRect.Left = Di(SizeAction + 1).ChildRect.Left -
+     ShiftDist
+    Di(SizeAction + 1).ChildRect.Width = Di(SizeAction + 1).ChildRect.Width +
+     ShiftDist
+    ReFreshDock
+    Di(SizeAction).szPercent = Di(SizeAction).SplitRect.Left / ScaleWidth
+    Call SetRedraw(UserControl.hwnd, True)
+   End If
+  
+   
+   
+   
+  
+  
+  End If
+  
+  
+ End If
+ 
+ 
+End Sub
+
+
+Private Sub H_MouseMove(ByVal y As Long)
+ 
+ 
+ If SplitPosY &lt;&gt; y And MouseButton Then
+ 
+  If SizeAction = -1 And Extender.Align = vbAlignTop Then
+   If y &lt;= MinY And PosRect.Right &gt; MinSize Then
+    y = MinY
+   ElseIf y &lt;= MinY And PosRect.Bottom = MinSize Then
+    Exit Sub
+   ElseIf y &gt;= MaxY Then
+    If PosRect.Bottom &lt; ScaleHeight + MaxY Then
+     y = MaxY
+    Else
+     Exit Sub
+    End If
+   End If
+  
+ Else
+   
+    If y &gt;= MaxY And ScaleHeight - PosRect.Top &lt; MinSize Then
+     y = MaxY
+    ElseIf y &gt;= MaxY And ScaleHeight - PosRect.Top &gt;= MinSize Then
+     If ScaleHeight - PosRect.Top &gt; MinSize Then
+      y = MaxY
+     Else
+      Exit Sub
+     End If
+    ElseIf y &lt;= MinY Then
+     If PosRect.Top &gt; MinY Then
+      y = MinY
+     Else
+      Exit Sub
+     End If
+    End If
+   
+  End If
+  
+  DragFocus UserControl.hwnd, PosRect, 1
+  SplitPosY = y - SplitPosY
+  PosRect.Top = PosRect.Top + SplitPosY
+  PosRect.Bottom = PosRect.Bottom + SplitPosY
+  DragFocus UserControl.hwnd, PosRect, 1
+  SplitPosY = y
+ End If
+ 
+ 
+End Sub
+Private Sub V_MouseMove(ByVal x As Long)
+ 
+ 
+ If SplitPosX &lt;&gt; x And MouseButton Then
+ 
+  If SizeAction = -1 And Extender.Align = vbAlignLeft Then
+   If x &lt;= MinX And PosRect.Right &gt; MinSize Then
+    x = MinX
+   ElseIf x &lt;= MinX And PosRect.Right = MinSize Then
+    Exit Sub
+   ElseIf x &gt;= MaxX Then
+    If PosRect.Right &lt; ScaleWidth + MaxX Then
+     x = MaxX
+    Else
+     Exit Sub
+    End If
+   End If
+  
+ Else
+   
+    If x &gt;= MaxX And ScaleWidth - PosRect.Left &lt; MinSize Then
+     x = MaxX
+    ElseIf x &gt;= MaxX And ScaleWidth - PosRect.Left &gt;= MinSize Then
+     If ScaleWidth - PosRect.Left &gt; MinSize Then
+      x = MaxX
+     Else
+      Exit Sub
+     End If
+    ElseIf x &lt;= MinX Then
+     If PosRect.Left &gt; MinX Then
+      x = MinX
+     Else
+      Exit Sub
+     End If
+    End If
+   
+  End If
+  
+  DragFocus UserControl.hwnd, PosRect, 1
+  SplitPosX = x - SplitPosX
+  PosRect.Left = PosRect.Left + SplitPosX
+  PosRect.Right = PosRect.Right + SplitPosX
+  DragFocus UserControl.hwnd, PosRect, 1
+  SplitPosX = x
+ End If
+ 
+ 
+End Sub
+'WARNING! DO NOT REMOVE OR MODIFY THE FOLLOWING COMMENTED LINES!
+'MappingInfo=UserControl,UserControl,-1,hWnd
+Public Property Get hwnd() As Long
+Attribute hwnd.VB_Description = "Returns a handle (from Microsoft Windows) to
+ an object's window."
+    hwnd = UserControl.hwnd
+End Property
+
+Public Sub ShowChild()
+Attribute ShowChild.VB_MemberFlags = "40"
+    Dim N As Integer
+    Dim J As Integer
+    
+    If Not SubFormsLoaded Then Exit Sub
+    
+    If DiCount &lt; DockCol.Count - 1 Then DiCount = DiCount + 1
+    
+    For N = 1 To DockCol.Count
+     If Not DockCol(N).IsHidden Then
+      DockCol(N).Pos = J
+      J = J + 1
+     End If
+    Next
+    
+    TileSubDock
+    
+End Sub
+
+Public Function VisibleCount(Optional TrueCount As Boolean = False) As Integer
+Attribute VisibleCount.VB_MemberFlags = "40"
+
+ If Not TrueCount And m_IsChildMax Then
+  VisibleCount = 0
+ Else
+  VisibleCount = DiCount
+ End If
+
+End Function
+
+Private Property Let ISubclass_MsgResponse(ByVal RHS As SSubTimer.EMsgResponse)
+
+End Property
+
+Private Property Get ISubclass_MsgResponse() As SSubTimer.EMsgResponse
+   If CurrentMessage = WM_WINDOWPOSCHANGED Then
+    ISubclass_MsgResponse = emrPostProcess
+   Else
+    ISubclass_MsgResponse = emrConsume
+   End If
+End Property
+
+Private Function ISubclass_WindowProc(ByVal hwnd As Long, ByVal iMsg As Long,
+ ByVal wParam As Long, ByVal lParam As Long) As Long
+Dim N As Integer
+Dim x As Long
+Dim y As Long
+
+ Select Case iMsg
+   
+  Case WM_WINDOWPOSCHANGED
+    
+    SizeRect = SizerAlign(Extender.Align, ScaleWidth, ScaleHeight, ClientRect)
+    
+    If SizerSize Or DiCount &lt; 0 Or Parent.WindowState = 1 Then Exit Function
+    
+    
+        
+    For N = 0 To DiCount
+       
+     If Extender.Align &lt; 3 Then
+        Di(N).SplitRect.Top = ClientRect.Top
+        Di(N).SplitRect.Bottom = ClientRect.Bottom
+        
+        Di(N).SplitRect.Left = ScaleWidth * Di(N).szPercent
+        Di(N).SplitRect.Right = Di(N).SplitRect.Left + 4
+         
+        If Di(N).SplitRect.Right &gt; ScaleWidth - 4 And N &lt; DiCount Then
+         Di(N).SplitRect.Right = ScaleWidth - 4
+         Di(N).SplitRect.Left = Di(N).SplitRect.Right - 4
+        End If
+        
+     ElseIf Extender.Align &gt; 2 Then
+        Di(N).SplitRect.Left = ClientRect.Left
+        Di(N).SplitRect.Right = ClientRect.Right
+        
+        Di(N).SplitRect.Top = ScaleHeight * Di(N).szPercent
+        Di(N).SplitRect.Bottom = Di(N).SplitRect.Top + 4
+        
+        If Di(N).SplitRect.Bottom &gt; ScaleHeight - 4 And N &lt; DiCount Then
+         Di(N).SplitRect.Bottom = ScaleHeight - 4
+         Di(N).SplitRect.Top = Di(N).SplitRect.Bottom - 4
+        End If
+         
+     End If
+        
+    Next
+    
+    SetRectsToSplits Di(), Extender.Align, DiCount
+    
+    
+    If DiCount = 0 Then
+     Di(0).ChildRect.Top = ClientRect.Top
+     Di(0).ChildRect.Left = ClientRect.Left
+     Di(0).ChildRect.Width = ClientRect.Right - ClientRect.Left
+     Di(0).ChildRect.Height = ClientRect.Bottom - ClientRect.Top
+    Else
+     If Extender.Align &lt; vbAlignLeft Then
+      For N = 0 To DiCount
+       Di(N).SplitRect.Top = ClientRect.Top
+       Di(N).SplitRect.Bottom = ClientRect.Bottom
+       Di(N).ChildRect.Top = ClientRect.Top
+       Di(N).ChildRect.Height = ClientRect.Bottom - ClientRect.Top
+      Next
+     ElseIf Extender.Align &gt; vbAlignBottom Then
+      For N = 0 To DiCount
+       Di(N).SplitRect.Left = ClientRect.Left
+       Di(N).SplitRect.Right = ClientRect.Right
+       Di(N).ChildRect.Left = ClientRect.Left
+       Di(N).ChildRect.Width = ClientRect.Right - ClientRect.Left
+      Next
+     End If
+    End If
+    
+    ReFreshDock
+    
+ End Select
+ 
+End Function
+
+Private Sub UserControl_AmbientChanged(PropertyName As String)
+
+ If Not Intializing And Not Ambient.UserMode And PropertyName = "DisplayName"
+  Then
+   Dim CObject As Control
+   Dim N As Integer
+   
+   For Each CObject In Parent.Controls
+    If RTrim(TypeName(CObject)) = "SubDock" Then
+     CObject.Name = Extender.Name
+     CObject.Index = CObject.Align
+     Label1.Caption = CObject.Name &amp; "(" &amp; CStr(Extender.Index) &amp; ")"
+    End If
+   Next
+ End If
+ 
+ 
+End Sub
+
+Private Sub UserControl_Initialize()
+ DiCount = -1
+ SizeAction = -2
+ TwipsX = Screen.TwipsPerPixelX
+ TwipsY = Screen.TwipsPerPixelY
+ 
+End Sub
+
+Public Property Get MinWh() As Long
+Attribute MinWh.VB_MemberFlags = "440"
+ 
+ If Extender.Align &lt; 3 Then
+  MinWh = 8 * TwipsY
+ Else
+  MinWh = 8 * TwipsX
+ End If
+   
+ 
+End Property
+Private Sub UserControl_InitProperties()
+ 
+ If Not Ambient.UserMode Then
+  Dim CObject As Control
+  Dim N As Integer
+  Dim cCount As Integer
+  Dim ArrayName As String
+  
+  
+  
+  For Each CObject In Parent.Controls
+   If RTrim(TypeName(CObject)) = "SubDock" Then
+    If cCount = 0 Then ArrayName = CObject.Name
+    cCount = cCount + 1
+   End If
+  Next
+  
+  If cCount &gt; 4 Then
+   Err.Raise vbObjectError + 27, "DockControl", _
+   "Sorry! No more than 4 DockControl.SubDocks allowed on Mdi Form"
+   Err.Clear
+   Exit Sub
+  ElseIf RTrim(TypeName(Parent)) &lt;&gt; "MDIForm" Then
+   Err.Raise vbObjectError + 28, "DockControl", _
+   "Sorry! DockControl.SubDocks are only allowed on Mdi Form at this time;-("
+   Err.Clear
+   Exit Sub
+  End If
+  
+  Intializing = True
+  
+  If cCount = 1 Then
+   Extender.Name = "SubDock"
+   Extender.Index = 1
+   Extender.Align = 1
+   Extender.Visible = False
+   Label1.Caption = "SubDock(1)"
+   Exit Sub
+  Else
+   Extender.Name = ArrayName
+   Extender.Index = cCount
+   Extender.Align = cCount
+   Extender.Visible = False
+   Label1.Caption = ArrayName &amp; "(" &amp; CStr(cCount) &amp; ")"
+   
+  End If
+  Intializing = False
+ End If
+ 
+End Sub
+
+Private Sub UserControl_MouseDown(Button As Integer, Shift As Integer, x As
+ Single, y As Single)
+    Dim N As Integer
+    
+    If Button = vbLeftButton Then
+     SizeAction = -2
+     If PtInRect(SizeRect, CLng(x), CLng(y)) = 1 Then
+      SizeAction = -1
+      If Extender.Align &lt; 3 Then
+       Call H_MouseDown(y)
+      Else
+       Call V_MouseDown(x)
+      End If
+      
+     Else
+      For N = 0 To DiCount
+       If PtInRect(Di(N).SplitRect, CLng(x), CLng(y)) = 1 Then
+        SizeAction = N
+        
+        If Extender.Align &lt; 3 Then
+         Call V_MouseDown(x)
+        Else
+         Call H_MouseDown(y)
+        End If
+        
+        Exit For
+       End If
+      Next
+     End If
+    End If
+   
+   
+End Sub
+
+Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, x As
+ Single, y As Single)
+    Dim N As Integer
+    
+    If Button = 0 Or Button &lt;&gt; 0 And SizeAction = -2 Then
+      SizeAction = -2
+     If PtInRect(SizeRect, CLng(x), CLng(y)) = 1 Then
+      If Extender.Align &lt; 3 Then
+       MouseIcon = CursorH
+      Else
+       MouseIcon = CursorV
+      End If
+     Else
+      For N = 0 To DiCount
+       If PtInRect(Di(N).SplitRect, CLng(x), CLng(y)) = 1 Then
+      
+        If Extender.Align &lt; vbAlignLeft Then
+         MouseIcon = CursorV
+        ElseIf Extender.Align &gt; vbAlignBottom Then
+         MouseIcon = CursorH
+        End If
+        
+        Exit Sub
+       End If
+       
+      Next
+      
+     End If
+     
+     
+    ElseIf Button = vbLeftButton Then
+     If SizeAction &gt; -2 Then
+      If Extender.Align &lt; 3 And SizeAction &gt; -1 Or Extender.Align &gt; 2 And
+       SizeAction = -1 Then
+       Call V_MouseMove(x - XoffSet)
+      Else
+       Call H_MouseMove(y - XoffSet)
+      End If
+     End If
+    End If
+End Sub
+
+
+Private Sub UserControl_MouseUp(Button As Integer, Shift As Integer, x As
+ Single, y As Single)
+    If Button = vbLeftButton Then
+     If SizeAction &gt; -2 Then
+      If Extender.Align &lt; 3 And SizeAction &gt; -1 Or Extender.Align &gt; 2 And
+       SizeAction = -1 Then
+       Call V_MouseUp(x - XoffSet)
+      Else
+       Call H_MouseUp(y - XoffSet)
+      End If
+      
+     End If
+    End If
+    
+    SizeAction = -2
+    
+End Sub
+
+
+
+Private Sub UserControl_Show()
+ If Ambient.UserMode Then
+  If Label1.Visible Then Label1.Visible = False
+ End If
+ 
+End Sub
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;SubDock.ctl</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

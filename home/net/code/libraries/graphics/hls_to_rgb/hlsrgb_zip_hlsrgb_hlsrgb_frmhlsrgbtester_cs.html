@@ -1,0 +1,490 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: HLSRGB_HLSRGB_frmHLSRGBTester.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: HLSRGB_HLSRGB_frmHLSRGBTester.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">Hue, Luminance and Saturation in .NET</a>&#160;.&#160;<a href="hlsrgb.html">Hlsrgb</a>&#160;.&#160;HLSRGB_HLSRGB_frmHLSRGBTester.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="hlsrgb.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Hlsrgb</a> (97K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:1434</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=1434&type=zip&title=hlsrgb_2ezip_5fhlsrgb_5fhlsrgb_5ffrmhlsrgbtester.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Dec 2002<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: HLSRGB_HLSRGB_frmHLSRGBTester.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using vbAccelerator.Components.Drawing;
+
+namespace vbAccelerator.Components.Drawing.Demonstration
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmHLSRGBTester : System.Windows.Forms.Form
+   {
+      private HLSRGB hlsrgb;
+      private Rectangle ColorSampleRect;
+      private Rectangle ColorWheelRect;
+
+      private System.Windows.Forms.TrackBar trkHue;
+      private System.Windows.Forms.TrackBar trkLuminance;
+      private System.Windows.Forms.TrackBar trkSaturation;
+      private System.Windows.Forms.ComboBox cboColors;
+      private System.Windows.Forms.Label lblHue;
+      private System.Windows.Forms.Label lblLuminance;
+      private System.Windows.Forms.Label lblSaturation;
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      public frmHLSRGBTester()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+         //
+         ColorSampleRect = new Rectangle(trkSaturation.Left +
+          trkSaturation.Width + 16,16,108,92);
+         ColorWheelRect = new Rectangle(ColorSampleRect.X, ColorSampleRect.Y,
+          ColorSampleRect.Width, ColorSampleRect.Height);
+         ColorWheelRect.Offset(0, ColorSampleRect.Height + 16);
+
+         hlsrgb = new HLSRGB(Color.Goldenrod);
+         trkHue.Value = (int)hlsrgb.Hue;
+         trkLuminance.Value = (int)(hlsrgb.Luminance * 100);
+         trkSaturation.Value = (int)(hlsrgb.Saturation * 100);
+
+         trkHue.ValueChanged += new EventHandler(trkHue_ValueChanged);
+         trkSaturation.ValueChanged += new
+          EventHandler(trkSaturation_ValueChanged);
+         trkLuminance.ValueChanged += new
+          EventHandler(trkLuminance_ValueChanged);
+         
+         PopulateColors();
+
+         cboColors.DrawMode = DrawMode.OwnerDrawFixed;
+         cboColors.DrawItem += new DrawItemEventHandler(cboColors_DrawItem);
+         cboColors.SelectedIndexChanged += new
+          EventHandler(cboColors_SelectedIndexChanged);
+
+         this.SetStyle(ControlStyles.AllPaintingInWmPaint | 
+            ControlStyles.ResizeRedraw |
+            ControlStyles.Opaque | 
+            ControlStyles.UserPaint | 
+            ControlStyles.DoubleBuffer, true);
+
+         ShowColor();
+      
+      }
+
+      private void PopulateColors()
+      {
+         cboColors.Items.Clear();
+
+         Array arr = Enum.GetNames(typeof(System.Drawing.KnownColor));
+         cboColors.Items.AddRange((object[])arr);
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.trkHue = new System.Windows.Forms.TrackBar();
+         this.lblHue = new System.Windows.Forms.Label();
+         this.lblLuminance = new System.Windows.Forms.Label();
+         this.trkLuminance = new System.Windows.Forms.TrackBar();
+         this.lblSaturation = new System.Windows.Forms.Label();
+         this.trkSaturation = new System.Windows.Forms.TrackBar();
+         this.cboColors = new System.Windows.Forms.ComboBox();
+         ((System.ComponentModel.ISupportInitialize)(this.trkHue)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.trkLuminance)).BeginIn
+         it();
+         ((System.ComponentModel.ISupportInitialize)(this.trkSaturation)).BeginI
+         nit();
+         this.SuspendLayout();
+         // 
+         // trkHue
+         // 
+         this.trkHue.LargeChange = 30;
+         this.trkHue.Location = new System.Drawing.Point(20, 8);
+         this.trkHue.Maximum = 360;
+         this.trkHue.Name = "trkHue";
+         this.trkHue.Orientation = System.Windows.Forms.Orientation.Vertical;
+         this.trkHue.Size = new System.Drawing.Size(45, 220);
+         this.trkHue.TabIndex = 0;
+         this.trkHue.TickFrequency = 10;
+         this.trkHue.TickStyle = System.Windows.Forms.TickStyle.Both;
+         // 
+         // lblHue
+         // 
+         this.lblHue.Location = new System.Drawing.Point(8, 236);
+         this.lblHue.Name = "lblHue";
+         this.lblHue.Size = new System.Drawing.Size(64, 32);
+         this.lblHue.TabIndex = 1;
+         this.lblHue.Text = "Hue";
+         this.lblHue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // lblLuminance
+         // 
+         this.lblLuminance.Location = new System.Drawing.Point(72, 236);
+         this.lblLuminance.Name = "lblLuminance";
+         this.lblLuminance.Size = new System.Drawing.Size(64, 32);
+         this.lblLuminance.TabIndex = 3;
+         this.lblLuminance.Text = "Luminance";
+         this.lblLuminance.TextAlign =
+          System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // trkLuminance
+         // 
+         this.trkLuminance.LargeChange = 10;
+         this.trkLuminance.Location = new System.Drawing.Point(80, 8);
+         this.trkLuminance.Maximum = 100;
+         this.trkLuminance.Name = "trkLuminance";
+         this.trkLuminance.Orientation =
+          System.Windows.Forms.Orientation.Vertical;
+         this.trkLuminance.Size = new System.Drawing.Size(45, 220);
+         this.trkLuminance.TabIndex = 2;
+         this.trkLuminance.TickFrequency = 10;
+         this.trkLuminance.TickStyle = System.Windows.Forms.TickStyle.Both;
+         // 
+         // lblSaturation
+         // 
+         this.lblSaturation.Location = new System.Drawing.Point(136, 236);
+         this.lblSaturation.Name = "lblSaturation";
+         this.lblSaturation.Size = new System.Drawing.Size(60, 32);
+         this.lblSaturation.TabIndex = 5;
+         this.lblSaturation.Text = "Saturation";
+         this.lblSaturation.TextAlign =
+          System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // trkSaturation
+         // 
+         this.trkSaturation.LargeChange = 10;
+         this.trkSaturation.Location = new System.Drawing.Point(140, 8);
+         this.trkSaturation.Maximum = 100;
+         this.trkSaturation.Name = "trkSaturation";
+         this.trkSaturation.Orientation =
+          System.Windows.Forms.Orientation.Vertical;
+         this.trkSaturation.Size = new System.Drawing.Size(45, 220);
+         this.trkSaturation.TabIndex = 4;
+         this.trkSaturation.TickFrequency = 10;
+         this.trkSaturation.TickStyle = System.Windows.Forms.TickStyle.Both;
+         // 
+         // cboColors
+         // 
+         this.cboColors.DropDownStyle =
+          System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboColors.Location = new System.Drawing.Point(16, 284);
+         this.cboColors.Name = "cboColors";
+         this.cboColors.Size = new System.Drawing.Size(144, 21);
+         this.cboColors.TabIndex = 7;
+         // 
+         // frmHLSRGBTester
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+         this.ClientSize = new System.Drawing.Size(324, 330);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.cboColors,
+                                                        this.lblSaturation,
+                                                        this.trkSaturation,
+                                                        this.lblLuminance,
+                                                        this.trkLuminance,
+                                                        this.lblHue,
+                                                        this.trkHue});
+         this.Name = "frmHLSRGBTester";
+         this.Text = "HLS - RGB Class Demonstration (C#)";
+         this.Load += new System.EventHandler(this.Form1_Load);
+         ((System.ComponentModel.ISupportInitialize)(this.trkHue)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.trkLuminance)).EndInit
+         ();
+         ((System.ComponentModel.ISupportInitialize)(this.trkSaturation)).EndIni
+         t();
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmHLSRGBTester());
+      }
+
+      private void cboColors_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         int itemIndex = cboColors.SelectedIndex;
+         if (itemIndex &gt; -1)
+         {
+            string knownColorName = cboColors.Items[itemIndex].ToString();
+            KnownColor k =
+             (KnownColor)Enum.Parse(typeof(System.Drawing.KnownColor),
+             knownColorName);
+            Color color = Color.FromKnownColor(k);
+            hlsrgb.Color = color;
+            trkHue.Value = (int)hlsrgb.Hue;
+            trkLuminance.Value = (int)(hlsrgb.Luminance * 100);
+            trkSaturation.Value = (int)(hlsrgb.Saturation * 100);
+         }
+      }
+
+      private void cboColors_DrawItem(object sender, DrawItemEventArgs d)
+      {
+         int itemIndex = d.Index;
+
+         d.DrawBackground();
+
+         if (itemIndex &gt; -1)
+         {
+            string knownColorName = cboColors.Items[itemIndex].ToString();
+
+            Rectangle textRectangle = d.Bounds;
+            Rectangle colorRectangle = d.Bounds;         
+            colorRectangle.X += 2;
+            colorRectangle.Y += 2;
+            colorRectangle.Width = 16;
+            colorRectangle.Height -= 4;
+
+            KnownColor k =
+             (KnownColor)Enum.Parse(typeof(System.Drawing.KnownColor),
+             knownColorName);
+            Color color = Color.FromKnownColor(k);
+            SolidBrush colorBrush = new SolidBrush(color);
+            d.Graphics.FillRectangle(colorBrush, colorRectangle);
+            colorBrush.Dispose();
+            d.Graphics.DrawRectangle(SystemPens.ControlDarkDark,
+             colorRectangle);
+
+            textRectangle.X += 20;
+            textRectangle.Width -= 20;
+
+            Brush textBrush;
+            if ((d.State &amp; DrawItemState.Selected) == DrawItemState.Selected)
+            {
+               textBrush = SystemBrushes.HighlightText;
+            }
+            else
+            {
+               textBrush = SystemBrushes.ControlText;
+            }
+            d.Graphics.DrawString(knownColorName, d.Font, textBrush,
+             textRectangle);
+         }
+
+         if ((d.State &amp; DrawItemState.Focus) == DrawItemState.Focus)
+         {
+            d.DrawFocusRectangle();
+         }
+
+      }
+
+      protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+      {
+         base.OnPaint(e);
+         e.Graphics.FillRectangle(SystemBrushes.Control, e.ClipRectangle);
+         if (e.ClipRectangle.IntersectsWith(ColorSampleRect))
+         {
+            DrawColorSample(ColorSampleRect, e.Graphics);
+         }
+         if (e.ClipRectangle.IntersectsWith(ColorWheelRect))
+         {
+            DrawColorWheel(ColorWheelRect, e.Graphics);
+         }
+         e.Graphics.Flush();
+      }
+
+      private void Form1_Load(object sender, System.EventArgs e)
+      {
+      
+      }
+
+      private void trkHue_ValueChanged(object sender, EventArgs e)
+      {
+         hlsrgb.Hue = trkHue.Value;
+         ShowColor();
+      }
+
+      private void trkSaturation_ValueChanged(object sender, EventArgs e)
+      {
+         hlsrgb.Saturation = trkSaturation.Value/100f;
+         ShowColor();
+      }
+
+      private void trkLuminance_ValueChanged(object sender, EventArgs e)
+      {
+         hlsrgb.Luminance = trkLuminance.Value/100f;
+         ShowColor();
+      }
+
+      private void ShowColor()
+      {
+         this.Invalidate(ColorSampleRect);
+         this.Invalidate(ColorWheelRect);
+         lblHue.Text = String.Format("Hue\r\n{0:F2}",hlsrgb.Hue);
+         lblSaturation.Text =
+          String.Format("Saturation\r\n{0:F2}",hlsrgb.Saturation);
+         lblLuminance.Text =
+          String.Format("Luminance\r\n{0:F2}",hlsrgb.Luminance);
+      }
+
+      private void DrawColorSample(Rectangle rect, Graphics gfx)
+      {
+         // Fill background
+         gfx.FillRectangle(SystemBrushes.Control, rect);
+
+         // draw border
+         gfx.DrawLine(SystemPens.ControlDark, rect.X, rect.Y + rect.Height,
+          rect.X, rect.Y);
+         gfx.DrawLine(SystemPens.ControlDark, rect.X, rect.Y, rect.X +
+          rect.Width, rect.Y);
+         gfx.DrawLine(SystemPens.ControlLightLight, rect.X + rect.Width, rect.Y
+          + 1, rect.X + rect.Width, rect.Y + rect.Height);
+         gfx.DrawLine(SystemPens.ControlLightLight, rect.X + rect.Width, rect.Y
+          + rect.Height, rect.X + 1, rect.Y + rect.Height);
+
+         // draw color sample:
+         SolidBrush colorBrush = new SolidBrush(hlsrgb.Color);
+         gfx.FillRectangle(colorBrush, rect.X + 1, rect.Y + 1, rect.Width - 2,
+          rect.Height - 2);
+         colorBrush.Dispose();
+         
+      }
+
+      private void DrawColorWheel(Rectangle rect, Graphics gfx)
+      {
+
+         // Fill background:
+         Brush backBrush = SystemBrushes.Control;
+         gfx.FillRectangle(backBrush, rect);
+         
+         // Determine range and centre of the circle:
+         int  border  = Math.Min(rect.Width, rect.Height);
+         double border2 = border / 2;
+         Point ptCentre = new Point();
+         ptCentre.X = (int)(border / 2 + 1); // Middle point
+         ptCentre.Y = ptCentre.X;
+
+         // Define start color:
+         HLSRGB color = new HLSRGB((float)trkHue.Value,
+          (float)trkLuminance.Value/100, (float)trkSaturation.Value/100);
+
+         // Determine circle edge points and colors:
+         Point[] pt = new Point[360];
+         HLSRGB[] colors = new HLSRGB[360];
+         float hue = color.Hue;
+         for (int i = 359; i &gt;= 0; i--)
+         {
+            // Determine color:
+            hue += 1.0f;
+            if (hue &gt; 360.0f) 
+            {
+               hue -= 360.0f;
+            }
+            colors[i] = new HLSRGB(hue, color.Luminance, color.Saturation);
+
+            // Determine new point on circle:
+            pt[i].X = rect.X + (int)(ptCentre.X - Math.Cos(Math.PI * i / 180.0)
+             * border2);
+            pt[i].Y = rect.Y + (int)(ptCentre.Y - Math.Sin(Math.PI * i / 180.0)
+             * border2);
+         }
+
+         ptCentre.Offset(rect.X, rect.Y);
+
+         // Draw the circle using thick lines:
+         for (int i = 359; i &gt;= 0; i--)
+         {
+            Pen colorPen = new Pen(colors[i].Color, 2f);
+            gfx.DrawLine(colorPen, pt[i], ptCentre);
+            colorPen.Dispose();
+         }
+
+         // Draw using thin lines;
+         for (int i = 359; i &gt;= 0; i--)
+         {
+            Pen colorPen = new Pen(colors[i].Color, 1);
+            gfx.DrawLine(colorPen, pt[i], ptCentre);
+            colorPen.Dispose();
+         }
+
+      }
+
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">Hue, Luminance and Saturation in .NET</a>&#160;.&#160;<a href="hlsrgb.html">Hlsrgb</a>&#160;.&#160;HLSRGB_HLSRGB_frmHLSRGBTester.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,387 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Preventing a Form's Caption from Loosing Focus when another Form is shown</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        &nbsp;Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+        <td valign="top">
+	<p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>&nbsp;Keep Form Titlebars in Focus when ToolWindows are shown.</b>
+        </font>
+	</p>
+	</td>
+</tr>
+<tr>
+	<td>
+        <font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	&nbsp; Allow your VB app to behave like Office Applications when ToolWindows and Find/Replace Dialogs are in view.
+        </font>
+	</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\subclassing\keep_form_titlebars_in_focus_when_toolwindows_are_shown\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+        <p><img src="..\..\images\tbrfocus.gif" width="200" height="141" alt="Even when the ToolWindow has the focus, the main MDI form keeps the focus. " border="0"></p>
+        <p><a href="tbrfocus.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the TitleBar Focus code and demonstration (20kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                This project requires the <a href="ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and <a href="..\..\insprob.htm#secreg">registered</a> this before trying the project.
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+        <p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Introduction</b><br>
+	The ToolWindow style, introduced with VB4, allowing you to easily create pop-up tool windows with small 
+	captions.  However, there is (and has always been) a problem with them: whenever the form or a control
+	on it gets the focus, it appears that the main form of your application looses focus.  Whilst maybe
+	this isn't the worst user-interface crime in the world, it is annoying and makes your application
+	look unprofessional compared to the smoother behaviour in Word, Excel, DevStudio etc.
+	<br><br>
+	This subclassing sample demonstrates how to fix the title bar problem with a working but rather
+	slimy hack.  The code here is the basis for the code used in the 
+	<a href="..\ddtoolwn\ddform.htm">vbAccelerator Drop-Down Form Control</a> and is also incorporated
+	directly into the <a href="..\comctl\retbar.htm">vbAccelerator Toolbar, Rebar and CoolMenu</a> control.
+	<br><br>
+	Note: This technique is probably not suitable for an application that contains multiple main 
+	form windows.
+	<br><br>
+	<b>How It Works</b><br>
+	Changing the appearance of a VB form's title bar is one of the things VB makes it very difficult to
+	do. Whenever a Window's title bar needs to change state from active to inactive, Windows sends
+	a <i>WM_NCACTIVATE</i> message to the window.  In a simple C Windows application you could simply intercept
+	this message and consume it rather than	sending it to the <i>DefWindowProc</i>.
+	<br><br>
+	In VB, it isn't so easy.  VB appears to use the <i>WM_NCACTIVATE</i> message for its 
+	own purposes.  If you eat this message, your VB form either stops responding 
+	to the mouse or keyboard, or the program goes into a continous loop and can only
+	be stopped with Ctrl-Alt-Del.
+	<br><br>
+	Another possible alternative is intercepting the <i>WM_NCPAINT</i> message. 
+	Windows sends this whenever any part of the non-client area needs to be repainted
+	(including the form border, the titlebar, the menu bar and so on).  If you consume
+	this message you can write all the non-client area drawing code yourself - and
+	that means you can paint the titlebar focused when it would normally be non-focused.
+	Whilst I played with this solution for quite a while, my experiences with 
+	indicate that either Windows does not play fair with the <i>WM_NCPAINT</i> 
+	message or that VB redraws parts of the non-client area at other points for its
+	own reasons.   You can <a href="..\tarka\ftbar.zip">download a sample</a>
+	 which shows how it it is almost but not quite reliable enough to 
+	draw the entire non-client area yourself. (BTW: there is a bug in this sample - 
+	the client drawing appears to draws one pixel too deep on the title bar, causing
+	the menu bar to flicker.  However, if you remove the pixel from the drawing, you
+	end up with an non-drawn area.  Can anyone fix it?  If so, please 
+	<a href="mailto:steve@vbaccelerator.com">mail me</a>!)	
+	<br><br>
+	Another solution is required.  It turns out there is a simple one, but it is
+	a bit of a slimy hack, as you're going to see..<br><br>
+	<b>The Code</b><br>
+	This technique involves subclassing for three messages: <i>WM_NCACTIVATE</i>,
+	<i>WM_ACTIVATEAPP</i> and <i>WM_ACTIVATE</i>. When a <i>WM_NCACTIVATE</i> is 
+	received, the code first calls <i>LockWindowUpdate</i> to prevent any	
+	changes being shown to the user.  
+	</font>
+	</p>
+	<p><table width = "100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td valign="top"><img src="..\..\images\minitip.gif" width="10" height="14" hspace="10"></td>
+	<td bgcolor="#99CCFF"><font color="#000099" face="verdana,arial,helvetica" size="2">
+	<b>Tip</b> Successful LockWindowUpdate<br>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+	<td></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<i>LockWindowUpdate</i> is an excellent call in that it completely stops
+	window repainting and thereby speeds things up and stops distracting
+	flicker.  But you have to be careful when using it. If you cover or 
+	expose any area of another window whilst <i>LockWindowUpdate</i> is on, as soon 
+	as you turn it off again the entire desktop repaints, this is very slow, and
+	causes probably worse flickering than if it wasn't turned on in the first
+	place!  So when using LockWindowUpdate, ensure you apply it to a window
+	that does not change size or move.  Often the parent window is a better
+	choice than the window being updated.
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	</table>
+	</p>
+	<p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	With window updating locked, it then calls the VB window procedure
+	with the as received <i>WM_NCACTIVATE</i> parameters.  Normally this would
+	redraw the title bar inactive, but because updates are switched off,
+	the display is not updated.  The code then calls <i>WM_NCACTIVATE</i> again,
+	but with the parameters set to indicate that the window should be
+	active.  This sets the title bar back to the right display but enables
+	the form to keep working correctly.  Finally we turn <i>LockWindowUpdate</i>
+	back off again to make the display correct. 
+	<br><br>
+	That ensures that the titlebar keeps an active appearance when a non-modal
+	form is displayed, but we need to make a few more modifications to hold
+	that appearance when you display a modal form.  Showing a modal form
+	can be detected because Windows will repeatedly try to call <i>WM_NCACTIVATE</i>
+	until the title bar state is changed correctly.  Normally directly after
+	a <i>WM_NCACTIVATE</i> call there is a <i>WM_ACTIVATE</i> message.  So to detect a 
+	modal form being shown, and to allow the title bar to update, we can
+	use a static variable to count the number of times the <i>WM_NCACTIVATE</i>
+	message has been sent between <i>WM_ACTIVATE</i> messages.  If this exceeds 2
+	we assume a modal form is being displayed and allow the default 
+	processing to occur.
+	<br><br>
+	The final processing is to detect the <i>WM_ACTIVATEAPP</i> message.  This
+	tells the code whether the entire app (all forms) has gained or lost the
+	focus, and since it fires after the <i>WM_NCACTIVATE</i> message we can
+	update the titlebar in response.
+	<br><br>
+		
+	</font>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Private Property Get ISubclass_MsgResponse() As SSubTimer.EMsgResponse<br>
+&nbsp;&nbsp;&nbsp;Select Case CurrentMessage<br>
+&nbsp;&nbsp;&nbsp;Case WM_NCACTIVATE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISubclass_MsgResponse = emrConsume<br>
+&nbsp;&nbsp;&nbsp;Case Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISubclass_MsgResponse = emrPostProcess<br>
+&nbsp;&nbsp;&nbsp;End Select<br>
+End Property<br>
+<br>
+Private Function ISubclass_WindowProc(ByVal hWnd As Long, ByVal iMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long<br>
+&nbsp;&nbsp;&nbsp;Static iRefCount As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;Select Case iMsg<br>
+&nbsp;&nbsp;&nbsp;Case WM_NCACTIVATE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If wParam = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iRefCount = iRefCount + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If iRefCount &lt; 3 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LockWindowUpdate hWnd<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISubclass_WindowProc = CallOldWindowProc(hWnd, iMsg, wParam, lParam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CallOldWindowProc m_hWnd, WM_NCACTIVATE, 1, 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LockWindowUpdate 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISubclass_WindowProc = CallOldWindowProc(hWnd, iMsg, wParam, lParam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISubclass_WindowProc = CallOldWindowProc(hWnd, iMsg, wParam, lParam)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;Case WM_ACTIVATEAPP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (wParam = 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iRefCount = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' app being deactivated</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CallOldWindowProc m_hWnd, WM_NCACTIVATE, 0, 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' app being activated</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' if not the active form then we should repaint</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' the title bar</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CallOldWindowProc m_hWnd, WM_NCACTIVATE, 1, 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;Case WM_ACTIVATE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If wParam = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iRefCount = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' deactivating the window, lParam is the window that is being activated.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;Case WM_DESTROY<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' In case the user does not set the class</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' to nothing before the owning form is</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' closed:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detach<br>
+&nbsp;&nbsp;&nbsp;End Select<br>
+<br>
+End Function<br>
+<br>
+
+</font>
+</p>
+	
+	<br><br>
+	</font></td>
+	<td></td>
+	</tr>
+	</table>
+	</p>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	As ever, using this code is somewhat more simple that writing it.  Just reference
+	<a href="ssubtmr.htm">SSubTmr.DLL</a>, include the <i>cActiveTitleBar</i>
+	class and call it like this:
+	<br><br>
+	</font>
+	<font color="#000000" face="Lucida Console,Courier New" size="1">
+	<br>
+	Option Explicit
+	<br>
+	Private m_cATBar As cActiveTitleBar<br>
+	<br>
+	Private Sub Form_Load()<br>
+	&nbsp;&nbsp;&nbsp;m_cATBar.Attach Me.hWnd<br>
+	End Sub<br>
+
+	<br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	That's it!  Just add the code to all non-modal forms and you are done.
+	</p>	
+	<br><br>
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Source Code Library"></a>Back to <a href="..\..\overlib.htm">Code Libraries</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</font></p>
+        </td>	
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

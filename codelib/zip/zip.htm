@@ -1,0 +1,365 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Zipping files using the free Info-Zip Zip DLL with VB</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<a name="sectop"></a>	
+
+<!-- SECTION:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	&nbsp;<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3&nbsp;</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Zipping files using the free Info-Zip Zip DLL with VB</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Add the ability to ZIP up data to your application without needing third-party controls</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\compression\zipping_files\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<!-- INFO:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\zip.gif" alt="Zip Demonstration Project" width="243" height="182">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="vbzip.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbzip.zip">Download the Zip Sample project (37kb)</a></font></td>
+	</tr>
+	<tr>
+	<td><a href="vbzip10.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbzip10.zip">Download the Info-ZIP Zip DLL (renamed to vbzip10.dll prevent clashes with other versions) (72kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires <i>vbzip10.dll</i> to be placed in your <i>Windows\System</i> directory.
+		vbuzip10.dll is Info-ZIP's zip32.dll version 2.32, which has been renamed.
+		You can download the original from this link:
+		<a href="javascript:window.alert(&quot;ftp://ftp.cdrom.com/pub/infozip/WIN32/\nThis link was not retrieved.&quot;)">ftp://ftp.cdrom.com/pub/infozip/WIN32/</a>.
+		Make sure you have visited <a href="..\..\linxref.htm#secinfozip">Info-ZIP's website</a>
+		and read their licensing conditions and requirements before using this DLL.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	<br>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+<!-- INFO:END -->
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	This article provides a class to enable you to simply add the ability to zipping 
+	files in a VB application.  With this class you can create zips which recurse 
+	subdirectories, store full or relative path names, add and delete files from
+	zips, freshen zips - basically everything you would expect to be able to do 
+	from a fully featured zipping application, and all under your programmatic control.
+		</font>
+		<br><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Reusing the VB code - Quick Start</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	To get the simplest overview of the code, extract these two files from the Zip Sample
+	project:
+		<ul>
+		<li><i>cZip.cls</i>
+		<li><i>mZip.bas</i>
+		</ul>
+	Add these two files to a new project in VB, and then declare a 
+	<i>WithEvents</i> instance of the <i>cZip</i> class:
+		<br><br>
+		</font>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private WithEvents m_cZip As cZip<br>
+		<br><br>
+		</font>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The simplest operation is to add a single file to a new zip file.  This is all you
+	need to do:
+		<br><br>
+		</font>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Set the zip file:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;m_cZip.ZipFile = sFile<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Make sure any previously zipped files are cleared:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;m_cZip.ClearFileSpecs<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Add the name of the file you want to zip:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;m_cZip.AddFileSpec "C:\Stevemac\HTML\ssite\index.html"<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Create the zip!</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;m_cUnzip.Zip<br>
+<br>
+		</font>
+		<br><br>
+		</td>
+	</tr>
+	
+
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>In More Detail</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<font color="#3366FF">Adding Files to a Zip<font color="#000000"><br>
+	Adding files to the zip is accomplished using the <i>AddFileSpec</i> method.
+	A file specification can either be a fully specified path name (e.g.
+	C:\Stevemac\HTML\ssite\index.html), a wildcard specification (e.g. C:\Stevemac\HTML\ssite\*.htm? )
+	or a relative path (e.g. index.html).  Relative paths are taken relative to the <i>BasePath</i>
+	property of the zip.  If you wish to store relative directory names in your zip, then you
+	must specify relative paths as the file spec.
+	<br><br>
+	<i>AddFileSpec</i> adds additional file specifications to be used during operations. To clear
+	the buffer, use <i>ClearFileSpecs</i>.  To modify existing file specifications, you can
+	use <i>FileSpecCount</i> to return how many specifications have been set up and the
+	property <i>FileSpec</i> to read or write the property.
+		<br><br>
+	<font color="#3366FF">Progress and Cancel<font color="#000000"><br>		
+	As Zipping operations are performed, the class will raise the 
+	<i>Progress</i> event, which you can use to display status messages about the 
+	directory operation, and <i>Cancel</i> events, which allows you to stop the directory or unzip
+	operation.
+		<br><br>
+	<font color="#3366FF">Options<font color="#000000"><br>		
+	The most important zip options are <i>RecurseSubDirs</i> and <i>StoreFolderNames</i>.
+	When you set <i>RecurseSubDirs</i>, the zip DLL will check for all files starting at
+	the <i>BasePath</i> property and below for matches against each of the <i>FileSpecs</i>.
+	So, for example, if you add "*.*" as a specification, all files in the <i>BasePath</i>
+	folder and below will be added to the zip.  The <i>StoreFolderNames</i> option determines
+	whether the zip will include the folder names as well as the file names.  The default
+	operation of this option is to store the full folder name, however, if you're <i>FileSpec</i>
+	items are relative paths at or below the <i>BasePath</i> then the zip will include 
+	the relative path name instead.  Note that relative folder names can only be stored for
+	deeper folders, so ..\MyFolder will not be represented.
+		<br><br>		
+	<font color="#3366FF">Deleting Files<font color="#000000"><br>		
+	Deleting files from a Zip is accomplished in exactly the same way as zipping, except
+	you use the <i>Delete</i> method instead of the <i>Zip</i> method.
+		<br><br>
+	For a more sophisticated zipping sample, check out the <a href="vbpzip.htm">VBP Zip</a>
+	utility.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overlib.htm">Library Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

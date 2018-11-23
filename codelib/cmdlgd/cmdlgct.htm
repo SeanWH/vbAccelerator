@@ -1,0 +1,430 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Centre a Common Dialog - The Easy and the Hard Way</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td>
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	<a href="..\..\overview.htm" target="vbamain">Source Code</a>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\hooks\using_cbt_hooks_to_centre_api_dialogs\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Centre a Common Dialog - The Easy and the Hard Way</b><br></p>
+
+	<p><a href="cdlgeasy.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Easy Common Dialog Centre project files (10kb)</a><br>
+	<a href="cdlghard.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the &quot;Hard&quot; Common Dialog Centre project files (54kb)</a></p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p> &nbsp This sample requires the <a href="cmdlgd.htm">CommonDialog/Direct DLL component</a>.  Make sure you have loaded and registered this before trying the project.</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<b>Updated 27 September 1998</b><br> The previous release of CommonDialog/Direct did not fully
+	support hooks.  The new version has much improved hook support and the sample has been updated.
+	Also, there was a foolish bug in the code which caused the Dialog box to disappear when you
+	tried to centre to the screen.  This has now been fixed, and 
+	the code also uses a neater method using <i>SystemParametersInfo</i> to take account of the
+	taskbar(s)<br><br>
+	<b>Introduction</b><br>
+	By default, a Common Dialog appears aligned to the top left position of the form which owns the common
+	dialog.  Often, you want to centre the common dialog to a particular form, or control on the form, or to 
+	the screen.  VB offers you no way to do it directly, but there are ways of doing it.  In fact there are	
+	two ways - the easy, VB type way, and the hard, API subclassing way.  This article will show you how
+	to do both.
+	<br><br>
+	<b>The Easy Way</b><br>
+	Since a common dialog is aligned to the top/left of a form, the easy way is this:
+	<ul>
+	<li>Add a new form to your project, and put a Common Dialog on it.
+	<li>Rather than show the Common Dialog from a particular form, instead use the one on the new form
+	<li>Before showing your Common Dialog, load the new form and move it so the top/left of the new form
+	appear where the top,left of the Common Dialog should appear to centre it to the object you want to 
+	centre to.
+	</ul>
+	It turns out it doesn't matter whether the form containing the Common Dialog is visible or not, so
+	you can keep the new form hidden the whole time.<br><br>
+	Simple!  Here is sample code to put into the form containing the Common Dialog to help automate this
+	process:
+<font face="Lucida Console,courier new" size="2">
+<p>
+Option Explicit <br>
+Private m_oThis As Object <br>
+Public Enum ECentreCDlgTypes <br>
+&nbsp &nbsp eCDLFile = 0 <br>
+&nbsp &nbsp eCDLPrint = 1 <br>
+&nbsp &nbsp eCDLFont = 2 <br>
+&nbsp &nbsp eCDLColor = 3 <br>
+End Enum <br>
+Private m_lCLO As Long <br>
+Private m_lCTO As Long <br>
+Private m_lCW As Long <br>
+Private m_lCH As Long <br>
+ <br>
+Public Property Let Owner(ByRef oThis As Object) <br>
+&nbsp &nbsp Set m_oThis = oThis <br>
+End Property <br>
+Public Property Let DialogType(ByRef eType As ECentreCDlgTypes) <br>
+&nbsp &nbsp Select Case eType <br>
+&nbsp &nbsp Case eCDLFile <br>
+&nbsp &nbsp &nbsp &nbsp m_lCLO = 0 <br>
+&nbsp &nbsp &nbsp &nbsp m_lCTO = 0 <br>
+&nbsp &nbsp &nbsp &nbsp m_lCW = 427 * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp m_lCH = 287 * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp Case eCDLPrint <br>
+&nbsp &nbsp &nbsp &nbsp m_lCLO = 48 * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp m_lCTO = 48 * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp &nbsp &nbsp m_lCW = 439 * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp m_lCH = 328 * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp Case eCDLFont <br>
+&nbsp &nbsp &nbsp &nbsp m_lCLO = 20 * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp m_lCTO = 88 * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp &nbsp &nbsp m_lCW = 402 * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp m_lCH = 345 * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp Case eCDLColor <br>
+&nbsp &nbsp &nbsp &nbsp m_lCLO = 0 <br>
+&nbsp &nbsp &nbsp &nbsp m_lCTO = 0 <br>
+&nbsp &nbsp &nbsp &nbsp m_lCW = 455 * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp m_lCH = 326 * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp End Select <br>
+End Property <br>
+Public Property Get cdlg() As CommonDialog <br>
+Dim lL As Long <br>
+Dim lT As Long <br>
+Dim lW As Long <br>
+Dim lH As Long <br>
+&nbsp &nbsp On Error Resume Next <br>
+&nbsp &nbsp lL = m_oThis.Left <br>
+&nbsp &nbsp lT = m_oThis.Top <br>
+&nbsp &nbsp lW = m_oThis.Width <br>
+&nbsp &nbsp lH = m_oThis.Height <br>
+&nbsp &nbsp Me.Move lL - m_lCLO + (lW - m_lCW) \ 2, lT - m_lCTO + (lH - m_lCH) \ 2, 1, 1 <br>
+&nbsp &nbsp On Error GoTo 0 <br>
+&nbsp &nbsp Set cdlg = cdlMain <br>
+End Property <br>
+ <br>
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer) <br>
+&nbsp &nbsp Set m_oThis = Nothing<br>
+End Sub<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+Here is the code you can then use to produce a centred File Open dialog (assuming the form with the Common Dialog control on
+is called fCdlg):
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp fCdlg.Owner = Me <br>
+&nbsp &nbsp fCdlg.DialogType = eCDLFile <br>
+&nbsp &nbsp With fCdlg.cdlg <br>
+&nbsp &nbsp &nbsp &nbsp .DialogTitle = "Choose a File to Open" <br>
+&nbsp &nbsp &nbsp &nbsp .Filter = "Text Files (*.TXT)|*.TXT|All Files (*.*)|*.*" <br>
+&nbsp &nbsp &nbsp &nbsp .FilterIndex = 1 <br>
+&nbsp &nbsp &nbsp &nbsp .Flags = cdlOFNFileMustExist Or cdlOFNPathMustExist <br>
+&nbsp &nbsp &nbsp &nbsp .ShowOpen <br>
+&nbsp &nbsp End With
+ <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+And by the way, remember to include Unload fCDlg when your application ends, otherwise the invisible
+form will stop your project from terminating.
+<br><br>
+Whilst this works just fine, the problem with it is we must hardcode the size and offsets from the left and top
+for each of the Common Dialogs.  Can you be sure the dialog is the same size on all systems?  What if the user has
+larger fonts set up in the title bar?  Even the above code is not complete.  For example, on a color dialog, you can
+set a flag saying whether the whole dialog appears including colour customisation, or whether just the standard
+colours appear.  Clearly, the dialog has a different size depending on the setting of this flag, but I haven't
+coded it in.
+<br><br>
+What we really want to have is an event which occurs when the dialog opens, 
+saying what size its going to be and requesting a Left and Top position.  This is possible, but to do it you need
+to delve into Common Dialog hooks and subclassing.  And to do this, you need to create a Common Dialog box using the API rather than
+using the VB one.<br>
+</p>
+<p>
+	<b>The Hard Way</b><br>
+The real method to achieve a centred Common Dialog is to utilise a Hook function.  When Common Dialogs are created
+via the COMDLG32.DLL API, each dialog provides a method to provide the address of a function in your code.  The Common
+Dialog can then call this function within your code to notify your application of any actions you may wish 
+to respond to.
+<br><br>
+Taking a sample of the File Open Common Dialog, here is how it works.  To create a File Open box through the API,
+you fill in an OPENFILENAME structure and then call the GetOpenFileName API function exposed by COMDLG32.DLL with
+the structure as a parameter.  One of the fields of the OPENFILENAME structure is lpfnHook.  This takes a long
+pointer to a function, which must be constructed in accordance with the function COMDLG32 expects to call.  In
+VB, you can pass a pointer to a function by using AddressOf, provided the function itself lives within a module 
+(- most irritatingly!).
+<br><br>
+So, to take advantage of a hook, you do the following:<br><br>
+<b>Set Up a Hook Function</b><br>
+The code for the hook function in VB is as follows:
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp Public Function DialogHookFunction( _<br>
+&nbsp &nbsp &nbsp &nbsp ByVal hDlg As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal msg As Long, _<br>
+&nbsp &nbsp &nbsp &nbsp ByVal wParam As Long, _<br>
+&nbsp &nbsp &nbsp &nbsp ByVal lParam As Long) As Long<br><br>
+&nbsp &nbsp &nbsp &nbsp ' Do any processing here<br><br>
+&nbsp &nbsp End Function<br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+<b>Tell the Common Dialog the address of the Hook Function</b><br>
+Assuming you have an OPENFILENAME structure called opfile, you want to set the opfile.lpfnHook property.
+Essentially what you want to say is:<br><br>
+&nbsp &nbsp opfile.lpfnHook = AddressOf DialogHookFunction<br><br>
+However, VB seems to think this is a syntax error.  Instead you have to write a function like this:
+</p>
+</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp Private Function lHookAddress(lPtr As Long) As Long<br>
+&nbsp &nbsp &nbsp &nbsp     lHookAddress = lPtr<br>
+&nbsp &nbsp End Function<br><br>
+&nbsp &nbsp opfile.lpfnHook = lHookAddress(AddressOf DialogHookFunction)<br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+You also need to tell the dialog to use the lpfnHook value.  This is done by setting a flag to include the
+OFN_ENABLEHOOK function:
+</p>
+</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp opfile.flags = opfile.flags Or OFN_ENABLEHOOK Or OFN_EXPLORER
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+<b>Respond to Dialog Initialisation Messages</b><br>
+With this done, you will find that when the file open dialog is opened, your DialogHookFunction is called with
+the msg parameter set to WM_INITDIALOG. To centre the file open dialog then, all you need to do is find out
+the size of the dialog box and then move it to the appropriate point.  This is done with a few API functions
+(GetParent, GetWindowRect, SystemParametersInfo and MoveWindow) :
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Public Sub CentreDialog(ByVal hDlg As Long, ByRef oCentreTo As Object) <br>
+Dim lHwnd As Long <br>
+Dim tWR As RECT, tDR As RECT <br>
+Dim tp As POINTAPI <br>
+Dim lHwndCentreTo As Long <br>
+Dim lL As Long <br>
+Dim lT As Long <br>
+Dim lR As Long <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' If we're showing a file dialog, then the rectangle is the <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' parent of the dialog itself: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If (m_bFileDialog) Then <br>
+&nbsp &nbsp &nbsp &nbsp lHwnd = GetParent(hDlg) <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp lHwnd = hDlg <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp GetWindowRect lHwnd, tDR <br>
+&nbsp &nbsp Debug.Print tDR.Right - tDR.Left, tDR.Bottom - tDR.Top <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp On Error Resume Next <br>
+&nbsp &nbsp lHwndCentreTo = oCentreTo.hwnd <br>
+&nbsp &nbsp If (Err.Number = 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp GetWindowRect lHwndCentreTo, tWR <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+  ' Assume the screen object: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   lR = SystemParametersInfo(SPI_GETWORKAREA, 0, tWR, 0) <br>
+&nbsp &nbsp   If (lR = 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+ ' Call failed - just use standard screen: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp  tWR.Left = 0 <br>
+&nbsp &nbsp &nbsp &nbsp  tWR.Top = 0 <br>
+&nbsp &nbsp &nbsp &nbsp  tWR.Right = Screen.Width \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp &nbsp &nbsp  tWR.Bottom = Screen.Height \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp   End If <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp On Error GoTo 0 <br>
+&nbsp &nbsp If (tWR.Right > 0) And (tWR.Bottom > 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp lL = tWR.Left + (((tWR.Right - tWR.Left) - (tDR.Right - tDR.Left)) \ 2) <br>
+&nbsp &nbsp &nbsp &nbsp lT = tWR.Top + (((tWR.Bottom - tWR.Top) - (tDR.Bottom - tDR.Top)) \ 2) <br>
+&nbsp &nbsp &nbsp &nbsp Debug.Print tDR.Right - tDR.Left, tDR.Bottom - tDR.Top <br>
+&nbsp &nbsp &nbsp &nbsp MoveWindow lHwnd, lL, lT, (tDR.Right - tDR.Left), (tDR.Bottom - tDR.Top), 1 <br>
+&nbsp &nbsp End If <br>
+End Sub <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+<br><br>
+<b>See It Working</b><br>
+The sample code in the download is small because it utilises my <a href="cmdlgd.htm">Common Dialog/Direct</a> class library.
+This provides full support for hooks via a simple interface: simply set the Hooked property to True, and then the 
+class will raise an InitDialog event.  You can centre the common dialog by calling the CentreDialog method, which 
+uses the code shown above.<br><br>
+If you want to see the whole implementation, download the <a href="cmdlgd.htm">Common Dialog/Direct</a> source code 
+and demo application project.
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<br><br>
+
+	<p><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overlib.htm" target="vbamain">Code Libraries</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+	<br><br>
+	</p>
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 27 September 1998</p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

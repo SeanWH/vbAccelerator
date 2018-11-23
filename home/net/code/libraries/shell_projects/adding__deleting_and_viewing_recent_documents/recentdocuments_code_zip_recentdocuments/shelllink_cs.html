@@ -1,0 +1,1047 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: RecentDocuments\ShellLink.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: RecentDocuments\ShellLink.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Adding, Deleting and Viewing Recent Documents</a>&#160;.&#160;<a href="..\recentdocuments_code.html">RecentDocuments Code</a>&#160;.&#160;RecentDocuments</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="recentdocuments_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />RecentDocuments Code</a> (35K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4318</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4318&type=zip&title=shelllink.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />8 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\creating_and_modifying_shortcuts\article.html">Creating and Modifying Shortcuts</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: RecentDocuments\ShellLink.cs</h1><pre>using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Shell
+{
+   #region ShellLink Object
+   /// &lt;summary&gt;
+   /// Summary description for ShellLink.
+   /// &lt;/summary&gt;
+   public class ShellLink : IDisposable
+   {
+      #region ComInterop for IShellLink
+
+      #region IPersist Interface
+      [ComImportAttribute()]
+         [GuidAttribute("0000010C-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IPersist
+      {
+         [PreserveSig]
+            //[helpstring("Returns the class identifier for the component
+             object")]
+         void GetClassID(out Guid pClassID);
+      }
+      #endregion
+
+      #region IPersistFile Interface
+      [ComImportAttribute()]
+         [GuidAttribute("0000010B-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IPersistFile
+      {
+         // can't get this to go if I extend IPersist, so put it here:
+         [PreserveSig]
+         void GetClassID(out Guid pClassID);
+
+         //[helpstring("Checks for changes since last file write")]      
+         void IsDirty();
+
+         //[helpstring("Opens the specified file and initializes the object
+          from its contents")]      
+         void Load(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszFileName, 
+            uint dwMode);
+
+         //[helpstring("Saves the object into the specified file")]      
+         void Save(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszFileName, 
+            [MarshalAs(UnmanagedType.Bool)] bool fRemember);
+
+         //[helpstring("Notifies the object that save is completed")]      
+         void SaveCompleted(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszFileName);
+
+         //[helpstring("Gets the current name of the file associated with the
+          object")]      
+         void GetCurFile(
+            [MarshalAs(UnmanagedType.LPWStr)] out string ppszFileName);
+      }
+      #endregion
+
+      #region IShellLink Interface
+      [ComImportAttribute()]
+         [GuidAttribute("000214EE-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IShellLinkA
+      {
+         //[helpstring("Retrieves the path and filename of a shell link
+          object")]
+         void GetPath(
+            [Out(), MarshalAs(UnmanagedType.LPStr)] StringBuilder pszFile, 
+            int cchMaxPath, 
+            ref _WIN32_FIND_DATAA pfd, 
+            uint fFlags);
+
+         //[helpstring("Retrieves the list of shell link item identifiers")]
+         void GetIDList(out IntPtr ppidl);
+
+         //[helpstring("Sets the list of shell link item identifiers")]
+         void SetIDList(IntPtr pidl);
+
+         //[helpstring("Retrieves the shell link description string")]
+         void GetDescription(
+            [Out(), MarshalAs(UnmanagedType.LPStr)] StringBuilder pszFile,
+            int cchMaxName);
+      
+         //[helpstring("Sets the shell link description string")]
+         void SetDescription(
+            [MarshalAs(UnmanagedType.LPStr)] string pszName);
+
+         //[helpstring("Retrieves the name of the shell link working
+          directory")]
+         void GetWorkingDirectory(
+            [Out(), MarshalAs(UnmanagedType.LPStr)] StringBuilder pszDir,
+            int cchMaxPath);
+
+         //[helpstring("Sets the name of the shell link working directory")]
+         void SetWorkingDirectory(
+            [MarshalAs(UnmanagedType.LPStr)] string pszDir);
+
+         //[helpstring("Retrieves the shell link command-line arguments")]
+         void GetArguments(
+            [Out(), MarshalAs(UnmanagedType.LPStr)] StringBuilder pszArgs, 
+            int cchMaxPath);
+
+         //[helpstring("Sets the shell link command-line arguments")]
+         void SetArguments(
+            [MarshalAs(UnmanagedType.LPStr)] string pszArgs);
+
+         //[propget, helpstring("Retrieves or sets the shell link hot key")]
+         void GetHotkey(out short pwHotkey);
+         //[propput, helpstring("Retrieves or sets the shell link hot key")]
+         void SetHotkey(short pwHotkey);
+
+         //[propget, helpstring("Retrieves or sets the shell link show
+          command")]
+         void GetShowCmd(out uint piShowCmd);
+         //[propput, helpstring("Retrieves or sets the shell link show
+          command")]
+         void SetShowCmd(uint piShowCmd);
+
+         //[helpstring("Retrieves the location (path and index) of the shell
+          link icon")]
+         void GetIconLocation(
+            [Out(), MarshalAs(UnmanagedType.LPStr)] StringBuilder pszIconPath, 
+            int cchIconPath, 
+            out int piIcon);
+      
+         //[helpstring("Sets the location (path and index) of the shell link
+          icon")]
+         void SetIconLocation(
+            [MarshalAs(UnmanagedType.LPStr)] string pszIconPath, 
+            int iIcon);
+
+         //[helpstring("Sets the shell link relative path")]
+         void SetRelativePath(
+            [MarshalAs(UnmanagedType.LPStr)] string pszPathRel, 
+            uint dwReserved);
+
+         //[helpstring("Resolves a shell link. The system searches for the
+          shell link object and updates the shell link path and its list of
+          identifiers (if necessary)")]
+         void Resolve(
+            IntPtr hWnd, 
+            uint fFlags);
+
+         //[helpstring("Sets the shell link path and filename")]
+         void SetPath(
+            [MarshalAs(UnmanagedType.LPStr)] string pszFile);
+      }
+
+
+      [ComImportAttribute()]
+         [GuidAttribute("000214F9-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IShellLinkW
+      {
+         //[helpstring("Retrieves the path and filename of a shell link
+          object")]
+         void GetPath(
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszFile, 
+            int cchMaxPath, 
+            ref _WIN32_FIND_DATAW pfd, 
+            uint fFlags);
+
+         //[helpstring("Retrieves the list of shell link item identifiers")]
+         void GetIDList(out IntPtr ppidl);
+
+         //[helpstring("Sets the list of shell link item identifiers")]
+         void SetIDList(IntPtr pidl);
+
+         //[helpstring("Retrieves the shell link description string")]
+         void GetDescription(
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszFile,
+            int cchMaxName);
+      
+         //[helpstring("Sets the shell link description string")]
+         void SetDescription(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszName);
+
+         //[helpstring("Retrieves the name of the shell link working
+          directory")]
+         void GetWorkingDirectory(
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszDir,
+            int cchMaxPath);
+
+         //[helpstring("Sets the name of the shell link working directory")]
+         void SetWorkingDirectory(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszDir);
+
+         //[helpstring("Retrieves the shell link command-line arguments")]
+         void GetArguments(
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszArgs, 
+            int cchMaxPath);
+
+         //[helpstring("Sets the shell link command-line arguments")]
+         void SetArguments(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszArgs);
+
+         //[propget, helpstring("Retrieves or sets the shell link hot key")]
+         void GetHotkey(out short pwHotkey);
+         //[propput, helpstring("Retrieves or sets the shell link hot key")]
+         void SetHotkey(short pwHotkey);
+
+         //[propget, helpstring("Retrieves or sets the shell link show
+          command")]
+         void GetShowCmd(out uint piShowCmd);
+         //[propput, helpstring("Retrieves or sets the shell link show
+          command")]
+         void SetShowCmd(uint piShowCmd);
+
+         //[helpstring("Retrieves the location (path and index) of the shell
+          link icon")]
+         void GetIconLocation(
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszIconPath, 
+            int cchIconPath, 
+            out int piIcon);
+      
+         //[helpstring("Sets the location (path and index) of the shell link
+          icon")]
+         void SetIconLocation(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszIconPath, 
+            int iIcon);
+
+         //[helpstring("Sets the shell link relative path")]
+         void SetRelativePath(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszPathRel, 
+            uint dwReserved);
+
+         //[helpstring("Resolves a shell link. The system searches for the
+          shell link object and updates the shell link path and its list of
+          identifiers (if necessary)")]
+         void Resolve(
+            IntPtr hWnd, 
+            uint fFlags);
+
+         //[helpstring("Sets the shell link path and filename")]
+         void SetPath(
+            [MarshalAs(UnmanagedType.LPWStr)] string pszFile);
+      }
+      #endregion
+
+      #region ShellLinkCoClass
+      [GuidAttribute("00021401-0000-0000-C000-000000000046")]
+         [ClassInterfaceAttribute(ClassInterfaceType.None)]
+         [ComImportAttribute()]
+         private class CShellLink{}
+
+      #endregion
+   
+      #region Private IShellLink enumerations
+      private enum EShellLinkGP : uint
+      {
+         SLGP_SHORTPATH = 1,
+         SLGP_UNCPRIORITY = 2
+      }
+
+      [Flags]
+         private enum EShowWindowFlags : uint
+      {
+         SW_HIDE = 0,
+         SW_SHOWNORMAL = 1,
+         SW_NORMAL = 1,
+         SW_SHOWMINIMIZED = 2,
+         SW_SHOWMAXIMIZED = 3,
+         SW_MAXIMIZE = 3,
+         SW_SHOWNOACTIVATE = 4,
+         SW_SHOW = 5,
+         SW_MINIMIZE = 6,
+         SW_SHOWMINNOACTIVE = 7,
+         SW_SHOWNA = 8,
+         SW_RESTORE = 9,
+         SW_SHOWDEFAULT = 10,
+         SW_MAX = 10
+      }
+      #endregion
+
+      #region IShellLink Private structs
+
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=4, Size=0,
+       CharSet=CharSet.Unicode)]
+         private struct _WIN32_FIND_DATAW
+      {
+         public uint dwFileAttributes;
+         public _FILETIME ftCreationTime;
+         public _FILETIME ftLastAccessTime;
+         public _FILETIME ftLastWriteTime;
+         public uint nFileSizeHigh;
+         public uint nFileSizeLow;
+         public uint dwReserved0;
+         public uint dwReserved1;
+         [MarshalAs(UnmanagedType.ByValTStr , SizeConst = 260)] // MAX_PATH
+         public string cFileName;
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
+         public string cAlternateFileName;
+      }
+
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=4, Size=0,
+       CharSet=CharSet.Ansi)]
+         private struct _WIN32_FIND_DATAA
+      {
+         public uint dwFileAttributes;
+         public _FILETIME ftCreationTime;
+         public _FILETIME ftLastAccessTime;
+         public _FILETIME ftLastWriteTime;
+         public uint nFileSizeHigh;
+         public uint nFileSizeLow;
+         public uint dwReserved0;
+         public uint dwReserved1;
+         [MarshalAs(UnmanagedType.ByValTStr , SizeConst = 260)] // MAX_PATH
+         public string cFileName;
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
+         public string cAlternateFileName;
+      }
+
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=4, Size=0)]
+         private struct _FILETIME 
+      {
+         public uint dwLowDateTime;
+         public uint dwHighDateTime;
+      }  
+      #endregion   
+
+      #region UnManaged Methods
+      private class UnManagedMethods
+      {
+         [DllImport("Shell32", CharSet=CharSet.Auto)]
+         internal extern static int ExtractIconEx (
+            [MarshalAs(UnmanagedType.LPTStr)] 
+            string lpszFile,
+            int nIconIndex,
+            IntPtr[] phIconLarge, 
+            IntPtr[] phIconSmall,
+            int nIcons);
+
+         [DllImport("user32")]
+         internal static extern int DestroyIcon(IntPtr hIcon);
+      }
+      #endregion
+
+      #endregion
+
+      #region Enumerations
+      /// &lt;summary&gt;
+      /// Flags determining how the links with missing
+      /// targets are resolved.
+      /// &lt;/summary&gt;
+      [Flags]
+         public enum EShellLinkResolveFlags : uint
+      {
+         /// &lt;summary&gt;
+         /// Allow any match during resolution.  Has no effect
+         /// on ME/2000 or above, use the other flags instead.
+         /// &lt;/summary&gt;
+         SLR_ANY_MATCH = 0x2,
+         /// &lt;summary&gt;
+         /// Call the Microsoft Windows Installer. 
+         /// &lt;/summary&gt;
+         SLR_INVOKE_MSI = 0x80,
+         /// &lt;summary&gt;
+         /// Disable distributed link tracking. By default, 
+         /// distributed link tracking tracks removable media 
+         /// across multiple devices based on the volume name. 
+         /// It also uses the UNC path to track remote file 
+         /// systems whose drive letter has changed. Setting 
+         /// SLR_NOLINKINFO disables both types of tracking.
+         /// &lt;/summary&gt;
+         SLR_NOLINKINFO = 0x40,
+         /// &lt;summary&gt;
+         /// Do not display a dialog box if the link cannot be resolved. 
+         /// When SLR_NO_UI is set, a time-out value that specifies the 
+         /// maximum amount of time to be spent resolving the link can 
+         /// be specified in milliseconds. The function returns if the 
+         /// link cannot be resolved within the time-out duration. 
+         /// If the timeout is not set, the time-out duration will be 
+         /// set to the default value of 3,000 milliseconds (3 seconds). 
+         /// &lt;/summary&gt;                                  
+         SLR_NO_UI = 0x1,
+         /// &lt;summary&gt;
+         /// Not documented in SDK.  Assume same as SLR_NO_UI but 
+         /// intended for applications without a hWnd.
+         /// &lt;/summary&gt;
+         SLR_NO_UI_WITH_MSG_PUMP = 0x101,
+         /// &lt;summary&gt;
+         /// Do not update the link information. 
+         /// &lt;/summary&gt;
+         SLR_NOUPDATE = 0x8,
+         /// &lt;summary&gt;
+         /// Do not execute the search heuristics. 
+         /// &lt;/summary&gt;                                                        
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+           
+         SLR_NOSEARCH = 0x10,
+         /// &lt;summary&gt;
+         /// Do not use distributed link tracking. 
+         /// &lt;/summary&gt;
+         SLR_NOTRACK = 0x20,
+         /// &lt;summary&gt;
+         /// If the link object has changed, update its path and list 
+         /// of identifiers. If SLR_UPDATE is set, you do not need to 
+         /// call IPersistFile::IsDirty to determine whether or not 
+         /// the link object has changed. 
+         /// &lt;/summary&gt;
+         SLR_UPDATE  = 0x4
+      }
+
+      public enum LinkDisplayMode : uint
+      {
+         edmNormal = EShowWindowFlags.SW_NORMAL,
+         edmMinimized = EShowWindowFlags.SW_SHOWMINNOACTIVE,
+         edmMaximized = EShowWindowFlags.SW_MAXIMIZE
+      }
+      #endregion
+
+      #region Member Variables
+      // Use Unicode (W) under NT, otherwise use ANSI      
+      private IShellLinkW linkW;
+      private IShellLinkA linkA;
+      private string shortcutFile = "";
+      #endregion
+
+      #region Constructor
+      /// &lt;summary&gt;
+      /// Creates an instance of the Shell Link object.
+      /// &lt;/summary&gt;
+      public ShellLink()
+      {
+         if (System.Environment.OSVersion.Platform == PlatformID.Win32NT)
+         {
+            linkW = (IShellLinkW)new CShellLink();
+         }
+         else
+         {
+            linkA = (IShellLinkA)new CShellLink();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Creates an instance of a Shell Link object
+      /// from the specified link file
+      /// &lt;/summary&gt;
+      /// &lt;param name="linkFile"&gt;The Shortcut file to open&lt;/param&gt;
+      public ShellLink(string linkFile) : this()
+      {
+         Open(linkFile);
+      }
+      #endregion
+
+      #region Destructor and Dispose
+      /// &lt;summary&gt;
+      /// Call dispose just in case it hasn't happened yet
+      /// &lt;/summary&gt;
+      ~ShellLink()
+      {
+         Dispose();
+      }
+
+      /// &lt;summary&gt;
+      /// Dispose the object, releasing the COM ShellLink object
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         if (linkW != null ) 
+         {
+            Marshal.ReleaseComObject(linkW);
+            linkW = null;
+         }
+         if (linkA != null)
+         {
+            Marshal.ReleaseComObject(linkA);
+            linkA = null;
+         }
+      }
+      #endregion
+
+      #region Implementation
+      public string ShortCutFile
+      {
+         get
+         {
+            return this.shortcutFile;
+         }
+         set
+         {
+            this.shortcutFile = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets a System.Drawing.Icon containing the icon for this
+      /// ShellLink object.
+      /// &lt;/summary&gt;
+      public Icon LargeIcon
+      {
+         get
+         {
+            return getIcon(true);
+         }
+      }
+
+      public Icon SmallIcon
+      {
+         get
+         {
+            return getIcon(false);
+         }
+      }
+
+      private Icon getIcon(bool large)
+      {
+         // Get icon index and path:
+         int iconIndex = 0;
+         StringBuilder iconPath = new StringBuilder(260, 260);
+         if (linkA == null)
+         {
+            linkW.GetIconLocation(iconPath, iconPath.Capacity, out iconIndex);
+         }
+         else
+         {
+            linkA.GetIconLocation(iconPath, iconPath.Capacity, out iconIndex);
+         }
+         string iconFile = iconPath.ToString();
+
+         // If there are no details set for the icon, then we must use
+         // the shell to get the icon for the target:
+         if (iconFile.Length == 0)
+         {
+            // Use the FileIcon object to get the icon:
+            FileIcon.SHGetFileInfoConstants flags =
+             FileIcon.SHGetFileInfoConstants.SHGFI_ICON |
+               FileIcon.SHGetFileInfoConstants.SHGFI_ATTRIBUTES;
+            if (large)
+            {
+               flags = flags | FileIcon.SHGetFileInfoConstants.SHGFI_LARGEICON;
+            }
+            else
+            {
+               flags = flags | FileIcon.SHGetFileInfoConstants.SHGFI_SMALLICON;
+            }
+            FileIcon fileIcon = new FileIcon(Target, flags);
+            return fileIcon.ShellIcon;
+         }
+         else
+         {
+            // Use ExtractIconEx to get the icon:
+            IntPtr[] hIconEx = new IntPtr[1] {IntPtr.Zero};         
+            int iconCount = 0;
+            if (large)
+            {
+               iconCount = UnManagedMethods.ExtractIconEx(
+                  iconFile,
+                  iconIndex,
+                  hIconEx,
+                  null,
+                  1);
+            }
+            else
+            {
+               iconCount = UnManagedMethods.ExtractIconEx(
+                  iconFile,
+                  iconIndex,
+                  null,
+                  hIconEx,
+                  1);
+            }
+            // If success then return as a GDI+ object
+            Icon icon = null;
+            if (hIconEx[0] != IntPtr.Zero)
+            {
+               icon = Icon.FromHandle(hIconEx[0]);
+               //UnManagedMethods.DestroyIcon(hIconEx[0]);
+            }
+            return icon;
+         }            
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the path to the file containing the icon for this shortcut.
+      /// &lt;/summary&gt;
+      public string IconPath
+      {
+         get
+         {
+            StringBuilder iconPath = new StringBuilder(260, 260);
+            int iconIndex = 0;
+            if (linkA == null)
+            {
+               linkW.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            else
+            {
+               linkA.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            return iconPath.ToString();
+         }
+         set
+         {
+            StringBuilder iconPath = new StringBuilder(260, 260);
+            int iconIndex = 0;
+            if (linkA == null)
+            {
+               linkW.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            else
+            {
+               linkA.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            if (linkA == null)
+            {
+               linkW.SetIconLocation(value, iconIndex);
+            }
+            else
+            {
+               linkA.SetIconLocation(value, iconIndex);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the index of this icon within the icon path's resources
+      /// &lt;/summary&gt;
+      public int IconIndex
+      {
+         get
+         {
+            StringBuilder iconPath = new StringBuilder(260, 260);
+            int iconIndex = 0;
+            if (linkA == null)
+            {
+               linkW.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            else
+            {
+               linkA.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            return iconIndex;
+         }
+         set
+         {
+            StringBuilder iconPath = new StringBuilder(260, 260);
+            int iconIndex = 0;
+            if (linkA == null)
+            {
+               linkW.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            else
+            {
+               linkA.GetIconLocation(iconPath, iconPath.Capacity, out
+                iconIndex);
+            }
+            if (linkA == null)
+            {
+               linkW.SetIconLocation(iconPath.ToString(), value);
+            }
+            else
+            {
+               linkA.SetIconLocation(iconPath.ToString(), value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the fully qualified path to the link's target
+      /// &lt;/summary&gt;
+      public string Target
+      {
+         get
+         {      
+            StringBuilder target = new StringBuilder(260, 260);
+            if (linkA == null)
+            {
+               _WIN32_FIND_DATAW fd = new _WIN32_FIND_DATAW();
+               linkW.GetPath(target, target.Capacity, ref fd,
+                (uint)EShellLinkGP.SLGP_UNCPRIORITY);
+            }
+            else
+            {
+               _WIN32_FIND_DATAA fd = new _WIN32_FIND_DATAA();
+               linkA.GetPath(target, target.Capacity, ref fd,
+                (uint)EShellLinkGP.SLGP_UNCPRIORITY);
+            }
+            return target.ToString();
+         }
+         set
+         {
+            if (linkA == null)
+            {
+               linkW.SetPath(value);
+            }
+            else
+            {
+               linkA.SetPath(value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the Working Directory for the Link
+      /// &lt;/summary&gt;
+      public string WorkingDirectory
+      {
+         get
+         {
+            StringBuilder path = new StringBuilder(260, 260);
+            if (linkA == null)
+            {
+               linkW.GetWorkingDirectory(path, path.Capacity);
+            }
+            else
+            {
+               linkA.GetWorkingDirectory(path, path.Capacity);
+            }
+            return path.ToString();
+         }
+         set
+         {
+            if (linkA == null)
+            {
+               linkW.SetWorkingDirectory(value);   
+            }
+            else
+            {
+               linkA.SetWorkingDirectory(value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the description of the link
+      /// &lt;/summary&gt;
+      public string Description
+      {
+         get
+         {
+            StringBuilder description = new StringBuilder(1024, 1024);
+            if (linkA == null)
+            {
+               linkW.GetDescription(description, description.Capacity);
+            }
+            else
+            {
+               linkA.GetDescription(description, description.Capacity);
+            }
+            return description.ToString();
+         }
+         set
+         {
+            if (linkA == null)
+            {
+               linkW.SetDescription(value);
+            }
+            else
+            {
+               linkA.SetDescription(value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets any command line arguments associated with the link
+      /// &lt;/summary&gt;
+      public string Arguments
+      {
+         get
+         {            
+            StringBuilder arguments = new StringBuilder(260, 260);
+            if (linkA == null)
+            {
+               linkW.GetArguments(arguments, arguments.Capacity);
+            }
+            else
+            {
+               linkA.GetArguments(arguments, arguments.Capacity);
+            }
+            return arguments.ToString();
+         }
+         set
+         {
+            if (linkA == null)
+            {
+               linkW.SetArguments(value);
+            }
+            else
+            {
+               linkA.SetArguments(value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the initial display mode when the shortcut is
+      /// run
+      /// &lt;/summary&gt;
+      public LinkDisplayMode DisplayMode
+      {
+         get
+         {
+            uint cmd = 0;
+            if (linkA == null)
+            {
+               linkW.GetShowCmd(out cmd);
+            }
+            else
+            {
+               linkA.GetShowCmd(out cmd);
+            }
+            return (LinkDisplayMode)cmd;
+         }
+         set
+         {
+            if (linkA == null)
+            {
+               linkW.SetShowCmd((uint)value);
+            }
+            else
+            {
+               linkA.SetShowCmd((uint)value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the HotKey to start the shortcut (if any)
+      /// &lt;/summary&gt;
+      public Keys HotKey
+      {
+         get
+         {
+            short key = 0;
+            if (linkA == null)
+            {
+               linkW.GetHotkey(out key);
+            }
+            else
+            {
+               linkA.GetHotkey(out key);
+            }
+            return (Keys)key;
+         }
+         set
+         {
+            if (linkA == null)
+            {
+               linkW.SetHotkey((short)value);
+            }
+            else
+            {
+               linkA.SetHotkey((short)value);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Saves the shortcut to ShortCutFile.
+      /// &lt;/summary&gt;
+      public void Save()
+      {
+         Save(shortcutFile);
+      }
+
+      /// &lt;summary&gt;
+      /// Saves the shortcut to the specified file
+      /// &lt;/summary&gt;
+      /// &lt;param name="linkFile"&gt;The shortcut file (.lnk)&lt;/param&gt;
+      public void Save(
+         string linkFile
+         )
+      {   
+         // Save the object to disk
+         if (linkA == null)
+         {
+            ((IPersistFile)linkW).Save(linkFile, true);
+            shortcutFile = linkFile;
+         }
+         else
+         {
+            ((IPersistFile)linkA).Save(linkFile, true);
+            shortcutFile = linkFile;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Loads a shortcut from the specified file
+      /// &lt;/summary&gt;
+      /// &lt;param name="linkFile"&gt;The shortcut file (.lnk) to load&lt;/param&gt;
+      public void Open(
+         string linkFile         
+         )
+      {
+         Open(linkFile, 
+            IntPtr.Zero, 
+            (EShellLinkResolveFlags.SLR_ANY_MATCH |
+             EShellLinkResolveFlags.SLR_NO_UI),
+            1);
+      }
+      
+      /// &lt;summary&gt;
+      /// Loads a shortcut from the specified file, and allows flags controlling
+      /// the UI behaviour if the shortcut's target isn't found to be set.
+      /// &lt;/summary&gt;
+      /// &lt;param name="linkFile"&gt;The shortcut file (.lnk) to load&lt;/param&gt;
+      /// &lt;param name="hWnd"&gt;The window handle of the application's UI, if
+       any&lt;/param&gt;
+      /// &lt;param name="resolveFlags"&gt;Flags controlling resolution
+       behaviour&lt;/param&gt;
+      public void Open(
+         string linkFile, 
+         IntPtr hWnd, 
+         EShellLinkResolveFlags resolveFlags
+         )
+      {
+         Open(linkFile, 
+            hWnd, 
+            resolveFlags, 
+            1);
+      }
+
+      /// &lt;summary&gt;
+      /// Loads a shortcut from the specified file, and allows flags controlling
+      /// the UI behaviour if the shortcut's target isn't found to be set.  If
+      /// no SLR_NO_UI is specified, you can also specify a timeout.
+      /// &lt;/summary&gt;
+      /// &lt;param name="linkFile"&gt;The shortcut file (.lnk) to load&lt;/param&gt;
+      /// &lt;param name="hWnd"&gt;The window handle of the application's UI, if
+       any&lt;/param&gt;
+      /// &lt;param name="resolveFlags"&gt;Flags controlling resolution
+       behaviour&lt;/param&gt;
+      /// &lt;param name="timeOut"&gt;Timeout if SLR_NO_UI is specified, in
+       ms.&lt;/param&gt;
+      public void Open(
+         string linkFile,
+         IntPtr hWnd, 
+         EShellLinkResolveFlags resolveFlags,
+         ushort timeOut
+         )
+      {
+         uint flags;
+
+         if ((resolveFlags &amp; EShellLinkResolveFlags.SLR_NO_UI) 
+            == EShellLinkResolveFlags.SLR_NO_UI)
+         {
+            flags = (uint)((int)resolveFlags | (timeOut &lt;&lt; 16));
+         }
+         else
+         {
+            flags = (uint)resolveFlags;
+         }
+
+         if (linkA == null)
+         {
+            ((IPersistFile)linkW).Load(linkFile, 0); //STGM_DIRECT)
+            linkW.Resolve(hWnd, flags);
+            this.shortcutFile = linkFile;
+         }
+         else
+         {
+            ((IPersistFile)linkA).Load(linkFile, 0); //STGM_DIRECT)
+            linkA.Resolve(hWnd, flags);
+            this.shortcutFile = linkFile;
+         }
+      }
+      #endregion
+   }
+   #endregion
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Adding, Deleting and Viewing Recent Documents</a>&#160;.&#160;<a href="..\recentdocuments_code.html">RecentDocuments Code</a>&#160;.&#160;RecentDocuments</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

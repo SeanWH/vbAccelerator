@@ -1,0 +1,324 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Free-Threaded In-Progress Indicators</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Free-Threaded In-Progress Indicators</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Animated In-Progess Indicators which Don't Stop just because VB does</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\inprog.gif" alt="InProgress Component" width="220" height="121">
+	</p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	One thing that occurs time and time again in applications is the need to show the user
+	that something is happening whilst performing a long operation.  Sometimes you know
+	how many steps there are in the operation, in which case you can use a 
+	<a href="..\comctl\progbar.htm">ProgressBar</a> to show to the user how much has been
+	processed and how much there is left.
+		<br><br>
+	However, often you don't know.  For these cases you want to show an In-Progress indicator -
+	something that runs in a loop whilst work is being done.  Both Internet Explorer and Navigator
+	make a big feature of this technique with a logo in the top-left corner of their apps.  Whilst
+	it would be nice to do this in your own app, there are two problems.  The first is that suitable
+	graphics are hard to come by and can be huge.  Building multi-frame animations like the IE animated
+	logo is not something to be undertaken lightly!  The second is that the only control provided with
+	VB to do this is the COMCTL32.DLL Animation control.  This only accepts AVI files, a format which
+	is not widely available and has no (<a href="mailto:steve@vbaccelerator.com">AFAIK</a>) good 
+	freeware tools for creating the files.
+		<br><br>
+	The two In-Progress indicators here help solve these problems by providing simple animations, the first
+	being a Netscape/Knight-Rider style and the second using widely available 
+	<a href="..\..\iconlib.htm#secanim">Animated
+	Cursors</a>.
+		<br><br>
+	And if you're a hardcore VB coder, perhaps the more interesting thing to note is that just like
+	the animation control both these samples are free-threaded, meaning they run even when VB is
+	blocked.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Free-Threading in VB</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Free-threading was widely believed to be impossible to do in VB.  You can read a little about the
+	issues and history of the problem in the article <a href="..\article\thr_hist.htm">A History Of In-Process Threading in VB</a>.
+	In fact there are some midgets who <a href="javascript:window.alert(&quot;http://www.themandelbrotset.com/html/typelib.html\nThis link was not retrieved.&quot;)" target="_top">still
+	believe that to be the case today</a> and should be forced to relinquish control of Bruce McKinney's previously
+	excellent Win.TLB at gunpoint if possible.
+		<br><br>
+	Luckily for us Matthew Currland showed how to do it in <a href="..\..\linx.htm#secdevx">VBPJ</a> article.  The
+	downside is that to get a free-threaded app up and running isn't easy.  For a start, it is impossible
+	to debug your application in VB: to create your class on a new thread the code must use the 
+	<i>CoCreateInstance</i> COM function to get an instance of your class, and whilst you are running in the 
+	IDE VB messes around with ProgIDs and CLSIDs preventing this from succeeding.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Programming Model</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Multi-threaded code in general is very tricky.  Throughout you need to consider things like
+	re-entrancy (where the same procedure is entered again whilst it is already executing from a
+	prior call).  The programming model for Matthew Currland's multi-threading library allows you
+	to avoid worries about this, at the cost of a loss of flexibility and ease of use.
+		<br><br>
+	In this model, you can create a class on a new thread using the ProgID for the class.  There is
+	only one chance to communicate with the class: when it is started.  You initialise the class through
+	an implemented interface <i>ThreadLaunch</i> which only has one method: <i>Go</i>.  It is possible to
+	pass one variant in as a parameter.  Normally the thread terminates when the <i>IThreadLaunch_Go</i> 
+	method completes.  The only other control you have once the <i>ThreadLaunch_Go</i> method has been
+	called is that you should write the thread to poll on a shared variable <i>m_Notify</i>.  When the
+	owner of the thread wants to terminate, it sets <i>m_Notify</i> to True, and the next time
+	the code in <i>IThreadLaunch_Go</i> polls the value it should exit.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>The Good, The Bad and The Out-of-Control</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	As you can see, this is not the usual way to code with objects in VB!  Basically what it means is
+	that apart from stopping the thread there is a one shot chance of communicating information from the 
+	owner to the thread.
+		<br><br>
+	However, there are distinct stability advantages to this programming model.  The main one is you do not
+	need to consider re-entrancy or other thread-related  problems in your free-threaded class - 
+	because they simply cannot happen!  All the places where there might be re-entrancy are already covered
+	by Matthew Currland's code.
+		<br><br>
+	It does leave the issue of how to communicate between the threaded class and your code though.  I have
+	used a Window as the communication method in my examples.  The variant data passed in to the thread
+	is a window handle.  All other variables which need to be passed between the caller and the free-threaded
+	class are then obtained via the window handle; in the case of this code I have used the Windows Properties
+	database (<i>GetProp</i>,<i>SetProp</i> and <i>RemoveProp</i> API calls) but you could likewise consider
+	using subclassing and posting messages backwards and forwards between the windows.
+		<br><br>
+	My implementations of the free-threaded classes include at least two public classes:
+		<ul>
+		<li><font color="#333399">A control object</font><br>
+		This is the object which the client of the object will use to manipulate the properties
+		and to start and stop the thread.
+		<li><font color="#333399">A thread object</font><br>
+		This is the object which implements the <i>ThreadLaunch_Go</i> method.  Since this cannot
+		be directly referenced by the client, this normally would be set to private.  However, to
+		make the threading code work correctly this object must be accessible to the
+		<i>CoCreateInstance</i> call, which requires that the object is entered in the registry
+		and is therefore public.
+		<br>
+		I name this object after the control object but with <i>Thread</i> added to the end.
+		</ul>
+	Because the thread object is exposed publically, it is possible to try out the methods by
+	creating an instance of the thread object in a design object.  With a little work you should
+	be able to create an object where you can completely test it out at design time.
+		<br><br>
+	The other obvious debugging technique for cases like this is to use conditional compilation constants 
+	to include <i>MsgBox</i> calls.  This method is ok to a limited degree but in general it reminds you
+	why languages with no integrated debugger either get one (JavaScript, VC++ 6 etc) or stop getting used!
+		<br><br>
+		</font>
+		</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Try the Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	
+		<ul>
+		<li><a href="inprogbr.htm">Netscape/Knight-Rider style In-Progress Bar</a><br>
+		<li><a href="inprogan.htm">An In-Progress Indicator Using Animated Cursors</a>
+		</ul>
+		<br><br>
+	
+		</font>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

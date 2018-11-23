@@ -1,0 +1,270 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Toolbars and Rebars: Quick Start 2 - - A CoolMenu in Your Application</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<!-- SECTION:START -->
+<!-- SECTION:CODE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:CODE:END -->
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<!-- AREA:COMCTL:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	<font color="#99CC33" face="verdana,arial,helvetica" size="2">
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- AREA:COMCTL:END -->
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td bgcolor="#EEEEEE" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Toolbars and Rebars: Quick Start 2 - - A CoolMenu in Your Application</b>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	&nbsp;Getting started with the vbAccelerator CoolMenu, Toolbar and Rebar Control.
+	</font>
+	<td>&nbsp</td>
+	</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br>
+	If you follow the steps described in <a href="retbarq1.htm">Toolbars and Rebars: Quick Start 1</a>,
+	you will have seen how to get a fully working Rebar containing a toolbar.  To add CoolMenu 
+	support to your application is a simple extension of this technique - except this time the
+	Toolbar you add is linked to a menu.
+	<br><br>
+	The first thing you must note is that to support CoolMenus your application must <i>not</i>
+	have a Visual Basic menu.  If it has a VB menu, you need to convert that menu to one implemented using
+	the PopupMenu ActiveX DLL instead, and once that is working you delete the VB menu.
+	<br><br>	
+	Follow these steps 
+	<ol>
+	<li><u>Add PopupMenu ActiveX DLL to Your Application</u><br>
+	Choose Project->References in VB and then pick the <i>vbAccelerator Popup Menu DLL</i> from the
+	list.  If you cannot find this in the list, choose Browse and locate <i>cNewMenu.DLL</i> on your disk.
+	You can download <i>cNewMenu.DLL</i> from the <a href="..\cpopmenu\cnewmenu.htm">ActiveX PopupMenu page</a>.
+	<br><br>
+	Having referenced the DLL, you can now create an instance of it in the code.  Add this code to your project's
+	declares:
+    <br><br>
+	</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;Option Explicit<br>
+<br>
+&nbsp;&nbsp;&nbsp;Private WithEvents m_cMenu As cPopupMenu<br>
+<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li><u>Instantiate the PopupMenu object</u><br>
+	Do this by setting the <i>m_cMenu</i> object to a new instance and then setting the <i>hWndOwner</i>
+	property of the PopupMenu object to the <i>hWnd</i> of the Form you are placing the CoolMenu on:
+	</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<br><br>
+&nbsp;&nbsp;&nbsp;Set m_cMenu = New cPopupMenu<br>
+<br>
+&nbsp;&nbsp;&nbsp;</font><font color="#CCCCCC" face="Lucida Console,courier new" size="1">' Make sure you do this!  If you do not, your menus will<br>
+&nbsp;&nbsp;&nbsp;' either not show or they will be very large and will not draw:<br>
+</font><font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;m_cMenu.hWndOwner = Me.hWnd<br>
+<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	
+	<li><u>Create Your Application's Menu</u><br>
+	Creating a menu using the cNewMenu DLL is shown in detail in many of the samples on this site.  However,
+	basically menus are added using the <i>AddItem</i> method.  Whenever you want to add a sub-menu item to a
+	given menu item, store the return value of the <i>AddItem</i> method in a Long variable.  Then use this
+	as the value in the <i>lParentIndex</i> parameter of the <i>AddItem</i> call you make to add the sub-menu
+	item.
+	<br><br>
+	The following code shows the creation of a simple menu containing the Edit and Help elements of Explorer,
+	including the setting up of accelerator keys, keys to refer to the menu items (which are chosen according
+	to the naming convention I used to use for standard VB menus) and icons (which are specified as 0-based
+	numeric indexes of the icon within the ImageList):
+	<br><br>
+
+</font><font color="#CCCCCC" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;' Edit menu<br>
+</font><font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;iP = .AddItem("&Edit", , , , , , , "mnuEditTOP")<br>
+&nbsp;&nbsp;&nbsp;.AddItem "&Undo", , , iP, 4, , , "mnuEdit(0)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "-", , , iP, , , , "mnuEdit(1)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "Cu&t" & vbTab & "Ctrl+X", , , iP, 5, , , "mnuEdit(2)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "&Copy" & vbTab & "Ctrl+C", , , iP, 6, , , "mnuEdit(3)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "&Paste" & vbTab & "Ctrl+V", , , iP, 7, , , "mnuEdit(4)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "-", , , iP, , , , "mnuEdit(5)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "Select &All" & vbTab & "Ctrl+A", , , iP, , , , "mnuEdit(6)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "&Invert Selection", , , iP, , , , "mnuEdit(7)"<br>
+	<br>
+</font><font color="#CCCCCC" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;' Help menu.<br>
+</font><font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;iP = .AddItem("&Help", , , , , , , "mnuHelpTOP")<br>
+&nbsp;&nbsp;&nbsp;.AddItem "&Contents", , , iP, 29, , , "mnuHelp(0)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "-", , , iP, , , , "mnuHelp(4)"<br>
+&nbsp;&nbsp;&nbsp;.AddItem "&About...", , , iP, , , , "mnuHelp(5)"<br>
+<br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	<li><u>Create the CoolMenu</u><br>
+	The final initialisation stage is to create the CoolMenu and initialise the internal code to activate
+	CoolMenu operations.  This is done by passing the cPopupMenu object containing the menu
+	to use into an unused cToolbar control via the <i>CreateFromMenu</i> method:
+	<br><br>
+</font><font color="#CCCCCC" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;' Create the CoolMenu:<br>
+</font><font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;cToolbar1.CreateFromMenu m_cMenu<br>
+	<br><br>	
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	Once you have created the toolbar, you can then add it to the form's Rebar control (or a 
+	cToolbarHost control if you want!)
+	<br><br>
+	<li><u>Respond to Menu Events</u><br>
+	All Menu events will be raised to your code via the <i>m_cMenu_Click</i> event.  This event
+	passes the Index of the menu item which was clicked as the only parameter.  You can interpret
+	the Index as a key by using cPopupMenus <i>ItemKey</i> method.
+	</ol>
+	That completes the description of the steps you need to take to create a CoolMenu. Check out these
+	two samples to get more details of the process for real world menus:
+	<ul>
+	<li><a href="tbarfexp.htm">Explorer Style User Interface Cool Menu Sample</a>.
+	<li><a href="tbarfcbo.htm">Office 97 Style User Interface Cool Menu Sample</a>.
+	</ul>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="#sectop"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back"></a>Back to <a href="retbar.htm">CoolMenu Toolbar and Rebar Control</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- END:Footer --></font>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

@@ -1,0 +1,270 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Cortex/vbAccelerator HTML Editor">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="Description" content="Provides a Class which allows you to turn a ListView into a drop-down window.  Includes full source.">
+<title>DevStudio style flat headers</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>DevStudio style flat headers</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Give the ListView and S-Grid control a fresh new look with this class</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><img src="..\..\images\flatlvhd.gif" alt="ListView with Flat Header" width="295" height="173"><br>
+	<br>
+	<a href="flatlvhd.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Flat Header Class and Demo (16kb)</a><br>
+	</font>
+	</p>
+	<p>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and <a href="..\..\insprob.htm">registered</a> this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Overview</b><br>	
+	One feature I've been getting more and more requests for is a way of creating a flat
+	header like the one in the Tasks window of DevStudio version 6.
+	<br><br>
+	The sample project presents a class which does this to great effect, and works with 
+	all controls using the COMCTL32.DLL header control as well as the VB6 header control
+	implemented in MSCOMCTL.OCX.
+	<br><br>
+	<p><b>How it Works</b></br>
+	As is usual with Microsoft, the flat header in the DevStudio task list is not actually implemented
+	using a COMCTL32.DLL window.  The DevStudio task list is actually a window of class "RTaskList"
+	which includes the header in the same window as the rest of the grid.  I guess having the source
+	code to all controls available (and an all but unlimited development budget) makes it a bit easier 
+	to create windows like this from scratch!
+	<br><br>
+	Investigating the COMCTL32.DLL documentation at MSDN shows that there is no style you can turn
+	on for a header control to get the flat effect. The same effect can be achieved, however, by intercepting
+	the <i>WM_PAINT</i> message for the Header control after it has completed painting and then 
+	drawing over the existing 3D border so the control has a thinner 3D border, as shown in the
+	diagram below:
+	<menu>
+	<img src="..\..\images\flathdrd.gif" width="276" height="142" alt="Border painting diagram"><br>
+	<small><b>Diagram showing borders affected by the Flat Header drawing routine</b></small>
+	</menu>
+	The flat header code is encapsulated into a class called <i>cFlatHeader</i>.  The first method is a
+	method to attach the class to the correct window handle so it can subclass the WM_PAINT message.
+	Since most controls do not expose a hWnd property for the Header control, the class uses the	
+	<i>FindWindowEx</i> API method to detect whether the supplied window has a child of the
+	correct type.  The header control will have one of the following classes:
+	</font>
+	</p>
+	<p>
+	<table cellspacing="0" cellpadding="0" border="0">
+	<tr>
+	<td width="12">&nbsp;</td>
+	<td bgcolor="#EEEEEE"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Class Name</b></font></td>
+	<td bgcolor="#EEEEEE" width="1">&nbsp;</td>
+	<td bgcolor="#EEEEEE" width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Used By</b></font></td>
+	<td width="12">&nbsp;</td>
+	</tr>
+	<tr>
+	<td width="12">&nbsp;</td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">SysHeader32</font></td>
+	<td width="1">&nbsp;</td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">COMCTL32.DLL header controls; Microsoft's VB5 ListView control (COMCTL32.OCX); vbAccelerator <a href="..\sgrid\sgrid.htm">S-Grid</a> and <a href="..\comctl\header.htm">Header control</a>.  Note that this class name is valid for both ANSI and Unicode versions of the control.</font></td>
+	<td width="12">&nbsp;</td>
+	</tr>
+	<tr>
+	<td width="12">&nbsp;</td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">msvb_lib_header</font></td>
+	<td width="1">&nbsp;</td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">Microsoft's VB6 ListView control (MSCOMCTL.OCX)</a></font></td>
+	<td width="12">&nbsp;</td>
+	</tr>
+	</table>
+	</p>
+	<p><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Having obtained a Window handle, intercepting the <i>WM_PAINT</i> message is achieved by using the 
+	<a href="..\ssubtmr\ssubtmr.htm">Subclassing and Timer Assistant</a>.  Setting the <i>MsgResponse</i>
+	property to <i>emrPreProcess</i> ensures that the control processes all paint messages first and then
+	the class gets the message.
+	<br><br>
+	Finally, the code processes WM_PAINT messages by overdrawing the borders as shown above. This code
+	is a bit tedious, the only important parts of the code are to note that you get the hDC of the
+	control to draw into using the <i>GetDC</i> method, and to make sure that if you call <i>GetDC</i>
+	you don't forget to subsequently call <i>ReleaseDC</i>!
+	<br><br>
+	<b>Using the Class</b><br>
+	This is the simple bit!  Just reference SSubTmr.DLL from your project (choose Project->References and
+	then pick "Subclassing and Timer Assistant (with multi-control support and timer bugfix)" ) and then
+	add cFlatHeader to your project.
+	<br><br>
+	With this in place you only need two lines of code in the form containing the control you want to
+	have a flat header:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private m_cFH As New cFlatHeader<br>
+<br>
+Private Sub Form_Load()<br>
+&nbsp;&nbsp;m_cFH.Attach lvw.hWnd<br>
+End Sub<br>
+<br>
+	</font>
+	</p>
+<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The same code applies to the ListView in VB5 or VB6, the <a href="..\sgrid\sgrid.htm">S-Grid control</a>
+	and the <a href="..\comctl\header.htm">Header control</a>.  Subsequent releases of the S-Grid control
+	will include this code (and also future Owner-Draw header modifications to improve the reliability of the
+	header bitmap and icon rendering).
+	</p>
+
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

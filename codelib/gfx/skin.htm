@@ -1,0 +1,400 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Notepad">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="Description" content="Provides controls allowing you to create drop-down windows from any VB Form. Includes full source.">
+<title>vbAccelerator NeoCaption Component</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>vbAccelerator NeoCaption Component</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Skin the entire non-client area (titlebar, border, menu, control box and buttons) of your VB project by adding this component to your project</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\skins\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<img src="..\..\images\skin_a1.gif" width="356" height="155" border="0" alt="Black Metal Skin, about to change..."><br><br>
+	<img src="..\..\images\skin_a2.gif" width="356" height="156" border="0" alt="...to the Neo-Accelerator Skin"><br><br>
+	<br>
+	<p>
+	<!-- DOWNLOADS:START -->
+	<table border="0" cellspacing="0" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="5" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="vncsmdll5.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vncsmdll5.zip">VB5 Component Binary (42kb)</a></font></td>
+	<td width="3"></td>
+	<td valign="top"><a href="vncsmdll6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vncsmdll6.zip">VB6 Component Binary (42kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="vncsmdem5.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vncsmdem5.zip">VB5 Demonstration Project (61kb)</a></font></td>
+	<td width="3"></td>
+	<td valign="top"><a href="vncsmdem6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vncsmdem6.zip">VB6 Demonstration Project (61kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="vbalncsm5.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalncsm5.zip">VB5 Full Source Code (134kb)</a></font></td>
+	<td width="3"></td>
+	<td valign="top"><a href="vbalncsm6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalncsm6.zip">VB6 Full Source Code (134kb)</a></font></td>
+	</tr>
+
+	<tr>
+	<td colspan="2"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr.dll">vbAccelerator SSubTmr.DLL for VB5</a>
+	</td>
+	<td width="3"></td>
+	<td colspan="2"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr6.dll">vbAccelerator SSubTmr6.DLL for VB6</a>
+	</td>
+	</tr>
+	</table>
+	<!-- DOWNLOADS:END -->	
+	</font>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Overview</b><br>	
+	Unless you've been computing on another planet for the last year, you will probably 
+	have seen the rash of programs recently which implement a customised window appearance
+	(notably WinAmp, NeoPlanet and StarDock's Object Desktop and WindowBlinds).  In
+	case you haven't been watching, check these out right now and have some fun:
+	<ul>
+	<li><a href="javascript:window.alert(&quot;http://www.customize.org/\nThis link was not retrieved.&quot;)">Customize.org</a>
+	<li><a href="javascript:window.alert(&quot;http://www.skinz.org/\nThis link was not retrieved.&quot;)">Skinz.org</a>
+	<li><a href="javascript:window.alert(&quot;http://kjofol.org/\nThis link was not retrieved.&quot;)">K-Jofol</a>
+	</ul>
+	This code sample provides a DLL you can use right away to radically modify the 
+	non-client area	of a form, similar to the sort of customisation provided by 
+	NeoPlanet and WindowBlinds. And, since the full source code is available, 
+	you get the chance to build your customised client area derivatives.  Sounds
+	like fun?  It is!
+	<br><br>	
+	<b>A Little History</b><br>
+	The first program out there I remember which offered any sort of customisation of the
+	non-client area was Office 95, with those gradient caption bars.  Although gradient captions 
+	aren't so much of interest now MS have rolled support into 
+	Win98/2000, they certainly were when Office 95 was launched.  Suddenly everyone wanted a 
+	go at doing their own captions.  How did you do it?  And how come you could detach the menu
+	bar in Office 95 - surely you could do this in your own app?  After all, how hard could it
+	be?
+	<br><br>
+	Well, it turns out that drawing customised menu captions 
+	isn't easy at all.  Windows just does not play fair - it
+	continually redraws parts of the non-client area such as the Min/Max/Close buttons when you
+	least expect it.  Trying to reimplement a menu as a tear-off window whilst still allowing your 
+	app respond to Alt-Tab accelerator and the clicks in the Taskbar correctly is even more
+	difficult.
+	<br><br>
+	MS weren't very forthcoming on the subject of the Office 95 titlebar.  The only
+	 Knowledge Base	article (Q99046) on the subject coyly skirts around the topic, saying that 
+	whilst you could subclass <i>WM_NCPAINT</i> and <i>WM_NCACTIVATE</i> messages and then draw 
+	your own caption, it really isn't recommended; the 
+	whole idea of modifying the caption bar is foolish and outside the bounds of decent 
+	human behaviour (something even this author could agree with during the rash of windows 
+	which appeared at the time with primary red to neon blue gradients - very bad
+	when encountered during a hangover).
+	<br><br>
+	More interestingly, the Knowledge Base article somehow managed to totally avoid mentioning 
+	the fact that the Office implementation only worked at all because it was jam-packed 
+	with hacks.  So we subclass two messages and do a little additional work afterwards?  Yeah, 
+	right.  Turns out you need to do all sorts of other somewhat abnormal things, such as 
+	removing the window style bit <i>WS_VISIBLE</i> during <i>WM_SETCURSOR</i> message 
+	processing and then putting it back again straight away afterwards.  Anyway, luckily the
+	nice people at Microsoft Systems Journal (MSJ) and Spy++ help you to understand what you
+	really need to do.
+	<br><br>
+	This sample brings together pieces of code from all sources, plus it adds some additional, VB
+	specific workarounds to provide a full method for changing the size of the non-client
+	area, plus drawing whatever you like into that region and providing an override to draw menus
+	in a new style as well (this code is the basis for the 
+	<a href="..\cpopmenu\popmenu2.htm">vbAccelerator PopMenu2 object</a>).
+	<br><br>
+	<b>Note</b>: in the current version, this component does not work properly with MDI forms.  When
+	you maximise an MDI child, the system attempts to add new items to the menu for the control box
+	and min/max/close buttons - which is not handled in the current code and causes a crash.  A fix
+	for this problem is under investigation.
+	<br><br>
+	<b>The vbAccelerator NeoCaption Component</b><br>
+	The DLL supplied with the download exposes two classes for public use: 
+	<ul>
+	<li>cNeoCaption
+	<li>cNCCalcSize
+	</ul>
+	<i>cNeoCaption</i> is a reference implementation of the Non-Client area modifier, including
+	the drawing code and menuing.  It implements the <i>INCAreaModifier</i> interface which must
+	be supported in order to take advantage of the <i>cNCCalcSize</i> class - which is the basic 
+	framework for building radically customised non-client areas.
+	<br><br>
+	<b>Using the <i>cNeoCaption</i> Interface</b><br>
+	This should prove to be quite simple to use.  There is one property to initialise the custom
+	caption drawing and a number of others to control colours and fonts:
+	<ul>
+	<li><b>ActiveCaptionColor</b><br>
+	Sets the foreground colour of the caption to use when the form is active.
+	<li><b>InActiveCaptionColor</b><br>
+	Sets the foreground colour of the caption to use when the form is inactive.
+	<li><b>ActiveMenuColor</b><br>
+	Sets the foreground colour of the menu for menu items in the active window
+	<li><b>ActiveMenuColorOver</b><br>
+	Sets the foreground colour of the menu when the window is active and the mouse is over the menu item
+      	<li><b>InActiveMenuColor</b><br>
+	Sets the foreground colour of the menu when the window is inactive.
+      	<li><b>MenuBackgroundColor</b><br>
+	Sets the background colour for the menu.
+        <li><b>CaptionFont</b><br>
+	Sets the font to draw the form's caption.  When the form is inactive, the Bold flag is removed.  If
+	the bold flag is not set, there is no change in the font between active and inactive states.
+      	<li><b>MenuFont</b><br>
+	Sets the font to draw the menu in.
+      	<li><b>Attach</b><br>
+	Starts the NeoCaption processing, sets which picture resources to use and supplies information about
+	how the components of the non-client area should be drawn based on the picture resources.
+	<br><br>
+	For example,<br><br>
+</font><font face="Lucida Console,courier new" size="1">
+	Attach Me, picResource(2).Picture, picResource(3).Picture, 13, 14, 90, 142, 240, 372
+</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br>
+	This starts processing with <i>picResource(2)</i> containing the titlebar and button graphics and
+	<i>picResource(3)</i> containing the border graphics.  The titlebar graphic is interpreted as having 
+	three sections: the active titlebar, the buttons and then the inactive titlebar.  The numbers 
+	specify the coordinates and sizes of various components within the graphic. This picture demonstrates
+	how these values are derived: 
+	<br><br>
+	<img src="..\..\images\neocap.gif" width="432" height="84" alt="NeoCaption TitleBar Graphic Organisation">
+	<br><br>
+	The border picture consists of seven square images in-line which represent 2 x left hand border, bottom-left
+	corner, bottom border, 2 x right hand border and finally the bottom-right corner.
+	<li><b>Detach</b><br>
+	Stops the NeoCaption processing. Called automatically when the form unloads.
+	</ul>
+	The sample provided in the demonstration download show how to use the NeoCaption component
+	to swap different skins at runtime and even how to remove a skin from a form.  You could improve
+	on these samples by putting the caption information into an XML file using the
+	<a href="..\xml\xmlpbag.htm">XML Property Bag</a> component and loading it from there!
+	<br><br>
+	<b>Using the cNCCalcSize Object</b><br>
+	To gain lower level control over non-client area processing, you can implement
+	the <i>INCAreaModifier</i> interface and attach directly to the <i>cNCCalcSize</i>
+	object. Implementing the <i>INCAreaModifier</i> interface involves doing the
+	following:
+	<ol>
+	<li>Returning Specific Values<br>
+	When the <i>GetTopMarginHeight</i>, <i>GetLeftMarginWidth</i>, 
+	<i>GetRightMarginWidth</i> and <i>GetBottomMarginHeight</i> methods are called, 
+	you get the opportunity to modify the border sizes and titlebar height to suit 
+	your own graphics.  The <i>hWnd</i> property is queried when the <i>cNCCalcSize</i>
+	object needs to know the handle of the window you want to modify the non-client
+	area for.
+	<li>Performing NonClient Painting<br>
+	The <i>NCPaint</i> method is fired whenever you need to paint the Non-Client area.
+	The method passes the size of the window and also a valid device context to paint
+	into.
+	<li>Assigning Window Areas to their non-client function<br>
+	The <i>HitTest</i> method is called whenever Windows wants to know what function
+	the area under the mouse should perform (e.g. is it the control menu, a border,
+	titlebar, one of the min/max/close buttons etc).  The caller assigns a default
+	value for the function based on the x,y position but you can override this with
+	the type of region you want.
+	<li>Non-Client MouseDown and MouseUp processing<br>
+	In customising the response to the <i>HitTest</i> method, you may also wish to
+	customise how your application reacts to non-client mouse clicks.  The
+	<i>NCMouseDown</i> and <i>NCMouseUp</i> methods
+	allow you to perform your own actions.
+	<li>Menu Processing<br>
+	The <i>InitMenuPopup</i> and <i>AltKeyAccelerator</i> methods enable your
+	application to integrate customised menu painting into the non-client area (you
+	would want to ignore these methods if menuing was being performed by a separate
+	method, for example, using the <a href="..\comctl\retbar.htm">vbAccelerator
+	CoolMenu control</a>).
+	</ol>
+	Implementing these functions from scratch is quite a lot of effort.  If you want
+	to do it, the best place to start is to examine how the <i>cNeoCaption</i> class
+	works.
+	<br<br>
+	<br<br>
+	</p>
+
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\skins\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

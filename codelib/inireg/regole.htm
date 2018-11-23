@@ -1,0 +1,213 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Find an OLE server's CLSID and executable from the registry</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	<a href="..\..\overview.htm" target="vbamain">Source Code</a>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Find an OLE server's CLSID and executable from the registry</b><br></p>
+	<p><img src="..\..\images\regole.gif" alt="[OLE/Registry Information example]" width="260" height="276"></p>
+
+	<p><a href="regole.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the RegOLE Demo Application (25kb)</a></p>
+	<p>
+	<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b><br>
+	<i>10 January 1999</i>: Modified the code to get the CLSID from the ProgID to use the OLE methods
+	rather than the registry.  This is more reliable and takes into account the current server version.
+	<br><br>
+
+	It can be useful to find the executable which is used to implement a particular OLE
+	class at runtime.  For example, you may just want to shell an application, in which
+	case if it exposes and OLE method, the most reliable methods of finding where it is
+	installed is to check in the registry OLE items.  Or you may want to find out if a
+	particular OLE server is installed on a machine, or check its version.
+	<br>
+	This source code shows how to do it using the registry.  This method uses my
+	<a href="registry.htm">cRegistry class</a> to make it easy to get the registry
+	information.
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="2">
+Private Function GetInfoForOLEType( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal sType As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optional ByRef sUserName As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optional ByRef sClassID As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optional ByRef sExeName As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optional ByRef sMsg As String _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) As Boolean<br>
+&nbsp;&nbsp;&nbsp;Dim cR As New cRegistry<br>
+<br>
+&nbsp;&nbsp;&nbsp;sUserName = &quot;&quot;: sClassID = &quot;&quot;: sExeName = &quot;&quot;<br>
+&nbsp;&nbsp;&nbsp;GetInfoForOLEType = True<br>
+&nbsp;&nbsp;&nbsp;sClassID = VBCLSIDFromProgID(sType)<br>
+&nbsp;&nbsp;&nbsp;If (sClassID = &quot;&quot;) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GetInfoForOLEType = False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sMsg = &quot;The OLE server '&quot; & sType & &quot;' is not registered on this system.&quot;<br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cR.ClassKey = HKEY_CLASSES_ROOT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cR.SectionKey = &quot;CLSID\&quot; & sClassID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sUserName = cR.Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cR.SectionKey = &quot;CLSID\&quot; & sClassID & &quot;\LocalServer32&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sExeName = cR.Value<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+End Function<br>
+<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+And this is the OLE code run from VBCLSIDFromProgID:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+Private Type CLSID <font color="#999999" face="Lucida Console,Courier New" size="2">' same as GUID</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;Data1 As Long<br>
+&nbsp;&nbsp;&nbsp;Data2 As Integer<br>
+&nbsp;&nbsp;&nbsp;Data3 As Integer<br>
+&nbsp;&nbsp;&nbsp;Data4(0 To 7) As Byte<br>
+End Type<br>
+<br>
+Private Declare Function CLSIDFromProgID Lib &quot;ole32.dll&quot; (ByVal lpszProgID As Long, lpclsid As CLSID) As Long<br>
+Private Declare Function StringFromCLSID Lib &quot;ole32.dll&quot; (rclsid As CLSID, ByRef lppsz As Long) As Long<br>
+Private Declare Sub CopyMemory Lib &quot;kernel32&quot; Alias &quot;RtlMoveMemory&quot; ( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long)<br>
+<br>
+Private Const S_OK = 0<br>
+<br>
+Public Function VBCLSIDFromProgID(ByVal sProgId As String) As String<br>
+&nbsp;&nbsp;&nbsp;Dim tG As CLSID<br>
+&nbsp;&nbsp;&nbsp;Dim sCLSID As String<br>
+&nbsp;&nbsp;&nbsp;Dim lR As Long<br>
+&nbsp;&nbsp;&nbsp;Dim lPtr As Long<br>
+&nbsp;&nbsp;&nbsp;Dim b() As Byte<br>
+&nbsp;&nbsp;&nbsp;lPtr = StrPtr(sProgId)<br>
+&nbsp;&nbsp;&nbsp;lR = CLSIDFromProgID(lPtr, tG)<br>
+&nbsp;&nbsp;&nbsp;If (lR = S_OK) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sCLSID = String$(255, vbNullChar)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lR = StringFromCLSID(tG, lPtr)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (lR = S_OK) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReDim b(0 To 38 * 2 - 1) As Byte<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory b(0), ByVal lPtr, 38 * 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VBCLSIDFromProgID = b<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+End Function<br>
+<br>
+<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+<p>
+	<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 July 1998
+	</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: FontCombo_MRUQueue.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: FontCombo_MRUQueue.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontCombo_MRUQueue.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="font_combobox_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Font ComboBox Code and Demonstration</a> (75K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13338</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13338&type=zip&title=font_20combobox_20code_20and_20demonstration_2ezip_5ffontcombo_5fmruqueue.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\icon_combobox\article.html">vbAccelerator IconComboBox Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: FontCombo_MRUQueue.cs</h1><pre>using System;
+using System.Collections;
+
+namespace vbAccelerator.Components.Collections
+{
+   /// &lt;summary&gt;
+   /// A basic Most-Recently Used (MRU) Queue implementation
+   /// &lt;/summary&gt;
+   [SerializableAttribute()]
+   public class MRUQueue : ICloneable, ICollection, IEnumerable
+   {
+      private const int INITIAL_SIZE = 8;
+
+      /// &lt;summary&gt;
+      /// The ArrayList used to maintain the MRU queue
+      /// &lt;/summary&gt;
+      protected ArrayList innerList;
+      private int size = INITIAL_SIZE;
+
+      /// &lt;summary&gt;
+      /// Gets/sets the maximum size of the MRU Queue.
+      /// &lt;/summary&gt;
+      public int Size
+      {
+         get
+         {
+            return this.size;
+         }
+         set
+         {
+            if (value &lt;= 0)
+            {
+               throw new ArgumentException("Size must be greater than or equal
+                to 1", "value");
+            }
+            this.size = value;
+            OnSizeChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Trims the MRU list to size based on the setting
+      /// of the &lt;see cref="Size" /&gt; property.
+      /// &lt;/summary&gt;
+      protected virtual void OnSizeChanged()
+      {
+         if (innerList.Count &gt; size)
+         {
+            for (int i = size; i &lt; innerList.Count; i++)
+            {
+               innerList.RemoveAt(innerList.Count - 1);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Copies the contents of the MRU starting at the specified
+      /// index to an array.
+      /// &lt;/summary&gt;
+      /// &lt;param name="array"&gt;Array to copy contents to&lt;/param&gt;
+      /// &lt;param name="arrayIndex"&gt;Index of array to start at.&lt;/param&gt;
+      public virtual void CopyTo(Array array, int arrayIndex)
+      {
+         this.innerList.CopyTo(array, arrayIndex);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the object with the specified index.
+      /// &lt;/summary&gt;
+      public virtual object this[int index]
+      {
+         get
+         {
+            return innerList[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Adds the specified item to the MRU queue.  If the queue
+      /// already contains the specified item, it is shifted up
+      /// to the first position.  Otherwise, it is added at the
+      /// first position and any existing items are shuffled 
+      /// downwards and the &lt;see cref="OnSizeChanged"/&gt; method
+      /// is called to trim the collection to size.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to add&lt;/param&gt;
+      public virtual void Add(object item)
+      {
+         bool noSizeChange = false;
+         if (this.innerList.Contains(item))
+         {
+            innerList.Remove(item);
+            noSizeChange = true;
+         }
+         this.innerList.Insert(0, item);         
+         if (!noSizeChange)
+         {
+            OnSizeChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Clears the MRU cache.
+      /// &lt;/summary&gt;
+      public virtual void Clear()
+      {
+         OnClear();
+      }
+
+      /// &lt;summary&gt;
+      /// Called to clear the collection of contents.
+      /// &lt;/summary&gt;
+      protected virtual void OnClear()
+      {
+         this.innerList.Clear();
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the number of items currently in the MRU Queue.
+      /// &lt;/summary&gt;
+      public virtual int Count
+      {
+         get
+         {
+            return innerList.Count;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether this implementation is synchronized or not.
+      /// &lt;/summary&gt;
+      public virtual bool IsSynchronized
+      {
+         get
+         {
+            return innerList.IsSynchronized;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets an object that can be used to synchronize access to the 
+      /// &lt;see cref="MRUQueue"/&gt;.
+      /// &lt;/summary&gt;
+      public virtual object SyncRoot
+      {
+         get
+         {
+            return innerList.SyncRoot;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the object that allows iterating through the members of the
+       collection.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;An object that implements the &lt;see
+       cref="System.Collections.IEnumerator "/&gt; interface.&lt;/returns&gt;
+      public virtual IEnumerator GetEnumerator()
+      {
+         return innerList.GetEnumerator();
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a shallow copy of the System.Collections.Hashtable.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;A shallow copy of the &lt;see cref="MRUQueue"/&gt;.&lt;/returns&gt;
+      public virtual object Clone()
+      {
+         ArrayList arrayList = (ArrayList) innerList.Clone();
+         MRUQueue mruQueue = new MRUQueue(arrayList);
+         return (object) mruQueue;
+      }
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new &lt;see cref="MRUQueue"/&gt; using the specified &lt;see
+       cref="ArrayList"/&gt; as the
+      /// internal collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="arrayList"&gt;ArrayList to use as the internal
+       collection.&lt;/param&gt;
+      protected MRUQueue(ArrayList arrayList)
+      {
+         this.innerList = arrayList;
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this collection
+      /// &lt;/summary&gt;
+      public MRUQueue()
+      {
+         innerList = new ArrayList();
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontCombo_MRUQueue.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

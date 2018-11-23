@@ -1,0 +1,306 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: mCommandBars.bas</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: mCommandBars.bas" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Office 2003 CommandBars</a>&#160;.&#160;<a href="vbalcommandbar.html">vbalCommandBar</a>&#160;.&#160;mCommandBars.bas</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="vbalcommandbar.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />vbalCommandBar</a> (45K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13403</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=13403&type=zip&title=vbalcommandbar_2ezip_5fmcommandbars.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />5 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\menus_from_first_principles\article.html">(Incomplete) Menus From First Principles</a></p><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\controls\toolbar\vbaccelerator_office_docking_bar\article.html">vbAccelerator Office Docking Bar Control</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: mCommandBars.bas</h1><pre>Attribute VB_Name = "mCommandBars"
+Option Explicit
+
+Public Type POINTAPI
+   x As Long
+   y As Long
+End Type
+
+Public Type RECT
+   left As Long
+   top As Long
+   right As Long
+   bottom As Long
+End Type
+
+Public Declare Function GetClientRect Lib "user32" (ByVal hWnd As Long, lpRect
+ As RECT) As Long
+Public Declare Function GetWindowRect Lib "user32" (ByVal hWnd As Long, lpRect
+ As RECT) As Long
+Public Declare Function CreateDCAsNull Lib "gdi32" Alias "CreateDCA" (ByVal
+ lpDriverName As String, _
+           lpDeviceName As Any, lpOutput As Any, lpInitData As Any) As Long
+Public Declare Function SelectObject Lib "gdi32" (ByVal hDC As Long, ByVal
+ hObject As Long) As Long
+Public Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long
+Public Declare Function GetObjectAPI Lib "gdi32" Alias "GetObjectA" (ByVal
+ hObject As Long, ByVal nCount As Long, lpObject As Any) As Long
+Public Declare Function GetDC Lib "user32" (ByVal hWnd As Long) As Long
+Public Declare Function DeleteDC Lib "gdi32" (ByVal hDC As Long) As Long
+Public Declare Function ReleaseDC Lib "user32" (ByVal hWnd As Long, ByVal hDC
+ As Long) As Long
+Public Declare Function CreateCompatibleDC Lib "gdi32" (ByVal hDC As Long) As
+ Long
+Public Declare Function CreateCompatibleBitmap Lib "gdi32" (ByVal hDC As Long,
+ ByVal nWidth As Long, ByVal nHeight As Long) As Long
+Public Declare Function BitBlt Lib "gdi32" (ByVal hDestDC As Long, ByVal x As
+ Long, ByVal y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal
+ hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal dwRop As Long)
+ As Long
+Public Declare Function CreateSolidBrush Lib "gdi32" (ByVal crColor As Long) As
+ Long
+Public Declare Function GetSysColorBrush Lib "user32" (ByVal nIndex As Long) As
+ Long
+Public Declare Function SetPixel Lib "gdi32" (ByVal hDC As Long, ByVal x As
+ Long, ByVal y As Long, ByVal crColor As Long) As Long
+Public Declare Function CreatePen Lib "gdi32" (ByVal nPenStyle As Long, ByVal
+ nWidth As Long, ByVal crColor As Long) As Long
+Public Const PS_SOLID = 0
+Public Declare Function SelectClipRgn Lib "gdi32" (ByVal hDC As Long, ByVal
+ hRgn As Long) As Long
+Public Declare Function SetTextColor Lib "gdi32" (ByVal hDC As Long, ByVal
+ crColor As Long) As Long
+Public Declare Function SetBkColor Lib "gdi32" (ByVal hDC As Long, ByVal
+ crColor As Long) As Long
+Public Declare Function SetBkMode Lib "gdi32" (ByVal hDC As Long, ByVal nBkMode
+ As Long) As Long
+    Public Const OPAQUE = 2
+    Public Const TRANSPARENT = 1
+Public Declare Function GetSysColor Lib "user32" (ByVal nIndex As Long) As Long
+
+Public Declare Function DrawTextA Lib "user32" (ByVal hDC As Long, ByVal lpStr
+ As String, ByVal nCount As Long, lpRect As RECT, ByVal wFormat As Long) As Long
+Public Declare Function DrawTextW Lib "user32" (ByVal hDC As Long, ByVal lpStr
+ As Long, ByVal nCount As Long, lpRect As RECT, ByVal wFormat As Long) As Long
+    Public Const DT_LEFT = &amp;H0&amp;
+    Public Const DT_TOP = &amp;H0&amp;
+    Public Const DT_CENTER = &amp;H1&amp;
+    Public Const DT_RIGHT = &amp;H2&amp;
+    Public Const DT_VCENTER = &amp;H4&amp;
+    Public Const DT_BOTTOM = &amp;H8&amp;
+    Public Const DT_WORDBREAK = &amp;H10&amp;
+    Public Const DT_SINGLELINE = &amp;H20&amp;
+    Public Const DT_EXPANDTABS = &amp;H40&amp;
+    Public Const DT_TABSTOP = &amp;H80&amp;
+    Public Const DT_NOCLIP = &amp;H100&amp;
+    Public Const DT_EXTERNALLEADING = &amp;H200&amp;
+    Public Const DT_CALCRECT = &amp;H400&amp;
+    Public Const DT_NOPREFIX = &amp;H800
+    Public Const DT_INTERNAL = &amp;H1000&amp;
+    Public Const DT_WORD_ELLIPSIS = &amp;H40000
+
+' Rectangle functions:
+Public Declare Function Rectangle Lib "gdi32" (ByVal hDC As Long, ByVal X1 As
+ Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long
+Public Declare Function EqualRect Lib "user32" (lpRect1 As RECT, lpRect2 As
+ RECT) As Long
+Public Declare Function InflateRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Public Declare Function OffsetRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Public Declare Function PtInRect Lib "user32" (lpRect As RECT, ByVal ptX As
+ Long, ByVal ptY As Long) As Long
+Public Declare Function FillRect Lib "user32" (ByVal hDC As Long, lpRect As
+ RECT, ByVal hBrush As Long) As Long
+
+
+' All controls which are connected to the command bar data
+Private m_colhWnd As Collection
+
+' The command bars &amp; the respective buttons
+Private m_colCommandBars As Collection
+Private m_colButtons As Collection
+
+' A collection of controls which we created ourselves
+Private m_colPopups As Collection
+
+Private m_showingInfrequentlyUsed As Boolean
+Private m_hideInfrequentlyUsed As Boolean
+Private m_inMenuLoop As Boolean
+
+Public Property Get NewInstance() As vbalCommandBar
+   ' Using one of the controls which is connected to me,
+   ' request a new control instance:
+   If (m_colhWnd.Count &gt; 0) Then
+      Dim ctl As vbalCommandBar
+      Dim lhWnd As Long
+      lhWnd = m_colhWnd(1)
+      If (ControlFromhWnd(lhWnd, ctl)) Then
+         Set NewInstance = ctl.NewInstance()
+      End If
+   End If
+End Property
+
+Public Property Get HideInfrequentlyUsed() As Boolean
+   HideInfrequentlyUsed = m_hideInfrequentlyUsed
+End Property
+Public Property Let HideInfrequentlyUsed(ByVal bState As Boolean)
+   m_hideInfrequentlyUsed = bState
+End Property
+Public Property Get ShowingInfrequentlyUsed() As Boolean
+   If (m_hideInfrequentlyUsed) Then
+      ShowingInfrequentlyUsed = m_showingInfrequentlyUsed
+   Else
+      ShowingInfrequentlyUsed = True
+   End If
+End Property
+Public Sub ShowInfrequentlyUsed()
+   m_showingInfrequentlyUsed = True
+End Sub
+Public Property Get InMenuLoop() As Boolean
+   InMenuLoop = m_inMenuLoop
+End Property
+Public Property Let InMenuLoop(ByVal bState As Boolean)
+   If Not (m_inMenuLoop = bState) Then
+      m_inMenuLoop = bState
+      m_showingInfrequentlyUsed = False
+   End If
+End Property
+
+Public Sub AddRef(ByVal hWnd As Long, ctlCmdBar As vbalCommandBar)
+   If (m_colhWnd Is Nothing) Then
+      Debug.Print "PREPARE FOR INVASION"
+      VerInitialise
+      Set m_colhWnd = New Collection
+      Set m_colCommandBars = New Collection
+      Set m_colButtons = New Collection
+   End If
+   m_colhWnd.Add hWnd, "H" &amp; hWnd
+   ' tag control with object pointer:
+   TagControl hWnd, ctlCmdBar, True
+End Sub
+
+Public Sub ReleaseRef(ByVal hWnd As Long)
+   m_colhWnd.Remove "H" &amp; hWnd
+   ' untag control
+   TagControl hWnd, Nothing, False
+   If (m_colhWnd.Count = 0) Then
+      Set m_colhWnd = Nothing
+      
+      Dim barInt As cCommandBarInt
+      For Each barInt In m_colCommandBars
+         barInt.Dispose
+      Next
+      Set m_colCommandBars = Nothing
+      Dim btnInt As cButtonInt
+      For Each btnInt In m_colButtons
+         btnInt.Dispose
+      Next
+      Set m_colButtons = Nothing
+      
+      Debug.Print "GAME OVER"
+   End If
+End Sub
+
+Public Function BarCount() As Long
+   BarCount = m_colCommandBars.Count
+End Function
+
+Public Sub BarRemove(ByVal sKey As String)
+   If CollectionContains(m_colCommandBars, sKey) Then
+      Dim barInt As cCommandBarInt
+      Set barInt = m_colCommandBars(sKey)
+      barInt.Clear
+      m_colCommandBars.Remove sKey
+   Else
+      gErr 3
+   End If
+End Sub
+Public Property Get BarItem(index As Variant) As cCommandBarInt
+   Set BarItem = m_colCommandBars.Item(index)
+End Property
+Public Function BarAdd(ByVal sKey As String) As cCommandBarInt
+   If CollectionContains(m_colCommandBars, sKey) Then
+      gErr 5
+   ElseIf (IsNumeric(sKey)) Then
+      gErr 4
+   Else
+      Dim barInt As New cCommandBarInt
+      barInt.fInit sKey
+      m_colCommandBars.Add barInt, sKey
+      Set BarAdd = barInt
+   End If
+End Function
+
+Public Function ButtonCount() As Long
+   ButtonCount = m_colButtons.Count
+End Function
+Public Sub ButtonRemove(ByVal sKey As String)
+   If CollectionContains(m_colButtons, sKey) Then
+      Dim btn As cButtonInt
+      Set btn = m_colButtons(sKey)
+      btn.Deleted
+      m_colButtons.Remove sKey
+   Else
+      gErr 3
+   End If
+End Sub
+Public Property Get ButtonItem(index As Variant) As cButtonInt
+   Set ButtonItem = m_colButtons.Item(index)
+End Property
+Public Function ButtonAdd(ByVal sKey As String) As cButtonInt
+   If CollectionContains(m_colButtons, sKey) Then
+      gErr 5
+   ElseIf (IsNumeric(sKey)) Then
+      gErr 4
+   Else
+      Dim btnInt As New cButtonInt
+      btnInt.fInit sKey
+      m_colButtons.Add btnInt, sKey
+      Set ButtonAdd = btnInt
+   End If
+End Function
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="javascript:window.alert(&quot;http://vbaccelerator.com/home/include/adredir.asp?url=http://oneandone.co.uk/xml/init?k_id=5791003&image=http://oneandone.co.uk/xml/banner?size=1&number=3\nThis link was not retrieved.&quot;)" ><IMG SRC="..\..\..\..\..\oneandone_co_uk\xml\banner\size=1&number=3.html" ALT="1&1 Web Hosting" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Office 2003 CommandBars</a>&#160;.&#160;<a href="vbalcommandbar.html">vbalCommandBar</a>&#160;.&#160;mCommandBars.bas</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 8 November 2003</p></td><td></td></tr></table>
+</body></html>

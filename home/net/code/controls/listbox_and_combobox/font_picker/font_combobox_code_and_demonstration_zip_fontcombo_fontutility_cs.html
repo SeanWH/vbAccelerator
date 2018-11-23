@@ -1,0 +1,311 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: FontCombo_FontUtility.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: FontCombo_FontUtility.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontCombo_FontUtility.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="font_combobox_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Font ComboBox Code and Demonstration</a> (75K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13338</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13338&type=zip&title=font_20combobox_20code_20and_20demonstration_2ezip_5ffontcombo_5ffontutility.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\icon_combobox\article.html">vbAccelerator IconComboBox Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: FontCombo_FontUtility.cs</h1><pre>using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+
+namespace vbAccelerator.Components.Text
+{
+   /*
+   /// &lt;summary&gt;
+   /// Windows API Logical Font structure to represent information
+   /// about a font.
+   /// &lt;/summary&gt;
+   [StructLayout(LayoutKind.Sequential)]
+   public struct LOGFONT 
+   { 
+      /// &lt;summary&gt;
+      /// Height of the font.
+      /// &lt;/summary&gt;
+      public int lfHeight;       
+      public int lfWidth; 
+      public int lfEscapement; 
+      public int lfOrientation; 
+      public int lfWeight; 
+      public byte lfItalic; 
+      public byte lfUnderline; 
+      public byte lfStrikeOut; 
+      public byte lfCharSet; 
+      public byte lfOutPrecision; 
+      public byte lfClipPrecision; 
+      public byte lfQuality; 
+      public byte lfPitchAndFamily;
+      [MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)]
+      public string lfFaceName; 
+   }
+   */
+
+   /// &lt;summary&gt;
+   /// Summary description for FontUtility.
+   /// &lt;/summary&gt;
+   public class FontUtility
+   {
+      /*
+      [StructLayout(LayoutKind.Sequential)]
+      private struct TEXTMETRIC 
+      { 
+         public int tmHeight; 
+         public int tmAscent; 
+         public int tmDescent; 
+         public int tmInternalLeading; 
+         public int tmExternalLeading; 
+         public int tmAveCharWidth; 
+         public int tmMaxCharWidth; 
+         public int tmWeight; 
+         public int tmOverhang; 
+         public int tmDigitizedAspectX; 
+         public int tmDigitizedAspectY; 
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=1)]
+         public String tmFirstChar; 
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=1)]
+         public String tmLastChar; 
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=1)]
+         public String tmDefaultChar; 
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=1)]
+         public String tmBreakChar; 
+         public byte tmItalic; 
+         public byte tmUnderlined; 
+         public byte tmStruckOut; 
+         public byte tmPitchAndFamily; 
+         public byte tmCharSet; 
+      }
+      */
+
+
+      /*
+      [DllImport("gdi32")]
+      private static extern int GetTextMetrics(
+         IntPtr hdc,            // handle to DC
+         ref TEXTMETRIC lptm   // text metrics
+         );
+      */
+      [DllImport("gdi32", CharSet = CharSet.Ansi)]
+      private static extern int GetOutlineTextMetrics(
+         IntPtr hdc,            // handle to DC
+         int cbData,            // size in bytes for text metrics
+         IntPtr lpOtm         // pointer to buffer to receive outline text
+          metrics structure
+         );
+      [DllImport("gdi32")]
+      private static extern IntPtr SelectObject(
+         IntPtr hdc,
+         IntPtr hObj
+         );
+
+      /// &lt;summary&gt;
+      /// Enumeration of Panose Font Family Types.  These can be used for
+      /// determining the similarity of two fonts or for detecting non-character
+      /// fonts like WingDings.
+      /// &lt;/summary&gt;
+      public enum PanoseFontFamilyTypes : int
+      {
+         /// &lt;summary&gt;
+         ///  Any
+         /// &lt;/summary&gt;
+         PAN_ANY = 0,
+         /// &lt;summary&gt;
+         /// No Fit
+         /// &lt;/summary&gt;
+         PAN_NO_FIT = 1,
+         /// &lt;summary&gt;
+         /// Text and Display
+         /// &lt;/summary&gt;
+         PAN_FAMILY_TEXT_DISPLAY = 2,
+         /// &lt;summary&gt;
+         /// Script
+         /// &lt;/summary&gt;
+         PAN_FAMILY_SCRIPT = 3,
+         /// &lt;summary&gt;
+         /// Decorative
+         /// &lt;/summary&gt;
+         PAN_FAMILY_DECORATIVE = 4,
+         /// &lt;summary&gt;
+         /// Pictorial                      
+         /// &lt;/summary&gt;
+         PAN_FAMILY_PICTORIAL = 5
+      }
+
+      /*
+      /// &lt;summary&gt;
+      /// Enumeration of Font Family types available from the LogFont structure.
+      /// Font family types describe the look of a font in a general way. They
+       are 
+      /// intended for specifying fonts when the exact typeface desired is not
+       available. 
+      /// &lt;/summary&gt;
+      public enum FontFamilyTypes : int
+      {
+         /// &lt;summary&gt;
+         /// Don't care or don't know.
+         /// &lt;/summary&gt;
+         FF_DONTCARE        = (0&lt;&lt;4),
+         /// &lt;summary&gt;
+         /// Variable stroke width, serifed.
+         /// Times Roman, Century Schoolbook, etc.
+         /// &lt;/summary&gt;
+         FF_ROMAN           = (1&lt;&lt;4),
+         /// &lt;summary&gt;
+         /// Variable stroke width, sans-serifed.
+         /// Helvetica, Swiss, etc. 
+         /// &lt;/summary&gt;
+         FF_SWISS           = (2&lt;&lt;4),
+         /// &lt;summary&gt;
+         /// Constant stroke width, serifed or sans-serifed.
+         /// Pica, Elite, Courier, etc.
+         /// &lt;/summary&gt;
+         FF_MODERN          = (3&lt;&lt;4),
+         /// &lt;summary&gt;
+         /// Cursive, etc.
+         /// &lt;/summary&gt;
+         FF_SCRIPT           = (4&lt;&lt;4),
+         /// &lt;summary&gt;
+         /// Old English, etc.
+         /// &lt;/summary&gt;
+         FF_DECORATIVE       = (5&lt;&lt;4)  
+      }
+
+      /// &lt;summary&gt;
+      /// Enumeration of font pitches.
+      /// &lt;/summary&gt;
+      public enum FontPitches : int
+      {
+         /// &lt;summary&gt;
+         /// Pitch is not specified
+         /// &lt;/summary&gt;
+         DEFAULT_PITCH           = 0,
+         /// &lt;summary&gt;
+         /// The font has fixed size characters
+         /// &lt;/summary&gt;
+         FIXED_PITCH             = 1,
+         /// &lt;summary&gt;
+         /// The font has variable size characters
+         /// &lt;/summary&gt;
+         VARIABLE_PITCH          = 2
+      }
+      
+
+      public static LOGFONT LogFontOf(Font font)
+      {
+         object logFontObject = new LOGFONT();
+         font.ToLogFont(logFontObject);
+         LOGFONT logFont = (LOGFONT) logFontObject;
+         Console.WriteLine("{0:X2}", logFont.lfPitchAndFamily);
+         return logFont;
+      }
+      */
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;see cref="PanoseFontFamilyTypes"/&gt; for the specified font.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;A graphics object to use when detecting the
+       Panose
+      /// family.&lt;/param&gt;
+      /// &lt;param name="font"&gt;The font to check.&lt;/param&gt;
+      /// &lt;returns&gt;The Panose font family type.&lt;/returns&gt;
+      public static PanoseFontFamilyTypes PanoseFontFamilyType(Graphics
+       graphics, Font font)
+      {
+         byte bFamilyType = 0;
+
+         IntPtr hdc = graphics.GetHdc();
+         IntPtr hFontOld = SelectObject(hdc, font.ToHfont());
+
+         int bufSize = GetOutlineTextMetrics(hdc, 0, IntPtr.Zero);
+         IntPtr lpOtm = Marshal.AllocCoTaskMem(bufSize);
+         Marshal.WriteInt32(lpOtm, bufSize);         
+         int success = GetOutlineTextMetrics(hdc, bufSize, lpOtm);
+         if (success != 0)
+         {
+            int offset = 61;
+            bFamilyType = Marshal.ReadByte(lpOtm, offset); 
+            /*
+            byte bSerifStyle = Marshal.ReadByte(lpOtm, offset + 1); 
+            byte bWeight = Marshal.ReadByte(lpOtm, offset + 2); 
+            byte bProportion = Marshal.ReadByte(lpOtm, offset + 3); 
+            byte bContrast = Marshal.ReadByte(lpOtm, offset + 4); 
+            byte bStrokeVariation = Marshal.ReadByte(lpOtm, offset + 5); 
+            byte bArmStyle = Marshal.ReadByte(lpOtm, offset + 6); 
+            byte bLetterform = Marshal.ReadByte(lpOtm, offset + 7); 
+            byte bMidline = Marshal.ReadByte(lpOtm, offset + 8); 
+            byte bXHeight = Marshal.ReadByte(lpOtm, offset + 9); 
+            */
+         }
+
+         Marshal.FreeCoTaskMem(lpOtm);
+
+         SelectObject(hdc, hFontOld);
+         graphics.ReleaseHdc(hdc);
+            
+         return (PanoseFontFamilyTypes) bFamilyType;
+         
+      }
+
+      private FontUtility()
+      {
+         //
+         // TODO: Add constructor logic here
+         //
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontCombo_FontUtility.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

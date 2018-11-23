@@ -1,0 +1,718 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Using DIB Sections in VB</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#999966">
+	<td valign="top"  width="32">
+	<font color="#993300" face="verdana,arial,helvetica" size="6"><strong>4</strong></font>
+	</td>
+	<td>
+	<font color="#993300" face="verdana,arial,helvetica" size="4"><strong>vb<I>Media</I></strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Using DIB Sections in VB</b>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td>
+	<font color="#999966" face="verdana,arial,helvetica" size="1">
+	&nbsp;An Easy to Use Class for manipulating DIBSections plus a blindingly quick technique for updating the bits
+	</font>
+	</td>	
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\dibsect.gif" alt="DIB Section Graphic" width="128" height="72"></p>
+	<p><a href="cdibsect.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cDIBSection Class (4kb)</a></p>
+	<p>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>17 February 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The previous version of this code crashed when run under NT4.0.  This was because
+		the code was not always clearing up the <i>SAFEARRAY</i> pointer after it had finished
+		using it.  Under Win9x, this did not cause a problem but NT is stricter.  All the 	
+		samples and the code are now updated to fix this problem.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>	
+	<p>This is a supporting article describing in more detail the DIB Section techniques
+	used in the <a href="imgproc2.htm">vbAccelerator Image Processor</a>.  It describes
+	what DIB Sections are, how to use them and provides a class I wrote to wrap up the 
+	DIB Section.
+	<br><br>
+	<b>What is a DIB Section?</b><br>
+	A DIB (Device Independent Bitmap) Section is a GDI object like a standard DIB but
+	which additionally provides a pointer to the memory used to store the bitmap
+	bits to which the creating application has direct access.  This allows ultimate
+	flexibility if you want to modify the bits of a bitmap.
+	<br><br>
+	<b>Using DIB Sections</b><br>
+	A DIB section is created using the GDI <i>CreateDIBSection</i> call.  You need to modify
+	the declare provided for this in the VB API guide because this declare assumes you cannot
+	use the pointer to the bitmap returned by the function and simply discards it.  Here are
+	the declares you need:<br>
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Type BITMAPINFOHEADER '40 bytes <br>
+&nbsp &nbsp biSize As Long <br>
+&nbsp &nbsp biWidth As Long <br>
+&nbsp &nbsp biHeight As Long <br>
+&nbsp &nbsp biPlanes As Integer <br>
+&nbsp &nbsp biBitCount As Integer <br>
+&nbsp &nbsp biCompression As Long <br>
+&nbsp &nbsp biSizeImage As Long <br>
+&nbsp &nbsp biXPelsPerMeter As Long <br>
+&nbsp &nbsp biYPelsPerMeter As Long <br>
+&nbsp &nbsp biClrUsed As Long <br>
+&nbsp &nbsp biClrImportant As Long <br>
+End Type <br>
+Private Type BITMAPINFO <br>
+&nbsp &nbsp bmiHeader As BITMAPINFOHEADER <br>
+&nbsp &nbsp bmiColors As RGBQUAD <br>
+End Type <br>
+ <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Note - this is not the declare in the API viewer - modify lplpVoid to be <br>
+' Byref so we get the pointer back: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Declare Function CreateDIBSection Lib "gdi32" _ <br>
+&nbsp &nbsp (ByVal hdc As Long, _ <br>
+&nbsp &nbsp pBitmapInfo As BITMAPINFO, _ <br>
+&nbsp &nbsp ByVal un As Long, _ <br>
+&nbsp &nbsp lplpVoid As Long, _ <br>
+&nbsp &nbsp ByVal handle As Long, _ <br>
+&nbsp &nbsp ByVal dw As Long) As Long <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	To create the DIB Section, you initialise a <i>BITMAPINFO</i> structure with 
+	the required fields, which are all in the <i>bmiHeader</i> sub-structure:
+</p>
+</font>
+<p>
+<table border="0" cellspacing="0" cellpadding="2">
+<tr bgcolor="#CCCCCC"><td><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Member</b></font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Required Value</b></font></td></tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biSize</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">Size of the BITMAPINFO structure</font></td></tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biWidth</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">Width of the DIBSection in pixels</font></td><tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biHeight</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">Height of the DIBSection in pixels</font></td><tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biPlanes</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">Number of colour planes.  Set to 1</font></td><tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biBitCount</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">Bits per pixel.  Set to 24 for true colour</td><tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biCompression</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">Whether to use compression.  If you want to work on the bits, set this to BI_RGB so the image is uncompressed</font></td></tr>
+<tr><td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">biSizeImage</font></td><td><font color="#000000" face="verdana,arial,helvetica" size="2">The size of the image in bytes.  This is worked out from the width, height, number of bits
+	per pixel.  In a 24 bit image there are three bytes per pixel.  Additionally, GDI requires
+	that every horizontal line in the image aligns on a four byte boundary.  So for a 24 bit
+	image the ImageSize is biWidth*biHeight*3 rounded up to the nearest four bytes.  You can
+	round up to the width to the nearest four bytes as follows:<br>
+    	&nbsp &nbsp (.biWidth * 3 + 3) And &HFFFFFFFC<br>
+	</font></td></tr>
+</table>
+</font>
+	</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This allows you to create a DIB Section.  You call <i>CreateDIBSection</i> like this:	
+	</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp hDib = CreateDIBSection( _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lHDC, _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_tBI, _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp DIB_RGB_COLORS, _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lPtr, _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 0, 0) <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	Where:
+	<ul>
+	<li>hDib is a variable to receive the GDI handle to the DIB Section
+	<li>lHDC is a valid DC, for example a Form's DC or the <a href="..\..\tips\vba0002.htm">desktop DC</a><br>
+	<li>m_tBI is a the <i>BITMAPINFO</i> structure
+	<li>m_lPtr is a variable to receive the pointer to the memory containing the bitmap bits.
+	</ul>
+	</p>
+
+	<p>
+	To actually display a DIB Section, you must select it into a DC.
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp m_hDC = CreateCompatibleDC(0) <br>
+&nbsp &nbsp If (m_hDC <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp If (CreateDIB(m_hDC, lWidth, lHeight, m_hDIb)) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_hBmpOld = SelectObject(m_hDC, m_hDIb) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Create = True <br>
+&nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp DeleteObject m_hDC <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_hDC = 0 <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End If <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+  	Once it is in a DC you can then use BitBlt to paint it to another device context or to transfer
+	the contents of another device context into it.  Remember you must keep track of all the
+	handles created in GDI so you can clear them up again when the DIBSection is no longer
+	needed.  To clear up, you need to:
+	<ul>
+	<li>Select the old bitmap (m_hBmpOld) back into the DC.
+	<li>Delete the DIB section.
+	<li>Delete the DC.
+	</ul>
+	So far this has created a DIB which you can load with a graphic and display on the
+	screen, but this achieves no more than you can do with a standard 
+	bitmap.  The good stuff starts when you start modifying the bitmap bits.
+	<br><br>
+	<b>Modifying the Bitmap Bits Directly</b><br>
+	CreateDIBSection returns an address to the memory containing the bitmap.  You can 
+	manipulate this directly through VB using a cool technique to make the memory look
+	like a VB Byte array.  This technique was originally presented in <a href="javascript:window.alert(&quot;http://www.devx.com/\nThis link was not retrieved.&quot;)" 
+	target = "_top">VBPJ</a> article (Note the original article is no longer easily available).  
+	It uses a hidden VB call exposed by MSVBVM50.DLL
+	(which is also available in VB6 - thanks to Paul Wilde for pointing this out) and
+	the ubiquitous CopyMemory call.  In my opinion, &#147;CopyMemory&#148; is the best 
+	language feature in VB (except that it isn't VB at all!)<br><br>
+	Here are the declares you need:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Type SAFEARRAY2D <br>
+&nbsp &nbsp cDims As Integer <br>
+&nbsp &nbsp fFeatures As Integer <br>
+&nbsp &nbsp cbElements As Long <br>
+&nbsp &nbsp cLocks As Long <br>
+&nbsp &nbsp pvData As Long <br>
+&nbsp &nbsp Bounds(0 To 1) As SAFEARRAYBOUND <br>
+End Type <br>
+Private Declare Function VarPtrArray Lib "msvbvm50.dll" Alias "VarPtr" (Ptr() As Any) As Long <br>
+Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _ <br>
+&nbsp &nbsp lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long) <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	To make the byte array point to the memory, you have to fill in the <i>SAFEARRAY2D</i>
+	structure and then use <i>CopyMemory</i> as follows:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Dim tSA As SAFEARRAY2D <br>
+Dim bDib() As Byte <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Get the bits in the from DIB section: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp With tSA <br>
+&nbsp &nbsp &nbsp &nbsp .cbElements = 1 <br>
+&nbsp &nbsp &nbsp &nbsp .cDims = 2 <br>
+&nbsp &nbsp &nbsp &nbsp .Bounds(0).lLbound = 0 <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Height of the bitmap <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp .Bounds(0).cElements = m_tBI.bmiHeader.biHeight <br>
+&nbsp &nbsp &nbsp &nbsp .Bounds(1).lLbound = 0 <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Width of the bitmap in bits (see earlier): <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp .Bounds(1).cElements = BytesPerScanLine() <br>
+&nbsp &nbsp &nbsp &nbsp .pvData = m_lPtr <br>
+&nbsp &nbsp End With <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Make the bDib() array point to the memory addresses: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp CopyMemory ByVal VarPtrArray(bDib()), VarPtr(tSA), 4 <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	Now the <i>bDib()</i> array is a two dimensional array with the first dimension
+	being the x values and the second being the y values.  A 24 bit DIB section is
+	arranged so the bytes run Blue, Green, Red and remember that since the array is
+	padded to a DWORD boundary there may be up to three unused bytes at the end of
+	each row.  So, for example, to set the top left pixel to purple you would write
+	this:
+	</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp bDib(0,0) = 255</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Blue <br></font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp bDib(1, 0) = 0</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Green <br></font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp    bDib(2, y) = 255  </font><font color="#999999" face="Lucida Console,courier new" size="1">
+' Red <br></font>
+ <br>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	Once you have finished with the bDib array, you need to be sure to clear up the
+	SAFEARRAY pointer you have created.  If you fail to do this, your code will work
+	under Win9x but will crash NT4.0:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp CopyMemory ByVal VarPtrArray(bDib), 0&, 4<br>
+</font>
+</p>
+
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>	
+	<b>Enough of That, I Want to Use It</b><br>
+	That covers the theory of using DIB Sections.  To make it easy, I include a self-contained
+	class (cDibSection) which you can include.  The implementation is as follows:
+	</p>	
+	<p>
+	<table border="0" cellspacing="0" cellpadding="2">
+	<tr bgcolor="#CCCCCC">
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Method</b>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Description</b>
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		BytesPerScanLine
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the number of bytes horizontally, taking into account the bits per pixel
+		and 4 byte boundary padding.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		ClearUp
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Frees up any GDI objects held by the class.  Called automatically when the class
+		terminates.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		CopyToClipboard
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Does as it says!
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Create
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Creates a DIB section of the specified width and height in pixels.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		CreateFromPicture
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Creates a DIB section the same size as a VB picture object and copies the
+		bitmap in it into the DIB section.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		DIBSectionBitsPtr
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the address of the DIBSection's bits in memory.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		hdc
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the memory device context used by the class to hold the DIB Section. 
+		You can use this in GDI operations, but do not call DeleteObject on it.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		hDib
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns a handle to the DIBSection held by the class.  You can use this in
+		GDI operations, but do not call DeleteObject on it.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Height
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the Height of the DIBSection in pixels.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		LoadPictureBlt
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Copies all or a part of a picture from another Device Context into the DIB
+		section.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		PaintPicture
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Similar to the VB paint picture method, this copies all or part of the DIB
+		section to another device context using the specified Raster Operation.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		RandomiseBits
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Randomises the pixels in the DIB Section, either to random colours or gray scaled.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Resample
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Resizes the DIB using <a href="resample.htm">linear interpolation</a> to create a smoother resized 
+		version than you would get if you used StretchBlt.
+		</font></td>
+	</tr>
+	<tr>
+		<td valign=top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Width
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the width of the DIB in pixels.
+		</font></td>
+	</tr>
+	</table>	
+	</p>
+
+	<p><b>A Simple Fade Example</b><br>
+	This demonstrates how to fade out a bitmap.  It should run as a real-time animation, provided
+	the image size isn't too big.  I've found that images which are too large don't show as a 
+	smooth animation even when the fade code runs quickly enough because BitBlt tends to "tear".  
+	This occurs because BitBlt doesn't completely display the bitmap during a single screen refresh
+	and therefore the image is partially displayed before the refresh occurs.  To get round this
+	problem you need to use DirectX.<br><br>
+	This sample is simplified version of the static and fade example available for download on
+	the <a href="imgproc2.htm">Image Processing using DIB Sections</a> page.<br><br>
+	To try this sample, create a new project and add the cDIBSection class to it.  
+	Copy the declares for <i>CopyMemory</i>, <i>VarPtrArray</i> and <i>SAFEARRAY2D</i>
+	into the project's form.<br><br>
+	Then add this sub:
+	</p>	
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Fade( _ <br>
+&nbsp &nbsp   ByRef cTo As cDIBSection, _ <br>
+&nbsp &nbsp   ByVal lAmount As Long _ <br>
+&nbsp &nbsp ) <br>
+Dim bDib() As Byte <br>
+Dim x As Long, y As Long <br>
+Dim xMax As Long, yMax As Long <br>
+Dim lB As Long, lG As Long, lR As Long <br>
+Dim lA As Long, lA2 As Long <br>
+Dim lTIme As Long <br>
+Dim tSA As SAFEARRAY2D <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' have the local matrix point to bitmap pixels <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp With tSA <br>
+&nbsp &nbsp &nbsp &nbsp .cbElements = 1 <br>
+&nbsp &nbsp &nbsp &nbsp .cDims = 2 <br>
+&nbsp &nbsp &nbsp &nbsp .Bounds(0).lLbound = 0 <br>
+&nbsp &nbsp &nbsp &nbsp .Bounds(0).cElements = cTo.Height <br>
+&nbsp &nbsp &nbsp &nbsp .Bounds(1).lLbound = 0 <br>
+&nbsp &nbsp &nbsp &nbsp .Bounds(1).cElements = cTo.BytesPerScanLine <br>
+&nbsp &nbsp &nbsp &nbsp .pvData = cTo.DIBSectionBitsPtr <br>
+&nbsp &nbsp End With <br>
+&nbsp &nbsp CopyMemory ByVal VarPtrArray(bDib), VarPtr(tSA), 4 <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp yMax = cTo.Height - 1 <br>
+&nbsp &nbsp xMax = cTo.Width - 1 <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp For x = 0 To (xMax * 3) Step 3 <br>
+&nbsp &nbsp &nbsp &nbsp For y = 0 To yMax <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lB = lAmount * bDib(x, y) \ 255 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lG = lAmount * bDib(x + 1, y) \ 255 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lR = lAmount * bDib(x + 2, y) \ 255 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp bDib(x, y) = lB <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp bDib(x + 1, y) = lG <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp bDib(x + 2, y) = lR <br>
+&nbsp &nbsp &nbsp &nbsp Next y <br>
+&nbsp &nbsp Next x <br>
+<br>
+&nbsp &nbsp CopyMemory ByVal VarPtrArray(bDib), 0&, 4 <br>
+&nbsp &nbsp  <br>
+End Sub <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	Add a Command Button to the Form, and put this code behind
+	it:	
+	</p>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Command1_Click() <br>
+ <br>
+Dim cDib As New cDibSection <br>
+Dim cDibBuffer as New cDibSection <br>
+Dim i As Long <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Load the picture to fade: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp Set sPic = LoadPicture("Put Your File Here!") <br>
+&nbsp &nbsp cDib.CreateFromPicture sPic <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Create a copy of it: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp cDibBuffer.Create cDib.Width, cDib.Height <br>
+&nbsp &nbsp cDib.PaintPicture cDibBuffer.HDC <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Fade Loop: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp For i = 0 To 255 Step 4 <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Fade the dib by amount i: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp Fade cDib, i <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Draw it: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp cDib.PaintPicture Form1.hDC <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Breathe a little.  You may have to put a slowdown here: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp DoEvents <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Reset for next fade: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp cDibBuffer.PaintPicture cDib.HDC <br>
+&nbsp &nbsp Next i <br>
+ <br>
+End Sub <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	Now run the code.  	When you click the button, the image will be faded as fast as
+	your system allows.  The code will run slowly in the IDE but will go
+	much much quicker if you compile it to native code.  Also, checking all the 
+	Advanced Optimisation settings will make it run about 60% faster again!
+	On my machine (PII 266 with 8Mb Xpert@Work card) it does 40fps when working on
+	a 256x256 pixel image. 
+	</p>
+	<p>
+	<br><br>
+
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="imgproc2.htm"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back"></a>Back to <a href="imgproc2.htm" target="vbamain">Image Processing Using DIB Sections</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+	</p>
+	</font>
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+ng="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,1806 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: ThumbnailTester\FolderBrowser.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: ThumbnailTester\FolderBrowser.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Thumbnail Extraction Using the Shell</a>&#160;.&#160;<a href="..\thumbail_tester_code.html">Thumbail Tester Code</a>&#160;.&#160;ThumbnailTester</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="thumbail_tester_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Thumbail Tester Code</a> (45K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4540</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4540&type=zip&title=folderbrowser.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />8 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\auto-file_completion_for_text_boxes_and_combo_boxes\article.html">Auto-File and URL Completion for Text Boxes and Combo Boxes</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\folder_browser\article.html">Folder Browser Dialog</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\sysimagelist\article.html">System Image List</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: ThumbnailTester\FolderBrowser.cs</h1><pre>using System;
+using System.Collections;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Shell
+{
+   #region FolderBrowserFilter
+   /// &lt;summary&gt;
+   /// An object to manage filtering of items displayed
+   /// in the folder browser
+   /// &lt;/summary&gt;
+   public class FolderBrowserFilter
+   {
+      #region Member Variables
+      private bool applyFilter = false;
+      private FileFilterSpecificationCollection items = null;
+      #endregion
+
+      #region Implementation
+      /// &lt;summary&gt;
+      /// Gets/sets whether the items shown in the folder
+      /// will be filtered.
+      /// &lt;/summary&gt;
+      public bool ApplyFilter
+      {
+         get
+         {
+            return this.applyFilter;
+         }
+         set
+         {
+            this.applyFilter = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns whether the specified file should be filtered from
+      /// the view
+      /// &lt;/summary&gt;
+      /// &lt;param name="file"&gt;The file to check&lt;/param&gt;
+      /// &lt;returns&gt;True to filter the item, False otherwise&lt;/returns&gt;
+      public virtual bool ShouldFilter(string file, bool isFolder)
+      {
+         bool ret = false;
+         if (items.Count &gt; 0)
+         {
+            foreach (FileFilterSpecification filter in items)
+            {
+               if (isFolder)
+               {
+                  if (filter.ApplyToFolder)
+                  {
+                     if (filter.RegularExpression.IsMatch(file))
+                     {
+                        ret = false;
+                        break;
+                     }
+                     else
+                     {
+                        ret = true;
+                     }
+                  }
+               }
+               else 
+               {
+                  if (filter.ApplyToFile)
+                  {
+                     if (filter.RegularExpression.IsMatch(file))
+                     {
+                        ret = false;
+                        break;
+                     }
+                     else
+                     {
+                        ret = true;
+                     }
+                  }
+               }
+            }
+         }
+         return ret;
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the collection of file filters to apply to 
+      /// the Folder Browser View.
+      /// &lt;/summary&gt;
+      public FileFilterSpecificationCollection Items
+      {
+         get
+         {
+            return this.items;
+         }
+      }
+      #endregion
+
+      #region Constructor and Destructor
+      /// &lt;summary&gt;
+      /// Creates a default instance of a Folder Browser filter.
+      /// &lt;/summary&gt;
+      public FolderBrowserFilter()
+      {
+         this.items = new FileFilterSpecificationCollection();
+      }
+
+      /// &lt;summary&gt;
+      /// Creates an instance of a Folder Browser filter with
+      /// the specified filters.
+      /// &lt;/summary&gt;
+      /// &lt;param name="items"&gt;&lt;/param&gt;
+      public FolderBrowserFilter(FileFilterSpecificationCollection items)
+      {
+         this.items = items;
+      }
+      #endregion
+
+   }
+   #endregion
+
+   #region FileFilterSpecificationCollection
+   
+   public class FileFilterSpecificationCollection : CollectionBase
+   {
+      /// &lt;summary&gt;
+      /// Adds a new file filter to the filter list.
+      /// &lt;/summary&gt;
+      /// &lt;param name="filter"&gt;The filter to add&lt;/param&gt;
+      public void Add(FileFilterSpecification filter)
+      {
+         this.InnerList.Add(filter);
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the filter at the specified index.
+      /// &lt;/summary&gt;
+      public FileFilterSpecification this[int index]
+      {
+         get
+         {
+            return (FileFilterSpecification)this.InnerList[index];
+         }
+         set
+         {
+            this.InnerList[index] = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new, blank filter collection.
+      /// &lt;/summary&gt;
+      public FileFilterSpecificationCollection()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new filter collection containing the specified
+      /// filters.
+      /// &lt;/summary&gt;
+      /// &lt;param name="filters"&gt;The filters to add.&lt;/param&gt;
+      public FileFilterSpecificationCollection(FileFilterSpecification[]
+       filters)
+      {
+         foreach (FileFilterSpecification filter in filters)
+         {
+            this.InnerList.Add(filter);
+         }
+      }
+   }
+
+   #endregion
+
+   #region FileFilterSpecification
+
+   public class FileFilterSpecification
+   {
+      private Regex regularExpression = null;
+      private string filter = "";
+      private bool applyToFile = true;
+      private bool applyToFolder = false;
+
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether this filter should apply to
+      /// files.
+      /// &lt;/summary&gt;
+      public bool ApplyToFile
+      {
+         get
+         {
+            return this.applyToFile;
+         }
+         set
+         {
+            this.applyToFile = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether this filter should apply to
+      /// folders.
+      /// &lt;/summary&gt;
+      public bool ApplyToFolder
+      {
+         get
+         {
+            return this.applyToFolder;
+         }
+         set
+         {
+            this.applyToFolder = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the regular expression to match against
+      /// filtering items
+      /// &lt;/summary&gt;
+      public string Filter
+      {
+         get
+         {
+            return this.filter;
+         }
+         set
+         {
+            this.filter = value;
+            regularExpression = new Regex(filter);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the compiled regular expression for 
+      /// this filter.
+      /// &lt;/summary&gt;
+      internal Regex RegularExpression
+      {
+         get
+         {
+            return this.regularExpression;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new file filter without specifying
+      /// its details.
+      /// &lt;/summary&gt;
+      public FileFilterSpecification()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new file filter and initialises all
+      /// the members.
+      /// &lt;/summary&gt;
+      /// &lt;param name="filter"&gt;The regular expression to use
+      /// when matching this filter.&lt;/param&gt;
+      /// &lt;param name="applyToFile"&gt;Whether this filter should
+      /// be applied to files.&lt;/param&gt;
+      /// &lt;param name="applyToFolder"&gt;Whether this filter should
+      /// be applied to folders.&lt;/param&gt;
+      public FileFilterSpecification(
+         string filter,
+         bool applyToFile,
+         bool applyToFolder
+         )
+      {
+         Filter = filter;
+         this.applyToFile = applyToFile;
+         this.applyToFolder = applyToFolder;
+      }
+
+   }
+
+   #endregion
+
+   #region ValidationFailed Event Arguments and Delegate
+   public class ValidationFailedEventArgs
+   {
+      private string message = "";
+      private bool cancel = true;
+
+      /// &lt;summary&gt;
+      /// Returns the text from the Edit Box which has caused 
+      /// validation to fail
+      /// &lt;/summary&gt;
+      public string Message
+      {
+         get
+         {
+            return this.message;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the dialog should be Cancelled (closed)
+      /// or not.
+      /// &lt;/summary&gt;
+      public bool Cancel
+      {
+         get
+         {
+            return this.cancel;
+         }
+         set
+         {
+            this.cancel = value;
+         }
+      }
+
+      internal ValidationFailedEventArgs(
+         string message
+         )
+      {
+         this.message = message;
+      }
+   }
+
+   public delegate void ValidationFailedEventHandler(object sender,
+    ValidationFailedEventArgs e);
+   #endregion
+
+   #region SelectionChanged Event Arguments and Delegate
+   public class SelectionChangedEventArgs
+   {
+      private FolderBrowser.SafePidl pidl = null;
+
+      /// &lt;summary&gt;
+      /// Gets the pidl of the newly selected item
+      /// &lt;/summary&gt;
+      public IntPtr Pidl
+      {
+         get
+         {
+            return this.pidl.Pidl;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the path of the newly selected item
+      /// &lt;/summary&gt;
+      public string Path
+      {
+         get
+         {            
+            return this.pidl.Path;
+         }
+      }
+
+
+      internal SelectionChangedEventArgs(FolderBrowser.SafePidl pidl)
+      {
+         this.pidl = pidl;
+      }
+      ~SelectionChangedEventArgs()
+      {
+      }
+   }
+
+   public delegate void SelectionChangedEventHandler(object sender,
+    SelectionChangedEventArgs e);
+   #endregion   
+
+   #region FolderBrowser
+   /// &lt;summary&gt;
+   /// Provides a Shell Folder Browser (not available under .NET 
+   /// Framwork 1.0)
+   /// &lt;/summary&gt;
+   public class FolderBrowser : IDisposable
+   {
+      #region ShellFolder Enumerations
+      [Flags]
+         private enum ESTRRET : int
+      {
+         STRRET_WSTR     = 0x0000,         // Use STRRET.pOleStr
+         STRRET_OFFSET   = 0x0001,         // Use STRRET.uOffset to Ansi
+         STRRET_CSTR     = 0x0002         // Use STRRET.cStr
+      }
+      [Flags]
+         private enum ESHCONTF : int
+      {
+         SHCONTF_FOLDERS = 0x0020,
+         SHCONTF_NONFOLDERS = 0x0040,
+         SHCONTF_INCLUDEHIDDEN = 0x0080,
+         SHCONTF_INIT_ON_FIRST_NEXT = 0x0100,   // allow EnumObject() to return
+          before validating enum
+         SHCONTF_NETPRINTERSRCH  = 0x0200,   // hint that client is looking for
+          printers
+         SHCONTF_SHAREABLE = 0x0400,   // hint that client is looking sharable
+          resources (remote shares)
+         SHCONTF_STORAGE = 0x0800,   // include all items with accessible
+          storage and their ancestors
+      }
+
+      [Flags]
+         private enum ESHGDN : int
+      {
+         SHGDN_NORMAL = 0,
+         SHGDN_INFOLDER = 1,
+         SHGDN_FORADDRESSBAR = 16384,
+         SHGDN_FORPARSING = 32768
+      }
+      [Flags]
+         private enum ESFGAO : int
+      {
+         SFGAO_CANCOPY = 1,
+         SFGAO_CANMOVE = 2,
+         SFGAO_CANLINK = 4,
+         SFGAO_CANRENAME = 16,
+         SFGAO_CANDELETE = 32,
+         SFGAO_HASPROPSHEET = 64,
+         SFGAO_DROPTARGET = 256,
+         SFGAO_CAPABILITYMASK = 375,
+         SFGAO_LINK = 65536,
+         SFGAO_SHARE = 131072,
+         SFGAO_READONLY = 262144,
+         SFGAO_GHOSTED = 524288,
+         SFGAO_DISPLAYATTRMASK = 983040,
+         SFGAO_FILESYSANCESTOR = 268435456,
+         SFGAO_FOLDER = 536870912,
+         SFGAO_FILESYSTEM = 1073741824,
+         SFGAO_HASSUBFOLDER = -2147483648,
+         SFGAO_CONTENTSMASK = -2147483648,
+         SFGAO_VALIDATE = 16777216,
+         SFGAO_REMOVABLE = 33554432,
+         SFGAO_COMPRESSED = 67108864
+      }
+      #endregion
+
+      #region IExtractImage Enumerations
+      private enum EIEIFLAG
+      {
+         IEIFLAG_ASYNC       = 0x0001,      // ask the extractor if it supports
+          ASYNC extract (free threaded)
+         IEIFLAG_CACHE       = 0x0002,      // returned from the extractor if
+          it does NOT cache the thumbnail
+         IEIFLAG_ASPECT      = 0x0004,      // passed to the extractor to beg
+          it to render to the aspect ratio of the supplied rect
+         IEIFLAG_OFFLINE     = 0x0008,      // if the extractor shouldn't hit
+          the net to get any content neede for the rendering
+         IEIFLAG_GLEAM       = 0x0010,     // does the image have a gleam ?
+          this will be returned if it does
+         IEIFLAG_SCREEN      = 0x0020,      // render as if for the screen 
+          (this is exlusive with IEIFLAG_ASPECT )
+         IEIFLAG_ORIGSIZE    = 0x0040,      // render to the approx size
+          passed, but crop if neccessary
+         IEIFLAG_NOSTAMP     = 0x0080,      // returned from the extractor if
+          it does NOT want an icon stamp on the thumbnail
+         IEIFLAG_NOBORDER    = 0x0100,      // returned from the extractor if
+          it does NOT want an a border around the thumbnail
+         IEIFLAG_QUALITY     = 0x0200      // passed to the Extract method to
+          indicate that a slower, higher quality image is desired, re-compute
+          the thumbnail
+      }
+      #endregion
+
+      #region ShellFolder Structures 
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=4, Size=0,
+       CharSet=CharSet.Auto)]
+         private struct STRRET_CSTR
+      {
+         public ESTRRET uType;
+         [MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray,
+          SizeConst=520)]
+         public byte[]         cStr;
+      }
+   
+      [StructLayout(LayoutKind.Explicit, CharSet=CharSet.Auto)]
+         private struct STRRET_ANY
+      {
+         [FieldOffset(0)] 
+         public ESTRRET uType;
+         [FieldOffset(4)] 
+         public IntPtr pOLEString; 
+      }
+
+      [StructLayoutAttribute(LayoutKind.Sequential)]
+         private struct SIZE 
+      {
+         public int cx;
+         public int cy;
+      }
+      #endregion
+
+      #region COM Interop for IEnumIDList
+      [ComImportAttribute()]
+         [GuidAttribute("000214F2-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         //helpstring("IEnumIDList interface")
+         private interface IEnumIDList
+      {
+         [PreserveSig]
+         int Next(
+            int celt, 
+            ref IntPtr rgelt, 
+            out int pceltFetched);
+
+         void Skip(
+            int celt);
+
+         void Reset();
+    
+         void Clone(
+            ref IEnumIDList ppenum);
+      };
+      #endregion
+
+      #region Com Interop for IUnknown
+      [ComImport, Guid("00000000-0000-0000-C000-000000000046")]
+         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IUnknown
+      {
+         [PreserveSig]
+         IntPtr QueryInterface(ref Guid riid, out IntPtr pVoid);
+      
+         [PreserveSig]
+         IntPtr AddRef();
+
+         [PreserveSig]
+         IntPtr Release();
+      }
+      #endregion
+
+      #region COM Interop for IShellFolder
+      [ComImportAttribute()]
+         [GuidAttribute("000214E6-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         //helpstring("IShellFolder interface")
+         private interface IShellFolder
+      {
+         void ParseDisplayName(
+            IntPtr hwndOwner, 
+            IntPtr pbcReserved, 
+            [MarshalAs(UnmanagedType.LPWStr)] string lpszDisplayName,
+            out int pchEaten, 
+            out IntPtr ppidl, 
+            out int pdwAttributes);
+
+         void EnumObjects(
+            IntPtr hwndOwner, 
+            [MarshalAs(UnmanagedType.U4)] ESHCONTF grfFlags,
+            ref IEnumIDList ppenumIDList
+            );
+
+         void BindToObject(
+            IntPtr pidl, 
+            IntPtr pbcReserved, 
+            ref Guid riid, 
+            ref IShellFolder ppvOut);
+
+         void BindToStorage(
+            IntPtr pidl, 
+            IntPtr pbcReserved, 
+            ref Guid riid, 
+            IntPtr ppvObj
+            );
+
+         [PreserveSig]
+         int CompareIDs(
+            IntPtr lParam, 
+            IntPtr pidl1, 
+            IntPtr pidl2);
+
+         void CreateViewObject(
+            IntPtr hwndOwner, 
+            ref Guid riid, 
+            IntPtr ppvOut);
+
+         void GetAttributesOf(
+            int cidl, 
+            [MarshalAs(UnmanagedType.LPArray, SizeParamIndex=0)] IntPtr[]
+             apidl, 
+            [MarshalAs(UnmanagedType.U4)] ref ESFGAO rgfInOut); 
+
+         void GetUIObjectOf(
+            IntPtr hwndOwner, 
+            int cidl, 
+            ref IntPtr apidl, 
+            ref Guid riid, 
+            out int prgfInOut, 
+            ref IUnknown ppvOut);
+
+         void GetDisplayNameOf(
+            IntPtr pidl, 
+            [MarshalAs(UnmanagedType.U4)] ESHGDN uFlags,  
+            ref STRRET_CSTR lpName);
+
+         void SetNameOf(
+            IntPtr hwndOwner, 
+            IntPtr pidl,
+            [MarshalAs(UnmanagedType.LPWStr)] string lpszName,
+            [MarshalAs(UnmanagedType.U4)] ESHCONTF uFlags,
+            ref IntPtr ppidlOut);
+      };
+      #endregion
+
+      #region IFolderFilter Com Interop
+      [ComImportAttribute()]
+         [GuidAttribute("9CC22886-DC8E-11d2-B1D0-00C04F8EEB3E")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IFolderFilter
+      {
+         [PreserveSig]
+         int ShouldShow(
+            IShellFolder psf, 
+            IntPtr pidlFolder, 
+            IntPtr pidlItem);
+
+         [PreserveSig]
+         int GetEnumFlags(
+            IShellFolder psf, 
+            IntPtr pidlFolder, 
+            IntPtr phwnd, 
+            [MarshalAs(UnmanagedType.U4)] out ESHCONTF pgrfFlags);
+      };
+
+      #endregion
+
+      #region IFolderFilterSite Com Interop
+      [ComImportAttribute()]
+         [GuidAttribute("C0A651F5-B48B-11d2-B5ED-006097C686F6")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         //helpstring("IFolderFilterSite"),
+         private interface IFolderFilterSite
+      {
+         void SetFilter(
+            [MarshalAs(UnmanagedType.Interface)] IFolderFilter punk);
+      }
+      #endregion
+
+      #region FolderBrowser IMalloc Com Interop
+      [ComImportAttribute()]
+         [GuidAttribute("00000002-0000-0000-C000-000000000046")]
+         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+         //helpstring("IMalloc interface")
+         private interface IMalloc
+      {
+         [PreserveSig]
+         IntPtr Alloc(int cb);
+
+         [PreserveSig]
+         IntPtr Realloc(
+            IntPtr pv,
+            int cb);
+      
+         [PreserveSig]
+         void Free(IntPtr pv);
+
+         [PreserveSig]
+         int GetSize(IntPtr pv);
+
+         [PreserveSig]
+         int DidAlloc(IntPtr pv);
+
+         [PreserveSig]
+         void  HeapMinimize();
+      };
+      #endregion
+
+      #region SafePidl
+      public class SafePidl : IDisposable
+      {
+         private IntPtr pidl = IntPtr.Zero;
+         private bool shouldFree = true;
+
+         public IntPtr Pidl
+         {
+            get
+            {
+               return pidl;
+            }
+         }
+         public string Path
+         {
+            get
+            {
+               StringBuilder path = new StringBuilder(260, 260);
+               UnManagedMethods.SHGetPathFromIDList(pidl, path);
+               return path.ToString();
+            }
+         }
+
+         private IntPtr PathToPidl(string path)
+         {
+            IntPtr newPidl = IntPtr.Zero ;
+            IShellFolder ishFolder = null;
+            if (UnManagedMethods.SHGetDesktopFolder(out ishFolder) == 0) // S_OK
+            {
+               // we have it:
+               int cParsed = 0;
+               int afItem = 0;            
+               ishFolder.ParseDisplayName(
+                  IntPtr.Zero, 
+                  IntPtr.Zero, 
+                  path, 
+                  out cParsed, 
+                  out newPidl, 
+                  out afItem);
+               Marshal.ReleaseComObject(ishFolder);
+            }
+            return newPidl;
+         }
+
+
+         public void Dispose()
+         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+         }
+         protected virtual void Dispose(bool disposing) 
+         {
+            if (disposing) 
+            {
+               if (pidl != IntPtr.Zero)
+               {
+                  if (shouldFree)
+                  {
+                     Allocator.Free(pidl);   
+                  }
+               }
+               pidl = IntPtr.Zero;
+            }
+         }
+
+
+         internal SafePidl(IntPtr pidl, bool shouldFree)
+         {
+            this.pidl = pidl;
+            this.shouldFree = shouldFree;
+         }
+         public SafePidl(string path)
+         {
+            if (path.Length &gt; 0)
+            {
+               if (System.IO.Directory.Exists(path))
+               {
+                  this.pidl = PathToPidl(path);
+               }
+               else
+               {
+                  throw new System.IO.DirectoryNotFoundException(
+                     String.Format("The path {0} could not be found.", path));
+               }
+            }
+         }
+      }
+      #endregion
+
+      #region Allocator
+      public class Allocator : IDisposable
+      {
+         private static IMalloc alloc = null;
+         private static bool disposed = false;
+
+         public static void Free(IntPtr ptr)
+         {
+            if (!disposed)
+            {
+               if (alloc == null)
+               {
+                  UnManagedMethods.SHGetMalloc(out alloc);
+               }
+               if (alloc != null)
+               {
+                  try
+                  {
+                     alloc.Free(ptr);
+                  }
+                  catch (Exception ex)
+                  {
+                     Console.WriteLine("Problem {0}", ex.Message);
+                  }
+               }
+            }
+         }
+
+         public void Dispose()
+         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+         }
+
+         protected virtual void Dispose(bool disposing)
+         {
+            if (disposing)
+            {
+               if (!disposed)
+               {
+                  if (alloc != null)
+                  {
+                     Marshal.ReleaseComObject(alloc);
+                     alloc = null;
+                  }
+                  disposed = true;
+               }
+            }
+
+         }
+      }
+      #endregion
+
+      #region BrowseItemFilter
+      
+      [ComVisible(true)]
+         [Guid("43104713-CF18-43d4-8A3F-BC45AD280D57")]
+         private class BrowseItemFilter : IFolderFilter
+      {
+         FolderBrowserFilter filter = null;
+
+         public int ShouldShow(
+            IShellFolder psf,            // A pointer to the folder's
+             IShellFolder interface.
+            IntPtr pidlFolder,      // The folder's PIDL.
+            IntPtr pidlItem)      // The item's PIDL.
+         {
+            // Get the display name of the item:
+            int ret = 0;
+            if (filter != null)
+            {
+               // Get the display name of this item:
+               STRRET_CSTR name = new STRRET_CSTR();
+               psf.GetDisplayNameOf(
+                  pidlItem,
+                  ESHGDN.SHGDN_NORMAL | ESHGDN.SHGDN_FORPARSING, 
+                  ref name);
+               string displayName = "";
+               if (name.uType == ESTRRET.STRRET_WSTR)
+               {
+                  // first 4 bytes of name.cStr is a pointer
+                  // to a string;
+                  IntPtr strPtr = (IntPtr)(
+                     (((int)name.cStr[3]) &lt;&lt; 24) |
+                     (((int)name.cStr[2]) &lt;&lt; 16) |
+                     (((int)name.cStr[1]) &lt;&lt; 8) |
+                     (int)name.cStr[0]);
+                  displayName = Marshal.PtrToStringAuto(strPtr);
+               }
+               else
+               {
+                  // name.cStr contains the string as ANSI..
+                  // there must be a better way than this?
+                  for (int i = 0; i &lt; 260; i++)
+                  {
+                     if (name.cStr[i] == 0)
+                     {
+                        break;
+                     }
+                     else
+                     {
+                        displayName += Convert.ToChar(name.cStr[i]);
+                     }
+                  }
+               }
+               // determine if folder:
+               ESFGAO attrib = ESFGAO.SFGAO_FOLDER;
+               IntPtr[] apidl = new IntPtr[1];
+               apidl[0] = pidlItem;
+               psf.GetAttributesOf(1, apidl, ref attrib);               
+               bool isFolder = ((attrib &amp; ESFGAO.SFGAO_FOLDER) == 
+                ESFGAO.SFGAO_FOLDER);
+               if (filter.ShouldFilter(
+                  displayName, 
+                  isFolder)
+                  )
+               {
+                  ret = 1;
+               }
+            }
+            return ret;
+         }
+
+         public int GetEnumFlags(
+            IShellFolder psf, 
+            IntPtr pidlFolder, 
+            IntPtr phwnd, 
+            out ESHCONTF pgrfFlags
+            )
+         {
+            //            
+            pgrfFlags = ESHCONTF.SHCONTF_FOLDERS 
+               | ESHCONTF.SHCONTF_NONFOLDERS
+               | ESHCONTF.SHCONTF_SHAREABLE 
+               | ESHCONTF.SHCONTF_STORAGE ;
+            return 0;
+         }
+
+         public BrowseItemFilter(FolderBrowserFilter filter)
+         {
+            this.filter = filter;
+         }
+      }
+
+      #endregion
+
+      #region Internal Delegates
+      private delegate int BrowseCallBackProc(IntPtr hwnd, int msg, IntPtr lp,
+       IntPtr wp);
+      #endregion
+
+      #region FolderBrowser Structs
+      [StructLayout(LayoutKind.Sequential)]
+         private struct BrowseInfo
+      {
+         public IntPtr hwndOwner;
+         public IntPtr pidlRoot;
+         [MarshalAs(UnmanagedType.LPTStr)]
+         public string displayname;
+         [MarshalAs(UnmanagedType.LPTStr)]
+         public string title;
+         public int flags;
+         [MarshalAs(UnmanagedType.FunctionPtr)]
+         public BrowseCallBackProc callback;
+         public IntPtr lparam;
+      }
+      #endregion   
+
+      #region FolderBrowser UnManaged Methods
+      /// &lt;summary&gt;
+      /// A class that defines all the unmanaged methods used in the assembly
+      /// &lt;/summary&gt;
+      private class UnManagedMethods
+      {
+         [DllImport("Shell32.dll", CharSet=CharSet.Auto)]
+         internal extern static System.IntPtr SHBrowseForFolder(ref BrowseInfo
+          bi);
+      
+         [DllImport("Shell32.dll", CharSet=CharSet.Auto)]
+         [return : MarshalAs(UnmanagedType.Bool)]
+         internal extern static bool SHGetPathFromIDList(IntPtr pidl,
+          [MarshalAs(UnmanagedType.LPTStr)] System.Text.StringBuilder pszPath);
+
+         [DllImport("shell32", CharSet = CharSet.Auto)]
+         internal extern static int SHGetDesktopFolder(out IShellFolder ppshf);
+
+         [DllImport("User32.Dll")]
+         [return : MarshalAs(UnmanagedType.Bool)]
+         internal extern static bool SendMessage(IntPtr hwnd, int msg, IntPtr
+          wp, IntPtr lp);
+   
+         [DllImport("shell32", CharSet = CharSet.Auto)]
+         internal extern static int SHGetMalloc(out IMalloc ppMalloc);
+
+         internal const int WM_USER = 0x0400;
+
+         internal const int BFFM_ENABLEOK = (WM_USER + 101);
+         internal const int BFFM_SETSELECTIONA = (WM_USER + 102);
+         internal const int BFFM_SETSELECTIONW = (WM_USER + 103);
+         internal const int BFFM_SETSTATUSTEXTA = (WM_USER + 100);
+         internal const int BFFM_SETSTATUSTEXTW = (WM_USER + 104);
+         internal const int BFFM_SETOKTEXT = (WM_USER + 105);
+         internal const int BFFM_SETEXPANDED = (WM_USER + 106);
+
+         internal const int BFFM_INITIALIZED = 1;
+         internal const int BFFM_SELCHANGED = 2;
+         internal const int BFFM_VALIDATEFAILEDA = 3;
+         internal const int BFFM_VALIDATEFAILEDW = 4;
+         internal const int BFFM_IUNKNOWN = 5;
+
+         internal const int WM_SYSCOMMAND = 0x112;
+         internal const int SC_CLOSE = 0xF060;
+
+      }
+      #endregion
+      
+      #region Private Enumerations
+      /// &lt;summary&gt;
+      /// Shell Folder Browser flags
+      /// &lt;/summary&gt;
+      [Flags]
+         private enum BrowseFlags : int
+      {
+         BIF_RETURNONLYFSDIRS   = 0x0001,
+         BIF_DONTGOBELOWDOMAIN = 0x0002,
+         BIF_STATUSTEXT = 0x0004,
+         BIF_RETURNFSANCESTORS = 0x0008,
+         BIF_EDITBOX = 0x0010,
+         BIF_VALIDATE = 0x0020,
+         BIF_NEWDIALOGSTYLE = 0x0040,
+         BIF_BROWSEINCLUDEURLS = 0x0080,
+         BIF_UAHINT = 0x0100,
+         BIF_NONEWFOLDERBUTTON = 0x0200,
+         BIF_BROWSEFORCOMPUTER = 0x1000,
+         BIF_BROWSEFORPRINTER = 0x2000,
+         BIF_BROWSEINCLUDEFILES = 0x4000,
+         BIF_SHAREABLE = 0x8000,
+      }
+      #endregion
+
+      #region Member Variables
+      private BrowseFlags flags = BrowseFlags.BIF_NEWDIALOGSTYLE |
+       BrowseFlags.BIF_RETURNFSANCESTORS;
+      private string statusText = "";
+      private bool displayed = false;   
+      private bool okEnabled = true;
+      private string okButtonText = "";
+      private string selectedPath = "";
+      private string title = "";
+      private string rootPath = "";
+      private string initialPath = "";
+      private IntPtr handle = IntPtr.Zero;
+      private string displayName = "";
+      private SafePidl pidlReturned;
+      public FolderBrowserFilter filter = null;
+      #endregion
+
+      #region Events
+
+      /// &lt;summary&gt;
+      /// Fired when the dialog is initialized
+      /// &lt;/summary&gt;
+      public event EventHandler Initialized;
+      
+      /// &lt;summary&gt;
+      /// Fired when selection changes
+      /// &lt;/summary&gt;
+      public event SelectionChangedEventHandler SelectionChanged;
+
+      /// &lt;summary&gt;
+      /// Fired when a TextBox is shown and the user chooses
+      /// OK but the Textbox contains an invalid filename or
+      /// path.
+      /// &lt;/summary&gt;
+      public event ValidationFailedEventHandler ValidationFailed;
+
+      #endregion
+
+      #region Properties
+      /// &lt;summary&gt;
+      /// Gets/sets the filter object which can be used to filter
+      /// which items appear in the Folder Browser
+      /// &lt;/summary&gt;
+      public FolderBrowserFilter Filter
+      {
+         get
+         {
+            return filter;
+         }
+         set
+         {
+            filter = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the handle of the Folder Browser dialog when it is
+      /// displayed.
+      /// &lt;/summary&gt;
+      public IntPtr Handle
+      {
+         get
+         {
+            return handle;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/Sets the initially selected folder for the dialog.
+      /// &lt;/summary&gt;
+      public string InitialPath
+      {
+         get
+         {
+            return initialPath;
+         }
+         set
+         {
+            initialPath = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the string that is displayed above the 
+      /// tree view control in the dialog box.
+      /// &lt;/summary&gt;
+      public string Title
+      {
+         get
+         {
+            return title;
+         }
+         set
+         {
+            title = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the root path for the dialog.
+      /// &lt;/summary&gt;
+      public string RootPath
+      {
+         get
+         {
+            return rootPath;
+         }
+         set
+         {
+            rootPath = value;
+         }
+      }
+
+
+      private bool FlagSet(BrowseFlags flag)
+      {
+         return ((flags &amp; flag) == flag);
+      }
+      private void FlagSet(BrowseFlags flag, bool value)
+      {
+         if (value)
+         {
+            flags |= flag;
+         }
+         else
+         {
+            flags &amp;= ~flag;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether file system directories only are selectable. 
+      /// If set, and the user selects a folder that is not part of the file
+       system, 
+      /// the OK button is grayed. 
+      /// &lt;/summary&gt;
+      public bool FileSystemDirectoriesOnly
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_RETURNONLYFSDIRS);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_RETURNONLYFSDIRS, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether network folders below the domain level 
+      /// are shown in the dialog box's tree view control. 
+      /// &lt;/summary&gt;
+      public bool ShowDomainNetworkFolders
+      {
+         get
+         {
+            return (FlagSet(BrowseFlags.BIF_DONTGOBELOWDOMAIN) ? false : true);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_DONTGOBELOWDOMAIN, (value ? false : true));
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether a status area is included in the dialog box. 
+      /// The status text can be set using the StatusText property.
+      /// &lt;/summary&gt;
+      public bool ShowStatusText
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_STATUSTEXT);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_STATUSTEXT, value);
+         }
+      }
+
+      public string StatusText
+      {
+         get
+         {
+            return statusText;
+         }
+         set
+         {
+            statusText = value;
+            if (displayed)
+            {
+               setStatusText();
+            }
+         }
+      }
+
+      private void setStatusText()
+      {
+         int msg = (Environment.OSVersion.Platform == PlatformID.Win32NT) ? 
+            UnManagedMethods.BFFM_SETSTATUSTEXTW : 
+            UnManagedMethods.BFFM_SETSTATUSTEXTA;
+         IntPtr strptr = Marshal.StringToHGlobalAuto(statusText);
+
+         UnManagedMethods.SendMessage(
+            handle, 
+            msg, 
+            IntPtr.Zero, 
+            strptr);
+         
+         Marshal.FreeHGlobal(strptr);
+
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether file system ancestors only can be selected. 
+      /// An ancestor is a subfolder that is beneath the root folder in the 
+      /// namespace hierarchy. If set, and the user selects an ancestor of the
+       root 
+      /// folder that is not part of the file system, the OK button is grayed.
+      /// &lt;/summary&gt;
+      public bool FileSystemAncestorsOnly
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_RETURNFSANCESTORS);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_RETURNFSANCESTORS, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether to include an edit control in the browse dialog 
+      /// box that allows the user to type the name of an item.  Requires
+      /// IE4.0 or above.
+      /// &lt;/summary&gt;
+      public bool ShowEditBox
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_EDITBOX);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_EDITBOX, value);
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Gets/sets whether the ValidateFailedEvent is called if the user has
+       typed an 
+      /// invalid name into the edit box.  Ignored if no EditBox.
+      /// &lt;/summary&gt;
+      public bool ValidateEditBox
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_VALIDATE);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_VALIDATE, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the new FolderBrowser user interface should be
+       used. 
+      /// Setting this flag provides the user with a larger dialog box that can 
+      /// be resized. The dialog box has several new capabilities including:
+       drag and 
+      /// drop capability within the dialog box, reordering, shortcut menus, 
+      /// new folders, delete, and other shortcut menu commands. 
+      /// &lt;/summary&gt;
+      public bool NewDialogStyle
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_NEWDIALOGSTYLE);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_NEWDIALOGSTYLE, value);
+         }
+
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether to show URLs in folders which support browsing 
+      /// for URLs.
+      /// &lt;/summary&gt;
+      public bool IncludeUrls
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_BROWSEINCLUDEURLS);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_BROWSEINCLUDEURLS, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether a usage hint will be shown in the dialog 
+      /// box in place of the edit box. ShowEditBox overrides this flag. 
+      /// Only valid when NewDialogStyle is set.
+      /// &lt;/summary&gt;
+      public bool ShowUsageHint
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_UAHINT);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_UAHINT, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Do not include the "New Folder" button in the browse dialog box. 
+      /// &lt;/summary&gt;
+      public bool NoNewFolderButton
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_NONEWFOLDERBUTTON);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_NONEWFOLDERBUTTON, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the dialog only return computers. When set, if the 
+      /// user selects anything other than  a computer, the OK button is grayed.
+      /// &lt;/summary&gt;
+      public bool BrowseForComputer
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_BROWSEFORCOMPUTER);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_BROWSEFORCOMPUTER, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the dialog only returns printers. When set, if the
+      /// user selects anything other than a printer, the OK button is grayed.
+      /// &lt;/summary&gt;
+      public bool BrowseForPrinter
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_BROWSEFORPRINTER);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_BROWSEFORPRINTER, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the browse dialog box will display files 
+      /// as well as folders. 
+      /// &lt;/summary&gt;
+      public bool IncludeFiles
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_BROWSEFORPRINTER);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_BROWSEFORPRINTER, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the browse dialog box displays shareable resources 
+      /// on remote systems. It is intended for applications that want to
+       expose 
+      /// remote shares on a local system. NewDialogStyle must also be set.
+      /// &lt;/summary&gt;
+      public bool ShowRemoteShares
+      {
+         get
+         {
+            return FlagSet(BrowseFlags.BIF_SHAREABLE);
+         }
+         set
+         {
+            FlagSet(BrowseFlags.BIF_SHAREABLE, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the OK button is enabled or not.
+      /// &lt;/summary&gt;
+      public bool OkButtonEnabled
+      {
+         get
+         {
+            return okEnabled;
+         }
+         set
+         {
+            okEnabled = value;
+            if (displayed)
+            {
+               setEnableOkButton();
+            }
+         }
+      }
+
+      private void setEnableOkButton()
+      {
+         IntPtr lp = (okEnabled ? new IntPtr(1) : IntPtr.Zero);
+         
+         UnManagedMethods.SendMessage(
+            handle, 
+            UnManagedMethods.BFFM_ENABLEOK, 
+            IntPtr.Zero, 
+            lp);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the selected path
+      /// &lt;/summary&gt;
+      public string SelectedPath
+      {
+         get
+         {
+            return selectedPath;
+         }
+         set
+         {
+            selectedPath = value;
+            if (displayed)
+            {
+               setSelectedPath();
+            }
+         }
+      }
+
+      private void setSelectedPath()
+      {
+         int msg = (Environment.OSVersion.Platform == PlatformID.Win32NT) ? 
+            UnManagedMethods.BFFM_SETSELECTIONA : 
+            UnManagedMethods.BFFM_SETSELECTIONW;
+         
+         IntPtr strptr = Marshal.StringToHGlobalAuto(selectedPath);
+
+         UnManagedMethods.SendMessage(
+            handle, 
+            msg, 
+            new IntPtr(1), 
+            strptr);
+         
+         Marshal.FreeHGlobal(strptr);
+      }
+
+      public string OkButtonText
+      {
+         get
+         {
+            return okButtonText;
+         }
+         set
+         {
+            okButtonText = value;
+            setOkButtonText();
+         }
+      }
+
+      private void setOkButtonText()
+      {      
+         IntPtr strptr = Marshal.StringToHGlobalUni(okButtonText);
+
+         UnManagedMethods.SendMessage(
+            handle, 
+            UnManagedMethods.BFFM_SETOKTEXT, 
+            new IntPtr(1), 
+            strptr);
+         
+         Marshal.FreeHGlobal(strptr);
+      }
+      #endregion
+
+      #region BrowseCallback
+      private int BrowseCallbackProc(
+         IntPtr hwnd, 
+         int msg, 
+         IntPtr lParam, 
+         IntPtr lpData
+         )
+      {
+         int ret = 0;
+
+         switch(msg)
+         {
+            case UnManagedMethods.BFFM_INITIALIZED:
+               handle = hwnd;
+               if (lpData != IntPtr.Zero)
+               {   // lpData contains the PIDF:
+                  int selMsg = (Environment.OSVersion.Platform ==
+                   PlatformID.Win32NT) ? 
+                     UnManagedMethods.BFFM_SETSELECTIONA : 
+                     UnManagedMethods.BFFM_SETSELECTIONW;
+                  UnManagedMethods.SendMessage(
+                     hwnd, 
+                     selMsg, 
+                     System.IntPtr.Zero, 
+                     lpData);
+               }
+               if (okButtonText != null)
+               {
+                  if (okButtonText.Trim().Length &gt; 0)
+                  {
+                     setOkButtonText();
+                  }
+               }
+               if (statusText != null)
+               {
+                  if (statusText.Trim().Length &gt; 0)
+                  {
+                     setStatusText();
+                  }
+               }
+               if (Initialized != null)
+               {
+                  Initialized(this, null);
+               }
+               break;
+
+            case UnManagedMethods.BFFM_IUNKNOWN:
+               // IFolderFilter only available under XP:               
+               if ((filter != null) &amp;&amp; (isXpOrAbove()))
+               {
+                  // Check whether the user has asked to apply a filter:
+                  if (filter.ApplyFilter)
+                  {
+                     // connect the filter:
+                     if (lParam != IntPtr.Zero)
+                     {
+                        // lParam is the IUnknown interface:
+                        Guid iidFolderFilterSite = new Guid(
+                           "C0A651F5-B48B-11d2-B5ED-006097C686F6"); //
+                            IID_IFolderFilterSite
+                        IntPtr ptrFolderFilterSite = IntPtr.Zero;
+                        Marshal.QueryInterface(
+                           lParam,
+                           ref iidFolderFilterSite,
+                           out ptrFolderFilterSite);
+
+                        if (ptrFolderFilterSite != IntPtr.Zero)
+                        {
+                           IFolderFilterSite folderFilterSite = 
+                              (IFolderFilterSite)Marshal.GetTypedObjectForIUnkno
+                              wn(
+                              ptrFolderFilterSite,
+                              System.Type.GetType("IFolderFilterSite"));
+                           
+                           BrowseItemFilter itemFilter = new
+                            BrowseItemFilter(filter);
+
+                           folderFilterSite.SetFilter(itemFilter);
+                        }
+                     }
+                  }
+               }
+               break;
+
+            case UnManagedMethods.BFFM_SELCHANGED:
+               SafePidl pidl = new SafePidl(lParam, false);
+               selectedPath = pidl.Path;
+               if (SelectionChanged != null)
+               {
+                  SelectionChangedEventArgs e = new
+                   SelectionChangedEventArgs(pidl);
+                  SelectionChanged(this, e);                  
+               }
+               break;
+
+            case UnManagedMethods.BFFM_VALIDATEFAILEDA:
+               if (ValidationFailed != null)
+               {
+                  if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+                  {
+                     // platform SDK incorrectly states that the message
+                     // is contained in lpData - it is in lParam
+                     ValidationFailedEventArgs e = new
+                      ValidationFailedEventArgs(
+                        Marshal.PtrToStringAnsi(lParam));
+                     ValidationFailed(this, e);
+                  
+                     ret = (e.Cancel ? 0 : 1);
+                  }
+               }
+               break;
+
+            case UnManagedMethods.BFFM_VALIDATEFAILEDW:
+               if (ValidationFailed != null)
+               {
+                  if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                  {
+                     // platform SDK incorrectly states that the message
+                     // is contained in lpData - it is in lParam
+                     ValidationFailedEventArgs e = new
+                      ValidationFailedEventArgs(
+                        Marshal.PtrToStringUni(lParam));
+                     ValidationFailed(this, e);
+                  
+                     ret = (e.Cancel ? 0 : 1);
+                  }
+               }
+               break;               
+         }
+
+         return ret;
+      }
+      #endregion BrowseCallback
+
+      #region Methods
+      /// &lt;summary&gt;
+      /// Shows the dialog
+      /// &lt;/summary&gt;
+      /// &lt;param name="owner"&gt;The window to use as the owner&lt;/param&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public DialogResult ShowDialog(System.Windows.Forms.IWin32Window owner)
+      {
+         if (handle != IntPtr.Zero)
+            throw new InvalidOperationException();
+
+         BrowseInfo bi = new BrowseInfo();
+         
+         if (owner != null)
+            bi.hwndOwner = owner.Handle;
+
+         return showDialog(ref bi);
+      }
+
+      /// &lt;summary&gt;
+      /// Shows the dialog using active window as the owner
+      /// &lt;/summary&gt;
+      public DialogResult ShowDialog()
+      {
+         return ShowDialog(Form.ActiveForm);
+      }
+
+      /// &lt;summary&gt;
+      /// Closes the folder browser dialog (if it is displayed)
+      /// &lt;/summary&gt;
+      public void CloseDialog()
+      {
+         if (handle != IntPtr.Zero)
+         {
+            UnManagedMethods.SendMessage(
+               handle, 
+               UnManagedMethods.WM_SYSCOMMAND, 
+               (IntPtr)UnManagedMethods.SC_CLOSE, 
+               IntPtr.Zero);
+            handle = IntPtr.Zero;
+         }
+      }
+
+      private DialogResult showDialog(ref BrowseInfo bi)
+      {
+         DialogResult dialogResult = DialogResult.Cancel;
+         
+         // Initialise the BrowseInfo structure:
+         SafePidl pidlRoot = new SafePidl(rootPath);
+         SafePidl pidlInitial = new SafePidl(initialPath);
+                  
+         bi.title = title;
+         bi.displayname = new string('\0', 260);
+         bi.callback = new BrowseCallBackProc(this.BrowseCallbackProc);
+         bi.flags = (int)flags;
+         bi.pidlRoot = pidlRoot.Pidl;
+         bi.lparam = pidlInitial.Pidl;
+
+         // Do the folder browsing:
+         IntPtr pidl = UnManagedMethods.SHBrowseForFolder(ref bi);
+         if (pidl != IntPtr.Zero)
+         {
+            pidlReturned = new SafePidl(pidl, true);
+            displayName = bi.displayname;
+            dialogResult = DialogResult.OK;
+         }
+
+         //Reset the handle
+         handle = IntPtr.Zero;
+
+         // Clear up:
+         pidlRoot.Dispose();
+         pidlInitial.Dispose();
+
+         return dialogResult;
+      }
+
+      private bool isXpOrAbove()
+      {
+         bool ret = false;
+         if (Environment.OSVersion.Version.Major &gt; 5)
+         {
+            ret = true;
+         }
+         else if ((Environment.OSVersion.Version.Major == 5) &amp;&amp;
+            (Environment.OSVersion.Version.Minor &gt;= 1))
+         {
+            ret = true;
+         }
+         return ret;
+                                           
+
+      }
+      #endregion Methods
+
+      #region Constructor and Destructor
+      public void Dispose()
+      {
+         Dispose(true);
+         GC.SuppressFinalize(this);
+      }
+      protected virtual void Dispose(bool disposing)
+      {
+         if (disposing)
+         {
+            if (pidlReturned != null)
+            {
+               pidlReturned.Dispose();
+               pidlReturned = null;
+            }
+            Allocator a = new Allocator();
+            a.Dispose();
+            a = null;
+         }
+      }
+
+      public FolderBrowser()
+      {
+         filter = new FolderBrowserFilter();
+      }
+      #endregion
+   }
+   #endregion
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Thumbnail Extraction Using the Shell</a>&#160;.&#160;<a href="..\thumbail_tester_code.html">Thumbail Tester Code</a>&#160;.&#160;ThumbnailTester</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

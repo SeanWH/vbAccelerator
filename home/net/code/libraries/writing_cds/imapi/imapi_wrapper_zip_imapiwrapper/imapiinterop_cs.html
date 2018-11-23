@@ -1,0 +1,1590 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IMAPIWrapper\IMAPIInterop.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IMAPIWrapper\IMAPIInterop.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./IMAPI_Wrapper.asp" /><link rel="meta" type="application/rdf+xml" href="./IMAPI Wrapper.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper.html">IMAPI Wrapper</a>&#160;.&#160;IMAPIWrapper</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="acclimapiwrapper_binary.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />acclImapiWrapper Binary</a> (21K)</p><p /><p class="nav"><a href="imapi_wrapper_demonstration.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Demonstration</a> (84K)</p><p class="nav"><a href="imapi_wrapper_documentation.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Documentation</a> (85K)</p><p class="nav"><a href="imapi_wrapper.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper</a> (89K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15430</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15430&type=zip&title=imapiinterop.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IMAPIWrapper\IMAPIInterop.cs</h1><p>This file is part of the download <a href="imapi_wrapper.html">IMAPI Wrapper</a>, which is described in the article <a href="article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>.</p><pre>using System;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace vbAccelerator.Components.ImapiWrapper
+{
+
+   #region Enumerations used within IMAPI and associated interfaces
+   /// &lt;summary&gt;
+   /// Property Set Flags
+   /// &lt;/summary&gt;
+   [Flags]
+    internal enum PROPSETFLAG : int 
+   {
+        PROPSETFLAG_DEFAULT    = 0,
+        PROPSETFLAG_NONSIMPLE  = 1,
+        PROPSETFLAG_ANSI       = 2,
+        PROPSETFLAG_UNBUFFERED = 4
+    }
+
+   /// &lt;summary&gt;
+   /// Property ID types
+   /// &lt;/summary&gt;
+    internal enum PRPSPEC : uint 
+   {
+        PRSPEC_LPWSTR  = 0,
+        PRSPEC_PROPID  = 1,
+        PRSPEC_INVALID = 0xffffffff
+    }
+
+   /// &lt;summary&gt;
+   /// Contexts for CoCreateInstance
+   /// &lt;/summary&gt;
+    internal enum CLSCTX : int
+    {
+      CLSCTX_INPROC_SERVER   = 1, 
+      CLSCTX_INPROC_HANDLER  = 2,     
+      CLSCTX_LOCAL_SERVER    = 4, 
+      CLSCTX_REMOTE_SERVER   = 16
+   } ;
+
+   /// &lt;summary&gt;
+   /// CD Media Types
+   /// &lt;/summary&gt;
+    public enum MEDIA_TYPES : int
+    {
+      /// &lt;summary&gt;
+      /// CDDA CDROM media
+      /// &lt;/summary&gt;
+      MEDIA_CDDA_CDROM   = 1,
+      /// &lt;summary&gt;
+      /// CD ROM XA media
+      /// &lt;/summary&gt;
+      MEDIA_CD_ROM_XA      = 2,
+      /// &lt;summary&gt;
+      /// CD_I media
+      /// &lt;/summary&gt;
+      MEDIA_CD_I         = 3,
+      /// &lt;summary&gt;
+      /// CD Extra media
+      /// &lt;/summary&gt;
+      MEDIA_CD_EXTRA      = 4,
+      /// &lt;summary&gt;
+      /// CD Other media
+      /// &lt;/summary&gt;
+      MEDIA_CD_OTHER      = 5,
+      /// &lt;summary&gt;
+      /// Special media
+      /// &lt;/summary&gt;
+      MEDIA_SPECIAL      = 6      
+    } 
+
+   /// &lt;summary&gt;
+   /// Flags describing media
+   /// &lt;/summary&gt;
+   [Flags]
+   public enum MEDIA_FLAGS : int
+   {
+      /// &lt;summary&gt;
+      /// Blank media
+      /// &lt;/summary&gt;
+       MEDIA_BLANK   = 0x1,
+      /// &lt;summary&gt;
+      /// Read/Write media
+      /// &lt;/summary&gt;
+      MEDIA_RW   = 0x2,
+      /// &lt;summary&gt;
+      /// Writable media
+      /// &lt;/summary&gt;
+      MEDIA_WRITABLE   = 0x4,
+      /// &lt;summary&gt;
+      /// Unusable media
+      /// &lt;/summary&gt;
+      MEDIA_FORMAT_UNUSABLE_BY_IMAPI   = 0x8
+   }
+
+   /// &lt;summary&gt;
+   /// CD Recorder types
+   /// &lt;/summary&gt;
+   public enum RECORDER_TYPES : int
+   {
+      /// &lt;summary&gt;
+      /// CDR recorder
+      /// &lt;/summary&gt;
+      RECORDER_CDR   = 0x1,
+      /// &lt;summary&gt;
+      /// CDRW recorder
+      /// &lt;/summary&gt;
+      RECORDER_CDRW   = 0x2
+   }
+
+   /// &lt;summary&gt;
+   /// State of a recorder on the system
+   /// &lt;/summary&gt;
+   public enum RECORDER_STATE : int 
+   {
+      /// &lt;summary&gt;
+      /// Recorder is idle.
+      /// &lt;/summary&gt;
+      RECORDER_DOING_NOTHING = 0,
+      /// &lt;summary&gt;
+      /// Recorder is opened for exclusive access.
+      /// &lt;/summary&gt;
+      RECORDER_OPENED = 0x1,
+      /// &lt;summary&gt;
+      /// Recorder is burning.
+      /// &lt;/summary&gt;
+      RECORDER_BURNING = 0x2
+   }
+
+   /// &lt;summary&gt;
+   /// Flags for IStorage
+   /// &lt;/summary&gt;
+   [Flags]
+   internal enum STGC  : int
+   {
+      STGC_DEFAULT = 0,
+      STGC_OVERWRITE = 1,
+      STGC_ONLYIFCURRENT = 2,
+      STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE = 4,
+      STGC_CONSOLIDATE = 8
+   }
+
+   /// &lt;summary&gt;
+   /// Storage instantiation modes
+   /// &lt;/summary&gt;
+   [Flags]
+   internal enum STGM : int
+   {
+      STGM_DIRECT = 0x00000000,
+      STGM_TRANSACTED = 0x00010000,
+      STGM_SIMPLE = 0x08000000,
+
+      STGM_READ = 0x00000000,
+      STGM_WRITE = 0x00000001,
+      STGM_READWRITE = 0x00000002,
+
+      STGM_SHARE_DENY_NONE = 0x00000040,
+      STGM_SHARE_DENY_READ = 0x00000030,
+      STGM_SHARE_DENY_WRITE = 0x00000020,
+      STGM_SHARE_EXCLUSIVE = 0x00000010,
+
+      STGM_PRIORITY = 0x00040000,
+      STGM_DELETEONRELEASE = 0x04000000,
+      STGM_NOSCRATCH = 0x00100000,
+
+      STGM_CREATE = 0x00001000,
+      STGM_CONVERT = 0x00020000,
+      STGM_FAILIFTHERE = 0x00000000,
+
+      STGM_NOSNAPSHOT = 0x00200000,
+      STGM_DIRECT_SWMR = 0x00400000,
+   }
+
+   /// &lt;summary&gt;
+   /// IStorage move and copy 
+   /// &lt;/summary&gt;
+   internal enum STGMOVE : int
+   {
+      STGMOVE_MOVE = 0,
+      STGMOVE_COPY = 1,
+      STGMOVE_SHALLOWCOPY = 2
+   }
+
+   /// &lt;summary&gt;
+   /// Status flags
+   /// &lt;/summary&gt;
+   [Flags]
+   internal enum STATFLAG : int
+   {
+       STATFLAG_DEFAULT = 0,
+      STATFLAG_NONAME = 1,
+      STATFLAG_NOOPEN = 2
+   }
+
+   /// &lt;summary&gt;
+   /// Storage type
+   /// &lt;/summary&gt;
+   internal enum STGTY : int
+   {
+      STGTY_STORAGE = 1,
+      STGTY_STREAM = 2,
+      STGTY_LOCKBYTES = 3,
+      STGTY_PROPERTY = 4
+   }
+
+   /// &lt;summary&gt;
+   /// Lock types
+   /// &lt;/summary&gt;
+   [Flags]
+   internal enum LOCKTYPE : int
+   {
+      LOCK_WRITE = 1,
+      LOCK_EXCLUSIVE = 2,
+      LOCK_ONLYONCE = 4
+   }
+
+   /// &lt;summary&gt;
+   /// Stream seeking options
+   /// &lt;/summary&gt;
+   internal enum STREAM_SEEK : int
+   {
+      STREAM_SEEK_SET = 0,
+      STREAM_SEEK_CUR = 1,
+      STREAM_SEEK_END = 2
+   }
+
+   internal enum GENERIC_ERROR_CODES : uint
+   {
+      S_OK = 0,
+      S_FALSE = 1,
+      E_NOTIMPL = 0x80004001,
+      E_FAIL = 0x80004005,
+      E_UNEXPECTED = 0x8000FFFF
+   }
+
+   internal enum STG_ERROR_CONSTANTS : uint
+   {
+      STG_E_INVALIDFUNCTION = 0x80030001,
+      STG_E_FILENOTFOUND = 0x80030002,
+      STG_E_INVALIDPOINTER = 0x80030009,
+      STG_E_INVALIDFLAG = 0x800300FF
+   }
+
+   /// &lt;summary&gt;
+   /// Error codes returned by IMAPI.  These are thrown as &lt;c&gt;COMException&lt;/c&gt;
+   /// errors on calling IMAPI methods; the &lt;c&gt;ErrorCode&lt;/c&gt; property of the 
+   /// exception can be compared to these values. Note that the framework
+   /// will fill in an arbitrary error description which is frequently
+   /// inappropriate as these codes appear to be the same as error codes
+   /// used elsewhere in COM.
+   /// &lt;/summary&gt;   
+   public enum IMAPI_ERROR_CODES : uint
+   {      
+      /// &lt;summary&gt;
+      /// An unknown property was passed in a property set and it was ignored.
+      /// &lt;/summary&gt;
+      IMAPI_S_PROPERTIESIGNORED = 0x80040200,
+      /// &lt;summary&gt;
+      /// Buffer too small
+      /// &lt;/summary&gt;
+      IMAPI_S_BUFFER_TOO_SMALL = 0x80040201,
+      /// &lt;summary&gt;
+      /// A call to IDiscMaster::Open has not been made.
+      /// &lt;/summary&gt;
+      IMAPI_E_NOTOPENED = 0x8004020B,
+      /// &lt;summary&gt;
+      /// A recorder object has not been initialized.
+      /// &lt;/summary&gt;
+      IMAPI_E_NOTINITIALIZED = 0x8004020C,
+      /// &lt;summary&gt;
+      /// The user canceled the operation.
+      /// &lt;/summary&gt;
+      IMAPI_E_USERABORT = 0x8004020D,
+      /// &lt;summary&gt;
+      /// A generic error occurred.
+      /// &lt;/summary&gt;
+      IMAPI_E_GENERIC = 0x8004020E,
+      /// &lt;summary&gt;
+      /// There is no disc in the device.
+      /// &lt;/summary&gt;
+      IMAPI_E_MEDIUM_NOTPRESENT = 0x8004020F,
+      /// &lt;summary&gt;
+      /// The media is not a type that can be used.
+      /// &lt;/summary&gt;
+      IMAPI_E_MEDIUM_INVALIDTYPE = 0x80040210,
+      /// &lt;summary&gt;
+      /// The recorder does not support any properties.
+      /// &lt;/summary&gt;
+      IMAPI_E_DEVICE_NOPROPERTIES = 0x80040211,
+      /// &lt;summary&gt;
+      /// The device cannot be used or is already in use.
+      /// &lt;/summary&gt;
+      IMAPI_E_DEVICE_NOTACCESSIBLE = 0x80040212,
+      /// &lt;summary&gt;
+      /// The device is not present or has been removed.
+      /// &lt;/summary&gt;
+      IMAPI_E_DEVICE_NOTPRESENT = 0x80040213,
+      /// &lt;summary&gt;
+      /// The recorder does not support an operation.
+      /// &lt;/summary&gt;
+      IMAPI_E_DEVICE_INVALIDTYPE = 0x80040214,
+      /// &lt;summary&gt;
+      /// The drive interface could not be initialized for writing.
+      /// &lt;/summary&gt;
+      IMAPI_E_INITIALIZE_WRITE = 0x80040215,
+      /// &lt;summary&gt;
+      /// The drive interface could not be initialized for closing.
+      /// &lt;/summary&gt;
+      IMAPI_E_INITIALIZE_ENDWRITE = 0x80040216,
+      /// &lt;summary&gt;
+      /// "An error occurred while enabling/disabling file system access or
+       during auto-insertion detection.
+      /// &lt;/summary&gt;
+      IMAPI_E_FILESYSTEM = 0x80040217,
+      /// &lt;summary&gt;
+      /// An error occurred while writing the image file.
+      /// &lt;/summary&gt;
+      IMAPI_E_FILEACCESS = 0x80040218,
+      /// &lt;summary&gt;
+      /// An error occurred while trying to read disc data from the device.
+      /// &lt;/summary&gt;
+      IMAPI_E_DISCINFO = 0x80040219,
+      /// &lt;summary&gt;
+      /// An audio track is not open for writing.
+      /// &lt;/summary&gt;
+      IMAPI_E_TRACKNOTOPEN = 0x8004021A,
+      /// &lt;summary&gt;
+      /// An open audio track is already being staged.
+      /// &lt;/summary&gt;
+      IMAPI_E_TRACKOPEN = 0x8004021B,
+      /// &lt;summary&gt;
+      /// The disc cannot hold any more data.
+      /// &lt;/summary&gt;
+      IMAPI_E_DISCFULL = 0x8004021C,
+      /// &lt;summary&gt;
+      /// The application tried to add a badly named element to a disc.
+      /// &lt;/summary&gt;
+      IMAPI_E_BADJOLIETNAME = 0x8004021D,
+      /// &lt;summary&gt;
+      /// The staged image is not suitable for a burn. It has been 
+      /// corrupted or cleared and has no usable content.
+      /// &lt;/summary&gt;
+      IMAPI_E_INVALIDIMAGE = 0x8004021E,
+      /// &lt;summary&gt;
+      /// An active format master has not been selected using 
+      /// IDiscMaster::SetActiveDiscMasterFormat.
+      /// &lt;/summary&gt;
+      IMAPI_E_NOACTIVEFORMAT = 0x8004021F,
+      /// &lt;summary&gt;
+      /// An active disc recorder has not been selected using 
+      /// IDiscMaster::SetActiveDiscRecorder.
+      /// &lt;/summary&gt;
+      IMAPI_E_NOACTIVERECORDER = 0x80040220,
+      /// &lt;summary&gt;
+      /// A call to IJolietDiscMaster has been made when IRedbookDiscMaster is 
+      /// the active format, or vice versa. To use a different format, change 
+      /// the format and clear the image file contents.
+      /// &lt;/summary&gt;
+      IMAPI_E_WRONGFORMAT = 0x80040221,
+      /// &lt;summary&gt;
+      /// A call to IDiscMaster::Open has already been made against this 
+      /// object by your application.
+      /// &lt;/summary&gt;
+      IMAPI_E_ALREADYOPEN = 0x80040222,
+      /// &lt;summary&gt;
+      /// The IMAPI multi-session disc has been removed from the active
+       recorder.
+      /// &lt;/summary&gt;
+      IMAPI_E_WRONGDISC = 0x80040223,
+      /// &lt;summary&gt;
+      /// The file to add is already in the image file and the overwrite 
+      /// flag was not set.
+      /// &lt;/summary&gt;
+      IMAPI_E_FILEEXISTS = 0x80040224,
+      /// &lt;summary&gt;
+      /// Another application is already using the IMAPI stash file required to 
+      /// stage a disc image. Try again later.
+      /// &lt;/summary&gt;
+      IMAPI_E_STASHINUSE = 0x80040225,
+      /// &lt;summary&gt;
+      /// Another application is already using this device, so IMAPI cannot 
+      /// access the device.
+      /// &lt;/summary&gt;
+      IMAPI_E_DEVICE_STILL_IN_USE = 0x80040226,
+      /// &lt;summary&gt;
+      /// Content streaming was lost; a buffer under-run may have occurred.
+      /// &lt;/summary&gt;
+      IMAPI_E_LOSS_OF_STREAMING = 0x80040227,
+      /// &lt;summary&gt;
+      /// The stash is located on a compressed volume and cannot be read.
+      /// &lt;/summary&gt;
+      IMAPI_E_COMPRESSEDSTASH = 0x80040228,
+      /// &lt;summary&gt;
+      /// The stash is located on an encrypted volume and cannot be read.
+      /// &lt;/summary&gt;
+      IMAPI_E_ENCRYPTEDSTASH = 0x80040229,
+      /// &lt;summary&gt;
+      /// There is not enough free space to create the stash file on the
+       specified volume.
+      /// &lt;/summary&gt;
+      IMAPI_E_NOTENOUGHDISKFORSTASH = 0x8004022A,
+      /// &lt;summary&gt;
+      /// The selected stash location is on a removable media.
+      /// &lt;/summary&gt;
+      IMAPI_E_REMOVABLESTASH = 0x8004022B,
+      /// &lt;summary&gt;
+      /// Cannot write to the media.
+      /// &lt;/summary&gt;
+      IMAPI_E_CANNOT_WRITE_TO_MEDIA = 0x8004022C,
+      /// &lt;summary&gt;
+      /// Track was too short.
+      /// &lt;/summary&gt;
+      IMAPI_E_TRACK_NOT_BIG_ENOUGH = 0x8004022D,
+      /// &lt;summary&gt;
+      /// Attempt to create a bootable image on a non-blank disc.
+      /// &lt;/summary&gt;
+      IMAPI_E_BOOTIMAGE_AND_NONBLANK_DISC = 0x8004022E
+   }
+
+   #endregion
+
+   #region Interop Structures
+   /// &lt;summary&gt;
+   /// STATPROPSTG
+   /// &lt;/summary&gt;
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+   internal struct STATPROPSTG 
+   {
+        public IntPtr lpwstrName;
+        public int propid;
+        public short vt;
+   }
+
+   /// &lt;summary&gt;
+   /// PROPSPEC
+   /// &lt;/summary&gt;
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+    internal struct PROPSPEC 
+   {
+        public PRPSPEC ulKind;
+        public IntPtr ID_or_LPWSTR;
+    }
+
+   /// &lt;summary&gt;
+   /// STATPROPSETSTG
+   /// &lt;/summary&gt;
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+    internal struct STATPROPSETSTG 
+   {
+        public Guid fmtid;
+        public Guid clsid;
+        public int grfFlags;
+        public long mtime;
+        public long ctime;
+        public long atime;
+        public int dwOSVersion;
+    }
+
+   /// &lt;summary&gt;
+   /// STATSTG
+   /// &lt;/summary&gt;
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+   internal struct STATSTG
+   {
+      public IntPtr pwcsName;
+      public STGTY type;
+      public long cbSize;
+      public long mtime;
+      public long ctime;
+      public long atime;
+      public STGM grfMode;
+      public LOCKTYPE grfLocksSupported;
+      public Guid clsid;
+      public int grfStateBits;
+      public int reserved;
+   }
+   #endregion
+
+   #region Com Interop for IUnknown   
+   /// &lt;summary&gt;
+   /// IUnknown Interface 
+   /// &lt;/summary&gt;
+   [ComImport, Guid("00000000-0000-0000-C000-000000000046")]
+   [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IUnknown
+   {
+      [PreserveSig]
+      IntPtr QueryInterface(ref Guid riid, out IntPtr pVoid);
+      
+      [PreserveSig]
+      IntPtr AddRef();
+
+      [PreserveSig]
+      IntPtr Release();
+   }
+   #endregion
+
+   #region COM Interop for IMalloc
+   [ComImportAttribute()]
+   [GuidAttribute("00000002-0000-0000-C000-000000000046")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   //helpstring("IMalloc interface")
+   internal interface IMalloc
+   {
+      [PreserveSig]
+      IntPtr Alloc(int cb);
+
+      [PreserveSig]
+      IntPtr Realloc(
+         IntPtr pv,
+         int cb);
+   
+      [PreserveSig]
+      void Free(IntPtr pv);
+
+      [PreserveSig]
+      int GetSize(IntPtr pv);
+
+      [PreserveSig]
+      int DidAlloc(IntPtr pv);
+
+      [PreserveSig]
+      void  HeapMinimize();
+   };
+   #endregion
+
+   #region COM Interop for IEnumSTATPROPSTG
+   /// &lt;summary&gt;
+   /// IEnumSTATPROPSTG interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("00000139-0000-0000-C000-000000000046")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IEnumSTATPROPSTG 
+   {
+      [PreserveSig]
+      int Next(
+         int celt, 
+         ref STATPROPSTG pSTATPROPSTG,
+         out int pceltFetched);
+
+      void Skip(
+         int celt);
+
+      void Reset();
+
+      void Clone(
+         ref IEnumSTATPROPSTG ppenum);
+   }
+   #endregion
+
+   #region COM Interop for IPropertyStorage
+   /// &lt;summary&gt;
+   /// IPropertyStorage interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("00000138-0000-0000-C000-000000000046")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+    internal interface IPropertyStorage 
+   {
+        void ReadMultiple(
+            int cpspec,
+            ref PROPSPEC rgpspec,
+         [MarshalAs(UnmanagedType.Struct)]
+            out object rgpropvar);
+
+        void WriteMultiple(
+            int cpspec,
+            ref PROPSPEC rgpspec,
+         [MarshalAs(UnmanagedType.Struct)]
+            ref object rgPropvar,
+            int propidNameFirst);
+
+        void DeleteMultiple(
+            int cpspec,
+            ref PROPSPEC rgpspec);
+
+        void ReadPropertyNames(
+            int cpropid,
+            [In()]
+         ref int rgpropidp,
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] 
+         out string rglpwstrName);
+
+        void WritePropertyNames(
+            int cpropid,
+            ref int rgpropid,
+         [In(), MarshalAs(UnmanagedType.LPWStr)]
+            ref string rglpwstrName);
+
+        void DeletePropertyNames(
+            int cpropid,
+         [In()]
+            ref int rgpropid);
+
+        void Commit(
+            ref STGC grfCommitFlags);
+
+        void Revert();
+
+        void Enum(
+            ref IEnumSTATPROPSTG ppenum);
+
+        void SetTimes(
+            [In()]
+         ref long pctime,
+         [In()]
+            ref long patime,
+         [In()]
+            ref long pmtime);
+
+        void SetClass(
+            ref Guid clsid);
+
+        void Stat(
+            out STATPROPSETSTG pstatpsstg);
+    }
+   #endregion
+
+   #region COM Interop for IStream
+   /// &lt;summary&gt;
+   /// IStream interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("0000000c-0000-0000-C000-000000000046")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   interface IStream 
+   {
+
+      [PreserveSig()]
+        uint Read(
+            IntPtr pv,
+            int cb,
+            ref int pcbRead);
+
+      [PreserveSig()]
+        uint Write(
+            IntPtr pv,
+            int cb,
+            ref int pcbWritten);
+
+      [PreserveSig()]
+        uint Seek(
+            long dlibMove,
+            STREAM_SEEK dwOrigin,
+            ref long plibNewPosition);
+
+      [PreserveSig()]
+        uint SetSize(
+            long libNewSize);
+
+      [PreserveSig()]
+        uint CopyTo(
+         [In()]
+            ref IStream pstm,
+            long cb,
+            ref long pcbRead,
+            ref long pcbWritten);
+
+      [PreserveSig()]
+        uint Commit(
+            ref STGC grfCommitFlags);
+
+      [PreserveSig()]
+        uint Revert();
+
+      [PreserveSig()]
+        uint LockRegion(
+            long libOffset,
+            long cb,
+            int dwLockType);
+
+      [PreserveSig()]
+        uint UnlockRegion(
+            long libOffset,
+            long cb,
+            int dwLockType);
+
+      [PreserveSig()]
+        uint Stat(
+            ref STATSTG pstatstg,
+            STATFLAG grfStatFlag);
+      
+      [PreserveSig()]
+        uint Clone(
+            out IStream ppstm);
+    }
+   #endregion
+
+   #region COM Interop for IEnumSTATSTG
+   /// &lt;summary&gt;
+   /// IEnumSTATSTG interface.
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("0000000d-0000-0000-C000-000000000046")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IEnumSTATSTG 
+   {
+
+      [PreserveSig()]
+      uint Next(
+         int celt,
+         ref STATSTG rgelt,
+         out int pceltFetched);
+
+      [PreserveSig()]
+      uint Skip(
+         int celt);
+
+      [PreserveSig()]
+      uint Reset();
+
+      [PreserveSig()]
+      uint Clone(
+         out IEnumSTATSTG ppenum);
+   }
+   #endregion
+
+   #region COM Interop for IStorage
+   /// &lt;summary&gt;
+   /// IStorage interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("0000000b-0000-0000-c000-000000000046")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IStorage 
+   {
+
+      [PreserveSig()]
+        uint CreateStream(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName,
+            STGM grfMode,
+            int reserved1,
+            int reserved2,
+            out IStream ppstm);
+
+      [PreserveSig()]
+        uint OpenStream(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName,
+            int reserved1,
+            STGM grfMode,
+            int reserved2,
+            out IStream ppstm);
+
+      [PreserveSig()]
+        uint CreateStorage(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName,
+            STGM grfMode,
+            int reserved1,
+            int reserved2,
+            out IStorage ppstg);
+
+      [PreserveSig()]
+        uint OpenStorage(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName,
+            int pstgPriority,
+            STGM grfMode,
+            int snbExclude,
+            int reserved,
+            out IStorage ppstg);
+
+      [PreserveSig()]
+        uint CopyTo(
+            int ciidExclude,
+            ref Guid rgiidExclude,
+            int snbExclude,         
+         [In()]
+            ref IStorage pstgDest);
+
+      [PreserveSig()]
+        uint MoveElementTo(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName,
+         [In()]
+            ref IStorage pstgDest,
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsNewName,
+            STGMOVE grfFlags);
+
+      [PreserveSig()]
+        uint Commit(
+            STGC grfCommitFlags);
+
+      [PreserveSig()]
+        uint Revert();
+
+      [PreserveSig()]
+        uint EnumElements(
+            int reserved1,
+            int reserved2,
+            int reserved3,
+            out IEnumSTATSTG ppenum);
+
+      [PreserveSig()]
+        uint DestroyElement(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName);
+
+      [PreserveSig()]
+        uint RenameElement(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsOldName,
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsNewName);
+
+      [PreserveSig()]
+        uint SetElementTimes(
+         [MarshalAs(UnmanagedType.LPWStr)]
+            string pwcsName,
+         [In()]
+            ref long pctime,
+         [In()]
+            ref long patime,
+         [In()]
+            ref long pmtime);
+
+      [PreserveSig()]
+        uint SetClass(
+            [In()]
+         ref Guid clsid);
+
+      [PreserveSig()]
+        uint SetStateBits(
+            int grfStateBits,
+            int grfMask);
+
+      [PreserveSig()]
+        uint Stat(
+            out STATSTG pstatstg,
+            STATFLAG grfStatFlag);
+    }
+   #endregion
+
+
+   #region COM Interop for ICDBurn
+   /// &lt;summary&gt;
+   /// ICDBurn interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("3d73a659-e5d0-4d42-afc0-5121ba425c8d")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   interface ICDBurn 
+   {
+
+      /// &lt;summary&gt;
+      /// Gets the drive letter of the default recorder
+      /// &lt;/summary&gt;
+      void GetRecorderDriveLetter(
+         [Out(), MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszPathBuffer,
+         int cch );
+
+      /// &lt;summary&gt;
+      /// Burns the files in the staging area to disc
+      /// &lt;/summary&gt;
+      void Burn(
+         IntPtr hWnd );
+
+      /// &lt;summary&gt;
+      /// Gets whether the system has a recordable drive
+      /// &lt;/summary&gt;
+      void HasRecordableDrive(
+         out int pfHasRecorder);
+      
+   };
+   #endregion
+
+   /// &lt;summary&gt;
+   /// IDiscRecorder 
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("85AC9776-CA88-4cf2-894E-09598C078A41")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IDiscRecorder
+   {
+      /// &lt;summary&gt;
+      /// Initializes the object for an underlying device.  Used internally
+       only.
+      /// &lt;/summary&gt;            
+      void Init(
+         ref IntPtr pbyUniqueID,
+         int nulIDSize,
+         int nulDriveNumber);
+
+      /// &lt;summary&gt;
+      /// Retrieves the underlying device GUID.
+      /// &lt;/summary&gt;
+      /// &lt;param name="pbyUniqueID"&gt;&lt;/param&gt;
+      /// &lt;param name="ulBufferSize"&gt;&lt;/param&gt;
+      /// &lt;param name="pulReturnSizeRequired"&gt;&lt;/param&gt;
+      void GetRecorderGUID(
+         ref IntPtr pbyUniqueID,
+         int ulBufferSize,
+         out int pulReturnSizeRequired);
+
+      /// &lt;summary&gt;
+      /// Identifies the device as CD-R or CD-RW
+      /// &lt;/summary&gt;
+      /// &lt;param name="fTypeCode"&gt;&lt;/param&gt;
+      void GetRecorderType(
+         out int fTypeCode);
+
+      /// &lt;summary&gt;
+      /// Retrieves a name suitable for GUI display
+      /// &lt;/summary&gt;
+      void GetDisplayNames(
+         [MarshalAs(UnmanagedType.BStr)] ref string pbstrVendorID,
+         [MarshalAs(UnmanagedType.BStr)] ref string pbstrProductID,
+         [MarshalAs(UnmanagedType.BStr)] ref string pbstrRevision);
+
+      /// &lt;summary&gt;
+      /// Returns an identifier unique to the device class
+      /// &lt;/summary&gt;
+      /// &lt;param name="pbstrPath"&gt;&lt;/param&gt;
+      void GetBasePnPID(
+         [MarshalAs(UnmanagedType.BStr)] out string pbstrPath);
+
+      /// &lt;summary&gt;
+      /// Returns an OS Path to the device
+      /// &lt;/summary&gt;
+      /// &lt;param name="pbstrPath"&gt;&lt;/param&gt;
+      void GetPath(
+         [MarshalAs(UnmanagedType.BStr)] out string pbstrPath);
+
+      /// &lt;summary&gt;
+      /// Retrieves a pointer to the IPropertyStorage interface for the recorder
+      /// &lt;/summary&gt;
+      /// &lt;param name="ppPropStg"&gt;&lt;/param&gt;
+      void GetRecorderProperties(
+         out IPropertyStorage ppPropStg);
+
+      /// &lt;summary&gt;
+      /// Sets properties for the recorder
+      /// &lt;/summary&gt;
+      void SetRecorderProperties(
+         [In()]
+         ref IPropertyStorage ppPropStg);
+
+      /// &lt;summary&gt;
+      /// Checks if the recorder is ready to burn
+      /// &lt;/summary&gt;
+      void GetRecorderState(
+         out int pulDevStateFlags);
+
+      /// &lt;summary&gt;
+      /// Opens a device for exclusive use
+      /// &lt;/summary&gt;
+      void OpenExclusive();
+
+      /// &lt;summary&gt;
+      /// Identifies the type of media in the recorder
+      /// &lt;/summary&gt;
+      void QueryMediaType(
+         out int fMediaType,
+         out int fMediaFlags);
+
+      /// &lt;summary&gt;
+      /// Retrieves the media properties
+      /// &lt;/summary&gt;
+      void QueryMediaInfo(
+         out byte pbSessions,
+         out byte pbLastTrack,
+         out int ulStartAddress,
+         out int ulNextWritable,
+         out int ulFreeBlocks);
+
+      /// &lt;summary&gt;
+      /// Ejects a recorder's tray, if possible
+      /// &lt;/summary&gt;
+      void Eject();
+
+      /// &lt;summary&gt;
+      /// Erases CD-RW media, if possible
+      /// &lt;/summary&gt;
+      void Erase(
+         int bFulLErase);
+
+      /// &lt;summary&gt;
+      /// Closes a recorder after exclusive access
+      /// &lt;/summary&gt;
+      void Close();
+
+   }
+
+   /// &lt;summary&gt;
+   /// IEnumDiscMasterFormats interface 
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("DDF445E1-54BA-11d3-9144-00104BA11C5E")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IEnumDiscMasterFormats
+   {
+      [PreserveSig()]
+      int Next(
+         int cFormats,
+         out Guid lpiidFormatID,
+         out int pcFetched);
+
+      void Skip(
+         int cFormats);
+
+      void Reset();
+
+      void Clone(
+         out IEnumDiscMasterFormats ppEnum);
+   }
+
+   /// &lt;summary&gt;
+   /// IEnumDiscRecorders interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("9B1921E1-54AC-11d3-9144-00104BA11C5E")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IEnumDiscRecorders
+   {
+      [PreserveSig()]
+      int Next(
+         int cRecorders,
+         out IDiscRecorder ppRecorder,
+         out int pcFetched);
+
+      void Skip(
+         int cRecorders);
+
+      void Reset();
+
+      void Clone(
+         out IEnumDiscRecorders ppEnum);
+   }
+
+   /// &lt;summary&gt;
+   /// IDiscMasterProgressEvents interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("EC9E51C1-4E5D-11D3-9144-00104BA11C5E")]   
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IDiscMasterProgressEvents
+   {
+      /// &lt;summary&gt;
+      /// Called to request whether the burn event should be cancelled
+      /// &lt;/summary&gt;
+      void QueryCancel(
+         out int pbCancel);
+
+      /// &lt;summary&gt;
+      /// Notifies that a Plug and Play activity has occurred that has changed
+       the list of recorders.
+      /// &lt;/summary&gt;
+      void NotifyPnPActivity();
+
+      /// &lt;summary&gt;
+      /// Notifies addition of data to the CD image in the stash.
+      /// &lt;/summary&gt;
+      void NotifyAddProgress(
+         int nCompleted,
+         int nTotal);
+
+      /// &lt;summary&gt;
+      /// Notifies an application of block progress whilst burning a disc.
+      /// &lt;/summary&gt;
+      void NotifyBlockProgress(
+         int nCurrentBlock,
+         int nTotalBlocks);
+
+      /// &lt;summary&gt;
+      /// Notifies an application of track progress whilst burning an audio
+       disc.
+      /// &lt;/summary&gt;
+      void NotifyTrackProgress(
+         int nCurrentTrack,
+         int nTotalTracks);
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI is preparing to burn a disc.
+      /// &lt;/summary&gt;
+      void NotifyPreparingBurn(
+         int nEstimatedSeconds);
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI is closing a disc.
+      /// &lt;/summary&gt;
+      void NotifyClosingDisc(
+         int nEstimatedSeconds);
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI has completed burning a disc.
+      /// &lt;/summary&gt;
+      void NotifyBurnComplete(
+         int status);
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI has completed erasing a disc.
+      /// &lt;/summary&gt;
+      void NotifyEraseComplete(
+         int status);
+   }
+
+   /// &lt;summary&gt;
+   /// IDiscMaster interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("520CCA62-51A5-11D3-9144-00104BA11C5E")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IDiscMaster
+   {
+      /// &lt;summary&gt;
+      /// Opens an IMAPI object
+      /// &lt;/summary&gt;
+      void Open();
+
+      /// &lt;summary&gt;
+      /// Retrieves a format enumerator
+      /// &lt;/summary&gt;
+      void EnumDiscMasterFormats(
+         out IEnumDiscMasterFormats ppEnum);
+
+      /// &lt;summary&gt;
+      /// Retrieves the currently selected recorder format
+      /// &lt;/summary&gt;
+      void GetActiveDiscMasterFormat(
+         out Guid lpiid);
+
+      /// &lt;summary&gt;
+      /// Sets a new active recorder format
+      /// &lt;/summary&gt;
+      void SetActiveDiscMasterFormat(
+         [In()]
+         ref Guid riid,
+         [MarshalAs(UnmanagedType.Interface)]
+         out object ppUnk);
+
+      /// &lt;summary&gt;
+      /// Retrieves a recorder enumerator
+      /// &lt;/summary&gt;
+      void EnumDiscRecorders(
+         out IEnumDiscRecorders ppEnum);
+
+      /// &lt;summary&gt;
+      /// Gets the active disc recorder
+      /// &lt;/summary&gt;
+      void GetActiveDiscRecorder(
+         out IDiscRecorder ppRecorder);
+
+      /// &lt;summary&gt;
+      /// Sets the active disc recorder
+      /// &lt;/summary&gt;
+      void SetActiveDiscRecorder(
+         IDiscRecorder pRecorder);
+
+      /// &lt;summary&gt;
+      /// Clears the contents of an unburnt image
+      /// &lt;/summary&gt;
+      void ClearFormatContent();
+
+      /// &lt;summary&gt;
+      /// Registers for progress notifications
+      /// &lt;/summary&gt;
+      void ProgressAdvise(
+         IDiscMasterProgressEvents pEvents,
+         out IntPtr pvCookie);
+
+      /// &lt;summary&gt;
+      /// Cancels progress notifications
+      /// &lt;/summary&gt;
+      void ProgressUnadvise(
+         IntPtr vCookie);
+
+      /// &lt;summary&gt;
+      /// Burns the staged image to the active recorder
+      /// &lt;/summary&gt;
+      void RecordDisc(
+         int bSimulate,
+         int bEjectAfterBurn);
+
+      /// &lt;summary&gt;
+      /// Closes the interface
+      /// &lt;/summary&gt;
+      void Close();
+
+   }
+
+   /// &lt;summary&gt;
+   /// IRedbookDiscMaster interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("E3BC42CD-4E5C-11D3-9144-00104BA11C5E")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IRedbookDiscMaster
+   {
+      /// &lt;summary&gt;
+      /// Gets the total number of audio tracks
+      /// &lt;/summary&gt;
+      void GetTotalAudioTracks(
+         out int pnTracks);
+
+      /// &lt;summary&gt;
+      /// Gets the total number of audio blocks
+      /// &lt;/summary&gt;
+      void GetTotalAudioBlocks(
+         out int pnBlocks);
+
+      /// &lt;summary&gt;
+      /// Gets the used number of audio blocks
+      /// &lt;/summary&gt;
+      void GetUsedAudioBlocks(
+         out int pnBlocks);
+
+      /// &lt;summary&gt;
+      /// Gets the number of available audio track blocks
+      /// &lt;/summary&gt;
+      void GetAvailableAudioTrackBlocks(
+         out int pnBlocks);
+
+      /// &lt;summary&gt;
+      /// Gets the size of an audio block in bytes
+      /// &lt;/summary&gt;
+      void GetAudioBlockSize(
+         out int pnBlockBytes);
+
+      /// &lt;summary&gt;
+      /// Creates a new audio track in the staging area
+      /// &lt;/summary&gt;
+      void CreateAudioTrack(
+         int nBlocks);
+
+      /// &lt;summary&gt;
+      /// Adds a block to the current audio track
+      /// &lt;/summary&gt;
+      void AddAudioTrackBlocks(
+         IntPtr cb,
+         int pby);
+
+      /// &lt;summary&gt;
+      /// Closes the current audio track
+      /// &lt;/summary&gt;
+      void CloseAudioTrack();
+   }
+   
+   /// &lt;summary&gt;
+   /// IJolietDiscMaster interface
+   /// &lt;/summary&gt;
+   [ComImportAttribute()]
+   [GuidAttribute("E3BC42CE-4E5C-11D3-9144-00104BA11C5E")]
+   [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+   internal interface IJolietDiscMaster
+   {
+      /// &lt;summary&gt;
+      /// Gets the total number of data blocks
+      /// &lt;/summary&gt;
+      void GetTotalDataBlocks(
+         out int pnBlocks);
+
+      /// &lt;summary&gt;
+      /// Gets the number of used data blocks
+      /// &lt;/summary&gt;
+      void GetUsedDataBlocks(
+         out int pnBlocks);
+
+      /// &lt;summary&gt;
+      /// Gets the size of a data block
+      /// &lt;/summary&gt;
+      void GetDataBlockSize(
+         out int pnBlockBytes);
+
+      /// &lt;summary&gt;
+      /// Adds data from an IStorage interface
+      /// &lt;/summary&gt;
+      void AddData(
+         IStorage pStorage,
+         int lFileOverwrite);
+
+      /// &lt;summary&gt;
+      /// Gets the properties of the Joliet writer
+      /// &lt;/summary&gt;
+      void GetJolietProperties(
+         out IPropertyStorage ppPropStg);
+
+      /// &lt;summary&gt;
+      /// Sets the properties of the Joliet writer
+      /// &lt;/summary&gt;
+      void SetJolietProperties(
+         [In()]
+         ref IPropertyStorage pPropStg);
+   }
+
+
+   #region IMAPIObjectFactory class
+   /// &lt;summary&gt;
+   /// A factory for instantiating IMAPI and ICDBurn objects.
+   /// &lt;/summary&gt;
+   internal class IMAPIObjectFactory
+   {
+      private const string CLSID_CDBURN =
+       "fbeb8a05-beee-4442-804e-409d6c4515e9";
+      private const string IID_CDBURN   =
+       "3d73a659-e5d0-4d42-afc0-5121ba425c8d";
+
+      private const string CLSID_MSDiscMasterObj =
+       "520CCA63-51A5-11D3-9144-00104BA11C5E";
+      private const string IID_IDiscMaster =
+       "520CCA62-51A5-11D3-9144-00104BA11C5E";
+
+         
+      [DllImport("ole32", CharSet = CharSet.Unicode)]
+      private extern static int CoCreateInstance(
+         ref Guid CLSID,
+         IntPtr pUnkOuter,
+         CLSCTX dwClsContext,
+         ref Guid IID,
+         [MarshalAs(UnmanagedType.Interface)]
+         out object ppv);
+
+      /// &lt;summary&gt;
+      /// Should not be able to instantiate this class
+      /// &lt;/summary&gt;
+      private IMAPIObjectFactory()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new instance of the &lt;c&gt;ICDBurn&lt;/c&gt; implementation
+      /// on this system, if the system supports it.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;Implementating intance of &lt;c&gt;ICDBurn&lt;/c&gt;&lt;/returns&gt;
+      /// &lt;exception cref="COMException"&gt;if the system does not have an
+      /// &lt;c&gt;ICDBurn&lt;/c&gt; implementation.&lt;/exception&gt;
+      public static ICDBurn CreateCDBurn()
+      {
+         object cdBurn = null;
+         Guid clsIdCDBurn = new Guid(CLSID_CDBURN);
+         Guid iidCDBurn = new Guid(IID_CDBURN);
+         int hResult = IMAPIObjectFactory.CoCreateInstance(
+            ref clsIdCDBurn, IntPtr.Zero, CLSCTX.CLSCTX_INPROC_SERVER, 
+            ref iidCDBurn, out cdBurn);
+         if (ComUtility.Failed(hResult))
+         {
+            throw new COMException("Failed to instantiate the ICDBurn
+             implementation", 
+               (int) hResult);
+         }
+         return (ICDBurn) cdBurn;
+      }
+
+
+      /// &lt;summary&gt;
+      /// Creates a new instance of the &lt;c&gt;IDiscMaster&lt;/c&gt; implementation
+      /// on this system, if the system supports it.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;Implementating intance of &lt;c&gt;IDiscMaster&lt;/c&gt;&lt;/returns&gt;
+      /// &lt;exception cref="COMException"&gt;if the system does not have an
+      /// &lt;c&gt;IDiscMaster&lt;/c&gt; implementation.&lt;/exception&gt;
+      public static IDiscMaster CreateDiscMaster()
+      {
+         object discMaster = null;
+         Guid clsIdDiscMaster = new Guid(CLSID_MSDiscMasterObj);
+         Guid iidDiscMaster = new Guid(IID_IDiscMaster);
+         int hResult = IMAPIObjectFactory.CoCreateInstance(
+            ref clsIdDiscMaster, IntPtr.Zero, CLSCTX.CLSCTX_INPROC_SERVER |
+             CLSCTX.CLSCTX_LOCAL_SERVER, 
+            ref iidDiscMaster, out discMaster);
+         if (ComUtility.Failed(hResult))
+         {
+            throw new COMException("Failed to instantiate the IDiscMaster
+             implementation", 
+               hResult);
+         }
+         return (IDiscMaster) discMaster;
+      }
+
+   }
+   #endregion
+
+   [StructLayout(LayoutKind.Explicit)]
+   internal struct Variant
+   {
+      [FieldOffset(0)]
+      public short vt;
+      [FieldOffset(8)]
+      public IntPtr ptr;
+      [FieldOffset(8)]
+      public byte Byte;
+      [FieldOffset(8)]
+      public long Long;
+
+      /// &lt;summary&gt;
+      /// Converts an object to a variant in this structure
+      /// &lt;/summary&gt;
+      /// &lt;param name="o"&gt;Object to convert&lt;/param&gt;
+      public void ForObject(object o)
+      {
+         if (o is string)
+         {
+            vt = (short) VarEnum.VT_LPWSTR;
+            ptr = Marshal.StringToHGlobalUni((string) o);
+         }
+         else if (o is DateTime)
+         {
+            vt = (short) VarEnum.VT_DATE;
+            Long = ((DateTime) o).ToFileTime();
+         }
+         else if (o is bool)
+         {
+            vt = (short) VarEnum.VT_BOOL;
+            Byte = (byte) ((bool) o ? 1 : 0);
+         }
+         else if (o is byte)
+         {
+            vt = (short) VarEnum.VT_UI1;
+            Byte = (byte) o;
+         }
+         else if (o is short)
+         {
+            vt = (short) VarEnum.VT_UI2;
+            ptr = (IntPtr) o;
+         }
+         else if (o is int)
+         {
+            vt = (short) VarEnum.VT_I4;
+            ptr = (IntPtr) o;
+         }
+         else if (o is long)
+         {
+            vt = (short) VarEnum.VT_I8;
+            Long = (long) o;
+         }
+         else
+         {
+            throw new ArgumentException(
+               String.Format("Unsupported variant type {0}", vt));
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Converts a variant to an object
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public object ToObject()
+      {
+         object ret = null;
+
+         switch ((VarEnum) vt)
+         {
+            case VarEnum.VT_BSTR:
+               ret = Marshal.PtrToStringBSTR(ptr);
+               Marshal.FreeCoTaskMem(ptr);
+               break;
+            case VarEnum.VT_UI1:
+               ret = Byte;
+               break;
+            case VarEnum.VT_UI2:
+               ret = (short) Long;
+               break;
+            case VarEnum.VT_I4:
+               ret = (int) ptr;
+               break;
+            case VarEnum.VT_UI8:
+               ret = Long;
+               break;
+            case VarEnum.VT_INT:
+               ret = (short) Long;
+               break;
+            case VarEnum.VT_LPSTR:
+               ret = Marshal.PtrToStringAnsi(ptr);
+               Marshal.FreeCoTaskMem(ptr);
+               break;
+            case VarEnum.VT_LPWSTR:
+               ret = Marshal.PtrToStringUni(ptr);
+               Marshal.FreeCoTaskMem(ptr);
+               break;
+            case VarEnum.VT_FILETIME:
+               ret = DateTime.FromFileTime(Long);
+               break;
+            case VarEnum.VT_BOOL:
+               ret = (Byte == 0 ? false : true);
+               break;
+            case VarEnum.VT_NULL:
+            case VarEnum.VT_EMPTY:
+               break;
+            default:
+               throw new ArgumentException(
+                  String.Format("Unsupported variant type {0}", vt));
+         }
+
+         return ret;
+      }
+
+      /// &lt;summary&gt;
+      /// Clears up any resources associated with the structure
+      /// &lt;/summary&gt;
+      public void Clear()
+      {
+         if ((vt == (short) VarEnum.VT_LPSTR) 
+            || (vt == (short) VarEnum.VT_LPWSTR) 
+            || (vt == (short) VarEnum.VT_BSTR))
+         {
+            Marshal.FreeHGlobal(ptr);
+         }
+         else
+         {
+            ComUtility.VariantClear(this);
+         }
+      }
+   }
+
+   internal class ComUtility
+   {
+      private const uint FAIL_BIT = 0x80000000;
+
+      private ComUtility()
+      {
+      }
+
+      [DllImport("ole32")]
+      public extern static int VariantClear(Variant vt);
+
+      public static bool Failed(int hResult)
+      {
+         return (((uint) hResult &amp; FAIL_BIT) == FAIL_BIT);
+      }
+
+   }   
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper.html">IMAPI Wrapper</a>&#160;.&#160;IMAPIWrapper</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,271 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>An Easy INI File Class</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	<a href="..\..\overview.htm" target="vbamain">Source Code</a>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\registry_and_ini_files\easy_ini_file_access\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>An Easy INI File Class</b><br></p>
+	<p><img src="..\..\images\cinifile.gif" alt="VB INI File Class Demo" width="164" height="204"></p>
+	<p><a href="cinifile.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cIniFile Class (3kb)</a></p>
+	<p><a href="cinidemo.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cIniFile Demo Application (27kb)</a></p>
+	<p>
+	The cIniFile class is an easy, self-contained way to get complete access to INI files.  Although use of INI
+	files is no longer recommended under Windows (you should use the registry instead - see my <a href="registry.htm">Registry class</a>
+	for an easy migration from this method of using Ini files to using the registry) they are ultra simple to
+	use.  They also make it simpler to ship your application.
+	<br><br>
+	The class allows you to create, enumerate and delete sections and keys within an INI file, without restriction.
+	Enumerating keys and sections in an INI file is quite a handy technique, as it means you can create INI files
+	with arbitrary sections and keys and interrogate them easily.  See the cIniFile.cls code to see how you do it -
+	its just a simple (but little known) mod to the VB API declaration for GetPrivateProfileString (thanks to
+	Jonathan Hopkins for passing this information on).
+	<br><br>
+	Here is a brief summary of typical uses of the class:
+	<br>
+	<br>
+	<b>To get Value from the Ini File</b>
+	</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp With m_cIni <br>
+&nbsp &nbsp &nbsp &nbsp .Path = App.Path & "\TEST.INI" <br>
+&nbsp &nbsp &nbsp &nbsp .Section = "Options" <br>
+&nbsp &nbsp &nbsp &nbsp .Key = "SavePath" <br>
+&nbsp &nbsp &nbsp &nbsp .Default = App.Path <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp sSavePath = .Value <br>
+&nbsp &nbsp &nbsp &nbsp If Not (.Success) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MsgBox "Failed to get value.", vbInformation <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End If<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<b>To Write a Value to the Ini file</b>
+	</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp With m_cIni <br>
+&nbsp &nbsp &nbsp &nbsp .Path = App.Path & "\TEST.INI" <br>
+&nbsp &nbsp &nbsp &nbsp .Section = "Options" <br>
+&nbsp &nbsp &nbsp &nbsp .Key = "SavePath" <br>
+&nbsp &nbsp &nbsp &nbsp .Default = App.Path <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp .Value = sSavePath <br>
+&nbsp &nbsp &nbsp &nbsp If Not (.Success) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MsgBox "Failed to save value.", vbInformation <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End If<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<b>To Get All the Sections within an Ini File</b>
+
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+Dim sSections() As String <br>
+Dim iSectionCount As Long <br>
+ <br>
+&nbsp &nbsp With m_cIni <br>
+&nbsp &nbsp &nbsp &nbsp .EnumerateAllSections sSections(), iSectionCount <br>
+&nbsp &nbsp &nbsp &nbsp For iSection = 1 To iSectionCount <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lstIni.AddItem "[" & sSections(iSection) & "]" <br>
+&nbsp &nbsp &nbsp &nbsp Next iSection <br>
+&nbsp &nbsp End With
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<b>To Get All the Keys within a section of an Ini File</b>
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+Dim sKeys() As String <br>
+Dim iKeycount As Long <br>
+ <br>
+&nbsp &nbsp .Section = "Options" <br>
+&nbsp &nbsp .EnumerateCurrentSection sKeys(), iKeycount <br>
+&nbsp &nbsp For iKey = 1 To iKeycount <br>
+&nbsp &nbsp &nbsp &nbsp .Key = sKeys(iKey) <br>
+&nbsp &nbsp &nbsp &nbsp Debug.Print .Key & "=" & .Value <br>
+&nbsp &nbsp Next iKey
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<b>To Delete a Key from an INI file</b>
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp With m_cIni <br>
+&nbsp &nbsp &nbsp &nbsp .Path = App.Path & "\TEST.INI" <br>
+&nbsp &nbsp &nbsp &nbsp .Section = "Options" <br>
+&nbsp &nbsp &nbsp &nbsp .Key = "SavePath" <br>
+&nbsp &nbsp &nbsp &nbsp .DeleteKey <br>
+&nbsp &nbsp &nbsp &nbsp If Not (.Success) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MsgBox "Delete Key Failed.", vbInformation <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End With <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<b>To Delete a Section from an INI file</b>
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp With m_cIni <br>
+&nbsp &nbsp &nbsp &nbsp .Path = App.Path & "\TEST.INI" <br>
+&nbsp &nbsp &nbsp &nbsp .Section = "Options" <br>
+&nbsp &nbsp &nbsp &nbsp .DeleteSection <br>
+&nbsp &nbsp &nbsp &nbsp If Not (.Success) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp MsgBox "Delete Section Failed.", vbInformation <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End With
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+
+
+	<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 June 1998
+	</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,495 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: CheckedIconListBoxLib.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: CheckedIconListBoxLib.cs" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">NET</a>&#160;.&#160;<a href="..\index.html">Utilities</a>&#160;.&#160;<a href="article.html">NetProjectZip</a>&#160;.&#160;<a href="netproject_zip.html">NetProject Zip</a>&#160;.&#160;CheckedIconListBoxLib.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="netproject_zip.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />NetProject Zip</a> (73K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4472</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=4472&type=zip&title=netproject_20zip_2ezip_5fcheckediconlistboxlib.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />5 Apr 2003<br />Updated to version 0.50 of SharpZipLib</p><p class="update"><a href="updates.html">Update History &gt;</a></p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\resources\links\net\sharpziplib\article.html">SharpZipLib</a></p><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\utilities\vbpzip\article.html">Visual Basic Project Zip Utility</a></p><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\code\libraries\shell_projects\sysimagelist\article.html">System Image List</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: CheckedIconListBoxLib.cs</h1><pre>using System;
+using System.Windows.Forms;
+using System.Drawing;
+using vbAccelerator.Components.ImageList;
+
+namespace vbAccelerator.Controls.ListBox
+{
+
+
+   #region CheckedIconListBox
+   /// &lt;summary&gt;
+   /// A simple owner-draw ListBox implementation which
+   /// displays Images from a ComCtl32.DLL ImageList.
+   /// Easy to modify to use a standard Forms ImageList
+   /// if you wanted, but unfortunately this class is 
+   /// sealed and it is not possible to use it with
+   /// the shell's System Image List, which is what
+   /// is needed for this sample.
+   /// 
+   /// Currently, there is no override for the Add method
+   /// etc.  This means you can add any sort of object to
+   /// the box, but the actual box itself requires that
+   /// you add a CheckedIconItem object, otherwise you
+   /// will get an exception.  Not ideal but on deadline.
+   /// &lt;/summary&gt;
+   public class CheckedIconListBox : CheckedListBox
+   {
+      #region Enumerations
+      public enum ItemHighlightStyle
+      {
+         system,
+         xp
+      }
+      #endregion
+
+      #region Member Variables
+      private int iconWidth = 16;
+      private int iconHeight = 16;
+      private SysImageList sysIls;
+      private ItemHighlightStyle highlightStyle = ItemHighlightStyle.system;
+      #endregion
+
+      #region Implementation
+      /// &lt;summary&gt;
+      /// Gets/sets whether highlighting is drawn using alpha 
+      /// &lt;/summary&gt;
+      public ItemHighlightStyle HighlightStyle
+      {
+         get
+         {
+            return highlightStyle;
+         }
+         set
+         {
+            highlightStyle = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets a System Image List for icons in the control
+      /// &lt;/summary&gt;
+      public SysImageList SystemImageList
+      {
+         get 
+         {
+            return sysIls;
+         }
+         set
+         {
+            sysIls = value;
+         }
+      }
+
+      protected override void OnDrawItem (
+       System.Windows.Forms.DrawItemEventArgs e )
+      {
+         if (base.DesignMode)
+         {
+            base.OnDrawItem(e);
+         }
+         else
+         {
+            if (e.Index&gt;-1)
+            {
+               bool rightToLeft = (this.RightToLeft == RightToLeft.Yes);
+
+               CheckedIconItem item = (CheckedIconItem)base.Items[e.Index];
+
+               // no flickering: we create a shadow bitmap to draw 
+               // into and only transfer once we've completed:
+               Bitmap bmp = new Bitmap(e.Bounds.Width, e.Bounds.Height);
+               Graphics gr = Graphics.FromImage(bmp);
+               
+               // fill the background:
+               SolidBrush brBack;
+               brBack = new SolidBrush(this.BackColor);
+               gr.FillRectangle(brBack, 
+                  0, 0, 
+                  e.Bounds.Width, e.Bounds.Height);
+               brBack.Dispose();
+
+               // evaluate the indent:
+               int indent = item.Indent *  iconWidth;
+               Rectangle rcItem;
+               if (rightToLeft)
+               {
+                  rcItem = new Rectangle(
+                     0, 0, 
+                     e.Bounds.Width - indent, e.Bounds.Height);
+               }
+               else
+               {
+                  rcItem = new Rectangle(
+                     indent, 0, 
+                     e.Bounds.Width - indent, e.Bounds.Height);
+               }
+
+               // Draw selection rectangle if necessary:
+               bool noDispose = false;
+               if ((e.State &amp; DrawItemState.Selected) == DrawItemState.Selected)
+               {
+                  Brush brSelected = null;
+                  if (highlightStyle == ItemHighlightStyle.xp)
+                  {
+                     brSelected = new SolidBrush(
+                        Color.FromArgb(96, 
+                        Color.FromKnownColor(KnownColor.Highlight)));
+                     noDispose = false;
+                  }
+                  else
+                  {
+                     brSelected = SystemBrushes.Highlight;
+                     noDispose = true;
+                  }
+                  gr.FillRectangle(brSelected, 
+                     rcItem.Left, rcItem.Top,
+                     rcItem.Width, rcItem.Height);
+                  if (!noDispose)
+                  {
+                     brSelected.Dispose();
+                  }
+               }            
+
+               // Draw the Check box:
+               int pos = 0;
+               if (rightToLeft)
+               {
+                  pos = rcItem.Right - iconWidth - 2;
+               }
+               else
+               {
+                  pos = rcItem.Left;
+               }
+               if (!item.NoCheckBox)
+               {
+                  ButtonState state = ButtonState.Normal;
+                  if (!item.Enabled)
+                  {
+                     state = ButtonState.Inactive;
+                  }
+                  else
+                  {
+                     switch (GetItemCheckState(e.Index))
+                     {
+                        case CheckState.Checked:
+                           state = ButtonState.Checked;
+                           break;
+                        case CheckState.Indeterminate:
+                           state = ButtonState.Inactive;
+                           break;
+                     }
+                  }
+                  state |= ButtonState.Flat;
+                  ControlPaint.DrawCheckBox(gr, pos, rcItem.Top, iconWidth,
+                   iconHeight, state);
+                  pos += (rightToLeft ? -(iconWidth+2) : iconWidth + 2);
+               }
+
+               // Draw the image onto the control, not the
+               // offscreen bitmap:
+               int iconLeft = pos;
+               pos += (rightToLeft ? 0 : iconWidth + 2 );
+
+               // Draw the Text:
+               Brush brText = null;
+               if ((highlightStyle == ItemHighlightStyle.xp) || ((e.State &amp;
+                DrawItemState.Selected) != DrawItemState.Selected))
+               {
+                  brText = new SolidBrush(base.ForeColor);
+                  noDispose = false;
+               }
+               else
+               {
+                  brText = SystemBrushes.HighlightText;
+                  noDispose = true;
+               }
+               RectangleF textRect;
+               if (rightToLeft)
+               {
+                  textRect = new RectangleF(
+                     0, 
+                     rcItem.Top, 
+                     pos,
+                     rcItem.Height);
+               }
+               else
+               {
+                  textRect = new RectangleF(
+                     pos, 
+                     rcItem.Top,
+                     rcItem.Right - pos,
+                     rcItem.Height);
+               }
+               StringFormat textFormat = new StringFormat();
+               textFormat.Trimming = StringTrimming.EllipsisCharacter;
+               textFormat.Alignment = (rightToLeft ? StringAlignment.Far :
+                StringAlignment.Near);
+               Font itemFont = null;
+               bool noFontDispose = true;
+               if (item.Bold)
+               {
+                  itemFont = new Font(base.Font.FontFamily, base.Font.Size,
+                   (base.Font.Style | FontStyle.Bold));
+                  noFontDispose = false;
+               }
+               else
+               {
+                  itemFont = base.Font;
+               }
+               if (item.Enabled)
+               {
+                  gr.DrawString(item.Text, itemFont, brText, textRect,
+                   textFormat);
+               }
+               else
+               {
+                  ControlPaint.DrawStringDisabled(
+                     gr, item.Text, itemFont,
+                      Color.FromKnownColor(KnownColor.ControlDark), 
+                     textRect, textFormat);
+               }
+               textFormat.Dispose();
+               if (!noFontDispose)
+               {
+                  itemFont.Dispose();
+               }
+               if (!noDispose)
+               {
+                  brText.Dispose();
+               }
+
+               // focus rectangle?
+               if (
+                  ((e.State &amp; DrawItemState.Selected) ==
+                   DrawItemState.Selected) &amp;
+                  ((e.State &amp; DrawItemState.Focus ) == DrawItemState.Focus)
+                  )
+               {
+                  ControlPaint.DrawFocusRectangle(gr, rcItem);
+               }
+
+               // Swap shadow bitmap to display:
+               e.Graphics.DrawImage(bmp, e.Bounds, 0, 0, e.Bounds.Width,
+                e.Bounds.Height, GraphicsUnit.Pixel);
+               // Draw icon directly onto the control (otherwise the alpha
+               // channel gets lost since DrawImage doesn't include alpha):
+               if (item.IconIndex != -1)
+               {
+                  IntPtr hdc = e.Graphics.GetHdc();
+                  sysIls.DrawImage(
+                     hdc, 
+                     item.IconIndex, 
+                     iconLeft, 
+                     e.Bounds.Top);
+                  e.Graphics.ReleaseHdc(hdc);                  
+               }
+
+               // clear up:
+               bmp.Dispose();
+               gr.Dispose();
+            }
+            else
+            {
+               base.OnDrawItem(e);
+            }
+         }
+      }
+
+      public CheckedIconListBox()
+      {
+         this.DrawMode = DrawMode.OwnerDrawFixed;
+      }
+
+      #region CheckedIconItem
+      /// &lt;summary&gt;
+      /// Provides extended properties for an Item within the
+      /// CheckedIconListBox.  All items added to the CheckedIconListBox
+      /// must be of this type.
+      /// &lt;/summary&gt;
+      public class CheckedIconItem : Object
+      {
+         #region Member Variables
+         private int iconIndex = -1;
+         private int indent = 0;
+         private bool bold = false;
+         private bool enabled = true;
+         private bool noCheckBox = false;
+         private string text = "";
+         private Object data = null;
+         #endregion
+
+         #region Implementation
+         /// &lt;summary&gt;
+         /// Gets/sets the indentation of the item
+         /// &lt;/summary&gt;
+         public int Indent
+         {
+            get
+            {
+               return this.indent;
+            }
+            set
+            {
+               this.indent = value;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Gets/sets the zero-based icon index of the item
+         /// &lt;/summary&gt;
+         public int IconIndex
+         {
+            get
+            {
+               return this.iconIndex;
+            }
+            set
+            {
+               this.iconIndex = value;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Gets/sets whether the item is rendered with a Bold
+         /// font.
+         /// &lt;/summary&gt;
+         public bool Bold
+         {
+            get
+            {
+               return this.bold;
+            }
+            set
+            {
+               this.bold = value;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Gets/sets whether the item is enabled or not
+         /// &lt;/summary&gt;
+         public bool Enabled
+         {
+            get
+            {
+               return this.enabled;
+            }
+            set
+            {
+               this.enabled = value;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Gets/sets whether the item should not have a check box.
+         /// &lt;/summary&gt;
+         public bool NoCheckBox
+         {
+            get
+            {
+               return this.noCheckBox;
+            }
+            set
+            {
+               this.noCheckBox = value;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Gets/sets the display text of the item
+         /// &lt;/summary&gt;
+         public string Text
+         {
+            get
+            {
+               return this.text;
+            }
+            set
+            {
+               this.text = value;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Gets/sets data associated with the item         
+         /// &lt;/summary&gt;
+         public Object Data
+         {
+            get
+            {
+               return this.data;
+            }
+            set
+            {
+               this.data = value;
+            }
+         }
+
+         public CheckedIconItem() : base()
+         {
+         }
+         #endregion
+      }
+      #endregion
+
+      #endregion
+
+   }
+   #endregion
+
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\index.html" ><IMG SRC="..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">NET</a>&#160;.&#160;<a href="..\index.html">Utilities</a>&#160;.&#160;<a href="article.html">NetProjectZip</a>&#160;.&#160;<a href="netproject_zip.html">NetProject Zip</a>&#160;.&#160;CheckedIconListBoxLib.cs</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

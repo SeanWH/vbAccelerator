@@ -1,0 +1,248 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="Description" content="Demonstrates an Office 97 style interface example using vbAccelerator controls.  A Rebar hosts two toolbars and two flat combo boxes.  Full source provided.">
+<meta name="GENERATOR" content="Cortex/vbAccelerator HTML Editor">
+<title>Office 97 Style User Interface Cool Menu Sample</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<!-- SECTION:START -->
+<!-- SECTION:CODE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:CODE:END -->
+<!-- SECTION:END -->
+
+
+<!-- AREA:START -->
+<!-- AREA:COMCTL:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- AREA:COMCTL:END -->
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>&nbsp;Office 97 Style User Interface CoolMenu Sample</b></P>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>Building an Office 97 Style Program using vbAccelerator CoolMenu</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\fcbotbar.gif" alt="Looking Very Close to Word97, but its all VB!" width="493" height="220"></p>
+	<p><a href="tbarfcbo.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Office 97 UI Demonstration Project (68kb)</a></p>
+	</font>
+	<p>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="retbar.htm">vbAccelerator CoolMenu Toolbar and Rebar Control</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		CoolMenu support requires version  projects require version 2.00.0010 or higher of the
+		<a href="..\cpopmenu\cnewmenu.htm">ActiveX Popup Menu DLL</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<p>
+	<br>
+	This project demonstrates how to use the <a href="retbar.htm">vbAccelerator CoolMenu Toolbar and Rebar 
+	control</a> to create a serious, Multiple Document Interface Office 97-style user interface.  
+	It demonstrates how to:
+	<ul>
+	<li>Create toolbar bands containing multiple controls (toolbars and combo boxes) using the toolbar host
+	control.<br>
+	The Toolbar Host control, supplied within the vbAccelerator CoolMenu Toolbar and Rebar control makes
+	this easy.  Simply drop an instance of the Toolbar Host control on your form, set its height to
+	the height you need to accommodate the controls and then call the <i>Capture</i> method for each
+	control you want to add to the band.  That's it!  The Toolbar Host then takes care of automatically
+	sizing the contained controls.
+	<br><br>
+	<li>Create a CoolMenu which works in an MDI form, also using the toolbar host control.<br>
+	On SDI forms, a CoolMenu always remains the same.  However, in an MDI application, the CoolMenu must
+	modify itself when the MDI child is maximized, so it also has the child form's control box and min/max/restore
+	buttons.  The Toolbar Host control has a property, <i>.MDIToolbar</i> which when set True means
+	the toolbar host control automatically provides this functionality.  Just connect a CoolMenu Toolbar to
+	the Toolbar Host control with <i>Capture</i> and full MDI CoolMenu support is yours.
+	<br><br>
+	<li>Flatten the Combo Boxes within the control so they have that Office 97 style, using the <a href="..\flatcbo\flatctrl.htm">cFlatControl class</a>.
+	</ul>	
+	
+	<br><br>	
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="#sectop"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back"></a>Back to <a href="retbar.htm">CoolMenu Toolbar and Rebar Control</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

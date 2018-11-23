@@ -1,0 +1,816 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: cFrame.ctl</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: cFrame.ctl" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) IExplorer Bar Frame Control</a>&#160;.&#160;<a href="ctlframe.html">ctlFrame</a>&#160;.&#160;cFrame.ctl</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="ctlframe.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ctlFrame</a> (38K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12341</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12341&type=zip&title=ctlframe_2ezip_5fcframe.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: cFrame.ctl</h1><pre>VERSION 5.00
+Begin VB.UserControl ActiveFrame 
+   Alignable       =   -1  'True
+   BackColor       =   &amp;H80000005&amp;
+   CanGetFocus     =   0   'False
+   ClientHeight    =   2010
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   3645
+   ControlContainer=   -1  'True
+   ForwardFocus    =   -1  'True
+   ScaleHeight     =   2010
+   ScaleWidth      =   3645
+   ToolboxBitmap   =   "cFrame.ctx":0000
+   Begin VB.Timer tmrExit 
+      Enabled         =   0   'False
+      Interval        =   50
+      Left            =   2865
+      Top             =   195
+   End
+End
+Attribute VB_Name = "ActiveFrame"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+'
+ ===============================================================================
+===
+' ActiveFrame Control
+'
+' Author:   Prasad Khan
+' Date:     9 November 1999
+'
+' Provides an Explorer/IE style frame which you can align to any side of
+' your main frame, with a built in toolbar.
+'
+' Submitted by Prasad Khan
+' mailto:KPrasadKhan@hotmail.com
+'
+' Changes
+' SPM    2 Jan 2000
+'  * Modified button picture drawing - uses system caption instead
+'  * CaptionMode allows control to auto-select system font &amp; size,
+'    same as Explorer
+'  * CaptionVisible property, just use as a frame :)
+'  * CaptionAlign property, align left/right/top/bottom or auto
+'  * Set Pane property to child control; this control will then autosize
+'    it for you
+'  * Added ClipControls property for smoother resizing
+'
+'
+ -------------------------------------------------------------------------------
+---
+' Featured at vbAccelerator,
+' the site for free, advanced VB Source Code:
+' http://vbaccelerator.com/
+'
+'
+ ===============================================================================
+===
+
+Private Type POINTAPI
+   x As Long
+   y As Long
+End Type
+Private Type RECT
+   Left As Long
+   Top As Long
+   Right As Long
+   Bottom As Long
+End Type
+Private Declare Function InflateRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Private Declare Function OffsetRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Private Declare Function GetClientRect Lib "user32" (ByVal hwnd As Long, lpRect
+ As RECT) As Long
+Private Declare Function GetSysColorBrush Lib "user32" (ByVal nIndex As Long)
+ As Long
+Private Declare Function FillRect Lib "user32" (ByVal hDC As Long, lpRect As
+ RECT, ByVal hBrush As Long) As Long
+Private Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As
+ Long
+'Draw text API constants &amp; declaration
+Private Type DRAWTEXTPARAMS
+   cbSize As Long
+   iTabLength As Long
+   iLeftMargin As Long
+   iRightMargin As Long
+   uiLengthDrawn As Long
+End Type
+Private Const DT_BOTTOM = &amp;H8
+Private Const DT_CENTER = &amp;H1
+Private Const DT_SINGLELINE = &amp;H20
+Private Const DT_VCENTER = &amp;H4
+Private Const DT_CALCRECT = &amp;H400
+Private Const DT_END_ELLIPSIS = &amp;H8000&amp;
+Private Declare Function DrawText Lib "user32" Alias "DrawTextA" (ByVal hDC As
+ Long, ByVal lpStr As String, ByVal nCount As Long, lpRect As RECT, ByVal
+ wFormat As Long) As Long
+Private Declare Function DrawTextEx Lib "user32" Alias "DrawTextExA" (ByVal hDC
+ As Long, ByVal lpsz As String, ByVal n As Long, lpRect As RECT, ByVal un As
+ Long, lpDrawTextParams As DRAWTEXTPARAMS) As Long
+Private Declare Function DrawEdge Lib "user32" (ByVal hDC As Long, qrc As RECT,
+ ByVal edge As Long, ByVal grfFlags As Long) As Long
+Private Const BDR_INNER = &amp;HC
+Private Const BDR_OUTER = &amp;H3
+Private Const BDR_RAISED = &amp;H5
+Private Const BDR_RAISEDINNER = &amp;H4
+Private Const BDR_RAISEDOUTER = &amp;H1
+Private Const BDR_SUNKEN = &amp;HA
+Private Const BDR_SUNKENINNER = &amp;H8
+Private Const BDR_SUNKENOUTER = &amp;H2
+Private Const EDGE_ETCHED = (BDR_SUNKENOUTER Or BDR_RAISEDINNER)
+Private Const EDGE_RAISED = (BDR_RAISEDOUTER Or BDR_RAISEDINNER)
+Private Const EDGE_SUNKEN = (BDR_SUNKENOUTER Or BDR_SUNKENINNER)
+Private Const EDGE_BUMP = (BDR_RAISEDOUTER Or BDR_SUNKENINNER)
+Private Declare Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long
+Private Declare Function WindowFromPoint Lib "user32" (ByVal xPoint As Long,
+ ByVal yPoint As Long) As Long
+
+' Border flags
+Private Const BF_LEFT As Long = &amp;H1
+Private Const BF_TOP As Long = &amp;H2
+Private Const BF_RIGHT As Long = &amp;H4
+Private Const BF_BOTTOM As Long = &amp;H8
+Private Const BF_RECT As Long = (BF_LEFT Or BF_TOP Or BF_RIGHT Or BF_BOTTOM)
+
+Private Const BF_SOFT As Long = &amp;H1000      ' For softer buttons
+
+Private Const WM_PAINT = &amp;HF
+Private Const WM_DESTROY = &amp;H2
+Private Const WM_ERASEBKGND = &amp;H14
+
+Private Enum BStates
+   vbFlat = 1
+   vbRaised = 2
+   vbSunken = 3
+End Enum
+
+'Default Property Values:
+Private Const m_def_Caption = "Active Frame"
+Private Const m_Border = 2
+Private Const m_HdrSpace = 3
+
+Public Enum ECAFCaptionModeConstants
+   ecafSystem
+   ecafUser
+End Enum
+
+'Property Variables:
+Private m_sCaption As String
+Private m_eCaptionAlign As AlignConstants
+Private m_eActualCapAlign As AlignConstants
+Private m_eCaptionMode As ECAFCaptionModeConstants
+Private m_bCaptionVisible As Boolean
+Private m_lTitleSize As Long
+
+' Current button state:
+Private m_State As BStates
+
+'Variable for storing close button location
+Private m_tCaption As RECT
+Private m_tClient As RECT
+Private m_tButton As RECT
+
+' Variable for storing painting condition:
+Private m_Painting As Boolean
+Private m_Resized As Boolean
+
+Private m_cNCM As cNCMetrics
+
+Private m_lPtr As Long
+
+'Event Declarations:
+Public Event Resized()
+Attribute Resized.VB_Description = " Occurs when a form is first displayed or
+ the size of an object changes."
+Public Event QueryUnload()
+Attribute QueryUnload.VB_Description = "Occurrs when close button on frame is
+ clicked."
+
+Public Property Let Pane(ByRef ctlThis As Object)
+   pSetPane ctlThis
+End Property
+Public Property Set Pane(ByRef ctlThis As Object)
+   pSetPane ctlThis
+End Property
+Private Sub pSetPane(ByRef ctlThis As Object)
+Dim o As Object
+   If pbFindObject(o) Then
+      On Error Resume Next
+      o.Visible = False
+   End If
+   On Error GoTo 0
+   If TypeOf ctlThis Is Control Then
+      ctlThis.Visible = True
+      Set ctlThis.Container = UserControl.Extender
+      
+      m_lPtr = ObjPtr(ctlThis)
+   Else
+      Err.Raise 5, App.EXEName
+   End If
+End Sub
+Public Property Get Pane() As Object
+   If Not (m_lPtr = 0) Then
+      pbFindObject Pane
+   End If
+End Property
+Private Function pbFindObject(ByRef oThis As Object) As Boolean
+Dim ctl As Control
+   For Each ctl In UserControl.ContainedControls
+      If ObjPtr(ctl) = m_lPtr Then
+         Set oThis = ctl
+         pbFindObject = True
+      End If
+   Next
+End Function
+
+Public Property Get Caption() As String
+Attribute Caption.VB_Description = "Returns/sets the text displayed in an
+ object's title bar or below an object's icon."
+Attribute Caption.VB_ProcData.VB_Invoke_Property = ";Appearance"
+   Caption = m_sCaption
+End Property
+Public Property Let Caption(ByVal vValue As String)
+   m_sCaption = vValue
+   SetAccelerator
+   m_State = -1
+   RePaint
+   PropertyChanged "Caption"
+End Property
+Public Property Get CaptionAlign() As AlignConstants
+   CaptionAlign = m_eCaptionAlign
+End Property
+Public Property Let CaptionAlign(ByVal eAlign As AlignConstants)
+   m_eCaptionAlign = eAlign
+   UserControl_Resize
+   PropertyChanged "CaptionAlign"
+End Property
+Public Property Get CaptionMode() As ECAFCaptionModeConstants
+   CaptionMode = m_eCaptionMode
+End Property
+Public Property Let CaptionMode(ByVal eMode As ECAFCaptionModeConstants)
+   m_eCaptionMode = eMode
+   UserControl_Resize
+   PropertyChanged "CaptionMode"
+End Property
+Public Property Get CaptionVisible() As Boolean
+   CaptionVisible = m_bCaptionVisible
+End Property
+Public Property Let CaptionVisible(ByVal bState As Boolean)
+   m_bCaptionVisible = bState
+   UserControl_Resize
+   PropertyChanged "CaptionVisible"
+End Property
+Public Property Get ClientLeft() As Long
+Attribute ClientLeft.VB_Description = "Returns left coordinate of the internal
+ area of control."
+   ClientLeft = UserControl.ScaleX(m_tClient.Left + (m_Border * -1 * (Not
+    (m_bCaptionVisible) Or (m_eActualCapAlign = vbAlignTop Or m_eActualCapAlign
+    = vbAlignBottom))), vbPixels, UserControl.ScaleMode)
+End Property
+Public Property Let ClientLeft(ByVal vValue As Long)
+   If Ambient.UserMode = False Then Err.Raise 382
+   If Ambient.UserMode Then Err.Raise 393
+End Property
+
+Public Property Get ClientTop() As Long
+Attribute ClientTop.VB_Description = "Returns top coordinate of the internal
+ area of control."
+   ClientTop = UserControl.ScaleY(m_tClient.Top + (m_Border * -1 * (Not
+    (m_bCaptionVisible) Or Not (m_eActualCapAlign = vbAlignTop))), vbPixels,
+    UserControl.ScaleMode)
+End Property
+
+Public Property Let ClientTop(ByVal vValue As Long)
+   If Ambient.UserMode = False Then Err.Raise 382
+   If Ambient.UserMode Then Err.Raise 393
+End Property
+
+Public Property Get ClientWidth() As Long
+Attribute ClientWidth.VB_Description = "Returns width of internal area of the
+ control."
+   ClientWidth = UserControl.ScaleX(m_tClient.Right - m_tClient.Left -
+    m_Border, vbPixels, UserControl.ScaleMode) - ClientLeft
+End Property
+
+Public Property Let ClientWidth(ByVal vValue As Long)
+   If Ambient.UserMode = False Then Err.Raise 382
+   If Ambient.UserMode Then Err.Raise 393
+End Property
+
+Public Property Get ClientHeight() As Long
+Attribute ClientHeight.VB_Description = "Returns the internal height of
+ control."
+   ClientHeight = UserControl.ScaleY(m_tClient.Bottom - (m_Border * -1 * Not
+    (m_eActualCapAlign = vbAlignBottom)), vbPixels, UserControl.ScaleMode) -
+    ClientTop
+End Property
+
+Public Property Let ClientHeight(ByVal vValue As Long)
+   If Ambient.UserMode = False Then Err.Raise 382
+   If Ambient.UserMode Then Err.Raise 393
+End Property
+
+Public Property Get Enabled() As Boolean
+Attribute Enabled.VB_Description = "Returns/sets a value that determines
+ whether an object can respond to user-generated events."
+Attribute Enabled.VB_ProcData.VB_Invoke_Property = ";Misc"
+   Enabled = UserControl.Enabled
+End Property
+
+Public Property Let Enabled(ByVal vValue As Boolean)
+   UserControl.Enabled() = vValue
+   m_State = -1
+   Call RePaint
+   PropertyChanged "Enabled"
+End Property
+
+Public Property Get Font() As Font
+Attribute Font.VB_Description = "Returns a Font object."
+Attribute Font.VB_ProcData.VB_Invoke_Property = ";Font"
+Attribute Font.VB_UserMemId = -512
+   Set Font = UserControl.Font
+End Property
+
+Public Property Let Font(ByVal vValue As Font)
+   Set UserControl.Font = vValue
+   m_State = -1
+   Call RePaint
+   PropertyChanged "Font"
+End Property
+
+Public Property Set Font(ByVal vValue As Font)
+   Set UserControl.Font = vValue
+   m_State = -1
+   Call RePaint
+   PropertyChanged "Font"
+End Property
+
+Public Property Get BackColor() As OLE_COLOR
+   BackColor = UserControl.BackColor
+End Property
+Public Property Let BackColor(ByVal oColor As OLE_COLOR)
+   UserControl.BackColor = oColor
+   Refresh
+   PropertyChanged "BackColor"
+End Property
+
+Public Sub About()
+Attribute About.VB_Description = "Displays information about control."
+Attribute About.VB_UserMemId = -552
+   MsgBox "ActiveFrame Control" &amp; vbCrLf &amp; vbCrLf &amp; App.LegalCopyright &amp; vbCrLf
+    &amp; vbCrLf &amp; "Contact Details: KPrashadKhan@hotmail.com", vbInformation
+End Sub
+
+Public Sub Refresh()
+Attribute Refresh.VB_Description = "Forces a complete repaint of a object."
+   UserControl.Refresh
+End Sub
+
+Private Sub tmrExit_Timer()
+   Dim ptMouse As POINTAPI
+
+   GetCursorPos ptMouse
+   If WindowFromPoint(ptMouse.x, ptMouse.y) &lt;&gt; UserControl.hwnd Then
+      tmrExit.Enabled = False
+      PaintButton vbFlat
+   End If
+End Sub
+
+Private Sub UserControl_Initialize()
+   Set m_cNCM = New cNCMetrics
+   m_bCaptionVisible = True
+   #If DEBUGMODE Then
+      Debug.Print "Initilize"
+   #End If
+End Sub
+
+'Initialize Properties for User Control
+Private Sub UserControl_InitProperties()
+   Set Font = Ambient.Font
+   m_sCaption = m_def_Caption
+   #If DEBUGMODE Then
+      Debug.Print "InitProperties"
+   #End If
+End Sub
+
+Private Sub UserControl_MouseDown(Button As Integer, Shift As Integer, x As
+ Single, y As Single)
+   If Not Ambient.UserMode Then Exit Sub
+   x = x \ Screen.TwipsPerPixelX
+   y = y \ Screen.TwipsPerPixelY
+   If x &gt;= m_tButton.Left And x &lt;= m_tButton.Right And y &gt;= m_tButton.Top And y
+    &lt;= m_tButton.Bottom Then
+      If Button = vbLeftButton Then
+         PaintButton vbSunken
+      Else
+         PaintButton vbFlat
+      End If
+   End If
+End Sub
+
+Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, x As
+ Single, y As Single)
+   If Not Ambient.UserMode Then Exit Sub
+   x = x \ Screen.TwipsPerPixelX
+   y = y \ Screen.TwipsPerPixelY
+   If x &lt; m_tButton.Left Or x &gt; m_tButton.Right Or y &lt; m_tButton.Top Or y &gt;
+    m_tButton.Bottom Then
+      PaintButton vbFlat
+   Else
+      tmrExit.Enabled = True
+      If Button = vbLeftButton Then
+         PaintButton vbSunken
+      Else
+         PaintButton vbRaised
+      End If
+   End If
+End Sub
+
+Private Sub UserControl_MouseUp(Button As Integer, Shift As Integer, x As
+ Single, y As Single)
+   If Not Ambient.UserMode Then Exit Sub
+   x = x \ Screen.TwipsPerPixelX
+   y = y \ Screen.TwipsPerPixelY
+   If x &gt;= m_tButton.Left And x &lt;= m_tButton.Right And y &gt;= m_tButton.Top And y
+    &lt;= m_tButton.Bottom Then
+      If Button = vbLeftButton Then
+         PaintButton vbRaised
+         RaiseEvent QueryUnload
+      Else
+         PaintButton vbFlat
+      End If
+   End If
+End Sub
+
+Private Sub UserControl_Paint()
+   m_State = -1
+   RePaint
+   #If DEBUGMODE Then
+      Debug.Print "Paint"
+   #End If
+End Sub
+
+'Load property values from storage
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+   With PropBag
+      UserControl.Enabled = .ReadProperty("Enabled", True)
+      Dim sFnt As New StdFont
+      Set UserControl.Font = .ReadProperty("Font", sFnt)
+      m_sCaption = .ReadProperty("Caption", m_def_Caption)
+      m_eCaptionMode = .ReadProperty("CaptionMode", ecafSystem)
+      m_eCaptionAlign = .ReadProperty("CaptionAlign", vbAlignNone)
+      m_bCaptionVisible = .ReadProperty("CaptionVisible", True)
+      UserControl.BackColor = .ReadProperty("BackColor", vbWindowBackground)
+   End With
+   m_State = -1
+   #If DEBUGMODE Then
+         Debug.Print "ReadProperties"
+   #End If
+End Sub
+
+Private Sub UserControl_Resize()
+On Error Resume Next
+
+Dim tR As RECT
+
+   #If DEBUGMODE Then
+      Debug.Print "Resize"
+   #End If
+      
+   ' Get the system metrics for the titlebar if the CaptionMode is set to
+    ecafSystem:
+   m_cNCM.GetMetrics
+   If m_eCaptionMode = ecafSystem Then
+      m_lTitleSize = m_cNCM.CaptionHeight + 1
+      Set UserControl.Font = m_cNCM.Font(UserControl.hDC, MenuFont)
+   Else
+      m_lTitleSize = UserControl.TextHeight("Hg") \ Screen.TwipsPerPixelX + 4
+   End If
+   
+   ' Evaluate default caption alignment if necessary:
+   If m_eCaptionAlign = vbAlignNone Then
+      ' Use default based on control alignment:
+      Select Case UserControl.Extender.Align
+      Case vbAlignLeft, vbAlignRight, vbAlignNone
+         ' At top
+         m_eActualCapAlign = vbAlignTop
+      Case vbAlignTop, vbAlignBottom
+         ' Opposite side to scrollbars, depends on RTL property
+         If UserControl.RightToLeft Then
+            m_eActualCapAlign = vbAlignRight
+         Else
+            m_eActualCapAlign = vbAlignLeft
+         End If
+      End Select
+   Else
+      m_eActualCapAlign = m_eCaptionAlign
+   End If
+      
+   ' Work out the client size, adjusting for the caption position:
+   GetClientRect UserControl.hwnd, tR
+   LSet m_tClient = tR
+   If m_bCaptionVisible Then
+      LSet m_tCaption = tR
+      Select Case m_eActualCapAlign
+      Case vbAlignTop, vbAlignBottom
+         ' Determine the title position:
+         If m_eActualCapAlign = vbAlignTop Then
+            m_tCaption.Bottom = m_tCaption.Top + m_lTitleSize + m_Border * 2
+            m_tClient.Top = m_tCaption.Bottom
+         Else
+            m_tClient.Bottom = m_tClient.Bottom - (m_lTitleSize + m_Border * 2)
+            m_tCaption.Top = m_tClient.Bottom
+         End If
+         ' Button position:
+         LSet m_tButton = m_tCaption
+         InflateRect m_tButton, -(m_Border + 1), -(m_Border + 1)
+         OffsetRect m_tButton, -1, 0
+         m_tButton.Bottom = m_tButton.Bottom - 1
+         m_tButton.Left = m_tButton.Right - (m_tButton.Bottom - m_tButton.Top +
+          3)
+      Case vbAlignLeft, vbAlignRight
+         ' Determine the title position:
+         If m_eActualCapAlign = vbAlignLeft Then
+            m_tCaption.Right = m_tCaption.Left + m_lTitleSize + m_Border * 2
+            m_tClient.Left = m_tCaption.Right
+         Else
+            m_tClient.Right = m_tClient.Right - (m_lTitleSize + m_Border * 2)
+            m_tCaption.Left = m_tClient.Right
+         End If
+         ' Button position:
+         LSet m_tButton = m_tCaption
+         InflateRect m_tButton, -(m_Border + 1), -(m_Border + 1)
+         m_tButton.Bottom = m_tButton.Top + (m_tButton.Right - m_tButton.Left)
+      End Select
+   Else
+      m_tCaption.Top = -100
+      m_tCaption.Left = -100
+      m_tCaption.Bottom = -100
+      m_tCaption.Right = -100
+      LSet m_tButton = m_tCaption
+   End If
+   
+   m_State = -1
+   m_Resized = True
+   
+   Dim oThis As Object
+   If pbFindObject(oThis) Then
+      On Error Resume Next
+      oThis.Move ClientLeft, ClientTop, ClientWidth, ClientHeight
+      RePaint
+   Else
+      UserControl.Refresh
+   End If
+   
+End Sub
+
+Private Sub UserControl_Show()
+   UserControl_Resize
+End Sub
+
+Private Sub UserControl_Terminate()
+   Set m_cNCM = Nothing
+   #If DEBUGMODE Then
+      Debug.Print "Terminate"
+   #End If
+End Sub
+
+'Write property values to storage
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+   With PropBag
+      .WriteProperty "Enabled", UserControl.Enabled, True
+      Dim sFnt As New StdFont
+      .WriteProperty "Font", Font, sFnt
+      .WriteProperty "Caption", m_sCaption, m_def_Caption
+      .WriteProperty "CaptionMode", m_eCaptionMode, ecafSystem
+      .WriteProperty "CaptionAlign", m_eCaptionAlign, vbAlignNone
+      .WriteProperty "CaptionVisible", m_bCaptionVisible, True
+      .WriteProperty "BackColor", UserControl.BackColor, vbWindowBackground
+   End With
+   #If DEBUGMODE Then
+      Debug.Print "WriteProperties"
+   #End If
+End Sub
+
+Private Sub PaintBorder()
+Dim tR As RECT
+Dim hBr As Long
+Dim oJunk As Control
+   GetClientRect UserControl.hwnd, tR
+   hBr = GetSysColorBrush(vbButtonFace And &amp;H1F&amp;)
+   If m_bCaptionVisible Then
+      FillRect UserControl.hDC, m_tCaption, hBr
+      DrawEdge UserControl.hDC, m_tCaption, EDGE_ETCHED, BF_RECT
+   End If
+   DrawEdge UserControl.hDC, tR, EDGE_ETCHED, BF_RECT
+End Sub
+
+Private Sub PaintButton(ByVal vState As BStates)
+Dim tmpPic As StdPicture
+Dim tR As RECT
+Dim tUR As RECT
+Dim RColor As Long
+Dim SColor As Long
+Dim lColor As Long
+Dim hBr As Long
+      
+   If vState = m_State Then Exit Sub
+   
+   LSet tUR = m_tButton
+   tUR.Left = tUR.Left * Screen.TwipsPerPixelX
+   tUR.Right = tUR.Right * Screen.TwipsPerPixelX
+   tUR.Top = tUR.Top * Screen.TwipsPerPixelY
+   tUR.Bottom = tUR.Bottom * Screen.TwipsPerPixelY
+   
+   If vState = vbSunken Then
+   '   Set tmpPic = LoadResPicture(102, vbResBitmap)
+      RColor = vbButtonShadow
+      SColor = vb3DHighlight
+   Else
+   '   Set tmpPic = LoadResPicture(101, vbResBitmap)
+      RColor = vb3DHighlight
+      SColor = vbButtonShadow
+   End If
+
+   'Calculate new position for button
+   hBr = GetSysColorBrush(vbButtonFace And &amp;H1F&amp;)
+   FillRect UserControl.hDC, m_tButton, hBr
+   DeleteObject hBr
+   
+   Dim sFnt As New StdFont, sFntOld As StdFont
+   Dim lSize As Long
+   
+   Set sFntOld = UserControl.Font
+   sFnt.Name = "Marlett"
+   lSize = UserControl.Font.Size - 1
+   If lSize &lt; 7 Then lSize = 7
+   sFnt.Size = lSize
+   Set UserControl.Font = sFnt
+      
+   LSet tR = m_tButton
+   InflateRect tR, -1, -1
+   OffsetRect tR, 1, 1
+   If vState = vbSunken Then
+      OffsetRect tR, 1, 1
+   End If
+
+   If Ambient.UserMode Then
+      If UserControl.Enabled Then
+         DrawText UserControl.hDC, "r", -1, tR, DT_CENTER Or DT_SINGLELINE Or
+          DT_VCENTER
+      Else
+         lColor = UserControl.ForeColor
+         UserControl.ForeColor = vb3DHighlight
+         OffsetRect tR, 1, 1
+         DrawText UserControl.hDC, "r", -1, tR, DT_CENTER Or DT_SINGLELINE Or
+          DT_VCENTER
+         UserControl.ForeColor = vbButtonShadow
+         OffsetRect tR, -1, -1
+         DrawText UserControl.hDC, "r", -1, tR, DT_CENTER Or DT_SINGLELINE Or
+          DT_VCENTER
+         UserControl.ForeColor = lColor
+      End If
+            
+      If vState = vbFlat Then
+         UserControl.Line (tUR.Left, tUR.Top)-(tUR.Right, tUR.Bottom),
+          vbButtonFace, B
+      Else
+         UserControl.Line (tUR.Left, tUR.Top)-(tUR.Right, tUR.Top), RColor
+         UserControl.Line (tUR.Left, tUR.Top)-(tUR.Left, tUR.Bottom), RColor
+         UserControl.Line (tUR.Right, tUR.Bottom)-(tUR.Left, tUR.Bottom), SColor
+         UserControl.Line (tUR.Right, tUR.Bottom)-(tUR.Right, tUR.Top), SColor
+      End If
+   Else
+      DrawText UserControl.hDC, "r", -1, tR, DT_CENTER Or DT_SINGLELINE Or
+       DT_VCENTER
+   End If
+   
+   Set UserControl.Font = sFntOld
+   m_State = vState
+   
+End Sub
+
+Private Sub PaintCaption()
+Dim tParm As DRAWTEXTPARAMS
+Dim tRect As RECT
+   
+   If Not (m_eActualCapAlign = vbAlignLeft Or m_eActualCapAlign = vbAlignRight)
+    Then
+      'Draw the caption
+      tParm.cbSize = Len(tParm)
+      tParm.iLeftMargin = 0
+      tParm.iRightMargin = 0
+      tParm.iTabLength = 4
+         
+      LSet tRect = m_tCaption
+      InflateRect tRect, -m_Border - 1, -m_Border - 1
+      OffsetRect tRect, 3, 0
+      If Ambient.UserMode Then
+         If UserControl.Enabled Then
+            DrawTextEx UserControl.hDC, m_sCaption, -1, tRect, _
+                              DT_SINGLELINE Or DT_VCENTER Or DT_END_ELLIPSIS,
+                               tParm
+         Else
+            UserControl.ForeColor = vb3DHighlight
+            DrawTextEx UserControl.hDC, m_sCaption, -1, tRect, _
+                                    DT_SINGLELINE Or DT_VCENTER Or
+                                     DT_END_ELLIPSIS, tParm
+            UserControl.ForeColor = vbButtonShadow
+            tRect.Left = tRect.Left - 1
+            tRect.Top = tRect.Top - 1
+            DrawTextEx UserControl.hDC, m_sCaption, -1, tRect, _
+                                    DT_SINGLELINE Or DT_VCENTER Or
+                                     DT_END_ELLIPSIS, tParm
+            UserControl.ForeColor = vbButtonText
+         End If
+      Else
+         DrawTextEx UserControl.hDC, m_sCaption, -1, tRect, _
+                        DT_SINGLELINE Or DT_VCENTER Or DT_END_ELLIPSIS, tParm
+      End If
+   End If
+End Sub
+
+Private Sub RePaint()
+   If Not m_Painting Then
+      m_Painting = True
+      PaintBorder
+      PaintCaption
+      PaintButton vbFlat
+      m_Painting = False
+   End If
+   If m_Resized Then
+      m_Resized = False
+      RaiseEvent Resized
+   End If
+End Sub
+
+Private Sub SetAccelerator()
+Dim iPos As Integer
+   iPos = InStr(1, m_sCaption, "&amp;")
+   If iPos &gt; 0 And iPos &lt; Len(m_sCaption) Then
+      UserControl.AccessKeys = Mid(m_sCaption, iPos + 1, 1)
+   Else
+      UserControl.AccessKeys = ""
+   End If
+End Sub
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) IExplorer Bar Frame Control</a>&#160;.&#160;<a href="ctlframe.html">ctlFrame</a>&#160;.&#160;cFrame.ctl</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,501 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Splitting for all types of forms, including MDI forms, by drawing on the Desktop DC</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td  width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	<a href="..\..\overview.htm" target="vbamain">Source Code</a>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\splitting\splitting_on_mdi_forms\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Splitting for all types of forms, including MDI forms, by drawing on the Desktop DC</b><br></p>
+
+	<p><a href="csplitdc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cSplitDDC Demonstration (41kb)</a></p>
+	<p>
+	The cSplitDDC class demonstrates a extension of the <a href="splitter.htm" target="vbamain">simple splitter
+	class</a>.  Similar to the simple splitter, a PictureBox is used as the target area for splitting on 
+	the form.  However, rather than moving the PictureBox itself to show the split, this version uses the
+	current cursor position until the mouse is released to draw an image of the splitter on the Desktop.
+	This is the same method that VB uses to achieve the effect of dockable tool windows and to show splitting.
+	<br><br>
+	Because we are drawing directly on the Desktop window (which is simply an image of the windows on the Desktop),
+	there is absolutely no restriction where you draw the splitter.  The limitation of the simple method
+	was that the PictureBox had to be moved to a position to show the dragging in effect.  This meant it
+	was impossible to perform splits on, for example, a left aligned Picture Box in an MDI form because you
+	cannot move the PictureBox to any position other than an aligned position in the MDI form.  With the 
+	Desktop method you can do this.  In fact, this method is the basis for all kinds of interesting code.
+	For example, you could certainly achieve the dockable tool window effect with this method, because you can
+	draw a drag outline (or a Blitted Image of the form you are moving - if you prefer your dockable
+	windows to look like the ones in Office 97) anywhere on the screen.
+	<br><br>
+	<b>How it works</b><br>
+	In this method, a PictureBox is drawn on the form to show the position for the splitter.  The only
+	purpose of the PictureBox is to set the MousePointer to NS or EW depending on the orientation of the
+	splitter and to allow the user to make the initial click.
+	<br><br>
+	Subsequent Mouse Input is directed to the parent form of the splitter window.  To draw the splitter
+	image, the code evaluates where the mouse is using the GetCursor API call.  Then it determines the
+	current boundaries of the window we are splitting on the screen by checking the position of the
+	Window's Rectangles using the GetWindowRect and GetClientRect calls, which it compares to the screen
+	location by using ClientToScreen.
+	<br><br>
+	To draw the splitter itself, the code requests Windows to provide a DC to the Desktop using 
+	CreateDC, and then draws the splitter rectangle using an XOR pen.  This makes it easy to erase the
+	rectangle again by simply redrawing it in its last position.  Finally, to make the whole thing as
+	neat as possible, the splitter class clips mouse input so it can only fall within the boundary of the
+	form being split.
+	<br><br>
+	The code gets a little involved with the need to calculate exactly where a window's boundaries are
+	on the screen.  This complexity is all wrapped up in the cSplitDDC class so its still as easy to use
+	as the simple splitter class.  The download includes a demonstration vertical splitter on an MDI form as 
+	well as a vertical and horizontal splitter on a child form.
+	<br><br>
+	Here is the code to implement cSplitDDC:
+	</p>
+<font face="Lucida Console,courier new" size="1">
+<p>
+Option Explicit <br>
+ <br>
+' ====================================================================== <br>
+' Class:cSplitDDC <br>
+' Filename: cSplitDC.cls <br>
+' Author:   SP McMahon <br>
+' Date: 07 July 1998 <br>
+' <br>
+' A splitter class using the Desktop window to draw a <br>
+' splitter bar, therefore allowing splitting of MDI forms <br>
+' as well as standard forms. <br>
+' ====================================================================== <br>
+ <br>
+'// some global declarations <br>
+Private bDraw As Boolean <br>
+Private rcCurrent As RECT <br>
+Private rcNew As RECT <br>
+Private rcWindow As RECT <br>
+ <br>
+Private Type POINTAPI <br>
+&nbsp &nbsp X As Long <br>
+&nbsp &nbsp Y As Long <br>
+End Type <br>
+Private Type RECT <br>
+&nbsp &nbsp    Left As Long <br>
+&nbsp &nbsp    Top As Long <br>
+&nbsp &nbsp    Right As Long <br>
+&nbsp &nbsp    Bottom As Long <br>
+End Type <br>
+Private Declare Function Rectangle Lib "gdi32" (ByVal hDC As Long, ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long <br>
+Private Declare Function SetCapture Lib "user32" (ByVal hwnd As Long) As Long <br>
+Private Declare Function ReleaseCapture Lib "user32" () As Long <br>
+Private Declare Function ClientToScreen Lib "user32" (ByVal hwnd As Long, lpPoint As POINTAPI) As Long <br>
+Private Declare Function ScreenToClient Lib "user32" (ByVal hwnd As Long, lpPoint As POINTAPI) As Long <br>
+Private Declare Function DeleteDC Lib "gdi32" (ByVal hDC As Long) As Long <br>
+Private Declare Function CreateDCAsNull Lib "gdi32" Alias "CreateDCA" (ByVal lpDriverName As String, lpDeviceName As Any, lpOutput As Any, lpInitData As Any) As Long <br>
+Private Declare Function SetROP2 Lib "gdi32" (ByVal hDC As Long, ByVal nDrawMode As Long) As Long <br>
+&nbsp &nbsp Private Const R2_BLACK = 1   '   0 <br>
+&nbsp &nbsp Private Const R2_COPYPEN = 13'  P <br>
+&nbsp &nbsp Private Const R2_LAST = 16 <br>
+&nbsp &nbsp Private Const R2_MASKNOTPEN = 3  '  DPna <br>
+&nbsp &nbsp Private Const R2_MASKPEN = 9 '  DPa <br>
+&nbsp &nbsp Private Const R2_MASKPENNOT = 5  '  PDna <br>
+&nbsp &nbsp Private Const R2_MERGENOTPEN = 12&nbsp &nbsp '  DPno <br>
+&nbsp &nbsp Private Const R2_MERGEPEN = 15   '  DPo <br>
+&nbsp &nbsp Private Const R2_MERGEPENNOT = 14&nbsp &nbsp '  PDno <br>
+&nbsp &nbsp Private Const R2_NOP = 11&nbsp &nbsp '  D <br>
+&nbsp &nbsp Private Const R2_NOT = 6 '  Dn <br>
+&nbsp &nbsp Private Const R2_NOTCOPYPEN = 4  '  PN <br>
+&nbsp &nbsp Private Const R2_NOTMASKPEN = 8  '  DPan <br>
+&nbsp &nbsp Private Const R2_NOTMERGEPEN = 2 '  DPon <br>
+&nbsp &nbsp Private Const R2_NOTXORPEN = 10  '  DPxn <br>
+&nbsp &nbsp Private Const R2_WHITE = 16  '   1 <br>
+&nbsp &nbsp Private Const R2_XORPEN = 7  '  DPx <br>
+Private Declare Function GetWindowRect Lib "user32" (ByVal hwnd As Long, lpRect As RECT) As Long <br>
+Private Declare Function GetClientRect Lib "user32" (ByVal hwnd As Long, lpRect As RECT) As Long <br>
+Private Declare Sub ClipCursorRect Lib "user32" Alias "ClipCursor" (lpRect As RECT) <br>
+Private Declare Sub ClipCursorClear Lib "user32" Alias "ClipCursor" (ByVal lpRect As Long) <br>
+Private Declare Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long <br>
+Private Declare Function GetClassName Lib "user32" Alias "GetClassNameA" (ByVal hwnd As Long, ByVal lpClassName As String, ByVal nMaxCount As Long) As Long <br>
+Private Declare Function GetSystemMetrics Lib "user32" (ByVal nIndex As Long) As Long <br>
+&nbsp &nbsp Private Const SM_CXBORDER = 5 <br>
+&nbsp &nbsp Private Const SM_CYBORDER = 6 <br>
+&nbsp &nbsp Private Const SM_CYCAPTION = 4 <br>
+&nbsp &nbsp Private Const SM_CYMENU = 15 <br>
+ <br>
+Public Enum eOrientationConstants <br>
+&nbsp &nbsp espVertical = 1 <br>
+&nbsp &nbsp espHorizontal = 2 <br>
+End Enum <br>
+Private m_hWnd As Long <br>
+Private m_eOrientation As eOrientationConstants <br>
+Private m_lBorder(1 To 4) As Long <br>
+Private m_oSplit As Object <br>
+Public Enum ESplitBorderTypes <br>
+&nbsp &nbsp    espbLeft = 1 <br>
+&nbsp &nbsp    espbTop = 2 <br>
+&nbsp &nbsp    espbRight = 3 <br>
+&nbsp &nbsp    espbBottom = 4 <br>
+End Enum <br>
+Private m_bIsMDI As Boolean <br>
+Private m_bSplitting As Boolean <br>
+ <br>
+Public Property Get SplitObject() As Object <br>
+&nbsp &nbsp Set SplitObject = m_oSplit <br>
+End Property <br>
+Public Property Let SplitObject(ByRef oThis As Object) <br>
+&nbsp &nbsp Set m_oSplit = oThis <br>
+&nbsp &nbsp On Error Resume Next <br>
+&nbsp &nbsp oThis.BorderStyle = 0 <br>
+&nbsp &nbsp If (m_eOrientation = espHorizontal) Then <br>
+&nbsp &nbsp &nbsp &nbsp oThis.MousePointer = vbSizeNS <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp oThis.MousePointer = vbSizeWE <br>
+&nbsp &nbsp End If <br>
+End Property <br>
+Public Property Let Border(ByVal eBorderType As ESplitBorderTypes, ByVal lSize As Long) <br>
+   m_lBorder(eBorderType) = lSize <br>
+End Property <br>
+Public Property Get Border(ByVal eBorderType As ESplitBorderTypes) As Long <br>
+   Border = m_lBorder(eBorderType) <br>
+End Property <br>
+Public Property Get Orientation() As eOrientationConstants <br>
+&nbsp &nbsp Orientation = m_eOrientation <br>
+End Property <br>
+Public Property Let Orientation(ByVal eOrientation As eOrientationConstants) <br>
+&nbsp &nbsp m_eOrientation = eOrientation <br>
+&nbsp &nbsp If Not (m_oSplit Is Nothing) Then <br>
+&nbsp &nbsp &nbsp &nbsp If (m_eOrientation = espHorizontal) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_oSplit.MousePointer = vbSizeNS <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbTop) = 64 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbBottom) = 64 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbLeft) = 0 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbRight) = 0 <br>
+&nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_oSplit.MousePointer = vbSizeWE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbTop) = 0 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbBottom) = 0 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbLeft) = 64 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp m_lBorder(espbRight) = 64 <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End If <br>
+End Property <br>
+ <br>
+Public Sub SplitterMouseDown( _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal hwnd As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal X As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal Y As Long _ <br>
+&nbsp &nbsp ) <br>
+Dim tP As POINTAPI <br>
+ <br>
+&nbsp &nbsp m_hWnd = hwnd <br>
+ <br>
+&nbsp &nbsp ' Send subsequent mouse messages to the owner window <br>
+&nbsp &nbsp SetCapture m_hWnd <br>
+&nbsp &nbsp ' Get the window rectangle on the desktop of the owner window: <br>
+&nbsp &nbsp GetWindowRect m_hWnd, rcWindow <br>
+&nbsp &nbsp ' Clip the cursor so it can't move outside the window: <br>
+&nbsp &nbsp ClipCursorRect rcWindow <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp ' Check if this is an MDI form: <br>
+&nbsp &nbsp If (ClassName(m_hWnd) = "ThunderMDIForm") Then <br>
+&nbsp &nbsp &nbsp &nbsp ' Get the inside portion of the MDI form: <br>
+&nbsp &nbsp &nbsp &nbsp ' I'm assuming you have a caption,menu and border in your MDI here <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Left = rcWindow.Left + GetSystemMetrics(SM_CXBORDER) <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Right = rcWindow.Right - GetSystemMetrics(SM_CXBORDER) <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Bottom = rcWindow.Bottom - GetSystemMetrics(SM_CYBORDER) <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Top = rcWindow.Top + GetSystemMetrics(SM_CYBORDER) * 3 + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYMENU) <br>
+&nbsp &nbsp &nbsp &nbsp m_bIsMDI = True <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp ' Get the client rectangle of the window in screen coordinates: <br>
+&nbsp &nbsp &nbsp &nbsp GetClientRect m_hWnd, rcWindow <br>
+&nbsp &nbsp &nbsp &nbsp tP.X = rcWindow.Left <br>
+&nbsp &nbsp &nbsp &nbsp tP.Y = rcWindow.Top <br>
+&nbsp &nbsp &nbsp &nbsp ClientToScreen m_hWnd, tP <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Left = tP.X <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Top = tP.Y <br>
+&nbsp &nbsp &nbsp &nbsp tP.X = rcWindow.Right <br>
+&nbsp &nbsp &nbsp &nbsp tP.Y = rcWindow.Bottom <br>
+&nbsp &nbsp &nbsp &nbsp ClientToScreen m_hWnd, tP <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Right = tP.X <br>
+&nbsp &nbsp &nbsp &nbsp rcWindow.Bottom = tP.Y <br>
+&nbsp &nbsp &nbsp &nbsp m_bIsMDI = False <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp bDraw = True  '// start actual drawing from next move message <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp rcCurrent.Left = 0: rcCurrent.Top = 0: rcCurrent.Right = 0: rcCurrent.Bottom = 0 <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp X = (m_oSplit.Left + X) \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp Y = (m_oSplit.Top + Y) \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp SplitterFormMouseMove X, Y <br>
+&nbsp &nbsp  <br>
+End Sub <br>
+ <br>
+Public Sub SplitterFormMouseMove( _ <br>
+&nbsp &nbsp   ByVal X As Long, _ <br>
+&nbsp &nbsp   ByVal Y As Long) <br>
+Dim hDC As Long <br>
+Dim tP As POINTAPI <br>
+Dim hWndClient As Long <br>
+&nbsp &nbsp If (bDraw) Then <br>
+&nbsp &nbsp &nbsp &nbsp '// Draw two rectangles in the screen DC to cause splitting: <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp ' First get the Desktop DC: <br>
+&nbsp &nbsp &nbsp &nbsp hDC = CreateDCAsNull("DISPLAY", ByVal 0&, ByVal 0&, ByVal 0&) <br>
+&nbsp &nbsp &nbsp &nbsp ' Set the draw mode to XOR: <br>
+&nbsp &nbsp &nbsp &nbsp SetROP2 hDC, R2_NOTXORPEN <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp '// Draw over and erase the old rectangle <br>
+&nbsp &nbsp &nbsp &nbsp ' (if this is the first time, all the coords will be 0 and nothing will get drawn): <br>
+&nbsp &nbsp &nbsp &nbsp Rectangle hDC, rcCurrent.Left, rcCurrent.Top, rcCurrent.Right, rcCurrent.Bottom <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp ' It is simpler to use the mouse cursor position than try to translate <br>
+&nbsp &nbsp &nbsp &nbsp ' X,Y to screen coordinates! <br>
+&nbsp &nbsp &nbsp &nbsp GetCursorPos tP <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp ' Determine where to draw the splitter: <br>
+&nbsp &nbsp &nbsp &nbsp If (m_eOrientation = espHorizontal) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Left = rcWindow.Left + m_lBorder(espbLeft) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Right = rcWindow.Right - m_lBorder(espbRight) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If (tP.Y >= rcWindow.Top + m_lBorder(espbTop)) And (tP.Y < rcWindow.Bottom - m_lBorder(espbBottom)) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Top = tP.Y - 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Bottom = tP.Y + 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If (tP.Y < rcWindow.Top + m_lBorder(espbTop)) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Top = rcWindow.Top + m_lBorder(espbTop) - 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Bottom = rcNew.Top + 5 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Top = rcWindow.Bottom - m_lBorder(espbBottom) - 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Bottom = rcNew.Top + 5 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Top = rcWindow.Top + m_lBorder(espbTop) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Bottom = rcWindow.Bottom - m_lBorder(espbBottom) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If (tP.X >= rcWindow.Left + m_lBorder(espbLeft)) And (tP.X <= rcWindow.Right - m_lBorder(espbRight)) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Left = tP.X - 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Right = tP.X + 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If (tP.X < rcWindow.Left + m_lBorder(espbLeft)) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Left = rcWindow.Left + m_lBorder(espbLeft) - 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Right = rcNew.Left + 5 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Left = rcWindow.Right - m_lBorder(espbRight) - 2 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp rcNew.Right = rcNew.Left + 5 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp '// Draw the new rectangle <br>
+&nbsp &nbsp &nbsp &nbsp Rectangle hDC, rcNew.Left, rcNew.Top, rcNew.Right, rcNew.Bottom <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp ' Store this position so we can erase it next time: <br>
+&nbsp &nbsp &nbsp &nbsp LSet rcCurrent = rcNew <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp ' Free the reference to the Desktop DC we got (make sure you do this!) <br>
+&nbsp &nbsp &nbsp &nbsp DeleteDC hDC <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp  <br>
+End Sub <br>
+ <br>
+Public Function SplitterFormMouseUp( _ <br>
+&nbsp &nbsp   ByVal X As Long, _ <br>
+&nbsp &nbsp   ByVal Y As Long _ <br>
+   ) As Boolean <br>
+Dim hDC As Long <br>
+Dim tP As POINTAPI <br>
+Dim hWndClient As Long <br>
+ <br>
+&nbsp &nbsp   '// Don't leave orphaned rectangle on desktop; erase last rectangle. <br>
+   If (bDraw) Then <br>
+&nbsp &nbsp    bDraw = False <br>
+&nbsp &nbsp     <br>
+&nbsp &nbsp    ' Release mouse capture: <br>
+&nbsp &nbsp    ReleaseCapture <br>
+&nbsp &nbsp    ' Release the cursor clipping region (must do this!): <br>
+&nbsp &nbsp    ClipCursorClear 0& <br>
+&nbsp &nbsp     <br>
+&nbsp &nbsp    ' Get the Desktop DC: <br>
+&nbsp &nbsp    hDC = CreateDCAsNull("DISPLAY", 0, 0, 0) <br>
+&nbsp &nbsp    ' Set to XOR drawing mode: <br>
+&nbsp &nbsp    SetROP2 hDC, R2_NOTXORPEN <br>
+&nbsp &nbsp    ' Erase the last rectangle: <br>
+&nbsp &nbsp    Rectangle hDC, rcCurrent.Left, rcCurrent.Top, rcCurrent.Right, rcCurrent.Bottom <br>
+&nbsp &nbsp    ' Clear up the desktop DC: <br>
+&nbsp &nbsp    DeleteDC hDC <br>
+&nbsp &nbsp     <br>
+&nbsp &nbsp    ' Here we ensure the splitter is within bounds before releasing: <br>
+&nbsp &nbsp    GetCursorPos tP <br>
+ <br>
+&nbsp &nbsp    If (tP.X < rcWindow.Left + m_lBorder(espbLeft)) Then <br>
+&nbsp &nbsp &nbsp &nbsp    tP.X = rcWindow.Left + m_lBorder(espbLeft) <br>
+&nbsp &nbsp    End If <br>
+&nbsp &nbsp    If (tP.X > rcWindow.Right - m_lBorder(espbRight)) Then <br>
+&nbsp &nbsp &nbsp &nbsp    tP.X = rcWindow.Right - m_lBorder(espbRight) <br>
+&nbsp &nbsp    End If <br>
+&nbsp &nbsp    If (tP.Y < rcWindow.Top + m_lBorder(espbTop)) Then <br>
+&nbsp &nbsp &nbsp &nbsp    tP.Y = rcWindow.Top + m_lBorder(espbTop) <br>
+&nbsp &nbsp    End If <br>
+&nbsp &nbsp    If (tP.Y > rcWindow.Bottom - m_lBorder(espbBottom)) Then <br>
+&nbsp &nbsp &nbsp &nbsp    tP.Y = rcWindow.Bottom - m_lBorder(espbBottom) <br>
+&nbsp &nbsp    End If <br>
+&nbsp &nbsp    ScreenToClient m_hWnd, tP <br>
+&nbsp &nbsp     <br>
+&nbsp &nbsp    ' Move the splitter to the validated final position: <br>
+&nbsp &nbsp    If (m_eOrientation = espHorizontal) Then <br>
+&nbsp &nbsp &nbsp &nbsp    m_oSplit.Top = (tP.Y - 2) * Screen.TwipsPerPixelY <br>
+&nbsp &nbsp    Else <br>
+&nbsp &nbsp &nbsp &nbsp    m_oSplit.Left = (tP.X - 2) * Screen.TwipsPerPixelX <br>
+&nbsp &nbsp    End If <br>
+&nbsp &nbsp     <br>
+&nbsp &nbsp    ' Return true to tell the owner we have completed splitting: <br>
+&nbsp &nbsp    SplitterFormMouseUp = True <br>
+   End If <br>
+    <br>
+End Function <br>
+ <br>
+Private Sub Class_Initialize() <br>
+&nbsp &nbsp    m_eOrientation = espVertical <br>
+&nbsp &nbsp    m_lBorder(espbLeft) = 64 <br>
+&nbsp &nbsp    m_lBorder(espbRight) = 64 <br>
+End Sub <br>
+Private Function ClassName(ByVal lHwnd As Long) As String <br>
+Dim lLen As Long <br>
+Dim sBuf As String <br>
+&nbsp &nbsp lLen = 260 <br>
+&nbsp &nbsp sBuf = String$(lLen, 0) <br>
+&nbsp &nbsp lLen = GetClassName(lHwnd, sBuf, lLen) <br>
+&nbsp &nbsp If (lLen <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp ClassName = Left$(sBuf, lLen) <br>
+&nbsp &nbsp End If<br>
+End Function<br>
+
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 14 July 1998</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

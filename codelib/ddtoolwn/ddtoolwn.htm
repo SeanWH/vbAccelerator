@@ -1,0 +1,369 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Cortex/vbAccelerator HTML Editor">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="Description" content="Provides a Class which allows you to create drop down tool windows from any VB PictureBox or UserControl. Includes full source.">
+<title>Creating drop-down tool windows.</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\drop_down_tool_windows\office_style_table_picker\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Creating drop-down tool windows</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Use a PictureBox along with this class to emulate the Word 97 Toolbar's Table Picker</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<img src="..\..\images\ddtoolwn.gif" alt="Demonstrating drop down tool windows" width="233" height="197"><br>
+	<br>
+	<a href="ddtoolwn.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Drop Down Tool Window Class and Demo (22kb)</a><br>
+	<a href="tbarddtw.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator Toolbar with Drop Down Tool Window sample (39kb)</a>
+	</font>
+	</p>
+	<p>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The toolbar demonstration project uses the <a href="..\comctl\retbar.htm">vbAccelerator toolbar</a> and the <a href="..\comctl\imglist.htm">vbAccelerator Image List</a> controls.
+		Download and register these before trying this sample.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Overview</b><br>	
+	One feature I've been trying to achieve since I first discovered you could write API declares
+	in VB3 (oops, showing my age here...) is a drop-down tool window you can show in response to
+	a button or tool bar button click.  These windows have been increasing in number in the Office 
+	series of tools and they are a really nice addition to a user interface.<br><br>
+	This sample provides a neat class which allows you to convert any PictureBox or Control on a 
+	form into a drop-down tool window.  As a demonstration of the technique, the class is used to
+	implement a Word 97 table picker tool window.	
+	</p>	
+	<p><b>How it Works</b></br>
+	This drop-down window method uses the same technique as a Windows drop-down combo box does
+	to display its drop-down portion.  The drop-down portion is made to be a child of the 
+	Windows desktop.  This allows the tool window portion to be drawn outside the boundaries of
+	its owner form, as shown in the picture above.
+	<br><br>
+	Here is the code used to convert a standard control to a drop-down window and then show it.
+	The comments in this code describe the steps you have to take to make the box work like
+	a drop-down window:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Public Sub Show(ByVal x As Long, ByVal y As Long) <br>
+Dim tP As POINTAPI <br>
+Dim hWndDesktop As Long <br>
+Dim lStyle As Long <br>
+Dim lhWnd As Long <br>
+Dim lParenthWNd As Long <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   ' Make sure the picture box won't appear in the <br>
+&nbsp &nbsp   ' task bar by making it into a Tool Window: <br>
+&nbsp &nbsp   ' See my article <a href="..\winstyle\taskshow.htm">Set the Show In Taskbar property at run time</a> for details.<br>
+<br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   lhWnd = DropDownObject.hwnd <br>
+&nbsp &nbsp   lStyle = GetWindowLong(lhWnd, GWL_EXSTYLE) <br>
+&nbsp &nbsp   lStyle = lStyle Or WS_EX_TOOLWINDOW <br>
+&nbsp &nbsp   lStyle = lStyle And Not (WS_EX_APPWINDOW) <br>
+&nbsp &nbsp   SetWindowLong lhWnd, GWL_EXSTYLE, lStyle <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Determine where to show it in Screen coordinates: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      tP.x = x \ Screen.TwipsPerPixelX: tP.y = y \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp      lParenthWNd = DropDownObject.Parent.hwnd <br>
+&nbsp &nbsp      ClientToScreen lParenthWNd, tP <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Make the picture box a child of the desktop (so <br>
+&nbsp &nbsp      ' it can be fully shown even if it extends beyond <br>
+&nbsp &nbsp      ' the form boundaries): <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      SetParent lhWnd, hWndDesktop <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Show the object: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      SetWindowPos lhWnd, lParenthWNd, tP.x, tP.y, _ <br>
+&nbsp &nbsp &nbsp &nbsp DropDownObject.Width \ Screen.TwipsPerPixelX, DropDownObject.Height \ Screen.TwipsPerPixelY, _<br>
+&nbsp &nbsp &nbsp &nbsp SWP_SHOWWINDOW <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Tell VB it is shown: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      DropDownObject.Visible = True <br>
+&nbsp &nbsp      DropDownObject.ZOrder <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Try to set focus: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      SetFocusAPI lhWnd <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Capture all mouse messages. <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      SetCapture lhWnd <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Start subclassing for Alt-tab <br>
+&nbsp &nbsp      ' See <a href="..\ssubtmr\ssubtmr.htm">Subclassing without the crashes</a> and<br>
+&nbsp &nbsp      ' <a href="..\ssubtmr\yielddet.htm">Detecting when another application is activated</a> for more details<br>
+<br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      m_hWndForm = lParenthWNd <br>
+&nbsp &nbsp      m_hWndObject = lhWnd <br>
+&nbsp &nbsp      AttachMessage Me, m_hWndForm, WM_ACTIVATE <br>
+    <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Store a flag saying we're shown: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      m_bShown = True <br>
+<br>
+End Sub <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Using the cDropDownToolWindow Class</b><br>
+	First, create an instance of the control or UserControl you want to turn into a drop
+	down window, and then make it invisible.<br><br>
+	Before using the window, call the <i>Create</i> method and pass in the control.  Note your
+	control must have a <i>hWnd</i> property to work as tool window.<br><br>
+	When you want to show the window, call the <i>Show</i> method.  Now all mouse events will be
+	directed to your control.  The standard method of handling a drop-down window is to initially
+	keep the window open until at least the MouseDown event occurs.  Then if the mouse is outside
+	the window you cancel and hide it, or if it is inside you keep working until the MouseUp occurs, when
+	it is also hidden and cancelled if the mouse was off the control.<br><br>
+	You can use the <i>InRect</i> method to determine if the mouse is currently over the control
+	and the <i>Hide</i> method to clear the form.  A helper function <i>Resize</i> is also provided
+	to allow you to modify the width and height of the tool window whilst it is shown.<br><br>
+	Finally, when your application unloads, call the <i>Destroy</i> method to clear up the window.
+	</p>
+
+	<p><b>Limitations to the Method</b><br>
+	This version does not support using the keyboard in your tool window.  This limitation can be
+	worked around using a windows hook, which is the subject of a forthcoming article (expected 
+	February 1999) in the Code Library section.
+	</p>
+
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\drop_down_tool_windows\office_style_table_picker\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 13 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

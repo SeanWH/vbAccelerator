@@ -1,0 +1,517 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Transparent Sprite Library</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+</tr>
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#999966">
+	<td valign="top"  width="32">
+	<font color="#993300" face="verdana,arial,helvetica" size="6"><strong>4</strong></font>
+	</td>
+	<td>
+	<font color="#993300" face="verdana,arial,helvetica" size="4"><strong>vb<I>Media</I></strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\vbmedia\transparent_gdi_sprite_library\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Transparent Sprite Library</b><br></p>
+	<p><img src="..\..\images\scrsave.gif" alt="[vbAccelerator Screen Saver]" width="268" height="191"></p>
+	<p><a href="scrsave.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Blob Screen Saver Sample (267kb)</a></p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>This sample requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a> because it includes an implementation of the 
+	COMCTL32.DLL Slider control.  Make sure you have loaded and registered this before trying the BlobSaver project.</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><a href="ast.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Simple Transparent Sprites Demo (36kb)</a></p>
+	<p><a href="ctsprite.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Transparent Sprite Classes Only (9kb)</a></p>
+	<p>
+	This VB library aims to make it simple to add fast, animated graphics using transparent sprites,
+	something which is either missing or dismally slow using VB's standard methods.  To get quicker
+	or smoother than this, you'll need to use Direct X (article coming soon!)<br><br>
+	The source code provides a complete screen saver, and a simpler (and somewhat smaller) sample which animates
+	a large number of asteroids around a non-firing, invunerable spaceship.  These demonstrate
+	how the sprite library can be quickly incorporated into an application.<br><br>
+	Transparent bitmaps are not only used for games or screen savers; Windows uses them extensively
+	for icons and also the ImageList common control has built in functions specifically for creating
+	transparent bitmaps.  In this article I will describe the principle of the sprite library and how
+	to draw any bitmap transparently.<br><br>
+	<b>Drawing Bitmaps Transparently</b><br>
+	There are basically two methods to draw a bitmap transparently.  The first is to write custom
+	drawing code which loops through all the bits in the bitmap and only draws pixels which aren't
+	the background colour of the bitmap.  Whilst this is the most flexible method, it is considerably
+	slower under Windows than the method described here.<br><br>
+	The other method is to take advantage of the BitBlt method.  The grunt of the BitBlt method is
+	implemented in the graphics card driver and is usually extremely quick under Windows 95.  To
+	make use of this method, we need to process the bitmap and create a mask and a sprite bitmap
+	as follows:
+	<ol>
+	<li>Choose a colour in the bitmap you want to be transparent.
+	<li>Create a monochrome bitmap which is black where the bitmap should be transparent and white
+	otherwise (this is called the mask).
+	<li>Change the bitmap colour to white in the transparent area (this becomes the sprite).
+	</ol>
+	Having done this, the bitmap can be drawn transparently in two BitBlt operations:
+	<ol>
+	<li>Firstly, OR the Mask bitmap with the background.  This sets the background pixels to white
+	where the sprite should be drawn (where the mask is white) but leaves them unaffected otherwise.
+	(since 0 or 0 = 0, 1 or 0 = 1, 0 or 1 = 1, 1 or 1= 1).
+	<li>Secondly, AND the Sprite bitmap over the area you've just ORed the mask into.  Where the 
+	Sprite is white (the transparent area) there is no effect - it leaves the background pixels
+	unaffected, but where the background has been coloured white by the mask the bitmap itself 
+	is drawn. (since 0 and 0 = 0, 1 and 0 = 0, 0 and 1 = 1, 1 and 1 = 1)
+	</ol>
+	Thus the bitmap can be drawn transparently.  The following series of pictures shows the
+	process in detail:<br><br>
+	Creating Sprite and Mask from the Bitmap:
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_orig.gif" width="55" height="113" alt="Original Sprite"><br>
+	<b>Original</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="55" bgcolor="#CCCC99">
+	<p><br><img src="..\..\images\sprarrow.gif" width="55" height="113"></p>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_mask.gif" width="55" height="113" alt="Mask"><br>
+	<b>Mask</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_spr.gif" width="55" height="113" alt="Sprite"><br>
+	<b>Sprite</b><br>&nbsp</p>
+	</font>
+	</td>	
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>ORing the Mask onto the Background:
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_back.gif" width="55" height="113" alt="Sprite Background"><br>
+	<b>Background</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_mask.gif" width="55" height="113" alt="Mask"><br>
+	<b>Mask</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="55" bgcolor="#CCCC99">
+	<p><br><img src="..\..\images\sprarrow.gif" width="55" height="113"></p>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_ormk.gif" width="55" height="113" alt="Mask ORed with Background"><br>
+	<b>OR Mask onto Background</b><br>&nbsp</p>
+	</font>
+	</td>	
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>ANDing the Sprite to Get the Transparent Effect:
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_ormk.gif" width="55" height="113" alt="Mask ORed with Background"><br>
+	<b>Background ORed with Mask</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_spr.gif" width="55" height="113" alt="Sprite"><br>
+	<b>Sprite</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="55" bgcolor="#CCCC99">
+	<p><br><img src="..\..\images\sprarrow.gif" width="55" height="113"></p>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\spr_tran.gif" width="55" height="113" alt="Transparent Sprite"><br>
+	<b>AND Sprite</b><br>&nbsp</p>
+	</font>
+	</td>	
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br>
+	That covers how to transparently draw a sprite, but you need to do more to gain flicker-free
+	moving sprites.
+	<br><br>
+	<b>Achieving Flicker-Free Animation</b><br>
+	When moving sprites, it becomes necessary to redraw the previous background under the sprite
+	before moving it to its new position (unless you want to obtain a trail effect).  This makes
+	flicker a problem - generally you have to draw an area where the new sprite will be with the
+	background and then draw the sprite in its new position over the top.  This almost always
+	results in flickering.<br><br>
+	To prevent this occuring, you can create a buffer (called a Stage) to make all the changes in, maintaining the
+	screen with the sprite in place for as long as possible.  When it comes to redrawing the sprite
+	in its new position, you can then make a minimum of calls to transfer the new position and erase
+	the old position simultaneously.  You don't get any flicker this way because all the updates you
+	do are draw an image in which the new sprite is in place.<br><br>
+	The code loop for this type of animation with my sprite library is always as follows:
+	<ol>
+	<li>Restore the background behind the sprite into the stage.
+	<li>Move the sprite to its new position, and store the background behind the sprite.  The
+	stored background can be used to restore the background next time round the loop.
+	<li>Draw the sprite in its new position on the stage using the transparent draw method.
+	<li>Finally, copy the old and the new sprite positions from the stage to the screen.  Here
+	if the old sprite position is close to the new sprite position, we can minimise the amount
+	of drawing by drawing both at the same time.
+	</ol>
+	The loop is shown pictorially below:<br><br>
+	Initial position:
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_init.gif" width="111" height="96" alt="Screen"><br>
+	<b>Screen</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_init.gif" width="111" height="96" alt="Stage"><br>
+	<b>Stage</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>Restore the background behind the sprite into the stage (repeating for all
+	other sprites in the scene):
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_init.gif" width="111" height="96" alt="Screen"><br>
+	<b>Screen</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_rest.gif" width="111" height="96" alt="Stage"><br>
+	<b>Stage</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>Move the sprite to its new position in the stage, and store the area behind the sprite so we can restore
+	it next time around the loop (repeating for all sprites in the scene).  Note that at
+	this stage we could change the background if we wanted, provided you remember which
+	rectangles have been updated so they can be copied in the last part of the loop:
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_init.gif" width="111" height="96" alt="Screen"><br>
+	<b>Screen</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_stor.gif" width="111" height="96" alt="Stage"><br>
+	<b>Stage</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>Draw the sprite transparently in the new position (repeating for all sprites 
+	in the scene):
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_init.gif" width="111" height="96" alt="Screen"><br>
+	<b>Screen</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_new.gif" width="111" height="96" alt="Stage"><br>
+	<b>Stage</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>Finally, copy the changes from the stage to the screen, minimising the number
+	of drawing steps (here both the background and the sprite are copied as one rectangle):
+	</p>
+	</font>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td width="24">&nbsp</td>
+	<td width="113">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_comp.gif" width="111" height="96" alt="Screen"><br>
+	<b>Screen</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td width="113" bgcolor="#CCCC99">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p align="center"><br><img src="..\..\images\stg_new.gif" width="111" height="96" alt="Stage"><br>
+	<b>Stage</b><br>&nbsp</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>	
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br>
+	<b>Check it Out</b><br>
+	That's the principle of the sprite library.  The code shows how to achieve
+	all the above effects using GDI calls.  The mask creation routine in the code
+	is quite neat and can easily be pulled out and used elsewhere.  This technique
+	makes mask creation ultra quick.  To do it, you first create a monochrome DC (using
+	CreateCompatibleDC with a hDC of 0) and then select a monochrome bitmap into it.
+	Use SetBkColor to set the back 'colour' of the monochrome DC to the colour you want
+	to be the mask colour, and then when you BitBlt any bitmap into it, Windows
+	automatically maps all pixels of this colour to black.  You just need to invert it
+	to get the mask.<br><br>
+	<b>To Install BlobSaver</b><br>
+	If you want to install BlobSaver as a screen saver, just copy BlobSaver.scr, all the gif
+	files and backdrop.jpg into your Windows directory.  You can modify the images used to
+	display the backdrop, or the sprite images with your own files by editing the registry
+	entries which the screen saver creates under HKEY_CURRENT_USER\Software\vbaccelerator\Blob Saver.
+	The sprite files should split into 7x5 images to display correctly.<br><br>
+	</td>
+	<td>&nbsp</td>
+	
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p>Back to <a href="#sectop">top</a><br>
+	Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+	</p>
+	<br>
+	</font>
+	</td>
+	<td>&nbsp</td>
+<tr>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 24 June 1998</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>RichEdit 3.0 Text Object Model (TOM) Interface Sample</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>RichEdit 3.0 Text Object Model (TOM) Interface Sample</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Using the vbAccelerator Control With the Version 3.0 of RichEd20.DLL</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\tomdemo.gif" alt="vbAccelerator RichEdit TOM Demonstration Project" width="286" height="197">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="tomdemo.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tomdemo.zip">Download the RichEdit 3.0 Text Object Model Demonstration (20kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="richedit.htm">vbAccelerator RichEdit Control</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The source code project requires the <a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The source code project requires the <a href="..\..\typelib.htm#SHLEXT">Shell Extension Type Library v1.01 (SHLEXT.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		This sample demonstrates a class which provides a Text Object Model (TOM)
+	interface from version 3.0 of the RichEd20.DLL.
+		<br><br>
+	The Microsoft® Text Object Model (TOM) defines a set of text manipulation interfaces that are supported by text 
+	solutions such as Microsoft Word and the rich edit control.  TOM has many methods and a powerful but simple
+	COM object model, making it easy to use from VB and VBA and offering substantial text processing power. 
+		<br><br>
+		Note to get RichEdit version 3.0 you either need to be running Win2000 or you need 
+	to download the Microsoft Systems Installer (MSI) redistributable.  
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Documentation</b><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Documentation for the Text Object Model's properties, methods and classes 
+	is available as an RTF.  This documentation was
+	created with the <a href="..\actvxdoc\article.htm">ActiveX Documenter</a> (which itself
+	uses a variant of the RichEdit control!).<br><br>
+	<a href="tom.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Click here to download/view the Text Object Model (TOM) method and event documentation</a>			
+		<Br><br>
+	Unfortunately this object model does not seem to have any help text built into it (at least not with the
+	version I currently have).  To get more information about the object model and how to use all the objects
+	in it you will need to also take a look at <a href="..\..\linxref.htm#secmsdn">MSDN</a> under this area:
+		<Br><br>
+		<small>
+	&nbsp;&nbsp;&nbsp;MSDN Library<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform SDK<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Interface Services<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows User Interface<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Controls<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rich Edit Controls<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text Object Model<br>
+		</small>
+		<br><br>
+		<b>An Overview of the TOM Model</b><br>
+		The top-level TOM object is defined by the <i>ITextDocument</i> interface, which has methods for creating and 
+		retrieving objects lower in the object hierarchy. For simple, plain text processing, you can obtain an 
+		<i>ITextRange</i> object from an <i>ITextDocument</i> object. 
+		<br><br>
+		If you need to add rich-text formatting, you can obtain <i>ITextFont</i> and <i>ITextPara</i> objects 
+		from an <i>ITextRange</i> object. 
+		<br><br>
+		<i>ITextFont</i> provides the programming equivalent of the Microsoft Word Font dialog box, whilst
+		<i>ITextPara</i> provides the  equivalent of the Word Paragraph dialog box. In addition to these 
+		three lower-level objects, TOM has a selection object (<i>ITextSelection</i>), which is just an 
+		<i>ITextRange</i> object with selection highlighting and additional UI oriented methods. 
+		The range and selection objects include screen-oriented methods 
+		that enable programs to examine text on the screen or text that could be scrolled onto the screen. 		
+		<br><br>
+		Summarizing these objects in a hierarchical way, we have the following directory tree:
+		<br><br>
+		</font>
+		<p>
+		<table>
+		<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		<i>ITextDocument</i>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	        Top-level editing object
+		</font></td>
+		</tr>
+		<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		&nbsp;&nbsp;&nbsp;<i>ITextStoryRanges</i>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	        Enumerator for stories in document
+		</font></td>
+		</tr>
+		<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		&nbsp;&nbsp;&nbsp;<i>ITextRange</i>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	        Primary text interface: range of text
+		</font></td>
+		</tr>
+		<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>ITextFont</i>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	        Character-attribute interface
+		</font></td>
+		</tr>          
+		<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>ITextPara</i>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	        Paragraph-attribute interface
+		</font></td>
+		</tr>
+		<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		&nbsp;&nbsp;&nbsp;<i>ITextSelection</i>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	        Screen highlighted text range that inherits all ITextRange methods
+		</font></td>
+		</tr>
+		</table>
+                 </p>		               
+	<font color="#000000" face="verdana,arial,helvetica" size="2">            
+
+	An <i>ITextDocument</i> object describes one or more contiguous ranges of text called stories. 
+	In Microsoft Word, stories exist for a number of explicit purposes, such as the main text of a document, 
+	headers and footers, footnotes, and annotations. In the rich edit control, there is only one story per document, 
+	although a client can use multiple documents to represent multiple stories.
+		<br><br>
+	An <i>ITextRange</i> object is defined by its start and end character position (cp) offsets and a story object. 
+	As such, it does not exist independently of its parent story object, although its text can be copied to the 
+	clipboard or to other targets. A text range object is different from spreadsheet and other range objects, 
+	which are defined by other kinds of offsets, like row/column or graphics position (x,y). A text range object can: 
+	<ul>
+		<li>Modify itself in various ways. 
+		<li>Return a duplicate of itself. 
+		<li>Copy its start and end character positions and its story pointer to the current selection. 
+	</ul>
+	Note that an explicit story object is not needed, since an <i>ITextRange</i> object can always be created to represent 
+	any given story. In particular, the <i>ITextDocument</i> object can create an <i>ITextStoryRanges</i> object to 
+	enumerate the stories in the document in terms of ranges with start and end cp values that describe complete stories 
+	(0 and tomForward).
+
+
+		</font>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="richedit.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="richedit.htm">the vbAccelerator RichEdit Control</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

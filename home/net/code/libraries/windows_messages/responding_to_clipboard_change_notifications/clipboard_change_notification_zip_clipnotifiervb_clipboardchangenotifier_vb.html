@@ -1,0 +1,283 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: ClipNotifierVB_ClipboardChangeNotifier.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: ClipNotifierVB_ClipboardChangeNotifier.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Receiving and Using Clipboard Change Notifications</a>&#160;.&#160;<a href="clipboard_change_notification.html">Clipboard Change Notification</a>&#160;.&#160;ClipNotifierVB_ClipboardChangeNotifier.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="clipboard_change_notification.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Clipboard Change Notification</a> (50K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13149</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13149&type=zip&title=clipboard_20change_20notification_2ezip_5fclipnotifiervb_5fclipboardchangeno.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\subclassing_in__net\article.html">Subclassing In .NET</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: ClipNotifierVB_ClipboardChangeNotifier.vb</h1><pre>' Requires unmanaged code
+'&lt;Assembly:
+ System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permiss
+ions.SecurityAction.RequestMinimum,
+ System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode = True)&gt; 
+' Requires all clipboard access
+'&lt;Assembly:
+ System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.S
+ecurityAction.RequestMinimum, Clipboard = UIPermissionClipboard.AllClipboard)&gt; 
+
+Namespace vbAccelerator.Components.Win32
+    ''' &lt;summary&gt;
+    ''' Provides a way to receive notifications of changes to the 
+    ''' content of the clipboard using the Windows API.  
+    ''' &lt;/summary&gt;
+    ''' &lt;remarks&gt;
+    ''' To be a part of the change notification you need to register a 
+    ''' window in the Clipboard Viewer Chain.  This provides
+    ''' notification messages to the window whenever the 
+    ''' clipboard changes, and also messages associated with managing
+    ''' the chain.  This class manages the detail of keeping the
+    ''' chain intact and ensuring that the application is removed
+    ''' from the chain at the right point.
+    ''' 
+    ''' Use the &lt;see cref="System.Windows.Forms.NativeWindow.AssignHandle"/&gt;
+     method 
+    ''' to connect this class up to a form to begin receiving notifications.
+    ''' Note that a Form can change its &lt;see
+     cref="System.Windows.Forms.Form.Handle"/&gt;   
+    ''' under certain circumstances; for example, if you change the 
+    ''' &lt;see cref="System.Windows.Forms.Form.ShowInTaskbar"/&gt; property the
+     Framework
+    ''' must re-create the form from scratch since Windows ignores changes to 
+    ''' that style unless they are in place when the Window is created.
+    ''' (As a consequence, you should try to set as many high-level Window 
+    ''' style details as possible prior to creating the Window, or at least,
+    ''' prior to making it visible).  The &lt;see cref="OnHandleChanged"/&gt; 
+    ''' method of this class is called when this happens.  You need to
+    ''' re-assign the handle again whenever this occurs.  Unfortunately
+    ''' &lt;see cref="OnHandleChanged"/&gt; is not a useful event in which to
+    ''' do anything since the window handle at that point contains neither
+    ''' a valid old window or a valid new one.  Therefore you need to
+    ''' make the call to re-assign at a point when you know the window
+    ''' is valid, for example, after styles have been changed, or 
+    ''' by overriding &lt;see cref="System.Windows.Forms.Form.OnHandleCreated"/&gt;.
+    ''' &lt;/remarks&gt;      
+    Public Class ClipboardChangeNotifier
+        Inherits NativeWindow
+        Implements IDisposable
+
+#Region "Unmanaged Code"
+        Private Declare Function SetClipboardViewer Lib "user32" ( _
+                ByVal hWnd As IntPtr _
+            ) As IntPtr
+
+        Private Declare Function ChangeClipboardChain Lib "user32" ( _
+                ByVal hWnd As IntPtr, _
+                ByVal hWndNext As IntPtr _
+            ) As Integer
+
+        Private Declare Auto Function SendMessage Lib "user32" ( _
+                ByVal hWnd As IntPtr, _
+                ByVal wMsg As Integer, _
+                ByVal wParam As IntPtr, _
+                ByVal lParam As IntPtr _
+            ) As Integer
+
+        Private Const WM_DESTROY As Integer = &amp;H2
+        Private Const WM_DRAWCLIPBOARD As Integer = &amp;H308
+        Private Const WM_CHANGECBCHAIN As Integer = &amp;H30D
+#End Region
+
+#Region "Member Variables"
+        ''' &lt;summary&gt;
+        ''' The next handle in the clipboard viewer chain when the 
+        ''' clipboard notification is installed, otherwise &lt;see
+         cref="IntPtr.Zero"/&gt;
+        ''' &lt;/summary&gt;
+        Protected nextViewerHandle As IntPtr = IntPtr.Zero
+        ''' &lt;summary&gt;
+        ''' Whether this class has been disposed or not.
+        ''' &lt;/summary&gt;
+        Protected disposed As Boolean = False
+        ''' &lt;summary&gt;
+        ''' The Window clipboard change notification was installed for.
+        ''' &lt;/summary&gt;
+        Protected installedHandle As IntPtr = IntPtr.Zero
+#End Region
+
+#Region "Events"
+        ''' &lt;summary&gt;
+        ''' Notifies of a change to the clipboard's content.
+        ''' &lt;/summary&gt;
+        Public Event ClipboardChanged As System.EventHandler
+#End Region
+
+        ''' &lt;summary&gt;
+        ''' Provides default WndProc processing and responds to
+        ''' clipboard change notifications.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="e"&gt;&lt;/param&gt;
+        Protected Overrides Sub WndProc(ByRef e As System.Windows.Forms.Message)
+            ' if the message is a clipboard change notification
+            Select Case (e.Msg)
+                Case WM_CHANGECBCHAIN
+                    ' Store the changed handle of the next item 
+                    ' in the clipboard chain:
+                    Me.nextViewerHandle = e.LParam
+
+                    If Not (Me.nextViewerHandle.Equals(IntPtr.Zero)) Then
+                        ' pass the message on:
+                        SendMessage(Me.nextViewerHandle, e.Msg, e.WParam,
+                         e.LParam)
+                    End If
+
+                    ' We have processed this message:
+                    e.Result = IntPtr.Zero
+
+                Case WM_DRAWCLIPBOARD
+                    ' content of clipboard has changed:
+                    Dim clipChange As EventArgs = New EventArgs()
+                    OnClipboardChanged(clipChange)
+
+                    ' pass the message on:
+                    If Not (Me.nextViewerHandle.Equals(IntPtr.Zero)) Then
+                        SendMessage(Me.nextViewerHandle, e.Msg, e.WParam,
+                         e.LParam)
+                    End If
+
+                    ' We have processed this message:
+                    e.Result = IntPtr.Zero
+
+                Case WM_DESTROY
+                    ' Very important: ensure we are uninstalled.
+                    Uninstall()
+                    ' And call the superclass:
+                    MyBase.WndProc(e)
+
+                Case Else
+                    ' call the superclass implementation:
+                    MyBase.WndProc(e)
+
+            End Select
+
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Responds to Window Handle change events and uninstalls
+        ''' the clipboard change notification if it is installed.
+        ''' &lt;/summary&gt;
+        Protected Overrides Sub OnHandleChange()
+            ' If we did get to this point, and we're still
+            ' installed then the chain will be broken.
+            ' The response to the WM_TERMINATE message should
+            ' prevent Me.
+            Uninstall()
+            MyBase.OnHandleChange()
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Installs clipboard change notification.  The
+        ''' &lt;see cref="AssignHandle"/&gt; method of this class
+        ''' must have been called first.
+        ''' &lt;/summary&gt;
+        Public Sub Install()
+            Me.Uninstall()
+            If Not (Me.Handle.Equals(IntPtr.Zero)) Then
+                Me.nextViewerHandle = SetClipboardViewer(Me.Handle)
+                Me.installedHandle = Me.Handle
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Uninstalls clipboard change notification.
+        ''' &lt;/summary&gt;
+        Public Sub Uninstall()
+            If Not (Me.installedHandle.Equals(IntPtr.Zero)) Then
+                ChangeClipboardChain(Me.installedHandle, Me.nextViewerHandle)
+                Dim err As Integer =
+                 System.Runtime.InteropServices.Marshal.GetLastWin32Error()
+                Debug.Assert((err = 0), _
+                 String.Format("{0} Failed to uninstall from Clipboard Chain",
+                  Me), _
+                 Win32Error.ErrorMessage(err))
+                Me.nextViewerHandle = IntPtr.Zero
+                Me.installedHandle = IntPtr.Zero
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Raises the &lt;c&gt;ClipboardChanged&lt;/c&gt; event.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="e"&gt;Blank event arguments.&lt;/param&gt;
+        Protected Sub OnClipboardChanged(ByVal e As EventArgs)
+            RaiseEvent ClipboardChanged(Me, e)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Uninstalls clipboard event notifications if necessary
+        ''' during dispose of this object.
+        ''' &lt;/summary&gt;
+        Public Sub Dispose() Implements IDisposable.Dispose
+            If Not (Me.disposed) Then
+                Uninstall()
+                Me.disposed = True
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of this class.
+        ''' &lt;/summary&gt;
+        Public Sub New()
+            ' intentionally blank
+            MyBase.New()
+        End Sub
+
+    End Class
+
+
+End Namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Receiving and Using Clipboard Change Notifications</a>&#160;.&#160;<a href="clipboard_change_notification.html">Clipboard Change Notification</a>&#160;.&#160;ClipNotifierVB_ClipboardChangeNotifier.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,291 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Cortex/vbAccelerator HTML Editor">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="Description" content="Provides a Class and an ActiveX DLL which, with two lines of code, turns a standard VB Combo Box control into an Office 97 style flat one.  Includes full source.">
+<title>Flat Combo Boxes, Office 97 Style</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#333333">
+	<td>
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#CCCCCC">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p>
+	</font>
+	<font color="#999999" face="verdana,arial,helvetica" size="5">
+	<b>NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the newer <a href="flatctrl.htm">Flat Control</a> DLL.
+	</font>
+	<br><br>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Flat Combo Boxes, Office 97 Style</b><br>
+	<p><img src="..\..\images\flatcbr1.gif" alt="Demonstrating flat combo boxes" width="163" height="122"></p>
+	<p><a href="flatcbox.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Flat Combo Box source code compiled directly into an EXE. (19kb)</a></p>
+	<p><a href="fcboxdll.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Flat Combo Box DLL and source (25kb)</a></p>
+	</font>
+	<p>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This DLL is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this DLL yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Overview</b><br>	
+	This project demonstrates how to subclass standard VB Combo Box or <a href="..\odcbolst\article.htm">
+	vbAccelerator Owner Combo and List Box</a> controls so that they
+	draw like the toolbar combo boxes in Office 97.  The code is a translation of an excellent MFC sample
+	written by Kirk Stowell (his site, Code Jockey, is at <a href="javascript:window.alert(&quot;http://www.geocities.com/SiliconValley/Haven/8230\nThis link was not retrieved.&quot;)">
+	www.geocities.com/SiliconValley/Haven/8230</a>.  Note this is an MFC only site).
+	<br><br>
+	<b>How Does It Work?</b><br>
+	Combo boxes normally draw their own sunken border and a button border around the drop-down button.  This code
+	takes the sneaky approach of intercepting the painting messages and drawing over the default borders with 
+	nice new ones.  Here are the messages that are subclassed:
+	<ul>
+	<li>WM_PAINT
+	<li>WM_MOUSEMOVE
+	<li>WM_LBUTTONDOWN
+	<li>WM_LBUTTONUP
+	</ul>
+	On receiving one of these messages, the code gets the Combo box's DC and then paints over
+	the sunken and raised borders so that they appear either flat (when the mouse is not over) or
+	with a soft edge when the mouse is over.  Smart!<br><br>
+	The code also ensures that it correctly identifies when the mouse moves off the control by
+	creating a temporary API timer in code.  Timer events are responded to by subclassing the WM_TIMER
+	message sent to the combo box's window handle.
+	<br><br>
+	<b>How to Make Your Combo Boxes Flat</b><br>
+	This is the easy bit!<br><br>
+	There are two versions of this code.  One is a private class module (15kb) which you
+	can compile directly into your executable.  The other is exactly the same class built into an ActiveX DLL (25kb).
+	The reason for providing the DLL is to make it easier to debug code using this class.  Because the class
+	has to subclass the combo box's WM_PAINT message, when you break in VB's IDE many events can fire which make
+	it difficult to debug (and, in the worst case, could cause a crash!).  By using the DLL, you don't need to 
+	worry about these problems because all the subclassing
+	code is isolated from your project.  (And since the DLL is binary compatible, and supported, you can ship it
+	with your project as well).
+	<br><br>
+	Start a new project, and add a combo box to the	form.  If you are using the DLL, add a reference to it (it
+	will appear as &quot;vbAccelerator Flat Combo Box Extender&quot; in the references list.  (Make sure you
+	have registered vbalFCbo.dll and SSubTmr.Dll before doing this).  Then you only need two lines of code:<br><br>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' In the declarations section of the form: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private m_c As New cFlatComboBox <br>
+ <br>
+Private Sub Form_Load() <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Attach your combo box to the flat combo box <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' drawing routines: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp m_c.Attach cboThis <br>
+ <br>
+ <br>
+End Sub <br>
+ <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>	
+	Erm, and that's it.  Hope you find it useful.  Also, check out the <a href="..\comctl\tbarfcbo.htm">
+	Creating Flat Combo Boxes in a Rebar</a> sample.
+	<br><br>
+	
+	</p>	
+	<p>
+	
+	</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 6 November 1998</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>
+lspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 6 November 1998</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

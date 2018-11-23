@@ -1,0 +1,288 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>High Resolution Multimedia Timer</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#999966">
+	<td valign="top"  width="32">
+	<font color="#993300" face="verdana,arial,helvetica" size="6"><strong>4</strong></font>
+	</td>
+	<td>
+	<font color="#993300" face="verdana,arial,helvetica" size="4"><strong>vb<I>Media</I></strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\hirestimer\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>High Resolution Multimedia Timer</b><br></p>
+	<p>
+	<img src="..\..\images\hirestmr.gif" alt="Speedy Pic, Very Tenuously Related to the Article" width="214" height="100">
+	</p>
+	<p><a href="hirestmr.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the High Res Timer and Sample application (17kb)</a></p>
+	<p>	
+	<b>Introduction</b><br>
+	The standard timer supplied with VB is great for most tasks, but the frequency it
+	updates at isn't acceptable for high-performance multimedia.  In audio
+	applications the system must be capable of firing audio events with a 1ms resolution, otherwise
+	the ear will be able to discern the timing inaccuracy.
+	<br><br>
+	The VB timer is based on the
+	standard Win32 timer, and this is not intended for time critical tasks.  The basic minimum 
+	resolution of this timer is no better than about 50ms on a Pentium II system running Win9x,
+	although it is somewhat better on NT, at around 10ms.
+	<br><br>
+	This leads to an irritating VB coding problem: if you write graphics code on an NT system 
+	using a	timer it all seems to work nicely, but when you run it on Win9x it runs too 
+	slowly because the timer doesn't fire so quickly.  Whilst one alternative to this sort of
+	problem is using a <i>DoEvents</i>, <i>Sleep</i> and <i>QueryPerformanceCounter</i> loop, this
+	is rarely what you want in a real world application.
+	<br><br>
+	This article presents a small, hardcore multimedia timer capable of 1ms resolution in VB code.	
+	</p>
+	<b>About Multimedia Timers</b><br>
+	Multimedia timers are implemented using the Win32 multimedia library (winmm.dll).  Before
+	creating a timer, it is important to be aware of a number of system limitations and VB
+	problems which can occur when using multimedia timers.  
+	<ol>
+	<li><i>Timers are a Limited Resource</i><br>
+	In Win9x, the system is limited to a maximum of 32 multimedia timers.  (In NT, things are much
+	better and each <i>process</i> on the system can have up to 16 timers.)  To provide full
+	Win9x support it is therefore 
+	desirable to minimise the number of timers you create to reduce the chance of running 
+	out of timer resources.  A single application should never create more than one timer regardless
+	of how many controls, DLLs or modules within that application require the timer's services.
+	<li><i>Multimedia Timers are remorseless</i><br>
+	If you build a multimedia timer directly into a VB application, you will almost certainly 
+	not be able to debug it with any consistency.  Building this timer component was somewhat 
+	tricky for this reason! 
+	Any time the application stops for an error or a break-point,
+	the timer keeps on firing from its own separate thread in the background.  This immediately 
+	crashes or locks up the VB IDE.  Adding <i>Debug.Print</i> messages doesn't help
+	either - the debug window can't keep up with the high rate of messages fired by the timer
+	and VB IDE locks up in a loop again.
+	<li><i>You can only make a handful of calls from the timer event</i><br>
+	The Win32 SDK states that only the following calls are allowed during a multimedia timer event:
+	<ul>
+	<li>PostMessage
+	<li>timeGetSystemTime
+	<li>timeGetTime
+   	<li>timeSetEvent
+	<li>timeKillEvent,
+   	<li>midiOutShortMsg
+	<li>midiOutLongMsg,
+	<li>OutputDebugString.
+	</ul>
+	This isn't much!  It seems to be correct for most standard operations.
+	  For example, I found just putting a 
+	<i>Debug.Print</i> statement in the timer event causes the timer to crash when you try 
+	to terminate it.  Putting methods there to raise an event directly also caused an untimely
+	crash.  (From MSDN code, it would appear that DirectX calls are allowed, however.)
+	</ol>
+	<b>Implementing a Stable HiRes Timer in VB</b><br>
+	The first thing to do with this sort of component is to ensure the code can be isolated from the VB IDE by coding it into an ActiveX DLL. You really don't want to have to try to deal with the IDE locking up every time you set a break-point.
+	<br><br>
+	Once it is in the DLL then the next thing is to consider how to reduce the number of a timer instances to ensure you aren't too likely to run out of them. In this code, the timer itself is implemented in a module. If you implement code in a module, this module will be global to all classes which use it within a process. As well as your executable project, this includes any OCX or DLL which attaches to the DLL. Therefore it is possible to create a single timer to service as many classes as you want. The trick is to ensure that the module doesn't get a reference to the classes that are attached, otherwise you will get a circular reference.
+	You can prevent circular references by storing object pointers rather than direct references to 
+	classes as described in <a href="ssubtmr.htm">Subclassing without the crashes</a>.
+	<br><br>
+	The final problem to work around is that you can only call a very limited selection of functions
+	during a multimedia timer event.  I work around this by using the <i>PostMessage</i> function.
+	The function posts a custom <i>WM_USER</i> message to a hidden form owned by the timer module within the DLL.
+	The form is subclassed by the DLL so when the custom message is received it is intercepted by
+	the hidden form's WindowProc function, and this allows the module to forward the message on
+	as an event to any objects which are using the DLL.<br><br>
+	This method of working may seem rather stupid - a timer event is received by the DLL's timer
+	module, then posted to a form and intercepted from the form using the same DLL - but it turns
+	out this is vital to ensure the timer is stable during operation.  There are various examples
+	of how to crash your system by not doing this available elsewhere on the Internet (no names -
+	you know who you are :)
+	<br><br>
+	When using the DLL provided with the download, you can get stable crash-free operation.  You
+	can press stop in the VB IDE when the timer is running without any problems.  Even if you set 
+	the timer to do something at a silly rate which your code can't keep up with you shouldn't have 
+	difficulty provided you use the Event interface, because the 
+	<i>PostMessage</i> operation prevents things going wrong.
+	<br><br>
+	However, I should point out if you are running the DLL code in the group project, no such 
+	niceties apply.  No point giving disclaimers about when and how you will crash - you will!  
+	It isn't a problem though, just restart VB. If you're interested in building this code into
+	your project, I strongly advise using the DLL to begin with and then only incorporate the code
+	when you come to make the EXE.
+	<br><br>
+	<b>Using the HiRes Timer</b><br>
+	The HiRes Timer offers a simple way of adding and removing timers, and there are two ways of
+	receiving timer events (the <a href="javascript:window.alert(&quot;http://www.netnexus.org/debates/3way/Default.htm\nThis link was not retrieved.&quot;)">Third Way</a>, as proposed by UK's increasingly bizarre Prime Minister,	will not be made available here). 
+	<ol>
+	<li>Responding to timers the first way involves setting up the class as <i>WithEvents</i>.  If you
+	do this, the timer will call the <i>Timer</i> event every time it fires.  This is the simplest
+	and easiest to debug method to use.
+	<li>The second way of receiving timer events is via an implemented interface.  If the calling
+	object Implements the <i>ITimer</i> interface, you will have to implement the
+	<i>ITimer_Timer(ByVal sKey As String)</i> sub.  If you do this, you should use the <i>Connect</i>
+	method to specify the object which receives the timer notifications.  By doing this, you create
+	an early-bound interface between your code and the Timer, and you receive notifications with
+	the minimum of system overhead.  This method is the fastest but can cause trouble
+	as it can occasionally overwhelm VB's IDE with event calls whilst you are debugging, something
+	which can't happen with the event interface.  The best 
+	idea is to use the Events interface for development and then switch to the implementation
+	method for compiled executables.
+	</ol>
+	The demonstration project supplied with the download demonstrates setting up two timer objects
+	and enabling/disabling them.  It also compares the performance of the High-Resolution timer against
+	the standard VB Timer. On my Win95 system, the High-Resolution version manages to fire 40x
+	more events than the standard VB version.  (On NT4, it manages about 10x more).
+	<br><br>
+	<b>More!</b><br>
+	If you aren't interested in the code for this sort of thing, then I recommend looking at the
+	High-Resolution timer available from the
+	<a href="javascript:window.alert(&quot;http://www.mvps.org/ccrp\nThis link was not retrieved.&quot;)">Common Controls Replacement Project (CCRP)</a>.  This offers
+	extra interfaces such as a countdown timer and an About screen (Hmmm.)  
+	<br><br>
+	Top code, but depends on your aim.  If you want to create 
+	a MIDI or Audio sequencer, then you need the code, and CCRP can't give you that for their
+	own personal reasons. An audio project has <u>got</u> to to be 1ms fast <u>all</u> 
+	the time and you don't want to know about the hacks that some other coder went through to get
+	their version to happen - you need to make your own hacks and get it to run at the right
+	speed.  Hence the source code here.
+	<br><br>
+	One odd thing about the CCRP component is that it appears to be recommended as a general timer 
+	- I'm not sure that the Multimedia one does this job.  The VB Timer is
+	a nice thing in all ways except that it requires a form to site it on, but don't let that put
+	you off.  VB only ever uses one timer resource no matter how many apps run on the system 
+	(because all VB apps by definition are linked to the VB run-time library) so you are rarely in
+	danger of running out of timers - a problem which you will find much more seriously if you use
+	the Timer exposed by the <a href="ssubtmr.htm">Subclassing and Timer Assistant DLL</a> - all I
+	can say is this	is <a href="..\..\traitor.htm">Bruce McKinney's code</a> and I'm sorry!
+	</p>
+	<br><br>
+
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 17 February 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

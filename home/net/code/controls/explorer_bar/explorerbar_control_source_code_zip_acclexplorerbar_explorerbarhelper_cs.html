@@ -1,0 +1,1024 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarHelper.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarHelper.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ExplorerBarHelper.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="explorerbar_control_binary.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Binary</a> (40K)</p><p class="nav"><a href="explorerbar_control_demonstration.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Demonstration</a> (47K)</p><p class="nav"><a href="explorerbar_control_documentation.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Documentation</a> (265K)</p><p class="nav"><a href="explorerbar_control_source_code.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Source Code</a> (201K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:14471</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=14471&type=zip&title=explorerbar_20control_20source_20code_2ezip_5facclexplorerbar_5fexplorerbarh.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />17 Apr 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\vb\code\controls\explorer_bar_control\article.html">vbAccelerator Explorer Bar Control</a></p><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\libraries\graphics\reading_exif_tags_from_jpg_files\article.html">Reading EXIF Tags From JPEG Files</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarHelper.cs</h1><pre>using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Controls.ExplorerBarUtility
+{
+   /// &lt;summary&gt;
+   /// Contains static helper methods used throughout the Explorer Bar.
+   /// &lt;/summary&gt;
+   internal class ExplorerBarHelper
+   {      
+      private static bool checkedXp = false;
+      private static bool isXp = false;
+
+      #region Unmanaged Code
+      [DllImport("user32")]
+      private static extern int GetAsyncKeyState(int vKey);
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Prevent direct instantiation; all methods are static.
+      /// &lt;/summary&gt;
+      private ExplorerBarHelper()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Determines whether the specified key is held down or not
+      /// &lt;/summary&gt;
+      /// &lt;param name="key"&gt;Key to check&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the key is pressed, &lt;c&gt;false&lt;/c&gt;
+       otherwise&lt;/returns&gt;
+      public static bool KeyIsPressed(Keys key)
+      {
+         bool isPressed = (GetAsyncKeyState((int) key) != 0);
+         return isPressed;
+      }
+
+      /// &lt;summary&gt;
+      /// Returns &lt;c&gt;true&lt;/c&gt; if the System is XP, &lt;c&gt;false&lt;/c&gt; otherwise.
+      /// &lt;/summary&gt;
+      public static bool IsXp
+      {
+         get
+         {
+            if (!checkedXp)
+            {
+               Version ver = System.Environment.OSVersion.Version;
+               if (ver.Major &gt; 5)
+               {
+                  isXp = true;
+               }
+               else
+               {
+                  if ((ver.Major == 5) &amp;&amp; (ver.Minor &gt;= 1))
+                  {
+                     isXp = true;
+                  }
+               }
+               checkedXp = true;
+            }
+            return isXp;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the horizontal margin used when drawing bars and items
+      /// in the control.
+      /// &lt;/summary&gt;
+      public static int HorizontalMargin
+      {
+         get
+         {
+            return 12;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draw the title for a bar.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics to render to&lt;/param&gt;
+      /// &lt;param name="mode"&gt;Explorer Bar Drawing mode&lt;/param&gt;
+      /// &lt;param name="style"&gt;Explorer Bar Drawing Style&lt;/param&gt;
+      /// &lt;param name="barBitmaps"&gt;Class containing bitmaps for various title
+       parts&lt;/param&gt;
+      /// &lt;param name="xpTheme"&gt;Class managing the current system XP
+       Theme&lt;/param&gt;
+      /// &lt;param name="rectangle"&gt;Rectangle to draw into&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;Whether this is a special bar or not&lt;/param&gt;
+      /// &lt;param name="isHot"&gt;Whether the bar is hot not&lt;/param&gt;
+      /// &lt;param name="isMouseDown"&gt;Whether the mouse is down on the bar or
+       not&lt;/param&gt;
+      /// &lt;param name="state"&gt;The state of the bar, expanded or
+       collapsed&lt;/param&gt;
+      /// &lt;param name="canExpand"&gt;Whether the bar is expandable&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;If the control should be draw Right -
+       Left&lt;/param&gt;
+      /// &lt;returns&gt;Actual height of title image&lt;/returns&gt;
+      public static int DrawBarTitle(
+         Graphics graphics,
+         ExplorerBarMode mode,
+         ExplorerBarDrawingStyle style,
+         BarBitmaps barBitmaps,
+         XpThemeAPI xpTheme,
+         Rectangle rectangle,
+         bool isSpecial,
+         bool isHot,
+         bool isMouseDown,
+         ExplorerBarState state,
+         bool canExpand,
+         bool rightToLeft
+         )
+      {
+         if ((rectangle.Height &lt;= 0) || (rectangle.Width &lt;= 0))
+         {
+            return 0;
+         }
+
+         bool useXpStyle = false;
+
+         if ((style == ExplorerBarDrawingStyle.XP) || (style ==
+          ExplorerBarDrawingStyle.System))
+         {
+            useXpStyle = (xpTheme.hTheme != IntPtr.Zero);
+         }
+
+         // Evaluate the bitmap type (not used for classic style):            
+         BarBitmapType bitmapType = getBarBitmapType(state, isSpecial, isHot);
+         int size = 0;
+
+         if (useXpStyle)
+         {
+            size = DrawTitleUsingXpTheme(bitmapType, barBitmaps, graphics,
+             rectangle, isSpecial, canExpand, rightToLeft, mode);
+         }
+         else // Don't use XP style
+         {
+            if ((style == ExplorerBarDrawingStyle.Classic) || (style ==
+             ExplorerBarDrawingStyle.System))
+            {
+               size = DrawTitleUsingClassicStyle(graphics, rectangle,
+                isSpecial, canExpand, rightToLeft, state, isHot, isMouseDown,
+                mode);
+            }
+            else
+            {
+               size = DrawTitleUsingEmulatedXpStyle(bitmapType, barBitmaps,
+                graphics, rectangle, isSpecial, canExpand, rightToLeft, mode);
+            }
+         }
+         return size;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the bar bitmap type for the specified parameters.
+      /// &lt;/summary&gt;
+      /// &lt;param name="state"&gt;State of the bar, expanded or collapsed&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;Whether the bar is special or not&lt;/param&gt;
+      /// &lt;param name="isHot"&gt;Whether the bar is hot or not&lt;/param&gt;
+      /// &lt;returns&gt;Bitmap type&lt;/returns&gt;
+      private static BarBitmapType getBarBitmapType(
+         ExplorerBarState state,
+         bool isSpecial,
+         bool isHot
+         )
+      {
+         BarBitmapType bitmapType;
+         if (isSpecial)
+         {
+            if (isHot)
+            {
+               if (state == ExplorerBarState.Collapsed)
+               {
+                  bitmapType = BarBitmapType.EBP_SPECIALGROUPCOLLAPSE_MOUSEOVER;
+               }
+               else
+               {
+                  bitmapType = BarBitmapType.EBP_SPECIALGROUPEXPAND_MOUSEOVER;
+               }
+            }
+            else
+            {
+               if (state == ExplorerBarState.Collapsed)
+               {
+                  bitmapType = BarBitmapType.EBP_SPECIALGROUPCOLLAPSE;
+               }
+               else
+               {
+                  bitmapType = BarBitmapType.EBP_SPECIALGROUPEXPAND;
+               }
+            }
+         }
+         else
+         {
+            if (isHot)
+            {
+               if (state == ExplorerBarState.Collapsed)
+               {
+                  bitmapType = BarBitmapType.EBP_NORMALGROUPCOLLAPSE_MOUSEOVER;
+               }
+               else
+               {
+                  bitmapType = BarBitmapType.EBP_NORMALGROUPEXPAND_MOUSEOVER;
+               }
+            }
+            else
+            {
+               if (state == ExplorerBarState.Collapsed)
+               {
+                  bitmapType = BarBitmapType.EBP_NORMALGROUPCOLLAPSE;
+               }
+               else
+               {
+                  bitmapType = BarBitmapType.EBP_NORMALGROUPEXPAND;
+               }
+            }
+         }
+         return bitmapType;
+      }
+
+      /// &lt;summary&gt;
+      /// Draws a bar title in the classic style.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics to render to&lt;/param&gt;
+      /// &lt;param name="rectangle"&gt;Bounding rectangle for the title&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;Whether the bar is special&lt;/param&gt;
+      /// &lt;param name="canExpand"&gt;Whether the bar can be
+       expanded/collapsed&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether to draw right to left&lt;/param&gt;
+      /// &lt;param name="state"&gt;Bar state, expanded or collapsed&lt;/param&gt;
+      /// &lt;param name="isHot"&gt;Whether bar is hot or not&lt;/param&gt;
+      /// &lt;param name="isMouseDown"&gt;Whether mouse is down on the title&lt;/param&gt;
+      /// &lt;param name="mode"&gt;Drawing mode of the control&lt;/param&gt;
+      /// &lt;returns&gt;Actual height of title image&lt;/returns&gt;
+      private static int DrawTitleUsingClassicStyle(
+         Graphics graphics,
+         Rectangle rectangle,
+         bool isSpecial,
+         bool canExpand,
+         bool rightToLeft,
+         ExplorerBarState state,
+         bool isHot,
+         bool isMouseDown,
+         ExplorerBarMode mode
+         )
+      {
+         // Draw the title
+         if (mode == ExplorerBarMode.Default)
+         {
+            if (isSpecial)
+            {
+               graphics.FillRectangle(SystemBrushes.ActiveCaption, rectangle);
+            }
+            else
+            {
+               graphics.FillRectangle(SystemBrushes.InactiveCaption, rectangle);
+            }
+         }
+         
+         // Draw the button
+         if (canExpand)
+         {
+            Rectangle buttonPosition = new Rectangle(rectangle.Location,
+             rectangle.Size);
+            buttonPosition.Y = buttonPosition.Top + (buttonPosition.Height -
+             16) / 2;
+            buttonPosition.Height = 16;                     
+            if (rightToLeft)
+            {
+               buttonPosition.X += 2;
+               buttonPosition.Width = 16;
+            }
+            else
+            {
+               buttonPosition.X = buttonPosition.Right - 16 - 4;
+               buttonPosition.Width = 16;
+            }
+
+            Pen pen = null;
+            if (isSpecial)
+            {
+               pen = SystemPens.ActiveCaptionText;
+            }
+            else
+            {
+               pen = SystemPens.InactiveCaptionText;
+            }
+            // Draw the glyph
+            if (state == ExplorerBarState.Expanded)
+            {
+               // collapse glyph
+               graphics.DrawLine(pen, buttonPosition.Left + 5,
+                buttonPosition.Top + 7, buttonPosition.Left + 8,
+                buttonPosition.Top + 4);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 4, buttonPosition.Left + 11,
+                buttonPosition.Top + 7);
+               graphics.DrawLine(pen, buttonPosition.Left + 6,
+                buttonPosition.Top + 7, buttonPosition.Left + 8,
+                buttonPosition.Top + 5);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 5, buttonPosition.Left + 10,
+                buttonPosition.Top + 7);
+                        
+               graphics.DrawLine(pen, buttonPosition.Left + 5,
+                buttonPosition.Top + 11, buttonPosition.Left + 8,
+                buttonPosition.Top + 8);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 8, buttonPosition.Left + 11,
+                buttonPosition.Top + 11);
+               graphics.DrawLine(pen, buttonPosition.Left + 6,
+                buttonPosition.Top  + 11, buttonPosition.Left + 8,
+                buttonPosition.Top + 9);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 9, buttonPosition.Left + 10,
+                buttonPosition.Top + 11);
+            }
+            else
+            {
+               // expand glyph
+               graphics.DrawLine(pen, buttonPosition.Left + 5,
+                buttonPosition.Top + 4, buttonPosition.Left + 8,
+                buttonPosition.Top + 7);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 7, buttonPosition.Left + 11,
+                buttonPosition.Top + 4);
+               graphics.DrawLine(pen, buttonPosition.Left + 6,
+                buttonPosition.Top + 4, buttonPosition.Left + 8,
+                buttonPosition.Top + 6);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 6, buttonPosition.Left + 10,
+                buttonPosition.Top + 4);
+                        
+               graphics.DrawLine(pen, buttonPosition.Left + 5,
+                buttonPosition.Top + 8, buttonPosition.Left + 8,
+                buttonPosition.Top + 11);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 11, buttonPosition.Left + 11,
+                buttonPosition.Top + 8);
+               graphics.DrawLine(pen, buttonPosition.Left + 6,
+                buttonPosition.Top + 8, buttonPosition.Left + 8,
+                buttonPosition.Top + 10);
+               graphics.DrawLine(pen, buttonPosition.Left + 8,
+                buttonPosition.Top + 10, buttonPosition.Left + 10,
+                buttonPosition.Top + 8);
+            }
+                     
+            // Draw button border if required
+            if (isHot)
+            {
+               if (isMouseDown)
+               {
+                  ControlPaint.DrawBorder3D(graphics, buttonPosition, 
+                     Border3DStyle.Sunken, Border3DSide.Left | Border3DSide.Top
+                      | Border3DSide.Right | Border3DSide.Bottom);
+               }
+               else
+               {
+                  ControlPaint.DrawBorder3D(graphics, buttonPosition, 
+                     Border3DStyle.Raised, Border3DSide.Left | Border3DSide.Top
+                      | Border3DSide.Right | Border3DSide.Bottom);
+               }
+            }
+         }
+   
+         return rectangle.Height;
+
+      }
+
+      /// &lt;summary&gt;
+      /// Draws a bar title using an emulation of the XP theme style
+      /// &lt;/summary&gt;
+      /// &lt;param name="bitmapType"&gt;Bar Bitmap type to use to draw the
+       bar&lt;/param&gt;
+      /// &lt;param name="barBitmaps"&gt;Class containing bitmaps to draw&lt;/param&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to render to&lt;/param&gt;
+      /// &lt;param name="rectangle"&gt;Bounding rectangle of title&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;Whether the bar is special or not&lt;/param&gt;
+      /// &lt;param name="canExpand"&gt;Whether the bar can be
+       expanded/collapsed&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether the control should render right -
+       left&lt;/param&gt;
+      /// &lt;param name="mode"&gt;Drawing mode of the control&lt;/param&gt;
+      /// &lt;returns&gt;Actual height of title image&lt;/returns&gt;
+      private static int DrawTitleUsingEmulatedXpStyle(
+         BarBitmapType bitmapType,
+         BarBitmaps barBitmaps,
+         Graphics graphics,
+         Rectangle rectangle,
+         bool isSpecial,
+         bool canExpand,
+         bool rightToLeft,
+         ExplorerBarMode mode
+         )
+      {
+         // emulated XP style:
+         Color startColor;
+         Color endColor;
+         Bitmap button = barBitmaps[bitmapType];      
+         Point buttonPosition = new Point(rectangle.X + 2, rectangle.Top +
+          (rectangle.Height - button.Height) / 2 );
+         if (!rightToLeft)
+         {
+            buttonPosition.X = rectangle.Left + rectangle.Width - 2 -
+             button.Width;
+         }
+         Rectangle titleRect = new Rectangle(rectangle.Location,
+          rectangle.Size);         
+
+         if (mode == ExplorerBarMode.Default)
+         {
+            if (titleRect.Height &gt; button.Height + 4)
+            {
+               titleRect.Y += (titleRect.Height - (button.Height + 4));
+               titleRect.Height = button.Height + 4;
+               buttonPosition.Y = titleRect.Top + 2;
+            }
+            if (isSpecial)
+            {
+               startColor = barBitmaps.SpecialTitleColorLight;
+               if (startColor == Color.Empty)
+               {
+                  startColor = barBitmaps.DefaultSpecialTitleColorLight;
+               }
+               endColor = barBitmaps.SpecialTitleColorDark;
+               if (endColor == Color.Empty)
+               {
+                  endColor = barBitmaps.DefaultSpecialTitleColorDark;
+               }
+            }
+            else
+            {
+               startColor = barBitmaps.NormalTitleColorLight;
+               if (startColor == Color.Empty)
+               {
+                  startColor = barBitmaps.DefaultNormalTitleColorLight;
+               }
+               endColor = barBitmaps.NormalTitleColorDark;
+               if (endColor == Color.Empty)
+               {
+                  endColor = barBitmaps.DefaultNormalTitleColorDark;
+               }
+            }
+            if (rightToLeft)
+            {
+               Color swapColor = startColor;
+               startColor = endColor;
+               endColor = swapColor;
+            }                  
+
+            Rectangle clippedRect;
+            GraphicsPath path = new GraphicsPath();
+            if (rightToLeft)
+            {
+               path.AddLine(buttonPosition.X + button.Width, titleRect.Bottom,
+                buttonPosition.X + button.Width, titleRect.Top);
+               path.AddLine(buttonPosition.X + button.Width, titleRect.Top,
+                titleRect.Right - 2, titleRect.Top);
+               path.AddLine(titleRect.Right - 2, titleRect.Top,
+                titleRect.Right, titleRect.Top + 2);
+               path.AddLine(titleRect.Right, titleRect.Top + 2,
+                titleRect.Right, titleRect.Bottom);
+               clippedRect = new Rectangle(buttonPosition.X + button.Width - 1,
+                titleRect.Top, 
+                  titleRect.Width - buttonPosition.X - button.Width + 2,
+                   titleRect.Height);
+            }
+            else
+            {
+               path.AddLine(titleRect.Left, titleRect.Bottom, titleRect.Left,
+                titleRect.Top + 2);
+               path.AddLine(titleRect.Left, titleRect.Top + 2, titleRect.Left +
+                2, titleRect.Top);
+               path.AddLine(titleRect.Left + 2, titleRect.Top,
+                buttonPosition.X, titleRect.Top);
+               path.AddLine(buttonPosition.X, titleRect.Top, buttonPosition.X,
+                titleRect.Bottom);
+               clippedRect = new Rectangle(titleRect.Left - 1, titleRect.Top, 
+                  titleRect.Width - button.Width - 2 + 2, titleRect.Height);
+            }
+            path.CloseFigure();
+            Region region = new Region(path);                  
+            LinearGradientBrush titleBrush = new LinearGradientBrush(
+               clippedRect, startColor, endColor, 0.0F);
+            graphics.FillRegion(titleBrush, region);
+            titleBrush.Dispose();
+            region.Dispose();
+            path.Dispose();
+
+            path = new GraphicsPath();
+            if (rightToLeft)
+            {
+               path.AddLine(titleRect.Left, titleRect.Bottom, titleRect.Left,
+                titleRect.Top + 2);
+               path.AddLine(titleRect.Left, titleRect.Top + 2, titleRect.Left +
+                2, titleRect.Top);
+               path.AddLine(titleRect.Left + 2, titleRect.Top, buttonPosition.X
+                + button.Width, titleRect.Top);
+               path.AddLine(buttonPosition.X + button.Width, titleRect.Top,
+                buttonPosition.X + button.Width, titleRect.Bottom);
+            }
+            else
+            {
+               path.AddLine(clippedRect.Right - 1, titleRect.Bottom,
+                clippedRect.Right - 1, titleRect.Top);
+               path.AddLine(clippedRect.Right - 1, titleRect.Top,
+                titleRect.Right - 2, titleRect.Top);
+               path.AddLine(titleRect.Right -  2, titleRect.Top,
+                titleRect.Right, titleRect.Top + 2);
+               path.AddLine(titleRect.Right, titleRect.Top + 2,
+                titleRect.Right, titleRect.Bottom);
+            }
+            path.CloseFigure();
+            region = new Region(path);
+            Brush behindButton = new SolidBrush(endColor);
+            graphics.FillRegion(behindButton, region);
+            behindButton.Dispose();
+            region.Dispose();
+            path.Dispose();
+         }
+
+         // Draw the button:
+         if (canExpand)
+         {                                                            
+            graphics.DrawImageUnscaled(button, buttonPosition.X,
+             buttonPosition.Y);
+         }
+
+         return titleRect.Height;
+      }
+
+      /// &lt;summary&gt;
+      /// Draw a bar title using the current XP theme
+      /// &lt;/summary&gt;
+      /// &lt;param name="bitmapType"&gt;Bitmap type to draw&lt;/param&gt;
+      /// &lt;param name="barBitmaps"&gt;Class containing bitmaps for title
+       bars&lt;/param&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to render to&lt;/param&gt;
+      /// &lt;param name="rectangle"&gt;Bounding rectangle for title bar&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;Whether the bar is special or not&lt;/param&gt;
+      /// &lt;param name="canExpand"&gt;Whether the bar can be
+       expanded/collapsed&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether the title should be rendered right
+       - left&lt;/param&gt;
+      /// &lt;param name="mode"&gt;Drawing mode of the control&lt;/param&gt;
+      /// &lt;returns&gt;Actual height of title image&lt;/returns&gt;
+      private static int DrawTitleUsingXpTheme(
+            BarBitmapType bitmapType,
+            BarBitmaps barBitmaps,
+            Graphics graphics,
+            Rectangle rectangle,
+            bool isSpecial,
+            bool canExpand,
+            bool rightToLeft,
+            ExplorerBarMode mode
+         )
+      {
+         Rectangle titleRectangle = new Rectangle(rectangle.Location,
+          rectangle.Size);
+         if (mode == ExplorerBarMode.Default)
+         {
+            // Draw the title bar:
+            BarBitmapType titleBitmapType = BarBitmapType.EBP_NORMALGROUPHEAD;
+            if (isSpecial)
+            {
+               titleBitmapType = BarBitmapType.EBP_SPECIALGROUPHEAD;
+            }
+            Bitmap titleBar = barBitmaps[titleBitmapType];
+            titleBar.MakeTransparent(titleBar.GetPixel(0, 0));
+            if (rectangle.Height &gt; titleBar.Height + 2)
+            {
+               titleRectangle.Height = titleBar.Height + 2;
+               titleRectangle.Y += (rectangle.Height - titleBar.Height - 2);
+            }
+            graphics.DrawImage(titleBar, titleRectangle, 0, 0, titleBar.Width,
+             titleBar.Height, GraphicsUnit.Pixel);            
+         }
+
+         // Draw the relevant button:
+         if (canExpand)
+         {
+            Bitmap button = barBitmaps[bitmapType];
+            Point buttonPosition = new Point(titleRectangle.X + 2, 
+               titleRectangle.Top + (titleRectangle.Height - button.Height) / 2
+                + 2);
+            if (!rightToLeft)
+            {
+               buttonPosition.X = titleRectangle.Left + titleRectangle.Width -
+                2 - button.Width;
+            }
+            graphics.DrawImageUnscaled(button, buttonPosition.X,
+             buttonPosition.Y);
+         }
+
+         return titleRectangle.Height;
+      }
+
+      public static void DrawSearchContainer(
+         Graphics graphics,
+         Rectangle boundingRectangle,
+         int top,
+         int height,
+         int internalBorder,
+         Color panelColor
+         )
+      {
+         int drawHeight = height;
+         if (drawHeight &gt; boundingRectangle.Height)
+         {
+            drawHeight = boundingRectangle.Height;
+         }
+
+         Rectangle rectangle = new Rectangle(internalBorder, top, 
+            boundingRectangle.Width - internalBorder * 2, height);
+         Brush brush = new SolidBrush(panelColor);
+         graphics.FillRectangle(brush, rectangle);
+         brush.Dispose();
+
+         int pathLeft = internalBorder - 1;
+         int pathTop = top - 1;
+         int pathRight = pathLeft + boundingRectangle.Width - internalBorder *
+          2 + 1;
+         int pathBottom = pathTop + height + 1;
+         GraphicsPath path = new GraphicsPath();
+         path.AddLine(pathLeft, pathTop + 2, pathLeft + 2, pathTop);
+         path.AddLine(pathLeft + 2, pathTop, pathRight - 2, pathTop);
+         path.AddLine(pathRight - 2, pathTop, pathRight, pathTop + 2);
+         path.AddLine(pathRight, pathTop + 2, pathRight, pathBottom - 2);
+         path.AddLine(pathRight, pathBottom - 2, pathRight - 2, pathBottom);
+         path.AddLine(pathRight - 2, pathBottom, pathLeft + 2, pathBottom);
+         path.AddLine(pathLeft + 2, pathBottom, pathLeft, pathBottom - 2);
+         path.CloseFigure();
+
+         graphics.DrawPath(Pens.White, path);
+
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the background to a bar
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to render to&lt;/param&gt;
+      /// &lt;param name="style"&gt;Drawing style for Explorer Bar&lt;/param&gt;
+      /// &lt;param name="mode"&gt;Drawing mode for Explorer Bar&lt;/param&gt;
+      /// &lt;param name="xpTheme"&gt;Class managing XP Theme&lt;/param&gt;
+      /// &lt;param name="bitmaps"&gt;Class managing bitmaps to draw&lt;/param&gt;
+      /// &lt;param name="rectangle"&gt;Bounding rectangle of bar&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;Whether the item is special or not&lt;/param&gt;
+      /// &lt;param name="customNormalPanelColor"&gt;Customised color of normal panel
+       back color&lt;/param&gt;
+      /// &lt;param name="customSpecialPanelColor"&gt;Customised color of special
+       panel back color&lt;/param&gt;
+      public static void DrawBarBackground(
+         Graphics graphics,
+         ExplorerBarDrawingStyle style,
+         ExplorerBarMode mode,
+         XpThemeAPI xpTheme,
+         BarBitmaps bitmaps,
+         Rectangle rectangle,
+         bool isSpecial,
+         Color customNormalPanelColor,
+         Color customSpecialPanelColor
+         )
+      {
+         bool classic = (style == ExplorerBarDrawingStyle.Classic);
+         if (style == ExplorerBarDrawingStyle.System)
+         {
+            if (xpTheme.hTheme.Equals(IntPtr.Zero))
+            {
+               classic = true;
+            }
+         }
+
+         if (classic)
+         {
+            graphics.FillRectangle(SystemBrushes.Window, rectangle);
+            if (mode == ExplorerBarMode.Default)
+            {
+               Rectangle borderRectangle = new Rectangle(
+                  rectangle.Location, rectangle.Size);
+               borderRectangle.Width -=1;
+               borderRectangle.Height -=1;
+               if (isSpecial)
+               {                  
+                  Pen pen = new Pen(SystemBrushes.ActiveCaption, 1.0f);
+                  graphics.DrawRectangle(pen, borderRectangle);
+                  pen.Dispose();
+               }
+               else
+               {
+                  Pen pen = new Pen(SystemBrushes.InactiveCaption, 1.0f);
+                  graphics.DrawRectangle(pen, borderRectangle);
+                  pen.Dispose();
+               }
+            }
+         }
+         else
+         {
+            if (mode == ExplorerBarMode.Default)
+            {               
+               Color backColor = BarBackColor(
+                  (isSpecial ? customSpecialPanelColor :
+                   customNormalPanelColor), style, bitmaps, xpTheme, isSpecial);
+               Brush brush = new SolidBrush(backColor);
+               graphics.FillRectangle(brush, rectangle);
+               brush.Dispose();
+               graphics.DrawLine(Pens.White, rectangle.Left, rectangle.Top,
+                rectangle.Left, rectangle.Bottom );
+               graphics.DrawLine(Pens.White, rectangle.Left, rectangle.Bottom ,
+                rectangle.Right - 1, rectangle.Bottom );
+               graphics.DrawLine(Pens.White, rectangle.Right - 1,
+                rectangle.Bottom, rectangle.Right - 1, rectangle.Top);
+
+            }
+            else // search mode
+            {
+               // nothing to do, the background is pre-rendered
+            }
+            
+         }
+
+      }
+
+
+      /// &lt;summary&gt;
+      /// Gets the default item text color for an item
+      /// &lt;/summary&gt;
+      /// &lt;param name="style"&gt;&lt;/param&gt;
+      /// &lt;param name="xpTheme"&gt;&lt;/param&gt;
+      /// &lt;param name="isLink"&gt;&lt;/param&gt;
+      /// &lt;param name="isHot"&gt;&lt;/param&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public static Color ItemTextColor(
+         ExplorerBarDrawingStyle style,
+         XpThemeAPI xpTheme,
+         bool isLink,
+         bool isHot
+         )
+      {
+         Color returnColor = Color.Empty;
+         if (isLink)
+         {
+            bool classic = (style == ExplorerBarDrawingStyle.Classic);
+            if (style == ExplorerBarDrawingStyle.System)
+            {
+               classic = (xpTheme.hTheme.Equals(IntPtr.Zero));
+            }
+            if (classic)
+            {
+               if (isHot)
+               {
+                  returnColor = Color.FromKnownColor(KnownColor.Highlight);
+               }
+               else
+               {
+                  returnColor = Color.FromKnownColor(KnownColor.WindowText);
+               }
+            }
+            else
+            {
+               if (isHot)
+               {
+                  returnColor =
+                   BlendColor(Color.FromKnownColor(KnownColor.Highlight),
+                   Color.Black, 240);
+               }
+               else
+               {
+                  returnColor =
+                   BlendColor(Color.FromKnownColor(KnownColor.Highlight),
+                   Color.Black, 192);
+               }
+            }
+         }
+         else
+         {
+            returnColor  = Color.FromKnownColor(KnownColor.WindowText);
+         }
+         Debug.Assert(returnColor != Color.Empty, "ItemTextColor failed to
+          identify a colour");
+         return returnColor;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the default title color for a bar
+      /// &lt;/summary&gt;
+      /// &lt;param name="isHot"&gt;&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;&lt;/param&gt;
+      /// &lt;param name="style"&gt;&lt;/param&gt;
+      /// &lt;param name="state"&gt;&lt;/param&gt;
+      /// &lt;param name="xpTheme"&gt;&lt;/param&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public static Color BarTitleColor(
+         bool isHot, 
+         bool isSpecial, 
+         ExplorerBarDrawingStyle style, 
+         ExplorerBarState state,
+         XpThemeAPI xpTheme
+         )
+      {
+         Color useColor = Color.Empty;
+
+
+         bool classic = (style == ExplorerBarDrawingStyle.Classic);
+         if (style == ExplorerBarDrawingStyle.System)
+         {
+            if (xpTheme.hTheme.Equals(IntPtr.Zero))
+            {
+               classic = true;
+            }
+         }
+
+         if (classic)
+         {
+            if (isSpecial)
+            {
+               useColor = Color.FromKnownColor(KnownColor.ActiveCaptionText);
+            }
+            else
+            {
+               useColor = Color.FromKnownColor(KnownColor.InactiveCaptionText);
+            }
+         }
+         else // not classic
+         {
+            if (isSpecial)
+            {
+               if (isHot)
+               {
+                  useColor = ExplorerBarHelper.BlendColor(Color.White,
+                   Color.FromKnownColor(KnownColor.Highlight), 128);
+               }
+               else
+               {
+                  useColor = Color.White;
+               }
+            }
+            else // not special
+            {
+               if (isHot)
+               {
+                  useColor =
+                   ExplorerBarHelper.BlendColor(Color.FromKnownColor(KnownColor.
+                  Highlight), Color.Black, 240);
+               }
+               else
+               {
+                  useColor =
+                   ExplorerBarHelper.BlendColor(Color.FromKnownColor(KnownColor.
+                  Highlight), Color.Black, 192);
+               }
+            }
+         }
+
+         Debug.Assert(useColor != Color.Empty, "BarTitleColor failed to locate
+          a colour");
+         return useColor;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the background colour for a bar
+      /// &lt;/summary&gt;
+      /// &lt;param name="backColor"&gt;&lt;/param&gt;
+      /// &lt;param name="style"&gt;&lt;/param&gt;
+      /// &lt;param name="barBitmaps"&gt;&lt;/param&gt;
+      /// &lt;param name="xpTheme"&gt;&lt;/param&gt;
+      /// &lt;param name="isSpecial"&gt;&lt;/param&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public static Color BarBackColor(
+         Color backColor,
+         ExplorerBarDrawingStyle style,
+         BarBitmaps barBitmaps,
+         XpThemeAPI xpTheme,
+         bool isSpecial
+         )
+      {
+         Color useColor = Color.Empty;
+         if (style == ExplorerBarDrawingStyle.Classic)
+         {
+            useColor = Color.FromKnownColor(KnownColor.Window);
+         }
+         else if (style == ExplorerBarDrawingStyle.System)
+         {
+            if (xpTheme.hTheme.Equals(IntPtr.Zero))
+            {
+               // classic
+               useColor = Color.FromKnownColor(KnownColor.Window);
+            }
+            else
+            {
+               // XP
+               if (isSpecial)
+               {
+                  useColor = barBitmaps.SpecialPanelColor;
+               }
+               else
+               {
+                  useColor = barBitmaps.NormalPanelColor;
+               }
+            }
+         }
+         else if (style == ExplorerBarDrawingStyle.XP)
+         {
+            if (isSpecial)
+            {
+               useColor = barBitmaps.SpecialPanelColor;
+            }
+            else
+            {
+               useColor = barBitmaps.NormalPanelColor;
+            }
+         }
+         else
+         {
+            if (backColor == Color.Empty)
+            {
+               if (isSpecial)
+               {
+                  useColor = barBitmaps.SpecialPanelColor;
+               }
+               else
+               {
+                  useColor = barBitmaps.NormalPanelColor;
+               }
+            }
+            else
+            {
+               useColor = backColor;
+            }
+         }
+         return useColor;
+      }
+      
+
+      /// &lt;summary&gt;
+      /// Blends two colours together using the specified alpha amount.
+      /// &lt;/summary&gt;
+      /// &lt;param name="colorFrom"&gt;Base colour&lt;/param&gt;
+      /// &lt;param name="colorTo"&gt;Colour to blend with the base colour.&lt;/param&gt;
+      /// &lt;param name="alpha"&gt;Alpha amount to use when blending the
+       colours.&lt;/param&gt;
+      /// &lt;returns&gt;The blended colour.&lt;/returns&gt;
+      public static Color BlendColor(
+         Color colorFrom,
+         Color colorTo,
+         int alpha
+         )
+      {
+         Color retColor =  Color.FromArgb(
+            ((colorFrom.R * alpha) / 255) + ((colorTo.R * (255 - alpha)) /
+             255), 
+            ((colorFrom.G * alpha) / 255) + ((colorTo.G * (255 - alpha)) /
+             255), 
+            ((colorFrom.B * alpha) / 255) + ((colorTo.B * (255 - alpha)) / 255)
+            );
+         return retColor;
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ExplorerBarHelper.cs</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 18 April 2004</p></td><td></td></tr></table>
+</body></html>

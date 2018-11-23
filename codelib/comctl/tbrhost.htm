@@ -1,0 +1,184 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Hosting a Toolbar Outside the Rebar Control</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop">Source Code</a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top"  width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	<font color="#99CC33" face="verdana,arial,helvetica" size="2">
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Hosting a Toolbar Ouside the Rebar</b><br>
+	<p><img src="..\..\images\tbrhost.gif" alt="Toolbar hosted outside a rebar" width="329" height="257"></p>
+	<p><a href="tbrhost.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Toolbar Hosting Demonstration (66kb)</a></p>
+	</font>
+	<p>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="retbar.htm">vbAccelerator CoolMenu Toolbar and Rebar Control</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<p>
+	This project demonstrates how to host a vbAccelerator Toolbar control outside a Rebar.
+	Whilst you don't have to add a toolbar to a rebar, you will find that the toolbar only
+	draws correctly outside if it doesn't have flat buttons:<br><br>
+	<img src="..\..\images\tbrhostp.gif" width="439" height="77" alt="Disaster!"><br>
+	<b>Comment-on dit &quot;Display Bug &quot;?</b>
+	<br><br>
+	The problem is that a flat toolbar has a specialised drawing routine to allow it to
+	draw transparently. It sends a WM_ERASEBKGND message whenever it wants its own backdrop
+	to be redrawn.  If the host of the toolbar doesn't respond to this, the background is
+	never updated and you get to see whatever was behind the toolbar at the time, as you
+	can see from the picture above!
+	<br><br>
+	This is easily solved using the inbuilt Toolbar Host control.  This control subclasses
+	the WM_ERASEBKGND message and in response clears its own background.  In addition to this,
+	it also includes automatic resizing code suitable for building wrappable toolbar displays,
+	and can accept other VB controls too, such two additional combo boxes in this demo.
+	The code also demonstrates how to set up the revolting tangerine coloured background to the control
+	as shown in the picture!<br><br>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+</font>
+<!-- FOOTER:END -->
+
+</body>
+</html>

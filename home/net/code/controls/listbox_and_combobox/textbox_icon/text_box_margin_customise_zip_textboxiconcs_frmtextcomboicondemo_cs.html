@@ -1,0 +1,383 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: TextBoxIconCS_frmTextComboIconDemo.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: TextBoxIconCS_frmTextComboIconDemo.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Adding an Icon or Control to a TextBox or ComboBox</a>&#160;.&#160;<a href="text_box_margin_customise.html">Text Box Margin Customise</a>&#160;.&#160;TextBoxIconCS_frmTextComboIconDemo.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="text_box_margin_customise.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Text Box Margin Customise</a> (91K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13078</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13078&type=zip&title=text_20box_20margin_20customise_2ezip_5ftextboxiconcs_5ffrmtextcomboicondemo.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Oct 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: TextBoxIconCS_frmTextComboIconDemo.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+using vbAccelerator.Components.Controls;
+
+namespace TextBoxIconCS
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmTextComboIconDemo : System.Windows.Forms.Form
+   {
+      private TextBoxMarginCustomise textBox1Icon;
+      private TextBoxMarginCustomise comboBox1Icon;
+      private TextBoxMarginCustomise textBox2Icon;
+      private TextBoxMarginCustomise comboBox2Icon;
+      private TextBoxMarginCustomise textBox3Icon;
+      private TextBoxMarginCustomise comboBox3Icon;
+      private TextBoxMarginCustomise textBox4Icon;
+      private TextBoxMarginCustomise comboBox4Icon;
+
+      private System.Windows.Forms.TextBox textBox1;
+      private System.Windows.Forms.ImageList ilsIcons;
+      private System.Windows.Forms.ComboBox comboBox1;
+      private System.Windows.Forms.ComboBox comboBox2;
+      private System.Windows.Forms.TextBox textBox2;
+      private System.Windows.Forms.ComboBox comboBox3;
+      private System.Windows.Forms.TextBox textBox3;
+      private System.Windows.Forms.Label label1;
+      private System.Windows.Forms.Label label2;
+      private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.CheckBox checkBox1;
+      private System.Windows.Forms.CheckBox checkBox2;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.ComboBox comboBox4;
+      private System.Windows.Forms.TextBox textBox4;
+      private System.ComponentModel.IContainer components;
+
+      public frmTextComboIconDemo()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         textBox1Icon = new TextBoxMarginCustomise();
+         textBox1Icon.ImageList = ilsIcons;
+         textBox1Icon.Icon = 1;
+         textBox1Icon.Attach(textBox1);
+
+         comboBox1Icon = new TextBoxMarginCustomise();
+         comboBox1Icon.ImageList = ilsIcons;
+         comboBox1Icon.Icon = 2;
+         comboBox1Icon.Attach(comboBox1);
+
+         textBox2Icon = new TextBoxMarginCustomise();
+         textBox2Icon.ImageList = ilsIcons;
+         textBox2Icon.Icon = 3;
+         textBox2Icon.Attach(textBox2);
+
+         comboBox2Icon = new TextBoxMarginCustomise();
+         comboBox2Icon.ImageList = ilsIcons;
+         comboBox2Icon.Icon = 4;
+         comboBox2Icon.Attach(comboBox2);
+
+         textBox4Icon = new TextBoxMarginCustomise();
+         textBox4Icon.CustomPainter = new
+          TextBoxMarginColourPainter(Color.CornflowerBlue);
+         textBox4Icon.Attach(textBox4);
+
+         comboBox4Icon = new TextBoxMarginCustomise();
+         comboBox4Icon.CustomPainter = new
+          TextBoxMarginColourPainter(Color.Cornsilk);
+         comboBox4Icon.Attach(comboBox4);
+
+         textBox3Icon = new TextBoxMarginCustomise();
+         textBox3Icon.Control = checkBox1;
+         textBox3Icon.Attach(textBox3);
+
+         comboBox3Icon = new TextBoxMarginCustomise();
+         comboBox3Icon.Control = checkBox2;
+         comboBox3Icon.Attach(comboBox3);
+
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmTextComboIconDemo));
+         this.textBox1 = new System.Windows.Forms.TextBox();
+         this.ilsIcons = new System.Windows.Forms.ImageList(this.components);
+         this.comboBox1 = new System.Windows.Forms.ComboBox();
+         this.comboBox2 = new System.Windows.Forms.ComboBox();
+         this.textBox2 = new System.Windows.Forms.TextBox();
+         this.comboBox3 = new System.Windows.Forms.ComboBox();
+         this.textBox3 = new System.Windows.Forms.TextBox();
+         this.label1 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
+         this.label3 = new System.Windows.Forms.Label();
+         this.checkBox1 = new System.Windows.Forms.CheckBox();
+         this.checkBox2 = new System.Windows.Forms.CheckBox();
+         this.label4 = new System.Windows.Forms.Label();
+         this.comboBox4 = new System.Windows.Forms.ComboBox();
+         this.textBox4 = new System.Windows.Forms.TextBox();
+         this.SuspendLayout();
+         // 
+         // textBox1
+         // 
+         this.textBox1.Location = new System.Drawing.Point(8, 28);
+         this.textBox1.Name = "textBox1";
+         this.textBox1.Size = new System.Drawing.Size(200, 21);
+         this.textBox1.TabIndex = 0;
+         this.textBox1.Text = "textBox1";
+         // 
+         // ilsIcons
+         // 
+         this.ilsIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsIcons.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsIcons.ImageStream =
+          ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsIcon
+         s.ImageStream")));
+         this.ilsIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // comboBox1
+         // 
+         this.comboBox1.Location = new System.Drawing.Point(8, 60);
+         this.comboBox1.Name = "comboBox1";
+         this.comboBox1.Size = new System.Drawing.Size(200, 21);
+         this.comboBox1.TabIndex = 1;
+         this.comboBox1.Text = "comboBox1";
+         // 
+         // comboBox2
+         // 
+         this.comboBox2.Location = new System.Drawing.Point(8, 144);
+         this.comboBox2.Name = "comboBox2";
+         this.comboBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+         this.comboBox2.Size = new System.Drawing.Size(200, 21);
+         this.comboBox2.TabIndex = 3;
+         this.comboBox2.Text = "comboBox2";
+         // 
+         // textBox2
+         // 
+         this.textBox2.Location = new System.Drawing.Point(8, 112);
+         this.textBox2.Name = "textBox2";
+         this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+         this.textBox2.Size = new System.Drawing.Size(200, 21);
+         this.textBox2.TabIndex = 2;
+         this.textBox2.Text = "textBox2";
+         // 
+         // comboBox3
+         // 
+         this.comboBox3.Location = new System.Drawing.Point(8, 316);
+         this.comboBox3.Name = "comboBox3";
+         this.comboBox3.Size = new System.Drawing.Size(200, 21);
+         this.comboBox3.TabIndex = 5;
+         this.comboBox3.Text = "comboBox3";
+         // 
+         // textBox3
+         // 
+         this.textBox3.Location = new System.Drawing.Point(8, 284);
+         this.textBox3.Name = "textBox3";
+         this.textBox3.Size = new System.Drawing.Size(200, 21);
+         this.textBox3.TabIndex = 4;
+         this.textBox3.Text = "textBox3";
+         // 
+         // label1
+         // 
+         this.label1.Location = new System.Drawing.Point(8, 8);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(272, 20);
+         this.label1.TabIndex = 6;
+         this.label1.Text = "Icons, Left-To-Right";
+         // 
+         // label2
+         // 
+         this.label2.Location = new System.Drawing.Point(8, 92);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(272, 20);
+         this.label2.TabIndex = 7;
+         this.label2.Text = "Icons, Right-To-Left";
+         // 
+         // label3
+         // 
+         this.label3.Location = new System.Drawing.Point(8, 264);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(272, 20);
+         this.label3.TabIndex = 8;
+         this.label3.Text = "Embedded CheckBox controls";
+         // 
+         // checkBox1
+         // 
+         this.checkBox1.BackColor = System.Drawing.SystemColors.Window;
+         this.checkBox1.Checked = true;
+         this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBox1.Location = new System.Drawing.Point(200, 292);
+         this.checkBox1.Name = "checkBox1";
+         this.checkBox1.Size = new System.Drawing.Size(12, 16);
+         this.checkBox1.TabIndex = 9;
+         this.checkBox1.CheckedChanged += new
+          System.EventHandler(this.checkBox1_CheckedChanged);
+         // 
+         // checkBox2
+         // 
+         this.checkBox2.BackColor = System.Drawing.SystemColors.Window;
+         this.checkBox2.Checked = true;
+         this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBox2.Location = new System.Drawing.Point(200, 320);
+         this.checkBox2.Name = "checkBox2";
+         this.checkBox2.Size = new System.Drawing.Size(12, 16);
+         this.checkBox2.TabIndex = 10;
+         this.checkBox2.CheckedChanged += new
+          System.EventHandler(this.checkBox2_CheckedChanged);
+         // 
+         // label4
+         // 
+         this.label4.Location = new System.Drawing.Point(8, 176);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(272, 20);
+         this.label4.TabIndex = 13;
+         this.label4.Text = "Colours:";
+         // 
+         // comboBox4
+         // 
+         this.comboBox4.Location = new System.Drawing.Point(8, 228);
+         this.comboBox4.Name = "comboBox4";
+         this.comboBox4.Size = new System.Drawing.Size(200, 21);
+         this.comboBox4.TabIndex = 12;
+         this.comboBox4.Text = "comboBox4";
+         // 
+         // textBox4
+         // 
+         this.textBox4.Location = new System.Drawing.Point(8, 196);
+         this.textBox4.Name = "textBox4";
+         this.textBox4.Size = new System.Drawing.Size(200, 21);
+         this.textBox4.TabIndex = 11;
+         this.textBox4.Text = "textBox4";
+         // 
+         // frmTextComboIconDemo
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(292, 354);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.checkBox2,
+                                                        this.checkBox1,
+                                                        this.label4,
+                                                        this.comboBox4,
+                                                        this.textBox4,
+                                                        this.label3,
+                                                        this.label2,
+                                                        this.label1,
+                                                        this.comboBox3,
+                                                        this.textBox3,
+                                                        this.comboBox2,
+                                                        this.textBox2,
+                                                        this.comboBox1,
+                                                        this.textBox1});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmTextComboIconDemo";
+         this.Text = "Text and ComboBox Margin Customiser Demonstration";
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmTextComboIconDemo());
+      }
+
+      private void checkBox1_CheckedChanged(object sender, System.EventArgs e)
+      {
+         textBox3.BackColor = checkBox1.Checked ? 
+            Color.FromKnownColor(KnownColor.Window) :
+            Color.FromKnownColor(KnownColor.Control);
+         checkBox1.BackColor = textBox3.BackColor;
+         textBox3.Enabled = checkBox1.Checked;
+      }
+
+      private void checkBox2_CheckedChanged(object sender, System.EventArgs e)
+      {
+         comboBox3.BackColor = checkBox2.Checked ? 
+            Color.FromKnownColor(KnownColor.Window) :
+            Color.FromKnownColor(KnownColor.Control);
+         checkBox2.BackColor = comboBox3.BackColor;
+         comboBox3.Enabled = checkBox2.Checked;
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Adding an Icon or Control to a TextBox or ComboBox</a>&#160;.&#160;<a href="text_box_margin_customise.html">Text Box Margin Customise</a>&#160;.&#160;TextBoxIconCS_frmTextComboIconDemo.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 November 2003</p></td><td></td></tr></table>
+</body></html>

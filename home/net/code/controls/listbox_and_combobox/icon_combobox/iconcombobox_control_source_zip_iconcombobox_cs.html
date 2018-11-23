@@ -1,0 +1,2930 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IconComboBox.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IconComboBox.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">vbAccelerator IconComboBox Control</a>&#160;.&#160;<a href="iconcombobox_control_source.html">IconComboBox Control Source</a>&#160;.&#160;IconComboBox.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="iconcombobox_control_binary.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Control Binary</a> (16K)</p><p class="nav"><a href="iconcombobox_control_documentation.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Control Documentation</a> (119K)</p><p class="nav"><a href="iconcombobox_control_source.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Control Source</a> (47K)</p><p class="nav"><a href="iconcombobox_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Demonstration</a> (30K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13038</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13038&type=zip&title=iconcombobox_20control_20source_2ezip_5ficoncombobox.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />11 Jan 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\shell_projects\auto-file_completion_for_text_boxes_and_combo_boxes\article.html">Auto-File and URL Completion for Text Boxes and Combo Boxes</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\textbox_icon\article.html">Adding an Icon or Control to a TextBox or ComboBox</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\flat_style_combo_boxes\article.asp\index.html">Flat Style Combo Boxes</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IconComboBox.cs</h1><pre>using System;
+using System.Collections;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Controls
+{
+   /// &lt;summary&gt;
+   /// A combo box capable of displaying icons and multiple columns
+   /// in the drop-down portion.   
+   /// &lt;/summary&gt;
+   public class IconComboBox : System.Windows.Forms.ComboBox, IIconComboBox
+   {
+
+      #region ObjectCollection
+      /// &lt;summary&gt;
+      /// Strongly-typed collection of objects within the IconComboBox.
+      /// TODO: Have not found how to attach this to the combo box itself 
+      /// yet.
+      /// &lt;/summary&gt;
+      new public class ObjectCollection :
+       System.Windows.Forms.ComboBox.ObjectCollection 
+      {      
+         #region Member variables
+         private IconComboBox owner = null;
+         #endregion
+
+         /// &lt;summary&gt;
+         /// Returns the item at the specified index within the collection
+         /// &lt;/summary&gt;         
+         new public IIconComboItem this[int index]
+         {
+            get
+            {
+               return (IIconComboItem)base[index];
+            }
+            set
+            {
+               base[index] = value;
+            }
+         }
+         /// &lt;summary&gt;
+         /// Adds an item to the list of items in the IconComboBox
+         /// &lt;/summary&gt;
+         /// &lt;param name="item"&gt;Item to add&lt;/param&gt;
+         /// &lt;returns&gt;Zero-based index of the item in the collection&lt;/returns&gt;
+         public System.Int32 Add (IIconComboItem item )
+         {
+            item.Owner = this.owner;
+            return base.Add(item);
+         }
+         /// &lt;summary&gt;
+         /// Adds an array of items to the list of items in the IconComboBox
+         /// &lt;/summary&gt;
+         /// &lt;param name="items"&gt;An array of objects to add to the list&lt;/param&gt;
+         public void AddRange ( IIconComboItem[] items )
+         {
+            foreach (IIconComboItem item in items)
+            {
+               item.Owner = this.owner;
+            }
+            base.AddRange(items);
+         }
+         /// &lt;summary&gt;
+         /// Determines whether the specified item is located within the
+          collection
+         /// &lt;/summary&gt;
+         /// &lt;param name="value"&gt;An IIconComboItem containing the item to
+          locate in the collection&lt;/param&gt;
+         /// &lt;returns&gt;True if the item is located within the collection;
+          otherwise false.&lt;/returns&gt;
+         public bool Contains(IIconComboItem value)
+         {
+            return base.Contains(value);
+         }
+         /// &lt;summary&gt;
+         /// Copies the entire collection into an existing array of objects at
+          a specified location within the array
+         /// &lt;/summary&gt;
+         /// &lt;param name="dest"&gt;The object array in which the items from the
+          collection are copied to&lt;/param&gt;
+         /// &lt;param name="arrayIndex"&gt;The location within the destination array
+          to copy the items from the collection to&lt;/param&gt;
+         public void CopyTo(IIconComboItem[] dest , System.Int32 arrayIndex )
+         {
+            base.CopyTo(dest, arrayIndex);
+         }
+         /// &lt;summary&gt;
+         /// Returns the index within the collection of the specified item.
+         /// &lt;/summary&gt;
+         /// &lt;param name="value"&gt;The IIconComboItem to locate in the
+          collection.&lt;/param&gt;
+         /// &lt;returns&gt;The zero-based index where the item is located within the
+          collection, otherwise -1&lt;/returns&gt;
+         public int IndexOf(IIconComboItem value)
+         {
+            return base.IndexOf(value);
+         }
+         /// &lt;summary&gt;
+         /// Inserts an item into the list box at the specified index.
+         /// &lt;/summary&gt;
+         /// &lt;param name="index"&gt;The zero-based index location where the item
+          is inserted.&lt;/param&gt;
+         /// &lt;param name="item"&gt;The IIconComboItem to insert.&lt;/param&gt;
+         public void Insert(int index, IIconComboItem item)
+         {
+            item.Owner = this.owner;
+            base.Insert(index, item);
+         }
+
+         /// &lt;summary&gt;
+         /// Initializes a new instance of the ObjectCollection.
+         /// &lt;/summary&gt;
+         /// &lt;param name="owner"&gt;The IconComboBox that owns the
+          collection&lt;/param&gt;
+         public ObjectCollection ( IconComboBox owner ) : base(owner)
+         {
+            this.owner = owner;
+         }
+      }
+      #endregion
+
+      #region Enumerations
+      /// &lt;summary&gt;
+      /// Selection highlighting and border style options for the IconComboBox
+      /// &lt;/summary&gt;
+      public enum DrawingStyle : int
+      {
+         /// &lt;summary&gt;
+         /// Normal ComboBox style selection
+         /// &lt;/summary&gt;
+         Standard = 0,
+         /// &lt;summary&gt;
+         /// Like the VS.NET/Office XP menus
+         /// &lt;/summary&gt;
+         Office10 = 1         
+      }
+      #endregion
+
+      #region Member Variables
+      private FlatControl flatControl = null;
+      private TextBoxMarginCustomise textIcon = null;
+      private bool textBoxIcon = false;
+      private ImageList imageList = null;
+      private IconComboBoxColumnCollection columns = null;
+      private int indentSize = 16;
+      private DrawingStyle highlightStyle = DrawingStyle.Standard;
+      private DrawingStyle borderStyle = DrawingStyle.Standard;
+      private bool fullRowSelect = true;
+      private bool gridLines = false;
+      private bool autoComplete = false;
+      private int lastTextLength = 0; // used for auto-complete
+      private bool suppressSelectedIndexChange = false;
+      #endregion
+
+      #region events
+      /// &lt;summary&gt;
+      /// Raised when the combo box portion of the control is closed up.
+      /// &lt;/summary&gt;
+      public event EventHandler CloseUp;
+      #endregion
+
+      #region Implementation
+      /// &lt;summary&gt;
+      /// Gets/sets whether this item is auto-complete
+      /// &lt;/summary&gt;
+      public bool AutoComplete
+      {
+         get
+         {
+            return this.autoComplete;
+         }
+         set
+         {
+            this.autoComplete = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the selection highlighting style
+      /// &lt;/summary&gt;
+      public DrawingStyle HighlightStyle
+      {
+         get
+         {
+            return this.highlightStyle;
+         }
+         set
+         {
+            this.highlightStyle = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the border style for the control.
+      /// &lt;/summary&gt;
+      public DrawingStyle BorderStyle
+      {
+         get
+         {
+            return this.borderStyle;
+         }
+         set
+         {
+            if (this.borderStyle != value)
+            {
+               this.borderStyle = value;
+               if (this.flatControl != null)
+               {
+                  if (this.borderStyle == DrawingStyle.Office10)
+                  {
+                     this.flatControl.Attach(this);
+                  }
+                  else
+                  {
+                     this.flatControl.ReleaseHandle();
+                  }
+               }
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether a full row is shown selected, or
+      /// just the first column's icon and text.
+      /// &lt;/summary&gt;
+      public bool FullRowSelect
+      {
+         get
+         {
+            return this.fullRowSelect;
+         }
+         set
+         {
+            this.fullRowSelect = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether grid lines are drawn or not.
+      /// &lt;/summary&gt;
+      public bool GridLines
+      {
+         get
+         {
+            return this.gridLines;
+         }
+         set
+         {
+            this.gridLines = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the icon is shown when the 
+      /// ComboBox has DropDown style
+      /// &lt;/summary&gt;
+      public bool TextBoxIcon
+      {
+         get
+         {
+            return this.textBoxIcon;
+         }
+         set
+         {
+            this.textBoxIcon = value;
+            if ((this.DropDownStyle == ComboBoxStyle.DropDown) &amp;&amp; (value))
+            {               
+               this.textIcon.ImageList = this.imageList;
+            }
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Gets/sets the ImageList associated with this 
+      /// control.
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ImageList ImageList
+      {
+         get
+         {
+            return this.imageList;
+         }
+         set
+         {
+            this.imageList = value;
+            this.textIcon.ImageList = this.imageList;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the DropDownStyle of the Combo Box control.
+      /// &lt;/summary&gt;
+      public new ComboBoxStyle DropDownStyle
+      {
+         get
+         {
+            return base.DropDownStyle;
+         }
+         set
+         {
+            base.DropDownStyle = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the selected &lt;see cref="IconComboItem"/&gt; in the control, if
+       any, otherwise
+      /// &lt;c&gt;null&lt;/c&gt;.
+      /// &lt;/summary&gt;
+      public new IconComboItem SelectedItem
+      {
+         get
+         {
+            IconComboItem selected = null;
+            if (base.SelectedItem != null)
+            {
+               selected = (IconComboItem) base.SelectedItem;
+            }
+            return selected;
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Returns the width of an item in the specified column
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;The index of the column to get the width
+       for.&lt;/param&gt;
+      /// &lt;returns&gt;The width in pixels&lt;/returns&gt;
+      public int ColumnWidth(int index)
+      {
+         if ((index &lt; 0) || (index &gt; columns.Count))
+         {
+            return 0;
+         }
+         else
+         {
+            if (((int) this.columns[index].ColumnWidth) &lt; 0)
+            {
+               return 128;
+            }
+            else
+            {
+               return (int) this.columns[index].ColumnWidth;
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the collection of columns in the control.
+      /// &lt;/summary&gt;
+      public IconComboBoxColumnCollection Columns
+      {
+         get
+         {            
+            return this.columns;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the index of the column with the specified order
+      /// &lt;/summary&gt;
+      /// &lt;param name="order"&gt;Order of column to display&lt;/param&gt;
+      /// &lt;returns&gt;Index of column or -1 if not a valid column&lt;/returns&gt;
+      public int ColumnIndex(int order)
+      {
+         int index = -1;
+         for (int i = 0; i &lt; this.columns.Count; i++)
+         {
+            if (((int) this.columns[i].ColumnOrder) == order)
+            {
+               index = i;
+               break;
+            }
+         }
+         return index;
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the number of columns associated with the control.
+      /// &lt;/summary&gt;
+      public int ColumnCount
+      {
+         get
+         {
+            return this.columns.Count;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the size of each unit of indentation for the items within
+       the 
+      /// Combo Box.
+      /// &lt;/summary&gt;
+      public int IndentationSize
+      {
+         get
+         {
+            return this.indentSize;
+         }
+         set
+         {
+            this.indentSize = value;
+            Remeasure();
+         }      
+      }
+
+      /// &lt;summary&gt;
+      /// Responds to a non-height property change event of an item.
+      /// Forces the ComboBox to redraw the item if necessary
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item which has changed&lt;/param&gt;
+      public void OnItemChanged(IIconComboItem item)
+      {
+         if (this.DropDownStyle == ComboBoxStyle.DropDownList)
+         {
+            if (this.Items.IndexOf(item) == this.SelectedIndex)
+            {
+               this.Invalidate();
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Responds to a height changed event of an item.
+      /// In a ComboBox, the only way to change the height of an item
+      /// once it has been Measured is to remove it and then add it
+      /// again.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item whose height has changed&lt;/param&gt;
+      public void OnItemHeightChanged(IIconComboItem item)
+      {
+         int index = this.Items.IndexOf(item);
+         bool selected = (this.SelectedIndex == index);
+         this.Items.RemoveAt(index);
+         this.Items.Insert(index, item);
+         if (selected)
+         {
+            this.SelectedIndex = index;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Measures the item and raises the MeasureItem event
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;MeasureItemEventArgs for the item&lt;/param&gt;
+      protected override void OnMeasureItem(MeasureItemEventArgs e)
+      {
+         if ((e.Index &gt;= 0) &amp;&amp; (e.Index &lt; this.Items.Count))
+         {
+            IIconComboItem item = (IIconComboItem) this.Items[e.Index];
+            item.Owner = this;
+            Size size = item.MeasureItem(
+               e.Graphics, 
+               this.imageList,
+               this.Font,
+               this.Width
+               );
+            // TODO: need to consider what to do with the width
+            e.ItemWidth = size.Width;
+            e.ItemHeight = size.Height;
+         }
+         else
+         {
+            base.OnMeasureItem(e);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the SListBox item and raises the DrawItem 
+      /// event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;DrawItemEventArgs for the item&lt;/param&gt;
+      protected override void OnDrawItem(DrawItemEventArgs e)
+      {
+         if ((e.Index &gt;= 0) &amp;&amp; (e.Index &lt; this.Items.Count))
+         {
+            IIconComboItem item = (IIconComboItem) this.Items[e.Index];
+            item.DrawItem(
+               e.Graphics,
+               this.imageList,
+               e.Bounds,
+               e.Font,
+               ((e.State &amp; DrawItemState.Selected) == DrawItemState.Selected),
+               (this.RightToLeft == RightToLeft.Yes),
+               ((e.State &amp; DrawItemState.ComboBoxEdit) !=
+                DrawItemState.ComboBoxEdit)
+               );
+         }
+         else
+         {
+            base.OnDrawItem(e);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Ensures that the subclasses needed to support the control
+      /// are installed.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      protected override void OnHandleCreated ( System.EventArgs e )
+      {
+         if (this.DropDownStyle == ComboBoxStyle.DropDown)
+         {
+            this.textIcon.Attach(this);            
+         }
+         if (this.textBoxIcon)
+         {
+            this.textIcon.ImageList = this.imageList;
+         }
+         if ((this.DropDownStyle == ComboBoxStyle.DropDown ||
+          this.DropDownStyle == ComboBoxStyle.DropDownList))
+         {
+            if (this.borderStyle == DrawingStyle.Office10)
+            {
+               if (this.flatControl.Handle != this.Handle)
+               {
+                  this.flatControl.Attach(this);
+               }
+            }
+         }
+         base.OnHandleCreated(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Handles auto-completion and raises the KeyPress event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Information about the key press associated with the
+       event&lt;/param&gt;
+      protected override void OnKeyPress (
+       System.Windows.Forms.KeyPressEventArgs e )
+      {
+         base.OnKeyPress(e);
+
+         if (this.autoComplete)
+         {
+            String text = this.Text;
+            if (e.KeyChar == 8)
+            {
+               if ((text.Length == lastTextLength) &amp;&amp; (text.Length &gt; 0))
+               {
+                  text = text.Substring(0, text.Length - 1);
+                  this.Text = text;
+               }
+            }
+            else if (e.KeyChar == 13)
+            {
+               return;
+            }
+
+            // does the typed text match anything?
+            int findIndex = this.FindString(text);
+            
+            if (findIndex &gt; -1) 
+            {
+               if (this.SelectedIndex != findIndex)
+               {
+                  suppressSelectedIndexChange = true;
+                  this.SelectedIndex = findIndex;                  
+                  this.SelectionStart = text.Length;
+                  if (text.Length &lt; this.Items[findIndex].ToString().Length)
+                  {
+                     this.SelectionLength =
+                      this.Items[findIndex].ToString().Length - text.Length;
+                  }
+               }
+            }
+            lastTextLength = text.Length;
+         }
+
+         if ((this.DropDownStyle == ComboBoxStyle.DropDown) &amp;&amp;
+          (this.textBoxIcon))
+         {
+            if (this.SelectedIndex == -1)
+            {
+               if (this.textIcon.Icon != -1)
+               {
+                  this.textIcon.Icon = -1;
+               }
+            }
+            else
+            {
+               if (this.textIcon.Icon != ((IIconComboItem)
+                this.Items[this.SelectedIndex]).Icon)
+               {
+                  this.textIcon.Icon = ((IIconComboItem)
+                   this.Items[this.SelectedIndex]).Icon;
+               }
+            }
+         }
+
+      }
+
+      /// &lt;summary&gt;
+      /// Handles setting the icon in the text box portion of the control
+      /// and raises the SelectedIndexChanged event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      protected override void OnSelectedIndexChanged(EventArgs e)
+      {
+         if (this.DropDownStyle == ComboBoxStyle.DropDown)
+         {
+            if (this.TextBoxIcon)
+            {
+               if (this.SelectedIndex == -1)
+               {
+                  this.textIcon.Icon = -1;
+               }
+               else
+               {
+                  IIconComboItem ici = (IIconComboItem)
+                   this.Items[this.SelectedIndex];
+                  this.textIcon.Icon = ici.Icon;
+               }
+            }
+         }
+         if (!this.suppressSelectedIndexChange)
+         {
+            base.OnSelectedIndexChanged(e);
+         }
+         else
+         {
+            this.suppressSelectedIndexChange = false;
+         }
+      }
+
+      private void flatControl_CloseUp(object sender, EventArgs e)
+      {
+         OnCloseUp(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="CloseUp"/&gt; event for the control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Not used.&lt;/param&gt;
+      protected virtual void OnCloseUp(EventArgs e)
+      {
+         if (this.CloseUp != null)
+         {
+            this.CloseUp(this, e);
+         }
+      }
+      
+      private void Remeasure()
+      {
+      }
+
+      private void textIcon_ComboEditKeyDown(object sender, KeyEventArgs e)
+      {
+         if (this.AutoComplete)
+         {
+            OnKeyDown(e);
+
+            if (this.SelectedIndex != -1)
+            {
+               if (!this.Text.Equals(this.SelectedText))
+               {
+                  this.SelectionStart = 0;
+                  this.SelectionLength = this.Text.Length;
+                  OnSelectedIndexChanged(new EventArgs());
+               }
+            }
+
+            OnKeyUp(e);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the control
+      /// &lt;/summary&gt;
+      public IconComboBox() : base()
+      {
+         this.textIcon = new TextBoxMarginCustomise();
+         this.textIcon.ComboEditKeyDown += new
+          KeyEventHandler(textIcon_ComboEditKeyDown);
+         this.flatControl = new FlatControl();         
+         this.flatControl.CloseUp += new EventHandler(flatControl_CloseUp);
+         this.DrawMode =  System.Windows.Forms.DrawMode.OwnerDrawVariable;
+         this.columns = new IconComboBoxColumnCollection(this);
+      }
+      #endregion
+
+   }
+
+   #region IconComboBoxColumnCollection
+   /// &lt;summary&gt;
+   /// A class which manages the collection of columns associated with an
+   /// IconComboBox control.
+   /// &lt;/summary&gt;
+   public class IconComboBoxColumnCollection : ReadOnlyCollectionBase
+   {
+      /// &lt;summary&gt;
+      /// The owning control
+      /// &lt;/summary&gt;
+      private IIconComboBox owner = null;
+   
+      /// &lt;summary&gt;
+      /// Adds a column to the column collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="column"&gt;Column to add&lt;/param&gt;
+      /// &lt;returns&gt;Index of added column&lt;/returns&gt;
+      public int Add(IconComboBoxColumn column)
+      {
+         column.Owner = this.owner;
+         if (column.ColumnOrder &lt; 0) // flagged default column order, add to
+          the end
+         {
+            column.ColumnOrder = owner.ColumnCount;
+         }
+         else
+         {
+            // need to check the orders of the other columns &amp; update
+            // them accordingly (todo)
+         }
+         return this.InnerList.Add(column);
+      }
+
+      /// &lt;summary&gt;
+      /// Removes all columns from the collection.
+      /// &lt;/summary&gt;
+      public void Clear()
+      {
+         this.InnerList.Clear();
+      }
+      
+      /// &lt;summary&gt;
+      /// Returns &lt;c&gt;true&lt;/c&gt; if the specified column is found in the column
+      /// collection, or &lt;c&gt;false&lt;/c&gt; otherwise.
+      /// &lt;/summary&gt;
+      /// &lt;param name="column"&gt;Column to find&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the specified column is found in the column
+      /// collection, or &lt;c&gt;false&lt;/c&gt; otherwise.&lt;/returns&gt;
+      public bool Contains(IconComboBoxColumn column)
+      {
+         return this.InnerList.Contains(column);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the 0-based index of the specified column object.
+      /// &lt;/summary&gt;
+      /// &lt;param name="column"&gt;Column object to find.&lt;/param&gt;
+      /// &lt;returns&gt;0-based index if found, -1 otherwise.&lt;/returns&gt;
+      public int IndexOf(IconComboBoxColumn column)
+      {
+         return this.InnerList.IndexOf(column);
+      }
+
+      /// &lt;summary&gt;
+      /// Inserts a column before the specified index.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index to insert column before&lt;/param&gt;
+      /// &lt;param name="column"&gt;Column to insert&lt;/param&gt;
+      public void Insert(int index, IconComboBoxColumn column)
+      {
+         column.Owner = this.owner;
+         this.InnerList.Insert(index, column);
+      }
+
+      /// &lt;summary&gt;
+      /// Removes the column at the specified index.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index to remove at&lt;/param&gt;
+      public void RemoveAt(int index)
+      {
+         this.InnerList.RemoveAt(index);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the Column at the specified index.
+      /// &lt;/summary&gt;
+      public IconComboBoxColumn this[int index]
+      {
+         get
+         {
+            return (IconComboBoxColumn) this.InnerList[index];
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the IconComboBoxColumnCollection
+      /// object. Called automatically when an instance of an IconComboBox
+      /// is created.
+      /// &lt;/summary&gt;
+      /// &lt;param name="owner"&gt;The IconComboBox which owns the columns&lt;/param&gt;
+      public IconComboBoxColumnCollection(IIconComboBox owner) : base()
+      {
+         this.owner = owner;
+         IconComboBoxColumn column = new IconComboBoxColumn();         
+         column.Owner = owner;
+         column.ColumnOrder = 0;
+         this.InnerList.Add(column);
+      }
+   }
+   #endregion
+
+   #region IconComboBoxColumn
+   /// &lt;summary&gt;
+   /// Represents a column within an IconComboBox.
+   /// &lt;/summary&gt;
+   public class IconComboBoxColumn
+   {
+      private int colWidth = -1;
+      private int colOrder = -1;
+      private int lastColOrder = -1;
+      private IIconComboBox owner = null;
+      private static bool OrderChangeInterlock = false;
+
+      /// &lt;summary&gt;
+      /// Gets/sets the IconComboBox which owns this column.
+      /// &lt;/summary&gt;
+      public IIconComboBox Owner
+      {
+         get
+         {
+            return this.owner;
+         }
+         set
+         {
+            this.owner = value;
+            Rearrange();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the width of this column.  Use -1 for
+      /// the default width.
+      /// &lt;/summary&gt;
+      public int ColumnWidth
+      {
+         get
+         {
+            return colWidth;
+         }
+         set
+         {
+            colWidth = value;
+         }
+      }
+
+      private void Rearrange()
+      {
+         if ((this.owner != null) &amp;&amp; (!IconComboBoxColumn.OrderChangeInterlock))
+         {
+            // Now check through 
+            if (this.lastColOrder != -1)
+            {
+               IconComboBoxColumn.OrderChangeInterlock = true;
+
+               // Validate the column order:
+               if (this.colOrder &lt; 0)
+               {
+                  this.colOrder = 0;
+               }
+               if (this.colOrder &gt; this.owner.ColumnCount)
+               {
+                  this.colOrder = this.owner.ColumnCount - 1;
+               }
+
+               if (this.colOrder == this.lastColOrder)
+               {
+                  // nothing to do
+               }
+               else if (this.colOrder &lt; this.lastColOrder)
+               {
+                  // anything &gt;= this.colOrder and &lt; this.lastcolOrder has one
+                   added:
+                  foreach (IconComboBoxColumn col in ((IconComboBox)
+                   owner).Columns)
+                  {
+                     if ((col.ColumnOrder &gt;= this.colOrder) &amp;&amp; (col.ColumnOrder
+                      &lt; this.lastColOrder))
+                     {
+                        if (col != this)
+                        {
+                           col.ColumnOrder++;
+                        }
+                     }
+                  }
+                  // done
+               }
+               else if (this.colOrder &gt; this.lastColOrder )
+               {
+                  // anything &gt; this.lastColOrder and &lt;= this.colOrder has one
+                   subtracted:
+                  foreach (IconComboBoxColumn col in ((IconComboBox)
+                   owner).Columns)
+                  {
+                     if ((col.ColumnOrder &gt; this.lastColOrder) &amp;&amp;
+                      (col.ColumnOrder &lt;= this.colOrder))
+                     {
+                        if (col != this)
+                        {
+                           col.ColumnOrder--;
+                        }
+                     }
+                  }
+                  // done
+               }
+
+               IconComboBoxColumn.OrderChangeInterlock = false;
+
+            }
+         }
+         this.lastColOrder = this.colOrder;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the order that this column appears in.
+      /// Orders are 0-based.
+      /// &lt;/summary&gt;
+      public int ColumnOrder
+      {
+         get
+         {
+            return colOrder;
+         }
+         set
+         {
+            colOrder = value;
+            Rearrange();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of an IconComboBox column
+      /// with default width and order.
+      /// &lt;/summary&gt;
+      public IconComboBoxColumn() : base()
+      {
+      }
+   }
+   #endregion
+
+   #region IIconComboBox
+   /// &lt;summary&gt;
+   /// Interface specifying the contract between an
+   /// item and the owning control.
+   /// &lt;/summary&gt;
+   public interface IIconComboBox
+   {
+      /// &lt;summary&gt;
+      /// Called when an item's appearance changes.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item whose appearance has changed&lt;/param&gt;
+      void OnItemChanged(IIconComboItem item);
+
+      /// &lt;summary&gt;
+      /// Called when an item's appearance changes.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item whose appearance has changed&lt;/param&gt;
+      void OnItemHeightChanged(IIconComboItem item);
+
+      /// &lt;summary&gt;
+      /// Gets whether the full row is selected or just the text
+      /// (single column combo boxes only)
+      /// &lt;/summary&gt;
+      bool FullRowSelect
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether grid lines should be drawn.  Particularly
+      /// useful on multi-column text boxes.
+      /// &lt;/summary&gt;
+      bool GridLines
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the selection highlighting style
+      /// &lt;/summary&gt;
+      IconComboBox.DrawingStyle HighlightStyle
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the size of the indentation
+      /// &lt;/summary&gt;
+      int IndentationSize
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the width of an item in the specified column
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;The index of the column to get the width
+       for.&lt;/param&gt;
+      /// &lt;returns&gt;The width in pixels&lt;/returns&gt;
+      int ColumnWidth(int index);
+
+      /// &lt;summary&gt;
+      /// Returns the column index for the column at the specified order in 
+      /// the display.
+      /// &lt;/summary&gt;
+      /// &lt;param name="order"&gt;Order of column in the display&lt;/param&gt;
+      /// &lt;returns&gt;Index of the column.&lt;/returns&gt;
+      int ColumnIndex(int order);
+
+      /// &lt;summary&gt;
+      /// Gets the number of columns to display.
+      /// &lt;/summary&gt;
+      int ColumnCount
+      {
+         get;
+      }
+   }
+   #endregion
+
+   #region IIconComboItem
+   /// &lt;summary&gt;
+   /// Interface specifying the contract between the
+   /// owning control and an item
+   /// &lt;/summary&gt;
+   public interface IIconComboItem
+   {
+      /// &lt;summary&gt;
+      /// Gets/sets the control which owns the item.
+      /// Called automatically when the item is added to
+      /// the control.
+      /// &lt;/summary&gt;
+      IIconComboBox Owner
+      {
+         get;
+         set;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the icon to use for the item
+      /// &lt;/summary&gt;
+      int Icon
+      {
+         get;
+         set;
+      }
+
+      /// &lt;summary&gt;
+      /// Items must support ToString().
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;String representation of the item.&lt;/returns&gt;
+      string ToString();
+
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      /// &lt;param name="inList"&gt;Whether the item to be drawn is in the list
+       portion or the combo portion&lt;/param&gt;
+      void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool rightToLeft,
+         bool inList
+         );
+
+      /// &lt;summary&gt;
+      /// Measures this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="width"&gt;Width to use when calculating height of wrappable
+       text&lt;/param&gt;
+      /// &lt;returns&gt;The size of the item&lt;/returns&gt;
+      Size MeasureItem(
+         Graphics graphics,
+         ImageList imageList,
+         Font defaultFont,
+         int width
+         );
+
+
+   }
+   #endregion
+
+   #region IconComboItem
+   /// &lt;summary&gt;
+   /// An item to display in the IconComboBox control.  Items have
+   /// icons and also may have subitems like the ListView control.
+   /// &lt;/summary&gt;
+   public class IconComboItem : IconComboItemBase
+   {
+
+      private IconComboSubItemCollection itemCollection = new
+       IconComboSubItemCollection();
+      private bool isGroupRow = false;
+      private int indentation = 0;
+      private bool lineAbove = false;
+      private bool lineBelow = false;
+      
+      
+      /// &lt;summary&gt;
+      /// Gets/sets whether this item renders with a line above it or not.
+      /// &lt;/summary&gt;
+      public bool LineAbove
+      {
+         get
+         {
+            return this.lineAbove;
+         }
+         set
+         {
+            this.lineAbove = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether this item renders with a line below it or not.
+      /// &lt;/summary&gt;
+      public bool LineBelow
+      {
+         get
+         {
+            return this.lineBelow;
+         }
+         set
+         {
+            this.lineBelow = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the indentation of this item.
+      /// &lt;/summary&gt;
+      public int Indentation
+      {
+         get
+         {
+            return this.indentation;
+         }
+         set
+         {
+            this.indentation = value;
+            base.OnItemChanged();
+         }
+      }
+      
+
+      /// &lt;summary&gt;
+      /// Gets the collection of sub-items associated with this item.
+      /// &lt;/summary&gt;
+      public IconComboSubItemCollection SubItems
+      {
+         get
+         {
+            return this.itemCollection;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether this item acts as a group row (in which case
+      /// the item is drawn extending across the entire row and the 
+      /// sub-items, if any, are ignored) or not.
+      /// &lt;/summary&gt;
+      public bool GroupRow
+      {
+         get
+         {
+            return this.isGroupRow;
+         }
+         set
+         {
+            this.isGroupRow = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      /// &lt;param name="inList"&gt;Whether the item to be drawn is in the list
+       portion or the combo portion&lt;/param&gt;
+      public override void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool rightToLeft,
+         bool inList
+         )      
+      {
+         if (this.Owner == null)
+         {
+            // can't do it
+            return;
+         }
+
+         int indentSize = Owner.IndentationSize;
+         if (!inList)
+         {
+            indentSize = 0;
+         }
+
+         Rectangle selectionBounds = new Rectangle(bounds.Location,
+          bounds.Size);         
+         selectionBounds.Width -= this.Indentation * indentSize - 2;
+         if (!rightToLeft)
+         {
+            selectionBounds.X += this.Indentation * indentSize;
+         }
+
+         // Always draw the selection box for the entire width 
+         // of the item, if selected:
+         bool highlightText = false;
+         if (selected)
+         {
+            if ((this.Owner.ColumnCount == 1) &amp;&amp; (!this.Owner.FullRowSelect))
+            {
+               // highlighting just the text
+               graphics.FillRectangle(SystemBrushes.Window, selectionBounds);
+               highlightText = true;
+            }
+            else
+            {
+               if (this.Owner.HighlightStyle ==
+                IconComboBox.DrawingStyle.Standard)
+               {
+                  graphics.FillRectangle(SystemBrushes.Highlight,
+                   selectionBounds);
+               }
+               else
+               {
+                  Color selColour = IconComboItemBase.VSNetSelectionColor;
+                  Brush br = new SolidBrush(selColour);
+                  graphics.FillRectangle(br, 
+                     selectionBounds.X + 1, selectionBounds.Y,
+                      selectionBounds.Width - 4, selectionBounds.Height - 1);
+                  br.Dispose();                  
+                  graphics.DrawRectangle(SystemPens.Highlight, 
+                     selectionBounds.X + 1, selectionBounds.Y,
+                      selectionBounds.Width - 4, selectionBounds.Height - 1);
+               }
+            }
+         }
+         else
+         {
+            graphics.FillRectangle(SystemBrushes.Window, selectionBounds);
+         }
+
+         // Draw the items:         
+         if ((this.isGroupRow) || (Owner.ColumnCount &lt;= 1))
+         {
+            // this item fills the row
+            IconComboItemBase.DefaultDrawItem(
+               this,
+               graphics, imageList, selectionBounds, defaultFont, 
+               selected, highlightText, rightToLeft, inList);            
+         }
+         else
+         {
+            Rectangle itemBounds = new Rectangle(
+               selectionBounds.Location, selectionBounds.Size);
+            if (rightToLeft)
+            {
+               itemBounds.X += itemBounds.Width;
+            }
+
+            for (int order = 0; order &lt; Owner.ColumnCount; order++)
+            {
+               int colIndex = Owner.ColumnIndex(order);
+               if ((colIndex &gt; -1) &amp;&amp; (order &lt;= this.itemCollection.Count))
+               {
+                  int colWidth = Owner.ColumnWidth(colIndex);
+                  if (rightToLeft)
+                  {
+                     itemBounds.X -= colWidth;
+                  }
+                  itemBounds.Width = colWidth;
+
+                  // this item
+                  if (colIndex == 0)
+                  {
+                     IconComboItemBase.DefaultDrawItem(
+                        this,
+                        graphics, imageList, itemBounds, defaultFont, 
+                        selected, false, rightToLeft, inList);            
+                  }
+                  else
+                  {
+                     IconComboSubItem subItem = this.itemCollection[colIndex -
+                      1];
+                     subItem.Owner = this.Owner;
+                     subItem.DrawItem(
+                        graphics, imageList, itemBounds, defaultFont, selected,
+                         rightToLeft, inList);
+                  }
+
+                  if ((Owner.GridLines) &amp;&amp; (order &lt; Owner.ColumnCount - 1))
+                  {
+                     graphics.DrawLine(SystemPens.ControlDark, 
+                        new Point(itemBounds.Right, itemBounds.Top), new
+                         Point(itemBounds.Right, itemBounds.Bottom - 1));
+                  }
+
+                  if (!rightToLeft)
+                  {
+                     itemBounds.X += colWidth;
+                  }
+
+               }
+            }
+         }      
+
+         if (this.lineAbove)
+         {
+            graphics.DrawLine(SystemPens.WindowText, 
+               bounds.Location, 
+               new Point(bounds.X + bounds.Width, bounds.Y));
+         }
+         if ((this.lineBelow) || (Owner.GridLines))
+         {
+            graphics.DrawLine(this.LineBelow ? SystemPens.WindowText :
+             SystemPens.ControlDark, 
+               new Point(bounds.Left, bounds.Bottom - 1), 
+               new Point(bounds.Right, bounds.Bottom - 1));            
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Measures this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="width"&gt;Width to use when calculating height&lt;/param&gt;
+      /// &lt;returns&gt;The size of the item&lt;/returns&gt;
+      public override Size MeasureItem(
+         Graphics graphics,
+         ImageList imageList,
+         Font defaultFont,
+         int width
+         )
+      {
+         Size itemSize = IconComboItemBase.DefaultMeasureItem(
+            this, graphics, imageList, defaultFont, Owner.ColumnWidth(0));
+         if ((!this.isGroupRow) &amp;&amp; (Owner.ColumnCount &gt; 1))
+         {
+            // The width is instead related to the column sizes            
+            itemSize.Width = 0;
+            for (int order = 0; order &lt; Owner.ColumnCount; order++)
+            {
+               int colIndex = Owner.ColumnIndex(order);
+               if ((colIndex &gt; 0) &amp;&amp; (order &lt;= this.itemCollection.Count))
+               {
+                  itemSize.Width += Owner.ColumnWidth(colIndex);
+               }
+            }
+         }
+         // Measure the text:         
+         return itemSize;
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class.
+      /// &lt;/summary&gt;
+      public IconComboItem()
+      {
+         // intentionally blank.
+      }
+   }
+   #endregion
+
+   #region IconComboSubItemCollection 
+   /// &lt;summary&gt;
+   /// A collection of sub-items associated with an IconComboItem object.
+   /// &lt;/summary&gt;
+   public class IconComboSubItemCollection : ReadOnlyCollectionBase
+   {
+      private IIconComboBox owner = null;
+
+      /// &lt;summary&gt;
+      /// Gets/sets the control which owns this object.
+      /// &lt;/summary&gt;
+      public IIconComboBox Owner
+      {
+         get
+         {
+            return this.owner;
+         }
+         set
+         {
+            this.owner = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Adds a new sub item to the collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to add&lt;/param&gt;
+      /// &lt;returns&gt;Index at which item was added&lt;/returns&gt;
+      public int Add(IconComboSubItem item)
+      {
+         item.Owner = owner;
+         return this.InnerList.Add(item);
+      }
+
+      /// &lt;summary&gt;
+      /// Clears the sub-items collection.
+      /// &lt;/summary&gt;
+      public void Clear()
+      {
+         this.InnerList.Clear();
+      }
+
+      /// &lt;summary&gt;
+      /// Returns &lt;c&gt;true&lt;/c&gt; if the collection contains the specified
+      /// object, &lt;c&gt;false&lt;/c&gt; otherwise.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to look for in the collection&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the collection contains the specified
+      /// object, &lt;c&gt;false&lt;/c&gt; otherwise.&lt;/returns&gt;
+      public bool Contains(IconComboSubItem item)
+      {
+         return this.InnerList.Contains(item);
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the 0-based index of the specified item in the collection,
+      /// or -1 if it is not found.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to look for&lt;/param&gt;
+      /// &lt;returns&gt;0-based index of item if found, -1 otherwise.&lt;/returns&gt;
+      public int IndexOf(IconComboSubItem item)
+      {
+         return this.InnerList.IndexOf(item);
+      }
+
+      /// &lt;summary&gt;
+      /// Inserts the item at the specified 0-based index.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index to insert at.&lt;/param&gt;
+      /// &lt;param name="item"&gt;Item to insert.&lt;/param&gt;
+      public void Insert(int index, IconComboSubItem item)
+      {
+         item.Owner = this.owner;
+         this.InnerList.Insert(index, item);
+      }
+
+      /// &lt;summary&gt;
+      /// Removes the specified item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to remove&lt;/param&gt;
+      public void Remove(IconComboSubItem item)
+      {
+         this.InnerList.Remove(item);      
+      }
+
+      /// &lt;summary&gt;
+      /// Removes the item with the specified index.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index of item to remove&lt;/param&gt;
+      public void RemoveAt(int index)
+      {
+         this.InnerList.RemoveAt(index);
+      }
+   
+      /// &lt;summary&gt;
+      /// Gets the item with the specified 0-based index.
+      /// &lt;/summary&gt;
+      public IconComboSubItem this[int index]
+      {
+         get
+         {
+            return (IconComboSubItem) this.InnerList[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class.
+      /// &lt;/summary&gt;
+      public IconComboSubItemCollection() : base()
+      {
+      }
+
+   }
+   #endregion
+
+   #region IconComboSubItem 
+   /// &lt;summary&gt;
+   /// An sub-item to display in the IconComboBox control.
+   /// &lt;/summary&gt;
+   public class IconComboSubItem : IconComboItemBase
+   {
+
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      /// &lt;param name="inList"&gt;Whether the item to be drawn is in the list
+       portion or the combo portion&lt;/param&gt;
+      public override void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool rightToLeft,
+         bool inList
+         )
+      {
+         IconComboItemBase.DefaultDrawItem(
+            this,
+            graphics, imageList, bounds, defaultFont, 
+            selected, false, rightToLeft, inList);
+      }
+
+      /// &lt;summary&gt;
+      /// Measures this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="width"&gt;Width to use when evaluating wrapped text
+       height&lt;/param&gt;
+      /// &lt;returns&gt;The size of the item&lt;/returns&gt;
+      public override Size MeasureItem(
+         Graphics graphics,
+         ImageList imageList,
+         Font defaultFont,
+         int width
+         )
+      {
+         return IconComboItemBase.DefaultMeasureItem(
+            this,
+            graphics, imageList, defaultFont, width);
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class.
+      /// &lt;/summary&gt;
+      public IconComboSubItem()
+      {
+         // intentionally blank.
+      }
+   }
+   #endregion
+
+
+   #region IconComboItemBase
+   /// &lt;summary&gt;
+   /// An abstract base class from which the IconComboItem and 
+   /// the IconComboSubItem classes derive.  Provides common
+   /// functionality associated with drawing, measurement and
+   /// the setting of the display properties of the item.
+   /// &lt;/summary&gt;
+   public abstract class IconComboItemBase : IComparable, IDisposable,
+    IIconComboItem
+   {
+
+      #region Member Variables
+      private object text = null;
+      private string textFormat = "";
+      private int iconIndex = -1;
+      private StringFormat stringFormat = null;
+      private Font font = null;
+      private Color foreColor = Color.Empty;
+      private Color backColor = Color.Empty;
+      private int height = 0;
+      private bool autoHeight = true;
+      private object tag = null;
+      private IIconComboBox owner = null;      
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Gets/sets the control which owns the item.
+      /// Called automatically when the item is added to
+      /// the control.
+      /// &lt;/summary&gt;
+      public IIconComboBox Owner
+      {
+         get
+         {
+            return this.owner;
+         }
+         set
+         {
+            this.owner = value;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Compares the current instance with another object of the same type.
+      /// The class attempts to use the CompareTo method of the text object
+      /// for comparision.  If this is not available, the ToString() method 
+      /// of this class is used for comparison.
+      /// &lt;/summary&gt;
+      /// &lt;param name="obj"&gt;An object to compare with this instance.&lt;/param&gt;
+      /// &lt;returns&gt;A 32-bit signed integer that indicates the relative order of
+       the comparands.  
+      /// The return value has these meanings:
+      /// Less than zero This instance is less than obj.  
+      /// Zero This instance is equal to obj.  
+      /// Greater than zero This instance is greater than obj.&lt;/returns&gt;
+      public virtual int CompareTo ( object obj )
+      {
+         int res = 0;
+         try
+         {
+            bool doDefault = false;
+            IComparable icThis = null;
+            try
+            {
+               icThis = (IComparable)this.text;
+            }
+            catch
+            {
+               doDefault = true;
+            }
+            if (doDefault)
+            {
+               res = this.ToString().CompareTo(obj.ToString());
+            }
+            else
+            {
+               res = icThis.CompareTo(((IconComboItemBase)obj).Text);
+            }
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine("Exception {0}", ex);
+         }
+         return res;
+      }
+         
+      /// &lt;summary&gt;
+      /// Gets/sets the text to display for this item.
+      /// Defaults to no text.  The ToString method of the
+      /// object will be used to render it unless a TextFormat
+      /// string is set, in which case the String.Format method
+      /// will be invoked.
+      /// &lt;/summary&gt;
+      public object Text
+      {
+         get
+         {
+            return this.text;
+         }
+         set
+         {
+            this.text = value;
+            OnItemChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the text of the item.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;The text for the item&lt;/returns&gt;
+      public override string ToString()
+      {
+         if (this.text != null)
+         {
+            if (this.textFormat.Length &gt; 0)
+            {
+               return String.Format(textFormat, this.text);
+            }
+            else
+            {
+               return this.text.ToString();
+            }
+         }
+         else
+         {
+            return "";
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Gets/sets the text format to use when rendering the text, for example
+       {0:X8}
+      /// &lt;/summary&gt;
+      public string TextFormat
+      {
+         get
+         {
+            return this.textFormat;
+         }
+         set
+         {
+            this.textFormat = value;
+            OnItemChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the index of the icon within the ImageList
+      /// to display for this item.  Set to -1 for no icon.
+      /// Defaults to -1.
+      /// &lt;/summary&gt;
+      public int Icon
+      {
+         get
+         {
+            return this.iconIndex;
+         }
+         set
+         {
+            this.iconIndex = value;
+            OnItemChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets a specific string format to use
+      /// when drawing this item.  Set to null to 
+      /// use default text rendering.  Defaults to 0
+      /// &lt;/summary&gt;      
+      public System.Drawing.StringFormat StringFormat
+      {
+         get
+         {
+            return this.stringFormat;
+         }
+         set
+         {
+            this.stringFormat = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets a specific font to use
+      /// when drawing this item.  When null, the 
+      /// owner ListBox font is used for drawing.
+      /// Default is null.
+      /// &lt;/summary&gt;
+      public System.Drawing.Font Font
+      {
+         get
+         {
+            return this.font;
+         }
+         set
+         {
+            this.font = value;
+            OnItemChanged();
+         }
+      }      
+      /// &lt;summary&gt;
+      /// Gets/sets a customised foreground
+      /// color for this item.  Default is
+      /// WindowText.
+      /// &lt;/summary&gt;
+      public Color ForeColor
+      {
+         get
+         {
+            return this.foreColor;
+         }
+         set
+         {
+            this.foreColor = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets a customised background
+      /// color for this item.  Default is
+      /// WindowBackground.
+      /// &lt;/summary&gt;
+      public Color BackColor
+      {
+         get
+         {
+            return this.backColor;
+         }
+         set
+         {
+            this.backColor = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets an object associated with the item.
+      /// &lt;/summary&gt;
+      public object Tag
+      {
+         get
+         {
+            return this.tag;
+         }
+         set
+         {
+            this.tag = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets the height of this item
+      /// &lt;/summary&gt;
+      public int Height
+      {
+         get
+         {
+            return this.height;
+         }
+         set
+         {
+            if (this.autoHeight)
+            {
+               throw new InvalidOperationException("Cannot set height when
+                AutoHeight property is True");
+            }
+            else
+            {
+               this.height = value;
+               OnHeightChanged();
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the height of this item is automatically calculated
+      /// from its contents, or using the Height property.
+      /// &lt;/summary&gt;
+      public bool AutoHeight
+      {
+         get
+         {
+            return this.autoHeight;
+         }
+         set
+         {
+            this.autoHeight = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called whenever a sizing property is changed
+      /// &lt;/summary&gt;
+      protected virtual void OnHeightChanged()
+      {
+         if (this.owner != null)
+         {
+            this.owner.OnItemHeightChanged(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called whenever a non-sizing property is changed
+      /// &lt;/summary&gt;
+      protected virtual void OnItemChanged()
+      {
+         if (this.owner != null)
+         {
+            this.owner.OnItemChanged(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      /// &lt;param name="inList"&gt;Whether the item to be drawn is in the list
+       portion or the combo portion&lt;/param&gt;
+      public abstract void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,         
+         bool rightToLeft,
+         bool inList
+         );
+
+      /// &lt;summary&gt;
+      /// Draws an item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="iconComboItem"&gt;The IconCombo Item to draw&lt;/param&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="highlightText"&gt;If selected, then highlight the text
+       background&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      /// &lt;param name="inList"&gt;Whether the item to be drawn is in the list
+       portion or the combo portion&lt;/param&gt;      
+      public static void DefaultDrawItem(
+         IconComboItemBase iconComboItem,
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool highlightText,
+         bool rightToLeft,
+         bool inList
+         )
+      {
+         if ((bounds.Width == 0) || (bounds.Height ==0))
+         {
+            return;
+         }
+
+         Rectangle drawRect = new Rectangle(
+            bounds.Location, bounds.Size);
+
+         // The default font:
+         Font drawFont = iconComboItem.font;
+         if (drawFont == null)
+         {
+            drawFont = defaultFont;
+         }
+
+         // Background colour?
+         if (!iconComboItem.backColor.Equals(Color.Empty))
+         {
+            Brush backBrush = new SolidBrush(iconComboItem.backColor);
+            graphics.FillRectangle(backBrush, drawRect);
+         }
+
+         // Draw icon if necessary:
+         if ((iconComboItem.iconIndex &gt; -1) &amp;&amp; (imageList != null))
+         {
+            int iconY = drawRect.Top + (drawRect.Height -
+             imageList.ImageSize.Height) / 2;
+            int iconX = drawRect.Left;
+            if (rightToLeft)
+            {
+               iconX += drawRect.Width - 2 - imageList.ImageSize.Width;
+               imageList.Draw(graphics, iconX, iconY, iconComboItem.iconIndex);
+            }
+            else
+            {
+               iconX += 2;
+               imageList.Draw(graphics, iconX, iconY, iconComboItem.iconIndex);
+               drawRect.X += 4 + imageList.ImageSize.Width;
+            }
+            drawRect.Width -= (4 + imageList.ImageSize.Width);
+         }
+
+         // Draw text:
+         String text = iconComboItem.ToString();
+
+         Brush itemBrush;
+         if (selected)
+         {
+            if (iconComboItem.Owner.HighlightStyle ==
+             IconComboBox.DrawingStyle.Standard)
+            {
+               itemBrush = new
+                SolidBrush(Color.FromKnownColor(KnownColor.HighlightText));
+            }
+            else
+            {
+               itemBrush = new
+                SolidBrush(Color.FromKnownColor(KnownColor.WindowText));
+            }
+         }
+         else
+         {
+            if (iconComboItem.foreColor == Color.Empty)
+            {
+               itemBrush = new
+                SolidBrush(Color.FromKnownColor(KnownColor.WindowText));
+            }
+            else
+            {
+               itemBrush= new SolidBrush(iconComboItem.foreColor);
+            }
+         }
+         
+         StringFormat format = iconComboItem.stringFormat;
+         if (format == null)
+         {
+            format = new StringFormat();
+            format.Alignment = StringAlignment.Near;
+            //format.Alignment = StringAlignment.Far;
+            format.LineAlignment = StringAlignment.Center;
+            format.FormatFlags = StringFormatFlags.LineLimit |
+             StringFormatFlags.NoWrap;
+            format.Trimming = StringTrimming.EllipsisCharacter;
+         }
+         RectangleF textRect = new RectangleF(
+            (float) drawRect.X, (float) drawRect.Y, (float) drawRect.Width,
+             (float) drawRect.Height);
+
+         if (highlightText)
+         {
+            SizeF measuredSize = graphics.MeasureString(text, drawFont,
+             (int)textRect.Width, format);
+            if (measuredSize.Height &gt; (drawRect.Height - 2))
+            {
+               measuredSize.Height = (float) (drawRect.Height - 2);
+            }
+            if (iconComboItem.Owner.HighlightStyle ==
+             IconComboBox.DrawingStyle.Standard)
+            {
+               graphics.FillRectangle(SystemBrushes.Highlight, 
+                  drawRect.X, drawRect.Y + (textRect.Height -
+                   measuredSize.Height - 2) / 2, 
+                  measuredSize.Width, measuredSize.Height + 2);
+            }
+            else
+            {
+               if (!inList)
+               {
+                  measuredSize.Height -= 2;
+               }
+               Brush br = new SolidBrush(IconComboItemBase.VSNetSelectionColor);
+               graphics.FillRectangle(br, 
+                  drawRect.X, drawRect.Y + (textRect.Height -
+                   measuredSize.Height - 2) / 2, 
+                  measuredSize.Width, measuredSize.Height + 2);
+               br.Dispose();
+               graphics.DrawRectangle(SystemPens.Highlight,
+                  drawRect.X, drawRect.Y + (textRect.Height -
+                   measuredSize.Height - 2) / 2, 
+                  measuredSize.Width, measuredSize.Height + 2);
+               
+            }
+         }
+
+         // Draw the text:
+         graphics.DrawString(
+            text,
+            drawFont,
+            itemBrush,
+            textRect,
+            format);
+
+         itemBrush.Dispose();
+         if (iconComboItem.stringFormat == null)
+         {
+            format.Dispose();
+         }
+
+
+      }
+
+      /// &lt;summary&gt;
+      /// Measures this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="width"&gt;Width of item&lt;/param&gt;
+      /// &lt;returns&gt;The Size of the item&lt;/returns&gt;
+      public abstract Size MeasureItem(
+         Graphics graphics,
+         ImageList imageList,
+         Font defaultFont,
+         int width
+         );
+
+      /// &lt;summary&gt;
+      /// Measures this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="iconComboItem"&gt;The IconCombo Item to draw&lt;/param&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="width"&gt;Width to use when measuring (allows multi-line
+       items to wrap)&lt;/param&gt;
+      /// &lt;returns&gt;The Size of the item&lt;/returns&gt;
+      public static Size DefaultMeasureItem(
+         IconComboItemBase iconComboItem,
+         Graphics graphics,
+         ImageList imageList,
+         Font defaultFont,
+         int width
+         )
+      {
+         Size size = new Size(18, 18);
+         if (imageList != null)
+         {
+            size.Width = imageList.ImageSize.Width + 4;
+         }
+
+         Font drawFont = iconComboItem.Font;
+         if (drawFont == null)
+         {
+            drawFont = defaultFont;
+         }
+         StringFormat format = iconComboItem.stringFormat;
+         if (format == null)
+         {
+            format = new StringFormat();            
+            format.LineAlignment = StringAlignment.Center;
+            format.FormatFlags = StringFormatFlags.LineLimit |
+             StringFormatFlags.NoWrap;
+            format.Trimming = StringTrimming.EllipsisCharacter;
+         }
+         SizeF textSize = graphics.MeasureString(
+            iconComboItem.ToString(),
+            drawFont,
+            width,
+            format);
+
+         if (iconComboItem.AutoHeight)
+         {         
+            if (imageList != null)
+            {
+               size.Height = imageList.ImageSize.Height + 4;
+            }
+            if (size.Height &lt; ((int) textSize.Height + 4))
+            {
+               size.Height = (int) textSize.Height + 4;
+            }
+         }
+         else
+         {
+            size.Height = iconComboItem.Height;
+         }
+
+         return size;
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the selection colour used in VS.NET and Office 10 combo boxes.
+      /// &lt;/summary&gt;
+      public static Color VSNetSelectionColor
+      {
+         get
+         {
+            return BlendColor(Color.FromKnownColor(KnownColor.Highlight),
+             Color.FromKnownColor(KnownColor.Window), 80);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Blends two colours together using the specified alpha amount.
+      /// &lt;/summary&gt;
+      /// &lt;param name="source"&gt;Source colour.&lt;/param&gt;
+      /// &lt;param name="dest"&gt;Destination colour.&lt;/param&gt;
+      /// &lt;param name="alpha"&gt;Alpha amount to use when blending.&lt;/param&gt;
+      /// &lt;returns&gt;The alpha blended colour.&lt;/returns&gt;
+      public static Color BlendColor(Color source, Color dest, int alpha)
+      {
+         return Color.FromArgb( 
+            ((source.R * alpha) / 255) + ((dest.R * (255 - alpha)) / 255),
+            ((source.G * alpha) / 255) + ((dest.G * (255 - alpha)) / 255), 
+            ((source.B * alpha) / 255) + ((dest.B * (255 - alpha)) / 255));
+      }
+
+      /// &lt;summary&gt;
+      /// Construct a new instance of this type
+      /// &lt;/summary&gt;
+      public IconComboItemBase()
+      {         
+      }
+
+      /// &lt;summary&gt;
+      /// Disposes of any resources associated with the object
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         if (this.stringFormat != null)
+         {
+            this.stringFormat.Dispose();
+            this.stringFormat = null;
+         }
+      }
+   }
+   #endregion
+
+   #region TextBoxMarginCustomise
+   /// &lt;summary&gt;
+   /// A class for adding right and left margins to a TextBox
+   /// or the embedded TextBox within a DropDown ComboBox.
+   /// The margin can display an icon, a control or can
+   /// be drawn using a custom routine implemented by the
+   /// user.  This version also contains code to allow
+   /// return and escape to be processed correctly in a
+   /// ComboBox
+   /// &lt;/summary&gt;
+   public class TextBoxMarginCustomise : NativeWindow
+   {
+      #region UnmanagedMethods
+      [StructLayout(LayoutKind.Sequential)]
+         private struct RECT
+      {
+         public int left;
+         public int top;
+         public int right;
+         public int bottom;
+      }
+      
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static int SendMessage(
+         IntPtr hwnd, 
+         int wMsg,
+         int wParam, 
+         int lParam);
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static IntPtr FindWindowEx(
+         IntPtr hwndParent, 
+         IntPtr hwndChildAfter,
+         [MarshalAs(UnmanagedType.LPTStr)]
+         string lpszClass,
+         [MarshalAs(UnmanagedType.LPTStr)]
+         string lpszWindow);
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static int GetWindowLong(
+         IntPtr hWnd,
+         int dwStyle);
+      [DllImport("user32")]
+      private extern static IntPtr GetDC(
+         IntPtr hwnd);
+      [DllImport("user32")]
+      private extern static int ReleaseDC (
+         IntPtr hwnd, 
+         IntPtr hdc);
+      [DllImport("user32")]
+      private extern static int GetClientRect (
+         IntPtr hwnd,
+         ref RECT rc);
+      [DllImport("user32")]
+      private extern static int GetWindowRect (
+         IntPtr hwnd,
+         ref RECT rc);
+      [DllImport("user32")]
+      private extern static IntPtr GetParent (
+         IntPtr hwnd);
+
+      private const int EC_LEFTMARGIN = 0x1;
+      private const int EC_RIGHTMARGIN = 0x2;
+      private const int EC_USEFONTINFO = 0xFFFF;
+      private const int EM_SETMARGINS = 0xD3;
+      private const int EM_GETMARGINS = 0xD4;
+
+      private const int WM_PAINT = 0xF;
+      
+      private const int WM_SETFOCUS = 0x7;
+      private const int WM_KILLFOCUS = 0x8;
+
+      private const int WM_SETFONT = 0x30;
+
+      private const int WM_MOUSEMOVE = 0x200;
+      private const int WM_LBUTTONDOWN = 0x201;
+      private const int WM_RBUTTONDOWN = 0x204;
+      private const int WM_MBUTTONDOWN = 0x207;
+      private const int WM_LBUTTONUP = 0x202;
+      private const int WM_RBUTTONUP = 0x205;
+      private const int WM_MBUTTONUP = 0x208;
+      private const int WM_LBUTTONDBLCLK = 0x203;
+      private const int WM_RBUTTONDBLCLK = 0x206;
+      private const int WM_MBUTTONDBLCLK = 0x209;
+
+      private const int WM_KEYDOWN = 0x0100;
+      private const int WM_KEYUP = 0x0101;
+      private const int WM_CHAR = 0x0102;
+
+      private const int CB_GETDROPPEDSTATE = 0x157;
+
+      private const int GWL_EXSTYLE = (-20);
+      private const int WS_EX_RIGHT             = 0x00001000;
+      private const int WS_EX_LEFT              = 0x00000000;
+      private const int WS_EX_RTLREADING        = 0x00002000;
+      private const int WS_EX_LTRREADING        = 0x00000000;
+      private const int WS_EX_LEFTSCROLLBAR     = 0x00004000;
+      private const int WS_EX_RIGHTSCROLLBAR    = 0x00000000;
+
+      #endregion
+
+      #region Member Variables
+      private System.Windows.Forms.ImageList imageList = null;
+      private int icon = -1;
+      private Control control = null;
+      private ITextBoxMarginCustomisePainter customPainter = null;      
+      private int customWidth = 0;
+      #endregion 
+
+      #region Events
+      /// &lt;summary&gt;
+      /// Raised when a return or escape key is pressed in the combo box
+      /// edit portion.
+      /// &lt;/summary&gt;
+      public event KeyEventHandler ComboEditKeyDown;
+      #endregion 
+
+      /// &lt;summary&gt;
+      /// Gets whether a Window is &lt;c&gt;RightToLeft.Yes&lt;/c&gt; from
+      /// its &lt;c&gt;Handle&lt;/c&gt;.
+      /// &lt;/summary&gt;
+      /// &lt;param name="handle"&gt;Handle of window to check.&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;True&lt;/c&gt; if Window is RightToLeft, &lt;c&gt;False&lt;/c&gt;
+       otherwise.&lt;/returns&gt;
+      private static bool IsRightToLeft(IntPtr handle)
+      {
+         int style = GetWindowLong(handle, GWL_EXSTYLE);
+         return (
+            ((style &amp; WS_EX_RIGHT) == WS_EX_RIGHT) ||
+            ((style &amp; WS_EX_RTLREADING) == WS_EX_RTLREADING) ||
+            ((style &amp; WS_EX_LEFTSCROLLBAR) == WS_EX_LEFTSCROLLBAR));   
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the far margin of a TextBox control or the
+      /// TextBox contained within a ComboBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ctl"&gt;The Control to get the far margin
+      /// for&lt;/param&gt;
+      /// &lt;returns&gt;Far margin, in pixels.&lt;/returns&gt;
+      public static int FarMargin(Control ctl)
+      {
+         IntPtr handle = ctl.Handle;
+         if
+          (typeof(System.Windows.Forms.ComboBox).IsAssignableFrom(ctl.GetType())
+         )
+         {
+            handle = ComboEdithWnd(handle);
+         }
+         return FarMargin(handle);
+      }
+      
+      private static int FarMargin(IntPtr handle)
+      {
+         int farMargin = SendMessage(handle, EM_GETMARGINS, 0, 0);         
+         if (IsRightToLeft(handle))
+         {
+            farMargin = farMargin &amp; 0xFFFF;
+         }
+         else
+         {
+            farMargin = (farMargin / 0x10000);
+         }
+         return farMargin;
+      }
+
+
+      /// &lt;summary&gt;
+      /// Sets the far margin of a TextBox control or the
+      /// TextBox contained within a ComboBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ctl"&gt;The Control to set the far margin
+      /// for&lt;/param&gt;
+      /// &lt;param name="margin"&gt;New far margin in pixels, or -1
+      /// to use the default far margin.&lt;/param&gt;
+      public static void FarMargin(Control ctl, int margin)
+      {
+         IntPtr handle = ctl.Handle;
+         if
+          (typeof(System.Windows.Forms.ComboBox).IsAssignableFrom(ctl.GetType())
+         )
+         {
+            handle = ComboEdithWnd(handle);
+         }
+         FarMargin(handle, margin);
+      }
+
+      private static void FarMargin(IntPtr handle, int margin)
+      {
+         int message = IsRightToLeft(handle) ? EC_LEFTMARGIN : EC_RIGHTMARGIN;
+         if (message == EC_LEFTMARGIN)
+         {
+            margin = margin &amp; 0xFFFF;
+         }
+         else
+         {
+            margin = margin * 0x10000;
+         }
+         SendMessage(handle, EM_SETMARGINS, message, margin);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the near margin of a TextBox control or the
+      /// TextBox contained within a ComboBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ctl"&gt;The Control to get the near margin
+      /// for&lt;/param&gt;
+      /// &lt;returns&gt;Near margin, in pixels.&lt;/returns&gt;
+      public static int NearMargin(Control ctl)
+      {
+         IntPtr handle = ctl.Handle;
+         if
+          (typeof(System.Windows.Forms.ComboBox).IsAssignableFrom(ctl.GetType())
+         )
+         {
+            handle = ComboEdithWnd(handle);
+         }
+         return NearMargin(handle);
+      }
+
+      private static int NearMargin(IntPtr handle)
+      {
+         int nearMargin = SendMessage(handle, EM_GETMARGINS, 0, 0);
+         if (IsRightToLeft(handle))
+         {
+            nearMargin = nearMargin / 0x10000;
+         }
+         else
+         {
+            nearMargin = nearMargin &amp; 0xFFFF;
+         }      
+         return nearMargin;
+      }
+
+      /// &lt;summary&gt;
+      /// Sets the near margin of a TextBox control or the
+      /// TextBox contained within a ComboBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ctl"&gt;The Control to set the near margin
+      /// for&lt;/param&gt;
+      /// &lt;param name="margin"&gt;New near margin in pixels, or -1
+      /// to use the default near margin.&lt;/param&gt;
+      public static void NearMargin(Control ctl, int margin)
+      {         
+         IntPtr handle = ctl.Handle;
+         if
+          (typeof(System.Windows.Forms.ComboBox).IsAssignableFrom(ctl.GetType())
+         )
+         {
+            handle = ComboEdithWnd(handle);
+         }
+         NearMargin(handle, margin);
+      }
+
+      private static void NearMargin(IntPtr handle, int margin)
+      {
+         int message = IsRightToLeft(handle) ? EC_RIGHTMARGIN : EC_LEFTMARGIN;
+         if (message == EC_LEFTMARGIN)
+         {
+            margin = margin &amp; 0xFFFF;
+         }
+         else
+         {
+            margin = margin * 0x10000;
+         }
+         SendMessage(handle, EM_SETMARGINS, message, margin);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the handle of the TextBox contained within a 
+      /// ComboBox control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="handle"&gt;The ComboBox window handle.&lt;/param&gt;
+      /// &lt;returns&gt;The handle of the contained text box.&lt;/returns&gt;
+      public static IntPtr ComboEdithWnd(IntPtr handle)
+      {
+         handle = FindWindowEx(handle, IntPtr.Zero, "EDIT", "\0");
+         return handle;
+      }
+
+      /// &lt;summary&gt;
+      /// Attaches an instance of this class to a ComboBox control.
+      /// The control must have the "DropDown" style so it has a 
+      /// TextBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="comboBox"&gt;ComboBox with DropDown style to
+      /// attach to.&lt;/param&gt;
+      /// &lt;remarks&gt;Use the &lt;see
+       cref="System.Windows.Forms.NativeWindow.AssignHandle"/&gt; method to attach 
+      /// this class to an arbitrary TextBox control using its
+      /// handle.&lt;/remarks&gt;
+      public void Attach(System.Windows.Forms.ComboBox comboBox)
+      {
+         if (!this.Handle.Equals(IntPtr.Zero))
+         {
+            this.ReleaseHandle();
+         }
+         IntPtr handle = ComboEdithWnd(comboBox.Handle);
+         this.AssignHandle(handle);
+         setMargin();
+      }
+
+      /// &lt;summary&gt;
+      /// Attaches an instance of this class to a TextBox control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="textBox"&gt;TextBox to attach to.&lt;/param&gt;
+      /// &lt;remarks&gt;Use the &lt;see
+       cref="System.Windows.Forms.NativeWindow.AssignHandle"/&gt; method to attach 
+      /// this class to an arbitrary TextBox control using its
+      /// handle.&lt;/remarks&gt;
+      public void Attach(System.Windows.Forms.TextBox textBox)
+      {
+         if (!this.Handle.Equals(IntPtr.Zero))
+         {
+            this.ReleaseHandle();
+         }
+         this.AssignHandle(textBox.Handle);
+         setMargin();
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the ImageList used to draw icons in the control.
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ImageList ImageList
+      {
+         get
+         {
+            return this.imageList;
+         }
+         set
+         {
+            this.imageList = value;
+            setMargin();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the 0-based icon index to draw in the control.
+      /// Values &amp;lt; 0 have special meanings. -1 erases the 
+      /// icon, and &amp;lt; -1 draws a colour sample box.
+      /// &lt;/summary&gt;
+      public int Icon
+      {
+         get
+         {
+            return this.icon;
+         }
+         set
+         {
+            this.icon = value;
+            setMargin();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the control to be displayed in the near margin.
+      /// The &lt;see cref="ImageList"/&gt; property must be &lt;c&gt;null&lt;/c&gt; if you
+      /// want to display a control.
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.Control Control
+      {
+         get
+         {
+            return this.control;
+         }
+         set
+         {
+            this.control = value;
+            setMargin();
+         }
+      }
+   
+
+      /// &lt;summary&gt;
+      /// Gets/sets a class which implements the &lt;see
+       cref="ITextBoxMarginCustomisePainter "/&gt;
+      /// interface to perform customised painting in the margin.
+      /// The &lt;see cref="ImageList"/&gt; and &lt;see cref="Control"/&gt; properties must 
+      /// be &lt;c&gt;null&lt;/c&gt; if you want to use this technique.
+      /// &lt;/summary&gt;
+      public ITextBoxMarginCustomisePainter CustomPainter
+      {
+         get
+         {
+            return this.customPainter;
+         }
+         set
+         {
+            this.customPainter = value;
+            setMargin();
+         }
+      }
+      
+
+      /// &lt;summary&gt;
+      /// Sets the near margin to accommodate the specified control.
+      /// &lt;/summary&gt;
+      private void setMargin()
+      {
+         if (!this.Handle.Equals(IntPtr.Zero))
+         {
+            if (this.control != null)
+            {
+               NearMargin(this.Handle, this.control.Width + 4);
+               moveControl();
+            }
+            else if (this.imageList != null)
+            {
+               NearMargin(this.Handle, this.imageList.ImageSize.Width + 4);
+            }
+            else if (this.customPainter != null)
+            {
+               this.customWidth = this.customPainter.GetMarginWidth();
+               NearMargin(this.Handle, this.customWidth);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Moves the contained control to the appropriate 
+      /// position
+      /// &lt;/summary&gt;
+      private void moveControl()
+      {
+         if (this.control != null)
+         {
+            Point currentLocation = this.control.Location;
+            RECT rcWindow = new RECT();
+            GetWindowRect(this.Handle, ref rcWindow);
+            Point moveTo = new Point(rcWindow.left + 2, 
+               rcWindow.top + ((rcWindow.bottom - rcWindow.top) -
+                this.control.Height) / 2);
+            if (IsRightToLeft(this.Handle))
+            {
+               moveTo.X = rcWindow.right - this.control.Width - 2;
+            }
+            moveTo = this.control.Parent.PointToClient(moveTo);
+            if (!currentLocation.Equals(moveTo))
+            {
+               this.control.Location = moveTo;
+               this.control.BringToFront();
+            }
+         }
+      }
+         
+      /// &lt;summary&gt;
+      /// Calls the base WndProc and performs WM_PAINT
+      /// processing to draw the icon if necessary.
+      /// &lt;/summary&gt;
+      /// &lt;param name="m"&gt;Windows Message&lt;/param&gt;
+      protected override void WndProc(ref Message m)
+      {
+         if (this.control == null)
+         {
+            switch (m.Msg)
+            {
+               case WM_SETFONT:
+                  base.WndProc(ref m);
+                  setMargin();
+                  break;
+
+               case WM_PAINT:
+                  base.WndProc(ref m);
+                  RePaint();
+                  break;
+
+               case WM_SETFOCUS: 
+               case WM_KILLFOCUS:
+                  base.WndProc(ref m);
+                  RePaint();
+                  break;
+
+               case WM_LBUTTONDOWN:
+               case WM_RBUTTONDOWN:
+               case WM_MBUTTONDOWN:
+                  base.WndProc(ref m);
+                  RePaint();
+                  break;
+
+               case WM_LBUTTONUP:
+               case WM_RBUTTONUP:
+               case WM_MBUTTONUP:
+                  base.WndProc(ref m);
+                  RePaint();
+                  break;
+
+               case WM_LBUTTONDBLCLK:
+               case WM_RBUTTONDBLCLK:
+               case WM_MBUTTONDBLCLK:
+                  base.WndProc(ref m);
+                  RePaint();
+                  break;
+
+               case WM_KEYDOWN:
+               case WM_KEYUP:
+                  base.WndProc(ref m);
+                  RePaint();
+                  break;
+
+               case WM_CHAR:
+                  RePaint();
+                  if ((((int) m.WParam) == 0x1B) || (((int) m.WParam) == 0xD))
+                  {
+                     if (SendMessage(GetParent(m.HWnd), CB_GETDROPPEDSTATE, 0,
+                      0) != 0)
+                     {
+                        base.WndProc(ref m);
+                     }
+                     else
+                     {
+                        if (this.ComboEditKeyDown != null)
+                        {
+                           Keys keyData = Keys.None;
+                           if (((int) m.WParam) == 0x1B) 
+                           {
+                              keyData = Keys.Escape;
+                           }
+                           else if (((int) m.WParam) == 0xD)
+                           {
+                              keyData = Keys.Return; 
+                           }
+                           this.ComboEditKeyDown(this, new
+                            KeyEventArgs(keyData));
+                        }
+                        m.Result = IntPtr.Zero;
+                     }
+                  }
+                  else
+                  {
+                     base.WndProc(ref m);
+                  }
+                  break;
+
+               case WM_MOUSEMOVE:
+                  base.WndProc(ref m);
+                  if (!m.WParam.Equals(IntPtr.Zero))
+                  {
+                     RePaint();
+                  }
+                  break;
+               
+               default:
+                  base.WndProc(ref m);
+                  break;
+            }
+         }
+         else
+         {
+            base.WndProc(ref m);
+
+            switch (m.Msg)
+            {
+               case WM_PAINT:
+                  moveControl();
+                  break;
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Paints the control if necessary:
+      /// &lt;/summary&gt;
+      private void RePaint()
+      {
+
+         if ((this.ImageList != null) ||
+            (this.customPainter != null))
+         {
+            RECT rcClient = new RECT();
+            GetClientRect(this.Handle, ref rcClient);
+            bool rightToLeft = IsRightToLeft(this.Handle);
+
+            IntPtr handle = this.Handle;
+            IntPtr hdc = GetDC(handle);
+            Graphics gfx = Graphics.FromHdc(hdc);
+            
+            if (this.customPainter == null)
+            {
+               int itemSize = this.imageList.ImageSize.Height;
+               Point pt = new Point(0, rcClient.top + (rcClient.bottom -
+                rcClient.top - itemSize) / 2);
+               if (rightToLeft)
+               {
+                  pt.X = rcClient.right - itemSize - 2;   
+               }
+               else
+               {
+                  pt.X = 2;
+               }
+               if (this.icon &gt; -1)
+               {
+                  gfx.SetClip(new Rectangle(pt.X, pt.Y,
+                   this.imageList.ImageSize.Width,
+                   this.imageList.ImageSize.Height - 4));
+                  this.imageList.Draw(gfx, pt, icon);   
+                  gfx.ResetClip();
+               }
+               else
+               {
+                  gfx.FillRectangle(SystemBrushes.Window, pt.X, pt.Y,
+                   this.imageList.ImageSize.Width,
+                   this.imageList.ImageSize.Height + 1);
+               }
+            }
+            else
+            {
+               Rectangle rcDraw = new Rectangle(
+                  new Point(0, 0), new Size(this.customWidth, rcClient.bottom -
+                   rcClient.top));
+               this.customPainter.Draw(gfx, rcDraw, rightToLeft);
+            }
+
+            gfx.Dispose();
+            ReleaseDC(handle, hdc);
+         }
+
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class
+      /// &lt;/summary&gt;
+      public TextBoxMarginCustomise()
+      {
+         // intentionally blank
+      }
+
+   }
+   #endregion
+
+   #region ITextBoxMarginCustomisePainter
+   /// &lt;summary&gt;
+   /// An interface which users of the &lt;see cref="TextBoxMarginCustomise"/&gt;
+   /// class can use to provide a customised painting routine for the
+   /// margin area.  Create an instance of this class and install it
+   /// using the &lt;see cref="TextBoxMarginCustomise.CustomPainter"/&gt;
+   /// accessor.
+   /// &lt;/summary&gt;
+   public interface ITextBoxMarginCustomisePainter
+   {
+      /// &lt;summary&gt;
+      /// Called to obtain the width of the margin.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;Width of the margin&lt;/returns&gt;
+      int GetMarginWidth();
+
+      /// &lt;summary&gt;
+      /// Called whenever the margin area needs to
+      /// be repainted.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics object to paint on.&lt;/param&gt;
+      /// &lt;param name="rcDraw"&gt;Boundary of margin area.&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether the control is right 
+      /// to left or not&lt;/param&gt;
+      void Draw(Graphics gfx, Rectangle rcDraw, bool rightToLeft);
+   }
+   #endregion
+   
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">vbAccelerator IconComboBox Control</a>&#160;.&#160;<a href="iconcombobox_control_source.html">IconComboBox Control Source</a>&#160;.&#160;IconComboBox.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

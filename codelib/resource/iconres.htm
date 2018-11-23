@@ -1,0 +1,252 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Icons without forms and document association icons in VB</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Icons without forms and document association icons in VB</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Using resources rather than VB's weak icon selection to provide better binaries</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\resources\icons_without_forms_and_document_association_icons_in_vb\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><img src="..\..\images\dllicons.gif" border="0" width="150" height="138" alt="Nice Icons in the Windows\System directory"></p>
+        <p><a href="iconres.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Icon Resource Demonstration files (25kb)</a></p>
+        </font>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <p>
+VB allows you to choose an icon for an executable, but it offers a somewhat limited
+choice.  The icon must be stored in a form included in your VB project, and you can only
+pick one icon to be exposed publicly per project.  Whilst the single icon is the most 
+important one, you might want to have additional icons for two reasons:
+<ol>
+<li>To allow the user to pick alternative icons in Explorer's "Change Icon" dialog for shortcuts.
+<li>To allow a document icon to be associated with files for your application.
+</ol>
+In Win32 applications, you can have as many public icon resources as you want for a binary.
+The icon used as the icon in explorer for EXEs and DLLs (and any other binary file where the
+<i>DefaultIcon</i> key in the file association for the file is set to %1 - more on this later) 
+is the icon stored with resource id 0 in the resource file.  
+Since VB allows you to compile resources into your application, you can use this information to 
+set icons for ActiveX binaries which don't have forms. You can also add additional icons to
+EXEs.
+<br><br>
+The first thing to note is that although VB has a resource editor (provided built-in for VB6, 
+available as a <a href="..\..\linxref.htm#secvbowner">Downloadable Add-in</a> for VB5) this
+does not create public icon resources.  To create icon resources which are visible to Explorer,
+you need to script the resources using the <a href="..\article\usingrc.htm">Resource Compiler</a>
+tool directly.
+<br><br>
+<b>1)&nbsp;&nbsp;Setting the Explorer Icon for ActiveX Binaries without forms</b><br>
+This is done simply by creating a resource compiler script with the icon you wish to show
+in explorer at resource ID 0, for example:
+<br><br>
+</font>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;// Icons for this application<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;ICON&nbsp;&nbsp;&nbsp;MOVEABLE&nbsp;&nbsp;&nbsp;PRELOAD&nbsp;&nbsp;&nbsp;STIMPY.ICO<br>
+<br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Compile this file to a .RES file, add it to your project and compile it.  You will see that the
+project automatically gets the icon in the resource file.
+<br><br>
+Note that .OCX files are not normally set up to show an icon.  To ask Explorer to show an icon 
+extracted from a the file itself, you just set the <i>DefaultIcon</i> registry key to &quot;%1&quot;
+for the file association.  You might want to add a file association for .OCX files to allow you
+to quickly and easily register and unregister the control in Explorer.  Here are the entries you
+need:
+<br><br>
+</font>
+<font color="#000000" face="lucida console,courier" size="1">
+&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">HKEY_CLASSES_ROOT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">.ocx (default) = "ocx_auto_file"<br>
+&nbsp;&nbsp;&nbsp;         ...<br>
+&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">ocx_auto_file (default) = "ActiveX Control File"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">shell<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">DefaultIcon (default) = "%1"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">open<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">command (default) = "C:\WINDOWS\SYSTEM\Regsvr32.exe "%1""<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">unregister (default) = "&Unregister"<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">command (default) = "C:\WINDOWS\SYSTEM\Regsvr32.exe /u "%1""<br>
+<br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+Note that you should also make the same entries under the <i>HKEY_LOCAL_MACHINE\SOFTWARE\Classes</i> key.<br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Having entered these, you will see when you right click on a .OCX file in Explorer you get an 
+<b>Open</b> default option which will call <i>regsvr32</i> to register the file, and also an
+<i>Unregister</i> option which allows you to remove the registration entries.
+<br><br>
+<b>2. To provide alternative icons.</b><br>
+To do this you use the same approach as for the last section except you add icon resources 
+with identifiers other than 0 (numeric or strings). Setting up a document type association
+to use these icons is just a matter of ensuring the <i>DefaultIcon</i> key gets populated 
+with the executable followed by a comma and the 0 based index of the icon in the executable
+(remembering that if VB is set to create an icon for you in the executable's properties, 
+this will get priority over any icons in your resource file.)  To read about this in more
+detail, check out the article <a href="..\ssubtmr\startup.htm">Passing command line parameters to 
+an existing instance of your app, and making sure only one instance runs</a>.
+
+
+
+</p>
+</font>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overlib.htm">Library Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

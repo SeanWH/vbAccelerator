@@ -1,0 +1,237 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Flat Style Combo Boxes</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+This article provides a class which you can attach to any .NET ComboBox
+ control to allow it to render with a VS.NET or Office XP flat style by subclassing the
+messages associated with the control (VB.NET and C# code provided).
+" /><link rel="stylesheet" href="../../../../../res/screen.css" codebase="..\..\..\..\..\..\res\"  media="SCREEN" /><link rel="stylesheet" href="../../../../../res/print.css" codebase="..\..\..\..\..\..\res\"  media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Controls</a>&#160;.&#160;<a href="..\..\index.html">ListBox and ComboBox</a>&#160;.&#160;Flat Style Combo Boxes</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="..\flatcombo_class_and_demonstration.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />FlatCombo Class and Demonstration</a> (67K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:12996</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=12996&type=article&title=flat_20style_20combo_20boxes.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Oct 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\libraries\windows_messages\subclassing_in__net\article.html">Subclassing In .NET</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Flat Style Combo Boxes</h1><p class="splash">Customise any Combo Box with a VS.NET or Office XP Style</p><img src="..\flatcombobox.png" width="314" height="304" alt="Flat Combo Box Demonstration" /><p /><p>
+This article provides a class which you can attach to any .NET <span class="code">ComboBox</span>
+ control to allow it to render with a VS.NET or Office XP flat style by subclassing the
+messages associated with the control (VB.NET and C# code provided).
+</p><h2>Making a Combo Box Flat</h2><p>
+If you've seen the elegant flat combo boxes which appear in VS.NET and Microsoft Office
+Command Bars, you might have wondered how easy it is to implement this sort of functionality in
+your own application.  The first thing to do in these cases is usually to do a bit of, erm,
+reverse-engineering to see how Microsoft achieved the effect.  The best tool for this sort
+of investigation is Spy++, which comes with some variants of VS.NET, although if you don't 
+have it you can also use the <a href="id=2315.html">Simple Windows Spy</a> utility
+from this site.  Point the tool at one of the combo boxes and...
+</p><p>
+Ah.  As with many aspects of the Microsoft Command Bars control, the combo
+boxes are not in fact regular controls at all. In fact, the control you see
+is a composite, using a RichTextBox for
+the edit portion, drawing the combo drop-down button directly onto the toolbar
+and using a new custom control with the class name "OfficeDropDown" for the 
+drop-down portion.  This kind of approach probably isn't too tricky if you have access
+to the Windows source code, but can be a more sticky if you want to create the effect
+yourself.
+</p><p>
+Another way is to start looking at how a standard combo box draws itself and see if 
+it can be customised by subclassing some of the logic.  Any control which needs to
+draw on screen has to respond to the <span class="code">WM_PAINT</span> Windows
+message in order to paint itself. However, that's not the only way to paint a 
+control.  Controls can also obtain their drawing surface outside of <span class="code">WM_PAINT</span>
+(using, for example, <span class="code">GetDC</span>) and perform some sneaky redrawing 
+there as well.  But provided all the points at which drawing occurs can be captured, and
+enough information about the state of the control can be worked out at each step then
+you can overdraw what the control attempts to draw with a customised version.
+</p><p>
+This is the approach taken by the <span class="code">FlatControl</span> class presented here.
+</p><h2>Using the <span class="code">FlatControl</span> class</h2><p>
+The class has been designed so it is completely independent of the combo box that it is
+attached to.  This helps to make it convenient to apply to any type of Combo Box, even if
+the combo box is an extended version of the standard <span class="code">System.Windows.Forms.ComboBox</span>.
+</p><p>
+To use it, you create an instance of the <span class="code">FlatControl</span> class and
+then use the <span class="code">Attach</span> method to attach it to the combo box:
+</p><pre>
+using vbAccelerator.Components.Controls;
+
+   FlatControl flatComboBox = new FlatControl();
+
+   private void frm_Load(object sender, System.EventArgs e)
+   {
+      flatComboBox.Attach(cbo);
+   }
+</pre><p>
+Note that it is important that the handle of the combo box has been created and
+the combo box has its correct parent prior to using the attach method.  For
+this reason the code above is being performed in the <span class="code">Load</span>
+event of the form.  Another thing to watch for is that changing some form or combobox 
+properties causes the control to be recreated from scratch (typical examples are
+the <span class="code">DropDownStyle</span> of a combo box or the 
+<span class="code">ShowInTaskBar</span> property of a Form).  If this occurs you will
+need to re-attach the class.  Ideally, you should try to avoid changing these types
+of properties once controls or forms have been created, since they result in flicker
+and make the user interface look less professional.
+</p><p>
+To convert all the combo box controls in a form, you can use the code shown 
+in the sample to automatically enumerate all ComboBox type controls and store
+an array of flat control instances:
+</p><pre>
+   private ArrayList flatComboBoxList = new ArrayList();
+
+   ...  
+
+   FlatControl flatComboBox;
+   foreach (Control ctl in this.Controls)
+   {
+      if (ctl.GetType().IsAssignableFrom(comboBox1.GetType()))
+      {
+         flatComboBox = new FlatControl();
+         flatComboBox.Attach(ctl);
+         flatComboBoxList.Add(flatComboBox);
+      }
+   }
+</pre><h2>Implementation</h2><p>
+The <span class="code">FlatControl</span> class consists of three parts: the main class, which is responsible
+for drawing the combo box, and two internal child classes.  The internal child classes
+are a <span class="code">FlatControlTextBox</span> class, which is responsible for detecting
+focus and mouse events in the TextBox portion of the control and the <span class="code">FlatComboParent</span> class, which is responsible for detecting when the combo box has
+closed up.  I'll describe these briefly in turn.
+</p><h3>FlatControl</h3><p>
+This class performs most of the work in the control.  It extends the <span class="code">System.Windows.Forms.NativeWindow</span> class so it can override <span class="code">WndProc</span>
+and act as a  <a href="..\..\..\..\libraries\windows_messages\subclassing_in__net\article.html">subclass</a> on the ComboBox it is attached to.
+During WndProc processing, the class responds to <span class="code">WM_PAINT</span> messages to
+allow the control to be repainted after Windows has painted it. It also responds to 
+messages <span class="code">WM_SETFOCUS</span> and <span class="code">WM_KILLFOCUS</span>
+and <span class="code">WM_MOUSEMOVE</span> so it can repaint the control with the correct
+border.
+</p><p>
+To achieve overpainting, the control performs the following steps:
+</p><ol><li><strong>Get the <span class="code">hDC</span> of the ComboBox</strong><p>
+This is achieved using the Windows API <span class="code">GetDC</span> call:
+</p><pre>
+   [DllImport("user32")]
+   private static extern IntPtr GetDC(
+      IntPtr hWnd);
+
+   IntPtr hDC = GetDC(this.Handle);
+</pre></li><li><strong>Convert the <span class="code">hDC</span> into a <span class="code">Graphics</span> object</strong><p>
+   Graphics gfx = Graphics.FromHdc(hDC);
+</p></li><li><strong>Perform Drawing</strong><p>
+Since we now have a managed code Graphics object, the drawing proceeds the standard
+.NET Framework techniques.  Refer to the code for the details: basically all that
+is done is to draw the border of the control and the drop-down button in the correct
+positions.
+</p></li><li><strong>Clean up the <span class="code">hDC</span> Handle</strong><br /><p>
+Any call to <span class="code">GetDC</span> must be matched with a call to 
+<span class="code">ReleaseDC</span>, otherwise a resource leak will occur.  
+This is also a good time to dispose of the graphics object.
+</p><pre>
+   [DllImport("user32")]
+   private static extern int ReleaseDC(
+      IntPtr hWnd, 
+      IntPtr hdc);
+
+   gfx.Dispose();
+   ReleaseDC(this.Handle, hDC);
+</pre></li></ol><p>One thing I noticed in the first version of this class was that if a Windows Theme
+was applied to the application then having ComCtl32.DLL redrawing over the combo box
+as well led to some flicker and a need to draw the combo box more frequently.  Toprevent this, the code removes the Windows Theme from the combo box if it is applied:
+</p><pre>
+   [DllImport("user32", CharSet=CharSet.Unicode)]
+   private static extern int SetWindowTheme (
+      IntPtr hWnd, 
+      [MarshalAs(UnmanagedType.LPWStr)]
+      String pszSubAppName, 
+      [MarshalAs(UnmanagedType.LPWStr)]
+      String pszSubIdList);
+
+   private void RemoveTheme(
+      IntPtr handle)
+   {   
+      bool isXp = false;
+      if (System.Environment.Version.Major &gt; 5)
+      {
+         isXp = true;
+      }
+      else if ((System.Environment.Version.Major == 5) &amp;&amp;
+         (System.Environment.Version.Minor &gt;= 1))
+      {
+         isXp = true;
+      }
+      if (isXp)
+      {
+         SetWindowTheme(handle, " ", " ");
+      }
+   }
+</pre><h3>FlatComboTextBox</h3><p>
+If the Combo Box has the <span class="code">DropDownStyle.DropDown</span> style,
+then there is also a TextBox included in the control.  This class attaches
+a subclass using the same <span class="code">NativeWindow</span> technique 
+to the text box and forwards focus and mouse messages to the main class.
+</p><h3>FlatComboParent</h3><p>
+Finally, when drawing the dropdown button, you need to know when the combo
+box is dropped down or closed up.  Combo boxes notify their parent when
+they are closed up using a <span class="code">WM_COMMAND</span> message
+with a <span class="code">CBN_CLOSEUP</span> notification code.  This
+class subclasses that message to ensure it is forwarded on to the main
+class.
+</p><h2>Conclusion</h2><p>
+This article provides a class which can be used to customise standard ComboBox
+controls to give them their own.  With a little patience, you should also be able
+to modify the drawing code to generate combo boxes with custom drop-down buttons
+and borders to match the skin of an application.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Controls</a>&#160;.&#160;<a href="..\..\index.html">ListBox and ComboBox</a>&#160;.&#160;Flat Style Combo Boxes</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 23 October 2003</p></td><td></td></tr></table>
+</body></html>

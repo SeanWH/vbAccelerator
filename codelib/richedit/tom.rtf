@@ -1,0 +1,651 @@
+{\rtf1\ansi\deff0\deflang2057{\fonttbl{\f0\fswiss\fprq2 Arial;}{\f1\froman\fprq2 Times New Roman;}}
+\viewkind4\uc1\pard\b\f0\fs24 tom Interface Definition \par
+\par
+\fs20 General Information\par
+\pard\tx993\b0 Library:\tab tom ()\par
+File:\tab C:\\WINNT\\system32\\riched20.dll\par
+GUID:\tab\{8CC497C9-A1DF-11CE-8098-00AA0047BE5D\}\par
+Version:\tab 1.0\par
+\pard\f1\par
+\b\f0 Enumerations\par
+\b0 This section lists enumerations exposed by tom.\par
+\par
+Public Enum tomConstants\par
+\tab tomFalse=0\par
+\tab tomTrue=-1\par
+\tab tomUndefined=-9999999\par
+\tab tomToggle=-9999998\par
+\tab tomAutoColor=-9999997\par
+\tab tomDefault=-9999996\par
+\tab tomBackward=-1073741823\par
+\tab tomForward=1073741823\par
+\tab tomMove=0\par
+\tab tomExtend=1\par
+\tab tomNoSelection=0\par
+\tab tomSelectionIP=1\par
+\tab tomSelectionNormal=2\par
+\tab tomSelectionFrame=3\par
+\tab tomSelectionColumn=4\par
+\tab tomSelectionRow=5\par
+\tab tomSelectionBlock=6\par
+\tab tomSelectionInlineShape=7\par
+\tab tomSelectionShape=8\par
+\tab tomSelStartActive=1\par
+\tab tomSelAtEOL=2\par
+\tab tomSelOvertype=4\par
+\tab tomSelActive=8\par
+\tab tomSelReplace=16\par
+\tab tomEnd=0\par
+\tab tomStart=32\par
+\tab tomCollapseEnd=0\par
+\tab tomCollapseStart=1\par
+\tab tomNone=0\par
+\tab tomSingle=1\par
+\tab tomWords=2\par
+\tab tomDouble=3\par
+\tab tomDotted=4\par
+\tab tomLineSpaceSingle=0\par
+\tab tomLineSpace1pt5=1\par
+\tab tomLineSpaceDouble=2\par
+\tab tomLineSpaceAtLeast=3\par
+\tab tomLineSpaceExactly=4\par
+\tab tomLineSpaceMultiple=5\par
+\tab tomAlignLeft=0\par
+\tab tomAlignCenter=1\par
+\tab tomAlignRight=2\par
+\tab tomAlignJustify=3\par
+\tab tomAlignDecimal=3\par
+\tab tomAlignBar=4\par
+\tab tomSpaces=0\par
+\tab tomDots=1\par
+\tab tomDashes=2\par
+\tab tomLines=3\par
+\tab tomTabBack=-3\par
+\tab tomTabNext=-2\par
+\tab tomTabHere=-1\par
+\tab tomListNone=0\par
+\tab tomListBullet=1\par
+\tab tomListNumberAsArabic=2\par
+\tab tomListNumberAsLCLetter=3\par
+\tab tomListNumberAsUCLetter=4\par
+\tab tomListNumberAsLCRoman=5\par
+\tab tomListNumberAsUCRoman=6\par
+\tab tomListNumberAsSequence=7\par
+\tab tomListParentheses=65536\par
+\tab tomListPeriod=131072\par
+\tab tomListPlain=196608\par
+\tab tomCharacter=1\par
+\tab tomWord=2\par
+\tab tomSentence=3\par
+\tab tomParagraph=4\par
+\tab tomLine=5\par
+\tab tomStory=6\par
+\tab tomScreen=7\par
+\tab tomSection=8\par
+\tab tomColumn=9\par
+\tab tomRow=10\par
+\tab tomWindow=11\par
+\tab tomCell=12\par
+\tab tomCharFormat=13\par
+\tab tomParaFormat=14\par
+\tab tomTable=15\par
+\tab tomObject=16\par
+\tab tomMatchWord=2\par
+\tab tomMatchCase=4\par
+\tab tomMatchPattern=8\par
+\tab tomUnknownStory=0\par
+\tab tomMainTextStory=1\par
+\tab tomFootnotesStory=2\par
+\tab tomEndnotesStory=3\par
+\tab tomCommentsStory=4\par
+\tab tomTextFrameStory=5\par
+\tab tomEvenPagesHeaderStory=6\par
+\tab tomPrimaryHeaderStory=7\par
+\tab tomEvenPagesFooterStory=8\par
+\tab tomPrimaryFooterStory=9\par
+\tab tomFirstPageHeaderStory=10\par
+\tab tomFirstPageFooterStory=11\par
+\tab tomNoAnimation=0\par
+\tab tomLasVegasLights=1\par
+\tab tomBlinkingBackground=2\par
+\tab tomSparkleText=3\par
+\tab tomMarchingBlackAnts=4\par
+\tab tomMarchingRedAnts=5\par
+\tab tomShimmer=6\par
+\tab tomWipeDown=7\par
+\tab tomWipeRight=8\par
+\tab tomAnimationMax=8\par
+\tab tomLowerCase=0\par
+\tab tomUpperCase=1\par
+\tab tomTitleCase=2\par
+\tab tomSentenceCase=4\par
+\tab tomToggleCase=5\par
+\tab tomReadOnly=256\par
+\tab tomShareDenyRead=512\par
+\tab tomShareDenyWrite=1024\par
+\tab tomPasteFile=4096\par
+\tab tomCreateNew=16\par
+\tab tomCreateAlways=32\par
+\tab tomOpenExisting=48\par
+\tab tomOpenAlways=64\par
+\tab tomTruncateExisting=80\par
+\tab tomRTF=1\par
+\tab tomText=2\par
+\tab tomHTML=3\par
+\tab tomWordDocument=4\par
+End Enum\f1\par
+\par
+\b\f0 Interfaces\par
+\b0 This section lists the Classes exposed by tom.  For each class, the methods and events are listed.\par
+\f1\par
+\b\f0 ITextDocument \{8CC497C0-A1DF-11CE-8098-00AA0047BE5D\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Name() As String\par
+\par
+Property Get Selection() As ITextSelection\par
+\par
+Property Get StoryCount() As Long\par
+\par
+Property Get StoryRanges() As ITextStoryRanges\par
+\par
+Property Get Saved() As Long\par
+\par
+Property Let Saved(RHS  As Long)\par
+\par
+Property Get DefaultTabStop() As Single\par
+\par
+Property Let DefaultTabStop(RHS  As Single)\par
+\par
+Sub New\par
+\par
+Sub Open(ByVal pVar As Variant, ByVal Flags As Long, ByVal CodePage As Long)\par
+\par
+Sub Save(ByVal pVar As Variant, ByVal Flags As Long, ByVal CodePage As Long)\par
+\par
+Function Freeze() As Long\par
+\par
+Function Unfreeze() As Long\par
+\par
+Sub BeginEditCollection\par
+\par
+Sub EndEditCollection\par
+\par
+Function Undo(ByVal Count As Long) As Long\par
+\par
+Function Redo(ByVal Count As Long) As Long\par
+\par
+Function Range(ByVal cp1 As Long, ByVal cp2 As Long) As ITextRange\par
+\par
+Function RangeFromPoint(ByVal x As Long, ByVal y As Long) As ITextRange\par
+\b0\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 ITextFont \{8CC497C3-A1DF-11CE-8098-00AA0047BE5D\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Duplicate() As ITextFont\par
+\par
+Property Let Duplicate(RHS  As ITextFont)\par
+\par
+Function CanChange() As Long\par
+\par
+Function IsEqual(ByVal pFont As ITextFont) As Long\par
+\par
+Sub Reset(ByVal Value As Long)\par
+\par
+Property Get Style() As Long\par
+\par
+Property Let Style(RHS  As Long)\par
+\par
+Property Get AllCaps() As Long\par
+\par
+Property Let AllCaps(RHS  As Long)\par
+\par
+Property Get Animation() As Long\par
+\par
+Property Let Animation(RHS  As Long)\par
+\par
+Property Get BackColor() As Long\par
+\par
+Property Let BackColor(RHS  As Long)\par
+\par
+Property Get Bold() As Long\par
+\par
+Property Let Bold(RHS  As Long)\par
+\par
+Property Get Emboss() As Long\par
+\par
+Property Let Emboss(RHS  As Long)\par
+\par
+Property Get ForeColor() As Long\par
+\par
+Property Let ForeColor(RHS  As Long)\par
+\par
+Property Get Hidden() As Long\par
+\par
+Property Let Hidden(RHS  As Long)\par
+\par
+Property Get Engrave() As Long\par
+\par
+Property Let Engrave(RHS  As Long)\par
+\par
+Property Get Italic() As Long\par
+\par
+Property Let Italic(RHS  As Long)\par
+\par
+Property Get Kerning() As Single\par
+\par
+Property Let Kerning(RHS  As Single)\par
+\par
+Property Get LanguageID() As Long\par
+\par
+Property Let LanguageID(RHS  As Long)\par
+\par
+Property Get Name() As String\par
+\par
+Property Let Name(RHS  As String)\par
+\par
+Property Get Outline() As Long\par
+\par
+Property Let Outline(RHS  As Long)\par
+\par
+Property Get Position() As Single\par
+\par
+Property Let Position(RHS  As Single)\par
+\par
+Property Get Protected() As Long\par
+\par
+Property Let Protected(RHS  As Long)\par
+\par
+Property Get Shadow() As Long\par
+\par
+Property Let Shadow(RHS  As Long)\par
+\par
+Property Get Size() As Single\par
+\par
+Property Let Size(RHS  As Single)\par
+\par
+Property Get SmallCaps() As Long\par
+\par
+Property Let SmallCaps(RHS  As Long)\par
+\par
+Property Get Spacing() As Single\par
+\par
+Property Let Spacing(RHS  As Single)\par
+\par
+Property Get StrikeThrough() As Long\par
+\par
+Property Let StrikeThrough(RHS  As Long)\par
+\par
+Property Get Subscript() As Long\par
+\par
+Property Let Subscript(RHS  As Long)\par
+\par
+Property Get Superscript() As Long\par
+\par
+Property Let Superscript(RHS  As Long)\par
+\par
+Property Get Underline() As Long\par
+\par
+Property Let Underline(RHS  As Long)\par
+\par
+Property Get Weight() As Long\par
+\par
+Property Let Weight(RHS  As Long)\par
+\b0\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 ITextPara \{8CC497C4-A1DF-11CE-8098-00AA0047BE5D\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Duplicate() As ITextPara\par
+\par
+Property Let Duplicate(RHS  As ITextPara)\par
+\par
+Function CanChange() As Long\par
+\par
+Function IsEqual(ByVal pPara As ITextPara) As Long\par
+\par
+Sub Reset(ByVal Value As Long)\par
+\par
+Property Get Style() As Long\par
+\par
+Property Let Style(RHS  As Long)\par
+\par
+Property Get Alignment() As Long\par
+\par
+Property Let Alignment(RHS  As Long)\par
+\par
+Property Get Hyphenation() As Long\par
+\par
+Property Let Hyphenation(RHS  As Long)\par
+\par
+Property Get FirstLineIndent() As Single\par
+\par
+Property Get KeepTogether() As Long\par
+\par
+Property Let KeepTogether(RHS  As Long)\par
+\par
+Property Get KeepWithNext() As Long\par
+\par
+Property Let KeepWithNext(RHS  As Long)\par
+\par
+Property Get LeftIndent() As Single\par
+\par
+Property Get LineSpacing() As Single\par
+\par
+Property Get LineSpacingRule() As Long\par
+\par
+Property Get ListAlignment() As Long\par
+\par
+Property Let ListAlignment(RHS  As Long)\par
+\par
+Property Get ListLevelIndex() As Long\par
+\par
+Property Let ListLevelIndex(RHS  As Long)\par
+\par
+Property Get ListStart() As Long\par
+\par
+Property Let ListStart(RHS  As Long)\par
+\par
+Property Get ListTab() As Single\par
+\par
+Property Let ListTab(RHS  As Single)\par
+\par
+Property Get ListType() As Long\par
+\par
+Property Let ListType(RHS  As Long)\par
+\par
+Property Get NoLineNumber() As Long\par
+\par
+Property Let NoLineNumber(RHS  As Long)\par
+\par
+Property Get PageBreakBefore() As Long\par
+\par
+Property Let PageBreakBefore(RHS  As Long)\par
+\par
+Property Get RightIndent() As Single\par
+\par
+Property Let RightIndent(RHS  As Single)\par
+\par
+Sub SetIndents(ByVal StartIndent As Single, ByVal LeftIndent As Single, ByVal RightIndent As Single)\par
+\par
+Sub SetLineSpacing(ByVal LineSpacingRule As Long, ByVal LineSpacing As Single)\par
+\par
+Property Get SpaceAfter() As Single\par
+\par
+Property Let SpaceAfter(RHS  As Single)\par
+\par
+Property Get SpaceBefore() As Single\par
+\par
+Property Let SpaceBefore(RHS  As Single)\par
+\par
+Property Get WidowControl() As Long\par
+\par
+Property Let WidowControl(RHS  As Long)\par
+\par
+Property Get TabCount() As Long\par
+\par
+Sub AddTab(ByVal tbPos As Single, ByVal tbAlign As Long, ByVal tbLeader As Long)\par
+\par
+Sub ClearAllTabs\par
+\par
+Sub DeleteTab(ByVal tbPos As Single)\par
+\par
+Sub GetTab(ByVal iTab As Long, ByVal ptbPos As Single, ByVal ptbAlign As Long, ByVal ptbLeader As Long)\par
+\b0\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 ITextRange \{8CC497C2-A1DF-11CE-8098-00AA0047BE5D\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Text() As String\par
+\par
+Property Let Text(RHS  As String)\par
+\par
+Property Get Char() As Long\par
+\par
+Property Let Char(RHS  As Long)\par
+\par
+Property Get Duplicate() As ITextRange\par
+\par
+Property Get FormattedText() As ITextRange\par
+\par
+Property Let FormattedText(RHS  As ITextRange)\par
+\par
+Property Get Start() As Long\par
+\par
+Property Let Start(RHS  As Long)\par
+\par
+Property Get End() As Long\par
+\par
+Property Let End(RHS  As Long)\par
+\par
+Property Get Font() As ITextFont\par
+\par
+Property Let Font(RHS  As ITextFont)\par
+\par
+Property Get Para() As ITextPara\par
+\par
+Property Let Para(RHS  As ITextPara)\par
+\par
+Property Get StoryLength() As Long\par
+\par
+Property Get StoryType() As Long\par
+\par
+Sub Collapse(ByVal bStart As Long)\par
+\par
+Function Expand(ByVal Unit As Long) As Long\par
+\par
+Function GetIndex(ByVal Unit As Long) As Long\par
+\par
+Sub SetIndex(ByVal Unit As Long, ByVal Index As Long, ByVal Extend As Long)\par
+\par
+Sub SetRange(ByVal cpActive As Long, ByVal cpOther As Long)\par
+\par
+Function InRange(ByVal pRange As ITextRange) As Long\par
+\par
+Function InStory(ByVal pRange As ITextRange) As Long\par
+\par
+Function IsEqual(ByVal pRange As ITextRange) As Long\par
+\par
+Sub Select\par
+\par
+Function StartOf(ByVal Unit As Long, ByVal Extend As Long) As Long\par
+\par
+Function EndOf(ByVal Unit As Long, ByVal Extend As Long) As Long\par
+\par
+Function Move(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Function MoveStart(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Function MoveEnd(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Function MoveWhile(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveStartWhile(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveEndWhile(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveUntil(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveStartUntil(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveEndUntil(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function FindText(ByVal bstr As String, ByVal cch As Long, ByVal Flags As Long) As Long\par
+\par
+Function FindTextStart(ByVal bstr As String, ByVal cch As Long, ByVal Flags As Long) As Long\par
+\par
+Function FindTextEnd(ByVal bstr As String, ByVal cch As Long, ByVal Flags As Long) As Long\par
+\par
+Function Delete(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Sub Cut(ByVal pVar As Variant)\par
+\par
+Sub Copy(ByVal pVar As Variant)\par
+\par
+Sub Paste(ByVal pVar As Variant, ByVal Format As Long)\par
+\par
+Function CanPaste(ByVal pVar As Variant, ByVal Format As Long) As Long\par
+\par
+Function CanEdit() As Long\par
+\par
+Sub ChangeCase(ByVal Type As Long)\par
+\par
+Sub GetPoint(ByVal Type As Long, ByVal px As Long, ByVal py As Long)\par
+\par
+Sub SetPoint(ByVal x As Long, ByVal y As Long, ByVal Type As Long, ByVal Extend As Long)\par
+\par
+Sub ScrollIntoView(ByVal Value As Long)\par
+\par
+Function GetEmbeddedObject() As Unknown\par
+\b0\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 ITextSelection \{8CC497C1-A1DF-11CE-8098-00AA0047BE5D\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Text() As String\par
+\par
+Property Let Text(RHS  As String)\par
+\par
+Property Get Char() As Long\par
+\par
+Property Let Char(RHS  As Long)\par
+\par
+Property Get Duplicate() As ITextRange\par
+\par
+Property Get FormattedText() As ITextRange\par
+\par
+Property Let FormattedText(RHS  As ITextRange)\par
+\par
+Property Get Start() As Long\par
+\par
+Property Let Start(RHS  As Long)\par
+\par
+Property Get End() As Long\par
+\par
+Property Let End(RHS  As Long)\par
+\par
+Property Get Font() As ITextFont\par
+\par
+Property Let Font(RHS  As ITextFont)\par
+\par
+Property Get Para() As ITextPara\par
+\par
+Property Let Para(RHS  As ITextPara)\par
+\par
+Property Get StoryLength() As Long\par
+\par
+Property Get StoryType() As Long\par
+\par
+Sub Collapse(ByVal bStart As Long)\par
+\par
+Function Expand(ByVal Unit As Long) As Long\par
+\par
+Function GetIndex(ByVal Unit As Long) As Long\par
+\par
+Sub SetIndex(ByVal Unit As Long, ByVal Index As Long, ByVal Extend As Long)\par
+\par
+Sub SetRange(ByVal cpActive As Long, ByVal cpOther As Long)\par
+\par
+Function InRange(ByVal pRange As ITextRange) As Long\par
+\par
+Function InStory(ByVal pRange As ITextRange) As Long\par
+\par
+Function IsEqual(ByVal pRange As ITextRange) As Long\par
+\par
+Sub Select\par
+\par
+Function StartOf(ByVal Unit As Long, ByVal Extend As Long) As Long\par
+\par
+Function EndOf(ByVal Unit As Long, ByVal Extend As Long) As Long\par
+\par
+Function Move(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Function MoveStart(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Function MoveEnd(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Function MoveWhile(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveStartWhile(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveEndWhile(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveUntil(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveStartUntil(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function MoveEndUntil(ByVal Cset As Variant, ByVal Count As Long) As Long\par
+\par
+Function FindText(ByVal bstr As String, ByVal cch As Long, ByVal Flags As Long) As Long\par
+\par
+Function FindTextStart(ByVal bstr As String, ByVal cch As Long, ByVal Flags As Long) As Long\par
+\par
+Function FindTextEnd(ByVal bstr As String, ByVal cch As Long, ByVal Flags As Long) As Long\par
+\par
+Function Delete(ByVal Unit As Long, ByVal Count As Long) As Long\par
+\par
+Sub Cut(ByVal pVar As Variant)\par
+\par
+Sub Copy(ByVal pVar As Variant)\par
+\par
+Sub Paste(ByVal pVar As Variant, ByVal Format As Long)\par
+\par
+Function CanPaste(ByVal pVar As Variant, ByVal Format As Long) As Long\par
+\par
+Function CanEdit() As Long\par
+\par
+Sub ChangeCase(ByVal Type As Long)\par
+\par
+Sub GetPoint(ByVal Type As Long, ByVal px As Long, ByVal py As Long)\par
+\par
+Sub SetPoint(ByVal x As Long, ByVal y As Long, ByVal Type As Long, ByVal Extend As Long)\par
+\par
+Sub ScrollIntoView(ByVal Value As Long)\par
+\par
+Function GetEmbeddedObject() As Unknown\par
+\par
+Property Get Flags() As Long\par
+\par
+Property Let Flags(RHS  As Long)\par
+\par
+Property Get Type() As Long\par
+\par
+Function MoveLeft(ByVal Unit As Long, ByVal Count As Long, ByVal Extend As Long) As Long\par
+\par
+Function MoveRight(ByVal Unit As Long, ByVal Count As Long, ByVal Extend As Long) As Long\par
+\par
+Function MoveUp(ByVal Unit As Long, ByVal Count As Long, ByVal Extend As Long) As Long\par
+\par
+Function MoveDown(ByVal Unit As Long, ByVal Count As Long, ByVal Extend As Long) As Long\par
+\par
+Function HomeKey(ByVal Unit As Long, ByVal Extend As Long) As Long\par
+\par
+Function EndKey(ByVal Unit As Long, ByVal Extend As Long) As Long\par
+\par
+Sub TypeText(ByVal bstr As String)\par
+\b0\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 ITextStoryRanges \{8CC497C5-A1DF-11CE-8098-00AA0047BE5D\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Function Item(ByVal Index As Long) As ITextRange\par
+\par
+Property Get Count() As Long\par
+\b0\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\par
+}
+ 

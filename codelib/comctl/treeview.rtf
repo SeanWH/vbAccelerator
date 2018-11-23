@@ -1,0 +1,357 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b xuiTreeView Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab xuiTreeView (xuiTreeView)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\TreeView\\Release\\xuiTreeView.ocx
+\par GUID:\tab \{032566C9-3327-11D3-8E22-44910FC10000\}
+\par Version:\tab 7.1
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by xuiTreeView.
+\par 
+\par Public Enum ExpandTypeConstants
+\par \tab Expand=2
+\par \tab Collapse=1
+\par \tab ExpandPartial=16386
+\par End Enum
+\par Public Enum HitTestInfoConstants
+\par \tab htAbove=256
+\par \tab htBelow=512
+\par \tab htBelowLast=1
+\par \tab htItemPlusMinus=16
+\par \tab htItemIcon=2
+\par \tab htItemIndent=8
+\par \tab htItemText=4
+\par \tab htItemRight=32
+\par \tab htItemState=64
+\par \tab htLeft=2048
+\par \tab htRight=1024
+\par End Enum
+\par Public Enum RelationConstants
+\par \tab NextSibling=0
+\par \tab FirstChild=1
+\par \tab LastChild=2
+\par \tab AlphabeticalChild=3
+\par End Enum
+\par Public Enum TreeViewBorderStyleConstants
+\par \tab None=0
+\par \tab FixedSingle=1
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by xuiTreeView.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b TreeView \{BB31C0E3-84C5-11D3-8E24-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par 
+\par Property Get DisableCustomDraw() As Boolean
+\par \plain\f3\fs20 Stops the control performing custom draw operations.  Items cannot have individual fonts or colours, but the control draws at maximum speed.\plain\f3\fs20\b 
+\par Property Let DisableCustomDraw(RHS  As Boolean)
+\par \plain\f3\fs20 Stops the control performing custom draw operations.  Items cannot have individual fonts or colours, but the control draws at maximum speed.\plain\f3\fs20\b 
+\par Property Get BorderStyle() As TreeViewBorderStyleConstants
+\par \plain\f3\fs20 Gets/sets the border style of the control.\plain\f3\fs20\b 
+\par Property Let BorderStyle(RHS  As TreeViewBorderStyleConstants)
+\par \plain\f3\fs20 Gets/sets the border style of the control.\plain\f3\fs20\b 
+\par Property Get InternalBorderX() As Long
+\par 
+\par Property Let InternalBorderX(RHS  As Long)
+\par 
+\par Property Get InternalBorderY() As Long
+\par 
+\par Property Let InternalBorderY(RHS  As Long)
+\par 
+\par Property Get Font() As Font
+\par 
+\par Property Set Font() As Font
+\par 
+\par Property Get ShowNumber() As Boolean
+\par 
+\par Property Let ShowNumber(RHS  As Boolean)
+\par 
+\par Property Get ExplorerBar() As Boolean
+\par 
+\par Property Let ExplorerBar(RHS  As Boolean)
+\par 
+\par Property Get CheckBoxes() As Boolean
+\par \plain\f3\fs20 Gets/sets whether checkboxes are shown for each item in the TreeView.\plain\f3\fs20\b 
+\par Property Let CheckBoxes(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether checkboxes are shown for each item in the TreeView.\plain\f3\fs20\b 
+\par Property Get NoDragDrop() As Boolean
+\par 
+\par Property Let NoDragDrop(RHS  As Boolean)
+\par 
+\par Property Get LabelEditing() As Boolean
+\par 
+\par Property Let LabelEditing(RHS  As Boolean)
+\par 
+\par Property Get FullRowSelect() As Boolean
+\par 
+\par Property Let FullRowSelect(RHS  As Boolean)
+\par 
+\par Property Get PlusMinus() As Boolean
+\par 
+\par Property Let PlusMinus(RHS  As Boolean)
+\par 
+\par Property Get RootLines() As Boolean
+\par 
+\par Property Let RootLines(RHS  As Boolean)
+\par 
+\par Property Get ScrollBars() As Boolean
+\par 
+\par Property Let ScrollBars(RHS  As Boolean)
+\par 
+\par Property Get ToolTips() As Boolean
+\par 
+\par Property Let ToolTips(RHS  As Boolean)
+\par 
+\par Property Get ShowSelected() As Boolean
+\par 
+\par Property Let ShowSelected(RHS  As Boolean)
+\par 
+\par Property Get SingleExpand() As Boolean
+\par 
+\par Property Let SingleExpand(RHS  As Boolean)
+\par 
+\par Property Get Lines() As Boolean
+\par 
+\par Property Let Lines(RHS  As Boolean)
+\par 
+\par Property Get HotTracking() As Boolean
+\par 
+\par Property Let HotTracking(RHS  As Boolean)
+\par 
+\par Property Get ForeColor() As ULong
+\par 
+\par Property Let ForeColor(RHS  As ULong)
+\par 
+\par Property Get BackColor() As ULong
+\par \plain\f3\fs20 Gets/sets the backcolor of the control.\plain\f3\fs20\b 
+\par Property Let BackColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the backcolor of the control.\plain\f3\fs20\b 
+\par Property Get LineColor() As ULong
+\par 
+\par Property Let LineColor(RHS  As ULong)
+\par 
+\par Property Get Enabled() As Boolean
+\par 
+\par Property Let Enabled(RHS  As Boolean)
+\par 
+\par Property Get Indent() As Long
+\par 
+\par Property Let Indent(RHS  As Long)
+\par 
+\par Property Get MaxScrollTime() As Long
+\par 
+\par Property Let MaxScrollTime(RHS  As Long)
+\par 
+\par Property Get ToolTipColor() As ULong
+\par 
+\par Property Let ToolTipColor(RHS  As ULong)
+\par 
+\par Property Get ToolTipBackColor() As ULong
+\par 
+\par Property Let ToolTipBackColor(RHS  As ULong)
+\par 
+\par Property Get Sorted(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let Sorted(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemBackColor(ByVal Item As Variant) As ULong
+\par 
+\par Property Let ItemBackColor(ByVal Item As Variant, RHS As ULong)
+\par 
+\par Property Get ItemBold(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemBold(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemChecked(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemChecked(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemColor(ByVal Item As Variant) As ULong
+\par 
+\par Property Let ItemColor(ByVal Item As Variant, RHS As ULong)
+\par 
+\par Property Get ItemMouseOverColor(ByVal Item As Variant) As ULong
+\par 
+\par Property Let ItemMouseOverColor(ByVal Item As Variant, RHS As ULong)
+\par 
+\par Property Get ItemCut(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemCut(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemDropHighlight(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemDropHighlight(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemExpanded(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemExpanded(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemExpandedOnce(ByVal Item As Variant) As Boolean
+\par 
+\par Property Get ItemExpandedPartial(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemExpandedPartial(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemFont(ByVal Item As Variant) As Font
+\par 
+\par Property Let ItemFont(ByVal Item As Variant, RHS As Font)
+\par 
+\par Property Set ItemFont(ByVal Item As Variant) As Font
+\par 
+\par Property Get ItemHasChildren(ByVal Item As Variant) As Boolean
+\par 
+\par Property Get ItemImage(ByVal Item As Variant) As Long
+\par 
+\par Property Let ItemImage(ByVal Item As Variant, RHS As Long)
+\par 
+\par Property Get ItemIndex(ByVal Key As String) As Long
+\par 
+\par Property Get ItemIntegralHeight(ByVal Item As Variant) As Long
+\par 
+\par Property Let ItemIntegralHeight(ByVal Item As Variant, RHS As Long)
+\par 
+\par Property Get ItemKey(ByVal Item As Long) As String
+\par 
+\par Property Let ItemKey(ByVal Item As Long, RHS As String)
+\par 
+\par Property Get ItemPlusMinus(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemPlusMinus(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemSelected(ByVal Item As Variant) As Boolean
+\par 
+\par Property Let ItemSelected(ByVal Item As Variant, RHS As Boolean)
+\par 
+\par Property Get ItemSelectedImage(ByVal Item As Variant) As Long
+\par 
+\par Property Let ItemSelectedImage(ByVal Item As Variant, RHS As Long)
+\par 
+\par Property Get ItemStateImage(ByVal Item As Variant) As Long
+\par 
+\par Property Let ItemStateImage(ByVal Item As Variant, RHS As Long)
+\par 
+\par Property Get ItemData(ByVal Item As Variant) As Long
+\par 
+\par Property Let ItemData(ByVal Item As Variant, RHS As Long)
+\par 
+\par Property Get ItemNumber(ByVal Item As Variant) As Long
+\par 
+\par Property Let ItemNumber(ByVal Item As Variant, RHS As Long)
+\par 
+\par Property Get ItemText(ByVal Item As Variant) As String
+\par 
+\par Property Let ItemText(ByVal Item As Variant, RHS As String)
+\par 
+\par Property Get ItemHeight() As Long
+\par 
+\par Property Let ItemHeight(RHS  As Long)
+\par 
+\par Property Get VisibleCount() As Long
+\par 
+\par Property Get Selected() As Long
+\par 
+\par Property Let Selected(RHS  As Long)
+\par 
+\par Property Get ItemChild(ByVal Item As Variant) As Long
+\par 
+\par Property Get DropTarget() As Long
+\par 
+\par Property Let DropTarget(RHS  As Long)
+\par 
+\par Property Get FirstVisible() As Long
+\par 
+\par Property Let FirstVisible(RHS  As Long)
+\par 
+\par Property Get Last() As Long
+\par 
+\par Property Get ItemNextSibling(ByVal Item As Variant) As Long
+\par 
+\par Property Get ItemParent(ByVal Item As Variant) As Long
+\par 
+\par Property Get ItemNextVisible(ByVal Item As Variant) As Long
+\par 
+\par Property Get ItemPrevious(ByVal Item As Variant) As Long
+\par 
+\par Property Get ItemPreviousVisible(ByVal Item As Variant) As Long
+\par 
+\par Property Get RootItem() As Long
+\par 
+\par Property Get Count() As Long
+\par \plain\f3\fs20 Returns the number of items in the TreeView.\plain\f3\fs20\b 
+\par Property Get LabelEditHwnd() As Long
+\par 
+\par Property Get hImageList() As Long
+\par 
+\par Property Let hImageList(RHS  As Long)
+\par 
+\par Property Get hStateImageList() As Long
+\par 
+\par Property Let hStateImageList(RHS  As Long)
+\par 
+\par Sub LabelEdit(ByVal Item As Variant)
+\par 
+\par Sub LabelEditEnd(ByVal SaveChanges As Boolean)
+\par 
+\par Function EnsureVisible(ByVal Item As Variant) As Boolean
+\par 
+\par Sub ItemToggle(ByVal Item As Variant)
+\par 
+\par Function Add(ByVal hRelativeItem As Variant, ByVal Relation As RelationConstants, ByVal Key As String, ByVal Text As String, Optional ByVal Image As Long=-1, Optional ByVal SelectedImage As Long=-1, Optional ByVal IntegralHeight As Long=1, Optional ByVal Bold As Boolean=False) As Long
+\par \plain\f3\fs20 Adds an item to the TreeView.\plain\f3\fs20\b 
+\par Sub Remove(ByVal Item As Variant)
+\par 
+\par Function HitTest(ByVal x As Long, ByVal y As Long) As Long
+\par 
+\par Function HitTestInfo(ByVal x As Long, ByVal y As Long) As HitTestInfoConstants
+\par 
+\par Sub Clear(Optional ByVal Item As Variant=-1)
+\par \plain\f3\fs20 Clears all the items in the TreeView.\plain\f3\fs20\b 
+\par Property Get ItemHandle(ByVal Item As Variant) As Long
+\par 
+\par Function IsState(ByVal Item As Variant, ByVal Value As Long, Optional ByVal UseAsMask As Boolean=False) As Long
+\par 
+\par Sub SetState(ByVal Item As Variant, ByVal Value As Long, ByVal Bool As Boolean, Optional ByVal UseAsMask As Boolean=True)
+\par \plain\f3\fs20 
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event Click(ByVal x As Long, ByVal y As Long, ByVal RightButton As Boolean)
+\par \plain\f3\fs20 Raised when an item in the TreeView is clicked.\plain\f3\fs20\b 
+\par Public Event EnterPress
+\par 
+\par Public Event BeforeLabelEdit(ByVal hItem As Long, ByVal Cancel As Boolean)
+\par \plain\f3\fs20 Raised before an item is about to be edited by the user.\plain\f3\fs20\b 
+\par Public Event AfterLabelEdit(ByVal hItem As Long, ByVal NewText As String, ByVal Cancel As Boolean)
+\par \plain\f3\fs20 Raised when the user has finished editing an item's label.\plain\f3\fs20\b 
+\par Public Event ItemExpand(ByVal hItem As Long, ByVal ExpandType As ExpandTypeConstants)
+\par 
+\par Public Event ItemExpanding(ByVal hItem As Long, ByVal ExpandType As ExpandTypeConstants)
+\par 
+\par Public Event ItemClick(ByVal hItem As Long, ByVal RightButton As Boolean)
+\par 
+\par Public Event ItemDblClick(ByVal hItem As Long)
+\par 
+\par Public Event TVLostFocus
+\par 
+\par Public Event KeyDown(ByVal KeyCode As KeyCodeConstants)
+\par 
+\par Public Event SelChanged
+\par 
+\par Public Event SelChanging
+\par 
+\par Public Event SingleExpanded(ByVal hItem As Long, ByVal ExpandType As ExpandTypeConstants)
+\par 
+\par Public Event DblClick(ByVal x As Long, ByVal y As Long)
+\par \plain\f3\fs20 Raised when an item is double-clicked in the TreeView.\plain\f3\fs20\b 
+\par Public Event ItemDelete(ByVal hItem As Long)
+\par 
+\par Public Event GetItemToolTipText(ByVal hItem As Long, ByVal sText As String)
+\par \plain\f4\fs20 
+\par 
+\par }
+ 

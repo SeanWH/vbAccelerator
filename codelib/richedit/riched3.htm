@@ -1,0 +1,316 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>About RichEdit Version 3.0</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>About Rich Edit Version 2.0</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Feature differences between RichEdit 2.0 and RichEdit 3.0</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td>&nbsp;&nbsp;</td>
+<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<br>
+RichEdit 3.0 contains all the features of <a href="riched2.htm">RichEdit 2.0<a/> plus these additional
+features:
+<ul>
+<li><font color="#000099">Zoom<font color="#000000"><br>
+     The zoom factor is given by a ratio. 
+<li><font color="#000099">Paragraph numbering (single-level)<font color="#000000"><br>
+     Numeric, upper and lower alphabetic, or Roman
+     numeral. 
+<li><font color="#000099">Simple tables<font color="#000000"><br>
+     Deleting and inserting rows is possible, but not resizing
+     nor wrapping inside cells. With advanced typography
+     turned on,
+     Rich Edit 3.0 can align columns centered or flush right,
+     and include decimals. Cells are simulated by tabs, so text
+     tabs and carriage returns are replaced by blanks. 
+
+<li><font color="#000099">Normal and heading styles<font color="#000000"><br> 
+     Built-in normal style and heading styles 1 through 9 are
+     supported by the <i>EM_SETPARAFORMAT</i> and
+     Microsoft Text Object Model (TOM) interfaces. 
+
+<li><font color="#000099">More underline types<font color="#000000"><br>
+     Dashed, dash-dot, dash-dot-dot, and dot underlining has
+     been added. 
+
+<li><font color="#000099">Underline coloring<font color="#000000"><br>
+     Underlined text can be tagged with one of 15 document
+     choices for underline colors. 
+
+<li><font color="#000099">Hidden text<font color="#000000"><br>
+     Marked by CHARFORMAT2 attribute. Handy for
+     roundtripping (writing out to a file what was read in) of
+     information that ordinarily should not be displayed. 
+
+<li><font color="#000099">More default hot keys<font color="#000000"><br>
+     These hot keys function the same as those in Microsoft
+     Word. For example, European accent dead keys (U.S.
+     keyboards only). Number hot key (CTRL+L) cycles
+     through numbering options available, starting with bullet. 
+
+<li><font color="#000099">Smart quotes<font color="#000000"><br>
+     This feature is toggled on and off by CTRL+ALT+' for
+     U.S. keyboards. 
+
+<li><font color="#000099">Soft hyphens<font color="#000000"><br>
+     For plain text, use 0xAD. For RTF, use \-. 
+
+<li><font color="#000099">Italics cursor<font color="#000000"><br>
+     In addition, the mouse cursor changes to a hand when
+     over URLs. 
+
+<li><font color="#000099">Advanced typography option<font color="#000000"><br>
+     Rich Edit 3.0 can use an advanced typography option for
+     line breaking and display. This elegant
+     option was added primarily to facilitate handling complex
+     scripts (bidirectional, Indic, and Thai). In addition, a
+     number of improvements occur for simple scripts.
+     Examples are: 
+	<ul>
+	<li>Center, right, decimal tabs 
+        <li>Fully justified text 
+        <li>Underline averaging, which provides a uniform
+          underline even when adjacent text runs have
+          different font sizes. 
+	</ul>
+
+<li><font color="#000099">Complex script support<font color="#000000"><br> 
+     Rich Edit 3.0 supports bidirectional (text with Arabic
+     and/or Hebrew mixed with other scripts), Indic (Indian
+     scripts like Devangari), and Thai text. For support of
+     these complex scripts, the advanced typography and
+     Uniscribe components, which run on Windows 95and
+     Windows 98, are used. 
+
+<li><font color="#000099">Font binding <font color="#000000"><br>
+     Rich Edit 3.0 will automatically choose an appropriate
+     font for characters that clearly do not belong to the
+     current charset (a set of characters used in Windows)
+     stamp. This is done by assigning charsets to text runs
+     and associating fonts with those charsets. For more
+     information, see Font Binding. 
+
+<li><font color="#000099">Charset-specific plain-text read/write options<font color="#000000"><br> 
+     This allows reading a file using one charset, and writing
+     with a different charset. 
+
+<li><font color="#000099">UTF-8 RTF<font color="#000000"><br> 
+     This is recommended for cutting, copying, and pasting
+     operations. This file format is more compact than
+     ordinary RTF, faster, and compatible with Unicode. 
+
+<li><font color="#000099">Office 9 IME support (IME98)<font color="#000000"><br> 
+     This more powerful IME capability has been separated
+     into an independent module. Features include: 
+	<ul>
+     <li>Reconversion <br>
+          In the earlier versions, the user needed to delete
+          the final string first and then type in a new string
+          to get to the correct candidate. This new feature
+          enables the user to convert the final string back to
+          composition mode, thereby allowing easy
+          selection of a different candidate string. 
+     <li>Document feed <br>
+          This feature provides IME98 with the text for the
+          current paragraph, which helps IME98 perform
+          more accurate conversion during typing. 
+     <li>Mouse operation <br>
+          This feature provides better control over the
+          candidate and UI windows during typing. 
+     <li>Caret position <br>
+          This feature provides the current caret and line
+          information, which IME98 uses to position UI
+          windows (for example, a candidate list). 
+	</ul>
+
+<li><font color="#000099">AIMM support<font color="#000000"><br> 
+     Users can invoke the Active Input Method Manager
+     (AIMM) object, which enables users to enter Asian
+     characters on U.S. systems (in Windows NT 4.0 and
+     Windows 95).
+ 
+<li><font color="#000099">More RTF roundtripping<font color="#000000"><br> 
+     RTF text that is read in from a file will be written back
+     out intact. 
+
+<li><font color="#000099">Improved 1.0 compatibility mode<font color="#000000"><br> 
+     Rich Edit 3.0 can emulate Rich Edit 1.0 behavior. For
+     example, it is possible to change between MBCS and
+     Unicode character-position (cp) mappings. This feature
+     emulates Rich Edit 1.0 in Windows 2000. 
+
+<li><font color="#000099">Increased freeze control<font color="#000000"><br> 
+     The display can be frozen over multiple API calls and
+     then unfrozen to display the updates. 
+
+<li><font color="#000099">Increased undo control<font color="#000000"><br> 
+     Undo can be suspended and resumed (an IME
+     requirement). 
+
+<li><font color="#000099">Increase/decrease font size<font color="#000000"><br> 
+     Increases or decreases font size to one of six standard
+     values (12, 28, 36, 48, 72, and 80 points). 
+</ul>
+
+</font>
+</td>
+<td>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="richedit.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="The RichEdit Control"></a>Back to <a href="richedit.htm">vbAcclerator RichEdit Control</a></p>
+	</font>
+	</p>
+	</td>
+<td>&nbsp;&nbsp;</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 1 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+
+</html>ble border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 1 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+
+</html>

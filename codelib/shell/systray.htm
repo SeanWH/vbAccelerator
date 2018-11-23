@@ -1,0 +1,276 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Add Your App to the Systray the Easy Way</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Add Your App to the Systray the Easy Way</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>This form class encapsulates all the SysTray functionality you'll need!</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\shell_projects\systray_-_the_easy_way\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p>
+	<p><img src="..\..\images\systray.gif" alt="SysTray Demo Application" width="392" height="263"></p>
+	<p><a href="fsystray.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download frmSysTray (2kb)</a><br>
+	<a href="systray.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the SysTray demonstration project (23kb)</a></p>
+        </font>
+
+	<p>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>21 March 2000</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Added the Win32 API call <i>SetForegroundWindow</i> before showing the SysTray menu - this ensures that the menu
+		dismisses when the user clicks off the menu onto (for example) the desktop, whereas before it used to stick.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Fixed problem on systems with Large Fonts set.  The code hardcoded a twips/pixel value of 15 into the message
+		values responded to from the SysTray.  Now the code uses VB's <i>ScaleX</i> method to get the correct message value
+		so it works on all systems.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This sample application presents a small form which you can drop into your project to get immediate 
+	SysTray support.  A lot of the source code I've seen for VB SysTray interfaces has used an OCX or DLL and
+	subclassed for a SysTray message, however, it turns out you don't need to do this, because you can specify
+	what message Windows will use to notify you of events in the tray.  As a consequence, you just need to
+	choose a message that corresponds to a Visual Basic event - in this case the sample code uses the
+	WM_MOUSEMOVE event.  This fires a mouse move event on the Visual Basic form, with the x parameter set to the
+	corresponding notification flag.<br><br>
+	To avoid any confusion with actual MouseMove events due to the user moving the mouse over the form, the
+	form is set to be invisible.  Since the form can act as a class, it is easy to provide it with methods
+	to set what menu options to show, what icon will be shown in the System Tray and also what tool tip to
+	show in the SysTray.  I've also provided events which are fired whenever there is a Mouse Down, Mouse Up or
+	Double Click on your SysTray icon, and a method to show the menu created in the form which raises a MenuClick
+	event when a menu is selected.<br><br>
+	Here is all the code you need in a project which has frmSysTray included:
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+Private WithEvents m_frmSysTray As frmSysTray <br>
+ <br>
+Private Sub Form_Load() <br>
+&nbsp &nbsp Set m_frmSysTray = New frmSysTray <br>
+&nbsp &nbsp With m_frmSysTray <br>
+&nbsp &nbsp &nbsp &nbsp .AddMenuItem "&Open SysTray Sample", "open", True <br>
+&nbsp &nbsp &nbsp &nbsp .AddMenuItem "-" <br>
+&nbsp &nbsp &nbsp &nbsp .AddMenuItem "&Close", "close" <br>
+&nbsp &nbsp &nbsp &nbsp .ToolTip = "SysTray Sample!" <br>
+&nbsp &nbsp &nbsp &nbsp .IconHandle = Me.Icon.Handle <br>
+&nbsp &nbsp End With <br>
+End Sub <br>
+ <br>
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer) <br>
+&nbsp &nbsp Unload m_frmSysTray <br>
+&nbsp &nbsp Set m_frmSysTray = Nothing <br>
+End Sub <br>
+ <br>
+Private Sub m_frmSysTray_MenuClick(ByVal lIndex As Long, ByVal sKey As String) <br>
+&nbsp &nbsp Select Case sKey <br>
+&nbsp &nbsp Case "open" <br>
+&nbsp &nbsp &nbsp &nbsp Me.Show <br>
+&nbsp &nbsp &nbsp &nbsp Me.ZOrder <br>
+&nbsp &nbsp Case "close" <br>
+&nbsp &nbsp &nbsp &nbsp Unload Me <br>
+&nbsp &nbsp End Select <br>
+&nbsp &nbsp  <br>
+End Sub <br>
+ <br>
+Private Sub m_frmSysTray_SysTrayDoubleClick(ByVal eButton As MouseButtonConstants) <br>
+&nbsp &nbsp Me.Show <br>
+&nbsp &nbsp Me.ZOrder <br>
+End Sub <br>
+ <br>
+Private Sub m_frmSysTray_SysTrayMouseDown(ByVal eButton As MouseButtonConstants) <br>
+&nbsp &nbsp If (eButton = vbRightButton) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_frmSysTray.ShowMenu <br>
+&nbsp &nbsp End If<br>
+End Sub <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+
+
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	
+	<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

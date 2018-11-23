@@ -1,0 +1,440 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Drawing Buttons, Option Boxes and Check Boxes In Your Own Style</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+        <td valign="top">
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Drawing Buttons, Option Boxes and Check Boxes In Your Own Style</b>
+        </font>
+	</td>
+</tr>
+<tr>
+	<td>
+        <font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	&nbsp;An nice way to create buttons with your own style
+	</font>
+	</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\subclassing\owner_draw_buttons\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+        <p><img src="..\..\images\odbtn.gif" width="200" height="128" alt="Sample Buttons you can draw with the demonstration project" border="0"></p>
+        <p><a href="odbtn.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Owner-Draw buttons sample (34kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                This project requires the <a href="ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and <a href="..\..\insprob.htm#secreg">registered</a> this before trying the project.
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <p>
+	<b>Introduction</b><br>
+	If you set the <i>Style</i> property VB CommandButton, OptionBox or CheckBox to <i>Graphical</i>,
+	VB turns the control into an Owner-Draw control.  By default VB allows you to associate three
+	pictures with these controls - one which is drawn normally (<i>Picture</i>), one for when it is 
+	down (<i>DownPicture</i>) and one for when it is disabled (<i>DisabledPicture</i>). However, if
+	you've ever tried this you will know that the button draws like a turd when you
+	set these properties.<br><br>
+	The code with this sample shows you how to intercept the <i>WM_DRAWITEM</i> messages an
+	Owner-Draw button sends to its parent whenever it is about to draw itself and replace VB's
+	implementation with something a bit nicer.
+	<br><br>
+	<b>How it Works</b><br>
+	The basic function of the class is to intercept <i>WM_DRAWITEM</i> messages send to a window
+	handle.  When it gets these, it determines whether the message was sent by a button control;
+	if it was it asks your code if you want to draw the item yourself, passing the information
+	you need to draw using GDI calls.  If you do choose to draw it, the class eats
+	the <i>WM_DRAWITEM</i> message so the button does not receive it.  If you don't choose to draw
+	the object yourself, then the class passes the message on to the old Window Procedure which 
+	performs the standard drawing built into the button.
+	<br><br>
+	<b>About the WM_DRAWITEM message</b><br>
+	The WM_DRAWITEM message passes a pointer to a structure, <i>DRAWITEMSTRUCT</i> as the <i>lParam</i>
+	of the message:
+	</p>
+	</font>
+	<font face="Lucida Console,courier new" size="1">
+	<p>
+Type DRAWITEMSTRUCT<br>
+&nbsp &nbsp CtlType As Long &nbsp &nbsp  ' -The Type of control firing the WM_DRAWITEM message<br>
+&nbsp &nbsp CtlID As Long &nbsp &nbsp  ' -The ID of the control when created<br>
+&nbsp &nbsp ItemId As Long &nbsp &nbsp  ' -The ListIndex of the item to draw<br>
+&nbsp &nbsp ItemAction As Long &nbsp &nbsp ' -What action is causing the draw call<br>
+&nbsp &nbsp ItemState As Long &nbsp &nbsp  ' -The state of the item to be drawn<br>
+&nbsp &nbsp hwndItem As Long &nbsp &nbsp  ' -The hWnd of the window to draw in<br>
+&nbsp &nbsp hDC As Long &nbsp &nbsp  ' -The DC of the window to draw in<br>
+&nbsp &nbsp rcItem As RECT &nbsp &nbsp  ' -The bounding rectangle of the item to be drawn<br>
+&nbsp &nbsp itemData As Long &nbsp &nbsp  ' -The item data of the item to be drawn<br>
+End Type
+</p>
+</font>
+	<p><table width = "100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td valign="top"><img src="..\..\images\minitip.gif" width="10" height="14" hspace="10"></td>
+	<td bgcolor="#99CCFF"><font color="#000099" face="verdana,arial,helvetica" size="2">
+	<b>Tip</b> Getting at Data From a Memory Pointer<br>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+	<td></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	In Win32 API calls, often you get a pointer to data rather than the data itself.  To get at 
+	data pointed to by a Long, you can use the ubiqutous <i>CopyMemory</i> API
+	alias:<br><br>
+	</font>	<font face="Lucida Console,courier new" size="1">
+Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _<br>
+&nbsp;&nbsp;    lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long)<br>
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dim tDIS As DRAWITEMSTRUCT<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory tDis, ByVal lParam, Len(tDis)<br>
+	<br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Note the use of <i>ByVal</i> in the second parameter of <i>CopyMemory</i>.   You need to do
+	this because the CopyMemory declare uses the
+	<i>As Any</i> type to allow it to work for all types of structures and pointers.  If you
+	pass a Long parameter without ByVal to lpvSource, CopyMemory will attempt to copy the memory
+	holding the long value (i.e. 4 bytes) because VB has actually passed a pointer to
+	the long value (lParam) itself rather than passing its value as a pointer.  This leads very
+	quickly to a crash if the data you are copying is more than 4 bytes long!  So in this
+	case specifying ByVal VB passes the <u>value</u> of lParam across rather than a <u>pointer</u> to
+	lParam and so the copy works.<br><br>
+	If the data pointed to be lParam is a string, you can use the API call <i>lstrlen</i> to find
+	out the size of the string in the memory being pointed to.  You just have to modify the standard
+	VB declare to accept As Any and call it like this:<br><br>
+	</font>	<font face="Lucida Console,courier new" size="1">
+Declare Function lstrlen Lib "kernel32" Alias "lstrlenA" (lpString As Any) As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;lLen = lstrlen(ByVal lParam)<br>
+	<br>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	</table>
+	</p>
+	<p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>In Use</b><br>
+	The Owner-Draw button code supplied with this project comes in two classes: a <i>cOwnerDrawButton</i>
+	class which handles registering window handles to detect the <i>WM_DRAWITEM</i> message on 
+	and an interface class <i>IOwnerDrawButton</i> which your code should implements to perform
+	the drawing of the buttons.  Whilst it wasn't strictly necessary to code an interface for this
+	class (the cOwnerDrawButton class could just raise an event to the calling form), this 
+	class has to perform at maximum speed to ensure the buttons draw nicely in a user interface.  If
+	you use an event interface between a class and the owner, you are using a form of late-bound
+	interface.  Late-bound interfaces are always slower in operation than early-bound ones, and you
+	can prevent late-binding by raising your "events" through an implemented interface.
+	<br><br>
+	The cOwnerDrawButton class presents these public interfaces:
+	</p>
+	</font>
+	<p>
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tr bgcolor="#CCCCCC">
+	<td>&nbsp;&nbsp;&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Method</b>
+	</font>
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Description</b>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Attach
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Connects the class to an object which implements the IOwnerDrawButton object.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	AddhWnd
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Adds another window handle to check for WM_DRAWITEM messages on to the class.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Detach
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Clears up the subclassing code in the class.  Note this method is called automatically
+	when a cOwnerDrawButton object terminates.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	RedrawButton
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	This method forces a control to repaint itself.  Use it if you have changed the style
+	of a button to be drawn at run-time and the button is visible.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	SetBorderStyle
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	If you are not perfoming any drawing code yourself, then setting this property for a
+	graphical button will cause it to draw with a thin border rather than the standard 
+	two-pixel one.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	SetStandardButtonStyle
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	If you are not performing any drawing code yourself, then setting this property for a
+	graphical button will cause it to draw in one of the enumerated standard styles (such
+	as Close, Left, Right etc).
+	</font></td>
+	<td></td>
+	</tr>
+	</table>
+	</p>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	In order to use the class, the form containing the graphical buttons must implement
+	the IOwnerDrawButton interface. This interface contains the following methods and properties:
+	</p>
+	</font>
+	<p>
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tr bgcolor="#CCCCCC">
+	<td>&nbsp;&nbsp;&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Method</b>
+	</font>
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Description</b>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	ButtonContainerhWnd
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	This property is called when you first Attach to the class.  Return the hWnd value of the
+	container of the buttons you want to set to Owner-Drawn.  If you have more than one container
+	on your form which includes owner-draw buttons, then return any one of them 
+	and subsequently use the cOwnerDrawButton class' <i>AddhWnd</i> method to add futher containers.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	DoOwnerDraw
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Called to request whether a given hWnd should be owner-drawn or not.  Return True to continue
+	with Owner-Draw processing, or False if you want the default button method to be called.
+	</font></td>
+	<td></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	DrawItem
+	</font></td>
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Called when a button is about to be drawn.  The parameters pass in the window handle of the
+	item to drawn, the Device context to draw on, the Left, Top, Right and Bottom positions as 
+	well as a series of flags indicating whether the button is checked, pushed, enabled or in focus.
+	The last parameter, <i>bDoDefault</i> allows you to instruct the class to do default button
+	drawing regardless of whether you do some drawing yourself.
+	</font></td>
+	<td></td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+		
+	</p>	
+	<br><br>
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Source Code Library"></a>Back to <a href="..\..\overlib.htm">Code Libraries</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 27 January 1999</font></p>
+        </td>	
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

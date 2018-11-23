@@ -1,0 +1,636 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: PopupControl_FormComboBox.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: PopupControl_FormComboBox.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.html">Use .NET Forms as Popup Windows</a>&#160;.&#160;<a href="popup_form_demonstration.html">Popup Form Demonstration</a>&#160;.&#160;PopupControl_FormComboBox.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="popup_form_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Popup Form Demonstration</a> (62K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13311</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13311&type=zip&title=popup_20form_20demonstration_2ezip_5fpopupcontrol_5fformcombobox.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 0</a></p><p class="nav">Updated:8 January 2004</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />1 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\windows_messages\mouse_gestures\article.html">Adding Mouse Gesture Support to .NET Windows Applications</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\windows_messages\subclassing_in__net\article.html">Subclassing In .NET</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\controls\drop_down_tool_windows\drop_down_form_control\article.html">vbAccelerator Drop-Down and Popup Form Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: PopupControl_FormComboBox.cs</h1><pre>using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Windows.Forms;
+
+namespace PopupControl
+{
+   /// &lt;summary&gt;
+   /// Implements a control which works like a Windows ComboBox but
+   /// allows a form to be used as the drop-down.
+   /// &lt;/summary&gt;
+   public class FormComboBox : System.Windows.Forms.UserControl, IFormComboBox
+   {
+      public event EventHandler DropDown;
+      public event EventHandler CloseUp;
+
+      private IFormComboBoxDropDown popup = null;
+      private bool mouseOver = false;
+      private bool entered = false;
+      private bool dropped = false;
+      private Rectangle dropDownButton = new Rectangle(0, 0, 0, 0);
+
+      private System.Windows.Forms.TextBox textBox1;
+      /// &lt;summary&gt; 
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      public FormComboBox() : base()
+      {
+         // This call is required by the Windows.Forms Form Designer.
+         InitializeComponent();
+
+         textBox1.MouseEnter += new EventHandler(textBox1_MouseEnter);
+         textBox1.MouseLeave += new EventHandler(textBox1_MouseLeave);
+         textBox1.KeyDown += new KeyEventHandler(textBox1_KeyDown);
+      }
+
+      /// &lt;summary&gt; 
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if(components != null)
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Component Designer generated code
+      /// &lt;summary&gt; 
+      /// Required method for Designer support - do not modify 
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.textBox1 = new System.Windows.Forms.TextBox();
+         this.SuspendLayout();
+         // 
+         // textBox1
+         // 
+         this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+         this.textBox1.Location = new System.Drawing.Point(0, 4);
+         this.textBox1.Name = "textBox1";
+         this.textBox1.Size = new System.Drawing.Size(272, 13);
+         this.textBox1.TabIndex = 0;
+         this.textBox1.Text = "textBox1";
+         // 
+         // FormComboBox
+         // 
+         this.BackColor = System.Drawing.SystemColors.Window;
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.textBox1});
+         this.Name = "FormComboBox";
+         this.Size = new System.Drawing.Size(292, 20);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Request that the combo box is closed up
+      /// &lt;/summary&gt;
+      public void RequestCloseUp()
+      {
+         if (dropped)
+         {
+            OnCloseUp(new EventArgs());
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Request that the selected index is changed
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;New index to select&lt;/param&gt;
+      public void SelectedIndexChanged(int index)
+      {
+         if (this.popup != null)
+         {
+            string item = popup.Item(index).ToString();
+            textBox1.Text = item;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the Drop-Down form object that will be shown 
+      /// when the combo-box is dropped.
+      /// &lt;/summary&gt;
+      public IFormComboBoxDropDown DropDownForm
+      {
+         get
+         {
+            return this.popup;
+         }
+         set
+         {
+            this.popup = value;
+         }
+      }
+
+      public new bool Enabled
+      {
+         get
+         {
+            return base.Enabled;
+         }
+         set
+         {
+            base.Enabled = value;
+            if (value)
+            {
+               textBox1.BackColor = this.BackColor;
+            }
+            else
+            {
+               textBox1.BackColor = Color.FromKnownColor(KnownColor.Control);
+            }
+            Invalidate();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the SizeChanged event and sizes the text box within the
+       control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      protected override void OnSizeChanged(EventArgs e)
+      {
+         base.OnSizeChanged(e);
+
+         int top = 1 + (this.ClientRectangle.Height - textBox1.Height) / 2;
+         if (this.RightToLeft == RightToLeft.Yes)
+         {
+            textBox1.Location = new
+             Point(SystemInformation.VerticalScrollBarWidth, top);
+            dropDownButton = new Rectangle(0, 0, 
+               SystemInformation.VerticalScrollBarWidth,
+                this.ClientRectangle.Height);
+         }
+         else
+         {
+            textBox1.Location = new Point(2, top);
+            dropDownButton = new Rectangle(this.ClientRectangle.Width -
+             SystemInformation.VerticalScrollBarWidth, 0, 
+               SystemInformation.VerticalScrollBarWidth,
+                this.ClientRectangle.Height);
+         }
+         textBox1.Width = this.ClientRectangle.Width -
+          SystemInformation.VerticalScrollBarWidth - 3;
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the border and drop-down button in the control and raises
+      /// the Paint event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Paint event information&lt;/param&gt;
+      protected override void OnPaint(PaintEventArgs e)
+      {
+         base.OnPaint(e);
+
+         if (this.Enabled)
+         {
+            // Draw the border:
+            if (entered || mouseOver)
+            {
+               Rectangle borderRect = new
+                Rectangle(this.ClientRectangle.Location,
+                this.ClientRectangle.Size);
+               borderRect.Width--;
+               borderRect.Height--;
+
+               e.Graphics.DrawRectangle(SystemPens.Highlight, borderRect);     
+                      
+            }
+            
+            // Draw the drop down button:
+            bool doLine = false;
+            Rectangle fillRect = new Rectangle(dropDownButton.Location,
+             dropDownButton.Size);
+            fillRect.Inflate(-1, -1);
+            if (dropped)
+            {         
+               Brush br = new SolidBrush(VSNetPressedColor());
+               e.Graphics.FillRectangle(br, fillRect);
+               br.Dispose();
+               doLine = true;
+            }
+            else if (entered || mouseOver)
+            {
+               Brush br = new SolidBrush(VSNetSelectionColor());
+               e.Graphics.FillRectangle(br, fillRect);
+               br.Dispose();
+               doLine = true;
+            }
+            else
+            {
+               e.Graphics.FillRectangle(SystemBrushes.Control, fillRect);
+            }
+
+            if (doLine)
+            {
+               if (this.RightToLeft == RightToLeft.Yes)
+               {
+                  e.Graphics.DrawLine(SystemPens.Highlight, fillRect.Right,
+                   fillRect.Top, fillRect.Right, fillRect.Bottom);
+               }
+               else
+               {
+                  e.Graphics.DrawLine(SystemPens.Highlight, fillRect.Left,
+                   fillRect.Top, fillRect.Left, fillRect.Bottom);
+               }
+            }
+            
+            DrawComboDropDownGlyph(e.Graphics, fillRect,
+             Color.FromKnownColor(KnownColor.WindowText));
+         }
+         else
+         {
+            e.Graphics.FillRectangle(SystemBrushes.Control, e.ClipRectangle);
+
+            Rectangle borderRect = new Rectangle(this.ClientRectangle.Location,
+             this.ClientRectangle.Size);
+            borderRect.Width--;
+            borderRect.Height--;
+
+            e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRect);
+
+            DrawComboDropDownGlyph(e.Graphics, dropDownButton,
+             Color.FromKnownColor(KnownColor.ControlDark));   
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws a combo-box drop-down glyph in the specified rectangle.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics object to draw on&lt;/param&gt;
+      /// &lt;param name="rcButton"&gt;Rectangle to centre glyph within&lt;/param&gt;
+      /// &lt;param name="color"&gt;Color to draw glyph&lt;/param&gt;
+      private void DrawComboDropDownGlyph(
+         Graphics gfx,
+         Rectangle rcButton,
+         Color color
+         )
+      {
+         int xC = rcButton.X + (rcButton.Width / 2) + 1;
+         int yC = rcButton.Y + (rcButton.Height / 2) + 1;
+
+         Pen pen = new Pen(color, 1);
+
+         gfx.DrawLine(pen, xC - 2, yC - 1, xC + 2, yC - 1);
+         gfx.DrawLine(pen, xC - 1, yC, xC + 1, yC);
+         gfx.DrawLine(pen, xC, yC - 1, xC, yC + 1);
+
+         pen.Dispose();
+
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the MouseEnter event and performs highlighting of the control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;&lt;/param&gt;
+      protected override void OnMouseEnter(EventArgs e)
+      {
+         base.OnMouseEnter(e);
+         ProcessMouseEnter();
+      }
+      private void textBox1_MouseEnter(object sender, EventArgs e)
+      {
+         ProcessMouseEnter();
+      }
+
+      protected override void OnMouseLeave(EventArgs e)
+      {
+         base.OnMouseLeave(e);
+         ProcessMouseLeave();
+      }
+      private void textBox1_MouseLeave(object sender, EventArgs e)
+      {
+         ProcessMouseLeave();
+      }
+
+      private void ProcessMouseEnter()
+      {
+         if (!this.mouseOver)
+         {
+            this.mouseOver = true;
+            Invalidate();
+         }
+      }
+
+      private void ProcessMouseLeave()
+      {
+         Point cursorLocation = Cursor.Position;
+         cursorLocation = this.PointToClient(cursorLocation);
+         if (!this.ClientRectangle.Contains(cursorLocation))
+         {
+            if (this.mouseOver)
+            {
+               this.mouseOver = false;
+               Invalidate();
+            }
+         }
+      }
+
+      protected override void OnMouseDown(MouseEventArgs e)
+      {
+         base.OnMouseDown(e);
+         Point point = new Point(e.X, e.Y);
+         if (dropDownButton.Contains(point))
+         {
+            if (dropped)
+            {
+               OnCloseUp(new EventArgs());
+            }
+            else
+            {
+               OnDropDown(new EventArgs());
+            }
+         }      
+      }
+
+      protected override void OnKeyDown(KeyEventArgs e)
+      {
+         base.OnKeyDown(e);
+         ProcessKeyEvent(e);
+      }
+      private void textBox1_KeyDown(object sender, KeyEventArgs e)
+      {
+         ProcessKeyEvent(e);
+      }
+
+      private void ProcessKeyEvent(KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.F4)
+         {
+            if (dropped)
+            {
+               OnCloseUp(new EventArgs());
+            }
+            else
+            {
+               OnDropDown(new EventArgs());
+            }
+         }
+         else if (dropped)
+         {
+            if (popup != null)
+            {
+               popup.KeyDown(e);
+            }
+         }
+      }
+
+
+      protected virtual void OnDropDown(EventArgs e)
+      {
+         dropped = true;
+         if (DropDown != null)
+         {
+            DropDown(this, e);
+         }
+         if (popup != null)
+         {
+            /// TODO: right to left
+            Point location = new Point(0, this.Bounds.Height);
+            location = this.PointToScreen(location);
+            popup.FormComboBox = this;
+            popup.Show(location);
+         }
+         Invalidate();
+      }
+
+      protected virtual void OnCloseUp(EventArgs e)
+      {
+         dropped = false;
+         if (CloseUp != null)
+         {
+            CloseUp(this, e);
+         }
+         if (popup != null)
+         {
+            popup.Hide();
+         }
+         Invalidate();
+      }
+
+
+      protected override void OnEnter(EventArgs e)
+      {
+         base.OnEnter(e);
+         this.entered = true;
+         Invalidate();
+      }
+
+      protected override void OnLeave(EventArgs e)
+      {
+         base.OnLeave(e);
+         this.entered = false;
+         if (this.dropped)
+         {
+            OnCloseUp(new EventArgs());
+         }
+         else
+         {
+            Invalidate();
+         }
+      }
+
+      private Color BlendColor(
+         Color colorFrom,
+         Color colorTo,
+         int alpha
+         )
+      {       
+         return Color.FromArgb(
+            ((colorFrom.R * alpha) / 255) + ((colorTo.R * (255 - alpha)) / 255),
+            ((colorFrom.G * alpha) / 255) + ((colorTo.G * (255 - alpha)) / 255),
+            ((colorFrom.B * alpha) / 255) + ((colorTo.B * (255 - alpha)) / 255)
+            );      
+      }
+
+      private Color VSNetControlColor()
+      {
+         return BlendColor(
+            Color.FromKnownColor(KnownColor.Control), 
+            VSNetBackgroundColor(), 
+            195);
+      }
+
+      private Color VSNetBackgroundColor()
+      {
+         return BlendColor(
+            Color.FromKnownColor(KnownColor.Window), 
+            Color.FromKnownColor(KnownColor.Control), 
+            220);
+      }
+
+      private Color VSNetCheckedColor()
+      {
+         return BlendColor(
+            Color.FromKnownColor(KnownColor.Highlight), 
+            Color.FromKnownColor(KnownColor.Window),
+            30);
+      }
+   
+      private Color VSNetBorderColor()
+      {
+         return Color.FromKnownColor(KnownColor.Highlight);
+      }
+
+      private Color VSNetSelectionColor()
+      {
+         return BlendColor(
+            Color.FromKnownColor(KnownColor.Highlight), 
+            Color.FromKnownColor(KnownColor.Window), 
+            70);
+      }
+
+      private Color VSNetPressedColor()
+      {
+         return BlendColor(
+            Color.FromKnownColor(KnownColor.Highlight), 
+            VSNetSelectionColor(), 
+            70);
+      }
+      
+   }
+
+   /// &lt;summary&gt;
+   /// The interface that the FormComboBox implements that is
+   /// provided to a drop-down form attached to the control
+   /// &lt;/summary&gt;
+   public interface IFormComboBox
+   {
+      /// &lt;summary&gt;
+      /// Request that the combo box is closed up
+      /// &lt;/summary&gt;
+      void RequestCloseUp();
+
+      /// &lt;summary&gt;
+      /// Request that the selected index is changed
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;New index to select&lt;/param&gt;
+      void SelectedIndexChanged(int index);
+
+   }
+
+   /// &lt;summary&gt;
+   /// The interface that the form shown from the FormComboBox
+   /// must implement
+   /// &lt;/summary&gt;
+   public interface IFormComboBoxDropDown
+   {
+      /// &lt;summary&gt;
+      /// Sets the interface to owning form combo box.  This interface
+      /// can be used to modify the selected item and to request that
+      /// the combo box is closed up.
+      /// &lt;/summary&gt;
+      IFormComboBox FormComboBox
+      {
+         set;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the number of items in the drop-down
+      /// &lt;/summary&gt;
+      int ItemCount
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the item with the specified index
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;0-based index of item&lt;/param&gt;
+      /// &lt;returns&gt;Item with specified index&lt;/returns&gt;
+      object Item(int index);
+
+      /// &lt;summary&gt;
+      /// Show the drop-down at the specified location.
+      /// &lt;/summary&gt;
+      /// &lt;param name="location"&gt;Point to show form at relative to the
+       screen&lt;/param&gt;
+      void Show(Point location);
+
+      /// &lt;summary&gt;
+      /// Hide the drop-down if it is shown
+      /// &lt;/summary&gt;
+      void Hide();
+
+      /// &lt;summary&gt;
+      /// Request to find an object which matches the specified string
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;String to find&lt;/param&gt;
+      /// &lt;returns&gt;0-based index of item if found, 0 otherwise&lt;/returns&gt;
+      int FindString(String item);
+
+      /// &lt;summary&gt;
+      /// Forwards a key stroke from the control for processing in the 
+      /// drop-down
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Key which was pressed&lt;/param&gt;
+      void KeyDown(KeyEventArgs e);
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="javascript:window.alert(&quot;http://vbaccelerator.com/home/include/adredir.asp?url=http://oneandone.co.uk/xml/init?k_id=5791003&image=http://oneandone.co.uk/xml/banner?size=1&number=4\nThis link was not retrieved.&quot;)" ><IMG SRC="..\..\..\..\..\..\..\oneandone_co_uk\xml\banner\size=1&number=4.html" ALT="1&1 Web Hosting" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.html">Use .NET Forms as Popup Windows</a>&#160;.&#160;<a href="popup_form_demonstration.html">Popup Form Demonstration</a>&#160;.&#160;PopupControl_FormComboBox.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 2 November 2003</p></td><td></td></tr></table>
+</body></html>

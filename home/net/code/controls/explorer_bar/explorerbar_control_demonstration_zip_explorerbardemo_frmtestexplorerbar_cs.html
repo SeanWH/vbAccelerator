@@ -1,0 +1,777 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: ExplorerBarDemo_frmTestExplorerBar.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: ExplorerBarDemo_frmTestExplorerBar.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_demonstration.html">ExplorerBar Control Demonstration</a>&#160;.&#160;ExplorerBarDemo_frmTestExplorerBar.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="explorerbar_control_binary.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Binary</a> (40K)</p><p class="nav"><a href="explorerbar_control_demonstration.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Demonstration</a> (47K)</p><p class="nav"><a href="explorerbar_control_documentation.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Documentation</a> (265K)</p><p class="nav"><a href="explorerbar_control_source_code.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Source Code</a> (201K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:14459</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=14459&type=zip&title=explorerbar_20control_20demonstration_2ezip_5fexplorerbardemo_5ffrmtestexplo.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />17 Apr 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\vb\code\controls\explorer_bar_control\article.html">vbAccelerator Explorer Bar Control</a></p><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\libraries\graphics\reading_exif_tags_from_jpg_files\article.html">Reading EXIF Tags From JPEG Files</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: ExplorerBarDemo_frmTestExplorerBar.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using vbAccelerator.Components.Controls.ExplorerBarFramework;
+
+namespace vbAccelerator.Components.Controls
+{
+   /// &lt;summary&gt;
+   /// A Simple example form for the .NET Explorer Bar Control.
+   /// &lt;/summary&gt;
+   public class frmTestExplorerBar : System.Windows.Forms.Form
+   {
+      private ExplorerBar selectedBar;
+      private ExplorerBarItem selectedItem;
+
+      private System.Windows.Forms.PictureBox pictureBox1;
+      private vbAccelerator.Components.Controls.acclExplorerBar
+       acclExplorerBar1;
+      private System.Windows.Forms.ImageList ilsIcons;
+      private System.Windows.Forms.GroupBox grpStyle;
+      private System.Windows.Forms.RadioButton rdoStyleSystem;
+      private System.Windows.Forms.RadioButton rdoStyleClassic;
+      private System.Windows.Forms.RadioButton rdoStyleXp;
+      private System.Windows.Forms.RadioButton rdoStyleCustom;
+      private System.Windows.Forms.Button btnSearchForm;
+      private System.Windows.Forms.CheckBox chkCustomColours;
+      private System.Windows.Forms.CheckBox chkAnimations;
+      private System.Windows.Forms.MenuItem mnuCopy;
+      private System.Windows.Forms.MenuItem mnuDelete;
+      private System.Windows.Forms.ToolTip toolTip;
+      private System.Windows.Forms.ContextMenu mnuContext;
+      private System.Windows.Forms.MenuItem mnuSep2;
+      private System.Windows.Forms.MenuItem mnuInsertBelow;
+      private System.Windows.Forms.MenuItem mnuInsertAbove;
+      private System.Windows.Forms.MenuItem mnuSep1;
+      private System.Windows.Forms.MenuItem mnuSep0;
+      private System.Windows.Forms.MenuItem mnuMoveUp;
+      private System.Windows.Forms.MenuItem mnuMoveDown;
+      private System.Windows.Forms.ImageList ilsTitleIcons;
+      private System.ComponentModel.IContainer components;
+
+      /// &lt;summary&gt;
+      /// Creates a new instance of this form
+      /// &lt;/summary&gt;
+      public frmTestExplorerBar()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         // Event handlers for menu changes:
+         mnuInsertAbove.Click += new System.EventHandler(contextMenu_Click);
+         mnuInsertBelow.Click += new System.EventHandler(contextMenu_Click);
+         mnuMoveUp.Click += new System.EventHandler(contextMenu_Click);
+         mnuMoveDown.Click += new System.EventHandler(contextMenu_Click);
+         mnuCopy.Click += new System.EventHandler(contextMenu_Click);
+         mnuDelete.Click += new System.EventHandler(contextMenu_Click);
+
+         // Add event handlers for check state changes:
+         rdoStyleSystem.CheckedChanged += new
+          System.EventHandler(rdoStyle_CheckedChanged);
+         rdoStyleClassic.CheckedChanged += new
+          System.EventHandler(rdoStyle_CheckedChanged);
+         rdoStyleXp.CheckedChanged += new
+          System.EventHandler(rdoStyle_CheckedChanged);
+         rdoStyleCustom.CheckedChanged += new
+          System.EventHandler(rdoStyle_CheckedChanged);
+      
+         // Event handlers for bar and item click clicks:
+         acclExplorerBar1.ItemClick += new ExplorerBarItemClickEventHandler(
+            acclExplorerBar_ItemClick);
+         acclExplorerBar1.BarClick += new ExplorerBarClickEventHandler(
+            acclExplorerBar_BarClick);
+
+         // Set initial style, ImageList, Tooltips
+         acclExplorerBar1.DrawingStyle = ExplorerBarDrawingStyle.System;
+         acclExplorerBar1.ImageList = ilsIcons;
+         acclExplorerBar1.TitleImageList = ilsTitleIcons;
+         acclExplorerBar1.ToolTip = toolTip;
+         
+         // Add the bars and items to the control:
+         ExplorerBar bar;
+         ExplorerBarLinkItem item;
+         Random rand = new Random();
+         for (int i = 0; i &lt; 2; i++)
+         {
+            bar = new ExplorerBar();
+            if (i == 0)
+            {
+               bar.IconIndex = 0;
+            }
+            bar.Text = "Bar " + i;
+            bar.ToolTipText = "Right click on this bar to modify it.";
+            if (i == 0)
+            {
+               bar.IsSpecial = true;
+               bar.Watermark = (Bitmap) pictureBox1.Image;
+            }
+            ExplorerBarItemCollection barItems = bar.Items;
+            
+            for (int j = 0; j &lt; 12; j++)
+            {            
+               item = new ExplorerBarLinkItem();
+               item.IconIndex = rand.Next(ilsIcons.Images.Count - 1);
+               if (j == 4)
+               {
+                  item.Text = "&amp;Test Long Item that will wrap onto multiple
+                   lines and";
+               }
+               else
+               {
+                  item.Text = "Test Item " + j;
+               }
+               item.ToolTipText = "This is the tooltip text for item " +
+                item.Text; 
+               barItems.Add(item);
+            }
+            
+            acclExplorerBar1.Bars.Add(bar);
+         }
+
+         // Add an information bar:
+         ExplorerBarTextItem textItem;
+         bar = new ExplorerBar();
+         bar.Text = "Details";
+         textItem = new ExplorerBarTextItem();
+         textItem.Bold = true;
+         textItem.Text = "Star Wars and Other Space Themes.jpg";
+         bar.Items.Add(textItem);
+         textItem = new ExplorerBarTextItem();
+         textItem.Text = "JPEG Image";
+         bar.Items.Add(textItem);
+         textItem = new ExplorerBarTextItem();
+         textItem.Text = "Dimensions: 1447 x 1448";
+         bar.Items.Add(textItem);
+         textItem = new ExplorerBarTextItem();
+         textItem.Text = "Size: 782 KB";
+         bar.Items.Add(textItem);
+         textItem = new ExplorerBarTextItem();
+         textItem.Text = "Date Modified: 07 October 2002, 09:48";
+         bar.Items.Add(textItem);
+         
+         acclExplorerBar1.Bars.Add(bar);
+
+         
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmTestExplorerBar));
+         this.pictureBox1 = new System.Windows.Forms.PictureBox();
+         this.acclExplorerBar1 = new
+          vbAccelerator.Components.Controls.acclExplorerBar();
+         this.ilsIcons = new System.Windows.Forms.ImageList(this.components);
+         this.grpStyle = new System.Windows.Forms.GroupBox();
+         this.chkAnimations = new System.Windows.Forms.CheckBox();
+         this.chkCustomColours = new System.Windows.Forms.CheckBox();
+         this.rdoStyleCustom = new System.Windows.Forms.RadioButton();
+         this.rdoStyleXp = new System.Windows.Forms.RadioButton();
+         this.rdoStyleClassic = new System.Windows.Forms.RadioButton();
+         this.rdoStyleSystem = new System.Windows.Forms.RadioButton();
+         this.btnSearchForm = new System.Windows.Forms.Button();
+         this.mnuContext = new System.Windows.Forms.ContextMenu();
+         this.mnuInsertAbove = new System.Windows.Forms.MenuItem();
+         this.mnuInsertBelow = new System.Windows.Forms.MenuItem();
+         this.mnuSep0 = new System.Windows.Forms.MenuItem();
+         this.mnuMoveUp = new System.Windows.Forms.MenuItem();
+         this.mnuMoveDown = new System.Windows.Forms.MenuItem();
+         this.mnuSep1 = new System.Windows.Forms.MenuItem();
+         this.mnuCopy = new System.Windows.Forms.MenuItem();
+         this.mnuSep2 = new System.Windows.Forms.MenuItem();
+         this.mnuDelete = new System.Windows.Forms.MenuItem();
+         this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+         this.ilsTitleIcons = new
+          System.Windows.Forms.ImageList(this.components);
+         this.grpStyle.SuspendLayout();
+         this.SuspendLayout();
+         // 
+         // pictureBox1
+         // 
+         this.pictureBox1.Image =
+          ((System.Drawing.Bitmap)(resources.GetObject("pictureBox1.Image")));
+         this.pictureBox1.Location = new System.Drawing.Point(372, 320);
+         this.pictureBox1.Name = "pictureBox1";
+         this.pictureBox1.Size = new System.Drawing.Size(80, 84);
+         this.pictureBox1.SizeMode =
+          System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+         this.pictureBox1.TabIndex = 2;
+         this.pictureBox1.TabStop = false;
+         this.pictureBox1.Visible = false;
+         // 
+         // acclExplorerBar1
+         // 
+         this.acclExplorerBar1.AnimateStateChanges = true;
+         this.acclExplorerBar1.BackColorEnd = System.Drawing.Color.Empty;
+         this.acclExplorerBar1.BackColorStart = System.Drawing.Color.Empty;
+         this.acclExplorerBar1.Dock = System.Windows.Forms.DockStyle.Left;
+         this.acclExplorerBar1.DrawingStyle =
+          vbAccelerator.Components.Controls.ExplorerBarDrawingStyle.XP;
+         this.acclExplorerBar1.Font = new System.Drawing.Font("Tahoma", 8.6F);
+         this.acclExplorerBar1.ImageList = null;
+         this.acclExplorerBar1.Mode =
+          vbAccelerator.Components.Controls.ExplorerBarMode.Default;
+         this.acclExplorerBar1.Name = "acclExplorerBar1";
+         this.acclExplorerBar1.Redraw = true;
+         this.acclExplorerBar1.ShowFocusRect = true;
+         this.acclExplorerBar1.Size = new System.Drawing.Size(208, 594);
+         this.acclExplorerBar1.TabIndex = 0;
+         this.acclExplorerBar1.TitleImageList = null;
+         this.acclExplorerBar1.ToolTip = null;
+         // 
+         // ilsIcons
+         // 
+         this.ilsIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsIcons.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsIcons.ImageStream =
+          ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsIcon
+         s.ImageStream")));
+         this.ilsIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // grpStyle
+         // 
+         this.grpStyle.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                              
+                                         this.chkAnimations,
+                                                              
+                                         this.chkCustomColours,
+                                                              
+                                         this.rdoStyleCustom,
+                                                               this.rdoStyleXp,
+                                                              
+                                         this.rdoStyleClassic,
+                                                              
+                                         this.rdoStyleSystem});
+         this.grpStyle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.grpStyle.Location = new System.Drawing.Point(216, 8);
+         this.grpStyle.Name = "grpStyle";
+         this.grpStyle.Size = new System.Drawing.Size(188, 132);
+         this.grpStyle.TabIndex = 7;
+         this.grpStyle.TabStop = false;
+         this.grpStyle.Text = "Style";
+         // 
+         // chkAnimations
+         // 
+         this.chkAnimations.Checked = true;
+         this.chkAnimations.CheckState =
+          System.Windows.Forms.CheckState.Checked;
+         this.chkAnimations.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkAnimations.Location = new System.Drawing.Point(8, 112);
+         this.chkAnimations.Name = "chkAnimations";
+         this.chkAnimations.Size = new System.Drawing.Size(164, 16);
+         this.chkAnimations.TabIndex = 8;
+         this.chkAnimations.Text = "&amp;Animate Bars";
+         this.chkAnimations.CheckedChanged += new
+          System.EventHandler(this.chkAnimations_CheckedChanged);
+         // 
+         // chkCustomColours
+         // 
+         this.chkCustomColours.Enabled = false;
+         this.chkCustomColours.FlatStyle =
+          System.Windows.Forms.FlatStyle.System;
+         this.chkCustomColours.Location = new System.Drawing.Point(24, 88);
+         this.chkCustomColours.Name = "chkCustomColours";
+         this.chkCustomColours.Size = new System.Drawing.Size(148, 16);
+         this.chkCustomColours.TabIndex = 10;
+         this.chkCustomColours.Text = "C&amp;ustom Colours";
+         this.chkCustomColours.CheckedChanged += new
+          System.EventHandler(this.chkCustomColours_CheckedChanged);
+         // 
+         // rdoStyleCustom
+         // 
+         this.rdoStyleCustom.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.rdoStyleCustom.Location = new System.Drawing.Point(8, 68);
+         this.rdoStyleCustom.Name = "rdoStyleCustom";
+         this.rdoStyleCustom.Size = new System.Drawing.Size(116, 20);
+         this.rdoStyleCustom.TabIndex = 6;
+         this.rdoStyleCustom.Text = "&amp;Customised";
+         // 
+         // rdoStyleXp
+         // 
+         this.rdoStyleXp.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.rdoStyleXp.Location = new System.Drawing.Point(8, 52);
+         this.rdoStyleXp.Name = "rdoStyleXp";
+         this.rdoStyleXp.Size = new System.Drawing.Size(116, 16);
+         this.rdoStyleXp.TabIndex = 5;
+         this.rdoStyleXp.Text = "&amp;XP";
+         // 
+         // rdoStyleClassic
+         // 
+         this.rdoStyleClassic.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.rdoStyleClassic.Location = new System.Drawing.Point(8, 36);
+         this.rdoStyleClassic.Name = "rdoStyleClassic";
+         this.rdoStyleClassic.Size = new System.Drawing.Size(116, 16);
+         this.rdoStyleClassic.TabIndex = 4;
+         this.rdoStyleClassic.Text = "&amp;Classic";
+         // 
+         // rdoStyleSystem
+         // 
+         this.rdoStyleSystem.Checked = true;
+         this.rdoStyleSystem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.rdoStyleSystem.Location = new System.Drawing.Point(8, 20);
+         this.rdoStyleSystem.Name = "rdoStyleSystem";
+         this.rdoStyleSystem.Size = new System.Drawing.Size(116, 16);
+         this.rdoStyleSystem.TabIndex = 3;
+         this.rdoStyleSystem.TabStop = true;
+         this.rdoStyleSystem.Text = "&amp;System";
+         // 
+         // btnSearchForm
+         // 
+         this.btnSearchForm.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnSearchForm.Location = new System.Drawing.Point(216, 148);
+         this.btnSearchForm.Name = "btnSearchForm";
+         this.btnSearchForm.Size = new System.Drawing.Size(84, 28);
+         this.btnSearchForm.TabIndex = 1;
+         this.btnSearchForm.Text = "&amp;Search Form";
+         this.btnSearchForm.Click += new
+          System.EventHandler(this.btnSearchForm_Click);
+         // 
+         // mnuContext
+         // 
+         this.mnuContext.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+          {
+                                                                 
+                                         this.mnuInsertAbove,
+                                                                 
+                                         this.mnuInsertBelow,
+                                                                  this.mnuSep0,
+                                                                 
+                                         this.mnuMoveUp,
+                                                                 
+                                         this.mnuMoveDown,
+                                                                  this.mnuSep1,
+                                                                  this.mnuCopy,
+                                                                  this.mnuSep2,
+                                                                 
+                                         this.mnuDelete});
+         // 
+         // mnuInsertAbove
+         // 
+         this.mnuInsertAbove.Index = 0;
+         this.mnuInsertAbove.Text = "Insert &amp;Above...";
+         // 
+         // mnuInsertBelow
+         // 
+         this.mnuInsertBelow.Index = 1;
+         this.mnuInsertBelow.Text = "Insert &amp;Below...";
+         // 
+         // mnuSep0
+         // 
+         this.mnuSep0.Index = 2;
+         this.mnuSep0.Text = "-";
+         // 
+         // mnuMoveUp
+         // 
+         this.mnuMoveUp.Index = 3;
+         this.mnuMoveUp.Text = "Move &amp;Up";
+         // 
+         // mnuMoveDown
+         // 
+         this.mnuMoveDown.Index = 4;
+         this.mnuMoveDown.Text = "Move &amp;Down";
+         // 
+         // mnuSep1
+         // 
+         this.mnuSep1.Index = 5;
+         this.mnuSep1.Text = "-";
+         // 
+         // mnuCopy
+         // 
+         this.mnuCopy.Index = 6;
+         this.mnuCopy.Text = "&amp;Copy...";
+         // 
+         // mnuSep2
+         // 
+         this.mnuSep2.Index = 7;
+         this.mnuSep2.Text = "-";
+         // 
+         // mnuDelete
+         // 
+         this.mnuDelete.Index = 8;
+         this.mnuDelete.Text = "&amp;Delete...";
+         // 
+         // toolTip
+         // 
+         this.toolTip.AutoPopDelay = 5000;
+         this.toolTip.InitialDelay = 500;
+         this.toolTip.ReshowDelay = 500;
+         // 
+         // ilsTitleIcons
+         // 
+         this.ilsTitleIcons.ColorDepth =
+          System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsTitleIcons.ImageSize = new System.Drawing.Size(32, 32);
+         this.ilsTitleIcons.ImageStream =
+          ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsTitl
+         eIcons.ImageStream")));
+         this.ilsTitleIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // frmTestExplorerBar
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(476, 594);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.btnSearchForm,
+                                                        this.grpStyle,
+                                                        this.acclExplorerBar1,
+                                                        this.pictureBox1});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Name = "frmTestExplorerBar";
+         this.Text = "vbAccelerator ExplorerBar.NET Demonstration";
+         this.grpStyle.ResumeLayout(false);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmTestExplorerBar());
+      }
+
+      /// &lt;summary&gt;
+      /// Respond to a bar click event
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;Control which sent the event&lt;/param&gt;
+      /// &lt;param name="e"&gt;Information about the bar that was clicked&lt;/param&gt;
+      private void acclExplorerBar_BarClick(object sender,
+       ExplorerBarClickEventArgs e)
+      {
+         Console.WriteLine("Bar Click {0}, {1}", e.Bar.Text, e.Button);
+         if (e.Button == MouseButtons.Right)
+         {
+            selectedBar = e.Bar;
+            selectedItem = null;
+            mnuMoveUp.Enabled = (acclExplorerBar1.Bars.Previous(selectedBar) !=
+             null);
+            mnuMoveDown.Enabled = (acclExplorerBar1.Bars.Next(selectedBar) !=
+             null);
+            mnuContext.Show(acclExplorerBar1, e.Location);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Respond to an item click event
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;Control which sent the event&lt;/param&gt;
+      /// &lt;param name="e"&gt;Information about the item that was clicked&lt;/param&gt;
+      private void acclExplorerBar_ItemClick(object sender,
+       ExplorerBarItemClickEventArgs e)
+      {
+         Console.WriteLine("Item Click {0}, {1}", e.Item, e.Button);
+         if (e.Button == MouseButtons.Right)
+         {
+            selectedBar = e.Item.Bar;
+            selectedItem = e.Item;
+            mnuMoveUp.Enabled = (selectedBar.Items.Previous(selectedItem) !=
+             null);
+            mnuMoveDown.Enabled = (selectedBar.Items.Next(selectedItem) !=
+             null);
+            mnuContext.Show(acclExplorerBar1, e.Location);
+         }
+      }
+
+      private void contextMenu_Click(object sender, System.EventArgs e)
+      {
+         MenuItem item = (MenuItem) sender;
+         String text = "";
+         if (selectedItem != null)
+         {
+            if (selectedItem is ExplorerBarFramework.ExplorerBarItemWithText)
+            {
+               text = ((ExplorerBarFramework.ExplorerBarItemWithText)
+                selectedItem).Text;
+            }
+            else
+            {
+               text = "This item";
+            }
+         }
+         else
+         {
+            text = selectedBar.Text;
+         }
+
+         if (sender == mnuMoveUp)
+         {
+            if (selectedItem != null)
+            {
+               ExplorerBarItem itemBefore =
+                selectedBar.Items.Previous(selectedItem);
+               selectedBar.Items.Remove(selectedItem);
+               selectedBar.Items.InsertBefore(itemBefore, selectedItem);
+            }
+            else
+            {
+               ExplorerBar barBefore =
+                acclExplorerBar1.Bars.Previous(selectedBar);
+               acclExplorerBar1.Bars.Remove(selectedBar);
+               acclExplorerBar1.Bars.InsertBefore(barBefore, selectedBar);     
+                         
+            }
+         }
+         else if (sender == mnuMoveDown)
+         {
+            if (selectedItem != null)
+            {
+               ExplorerBarItem itemAfter = selectedBar.Items.Next(selectedItem);
+               selectedBar.Items.Remove(selectedItem);
+               selectedBar.Items.InsertAfter(itemAfter, selectedItem);
+            }
+            else
+            {
+               ExplorerBar barAfter = acclExplorerBar1.Bars.Next(selectedBar);
+               acclExplorerBar1.Bars.Remove(selectedBar);
+               acclExplorerBar1.Bars.InsertAfter(barAfter, selectedBar);       
+                       
+            }
+         }
+         else if (sender == mnuCopy)
+         {
+            if (MessageBox.Show(this, 
+               String.Format("Are you sure you want to add a copy of {0}?",
+                text),
+               this.Text,
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+               if (selectedItem != null)
+               {
+                  ExplorerBarItem itemClone = (ExplorerBarItem)
+                   selectedItem.Clone();
+                  selectedBar.Items.InsertAfter(selectedItem, itemClone);
+               }
+               else
+               {
+                  ExplorerBar barClone = (ExplorerBar) selectedBar.Clone();
+                  acclExplorerBar1.Bars.InsertAfter(selectedBar, barClone);
+               }
+            }
+         }
+         else if (sender == mnuDelete)
+         {
+            if (MessageBox.Show(this, 
+               String.Format("Are you sure you want to delete {0}?", text),
+               Text,
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+               if (selectedItem != null)
+               {
+                  selectedBar.Items.Remove(selectedItem);
+               }
+               else
+               {
+                  acclExplorerBar1.Bars.Remove(selectedBar);
+               }
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Respond to a style selection
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;RadioButton that was clicked&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      private void rdoStyle_CheckedChanged(object sender, System.EventArgs e)
+      {
+         if (sender == rdoStyleSystem)
+         {
+            acclExplorerBar1.DrawingStyle = ExplorerBarDrawingStyle.System;
+         }
+         else if (sender == rdoStyleClassic)
+         {
+            acclExplorerBar1.DrawingStyle = ExplorerBarDrawingStyle.Classic;
+         }
+         else if (sender == rdoStyleXp)
+         {
+            acclExplorerBar1.DrawingStyle = ExplorerBarDrawingStyle.XP;
+         }
+         else if (sender == rdoStyleCustom)
+         {
+            acclExplorerBar1.DrawingStyle = ExplorerBarDrawingStyle.Custom;
+         }
+         chkCustomColours.Enabled = rdoStyleCustom.Checked;
+
+      }
+
+      /// &lt;summary&gt;
+      /// Show the search form
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;Button that was clicked&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      private void btnSearchForm_Click(object sender, System.EventArgs e)
+      {
+         frmSearch search = new frmSearch();
+         search.Show();
+      }
+
+      /// &lt;summary&gt;
+      /// Set/reset custom colours.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;Check box that was clicked&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      private void chkCustomColours_CheckedChanged(object sender,
+       System.EventArgs e)
+      {
+         if (chkCustomColours.Checked)
+         {
+            acclExplorerBar1.BackColorStart = Color.FromArgb(198,201,145);
+            acclExplorerBar1.BackColorEnd = Color.FromArgb(110,110,96);
+            foreach (ExplorerBar bar in acclExplorerBar1.Bars)
+            {
+               if (bar.IsSpecial)
+               {
+                  bar.BackColor = Color.FromArgb(249,250,232);
+                  bar.TitleBackColorStart = Color.FromArgb(204,224,184);
+                  bar.TitleBackColorEnd = Color.FromArgb(100,139,61);
+                  bar.TitleForeColor = Color.FromArgb(249,250,232);
+                  bar.TitleForeColorHot = Color.FromArgb(255,255,255);
+               }
+               else
+               {
+                  bar.BackColor = Color.FromArgb(240,242,216);
+                  bar.TitleBackColorStart = Color.FromArgb(222,204,178);
+                  bar.TitleBackColorEnd = Color.FromArgb(140,107,60);
+                  bar.TitleForeColor = Color.FromArgb(246, 241, 234);
+                  bar.TitleForeColorHot = Color.FromArgb(255, 255, 255);
+               }
+               foreach (ExplorerBarItem item in bar.Items)
+               {
+                  if
+                   (typeof(ExplorerBarItemWithText).IsAssignableFrom(item.GetTyp
+                  e()))
+                  {
+                     ExplorerBarItemWithText textItem =
+                      (ExplorerBarItemWithText) item;
+                     textItem.ForeColor = bar.TitleBackColorEnd;
+                     textItem.ForeColorHot = bar.TitleBackColorStart;
+                  }
+               }
+            }
+         }
+         else
+         {
+            acclExplorerBar1.BackColorStart = Color.Empty;
+            acclExplorerBar1.BackColorEnd = Color.Empty;            
+            foreach (ExplorerBar bar in acclExplorerBar1.Bars)
+            {
+               bar.BackColor = Color.Empty;
+               bar.TitleBackColorStart = Color.Empty;
+               bar.TitleBackColorEnd = Color.Empty;
+               bar.TitleForeColor = Color.Empty;
+               bar.TitleForeColorHot = Color.Empty;               
+               foreach (ExplorerBarItem item in bar.Items)
+               {
+                  if
+                   (typeof(ExplorerBarItemWithText).IsAssignableFrom(item.GetTyp
+                  e()))
+                  {
+                     ExplorerBarItemWithText textItem =
+                      (ExplorerBarItemWithText) item;
+                     textItem.ForeColor = Color.Empty;
+                     textItem.ForeColorHot = Color.Empty;
+                  }
+               }
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Tell the control whether bar state changes should be animated.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;Check Box that was clicked&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used.&lt;/param&gt;
+      private void chkAnimations_CheckedChanged(object sender, System.EventArgs
+       e)
+      {
+         acclExplorerBar1.AnimateStateChanges = chkAnimations.Checked;
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_demonstration.html">ExplorerBar Control Demonstration</a>&#160;.&#160;ExplorerBarDemo_frmTestExplorerBar.cs</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 18 April 2004</p></td><td></td></tr></table>
+</body></html>

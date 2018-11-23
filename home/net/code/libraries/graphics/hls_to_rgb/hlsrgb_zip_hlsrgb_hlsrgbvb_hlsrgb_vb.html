@@ -1,0 +1,305 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: HLSRGB_HLSRGBVB_HLSRGB.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: HLSRGB_HLSRGBVB_HLSRGB.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">Hue, Luminance and Saturation in .NET</a>&#160;.&#160;<a href="hlsrgb.html">Hlsrgb</a>&#160;.&#160;HLSRGB_HLSRGBVB_HLSRGB.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="hlsrgb.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Hlsrgb</a> (97K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:1434</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=1434&type=zip&title=hlsrgb_2ezip_5fhlsrgb_5fhlsrgbvb_5fhlsrgb.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Dec 2002<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: HLSRGB_HLSRGBVB_HLSRGB.vb</h1><pre>Imports System.Drawing
+
+Namespace vbAccelerator.Components.VB.Drawing
+
+    Public Class HLSRGB
+        Private m_red As Byte = 0
+        Private m_green As Byte = 0
+        Private m_blue As Byte = 0
+
+        Private m_hue As Double = 0
+        Private m_luminance As Double = 0
+        Private m_saturation As Double = 0
+
+        Public Property Red() As Byte
+            Get
+                Return m_red
+            End Get
+            Set(ByVal Value As Byte)
+                m_red = Value
+                ToHLS()
+            End Set
+        End Property
+
+        Public Property Green() As Byte
+            Get
+                Return m_green
+            End Get
+            Set(ByVal Value As Byte)
+                m_green = Value
+                ToHLS()
+            End Set
+        End Property
+
+        Public Property Blue() As Byte
+            Get
+                Return m_blue
+            End Get
+            Set(ByVal Value As Byte)
+                m_blue = Value
+                ToHLS()
+            End Set
+        End Property
+
+        Public Property Luminance() As Double
+            Get
+                Return m_luminance
+            End Get
+            Set(ByVal Value As Double)
+                If ((Value &lt; 0.0F) Or (Value &gt; 1.0F)) Then
+                    Throw New ArgumentOutOfRangeException("Luminance",
+                     "Luminance must be between 0.0 and 1.0")
+                End If
+                m_luminance = Value
+                ToRGB()
+            End Set
+        End Property
+
+        Public Property Hue() As Double
+            Get
+                Return m_hue
+            End Get
+            Set(ByVal Value As Double)
+                If ((Value &lt; 0.0F) Or (Value &gt; 360.0F)) Then
+                    Throw New ArgumentOutOfRangeException("Hue", "Hue must be
+                     between 0.0 and 360.0")
+                End If
+                m_hue = Value
+                ToRGB()
+            End Set
+        End Property
+
+        Public Property Saturation() As Double
+            Get
+                Return m_saturation
+            End Get
+            Set(ByVal Value As Double)
+                If ((Value &lt; 0.0F) Or (Value &gt; 1.0F)) Then
+                    Throw New ArgumentOutOfRangeException("Saturation",
+                     "Saturation must be between 0.0 and 1.0")
+                End If
+                m_saturation = Value
+                ToRGB()
+            End Set
+        End Property
+
+        Public Property Color() As Color
+            Get
+                Dim c As Color = Color.FromArgb(m_red, m_green, m_blue)
+                Return c
+            End Get
+            Set(ByVal Value As Color)
+                m_red = Value.R
+                m_green = Value.G
+                m_blue = Value.B
+                ToHLS()
+            End Set
+        End Property
+
+        Public Sub LightenColor(ByVal lightenBy As Double)
+            m_luminance *= (1.0F + lightenBy)
+            If (m_luminance &gt; 1.0F) Then
+                m_luminance = 1.0F
+            End If
+            ToRGB()
+        End Sub
+
+        Public Sub DarkenColor(ByVal darkenBy As Double)
+            m_luminance *= darkenBy
+            ToRGB()
+        End Sub
+
+
+        Public Sub New(ByVal c As Color)
+            m_red = c.R
+            m_green = c.G
+            m_blue = c.B
+            ToHLS()
+        End Sub
+
+        Public Sub New(ByVal hue As Double, ByVal luminance As Double, ByVal
+         saturation As Double)
+            If ((saturation &lt; 0.0F) Or (saturation &gt; 1.0F)) Then
+                Throw New ArgumentOutOfRangeException("Saturation", "Saturation
+                 must be between 0.0 and 1.0")
+            End If
+            If ((hue &lt; 0.0F) Or (hue &gt; 360.0F)) Then
+                Throw New ArgumentOutOfRangeException("Hue", "Hue must be
+                 between 0.0 and 360.0")
+            End If
+            If ((luminance &lt; 0.0F) Or (luminance &gt; 1.0F)) Then
+                Throw New ArgumentOutOfRangeException("Luminance", "Luminance
+                 must be between 0.0 and 1.0")
+            End If
+            m_hue = hue
+            m_luminance = luminance
+            m_saturation = saturation
+            ToRGB()
+        End Sub
+
+        Public Sub New(ByVal red As Byte, ByVal green As Byte, ByVal blue As
+         Byte)
+            m_red = red
+            m_green = green
+            m_blue = blue
+        End Sub
+
+        Public Sub New(ByVal hlsrgb As HLSRGB)
+            m_red = hlsrgb.Red
+            m_blue = hlsrgb.Blue
+            m_green = hlsrgb.Green
+            m_luminance = hlsrgb.Luminance
+            m_hue = hlsrgb.Hue
+            m_saturation = hlsrgb.Saturation
+        End Sub
+
+        Public Sub New()
+
+        End Sub
+
+        Private Sub ToHLS()
+            Dim minval As Byte = Math.Min(m_red, Math.Min(m_green, m_blue))
+            Dim maxval As Byte = Math.Max(m_red, Math.Max(m_green, m_blue))
+
+            Dim mdiff As Double = (maxval * 1.0 - minval * 1.0)
+            Dim msum As Double = (maxval * 1.0 + minval * 1.0)
+
+            m_luminance = msum / 510.0F
+
+            If (maxval = minval) Then
+                m_saturation = 0.0F
+                m_hue = 0.0F
+            Else
+                Dim rnorm As Double = (maxval - m_red) / mdiff
+                Dim gnorm As Double = (maxval - m_green) / mdiff
+                Dim bnorm As Double = (maxval - m_blue) / mdiff
+
+                If (m_luminance &lt;= 0.5F) Then
+                    m_saturation = (mdiff / msum)
+                Else
+                    m_saturation = (mdiff / (510.0F - msum))
+                End If
+
+                If (m_red = maxval) Then
+                    m_hue = 60.0F * (6.0F + bnorm - gnorm)
+                End If
+                If (m_green = maxval) Then
+                    m_hue = 60.0F * (2.0F + rnorm - bnorm)
+                End If
+                If (m_blue = maxval) Then
+                    m_hue = 60.0F * (4.0F + gnorm - rnorm)
+                End If
+                If (m_hue &gt; 360.0F) Then
+                    m_hue = m_hue - 360.0F
+                End If
+            End If
+        End Sub
+
+        Private Sub ToRGB()
+            If (m_saturation = 0.0) Then
+                m_red = CByte(m_luminance * 255.0F)
+                m_green = m_red
+                m_blue = m_red
+            Else
+                Dim rm1 As Double
+                Dim rm2 As Double
+
+                If (m_luminance &lt;= 0.5F) Then
+                    rm2 = m_luminance + m_luminance * m_saturation
+                Else
+                    rm2 = m_luminance + m_saturation - m_luminance *
+                     m_saturation
+                End If
+                rm1 = 2.0F * m_luminance - rm2
+                m_red = ToRGB1(rm1, rm2, m_hue + 120.0F)
+                m_green = ToRGB1(rm1, rm2, m_hue)
+                m_blue = ToRGB1(rm1, rm2, m_hue - 120.0F)
+            End If
+        End Sub
+
+        Private Function ToRGB1(ByVal rm1 As Double, ByVal rm2 As Double, ByVal
+         rh As Double) As Byte
+            If (rh &gt; 360.0F) Then
+                rh -= 360.0F
+            ElseIf (rh &lt; 0.0F) Then
+                rh += 360.0F
+            End If
+
+            If (rh &lt; 60.0F) Then
+                rm1 = rm1 + (rm2 - rm1) * rh / 60.0F
+            ElseIf (rh &lt; 180.0F) Then
+                rm1 = rm2
+            ElseIf (rh &lt; 240.0F) Then
+                rm1 = rm1 + (rm2 - rm1) * (240.0F - rh) / 60.0F
+            End If
+
+            ToRGB1 = CByte(rm1 * 255)
+        End Function
+
+
+    End Class
+
+End Namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">Hue, Luminance and Saturation in .NET</a>&#160;.&#160;<a href="hlsrgb.html">Hlsrgb</a>&#160;.&#160;HLSRGB_HLSRGBVB_HLSRGB.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

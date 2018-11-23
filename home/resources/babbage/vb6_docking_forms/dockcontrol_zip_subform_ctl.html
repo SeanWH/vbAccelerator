@@ -1,0 +1,1270 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SubForm.ctl</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SubForm.ctl" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;SubForm.ctl</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="dockcontrol.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />DockControl</a> (190K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12483</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12483&type=zip&title=dockcontrol_2ezip_5fsubform.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Mark Grimes</a></p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing Without The Crashes</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SubForm.ctl</h1><pre>VERSION 5.00
+Begin VB.UserControl SubForm 
+   Appearance      =   0  'Flat
+   CanGetFocus     =   0   'False
+   ClientHeight    =   2235
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5370
+   DrawStyle       =   6  'Inside Solid
+   EditAtDesignTime=   -1  'True
+   BeginProperty Font 
+      Name            =   "Tahoma"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
+   ForeColor       =   &amp;H80000009&amp;
+   ForwardFocus    =   -1  'True
+   MousePointer    =   1  'Arrow
+   ScaleHeight     =   149
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   358
+   Begin VB.Menu SFPM 
+      Caption         =   "SfPopMenu"
+      Begin VB.Menu PmCommandHide 
+         Caption         =   "Hide"
+      End
+      Begin VB.Menu PmCommandMax 
+         Caption         =   "Maximize"
+         Index           =   0
+      End
+      Begin VB.Menu PmCommandMax 
+         Caption         =   "Restore"
+         Index           =   1
+         Visible         =   0   'False
+      End
+      Begin VB.Menu PMempty0 
+         Caption         =   "-"
+      End
+      Begin VB.Menu PmCommandTile 
+         Caption         =   "Tile Dock"
+         Index           =   0
+      End
+      Begin VB.Menu PmCommandTile 
+         Caption         =   "Tile All"
+         Index           =   1
+      End
+      Begin VB.Menu PMempty1 
+         Caption         =   "-"
+      End
+      Begin VB.Menu UnDock 
+         Caption         =   "UnDock"
+      End
+   End
+   Begin VB.Menu FFPM 
+      Caption         =   "FfPopMenu"
+      Begin VB.Menu FmCommandHide 
+         Caption         =   "Hide"
+         Index           =   1
+      End
+      Begin VB.Menu FMempty0 
+         Caption         =   "-"
+      End
+      Begin VB.Menu DockIt 
+         Caption         =   "Dock"
+      End
+   End
+End
+Attribute VB_Name = "SubForm"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+
+Implements ISubclass
+Private m_emr As EMsgResponse
+
+Private m_SubClassed    As Boolean       'Subclassed State
+
+Private NcRect          As RECT
+Private BtRect          As RECT
+Private BtPressed       As Boolean
+
+
+Dim m_Active As Boolean
+Dim m_Caption As String
+Dim m_MaxState As Boolean
+
+Dim m_FrmHwnd As Long
+Dim m_DockPos As Integer
+Dim m_Pos As Integer
+Dim m_OrgPos As Integer
+Dim m_IsHidden As Boolean
+Dim m_CapHeight As Long
+
+Private Const InnerBs = &amp;H2 Or &amp;H8
+Private Const OuterBs = &amp;H1 Or &amp;H4
+
+Public Event Activate()
+Public Event DeActivate()
+Public Event BeginDrag(Cancel As Boolean)
+Public Event EndDrag()
+
+Public Enum CaptionStyles
+ CsDefault = &amp;H0
+ CsGraduated = &amp;H1
+End Enum
+
+Dim m_CaptionStyle As Integer
+Dim m_CaptionColor1 As OLE_COLOR
+Dim m_CaptionColor2 As OLE_COLOR
+
+Dim m_IsDocked As Boolean
+
+Private Enum EItemAreas
+ EINOITEM = &amp;H0
+ EICAPTION = &amp;H2
+ EIHIDEBUTTON = &amp;H5
+End Enum
+
+Private me_Item As EItemAreas
+
+Public UdLeft   As Long
+Attribute UdLeft.VB_VarMemberFlags = "40"
+Public UdTop    As Long
+Attribute UdTop.VB_VarMemberFlags = "40"
+Public UdWidth  As Long
+Attribute UdWidth.VB_VarMemberFlags = "40"
+Public UdHeight As Long
+Attribute UdHeight.VB_VarMemberFlags = "40"
+
+Public Property Get CaptionColor2() As OLE_COLOR
+ CaptionColor2 = m_CaptionColor2
+End Property
+
+Public Property Get CaptionColor1() As OLE_COLOR
+ CaptionColor1 = m_CaptionColor1
+End Property
+Public Property Let CaptionColor1(ByVal New_CapColor As OLE_COLOR)
+ m_CaptionColor1 = New_CapColor
+ RefreshControl
+ 
+End Property
+
+
+Public Property Let CaptionColor2(ByVal New_CapColor As OLE_COLOR)
+ m_CaptionColor2 = New_CapColor
+ RefreshControl
+End Property
+Public Property Get CaptionStyle() As CaptionStyles
+ CaptionStyle = m_CaptionStyle
+End Property
+
+
+Public Property Let CaptionStyle(ByVal New_Style As CaptionStyles)
+ m_CaptionStyle = New_Style
+ RefreshControl
+End Property
+
+
+Public Property Get Docked() As Boolean
+    Docked = m_IsDocked
+End Property
+
+Public Property Let Docked(ByVal New_Value As Boolean)
+    m_IsDocked = New_Value
+End Property
+
+'WARNING! DO NOT REMOVE OR MODIFY THE FOLLOWING COMMENTED LINES!
+'MappingInfo=UserControl,UserControl,-1,ForeColor
+Public Property Get ForeColor() As OLE_COLOR
+    ForeColor = UserControl.ForeColor
+End Property
+
+Public Property Let ForeColor(ByVal New_ForeColor As OLE_COLOR)
+    UserControl.ForeColor() = New_ForeColor
+    Cls
+    RefreshControl
+End Property
+
+
+Public Property Let AutoRefresh(ByVal New_Value As Boolean)
+Attribute AutoRefresh.VB_MemberFlags = "40"
+ 
+ If New_Value Then
+  
+  UserControl.AutoRedraw = New_Value
+  Cls
+  RefreshControl
+ 
+ Else
+  UserControl.AutoRedraw = New_Value
+ End If
+ 
+End Property
+
+Private Sub DrawButton(ByVal State As Boolean)
+  
+ Dim lStyle As Long
+ Dim lhdc   As Long
+ 
+ If State Then lStyle = DFCS_PUSHED
+ 
+ If m_IsDocked Then
+  DrawFrameControl UserControl.hdc, BtRect, DFC_CAPTION, DFCS_CAPTIONCLOSE Or
+   lStyle
+ Else
+  lhdc = GetDCEx(ByVal FrmHwnd, 0, DCX_WINDOW Or DCX_PARENTCLIP)
+  DrawFrameControl lhdc, BtRect, DFC_CAPTION, DFCS_CAPTIONCLOSE Or lStyle
+  ReleaseDC hwnd, lhdc
+ End If
+ 
+ 
+ 
+End Sub
+
+Public Sub Hide()
+     Dim N As Integer
+     On Local Error Resume Next
+      
+     If Not SubFormsLoaded Or IsHidden And m_IsDocked Then Exit Sub
+      
+     If Not m_IsDocked Then
+      SendMessage m_SubForm(Extender.Index).hwnd, SF_ACTIVATE, 0, 0
+      m_MdiActive = 0
+      m_Form(Extender.Index).Visible = False
+      For N = 1 To m_Form.Count
+       If (IsWindowVisible(m_Form(N).hwnd) = 1) And (Not m_SubForm(N).Docked)
+        Then
+        Exit Sub
+       End If
+      Next
+      
+     Else
+      SendMessage m_SubForm(Extender.Index).hwnd, SF_ACTIVATE, 0, 0
+      m_MdiActive = 0
+      Call SetRedraw(AppObj.hwnd, False)
+      
+      If m_MaxState Then
+       MaxState = False
+      End If
+      
+      Extender.Visible = False
+      IsHidden = True
+      m_SubDock(DockPos).HideChild Pos
+      Call SetRedraw(AppObj.hwnd, True)
+            
+      If m_SubDock(DockPos).VisibleCount(True) = 0 Then
+        m_SubDock(DockPos).UnMaxChild
+      End If
+     
+     End If
+     
+     
+     If Not DockService.ClientActiveForm Is Nothing Then
+      PostMessage DockService.ClientActiveForm.hwnd, WM_SETFOCUS, 0, 0
+     Else
+      PostMessage AppObj.hwnd, WM_SETFOCUS, 0, 0
+     End If
+      
+     
+End Sub
+
+Private Sub NcPaint(ByVal State As Boolean)
+    Dim Trect As RECT
+    
+       
+    If AppObj Is Nothing Then
+     DrawCaption UserControl.hwnd, UserControl.hdc, NcRect, 8
+    ElseIf State = False Or (m_AppInactive And Not m_MouseActivated) Or
+     AppObj.Enabled = False Or m_ActiveToolIndx &lt;&gt; 0 Then
+     DrawCaption UserControl.hwnd, UserControl.hdc, NcRect, 8
+    Else
+     If m_CaptionStyle = 0 Then
+      DrawCaption UserControl.hwnd, UserControl.hdc, NcRect, 9
+     Else
+      DrawGraduatedBackdrop UserControl.hdc, NcRect, True, m_CaptionColor1,
+       m_CaptionColor2, vbInactiveTitleBar, vbInactiveTitleBar, True
+     End If
+    End If
+  
+    Trect = NcRect
+    Trect.Top = Trect.Top
+    Trect.Right = NcRect.Right - m_CapHeight
+    Trect.Left = Trect.Left + 2
+    
+    If (NcRect.Right - m_CapHeight - (NcRect.Left + 2)) &lt;
+     UserControl.TextWidth(m_Caption) Then
+     Extender.ToolTipText = m_Caption
+    Else
+     Extender.ToolTipText = ""
+    End If
+    
+    Call DrawText(UserControl.hdc, m_Caption, Len(m_Caption), Trect, DT_FLAGS)
+    
+    DrawButton False
+    
+    GetClientRect UserControl.hwnd, Trect
+    
+    If ScaleHeight &gt;= m_CapHeight + 8 Then
+     Trect.Top = m_CapHeight + 4
+    Else
+     Trect.Top = ScaleHeight - 4
+    End If
+    
+    DrawEdge UserControl.hdc, Trect, InnerBs, BF_RECT
+    
+End Sub
+
+Private Sub RefreshControl()
+ 
+      BtRect.Left = ScaleWidth - (m_CapHeight - 1)
+      BtRect.Top = 1
+      BtRect.Right = ScaleWidth - 1
+      BtRect.Bottom = (m_CapHeight) + 2
+      InflateRect BtRect, 0, -1
+            
+      NcRect.Left = 0
+      NcRect.Top = 0
+      NcRect.Right = ScaleWidth
+      NcRect.Bottom = NcRect.Top + m_CapHeight + 2
+  
+      If Not AppObj Is Nothing Then
+       Call NcPaint(m_Active)
+      Else
+       Call NcPaint(False)
+      End If
+   
+   
+ 
+End Sub
+
+Public Sub SetFocus()
+ 
+ Dim AWs As Long
+ 
+ 
+ If m_IsDocked Then
+  
+  SendMessage UserControl.hwnd, SF_ACTIVATE, 1, 0
+  
+ Else
+        
+    If m_ActiveSubIndx &lt;&gt; 0 And m_ActiveToolIndx = 0 Then
+     m_ActiveToolIndx = Extender.Index
+     If m_ActiveSubWnd &lt;&gt; UserControl.hwnd And m_ActiveSubWnd &lt;&gt; 0 Then
+      SendMessage m_ActiveSubWnd, SF_NCPAINT, 0, 0
+     End If
+    End If
+    
+    SendMessage m_MdiChwnd, WM_MDIACTIVATE, m_FrmHwnd, 0
+   
+    m_ActiveSubWnd = UserControl.hwnd
+    m_ActiveToolIndx = Extender.Index
+    m_Active = True
+    
+ End If
+ 
+End Sub
+
+Private Sub SetUdPwls()
+    Dim Wr As RECT
+    
+    GetWindowRect m_FrmHwnd, Wr
+    If Not m_IsDocked Then
+     UdLeft = Wr.Left
+     UdTop = Wr.Top
+     UdWidth = Wr.Right - Wr.Left
+     UdHeight = Wr.Bottom - Wr.Top
+    End If
+    
+End Sub
+
+Public Sub Show(Optional ShowContainer As Boolean = True, Optional Maximize As
+ Boolean = False)
+         
+    
+   If (Not SubFormsLoaded) Or (Not IsHidden And m_IsDocked) Then Exit Sub
+    
+    
+   If Not m_IsDocked Then
+    m_Form(Extender.Index).Visible = True
+    Me.SetFocus
+    m_Active = True
+   Else
+    MoveWindow m_FrmHwnd, 2, m_CapHeight + 6, (ScaleWidth - 4),
+     Abs((ScaleHeight - (m_CapHeight + 7))), 0
+    Call SetRedraw(AppObj.hwnd, False)
+    
+    m_SubDock(DockPos).UnMaxChild
+        
+    IsHidden = False
+    m_SubDock(DockPos).ShowChild
+    
+    If Maximize Then
+     m_SubDock(DockPos).MaxChild OrgPos
+    End If
+    
+    Call SetRedraw(AppObj.hwnd, True)
+    Call SetRedraw(m_MdiChwnd, False)
+    TagDock = DockPos
+    AutoSize
+    TagDock = 0
+    m_Active = True
+    
+    Call SetRedraw(m_SubDock(DockPos).hwnd, False)
+    
+    Extender.Visible = True
+    If ShowContainer Then
+     If m_SubDock(DockPos).Visible = False Then m_SubDock(DockPos).Visible =
+      True
+     DoEvents
+     PostMessage UserControl.hwnd, SF_ACTIVATE, 1, 0
+   
+    End If
+    
+    Call SetRedraw(m_SubDock(DockPos).hwnd, True)
+    Call SetRedraw(m_MdiChwnd, True)
+   End If
+   
+    
+End Sub
+
+
+Private Sub DockIt_Click()
+      On Local Error Resume Next
+      
+      Dim m_ActiveObject As Object
+      Set m_ActiveObject = m_Form(Extender.Index).ActiveControl
+      
+      If m_ActiveSubIndx &lt;&gt; 0 Then
+       SendMessage m_SubForm(m_ActiveSubIndx).hwnd, SF_ACTIVATE, 0, 0
+      End If
+      
+      SendMessage UserControl.hwnd, SF_ACTIVATE, 0, 0
+      Me.Hide
+      m_IsDocked = True
+      
+      Call SetDockWindowStyle(FrmHwnd, UserControl.hwnd)
+      Me.Show
+            
+      If Not m_ActiveObject Is Nothing Then m_ActiveObject.SetFocus
+      m_Form(Extender.Index).Refresh
+      
+End Sub
+
+Private Sub FmCommandHide_Click(Index As Integer)
+ Hide
+End Sub
+
+Private Property Let ISubclass_MsgResponse(ByVal RHS As SSubTimer.EMsgResponse)
+
+End Property
+
+Private Property Get ISubclass_MsgResponse() As SSubTimer.EMsgResponse
+    
+    Select Case CurrentMessage
+     Case WM_NCPAINT, WM_NCLBUTTONDOWN, WM_NCRBUTTONDOWN, WM_NCLBUTTONUP,
+      WM_NCRBUTTONUP, WM_NCHITTEST
+      ISubclass_MsgResponse = emrConsume
+     Case Else
+      ISubclass_MsgResponse = emrPreprocess
+    End Select
+    
+End Property
+
+Private Function ISubclass_WindowProc(ByVal hwnd As Long, ByVal iMsg As Long,
+ ByVal wParam As Long, ByVal lParam As Long) As Long
+    On Local Error Resume Next
+    
+    Dim Ms As POINTAPI
+    Static BtAction As Boolean
+    Dim Cancel As Boolean
+    Dim lhdc As Long
+    Dim hrgn  As Long
+    Dim NcR As RECT
+    Dim NcLp As POINTAPI
+    Dim m_CapFntOld As Long
+    Dim ItemOver As Long
+    Dim hBr As Long
+    
+    If hwnd = m_FrmHwnd Then
+     
+     If m_IsDocked And WM_MOUSEACTIVATE &lt;&gt; iMsg Then
+      ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, wParam, lParam)
+      Exit Function
+     End If
+     
+     Select Case iMsg
+       Case WM_SIZE, WM_MOVE
+        Call SetUdPwls
+        
+       Case WM_MOUSEACTIVATE
+        If m_AppInactive Then m_MouseActivated = True
+        
+       If m_IsDocked Then
+          
+          If Not m_Active Or m_ActiveToolIndx &lt;&gt; 0 Or m_AppInactive Then
+           SendMessage UserControl.hwnd, SF_ACTIVATE, 1, 0
+          Else
+           Call NcPaint(True)
+          End If
+          ISubclass_WindowProc = 1
+        Else
+                    
+          If m_Active = False Or m_AppInactive Then
+           Me.SetFocus
+          End If
+          
+        End If
+        
+        
+        
+       Case WM_NCPAINT, WM_ACTIVATE
+                
+         GetClientRect FrmHwnd, NcRect
+         
+         NcRect.Left = 4
+         NcRect.Top = 5
+         NcRect.Right = NcRect.Right + 4
+         NcRect.Bottom = NcRect.Top + m_CapHeight + 1
+         
+         lhdc = GetWindowDC(m_FrmHwnd)
+                  
+         If iMsg = WM_ACTIVATE Then
+          
+          If (UdWidth = 0) And (UdLeft = 0) And (UdHeight = 0) And (UdTop = 0)
+           Then
+           Call SetUdPwls
+          End If
+          
+          If (LoWord(wParam) = 1) Or (LoWord(wParam) = 2) Then
+           m_Active = True
+           
+            If (LoWord(wParam) = 1) And m_ModalHwnd &lt;&gt; 0 Then
+             If IsWindowEnabled(AppObj.hwnd) = 1 Then
+               m_ModalHwnd = 0
+               SendMessage AppObj.hwnd, WM_NCACTIVATE, 1, 0
+             End If
+            End If
+           
+          ElseIf (LoWord(wParam) = 0) Then
+           m_Active = False
+           If (lParam &lt;&gt; 0) And IsWindowEnabled(AppObj.hwnd) = 0 Then
+            PostMessage AppObj.hwnd, WM_NCACTIVATE, 0, 0
+            m_ModalHwnd = lParam
+           End If
+           
+          End If
+         End If
+       
+         NcR = NcRect
+         
+         NcR.Bottom = NcR.Top
+         NcR.Top = NcR.Top - 1
+                  
+         GetWindowRect hwnd, NcR
+                 
+         'Top Cap Frame
+         hrgn = CreateRectRgn(NcR.Left, NcR.Top, NcR.Right, NcR.Top + 4)
+         ExtSelectClipRgn lhdc, hrgn, RGN_XOR
+         ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, hrgn, lParam)
+       
+         'Left Cap Frame
+         hrgn = CreateRectRgn(NcR.Left, NcR.Top + 4, NcR.Left + 4, NcR.Top +
+          m_CapHeight + 6)
+         ExtSelectClipRgn lhdc, hrgn, RGN_XOR
+         ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, hrgn, lParam)
+       
+         'Right Cap Frame
+         hrgn = CreateRectRgn(NcR.Right - 4, NcR.Top + 4, NcR.Right, NcR.Top +
+          m_CapHeight + 6)
+         ExtSelectClipRgn lhdc, hrgn, RGN_XOR
+         ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, hrgn, lParam)
+       
+         'Bottom Client Frame
+         hrgn = CreateRectRgn(NcR.Left, NcR.Top + m_CapHeight + 6, NcR.Right,
+          NcR.Bottom)
+         ExtSelectClipRgn lhdc, hrgn, RGN_XOR
+         ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, hrgn, lParam)
+         
+         If m_CaptionStyle = 0 Then
+          DrawGraduatedBackdrop lhdc, NcRect, m_Active, vbActiveTitleBar,
+           vbActiveTitleBar, vbInactiveTitleBar, vbInactiveTitleBar
+         Else
+          DrawGraduatedBackdrop lhdc, NcRect, m_Active, m_CaptionColor1,
+           m_CaptionColor2, vbInactiveTitleBar, vbInactiveTitleBar, True
+         End If
+         
+         NcR = NcRect
+         NcR.Right = NcR.Right - m_CapHeight
+         NcR.Left = NcR.Left + 2
+         SetBkMode lhdc, TRANSPARENT
+         SetTextColor lhdc, GetSysColor(COLOR_CAPTIONTEXT)
+         m_CapFntOld = SelectObject(lhdc, m_CapFnt)
+       
+         Call DrawText(lhdc, m_Caption, Len(m_Caption), NcR, DT_FLAGS)
+       
+         SelectObject lhdc, m_CapFntOld
+       
+         BtRect.Left = NcRect.Right - (m_CapHeight - 1)
+         BtRect.Top = 5
+         BtRect.Right = NcRect.Right - 1
+         BtRect.Bottom = NcRect.Bottom
+         InflateRect BtRect, 0, -1
+       
+         DrawFrameControl lhdc, BtRect, DFC_CAPTION, DFCS_CAPTIONCLOSE
+             
+         ReleaseDC hwnd, lhdc
+             
+       Case WM_NCHITTEST, WM_MOUSEMOVE
+        ItemOver = GetWinItem()
+       
+        If (ItemOver &lt;&gt; EINOITEM) Then
+          ISubclass_WindowProc = ItemOver
+        Else
+          ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, wParam, lParam)
+        End If
+         
+        If (me_Item &lt;&gt; EINOITEM) Then
+         If (ItemOver &lt;&gt; me_Item) Then
+           DrawButton False: BtPressed = False
+           If (GetAsyncKeyState(VK_LBUTTON) = 0) Then
+            me_Item = EINOITEM
+           End If
+          Else
+           If Not BtPressed Then DrawButton True: BtPressed = True
+          End If
+        End If
+        
+       Case WM_NCLBUTTONDOWN
+        MousePos.x = LoWord(lParam): MousePos.y = HiWord(lParam)
+        DoEvents
+        
+        Select Case GetWinItem()
+         Case EIHIDEBUTTON
+          DrawButton True: BtPressed = True
+          me_Item = EIHIDEBUTTON
+          SetCapture m_FrmHwnd
+         
+         Case EICAPTION
+          me_Item = EINOITEM
+          DoEvents
+          RaiseEvent BeginDrag(Cancel)
+    
+          If Not Cancel And m_Active Then
+           InstallHook DockService, WH_KEYBOARD
+           NcMouseDown Extender.Index
+          End If
+          
+         Case Else
+          me_Item = EINOITEM
+        End Select
+        
+        If (me_Item &lt;&gt; EINOITEM) Then
+         If (me_Item = EICAPTION) Then
+          ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, wParam, lParam)
+         Else
+          ISubclass_WindowProc = me_Item
+         End If
+        Else
+         ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, wParam, lParam)
+        End If
+           
+       Case WM_NCLBUTTONUP, WM_LBUTTONUP
+         
+          ReleaseCapture
+         If (me_Item &lt;&gt; EINOITEM) Then
+          If GetWinItem() = EIHIDEBUTTON Then
+           BtPressed = False
+           DrawButton False
+           Hide
+          End If
+         End If
+         
+         me_Item = EINOITEM
+         ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, wParam, lParam)
+       
+       Case WM_NCLBUTTONDBLCLK
+        If GetWinItem() = EICAPTION Then
+         DockIt_Click
+        End If
+        
+       Case WM_NCRBUTTONUP
+        If GetWinItem() = EICAPTION Then
+         PopupMenu FFPM
+         me_Item = EINOITEM
+        End If
+        
+        ISubclass_WindowProc = CallOldWindowProc(hwnd, iMsg, wParam, lParam)
+        
+     End Select
+      
+    
+    ElseIf hwnd = UserControl.hwnd Then
+
+'***************************Subform Msgs*************************
+     Select Case iMsg
+     
+      Case SF_ACTIVATE
+      
+        If m_ActiveSubWnd &lt;&gt; UserControl.hwnd And m_ActiveSubWnd &lt;&gt; 0 Then
+         SendMessage m_ActiveSubWnd, SF_ACTIVATE, 0, 0
+        End If
+      
+        If wParam = 0 Then
+         m_Active = False
+         m_ActiveSubWnd = 0
+         
+         If m_IsDocked Then
+          Call NcPaint(False)
+          m_ActiveSubIndx = 0
+         Else
+          m_ActiveToolIndx = 0
+         End If
+         
+         m_MdiActive = 0
+         
+         RaiseEvent DeActivate
+        ElseIf wParam = 1 Then
+         If Not m_IsDocked Then Exit Function
+         m_Active = True
+         SendMessage UserControl.hwnd, SF_NCPAINT, 1, 0
+         m_ActiveSubWnd = UserControl.hwnd
+         m_ActiveSubIndx = Extender.Index
+                  
+         If IsWindowVisible(m_Form(m_ActiveSubIndx).hwnd) = 1 And
+          IsWindowEnabled(m_Form(m_ActiveSubIndx).hwnd) = 1 Then
+           m_Form(m_ActiveSubIndx).SetFocus
+           If Not m_Form(m_ActiveSubIndx).ActiveControl Is Nothing Then
+            m_Form(m_ActiveSubIndx).ActiveControl.SetFocus
+           End If
+           SendMessage m_MdiChwnd, WM_MDIACTIVATE,
+            m_Form(m_ActiveSubIndx).hwnd, 0
+           RaiseEvent Activate
+           
+         End If
+       
+        End If
+      
+      Case SF_NCPAINT
+        If wParam = 0 Then
+         Call NcPaint(False)
+        Else
+         Call NcPaint(True)
+        End If
+       
+      Case WM_WINDOWPOSCHANGED
+        If m_FrmHwnd &lt;&gt; 0 Then
+         MoveWindow m_FrmHwnd, 2, m_CapHeight + 6, (ScaleWidth - 4),
+          Abs((ScaleHeight - (m_CapHeight + 7))), 1
+        End If
+      
+        RefreshControl
+          
+      Case WM_MOUSEACTIVATE
+              
+      Case WM_LBUTTONDOWN, WM_MBUTTONDOWN, WM_RBUTTONDOWN
+        If m_AppInactive Then m_MouseActivated = True
+        
+        MousePos.x = LoWord(lParam): MousePos.y = HiWord(lParam)
+        ClientToScreen UserControl.hwnd, MousePos
+        
+        If m_IsDocked Then
+         If (Not m_Active) Or (m_ActiveToolIndx &lt;&gt; 0) Or (m_AppInactive) Then
+          SendMessage UserControl.hwnd, SF_ACTIVATE, 1, 0
+         End If
+        End If
+         
+        If iMsg = WM_LBUTTONDOWN Then
+         Select Case GetWinItem()
+          Case EIHIDEBUTTON
+           DrawButton True
+           BtPressed = True
+           BtAction = True
+         
+          Case EICAPTION
+           DoEvents
+           RaiseEvent BeginDrag(Cancel)
+          
+           If Not Cancel And m_Active Then
+            InstallHook DockService, WH_KEYBOARD
+            NcMouseDown Extender.Index
+           End If
+        
+         End Select
+        End If
+        
+      Case WM_MOUSEMOVE
+        ItemOver = GetWinItem()
+             
+        If wParam = vbLeftButton Then
+         If BtAction Then
+          If BtPressed And ItemOver = EINOITEM Then
+           DrawButton False
+           BtPressed = False
+          ElseIf Not BtPressed And ItemOver = EIHIDEBUTTON Then
+           DrawButton True
+           BtPressed = True
+          End If
+         Else
+          If FormMoving &gt; 0 And UserControl.hwnd = GetCapture Then NcMouseMove
+           Extender.Index
+         End If
+               
+        End If
+      
+      Case WM_LBUTTONUP, WM_MBUTTONUP, WM_RBUTTONUP
+        ReleaseCapture
+               
+        If iMsg = WM_LBUTTONUP Then
+         
+         If BtPressed And BtAction And GetWinItem() = EIHIDEBUTTON Then
+          DrawButton False
+          Hide
+         Else
+          If FormMoving &lt; 2 Then Cancel = True
+          Call NcMouseUp(Extender.Index)
+          RemoveHook DockService, WH_KEYBOARD
+          If Not Cancel Then RaiseEvent EndDrag
+         End If
+        
+        ElseIf iMsg = WM_RBUTTONUP Then
+         If PtInRect(NcRect, Ms.x, Ms.y) = 1 Then
+          If m_SubDock(DockPos).VisibleCount(True) = 0 Then
+           PmCommandMax(0).Enabled = False
+           PmCommandMax(1).Enabled = False
+           PmCommandMax(0).Visible = True
+           PmCommandMax(1).Visible = False
+          Else
+           PmCommandMax(0).Enabled = True
+           PmCommandMax(1).Enabled = True
+          End If
+          PopupMenu SFPM
+         End If
+        
+        End If
+       
+        BtPressed = False
+        BtAction = False
+       
+      Case WM_LBUTTONDBLCLK
+      
+        If Not m_Active Then SendMessage UserControl.hwnd, SF_ACTIVATE, 1, 0
+        DoEvents
+      
+        If m_SubDock(DockPos).VisibleCount(True) &gt; 0 Then
+         If GetWinItem() = EICAPTION Then
+          MaxState = Not m_MaxState
+         End If
+        End If
+      
+     End Select
+     
+    
+    End If
+    
+    
+    
+End Function
+
+
+Private Function IWindowsHook_HookProc(ByVal eType As
+ vbalWinHook.EHTHookTypeConstants, ByVal nCode As Long, ByVal wParam As Long,
+ ByVal lParam As Long, bConsume As Boolean) As Long
+
+End Function
+
+Private Sub PmCommandHide_Click()
+ Hide
+End Sub
+
+Private Sub PmCommandMax_Click(Index As Integer)
+  
+ MaxState = Not m_MaxState
+ 
+End Sub
+
+Private Sub PmCommandTile_Click(Index As Integer)
+ Dim N As Integer
+ 
+ If Index = 0 Then
+  m_SubDock(DockPos).TileSubDock
+ Else
+  For N = vbAlignTop To vbAlignRight
+   If m_SubDock(N).Visible Then
+    m_SubDock(N).TileSubDock
+   End If
+  Next
+ End If
+ 
+End Sub
+
+Private Sub UnDock_Click()
+   On Local Error Resume Next
+   Dim m_ActiveObject As Object
+   Dim clp             As POINTAPI
+   Dim x As Long
+   Dim y As Long
+   Dim W As Long
+   Dim H As Long
+   
+   If (UdLeft = 0) And (UdTop = 0) And (UdWidth = 0) And (UdHeight = 0) Then
+    ClientToScreen AppObj.hwnd, clp
+    x = clp.x
+    y = clp.y
+    W = 168
+    H = 144
+   Else
+    x = UdLeft
+    y = UdTop
+    W = UdWidth
+    H = UdHeight
+   End If
+   
+   Set m_ActiveObject = m_Form(Extender.Index).ActiveControl
+   Me.Hide
+   m_IsDocked = False
+   SendMessage m_FrmHwnd, WM_SETFOCUS, 0, 0
+   SetToolWindowStyle m_FrmHwnd
+   MoveWindow m_FrmHwnd, x, y, W, H, 0
+   m_Form(Extender.Index).Visible = True
+   m_ActiveSubWnd = UserControl.hwnd
+   m_ActiveToolIndx = Extender.Index
+   DoEvents
+   If Not m_ActiveObject Is Nothing Then m_ActiveObject.SetFocus
+   m_Form(Extender.Index).Refresh
+   
+   
+End Sub
+
+Private Sub UserControl_InitProperties()
+  Extender.Visible = False
+  Extender.Name = "SubForm"
+  Extender.Index = 1
+  m_Caption = "SubForm(1) Control"
+  m_CapHeight = TextHeight("X")
+  m_CaptionColor1 = &amp;H0&amp;
+  m_CaptionColor2 = vbActiveTitleBar
+End Sub
+
+'WARNING! DO NOT REMOVE OR MODIFY THE FOLLOWING COMMENTED LINES!
+'MappingInfo=UserControl,UserControl,-1,hWnd
+Public Property Get hwnd() As Long
+Attribute hwnd.VB_Description = "Returns a handle (from Microsoft Windows) to
+ an object's window."
+    hwnd = UserControl.hwnd
+End Property
+
+Private Sub UserControl_Paint()
+   
+    RefreshControl
+   
+End Sub
+
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+ m_CapHeight = TextHeight("X")
+ If Not Ambient.UserMode Then m_Caption = "SubForm(1) Control"
+ 
+ Set Font = PropBag.ReadProperty("Font", Ambient.Font)
+ UserControl.ForeColor = PropBag.ReadProperty("ForeColor", &amp;H80000009)
+ m_CaptionColor1 = PropBag.ReadProperty("CaptionColor1", 0)
+ m_CaptionColor2 = PropBag.ReadProperty("CaptionColor2", vbActiveTitleBar)
+ m_CaptionStyle = PropBag.ReadProperty("CaptionStyle", 0)
+  
+End Sub
+
+
+'WARNING! DO NOT REMOVE OR MODIFY THE FOLLOWING COMMENTED LINES!
+'MappingInfo=UserControl,UserControl,-1,Font
+Public Property Get Font() As Font
+    Set Font = UserControl.Font
+End Property
+
+Public Property Set Font(ByVal New_Font As Font)
+    Set UserControl.Font = New_Font
+    m_CapHeight = TextHeight("X")
+    Cls
+    RefreshControl
+   
+End Property
+
+Private Sub UserControl_Resize()
+ If Ambient.UserMode = False Then
+  RefreshControl
+ End If
+ 
+End Sub
+
+Public Sub SubClassContainer()
+Attribute SubClassContainer.VB_MemberFlags = "40"
+ If Not m_SubClassed Then
+  m_SubClassed = True
+   
+  AttachMessage Me, UserControl.hwnd, WM_WINDOWPOSCHANGED
+  AttachMessage Me, UserControl.hwnd, SF_NCPAINT
+  AttachMessage Me, UserControl.hwnd, SF_ACTIVATE
+  
+  AttachMessage Me, UserControl.hwnd, WM_MOUSEACTIVATE
+  AttachMessage Me, UserControl.hwnd, WM_LBUTTONDOWN
+  AttachMessage Me, UserControl.hwnd, WM_LBUTTONUP
+  AttachMessage Me, UserControl.hwnd, WM_MBUTTONDOWN
+  AttachMessage Me, UserControl.hwnd, WM_MBUTTONUP
+  AttachMessage Me, UserControl.hwnd, WM_RBUTTONDOWN
+  AttachMessage Me, UserControl.hwnd, WM_RBUTTONUP
+  AttachMessage Me, UserControl.hwnd, WM_MOUSEMOVE
+  AttachMessage Me, UserControl.hwnd, WM_LBUTTONDBLCLK
+  
+  
+  AttachMessage Me, m_FrmHwnd, WM_NCPAINT
+  AttachMessage Me, m_FrmHwnd, WM_ACTIVATE
+  AttachMessage Me, m_FrmHwnd, WM_MOUSEACTIVATE
+  
+  AttachMessage Me, m_FrmHwnd, WM_NCHITTEST
+  AttachMessage Me, m_FrmHwnd, WM_MOUSEMOVE
+  AttachMessage Me, m_FrmHwnd, WM_NCLBUTTONDOWN
+  AttachMessage Me, m_FrmHwnd, WM_NCLBUTTONUP
+  AttachMessage Me, m_FrmHwnd, WM_LBUTTONUP
+  AttachMessage Me, m_FrmHwnd, WM_NCLBUTTONDBLCLK
+    
+  'We consume NCRBDOWN for NCRBUP to work for us
+  AttachMessage Me, m_FrmHwnd, WM_NCRBUTTONDOWN
+  AttachMessage Me, m_FrmHwnd, WM_NCRBUTTONUP
+  AttachMessage Me, m_FrmHwnd, WM_SIZE
+  AttachMessage Me, m_FrmHwnd, WM_MOVE
+  
+ End If
+End Sub
+
+
+Public Sub UnSubClassContainer()
+Attribute UnSubClassContainer.VB_MemberFlags = "40"
+ If m_SubClassed Then
+  m_SubClassed = False
+  
+  DetachMessage Me, UserControl.hwnd, WM_MOUSEACTIVATE
+  DetachMessage Me, UserControl.hwnd, WM_LBUTTONDOWN
+  DetachMessage Me, UserControl.hwnd, WM_LBUTTONUP
+  DetachMessage Me, UserControl.hwnd, WM_MBUTTONDOWN
+  DetachMessage Me, UserControl.hwnd, WM_MBUTTONUP
+  DetachMessage Me, UserControl.hwnd, WM_RBUTTONDOWN
+  DetachMessage Me, UserControl.hwnd, WM_RBUTTONUP
+  DetachMessage Me, UserControl.hwnd, WM_MOUSEMOVE
+  DetachMessage Me, UserControl.hwnd, WM_LBUTTONDBLCLK
+  
+  DetachMessage Me, UserControl.hwnd, SF_NCPAINT
+  DetachMessage Me, UserControl.hwnd, SF_ACTIVATE
+  DetachMessage Me, UserControl.hwnd, WM_WINDOWPOSCHANGED
+  
+  
+  DetachMessage Me, m_FrmHwnd, WM_NCPAINT
+  DetachMessage Me, m_FrmHwnd, WM_ACTIVATE
+  DetachMessage Me, m_FrmHwnd, WM_MOUSEACTIVATE
+  
+  DetachMessage Me, m_FrmHwnd, WM_NCHITTEST
+  DetachMessage Me, m_FrmHwnd, WM_MOUSEMOVE
+  DetachMessage Me, m_FrmHwnd, WM_NCLBUTTONDOWN
+  DetachMessage Me, m_FrmHwnd, WM_NCLBUTTONUP
+  DetachMessage Me, m_FrmHwnd, WM_LBUTTONUP
+  DetachMessage Me, m_FrmHwnd, WM_NCLBUTTONDBLCLK
+    
+  DetachMessage Me, m_FrmHwnd, WM_NCRBUTTONDOWN
+  DetachMessage Me, m_FrmHwnd, WM_NCRBUTTONUP
+  
+  DetachMessage Me, m_FrmHwnd, WM_SIZE
+  DetachMessage Me, m_FrmHwnd, WM_MOVE
+    
+ End If
+End Sub
+
+Private Function GetWinItem() As EItemAreas
+Dim Ms As POINTAPI
+Dim NcR As RECT
+   
+   GetWinItem = EINOITEM
+   
+   GetCursorPos Ms
+   
+   If m_IsDocked Then
+    ScreenToClient UserControl.hwnd, Ms
+   Else
+    GetWindowRect FrmHwnd, NcR
+    Ms.x = Ms.x - NcR.Left
+    Ms.y = Ms.y - NcR.Top
+   End If
+   
+   If (PtInRect(NcRect, Ms.x, Ms.y) &lt;&gt; 0) Then
+     GetWinItem = EICAPTION
+     If (PtInRect(BtRect, Ms.x, Ms.y) &lt;&gt; 0) Then
+      GetWinItem = EIHIDEBUTTON
+     End If
+   End If
+   
+End Function
+
+Public Property Get Caption() As String
+    Caption = m_Caption
+End Property
+
+Public Property Let Caption(ByVal New_Caption As String)
+    m_Caption = New_Caption
+    If SubFormsLoaded Then RefreshControl
+End Property
+
+Public Property Get MaxState() As Boolean
+Attribute MaxState.VB_MemberFlags = "400"
+    MaxState = m_MaxState
+End Property
+
+Public Property Get FrmHwnd() As Long
+Attribute FrmHwnd.VB_MemberFlags = "40"
+    FrmHwnd = m_FrmHwnd
+End Property
+
+
+Public Property Let MaxState(ByVal New_MaxState As Boolean)
+   
+    
+    If Ambient.UserMode = False Then Err.Raise 382
+    
+    If New_MaxState Then
+     PmCommandMax(0).Visible = False
+     PmCommandMax(1).Visible = True
+    Else
+     PmCommandMax(0).Visible = True
+     PmCommandMax(1).Visible = False
+    End If
+    
+    If m_MaxState = New_MaxState Then Exit Property
+    
+    
+ 
+    m_MaxState = New_MaxState
+      
+    Call SetRedraw(m_SubDock(DockPos).hwnd, False)
+    
+    If m_MaxState Then
+      Call m_SubDock(DockPos).MaxChild(Pos)
+    Else
+      Call m_SubDock(DockPos).UnMaxChild
+    End If
+      
+    Call SetRedraw(m_SubDock(DockPos).hwnd, True)
+    
+        
+Exit Property
+
+      
+End Property
+
+Public Property Let FrmHwnd(ByVal New_FrmHwnd As Long)
+    If Ambient.UserMode = False Then Err.Raise 382
+    m_FrmHwnd = New_FrmHwnd
+End Property
+
+
+Public Property Get DockPos() As Integer
+Attribute DockPos.VB_MemberFlags = "400"
+    DockPos = Extender.Container.Align
+End Property
+
+Public Property Get Pos() As Integer
+Attribute Pos.VB_MemberFlags = "440"
+    Pos = m_Pos
+End Property
+
+Public Property Let Pos(ByVal New_Pos As Integer)
+    If Ambient.UserMode = False Then Err.Raise 382
+    m_Pos = New_Pos
+End Property
+
+Public Property Get OrgPos() As Integer
+Attribute OrgPos.VB_MemberFlags = "440"
+    OrgPos = m_OrgPos
+End Property
+
+Public Property Let OrgPos(ByVal New_OrgPos As Integer)
+    If Ambient.UserMode = False Then Err.Raise 382
+    m_OrgPos = New_OrgPos
+End Property
+
+Public Property Get IsHidden() As Boolean
+Attribute IsHidden.VB_MemberFlags = "440"
+    IsHidden = m_IsHidden
+End Property
+
+Public Property Let IsHidden(ByVal New_IsHidden As Boolean)
+    If Ambient.UserMode = False Then Err.Raise 382
+    m_IsHidden = New_IsHidden
+
+End Property
+
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+    Call PropBag.WriteProperty("Font", Font, Ambient.Font)
+    Call PropBag.WriteProperty("ForeColor", UserControl.ForeColor, &amp;H80000009)
+    Call PropBag.WriteProperty("CaptionStyle", m_CaptionStyle, 0)
+    Call PropBag.WriteProperty("CaptionColor1", m_CaptionColor1, 0)
+    Call PropBag.WriteProperty("CaptionColor2", m_CaptionColor2,
+     vbActiveTitleBar)
+End Sub
+
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;SubForm.ctl</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

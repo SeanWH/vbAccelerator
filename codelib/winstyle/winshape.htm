@@ -1,0 +1,238 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>A window that's star-shaped, circular or tank-shaped</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>A window that's star-shaped, circular or tank-shaped</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Create windows of any geometric shape using SetWindowRgn - works with UserControls too!</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	Just for fun, its surprisingly easy now to create Windows or controls of any shape whatsoever under
+	Visual Basic.<p>
+	<p><img src="..\..\images\shpwinl.gif" alt="[Window Shape Picture]" width="125" height="125"></p>
+	<p><a href="winshape.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the WinShape project files (28kb)</a></p>
+	<p>The trick is to use the SetWindowRgn function. This function (supported under Windows 95 and NT 3.5+) allows you to set the clipping region for a window including the border. The shape of your region depends upon how you created it. You can create elliptical, polygonal, rectangular, and round regions via calls to the CreateEllipticalRgn, CreatePolygonRgn, CreateRectRgn, and CreateRoundRgn functions. You pass to the creation function the coordinates bounding the region that you wish to set, and the function returns a handle to the region. Once you have the handle to the region, you can pass it to SetWindowRgn,
+	whereupon the window assumes the shape.<br>
+	In addition to this, you can also join regions together to make composite regions.  The region for your window can have a hole in it, or consist of disjointed regions, anything!</p>
+	<p>The declares you require to get started are (NB all declarations must be on one line or separated with underscores):</p>
+	</font>
+	<font face="Lucida Console,courier new" size="2">
+' ===============================================================<br>
+' API declares for creating regions and setting a window's region<br>
+' ===============================================================<br>
+<br>
+' Point<br>
+Type POINTAPI<br>
+&nbsp &nbsp    X As Long<br>
+&nbsp &nbsp    Y As Long<br>
+End Type<br>
+<br>
+' Change region of a window:<br>
+Declare Function SetWindowRgn Lib "user32" (ByVal hWnd As Long, ByVal hRgn As Long, ByVal bRedraw As Boolean) As Long<br>
+' Precanned region creation functions:<br>
+Declare Function CreateEllipticRgn Lib "gdi32" (ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long<br>
+Declare Function CreateRectRgn Lib "gdi32" (ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long<br>
+Declare Function CreateRoundRectRgn Lib "gdi32" (ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long, ByVal X3 As Long, ByVal Y3 As Long) As Long<br>
+' Polygon region creation functions:<br>
+Declare Function CreatePolygonRgn Lib "gdi32" (lpPoint As POINTAPI, ByVal nCount As Long, ByVal nPolyFillMode As Long) As Long<br>
+Declare Function CreatePolyPolygonRgn Lib "gdi32" (lpPoint As POINTAPI, lpPolyCounts As Long, ByVal nCount As Long, ByVal nPolyFillMode As Long) As Long<br>
+' Polygon type:<br>
+Public Const WINDING = 2<br>
+' Region combination:<br>
+Declare Function CombineRgn Lib "gdi32" (ByVal hDestRgn As Long, ByVal hSrcRgn1 As Long, ByVal hSrcRgn2 As Long, ByVal nCombineMode As Long) As Long<br>
+&nbsp &nbsp    ' Region combination types:<br>
+&nbsp &nbsp    Public Const RGN_AND = 1<br>
+&nbsp &nbsp    Public Const RGN_COPY = 5<br>
+&nbsp &nbsp    Public Const RGN_DIFF = 4<br>
+&nbsp &nbsp    Public Const RGN_MAX = RGN_COPY<br>
+&nbsp &nbsp    Public Const RGN_MIN = RGN_AND<br>
+&nbsp &nbsp    Public Const RGN_OR = 2<br>
+&nbsp &nbsp    Public Const RGN_XOR = 3<br>
+&nbsp &nbsp    ' Region combination return values:<br>
+&nbsp &nbsp    Public Const COMPLEXREGION = 3<br>
+&nbsp &nbsp    Public Const SIMPLEREGION = 2<br>
+&nbsp &nbsp    Public Const NULLREGION = 1<br>
+<br>
+' GDI Clear up:<br>
+Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long<br>
+	</font>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	And here is the code which will make a VB form or control elliptical:
+	</p>
+	</font>
+	<p>
+	<font face="Lucida Console,courier new" size="2">
+<br>
+Private Sub MakeEllipse(byval lHwnd as long, byval lWidth as long, byval lHeight as long)<br>
+Dim hRgn As Long<br>
+&nbsp &nbsp    hRgn = CreateEllipticRgn(0,0,lWidth,lHeight)<br>
+&nbsp &nbsp    ' Change the region:<br>
+&nbsp &nbsp    SetWindowRgn lHWnd, hRgn, 1<br>
+<br>
+End Sub<br>
+<br>
+' For a form:<br>
+Private Sub Form_Load()<br>
+&nbsp &nbsp MakeEllipse Me.Hwnd, Me.Width\Screen.TwipsPerPixelX, Me.Height\Screen.TwipsPerPixelY<br>
+End Sub<br>
+<br>
+' For a control:<br>
+Private Sub UserControl_InitProperties<br>
+&nbsp &nbsp MakeEllipse UserControl.Hwnd, UserControl.Width\Screen.TwipsPerPixelX, UserControl.Height\Screen.TwipsPerPixelY<br>
+End Sub<br>
+<br>
+Private Sub UserControl_ReadProperties<br>
+&nbsp &nbsp MakeEllipse UserControl.Hwnd, UserControl.Width\Screen.TwipsPerPixelX, UserControl.Height\Screen.TwipsPerPixelY<br>
+End Sub<br>
+<br>
+	</font>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	And that's it.  Have fun filling in the backgrounds, and try out the source code, which demonstrates
+	a number of other techniques, including:
+	<ul>
+	<li> more advanced regions (including holed and separated) using CombineRgn
+	<li> a simple circular clock
+	<li> how to trigger the system menu 'Move' command in code
+	<li> moving a form in response to a mouse down.
+	</ul>
+	</p>
+	
+	<br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 13 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

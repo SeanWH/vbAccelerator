@@ -1,0 +1,499 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: AudioCDWriterCS\WinMMInterop.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: AudioCDWriterCS\WinMMInterop.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./Audio_CD_Writer.asp" /><link rel="meta" type="application/rdf+xml" href="./Audio CD Writer.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Writing Audio CDs</a>&#160;.&#160;<a href="..\audio_cd_writer.html">Audio CD Writer</a>&#160;.&#160;AudioCDWriterCS</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="audio_cd_writer.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Audio CD Writer</a> (134K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15463</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15463&type=zip&title=winmminterop.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br /></p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\media\audio\wavestream\article.html">WaveStreamReader and WaveStreamWriter</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\writing_data_cds\article.html">Writing Data CDs</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\imapi\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: AudioCDWriterCS\WinMMInterop.cs</h1><p>This file is part of the download <a href="audio_cd_writer.html">Audio CD Writer</a>, which is described in the article <a href="article.html">Writing Audio CDs</a>.</p><pre>using System;
+using System.Runtime.InteropServices;
+
+namespace vbAccelerator.Audio.WaveStream
+{
+   /// &lt;summary&gt;
+   /// Contains interop structures and method calls for Windows 
+   /// Multimedia (WinMM).
+   /// &lt;/summary&gt;
+   internal class WinMMInterop
+   {
+
+      /// &lt;summary&gt;
+      /// Structure describing the format of the data in a Wave file.
+      /// &lt;/summary&gt;
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=2)]
+      public struct WAVEFORMATEX
+      {
+         /// &lt;summary&gt;
+         /// Waveform-audio format type. Format tags are registered with
+          Microsoft 
+         /// Corporation for many compression algorithms.
+         /// &lt;/summary&gt;
+         public short wFormatTag;
+         /// &lt;summary&gt;
+         /// Number of audio channels
+         /// &lt;/summary&gt;
+         public short nChannels;
+         /// &lt;summary&gt;
+         /// Number of samples per second for the audio data.
+         /// &lt;/summary&gt;
+         public int nSamplesPerSec;
+         /// &lt;summary&gt;
+         /// Average number of bytes per second in the audio data.
+         /// For non-compressed audio, the average number of bytes
+         /// is nSamplesPerSec * nBlockAlign.
+         /// &lt;/summary&gt;
+         public int nAvgBytesPerSec;
+         /// &lt;summary&gt;
+         /// Alignment of samples in bits.
+         /// &lt;/summary&gt;
+         public short nBlockAlign;
+         /// &lt;summary&gt;
+         /// Number of bits used for each audio sample.
+         /// &lt;/summary&gt;
+         public short wBitsPerSample;
+         /// &lt;summary&gt;
+         /// Size of the structure (typically not used).
+         /// &lt;/summary&gt;
+         public short cbSize;
+      }
+
+      /// &lt;summary&gt;
+      /// Contains information about a file opened using multimedia IO.
+      /// &lt;/summary&gt;
+      [StructLayoutAttribute(LayoutKind.Sequential)]
+      public struct MMIOINFO
+      {
+         /// &lt;summary&gt;
+         /// Flags specifying how a file was opened. The following values are
+          defined: 
+         /// &lt;/summary&gt;
+         public int dwFlags;
+         /// &lt;summary&gt;
+         /// Four-character code identifying the file's I/O procedure. If the
+          I/O procedure 
+         /// is not an installed I/O procedure, this member is NULL. 
+         /// &lt;/summary&gt;
+         public int fccIOProc;
+         /// &lt;summary&gt;
+         /// Pointer to file's IO procedure. 
+         /// &lt;/summary&gt;
+         public IntPtr pIOProc;
+         /// &lt;summary&gt;
+         /// Extended error value from the mmioOpen function if it returns NULL.
+         /// &lt;/summary&gt;
+         public int wErrorRet;
+         /// &lt;summary&gt;
+         /// Handle to a local I/O procedure. Media Control Interface (MCI)
+          devices that 
+         /// perform file I/O in the background and need an I/O procedure can
+          locate 
+         /// a local I/O procedure with this handle. 
+         /// &lt;/summary&gt;
+         public IntPtr hTask;
+         /// &lt;summary&gt;
+         /// Size, in bytes, of the file's I/O buffer. If the file does not
+          have an I/O buffer, 
+         /// this member is zero. 
+         /// &lt;/summary&gt;
+         public int cchBuffer;
+         /// &lt;summary&gt;
+         /// Pointer to the file's I/O buffer. If the file is unbuffered, this
+          member is NULL. 
+         /// &lt;/summary&gt;
+         public IntPtr pchBuffer;
+         /// &lt;summary&gt;
+         /// Pointer to the next location in the I/O buffer to be read or
+          written. If no more 
+         /// bytes can be read without calling the mmioAdvance or mmioRead
+          function, this 
+         /// member points to the pchEndRead member. If no more bytes can be
+          written without 
+         /// calling the mmioAdvance or mmioWrite function, this member points
+          to the 
+         /// pchEndWrite member. 
+         /// &lt;/summary&gt;
+         public IntPtr pchNext;
+         /// &lt;summary&gt;
+         /// Pointer to the location that is 1 byte past the last location in
+          the buffer 
+         /// that can be read. 
+         /// &lt;/summary&gt;
+         public IntPtr pchEndRead;
+         /// &lt;summary&gt;
+         /// Pointer to the location that is 1 byte past the last location in
+          the buffer 
+         /// that can be written. 
+         /// &lt;/summary&gt;
+         public IntPtr pchEndWrite;
+         /// &lt;summary&gt;
+         /// Reserved. 
+         /// &lt;/summary&gt;
+         public int lBufOffset;
+         /// &lt;summary&gt;
+         /// Current file position, which is an offset, in bytes, from the
+          beginning of 
+         /// the file. I/O procedures are responsible for maintaining this
+          member. 
+         /// &lt;/summary&gt;
+         public int lDiskOffset;
+         /// &lt;summary&gt;
+         /// State information maintained by the I/O procedure. I/O procedures
+          can also 
+         /// use these members to transfer information from the application to
+          the I/O 
+         /// procedure when the application opens a file. 
+         /// &lt;/summary&gt;
+         public int adwInfo0;
+         /// &lt;summary&gt;
+         /// State information maintained by the I/O procedure. I/O procedures
+          can also 
+         /// use these members to transfer information from the application to
+          the I/O 
+         /// procedure when the application opens a file. 
+         /// &lt;/summary&gt;
+         public int adwInfo1;
+         /// &lt;summary&gt;
+         /// State information maintained by the I/O procedure. I/O procedures
+          can also 
+         /// use these members to transfer information from the application to
+          the I/O 
+         /// procedure when the application opens a file. 
+         /// &lt;/summary&gt;
+         public int adwInfo2;
+         /// &lt;summary&gt;
+         /// State information maintained by the I/O procedure. I/O procedures
+          can also 
+         /// use these members to transfer information from the application to
+          the I/O 
+         /// procedure when the application opens a file. 
+         /// &lt;/summary&gt;
+         public int adwInfo3;
+         /// &lt;summary&gt;
+         /// Reserved. 
+         /// &lt;/summary&gt;
+         public int dwReserved1;
+         /// &lt;summary&gt;
+         /// Reserved. 
+         /// &lt;/summary&gt;
+         public int dwReserved2;
+         /// &lt;summary&gt;
+         /// Handle to the open file, as returned by the mmioOpen function. I/O 
+         /// procedures can use this handle when calling other multimedia file
+          I/O 
+         /// functions. 
+         /// &lt;/summary&gt;
+         public IntPtr hMMIO;
+      }
+
+      /// &lt;summary&gt;
+      /// Information about a chunk in a RIFF file.
+      /// &lt;/summary&gt;
+      [StructLayoutAttribute(LayoutKind.Sequential)]
+      public struct MMCKINFO
+      {
+         /// &lt;summary&gt;
+         /// Chunk identifier. 
+         /// &lt;/summary&gt;
+         public int ckid;
+         /// &lt;summary&gt;
+         /// Size, in bytes, of the data member of the chunk. The size of the
+          data 
+         /// member does not include the 4-byte chunk identifier, the 4-byte 
+         /// chunk size, or the optional pad byte at the end of the data
+          member. 
+         /// &lt;/summary&gt;
+         public int ckSize;
+         /// &lt;summary&gt;
+         /// Form type for "RIFF" chunks or the list type for "LIST" chunks. 
+         /// &lt;/summary&gt;
+         public int fccType;
+         /// &lt;summary&gt;
+         /// File offset of the beginning of the chunk's data member, relative 
+         /// to the beginning of the file. 
+         /// &lt;/summary&gt;
+         public int dwDataOffset;
+         /// &lt;summary&gt;
+         /// Flags specifying additional information about the chunk. Typically 
+         /// zero but can be MMIO_DIRTY indicating the size of the chunk has
+         /// changed.
+         /// &lt;/summary&gt;
+         public int dwFlags;
+      }
+
+      /// &lt;summary&gt;
+      /// Closes a file opened using mmioOpen
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="uFlags"&gt;flags&lt;/param&gt;
+      /// &lt;returns&gt;Error code&lt;/returns&gt;
+      [DllImport("winmm")]
+      public extern static int mmioClose (
+         IntPtr hmmio, 
+         int uFlags);
+
+      /// &lt;summary&gt;
+      /// Descends into a chunk within the file
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="lpck"&gt;Chunk to descend into&lt;/param&gt;
+      /// &lt;param name="lpckParent"&gt;Parent chunk to descend from&lt;/param&gt;
+      /// &lt;param name="uFlags"&gt;Flags controlling how to descend&lt;/param&gt;
+      /// &lt;returns&gt;Error code&lt;/returns&gt;
+      [DllImport("winmm")]
+      public extern static int mmioDescend (
+         IntPtr hmmio, 
+         ref MMCKINFO lpck, 
+         ref MMCKINFO lpckParent, 
+         int uFlags);
+
+      /// &lt;summary&gt;
+      /// Same as &lt;see cref="mmioDescend"/&gt; but allows descent into
+      /// the top level chunk.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="lpck"&gt;Chunk to descend into&lt;/param&gt;
+      /// &lt;param name="x"&gt;Reserved, must be set to 0.&lt;/param&gt;
+      /// &lt;param name="uFlags"&gt;Flags controlling how to descend&lt;/param&gt;
+      /// &lt;returns&gt;Error code&lt;/returns&gt;
+      [DllImport("winmm", EntryPoint="mmioDescend")]
+      public extern static int mmioDescendParent (
+         IntPtr hmmio, 
+         ref MMCKINFO lpck, 
+         int x, 
+         int uFlags);
+
+      /// &lt;summary&gt;
+      /// Opens a multimedia RIFF file
+      /// &lt;/summary&gt;
+      /// &lt;param name="szFileName"&gt;File name&lt;/param&gt;
+      /// &lt;param name="lpMmioInfo"&gt;Pointer to a &lt;see cref="MMIOINFO"/&gt;
+       structure&lt;/param&gt;
+      /// &lt;param name="dwOpenFlags"&gt;Flags controlling open type&lt;/param&gt;
+      /// &lt;returns&gt;Handle to open file, or zero if open fails.&lt;/returns&gt;
+      [DllImport("winmm", CharSet=CharSet.Auto)]
+      public extern static IntPtr mmioOpen(
+         string szFileName, 
+         IntPtr lpMmioInfo,
+         int dwOpenFlags);
+
+      /// &lt;summary&gt;
+      /// Reads from the file into a buffer.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="pch"&gt;Pointer to the buffer&lt;/param&gt;
+      /// &lt;param name="cch"&gt;Number of bytes to read&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes read&lt;/returns&gt;
+      [DllImport("winmm")]
+      public extern static int mmioRead (
+         IntPtr hmmio, 
+         IntPtr pch, 
+         int cch);
+
+      /// &lt;summary&gt;
+      /// Writes data to the file from a buffer
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="pch"&gt;Pointer to the buffer&lt;/param&gt;
+      /// &lt;param name="cch"&gt;Number of bytes to write&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes written&lt;/returns&gt;
+      [DllImport("winmm")]
+      public extern static int mmioWrite (
+         IntPtr hmmio, 
+         IntPtr pch, 
+         int cch);
+      
+      /// &lt;summary&gt;
+      /// Reads a &lt;see cref="WAVEFORMATEX"/&gt; from the file.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="format"&gt;format structure to read&lt;/param&gt;
+      /// &lt;param name="cch"&gt;Number of bytes to read&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes read&lt;/returns&gt;
+      [DllImport("winmm", EntryPoint="mmioRead")]
+      public extern static int mmioReadWaveFormat (
+         IntPtr hmmio, 
+         ref WAVEFORMATEX format, 
+         int cch);
+
+      /// &lt;summary&gt;
+      /// Writes a &lt;see cref="WAVEFORMATEX"/&gt; to the file.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="format"&gt;format structure to write&lt;/param&gt;
+      /// &lt;param name="cch"&gt;Number of bytes to write&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes written&lt;/returns&gt;
+      [DllImport("winmm", EntryPoint="mmioWrite")]
+      public extern static int mmioWriteWaveFormat (
+         IntPtr hmmio, 
+         ref WAVEFORMATEX format, 
+         int cch);
+
+      /// &lt;summary&gt;
+      /// Seeks to the specified point in the file
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to the open file&lt;/param&gt;
+      /// &lt;param name="iOrigin"&gt;SEEK_* flag specifying the origin of the
+       seek&lt;/param&gt;
+      /// &lt;param name="lOffset"&gt;Number of bytes to seek&lt;/param&gt;
+      /// &lt;returns&gt;Error code&lt;/returns&gt;
+      [DllImport("winmm")]
+      public extern static int mmioSeek (
+         IntPtr hmmio, 
+         int lOffset, 
+         int iOrigin);
+
+      /// &lt;summary&gt;
+      /// Converts a string representing a FOURCC code to an actual
+      /// FOURCC code.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sz"&gt;String containing the FOURCC code bytes&lt;/param&gt;
+      /// &lt;param name="uFlags"&gt;Flags controlling the conversion&lt;/param&gt;
+      /// &lt;returns&gt;FOURCC code.&lt;/returns&gt;
+      [DllImport("winmm", CharSet=CharSet.Auto)]
+      public extern static int mmioStringToFOURCC(
+         [MarshalAs(UnmanagedType.LPTStr)]
+         string sz, 
+         int uFlags);
+
+      /// &lt;summary&gt;
+      /// Ascends from a chunk in a multimedia file.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hmmio"&gt;Handle to open file&lt;/param&gt;
+      /// &lt;param name="lpck"&gt;Chunk to ascend from&lt;/param&gt;
+      /// &lt;param name="uFlags"&gt;Flags controlling ascend&lt;/param&gt;
+      /// &lt;returns&gt;Error code&lt;/returns&gt;
+      [DllImport("winmm")]
+      public extern static int mmioAscend(
+         IntPtr hmmio, 
+         ref MMCKINFO lpck, 
+         int uFlags);
+
+      /// &lt;summary&gt;
+      /// Creates a new chunk in a multimedia file.
+      /// &lt;/summary&gt;
+      /// &lt;param name="fuCreate"&gt;Flags describing how to create the
+       chunk&lt;/param&gt;
+      /// &lt;param name="hmmio"&gt;Handle to open file&lt;/param&gt;
+      /// &lt;param name="pmmcki"&gt;Chunk to create&lt;/param&gt;
+      [DllImport("winmm")]
+      public extern static int mmioCreateChunk(
+         IntPtr hmmio, 
+         ref MMCKINFO pmmcki, 
+         int fuCreate);
+
+
+      /// &lt;summary&gt;
+      /// File read access
+      /// &lt;/summary&gt;
+      public const int MMIO_READ = 0x0;
+      /// &lt;summary&gt;
+      /// File write access
+      /// &lt;/summary&gt;
+      public const int MMIO_WRITE = 0x1;
+      /// &lt;summary&gt;
+      ///  File read/write access
+      /// &lt;/summary&gt;
+      public const int MMIO_READWRITE = 0x2;
+      /// &lt;summary&gt;
+      /// Find a chunk in a file
+      /// &lt;/summary&gt;
+      public const int MMIO_FINDCHUNK = 0x10;
+      /// &lt;summary&gt;
+      ///  Find RIFF header
+      /// &lt;/summary&gt;
+        public const int MMIO_FINDRIFF = 0x20;
+      /// &lt;summary&gt;
+      ///  Create RIFF header
+      /// &lt;/summary&gt;
+      public const int MMIO_CREATERIFF = 0x20;
+      /// &lt;summary&gt;
+      ///  Allocate buffer
+      /// &lt;/summary&gt;
+      public const int MMIO_ALLOCBUF = 0x10000;
+      /// &lt;summary&gt;
+      /// Create file
+      /// &lt;/summary&gt;
+      public const int MMIO_CREATE = 0x1000;
+
+      /// &lt;summary&gt;
+      /// Error code representing success
+      /// &lt;/summary&gt;
+        public const int MMSYSERR_NOERROR = 0;
+      /// &lt;summary&gt;
+      /// Seek from current position
+      /// &lt;/summary&gt;
+        public const int SEEK_CUR = 1;
+      /// &lt;summary&gt;
+      /// Seek from end of file
+      /// &lt;/summary&gt;
+        public const int SEEK_END = 2;
+      /// &lt;summary&gt;
+      /// Seek from beginning of file
+      /// &lt;/summary&gt;
+        public const int SEEK_SET = 0;
+      
+      /// &lt;summary&gt;
+      /// Prevent instantiation
+      /// &lt;/summary&gt;
+      private WinMMInterop()
+      {
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Writing Audio CDs</a>&#160;.&#160;<a href="..\audio_cd_writer.html">Audio CD Writer</a>&#160;.&#160;AudioCDWriterCS</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

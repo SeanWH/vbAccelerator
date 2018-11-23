@@ -1,0 +1,360 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Moving Forms and Creating Resize Gripper Boxes</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\subclassing\reliable_interception_of_wm_nchittest\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><b>Moving Forms and Creating Resize Gripper Boxes</b><br></p>
+        <p><img src="..\..\images\hittest.gif" alt="HitTest DLL Demo Application" width="271" height="179"></p>
+        <p><a href="hittest.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Hit Test Sample project and DLL (25kb)</a></p>
+	</font>
+	<p>
+	<table cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This article provides code demonstrating how to modify the behaviour of a VB form so that parts of it behave like
+	title bars and resize borders.  You can use this code to:
+	<ul>
+	<li>Create windows without a title bar that you can click on anywhere to move around
+	<li>Build fake title bars
+	<li>Add a Resize Gripper box to the lower right-hand corner.
+	</ul>
+	Whilst the principle behind this code isn't unique, this example code is a lot more useful than
+	the versions on certain other sites.  To run this technique you need to subclass your form
+	for the WM_NCHITTEST message.  And if you try to put a breakpoint into a form which is actively
+	subclassing this message, VB's IDE collapses rather like the author after two or three pints 
+	of beer and can only be stopped by the three fingered salute (unlike the author).
+	<br><br>
+	This sample demonstrates how to isolate all the nasty code into a DLL so you debug your project
+	without fear of an untimely and embarassing demise.  Of course, if you use this technique,
+	when you come to ship you can just add a single class into the project, remove the DLL reference
+	and skip the dependency.
+	<br><br>
+	<b>The WM_NCHITTEST Message</b><br>
+	When you move the mouse around the form, by default Windows automatically determines when you are at a border, or in
+	the title bar, and changes the mouse pointer as required and allows resizing or moving.<br><br>
+	This default behaviour can be overridden by changing the response to the WM_NCHITTEST message which 
+	is sent to the window whenever the mouse moves over it.
+	<br><br>
+	Here are the return values you can provide:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Public Enum EHitTestAreas <br>
+&nbsp &nbsp   HTERROR = (-2) <br>
+&nbsp &nbsp   HTTRANSPARENT = (-1) <br>
+&nbsp &nbsp   HTNOWHERE = 0 <br>
+&nbsp &nbsp   HTCLIENT = 1 <br>
+&nbsp &nbsp   HTCAPTION = 2 <br>
+&nbsp &nbsp   HTSYSMENU = 3 <br>
+&nbsp &nbsp   HTGROWBOX = 4 <br>
+&nbsp &nbsp   HTMENU = 5 <br>
+&nbsp &nbsp   HTHSCROLL = 6 <br>
+&nbsp &nbsp   HTVSCROLL = 7 <br>
+&nbsp &nbsp   HTMINBUTTON = 8 <br>
+&nbsp &nbsp   HTMAXBUTTON = 9 <br>
+&nbsp &nbsp   HTLEFT = 10 <br>
+&nbsp &nbsp   HTRIGHT = 11 <br>
+&nbsp &nbsp   HTTOP = 12 <br>
+&nbsp &nbsp   HTTOPLEFT = 13 <br>
+&nbsp &nbsp   HTBOTTOM = 15 <br>
+&nbsp &nbsp   HTBOTTOMLEFT = 16 <br>
+&nbsp &nbsp   HTBOTTOMRIGHT = 17 <br>
+&nbsp &nbsp   HTBORDER = 18 <br>
+End Enum <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	The most useful values are:
+	<ol>
+	<li> HTCAPTION, which makes an area of your form behave exactly like
+	a title bar (so when you click on it you can drag the form around, or when you double click
+	the form is maximised) and 
+	<li> HTBOTTOMRIGHT, which makes an area work as if it was part of the bottom right hand border.
+	This style is used in the resize gripper boxes in the bottom right hand corner of most
+	Windows status bars.
+	</ol>
+	<b>The HitTest DLL/Class</b><br>
+	To take all the subclassing processing out of executable code, this class stores the
+	window handle(s) to subclass for the WM_NCHITTEST message and also each of the areas to
+	perform hit-testing on, along with the required response.<br><br>
+	Method reference for the HitTest DLL:
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="0" cellpadding="2">
+	<tr bgcolor="#CCCCCC">
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Method</b>
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Description</b>
+		</font></td>
+	</tr>
+	<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		AttachHitTester
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Adds a VB control or form to the list of windows to perform hit testing on.
+		</font></td>
+	</tr>
+	<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		DestroyHitTester
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Clears up all hit testers.  Called automatically when the object is destroyed.
+		</font></td>
+	</tr>
+	<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		AddArea
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Adds an area to be hit tested.  The area can be referred to either by a key 
+		or by the index returned by this function.
+		</font></td>
+	</tr>
+	<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		PointInObject
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		A helper function.  Returns whether the given point (expressed in pixels, relative
+		to the form) is within the rectangle of a form or control.
+		</font></td>
+	</tr>
+	<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		SetTestArea
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Sets the rectangle to be hit tested and the response for an area 
+		added earlier with the AddArea method.
+		</font></td>
+	</tr>
+	<tr>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		SetTestAreaFromObject
+		</font></td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+		The same as SetTestArea, but takes a VB control or form to determine
+		the hit testing rectangle from.
+		</font></td>
+	</tr>
+	</table>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>	
+	This version only supports rectangular areas but in theory it could be expanded to any
+	arbitrary region using the API region creation calls (see <a href="..\winstyle\winshape.htm">
+	Changing Window Shapes</a> for more details) and <i>PtInRegion</i>.
+	<br><br>
+	<b>Creating a Gripper Box</b><br>
+	Using the Hit Tester class its easy to create a fake gripper box.  The first point thing to 
+	set up the area of the gripper box with the class, and set the response to HTBOTTOMRIGHT.  Then
+	you want to draw the gripper box itself.  The quickest way to do this is to use labels and
+	take advantage	of the Marlett font which is supplied with all Win32 systems to draw the gripper.
+	<br>
+	<img src="..\..\images\marlett.gif" width="308" height="129" border="0" alt="Marlett characters useful
+	in windows"><br>
+	<b>Marlett Characters</b><br>
+        </p>            
+
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+        
+        <br><br>
+
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+
+        </font>
+
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 24 November 1998</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+llspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 24 November 1998</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

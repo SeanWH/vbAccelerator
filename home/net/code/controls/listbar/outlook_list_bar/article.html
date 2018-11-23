@@ -1,0 +1,232 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - .NET Outlook Style ListBar Control</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+The .NET ListBar control aims to provide the most accurate reproduction of the Microsoft
+Outlook bar control.  All the features of the Outlook bar control are supported and more:
+in particular the control provides nicer drag-drop operation, has more display modes
+and provides an extensible object model which enables it to be used as the basis for 
+more esoteric ListBar style controls.
+" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;.NET Outlook Style ListBar Control</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="listbar_control_binary.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Binary</a> (48K)</p><p class="nav"><a href="listbar_control_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Demonstration</a> (84K)</p><p class="nav"><a href="listbar_control_documentation.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Documentation</a> (168K)</p><p class="nav"><a href="listbar_control_source.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Source</a> (94K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:12907</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=12907&type=article&title=_2enet_20outlook_20style_20listbar_20control.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 1</a></p><p class="nav">Updated:22 November 2003</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />7 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\controls\listbar\outlook_listbar\article.html">vbAccelerator ListBar Control</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\graphics\hls_to_rgb\article.html">Hue, Luminance and Saturation in .NET</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>.NET Outlook Style ListBar Control</h1><p class="splash">A sophisticated, extensible, easy to use reproduction of the Microsoft Outlook Bar</p><img src="listbar.png" width="340" height="310" alt="Outlook Bar Control Demonstration" /><p /><p>
+The .NET ListBar control aims to provide the most accurate reproduction of the Microsoft
+Outlook bar control.  All the features of the Outlook bar control are supported and more:
+in particular the control provides nicer drag-drop operation, has more display modes
+and provides an extensible object model which enables it to be used as the basis for 
+more esoteric ListBar style controls.
+</p><h2>A .NET ListBar</h2><p>
+If you have visited the site before, you may well have seen the <a href="..\..\..\..\..\vb\code\controls\listbar\outlook_listbar\article.html">VB Classic
+ListBar control</a> which went so far as to emulate the implementation of the real Outlook control
+that it used the same underlying controls and window structure.  As noted in the article accompanying
+that control, despite the apparent ease of doing this it wasn't in fact even close to being easy.  
+Therefore this time I took my own advice and started from scratch and implemented everything in Managed Code.  
+Well, almost everything: in-place editing of items and groups requires some Windows API trickery to
+ensure the edit box is cancelled at the right time.  The method used to achieve this, and how to
+remove it from the control if a 100% managed version is needed, is described later in the article.
+</p><h2>Tear-Stained Pillows and Broken Shot Glasses</h2><p>
+The consequences of this decision were much less trouble with the 
+<a href="..\..\..\..\..\vb\code\controls\listview\article.html">under-documented</a> and often incomprehensible 
+ListView API and instead much greater trouble at my own inability to 
+achieve simple tasks such as visualising the trivial two-dimensional transformation of
+a scrollable view without using a ruler and a model constructed from scraps of paper.  
+Luckily the ready availability of Bison Grass vodka, pressed apple juice and 
+<a href="javascript:window.alert(&quot;http://www.warprecords.com/\nThis link was not retrieved.&quot;)">Autechre's Draft 7.30</a> mean that the .NET control is now 
+finally available, and it is guaranteed not to have the positioning/items disappearing problems 
+which afflicted the earliest releases of the VB version.
+</p><h2>About The Downloads</h2><p>
+There are three downloads provided with this article.
+</p><ol><li>The <strong>Binary</strong> download provides the official vbAccelerator strong-named 
+signed assembly for the control, <span class="i">acclListBar.Dll</span>.  This assembly 
+can be registered into the Global Assembly Cache (GAC).</li><li>The <strong>Demonstration</strong> download uses the signed assembly. You need
+to have the signed control to run the demonstration; it can either by registed into the GAC
+or placed into the demonstration executable directory.</li><li>The <strong>Source</strong> download provides the projects used to develop and
+release the control. You can copy the ListBar control source into your own project
+from here, or build your own version if you provide a new strong-name key pair.
+</li></ol><h2>Using The Control</h2><p>
+The object model of the ListBar control is shown in the diagram below:
+</p><img src="listbarobjectmodel.png" width="270" height="250" alt="ListBar Control Object Model" /><p class="caption">ListBar Control Object Model</p><p>
+You should find the object model fairly self-explanatory: full documentation of all of
+the methods and properties of the control are provided in standard form in the downloads,
+courtesy of <a href="..\..\..\..\..\resources\links\net\ndoc\article.html">NDoc</a>.  However here's a quick-start tutorial
+on setting up a control.
+</p><ol><li><strong>Add the Control to your project.</strong><p>
+If you are using the control binary, then add a reference to <span class="i">acclListBar.Dll</span> to
+your project.  You then use the very slo-o-o-o-ow Customize Toolbox dialog in VS.NET 
+and pick the control again so it appears in the toolbox.  (Why is this necessary?)
+</p><p>
+To include the control as source code, add <span class="i">ListBar.cs</span>, <span class="i">PopupCancel.cs</span>
+and <span class="i">CustomBorderColor.cs</span> to your project.  Then open <span class="i">ListBar.cs</span> in
+component designer mode and it will appear in the toolbox.
+</p><p class="indent">
+(Some questions. Firstly, how do you reference items in the GAC from
+either the Add Reference or Customize Toolbox dialogs?   Secondly, how do you set the toolbox bitmap
+for a control?  I got lost in a maze of designer related documentation and am still none the wiser.)
+</p></li><li><strong>Creating and Configuring the Control</strong><p>
+The control accepts references to two <span class="code">ImageList</span> objects for its icons; 
+one for Large Icons and the other for Small Icons.  You can also assign a <span class="code">ToolTip</span>
+object which the control will use to display objects.  The background of the control can be
+set to a colour (transparent background colours are supported) or an image.  You can also set the
+default font and foreground colour for the control (which can be overridden for individual items 
+and groups).
+</p></li><li><strong>Adding Groups and Items to the Control</strong><p>
+There are various group and item constructors you can use to create new
+groups and items, as well as various methods in the collections to append 
+them.  When initializing the control, the simplest way is to create new
+items and then use the <span class="code">Add(string caption, ListBarItem[] subItems)</span>
+method to create the owning group and append all the items at the same time.
+</p><pre>
+   // Create an array to hold the items:
+   ListBarItem[] subItems = new ListBarItem[itemCount];
+   
+   // Populate each item in the array using a new 
+   // ListBarItem created using the caption, icon index, tooltip
+   // constructor:
+   for (int item = 0; item &lt; itemCount; item++)
+   {
+      subItems[item] = new ListBarItem(
+   		String.Format("Test Item {0}", item + 1), 
+   		item, 
+   		String.Format("Tooltip text for test item {0}", item + 1));
+   }
+
+   // Create the new group and add the subitems to it:
+   ListBarGroup group = listBar1.Groups.Add(
+   	new ListBarGroup("Group"), 
+   	subItems));
+</pre><p>
+Groups can also contain controls instead of items.  To create a bar which 
+contains a control, use the <span class="code">ChildControl</span> property:
+</p><pre>
+   ListBarGroup treeGroup = listBar1.Groups.Add("Tree");
+   treeGroup.ChildControl = tvwCustom;
+</pre><p>
+Groups can be selected using the <span class="code">Selected</span> property
+and hidden or shown with the <span class="code">Visible</span> property. You can
+also customise the group's appearance by using the <span class="code">Font</span>,
+<span class="code">ForeColor</span> and <span class="code">BackColor</span> members,
+or place 
+the group's caption into edit mode using the <span class="code">StartEdit</span>
+method.  The <span class="code">Items</span> property returns the collection
+of items (if any) contained within the bar.  This collection can be sorted (by default
+the items are sorted alphabetically, however you can also provide your own <span class="code">IComparer</span>
+to perform a customised sort.  Items within the collection are manipulated in much the same way 
+as a group.
+</p></li><li><strong>Responding to Events</strong><p>
+The main event raised by the control is the <span class="code">ItemClicked</span> event.
+This is raised whenever an item is selected in the control.  A corresponding
+<span class="code">ItemDoubleClicked</span> event is raised when the user double clicks
+an item.  If you want to be able to display context menus you can also respond to the 
+<span class="code">GroupClicked</span> event.
+</p><p>
+More sophisticated control can be achieved by responding to 
+<span class="code">BeforeItemClicked</span> and <span class="code">BeforeGroupChanged</span>
+events. These allow you to cancel an item or group selection.  There is also a
+<span class="code">SelectedGroupChanged</span> event which fires after a group has
+changed. If items are put into edit mode in the control, then ListView style
+<span class="code">BeforeLabelEdit</span> and <span class="code">AfterLabelEdit</span>
+are also available for validation.
+</p></li></ol><h2>Reusable Code Components</h2><p>
+The source code for the control also some code which can be extracted and reused for
+other projects.  
+</p><h3>The <span class="code">CustomBorderColor</span> class</h3><p>This class uses the <a href="..\..\..\libraries\graphics\hls_to_rgb\article.html">HLS class</a> to 
+create shadow and highlight colours like the ones Windows produces for the 3D object
+colour for any arbitrary colour.
+</p><img src="custombordercolor.png" width="150" height="176" alt="Custom Border Colour" /><p>A method is also provided to draw a thin or thick border using the custom colours.</p><h3>The <span class="code">PopupCancelNotifier</span> Component</h3><p>
+This component is designed to allow you to detemine when a popup object (like the item caption
+edit text box in the ListBar control) should be cancelled due to the user clicking
+somewhere else in the control, or otherwise changing focus.  This is the area of the
+control which uses Unmanaged Code; I do not believe it is possible to achieve this in any other
+way.  The problem which occurs with the popup object is as follows:
+</p><ol><li>The user puts the item into edit mode and the popup object shown.</li><li>The user either decides to cancel editing by clicking somewhere else on the form,
+or Alt-Tabs to another Window.</li></ol><p>
+If the user clicks somewhere else on the form, the only event which can occur in the
+control or the popped-up object is <span class="code">LostFocus</span>.  However,
+this only fires if the user clicks on something that can get keyboard input focus - 
+and many .NET objects do not so no event is fired.  If the user Alt-Tabs to 
+another Window then the .NET Framework assumes the focused control should not change
+and again you don't get an event.
+</p><p>
+The <span class="code">PopupCancelNotifier</span> component works around these issues.
+It does two things to ensure a popup object is cancelled at the right time: firstly,
+it installs a Windows Mouse Hook to detect any mouse button presses within the control
+and secondly it subclasses the form which owns the popup object to check for 
+<span class="code">WM_ACTIVATE</span> Windows messages, which are sent whenever a
+window is activated or deactivated.
+</p><p>
+Using this component is simple: create an instance of <span class="code">PopupCancelEventHandler</span>
+and call the <span class="code">StartTracking</span> method, passing in the <span class="code">Form</span> which 
+owns the control you've popped up (or the Form itself if you're popping up a form).  The
+<span class="code">OnPopupCancel</span> method will be called, raising the <span class="code">PopupCancel</span>
+event if the item needs to be cancelled, otherwise call the <span class="code">StopTracking</span> method
+when you're done.
+</p><h2>Creating a 100% Managed ListBar Control</h2><p>
+It is possible to create a version of the ListBar control that is 100% Managed Code, however,
+this means that in-place editing of labels must be removed.  To do this, remove <span class="i">PopupCancel.cs</span>
+from the control and then comment out all methods which refer to it and the <span class="code">StartEdit</span>
+methods of the <span class="code">ListBarGroup</span> and <span class="code">ListBarItem</span> classes.
+The resulting code will work almost be exactly the same as before but if you want the user to be
+able to edit item or group captions you will need to provide an alternative UI (for example, a modal dialog).
+</p><h2>Conclusion</h2><p>
+This article provides a fully-documentated Outlook-style ListBar control for the .NET Framework.
+The current implementation includes some Unmanaged code but this can be compiled out if desired.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;.NET Outlook Style ListBar Control</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 3 November 2003</p></td><td></td></tr></table>
+</body></html>

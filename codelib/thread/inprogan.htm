@@ -1,0 +1,397 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Animated Cursor Free-Threaded In-Progress Indicator</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Animated Cursor Free-Threaded In-Progress Indicator</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>An animated In-Progess Indicator using cursors which doesn't Stop just because VB does</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\inprogan.gif" alt="Animated Cursor In-Progress Indicator" width="234" height="146">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="iprancmp.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="iprancmp.zip">Download the InProgress AniCursor Component Only (23kb)</a></font></td>
+	</tr>
+	<tr>
+	<td><a href="iprandem.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="iprandem.zip">Download the AniCursor InProgress demonstration project (requires the component first) (14kb)</a></font></td>
+	</tr>
+	<tr>
+	<td><a href="ipranall.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="ipranall.zip">Download the full AniCursor InProgress Component source including demonstration (66kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This DLL is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this DLL yourself <b>please</b> make sure you change
+		the name and ProgID.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		NOTE! You cannot run the source code of the demonstration project group in the IDE because of the
+		way VB manipulates ProgIDs and CLSIDs in the IDE.  The only way	to run this code is to compile the DLL and then use that.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The control project also requires the <a href="..\..\typelib.htm#threadapi">API Calls used for threading (threadapi.tlb)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		This sample provided a free-threaded In-Progress indicator which animates an
+	<a href="..\..\iconlib.htm#secani">Animated Cursor</a>, loaded either from a file or from
+	a resource.  When running, the control takes very little processor time away from the main task.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		The component is implemented in a DLL (vbalPrAn.DLL) and so has no UI itself.  The code
+	actually draws into a specified VB <i>PictureBox</i> control.  To use the component, simply
+	create an instance of the <i>cAniProgress</i> class and then set the properties:
+		<br><br>
+		</font>
+		<p>
+		<table border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td colspan="2"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		</tr>
+		<tr bgcolor="#FFFFCC">
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">	
+			<b>Property</b>
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">	
+			<b>Description</b>
+			</font>
+			</td>
+		</tr>
+		<td colspan="2"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<tr>
+			<td valign="top">		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			BackColor
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Gets/sets the colour drawn in the background of the control.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			FileName
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Gets/sets the name of an animated cursor file to be used to load the cursor from
+			if the <i>ResourceID</i> property is set to -1.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			hWnd
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Gets/sets the <i>hWnd</i> of the PictureBox the component will draw to.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Interval
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Gets/sets the time between frames of the animated cursor (in ms).
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			ResourceID
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Gets/sets the identifier of a animated cursor resource within the module with
+			handle hInstance.  Set to -1 to use the <i>FileName</i> property instead.  Ensure
+			you set the ResourcehInstance property before 
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			ResourcehInstance&nbsp;&nbsp;
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Sets the module handle in which to look for the resource specified in <i>ResourceID</i>.
+			Use <i>App.hInstance</i> if the resource is in the executable which owns the object.
+			<br>
+			If the resource is in an external DLL you must use the API call <i>LoadLibrary</i> to get a <i>hInstance</i> handle,
+			and this must be freed when you close the executable with <i>FreeLibrary</i>.
+			<br>
+			Note that local resources cannot be read when running in the VB IDE.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Running
+			</font>
+			</td>
+			<td>		
+			<font color="#000000" face="verdana,arial,helvetica" size="2">
+			Gets/sets whether the animation is running or not.
+			</font>
+			</td>
+		</tr>
+		<td colspan="2"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		</table>
+		</p> 
+		<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		To create an animated cursor resource, you can use the Microsoft Resource Compiler tool
+	(RC.EXE).  If you don't already own this, it can be downloaded from the 
+	<a href="..\..\linxref.htm#secvbowner">MSDN Visual Basic Owner's Area</a> by downloading the VB5
+	Resource Add-In.  Each resource type has its own unique type; Animated Cursors are stored under
+	type 21 which has the constant <i>ANICURSOR</i> in RC.EXE.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalTabStrip Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalTabStrip (vbAccelerator Tab Strip)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\TabCtrl\\vbalTab.ocx
+\par GUID:\tab \{C14485BC-7593-11D2-8E21-20B404C10000\}
+\par Version:\tab 1.1
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalTabStrip.
+\par 
+\par Public Enum ETabAlignConstants
+\par \tab etaTop=0
+\par \tab etaLeft=1
+\par \tab etaBottom=2
+\par \tab etaRight=3
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalTabStrip.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b TabControl \{C14485B9-7593-11D2-8E21-20B404C10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get TabAlign() As ETabAlignConstants
+\par \plain\f3\fs20 Gets/sets the alignment of the tabs in the control (left, top, right or bottom). If changed at run-time, call the Rebuild method to make the alignment change take effect.\plain\f3\fs20\b 
+\par Property Let TabAlign(RHS  As ETabAlignConstants)
+\par \plain\f3\fs20 Gets/sets the alignment of the tabs in the control (left, top, right or bottom). If changed at run-time, call the Rebuild method to make the alignment change take effect.\plain\f3\fs20\b 
+\par Property Get FlatSeparators() As Boolean
+\par \plain\f3\fs20 If the tab control has the Buttons and FlatButtons styles set, gets/sets whether a flat toolbar-style separator is displayed between the buttons. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Let FlatSeparators(RHS  As Boolean)
+\par \plain\f3\fs20 If the tab control has the Buttons and FlatButtons styles set, gets/sets whether a flat toolbar-style separator is displayed between the buttons. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Get HotTrack() As Boolean
+\par \plain\f3\fs20 Gets/sets whether tab control tracks the mouse and highlights tabs pointed to by the cursor or not. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Let HotTrack(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether tab control tracks the mouse and highlights tabs pointed to by the cursor or not. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Get Buttons() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the tabs appear as buttons instead of tabs. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Let Buttons(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the tabs appear as buttons instead of tabs. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Get FlatButtons() As Boolean
+\par \plain\f3\fs20 If the tab control has the Buttons style set, gets/sets whether the buttons are flat. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Let FlatButtons(RHS  As Boolean)
+\par \plain\f3\fs20 If the tab control has the Buttons style set, gets/sets whether the buttons are flat. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Get MultiLine() As Boolean
+\par \plain\f3\fs20 Gets/sets whether tabs appear on more than one line or not. If changed at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Let MultiLine(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether tabs appear on more than one line or not. If changed at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Get RightJustify() As Boolean
+\par \plain\f3\fs20 Gets/sets whether text in the tabs in the control is right aligned. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Let RightJustify(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether text in the tabs in the control is right aligned. If set at run-time, call the Rebuild method to recreate the control with the new style.\plain\f3\fs20\b 
+\par Property Get Font() As Font
+\par \plain\f3\fs20 Gets/sets the font used by the tab control.\plain\f3\fs20\b 
+\par Property Set Font() As Font
+\par \plain\f3\fs20 Gets/sets the font used by the tab control.\plain\f3\fs20\b 
+\par Property Let ImageList(RHS  As Variant)
+\par \plain\f3\fs20 Associates an Image List with the control.  Use either a COMCTL32.OCX Image List, a vbAccelerator Image List or COMCTL32.DLL hImageList handle as the parameter.\plain\f3\fs20\b 
+\par Sub AddTab(ByVal sText As String, Optional ByVal iIconIndex As Long=-1, Optional ByVal vKeyBefore As Variant=-1, ByVal sKey As String, ByVal lItemData As Long)
+\par \plain\f3\fs20 Adds or inserts a tab.\plain\f3\fs20\b 
+\par Sub RemoveTab(ByVal vKey As Variant)
+\par \plain\f3\fs20 Removes a tab from the control.\plain\f3\fs20\b 
+\par Sub RemoveAllTabs
+\par \plain\f3\fs20 Removes all tabs from the control.\plain\f3\fs20\b 
+\par Property Get SelectedTab() As Long
+\par \plain\f3\fs20 Gets the index of the selected tab.\plain\f3\fs20\b 
+\par Sub SelectTab(ByVal vKey As Variant, Optional ByVal bNoEvents As Boolean=False)
+\par \plain\f3\fs20 Selects a tab in the control.\plain\f3\fs20\b 
+\par Sub Rebuild
+\par \plain\f3\fs20 Rebuilds the tab control.  Use this if you change any of the style properties at run-time to allow the style change to take effect.\plain\f3\fs20\b 
+\par Property Get ClientLeft() As Long
+\par \plain\f3\fs20 Gets the left position of the client area of the tab control.\plain\f3\fs20\b 
+\par Property Get ClientTop() As Long
+\par \plain\f3\fs20 Gets the top position of the client area of the tab control.\plain\f3\fs20\b 
+\par Property Get ClientWidth() As Long
+\par \plain\f3\fs20 Gets the width of the client area of the tab control.\plain\f3\fs20\b 
+\par Property Get ClientHeight() As Long
+\par \plain\f3\fs20 Gets the height of the client area of the tab control.\plain\f3\fs20\b 
+\par Property Get TabText(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets the text which appears in a tab.\plain\f3\fs20\b 
+\par Property Get TabImage(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the 0 based index of the image list image to display for a tab.\plain\f3\fs20\b 
+\par Property Let TabImage(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the 0 based index of the image list image to display for a tab.\plain\f3\fs20\b 
+\par Property Get TabItemData(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets a long value to associate with a tab.\plain\f3\fs20\b 
+\par Property Let TabItemData(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets a long value to associate with a tab.\plain\f3\fs20\b 
+\par Property Get TabKey(ByVal lIndex As Long) As Variant
+\par \plain\f3\fs20 Gets/sets the key to associate with a tab.\plain\f3\fs20\b 
+\par Property Get IndexForTab(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets the numeric index of a tab given the key.\plain\f3\fs20\b 
+\par Property Get TabCount() As Long
+\par \plain\f3\fs20 Gets the number of tabs in the control.\plain\f3\fs20\b 
+\par Property Get hwnd() As Long
+\par \plain\f3\fs20 Gets the Window handle of the control.  Use TabCtrlhWnd if you want the hWnd of the tab itself.\plain\f3\fs20\b 
+\par Property Get TabCtrlhWnd() As Long
+\par \plain\f3\fs20 Gets the hWnd of the Tab Control.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event BeforeClick(ByVal lTab As Long, ByVal bCancel As Boolean)
+\par \plain\f3\fs20 Raised when a tab has been clicked but before the tab has changed.\plain\f3\fs20\b 
+\par Public Event TabClick(ByVal lTab As Long)
+\par \plain\f3\fs20 Raised when a tab is clicked.\plain\f3\fs20\b 
+\par Public Event TabRightClick
+\par \plain\f3\fs20 Raised when the user right clicks on the tab control.\plain\f4\fs20 
+\par 
+\par }
+ 

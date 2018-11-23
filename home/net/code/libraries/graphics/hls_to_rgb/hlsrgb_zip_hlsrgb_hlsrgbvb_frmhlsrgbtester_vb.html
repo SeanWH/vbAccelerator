@@ -1,0 +1,448 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: HLSRGB_HLSRGBVB_frmHLSRGBTester.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: HLSRGB_HLSRGBVB_frmHLSRGBTester.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">Hue, Luminance and Saturation in .NET</a>&#160;.&#160;<a href="hlsrgb.html">Hlsrgb</a>&#160;.&#160;HLSRGB_HLSRGBVB_frmHLSRGBTester.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="hlsrgb.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Hlsrgb</a> (97K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:1434</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=1434&type=zip&title=hlsrgb_2ezip_5fhlsrgb_5fhlsrgbvb_5ffrmhlsrgbtester.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Dec 2002<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: HLSRGB_HLSRGBVB_frmHLSRGBTester.vb</h1><pre>Imports System.Drawing
+
+Namespace vbAccelerator.Components.VB.Drawing.Demonstration
+
+    Public Class frmHLSRGB
+        Inherits System.Windows.Forms.Form
+
+        Private hlsrgb As hlsrgb
+        Private ColorSampleRect As Rectangle
+        Private ColorWheelRect As Rectangle
+
+
+#Region " Windows Form Designer generated code "
+
+        Public Sub New()
+            MyBase.New()
+
+            'This call is required by the Windows Form Designer.
+            InitializeComponent()
+
+            'Add any initialization after the InitializeComponent() call
+
+        End Sub
+
+        'Form overrides dispose to clean up the component list.
+        Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing Then
+                If Not (components Is Nothing) Then
+                    components.Dispose()
+                End If
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+        'Required by the Windows Form Designer
+        Private components As System.ComponentModel.IContainer
+
+        'NOTE: The following procedure is required by the Windows Form Designer
+        'It can be modified using the Windows Form Designer.  
+        'Do not modify it using the code editor.
+        Friend WithEvents cboColors As System.Windows.Forms.ComboBox
+        Friend WithEvents trkSaturation As System.Windows.Forms.TrackBar
+        Friend WithEvents trkLuminance As System.Windows.Forms.TrackBar
+        Friend WithEvents trkHue As System.Windows.Forms.TrackBar
+        Friend WithEvents lblSaturation As System.Windows.Forms.Label
+        Friend WithEvents lblLuminance As System.Windows.Forms.Label
+        Friend WithEvents lblHue As System.Windows.Forms.Label
+        &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub
+         InitializeComponent()
+            Me.cboColors = New System.Windows.Forms.ComboBox()
+            Me.lblSaturation = New System.Windows.Forms.Label()
+            Me.trkSaturation = New System.Windows.Forms.TrackBar()
+            Me.lblLuminance = New System.Windows.Forms.Label()
+            Me.trkLuminance = New System.Windows.Forms.TrackBar()
+            Me.lblHue = New System.Windows.Forms.Label()
+            Me.trkHue = New System.Windows.Forms.TrackBar()
+            CType(Me.trkSaturation,
+             System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkLuminance,
+             System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkHue,
+             System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.SuspendLayout()
+            '
+            'cboColors
+            '
+            Me.cboColors.DropDownStyle =
+             System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cboColors.Location = New System.Drawing.Point(12, 276)
+            Me.cboColors.Name = "cboColors"
+            Me.cboColors.Size = New System.Drawing.Size(184, 21)
+            Me.cboColors.TabIndex = 14
+            '
+            'lblSaturation
+            '
+            Me.lblSaturation.Location = New System.Drawing.Point(128, 232)
+            Me.lblSaturation.Name = "lblSaturation"
+            Me.lblSaturation.Size = New System.Drawing.Size(64, 36)
+            Me.lblSaturation.TabIndex = 13
+            Me.lblSaturation.Text = "Saturation"
+            Me.lblSaturation.TextAlign =
+             System.Drawing.ContentAlignment.TopCenter
+            '
+            'trkSaturation
+            '
+            Me.trkSaturation.LargeChange = 10
+            Me.trkSaturation.Location = New System.Drawing.Point(132, 8)
+            Me.trkSaturation.Maximum = 100
+            Me.trkSaturation.Name = "trkSaturation"
+            Me.trkSaturation.Orientation =
+             System.Windows.Forms.Orientation.Vertical
+            Me.trkSaturation.Size = New System.Drawing.Size(45, 220)
+            Me.trkSaturation.TabIndex = 12
+            Me.trkSaturation.TickFrequency = 10
+            Me.trkSaturation.TickStyle = System.Windows.Forms.TickStyle.Both
+            '
+            'lblLuminance
+            '
+            Me.lblLuminance.Location = New System.Drawing.Point(64, 232)
+            Me.lblLuminance.Name = "lblLuminance"
+            Me.lblLuminance.Size = New System.Drawing.Size(64, 36)
+            Me.lblLuminance.TabIndex = 11
+            Me.lblLuminance.Text = "Luminance"
+            Me.lblLuminance.TextAlign =
+             System.Drawing.ContentAlignment.TopCenter
+            '
+            'trkLuminance
+            '
+            Me.trkLuminance.LargeChange = 10
+            Me.trkLuminance.Location = New System.Drawing.Point(72, 8)
+            Me.trkLuminance.Maximum = 100
+            Me.trkLuminance.Name = "trkLuminance"
+            Me.trkLuminance.Orientation =
+             System.Windows.Forms.Orientation.Vertical
+            Me.trkLuminance.Size = New System.Drawing.Size(45, 220)
+            Me.trkLuminance.TabIndex = 10
+            Me.trkLuminance.TickFrequency = 10
+            Me.trkLuminance.TickStyle = System.Windows.Forms.TickStyle.Both
+            '
+            'lblHue
+            '
+            Me.lblHue.Location = New System.Drawing.Point(4, 232)
+            Me.lblHue.Name = "lblHue"
+            Me.lblHue.Size = New System.Drawing.Size(64, 36)
+            Me.lblHue.TabIndex = 9
+            Me.lblHue.Text = "Hue"
+            Me.lblHue.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'trkHue
+            '
+            Me.trkHue.LargeChange = 30
+            Me.trkHue.Location = New System.Drawing.Point(12, 8)
+            Me.trkHue.Maximum = 360
+            Me.trkHue.Name = "trkHue"
+            Me.trkHue.Orientation = System.Windows.Forms.Orientation.Vertical
+            Me.trkHue.Size = New System.Drawing.Size(45, 220)
+            Me.trkHue.TabIndex = 8
+            Me.trkHue.TickFrequency = 10
+            Me.trkHue.TickStyle = System.Windows.Forms.TickStyle.Both
+            '
+            'frmHLSRGB
+            '
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+            Me.ClientSize = New System.Drawing.Size(324, 310)
+            Me.Controls.AddRange(New System.Windows.Forms.Control()
+             {Me.cboColors, Me.lblSaturation, Me.trkSaturation,
+             Me.lblLuminance, Me.trkLuminance, Me.lblHue, Me.trkHue})
+            Me.Name = "frmHLSRGB"
+            Me.Text = "HLSRGB Component Tester (VB)"
+            CType(Me.trkSaturation,
+             System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.trkLuminance,
+             System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.trkHue, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.ResumeLayout(False)
+
+        End Sub
+
+#End Region
+
+        Private Sub PopulateColors()
+            cboColors.Items.Clear()
+            Dim e As KnownColor
+            Dim names() As String = System.Enum.GetNames(e.GetType)
+            cboColors.Items.AddRange(names)
+        End Sub
+
+
+        Private Sub frmHLSRGB_Load(ByVal sender As System.Object, ByVal e As
+         System.EventArgs) Handles MyBase.Load
+            ColorSampleRect = New Rectangle(trkSaturation.Left +
+             trkSaturation.Width + 16, 16, 108, 92)
+            ColorWheelRect = New Rectangle(ColorSampleRect.X,
+             ColorSampleRect.Y, ColorSampleRect.Width, ColorSampleRect.Height)
+            ColorWheelRect.Offset(0, ColorSampleRect.Height + 16)
+
+            hlsrgb = New HLSRGB(Color.Goldenrod)
+            trkHue.Value = CInt(hlsrgb.Hue)
+            trkLuminance.Value = CInt(hlsrgb.Luminance * 100)
+            trkSaturation.Value = CInt(hlsrgb.Saturation * 100)
+
+            PopulateColors()
+
+            cboColors.DrawMode = DrawMode.OwnerDrawFixed
+
+            Me.SetStyle(ControlStyles.AllPaintingInWmPaint Or _
+                ControlStyles.ResizeRedraw Or _
+                ControlStyles.Opaque Or _
+                ControlStyles.UserPaint Or _
+                ControlStyles.DoubleBuffer, True)
+
+            ShowColor()
+        End Sub
+
+        Private Sub cboColors_SelectedIndexChanged(ByVal sender As Object,
+         ByVal e As EventArgs) Handles cboColors.SelectedIndexChanged
+            Dim itemIndex As Integer = cboColors.SelectedIndex
+            If (itemIndex &gt; -1) Then
+                Dim knownColorName As String = cboColors.Items(itemIndex)
+                Dim k As KnownColor = System.Enum.Parse(k.GetType,
+                 knownColorName)
+                Dim c As Color = Color.FromKnownColor(k)
+                hlsrgb.Color = c
+                trkHue.Value = CInt(hlsrgb.Hue)
+                trkLuminance.Value = CInt(hlsrgb.Luminance * 100)
+                trkSaturation.Value = CInt(hlsrgb.Saturation * 100)
+            End If
+        End Sub
+
+        Private Sub cboColors_DrawItem(ByVal sender As Object, ByVal d As
+         DrawItemEventArgs) Handles cboColors.DrawItem
+            Dim itemIndex As Integer = d.Index
+
+            d.DrawBackground()
+
+            If (itemIndex &gt; -1) Then
+                Dim knownColorName As String =
+                 cboColors.Items(itemIndex).ToString()
+
+                Dim textRectangle As RectangleF = New RectangleF(d.Bounds.X,
+                 d.Bounds.Y, d.Bounds.Width, d.Bounds.Height)
+                Dim colorRectangle As Rectangle = d.Bounds
+                colorRectangle.X += 2
+                colorRectangle.Y += 2
+                colorRectangle.Width = 16
+                colorRectangle.Height -= 4
+
+                Dim k As KnownColor
+                k = System.Enum.Parse(k.GetType(), knownColorName)
+                Dim c As Color = Color.FromKnownColor(k)
+                Dim colorBrush As SolidBrush = New SolidBrush(c)
+                d.Graphics.FillRectangle(colorBrush, colorRectangle)
+                colorBrush.Dispose()
+                d.Graphics.DrawRectangle(SystemPens.ControlDarkDark,
+                 colorRectangle)
+
+                textRectangle.X += 20
+                textRectangle.Width -= 20
+
+                Dim textBrush As SolidBrush
+                If ((d.State And DrawItemState.Selected) =
+                 DrawItemState.Selected) Then
+                    textBrush = SystemBrushes.HighlightText
+                Else
+                    textBrush = SystemBrushes.ControlText
+                End If
+                d.Graphics.DrawString(knownColorName, d.Font, textBrush,
+                 textRectangle)
+
+                If ((d.State And DrawItemState.Focus) = DrawItemState.Focus)
+                 Then
+                    d.DrawFocusRectangle()
+                End If
+            End If
+        End Sub
+
+        Private Sub frmHLSRGB_Paint(ByVal sender As Object, ByVal e As
+         System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
+            e.Graphics.FillRectangle(SystemBrushes.Control, e.ClipRectangle)
+            If (e.ClipRectangle.IntersectsWith(ColorSampleRect)) Then
+                DrawColorSample(ColorSampleRect, e.Graphics)
+            End If
+            If (e.ClipRectangle.IntersectsWith(ColorWheelRect)) Then
+                DrawColorWheel(ColorWheelRect, e.Graphics)
+            End If
+            e.Graphics.Flush()
+        End Sub
+
+        Private Sub trkHue_ValueChanged(ByVal sender As Object, ByVal e As
+         EventArgs) Handles trkHue.ValueChanged
+            hlsrgb.Hue = trkHue.Value
+            ShowColor()
+        End Sub
+
+        Private Sub trkSaturation_ValueChanged(ByVal sender As Object, ByVal e
+         As EventArgs) Handles trkSaturation.ValueChanged
+            hlsrgb.Saturation = trkSaturation.Value / 100.0F
+            ShowColor()
+        End Sub
+
+        Private Sub trkLuminance_ValueChanged(ByVal sender As Object, ByVal e
+         As EventArgs) Handles trkLuminance.ValueChanged
+            hlsrgb.Luminance = trkLuminance.Value / 100.0F
+            ShowColor()
+        End Sub
+
+        Private Sub ShowColor()
+            Me.Invalidate(ColorSampleRect)
+            Me.Invalidate(ColorWheelRect)
+            lblHue.Text = String.Format("Hue" +
+             Microsoft.VisualBasic.Constants.vbCrLf + "{0:F2}", hlsrgb.Hue)
+            lblSaturation.Text = String.Format("Saturation" +
+             Microsoft.VisualBasic.Constants.vbCrLf + "{0:F2}",
+             hlsrgb.Saturation)
+            lblLuminance.Text = String.Format("Luminance" +
+             Microsoft.VisualBasic.Constants.vbCrLf + "{0:F2}",
+             hlsrgb.Luminance)
+        End Sub
+
+        Private Sub DrawColorSample(ByVal rect As Rectangle, ByVal gfx As
+         Graphics)
+            ' Fill background
+            gfx.FillRectangle(SystemBrushes.Control, rect)
+
+            ' draw border
+            gfx.DrawLine(SystemPens.ControlDark, rect.X, rect.Y + rect.Height,
+             rect.X, rect.Y)
+            gfx.DrawLine(SystemPens.ControlDark, rect.X, rect.Y, rect.X +
+             rect.Width, rect.Y)
+            gfx.DrawLine(SystemPens.ControlLightLight, rect.X + rect.Width,
+             rect.Y + 1, rect.X + rect.Width, rect.Y + rect.Height)
+            gfx.DrawLine(SystemPens.ControlLightLight, rect.X + rect.Width,
+             rect.Y + rect.Height, rect.X + 1, rect.Y + rect.Height)
+
+            ' draw color sample:
+            Dim colorBrush As SolidBrush = New SolidBrush(hlsrgb.Color)
+            gfx.FillRectangle(colorBrush, rect.X + 1, rect.Y + 1, rect.Width -
+             2, rect.Height - 2)
+            colorBrush.Dispose()
+
+        End Sub
+
+        Private Sub DrawColorWheel(ByVal rect As Rectangle, ByVal gfx As
+         Graphics)
+            ' Fill background:
+            Dim backBrush As Brush = SystemBrushes.Control
+            gfx.FillRectangle(backBrush, rect)
+
+            ' Determine range and centre of the circle:
+            Dim border As Integer = Math.Min(rect.Width, rect.Height)
+            Dim border2 As Double = border / 2
+            Dim ptCentre As Point = New Point()
+            ptCentre.X = CInt(border / 2 + 1) 'Middle point
+            ptCentre.Y = ptCentre.X
+
+            ' Define start color:
+            Dim c As HLSRGB = New HLSRGB(trkHue.Value, trkLuminance.Value /
+             100, trkSaturation.Value / 100)
+
+            ' Determine circle edge points and colors:
+            Dim pt(360) As Point
+            Dim colors(360) As HLSRGB
+            Dim hue As Double = c.Hue
+
+            Dim i As Integer
+            For i = 359 To 0 Step -1
+                ' Determine color:
+                hue += 1.0F
+                If (hue &gt; 360.0F) Then
+                    hue -= 360.0F
+                End If
+                colors(i) = New HLSRGB(hue, c.Luminance, c.Saturation)
+
+                ' Determine new point on circle:
+                pt(i).X = rect.X + (ptCentre.X - Math.Cos(Math.PI * i / 180.0)
+                 * border2)
+                pt(i).Y = rect.Y + (ptCentre.Y - Math.Sin(Math.PI * i / 180.0)
+                 * border2)
+            Next i
+
+            ptCentre.Offset(rect.X, rect.Y)
+
+            ' Draw the circle using thick lines:
+            For i = 359 To 0 Step -1
+                Dim colorPen As Pen = New Pen(colors(i).Color, 2.0F)
+                gfx.DrawLine(colorPen, pt(i), ptCentre)
+                colorPen.Dispose()
+            Next i
+
+            ' Draw using thin lines;
+            For i = 359 To 0 Step -1
+                Dim colorPen As Pen = New Pen(colors(i).Color, 1)
+                gfx.DrawLine(colorPen, pt(i), ptCentre)
+                colorPen.Dispose()
+            Next i
+
+        End Sub
+
+
+
+
+
+    End Class
+
+End Namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">Hue, Luminance and Saturation in .NET</a>&#160;.&#160;<a href="hlsrgb.html">Hlsrgb</a>&#160;.&#160;HLSRGB_HLSRGBVB_frmHLSRGBTester.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,599 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_EnumWindows.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_EnumWindows.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsCS_EnumWindows.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="wm_copydata_demo.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WM_COPYDATA Demo</a> (62K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13465&type=zip&title=wm_5fcopydata_20demo_2ezip_5fsimpleinterprocesscommunicationscs_5fenumwindow.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />10 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_EnumWindows.cs</h1><pre>using System;
+using System.Collections;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace vbAccelerator.Components.Win32
+{
+   /// &lt;summary&gt;
+   /// Window Style Flags
+   /// &lt;/summary&gt;
+   [Flags]
+   public enum WindowStyleFlags : uint
+   {
+      WS_OVERLAPPED      = 0x00000000,
+      WS_POPUP           = 0x80000000,
+      WS_CHILD           = 0x40000000,
+      WS_MINIMIZE        = 0x20000000,
+      WS_VISIBLE         = 0x10000000,
+      WS_DISABLED        = 0x08000000,
+      WS_CLIPSIBLINGS    = 0x04000000,
+      WS_CLIPCHILDREN    = 0x02000000,
+      WS_MAXIMIZE        = 0x01000000,
+      WS_BORDER          = 0x00800000,
+      WS_DLGFRAME        = 0x00400000,
+      WS_VSCROLL         = 0x00200000,
+      WS_HSCROLL         = 0x00100000,
+      WS_SYSMENU         = 0x00080000,
+      WS_THICKFRAME      = 0x00040000,
+      WS_GROUP           = 0x00020000,
+      WS_TABSTOP         = 0x00010000,
+      WS_MINIMIZEBOX     = 0x00020000,
+      WS_MAXIMIZEBOX     = 0x00010000,
+   }
+   
+   /// &lt;summary&gt;
+   /// Extended Windows Style flags
+   /// &lt;/summary&gt;
+   [Flags]
+   public enum ExtendedWindowStyleFlags : int
+   {
+      WS_EX_DLGMODALFRAME    = 0x00000001,
+      WS_EX_NOPARENTNOTIFY   = 0x00000004,
+      WS_EX_TOPMOST          = 0x00000008,
+      WS_EX_ACCEPTFILES      = 0x00000010,
+      WS_EX_TRANSPARENT      = 0x00000020,
+
+      WS_EX_MDICHILD         = 0x00000040,
+      WS_EX_TOOLWINDOW       = 0x00000080,
+      WS_EX_WINDOWEDGE       = 0x00000100,
+      WS_EX_CLIENTEDGE       = 0x00000200,
+      WS_EX_CONTEXTHELP      = 0x00000400,
+
+      WS_EX_RIGHT            = 0x00001000,
+      WS_EX_LEFT             = 0x00000000,
+      WS_EX_RTLREADING       = 0x00002000,
+      WS_EX_LTRREADING       = 0x00000000,
+      WS_EX_LEFTSCROLLBAR    = 0x00004000,
+      WS_EX_RIGHTSCROLLBAR   = 0x00000000,
+
+      WS_EX_CONTROLPARENT    = 0x00010000,
+      WS_EX_STATICEDGE       = 0x00020000,
+      WS_EX_APPWINDOW        = 0x00040000,
+
+      WS_EX_LAYERED          = 0x00080000,
+
+      WS_EX_NOINHERITLAYOUT  = 0x00100000, // Disable inheritence of mirroring
+       by children
+      WS_EX_LAYOUTRTL        = 0x00400000, // Right to left mirroring
+
+      WS_EX_COMPOSITED       = 0x02000000,
+      WS_EX_NOACTIVATE       = 0x08000000
+   }
+
+
+   #region EnumWindows
+   /// &lt;summary&gt;
+   /// EnumWindows wrapper for .NET
+   /// &lt;/summary&gt;
+   public class EnumWindows
+   {
+      #region Delegates
+      private delegate int EnumWindowsProc(IntPtr hwnd, int lParam);
+      #endregion
+
+      #region UnManagedMethods
+      private class UnManagedMethods
+      {
+         [DllImport("user32")]
+         public extern static int EnumWindows (
+            EnumWindowsProc lpEnumFunc, 
+            int lParam);
+         [DllImport("user32")]
+         public extern static int EnumChildWindows (
+            IntPtr hWndParent,
+            EnumWindowsProc lpEnumFunc, 
+            int lParam);
+      }
+      #endregion
+
+      #region Member Variables
+      private EnumWindowsCollection items = null;
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Returns the collection of windows returned by
+      /// GetWindows
+      /// &lt;/summary&gt;
+      public EnumWindowsCollection Items
+      {
+         get
+         {
+            return this.items;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets all top level windows on the system.
+      /// &lt;/summary&gt;
+      public void GetWindows()
+      {
+         this.items = new EnumWindowsCollection();
+         UnManagedMethods.EnumWindows(
+            new EnumWindowsProc(this.WindowEnum),
+            0);
+      }
+      /// &lt;summary&gt;
+      /// Gets all child windows of the specified window
+      /// &lt;/summary&gt;
+      /// &lt;param name="hWndParent"&gt;Window Handle to get children for&lt;/param&gt;
+      public void GetWindows(
+         IntPtr hWndParent)
+      {
+         this.items = new EnumWindowsCollection();
+         UnManagedMethods.EnumChildWindows(
+            hWndParent,
+            new EnumWindowsProc(this.WindowEnum),
+            0);
+      }
+
+      #region EnumWindows callback
+      /// &lt;summary&gt;
+      /// The enum Windows callback.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hWnd"&gt;Window Handle&lt;/param&gt;
+      /// &lt;param name="lParam"&gt;Application defined value&lt;/param&gt;
+      /// &lt;returns&gt;1 to continue enumeration, 0 to stop&lt;/returns&gt;
+      private int WindowEnum(
+         IntPtr hWnd,
+         int lParam)
+      {
+         if (this.OnWindowEnum(hWnd))
+         {
+            return 1;
+         }
+         else
+         {
+            return 0;
+         }
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Called whenever a new window is about to be added
+      /// by the Window enumeration called from GetWindows.
+      /// If overriding this function, return true to continue
+      /// enumeration or false to stop.  If you do not call
+      /// the base implementation the Items collection will
+      /// be empty.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hWnd"&gt;Window handle to add&lt;/param&gt;
+      /// &lt;returns&gt;True to continue enumeration, False to stop&lt;/returns&gt;
+      protected virtual bool OnWindowEnum(
+         IntPtr hWnd)
+      {
+         items.Add(hWnd);
+         return true;
+      }
+
+      #region Constructor, Dispose
+      public EnumWindows()
+      {
+         // nothing to do
+      }
+      #endregion
+   }   
+   #endregion EnumWindows
+
+   #region EnumWindowsCollection
+   /// &lt;summary&gt;
+   /// Holds a collection of Windows returned by GetWindows.
+   /// &lt;/summary&gt;
+   public class EnumWindowsCollection : ReadOnlyCollectionBase
+   {
+      /// &lt;summary&gt;
+      /// Add a new Window to the collection.  Intended for
+      /// internal use by EnumWindows only.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hWnd"&gt;Window handle to add&lt;/param&gt;
+      public void Add(IntPtr hWnd)
+      {
+         EnumWindowsItem item = new EnumWindowsItem(hWnd);
+         this.InnerList.Add(item);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the Window at the specified index
+      /// &lt;/summary&gt;
+      public EnumWindowsItem this[int index]
+      {
+         get
+         {
+            return (EnumWindowsItem)this.InnerList[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new EnumWindowsCollection object.
+      /// &lt;/summary&gt;
+      public EnumWindowsCollection()
+      {
+         // nothing to do
+      }
+   }
+   #endregion      
+
+   #region EnumWindowsItem
+   /// &lt;summary&gt;
+   /// Provides details about a Window returned by the 
+   /// enumeration
+   /// &lt;/summary&gt;
+   public class EnumWindowsItem
+   {
+      #region Structures
+      [StructLayout(LayoutKind.Sequential, Pack = 4)]
+         private struct RECT
+      {
+         public int Left;
+         public int Top;
+         public int Right;
+         public int Bottom;
+      }
+      [StructLayout(LayoutKind.Sequential, Pack = 4)]
+         private struct FLASHWINFO
+      {
+         public int cbSize;
+         public IntPtr hwnd;
+         public int dwFlags;
+         public int uCount;
+         public int dwTimeout;
+      }
+      #endregion
+
+      #region UnManagedMethods
+      private class UnManagedMethods
+      {
+         [DllImport("user32")]
+         public extern static int IsWindowVisible (
+            IntPtr hWnd);
+         [DllImport("user32", CharSet = CharSet.Auto)]
+         public extern static int GetWindowText(
+            IntPtr hWnd, 
+            StringBuilder lpString, 
+            int cch);
+         [DllImport("user32", CharSet = CharSet.Auto)]
+         public extern static int GetWindowTextLength(
+            IntPtr hWnd);
+         [DllImport("user32")]
+         public extern static int BringWindowToTop (IntPtr hWnd);
+         [DllImport("user32")]
+         public extern static int SetForegroundWindow (IntPtr hWnd);
+         [DllImport("user32")]
+         public extern static int IsIconic(IntPtr hWnd);
+         [DllImport("user32")]
+         public extern static int IsZoomed(IntPtr hwnd);
+         [DllImport("user32", CharSet = CharSet.Auto)]
+         public extern static int GetClassName (
+            IntPtr hWnd, 
+            StringBuilder lpClassName, 
+            int nMaxCount);
+         [DllImport("user32")]
+         public extern static int FlashWindow (
+            IntPtr hWnd,
+            ref FLASHWINFO pwfi);
+         [DllImport("user32")]
+         public extern static int GetWindowRect (
+            IntPtr hWnd, 
+            ref RECT lpRect);
+         [DllImport("user32", CharSet = CharSet.Auto)]
+         public extern static int SendMessage(
+            IntPtr hWnd, 
+            int wMsg, 
+            IntPtr wParam, 
+            IntPtr lParam);
+         [DllImport("user32", CharSet = CharSet.Auto)]
+         public extern static uint GetWindowLong (
+            IntPtr hwnd, 
+            int nIndex);
+         public const int WM_COMMAND = 0x111;
+         public const int WM_SYSCOMMAND = 0x112;
+            
+         public const int SC_RESTORE = 0xF120;
+         public const int SC_CLOSE = 0xF060;
+         public const int SC_MAXIMIZE = 0xF030;
+         public const int SC_MINIMIZE = 0xF020;
+
+         public const int GWL_STYLE = (-16);
+         public const int GWL_EXSTYLE = (-20);
+
+         /// &lt;summary&gt;
+         /// Stop flashing. The system restores the window to its original
+          state.
+         /// &lt;/summary&gt;
+         public const int FLASHW_STOP = 0;
+         /// &lt;summary&gt;
+         /// Flash the window caption. 
+         /// &lt;/summary&gt;
+         public const int FLASHW_CAPTION = 0x00000001;
+         /// &lt;summary&gt;
+         /// Flash the taskbar button.
+         /// &lt;/summary&gt;
+         public const int FLASHW_TRAY = 0x00000002;
+         /// &lt;summary&gt;
+         /// Flash both the window caption and taskbar button.
+         /// &lt;/summary&gt;
+         public const int FLASHW_ALL = (FLASHW_CAPTION | FLASHW_TRAY);
+         /// &lt;summary&gt;
+         /// Flash continuously, until the FLASHW_STOP flag is set.
+         /// &lt;/summary&gt;
+         public const int FLASHW_TIMER = 0x00000004;
+         /// &lt;summary&gt;
+         /// Flash continuously until the window comes to the foreground. 
+         /// &lt;/summary&gt;
+         public const int FLASHW_TIMERNOFG = 0x0000000C;
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The window handle.
+      /// &lt;/summary&gt;
+      private IntPtr hWnd = IntPtr.Zero;
+
+      /// &lt;summary&gt;
+      /// To allow items to be compared, the hash code
+      /// is set to the Window handle, so two EnumWindowsItem
+      /// objects for the same Window will be equal.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;The Window Handle for this window&lt;/returns&gt;
+      public override System.Int32 GetHashCode()
+      {
+         return (System.Int32)this.hWnd;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the window's handle
+      /// &lt;/summary&gt;
+      public IntPtr Handle
+      {
+         get
+         {
+            return this.hWnd;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the window's title (caption)
+      /// &lt;/summary&gt;
+      public string Text
+      {
+         get
+         {
+            StringBuilder title = new StringBuilder(260, 260);
+            UnManagedMethods.GetWindowText(this.hWnd, title, title.Capacity);
+            return title.ToString();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the window's class name.
+      /// &lt;/summary&gt;
+      public string ClassName
+      {
+         get
+         {
+            StringBuilder className = new StringBuilder(260, 260);
+            UnManagedMethods.GetClassName(this.hWnd, className,
+             className.Capacity);
+            return className.ToString();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/Sets whether the window is iconic (mimimised) or not.
+      /// &lt;/summary&gt;
+      public bool Iconic
+      {
+         get
+         {
+            return ((UnManagedMethods.IsIconic(this.hWnd) == 0) ? false : true);
+         }
+         set
+         {
+            UnManagedMethods.SendMessage(
+               this.hWnd, 
+               UnManagedMethods.WM_SYSCOMMAND, 
+               (IntPtr)UnManagedMethods.SC_MINIMIZE,
+               IntPtr.Zero);
+         }
+      }
+         
+      /// &lt;summary&gt;
+      /// Gets/Sets whether the window is maximised or not.
+      /// &lt;/summary&gt;
+      public bool Maximised
+      {
+         get
+         {
+            return ((UnManagedMethods.IsZoomed(this.hWnd) == 0) ? false : true);
+         }
+         set
+         {
+            UnManagedMethods.SendMessage(
+               this.hWnd,
+               UnManagedMethods.WM_SYSCOMMAND, 
+               (IntPtr)UnManagedMethods.SC_MAXIMIZE,
+               IntPtr.Zero);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether the window is visible.
+      /// &lt;/summary&gt;
+      public bool Visible
+      {
+         get
+         {
+            return ((UnManagedMethods.IsWindowVisible(this.hWnd) == 0) ? false
+             : true);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the bounding rectangle of the window
+      /// &lt;/summary&gt;
+      public System.Drawing.Rectangle Rect
+      {
+         get
+         {
+            RECT rc = new RECT();
+            UnManagedMethods.GetWindowRect(
+               this.hWnd,
+               ref rc);
+            System.Drawing.Rectangle rcRet = new System.Drawing.Rectangle(
+               rc.Left, rc.Top,
+               rc.Right - rc.Left, rc.Bottom - rc.Top);
+            return rcRet;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the location of the window relative to the screen.
+      /// &lt;/summary&gt;
+      public System.Drawing.Point Location
+      {
+         get
+         {
+            System.Drawing.Rectangle rc = Rect;
+            System.Drawing.Point pt = new System.Drawing.Point(
+               rc.Left,
+               rc.Top);
+            return pt;
+         }
+      }
+         
+      /// &lt;summary&gt;
+      /// Gets the size of the window.
+      /// &lt;/summary&gt;
+      public System.Drawing.Size Size
+      {
+         get
+         {
+            System.Drawing.Rectangle rc = Rect;
+            System.Drawing.Size sz = new System.Drawing.Size(
+               rc.Right - rc.Left,
+               rc.Bottom - rc.Top);
+            return sz;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Restores and Brings the window to the front, 
+      /// assuming it is a visible application window.
+      /// &lt;/summary&gt;
+      public void Restore()
+      {
+         if (Iconic)
+         {
+            UnManagedMethods.SendMessage(
+               this.hWnd, 
+               UnManagedMethods.WM_SYSCOMMAND, 
+               (IntPtr)UnManagedMethods.SC_RESTORE, 
+               IntPtr.Zero);
+         }
+         UnManagedMethods.BringWindowToTop(this.hWnd);
+         UnManagedMethods.SetForegroundWindow(this.hWnd);
+      }
+
+      public WindowStyleFlags WindowStyle
+      {
+         get
+         {
+            return (WindowStyleFlags)UnManagedMethods.GetWindowLong(
+               this.hWnd, UnManagedMethods.GWL_STYLE);
+         }
+      }
+      
+      public ExtendedWindowStyleFlags ExtendedWindowStyle
+      {
+         get
+         {
+            return (ExtendedWindowStyleFlags)UnManagedMethods.GetWindowLong(
+               this.hWnd, UnManagedMethods.GWL_EXSTYLE);
+         }
+      }
+
+      /// &lt;summary&gt;
+      ///  Constructs a new instance of this class for
+      ///  the specified Window Handle.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hWnd"&gt;The Window Handle&lt;/param&gt;
+      public EnumWindowsItem(IntPtr hWnd)
+      {
+         this.hWnd = hWnd;
+      }
+   }
+   #endregion
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsCS_EnumWindows.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 15 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,302 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Toolbars and Rebars: Quick Start 1 - Add a Rebar and a Toolbar to Your App</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<!-- SECTION:START -->
+<!-- SECTION:CODE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:CODE:END -->
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<!-- AREA:COMCTL:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	<font color="#99CC33" face="verdana,arial,helvetica" size="2">
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- AREA:COMCTL:END -->
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td bgcolor="#EEEEEE" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Toolbars and Rebars: Quick Start 1 - Add a Rebar and a Toolbar to Your App</b>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	&nbsp;How to get started with the vbAccelerator CoolMenu, Toolbar and Rebar Control.
+	</font>
+	<td>&nbsp</td>
+	</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<p>
+	<br><br>
+	This sample explains how to create a standard document style toolbar with text captions on 
+	the buttons.
+	<ol>
+	<li><u>Add a Rebar and Toolbar control to your form.</u><br>
+	It doesn't matter where you put them, they will be sized to position when the app runs.  If
+	your form is an MDI form, also add a PictureBox and set it's Align property to 1 (Top).
+	<br><br>
+	<li><u>Set up the toolbar</u><br>
+	The following code initialises the toolbar images to use the in-built standard toolbar 
+	button Image List, and then creates the toolbar with the <i>CreateToolbar</i> method:<br>
+</font>
+<br>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;With cToolbar1 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.ImageSource = CTBStandardImageSources <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.ImageStandardBitmapType = CTBStandardSmallColor <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.CreateToolbar 16, , True <br>
+&nbsp;&nbsp;&nbsp;End With <br>
+ <br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li><u>Set up the buttons</u><br>
+	The list of available in-built images are coded as an enumeration in the toolbar control.
+	Check the <i>ECTBStandardImageIndexConstants</i> enumeration for a list of the available items.
+	The <i>AddButton</i> method allows you to add or insert a toolbar button and takes the following
+	arguments:<br>
+	<ul><li><i>sTip</i> - the tooltip
+	<li><i>iImage</i> - the 0 based index of the bitmap image to use
+	<li><i>vButtonBefore</i> - the key or 0 based index of the button to insert before, or leave
+	missing to add a button to end of the toolbar.
+	<li><i>sButtonText</i> - the text to appear under the button, or nothing if your button does
+	not have text.
+	<li><i>eButtonStyle</i> - the style of the button, i.e. standard, autosized, drop-down, check
+	or check group.  The <i>ECTBToolButtonSyle</i> contains the allowable styles for this parameter.
+	<li><i>sKey</i> - A string key which can be used to identify the button later.
+	</ul>
+	<br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp With cToolbar1 <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "New", CTBStdFileNew, , , "New", CTBDropDown,"New" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Open", CTBStdFileOpen, , , "Open", ,"Open" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Save", CTBStdFIleSave, , , "Save", ,"Save" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "", -1, , , , CTBSeparator <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Cut", CTBStdCut, , , "Cut", ,"Cut" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Copy", CTBStdCopy, , , "Copy", ,"Copy" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Paste", CTBStdPaste, , , "Paste", ,"Paste" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "", -1, , , , CTBSeparator <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "CheckBox", CTBStdProperties, , , "Properties", CTBCheck,"Properties" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "", -1, , , , CTBSeparator <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Print", CTBStdPrint, , , "Print", ,"Print" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "", -1, , , , CTBSeparator <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Help", CTBStdHelp, , , "Help", ,"Help" <br>
+&nbsp &nbsp &nbsp &nbsp   .AddButton "Find", CTBStdFind, , , "Find", ,"Find" <br>
+&nbsp &nbsp    End With <br>
+    <br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li><u>Set up the rebar and add the toolbar</u><br>
+	Here the rebar does not have a background bitmap.  The rebar is created with the <i>CreateRebar</i>
+	method, which takes the hWnd of the rebar's parent as an argument, and then the toolbar is 
+	added to it with the <i>AddBandByhWnd</i> method, which takes the following arguments:
+	<ul>
+	<li><i>hWnd</i> - the hWnd of the control to add the band
+	<li><i>sBandText</i> - the text to show at the start of the band, if any
+	<li><i>bBreakLine</i> - Set to True to force the band to initially appear on a new line in the Rebar.
+	<li><i>bFixedSize</i> - Whether the band can be resized or not within the rebar.  Note this method
+	won't work unless you have COMCTL32.DLL version 4.71 or higher.
+	<li><i>vData</i> - A string key which can be used to identify the rebar band later.
+	</ul>
+	<br>
+	</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp With cReBar1 <br>
+&nbsp &nbsp &nbsp &nbsp   .CreateRebar Me.hWnd <br>
+&nbsp &nbsp &nbsp &nbsp   .AddBandByHwnd cToolbar1.hWnd, , , , "Toolbar1" <br>
+&nbsp &nbsp End With <br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li><u>Respond to resizing</u><br>
+	Firstly, you should tell the Rebar to resize whenever the form changes size using 
+	the <i>RebarSize</i> method:<br><br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Form_Resize() <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      ' Make sure the rebar is the correct width: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp      cReBar1.RebarSize <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   ' Do your form resizing here: <br>
+&nbsp &nbsp   ' Note that the Rebar's height can be obtained from the RebarHeight<br>
+&nbsp &nbsp   ' property.  This is in pixels, so multiply by Screen.TwipsPerPixelY.<br>
+&nbsp &nbsp   ' ... <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+End Sub <br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>The rebar can also change height when your form hasn't resized, for example,
+	when a band is moved by the user.  When this occurs, the Rebar raises a HeightChanged
+	event.  Respond to this and do all the Form_Resize code you would normally perform.	
+	<br><br>
+	<li><u>For safety, clear up the rebar when the form unloads</u><br>
+	Although the control should theoretically respond correctly during unload, the unload
+	order is sometimes unpredictable in VB.  By calling this method you ensure all controls
+	are in the correct place and that the Rebar will terminate.<br><br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer) <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   ' For safety, ensure that the Rebar doesn't have any <br>
+&nbsp &nbsp   ' child windows before terminating.  This shouldn't be <br>
+&nbsp &nbsp   ' necessary: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   cReBar1.RemoveAllRebarBands <br>
+End Sub <br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li><u>Respond to button clicks</u><br>
+	When a button is clicked, the toolbar will raise a <i>ButtonClick</i> event, passing the
+	index of the button as a parameter.  You can get the key of the button by querying the
+	toolbar's <i>ButtonKey</i> property.<br>
+	If the drop-down portion of a button is clicked, the toolbar will raise a <i>DropDownPress</i>
+	event, also passing the index of the button.  To show a drop-down menu, call the toolbar's
+	<i>GetDropDownPosition</i> method to determine the x and y position to show the menu, and
+	use VB's PopupMenu event to show a menu there.
+	</ol>
+	And that's it!  Now you are ready to continue to stage 2: <a href="retbarq2.htm">Quick Start 2:
+	Adding a CoolMenu to your Application</a>.
+	
+	</p>
+
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="#sectop"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back"></a>Back to <a href="retbar.htm">CoolMenu Toolbar and Rebar Control</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- END:Footer --></font>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

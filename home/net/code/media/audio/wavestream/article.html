@@ -1,0 +1,203 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - WaveStreamReader and WaveStreamWriter</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+This article describes two classes which provide Stream wrappers
+around the Windows Multimedia API to work with .WAV files in .NET.  These classes
+allow you to read and write .WAV files directly from managed code.  Both C# and VB versions
+of the code are provided.
+" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" />
+<link rel="contents" href="../index.asp" /><link rel="meta" type="application/rdf+xml" href="./article.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Media</a>&#160;.&#160;<a href="..\index.html">Audio</a>&#160;.&#160;WaveStreamReader and WaveStreamWriter</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="wavestream_csharp.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WaveStream CSharp</a> (31K)</p><p class="nav"><a href="wavestream_vb.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WaveStream VB</a> (35K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:15506</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=15506&type=article&title=wavestreamreader_20and_20wavestreamwriter.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>WaveStreamReader and WaveStreamWriter</h1><img src="wavestream.png" width="376" height="300" alt="Basic Wave Stream Demonstration Sample" /><p /><p>
+This article describes two classes which provide <span class="code">Stream</span> wrappers
+around the Windows Multimedia API to work with .WAV files in .NET.  These classes
+allow you to read and write .WAV files directly from managed code.  Both C# and VB versions
+of the code are provided.
+</p><h2>About .WAV Files and Multimedia IO</h2><p>
+.WAV files use a type of structured file storage in which data is divided into tagged
+chunks, each of which can contain sub-chunks.  This storage type is known as the
+Resource Interchange File Format, or RIFF, and provides a flexible means of
+structuring files.  The tag for each chunk is defined as a 32-bit value known as
+the "FOURCC" code - the value consists of the ASCII values of
+four characters appended to each other (for example "WAVE" is 
+0x45564157 since "W" is ASCII 0x57, "A" is 41 etc).
+A diagram of the file structure for a basic wave file is shown below:
+</p><img src="waveriff.png" width="296" height="234" alt="Wave RIFF file structure" /><p>
+Since each chunk defines its size, it is fairly easy to locate particular subchunks in 
+the file.  This helps to make the file format extensible, since you can add extra
+chunks provided you ensure you have all of the required chunks in the correct
+location in th hierarchy.  Many real-world wave files also contain other chunks
+like "PAD" (to provide a space at the start of the file for extra data).
+</p><p>
+It would be simple enough to decode RIFF files using managed code, however, you
+can make it easier by using the Windows Multimedia API, which already contains
+functions for finding chunks, reading and writing subchunks and seeking in RIFF files.
+These APIs can make life a lot easier particularly for writing files since theyhandle the structural aspects of the format, such as ensuring the correct
+form types and sizes are written out into the chunks automatically.
+</p><h2>Using The Multimedia API Functions</h2><p>
+All of the functions for working with multimedia files are specified in
+<span class="code">winmm.dll</span>, which has been available on all Windows
+systems since NT 3.1/Win95.  The functions used in this code are specified
+in the internal <span class="i">WinMMInterop</span> class, which contains
+structures and declares for the following:
+</p><ol><li><span class="code">WAVEFORMATEX</span> - a structure specifying the
+format of a Wave file.</li><li><span class="code">MMIOINFO</span> - a structure containing low-level 
+information about a file opened using multi-media IO.  Typically applications
+do not use this information.</li><li><span class="code">MMCKINFO</span> - structure containing information
+about a chunk within a RIFF file.</li><li><span class="code">mmioOpen</span> - opens a RIFF file and returns a handle
+to the file.</li><li><span class="code">mmioClose</span> - closes a RIFF file previously opened
+with <span class="code">mmioOpen</span>.
+</li><li><span class="code">mmioDescend</span> - descends into a chunk in the file.
+Two versions of this declare are provided: one for descending into the top level chunk, where the parent chunk is a null pointer, and the other for descending into a subchunk
+where the chunk information needs to be specified.
+</li><li><span class="code">mmioAscend</span> - performs the reverse of <span class="code">mmioDescend</span>.  When the file is open for writing, this causes the chunk
+size to be written out.</li><li><span class="code">mmioRead</span> - reads data from the current chunk into
+a buffer.  Two versions of this declare are provided; one for raw byte data
+and another for the <span class="code">WAVEFORMATEX</span> structure.</li><li><span class="code">mmioWrite</span> - writes data from a pointer to a buffer
+into the current chunk.</li><li><span class="code">mmioCreateChunk</span> - creates a new chunk in the file.</li><li><span class="code">mmioSeek</span> - seeks to a point in the file.</li><li><span class="code">mmioStringToFOURCC</span> - converts a FOURCC string to
+the long code used in the file.</li></ol><p>
+These functions provide everything needed to implement a <span class="code">Stream</span>
+wrapper on top of a .WAV file.
+</p><h2>Buffers, Arrays and Pinning</h2><p>
+The multimedia IO functions for reading and writing both use a pointer to a buffer
+in memory for the data.  A .NET <span class="code">Stream</span> object specifies
+that data is read in or out of the file as a managed byte array.  Therefore there
+needs to be a way to convert to and from buffers and arrays.
+</p><p>
+This is provided by the Interop <span class="code">GCHandle</span> object.  The
+idea behind this object is that normally the .NET runtime is free to move the
+physical location of any variable (including arrays) around in memory at any time.  
+This behaviour can be prevented by locking the physical location to a particular
+address.  Once the physical location has been locked, then an address of the 
+data can be found, and used with calls which expect a pointer to a buffer.
+</p><p>
+This simplified piece of code shows the key parts of the <span class="code">Read</span>
+routine.  First, the buffer is pinned using the <span class="code">Alloc</span>
+member of the <span class="code">GCHandle</span> object.  Then the address
+can be determined using <span class="code">AddrOfPinnedObject</span>.  Finally,
+once the buffer is finished with the handle has to be freed using the
+<span class="code">Free</span> method:
+</p><pre>
+    Public Overloads Overrides Function Read( _
+        ByVal buffer As Byte(), _
+        ByVal offset As Integer, _
+        ByVal count As Integer) As Integer
+
+        Dim handle As GCHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned)
+        Dim ptrBuffer As IntPtr = handle.AddrOfPinnedObject()
+
+        amtRead = WinMMInterop.mmioRead(hMmio, ptrBuffer, count)
+
+        If (handle.IsAllocated) Then
+            handle.Free()
+        End If
+
+    End Function
+</pre><p>
+Obviously doing this may play havoc with the efficiency of the .NET runtime 
+garbage collector, so it ought to be used judiciously.  It is also a shame
+that the reverse of this operation is not possible, as it was (albeit with
+some hacks) in VB Classic. The idea would be that when you have an unmanaged 
+buffer allocated externally then you could "point"
+a pinned managed array at it.  It would seem that this would be possible.  You 
+can achieve this using <span class="code">unsafe</span> pointer manipulation
+in C#, but pointer manipulation is inherently more difficult than working
+with an array.
+</p><h2>WaveStreamReader and WaveStreamWriter</h2><p>
+These classes should be self-explanatory if you've already used a class
+which extends the Framework's <span class="code">Stream</span>.  The only
+differences over a basic stream are:
+</p><ul><li>Both the <span class="code">WaveStreamReader</span> and 
+<span class="code">WaveStreamWriter</span> classes provide a method
+for reading data in <span class="code">short</span> multiples.  This is
+handy for 16-bit wave files.</li><li>Properties are provided for <span class="code">SamplingFrequency</span>,
+<span class="code">BitsPerChannel</span> and <span class="code">Channels</span>
+of the wave file.  You can use these to derive the length of the file in
+seconds:
+<pre>
+   double lengthSeconds = ((reader.Channels * reader.BitsPerSample) / 8);
+   lengthSeconds = reader.Length / (reader.SamplingFrequency * lengthSeconds);
+</pre><p>
+Note that you cannot change these properties for an existing file.  In principle
+bit-depth reduction or expansion isn't too hard; however changing the number of channels
+doesn't really have any meaning unless you define how the existing audio
+data maps onto the channels in the new file. Altering the sampling frequency of a file 
+is possible but rather involved, requiring sophisticated interpolation and a digital filter.
+</p></li></ul><p>
+The C# version of the code is provided in the download as a strong-named
+binary which can be registered into the GAC if you just want to use the
+classes as fit-and-forget rather than using the code directly.
+</p><h2>Sample Application</h2><p>
+The sample application for this article is particularly straightforward: it
+demonstrates opening files, showing information about the wave file, and 
+then performing a passthrough through the reader and writer classes to write 
+out the same wave file. (This is admitted pathetic, since it can also be
+achieved rather more simply using <span class="code">File.Copy</span>, but
+it does demonstrate that the class behaves correctly).  However, it should be
+clear that more
+interesting applications such as compression, volume normalization,
+silencing, FFT and so forth can all be achieved once you have access to the
+data in the wave form.
+</p><h2>Conclusion</h2><p>
+This sample has provided classes for working with non-compressed .WAV
+files in the .NET framework.  The Interop routines provided are also 
+useful for working with other multimedia files such as AVIs.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Media</a>&#160;.&#160;<a href="..\index.html">Audio</a>&#160;.&#160;WaveStreamReader and WaveStreamWriter</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

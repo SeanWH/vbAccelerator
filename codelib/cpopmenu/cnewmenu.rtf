@@ -1,0 +1,165 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b PopupMenu Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab PopupMenu (vbAccelerator Popup Menu DLL.  Create unlimited new pop-up menus.)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\cNewMenus\\Release\\cNewMenu.dll
+\par GUID:\tab \{C2FC361F-2281-11D2-8E21-10B404C10000\}
+\par Version:\tab 1.11
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by PopupMenu.
+\par 
+\par Public Enum ECNMHeaderStyle
+\par \tab ecnmHeaderCaptionBar=0
+\par \tab ecnmHeaderSeparator=1
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by PopupMenu.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cPopupMenu \{C2FC361D-2281-11D2-8E21-10B404C10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Set BackgroundPicture() As Picture
+\par \plain\f3\fs20 Sets a StdPicture object to tile behind the menu items.  Use ClearBackgroundPicture to remove the picture again.\plain\f3\fs20\b 
+\par Sub ClearBackgroundPicture
+\par \plain\f3\fs20 Removes the background picture (if any) being used to tile behind menu items.\plain\f3\fs20\b 
+\par Property Get IDForItem(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Returns the Menu ID used to identify a menu item.  If the menu has a child menu, this will be the menu handle of the child menu.\plain\f3\fs20\b 
+\par Property Get ItemForID(ByVal wID As Long) As Long
+\par \plain\f3\fs20 Returns the Index of the menu item with the specified ID.\plain\f3\fs20\b 
+\par Sub EmulateMenuClick(ByVal wID As Long)
+\par \plain\f3\fs20 Given the ID of a menu item, calls the code cPopupMenu would normally run when the item is clicked.\plain\f3\fs20\b 
+\par Property Get GradientHighlight() As Boolean
+\par \plain\f3\fs20 Gets/sets whether highlights on the menu are drawn with a gradient or not.\plain\f3\fs20\b 
+\par Property Let GradientHighlight(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether highlights on the menu are drawn with a gradient or not.\plain\f3\fs20\b 
+\par Property Get HeaderStyle() As ECNMHeaderStyle
+\par \plain\f3\fs20 Gets/sets how header style menu items will be drawn.  Header style items can either be drawn in an ICQ-style (when a standard menu separator is drawn but the text is rendered in a small font) or in a small window caption style.\plain\f3\fs20\b 
+\par Property Let HeaderStyle(RHS  As ECNMHeaderStyle)
+\par \plain\f3\fs20 Gets/sets how header style menu items will be drawn.  Header style items can either be drawn in an ICQ-style (when a standard menu separator is drawn but the text is rendered in a small font) or in a small window caption style.\plain\f3\fs20\b 
+\par Property Get Count() As Long
+\par \plain\f3\fs20 Gets the number of items in the menu.\plain\f3\fs20\b 
+\par Property Get HighlightCheckedItems() As Boolean
+\par \plain\f3\fs20 Gets/sets whether checked items should be highlighted when the menu item is selected.\plain\f3\fs20\b 
+\par Property Let HighlightCheckedItems(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether checked items should be highlighted when the menu item is selected.\plain\f3\fs20\b 
+\par Property Get Tag() As String
+\par \plain\f3\fs20 Gets/sets a string associated with the popup-menu object.\plain\f3\fs20\b 
+\par Property Let Tag(RHS  As String)
+\par \plain\f3\fs20 Gets/sets a string associated with the popup-menu object.\plain\f3\fs20\b 
+\par Sub Store(ByVal sKey As String)
+\par \plain\f3\fs20 Stores the current popup menu for later retrieval with the Restore command.\plain\f3\fs20\b 
+\par Sub Restore(ByVal sKey As String)
+\par \plain\f3\fs20 Restores a previously created menu saved with the Store command.\plain\f3\fs20\b 
+\par Function StoreToFile(Optional ByVal iFIle As Long=-1, Optional ByVal sFile As String=) As Variant
+\par \plain\f3\fs20 Saves all menus to a file.  Specifiy either a filename or an open file handle to save to.\plain\f3\fs20\b 
+\par Function RestoreFromFile(Optional ByVal iFIle As Long=-1, Optional ByVal sFile As String=) As Variant
+\par \plain\f3\fs20 Restores all menus previously saved to a file using StoreToFile.  Specifiy either a filename or an open file handle to the file containing the stored data.\plain\f3\fs20\b 
+\par Property Get hWndOwner() As Long
+\par \plain\f3\fs20 Sets the owning window of the popup menu.  This must be set before any popup menus are shown.\plain\f3\fs20\b 
+\par Property Let hWndOwner(RHS  As Long)
+\par \plain\f3\fs20 Sets the owning window of the popup menu.  This must be set before any popup menus are shown.\plain\f3\fs20\b 
+\par Property Let ImageList(RHS  As Variant)
+\par \plain\f3\fs20 Associates an ImageList with the Popup menu for setting icons.  This may be set to either a VB ImageList control or a hImageList API handle.\plain\f3\fs20\b 
+\par Function AddItem(ByVal sCaption As String, Optional ByVal sHelptext As String=, Optional ByVal lItemData As Long=0, Optional ByVal lParentIndex As Long=0, Optional ByVal lIconIndex As Long=-1, Optional ByVal bChecked As Boolean=False, Optional ByVal bEnabled As Boolean=True, Optional ByVal sKey As String=) As Long
+\par \plain\f3\fs20 Adds a new menu item, optionally specifying the caption, helptext, 0 based icon index in the ImageList, Itemdata, Key to refer to the item and whether the menu item is enabled or checked.  The item can be in a sub-menu if you specify the index of the par\plain\f3\fs20\b 
+\par Function InsertItem(ByVal sCaption As String, ByVal vKeyBefore As Variant, Optional ByVal sHelptext As String=, Optional ByVal lItemData As Long=0, Optional ByVal lIconIndex As Long=-1, Optional ByVal bChecked As Boolean=False, Optional ByVal bEnabled As Boolean=True, Optional ByVal sKey As String=) As Long
+\par \plain\f3\fs20 Similar to AddItem, except allows you to Insert a menu item before an existing one rather than adding to the end of a menu.\plain\f3\fs20\b 
+\par Function ReplaceItem(ByVal vKey As Variant, Optional ByVal sCaption As Variant, Optional ByVal sHelptext As Variant, Optional ByVal lItemData As Variant, Optional ByVal lIconIndex As Variant, Optional ByVal bChecked As Variant, Optional ByVal bEnabled As Variant) As Long
+\par \plain\f3\fs20 Replaces one or more properties of an existing menu item.\plain\f3\fs20\b 
+\par Sub RemoveItem(ByVal vKey As Variant)
+\par \plain\f3\fs20 Removes an item from a menu, and any sub-items of that item.\plain\f3\fs20\b 
+\par Function ClearSubMenusOfItem(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Removes all the sub menus items of a given parent menu item, but leaves the sub menu itself.  Use when responding to the InitPopupMenu event.\plain\f3\fs20\b 
+\par Property Get IndexForKey(ByVal sKey As String) As Long
+\par \plain\f3\fs20 Returns the internal index for a menu item with the given key.  If there is more than one item with the same key, the first item found is returned.\plain\f3\fs20\b 
+\par Property Get ItemKey(ByVal lIndex As Long) As String
+\par \plain\f3\fs20 Gets/sets a key string to be associated with a menu item.  Keys do not have to be unique.\plain\f3\fs20\b 
+\par Property Let ItemKey(ByVal lIndex As Long, RHS As String)
+\par \plain\f3\fs20 Gets/sets a key string to be associated with a menu item.  Keys do not have to be unique.\plain\f3\fs20\b 
+\par Property Get ItemData(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets/sets a long value associated with a menu item.\plain\f3\fs20\b 
+\par Property Get ItemParentIndex(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Returns the index of the parent item of this menu (or zero if the item has no parent).\plain\f3\fs20\b 
+\par Property Let ItemData(ByVal lIndex As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets a long value associated with a menu item.\plain\f3\fs20\b 
+\par Property Let ItemIcon(ByVal lIndex As Long, RHS As Long)
+\par 
+\par Property Get ItemIcon(ByVal lIndex As Long) As Long
+\par 
+\par Property Get Checked(ByVal lIndex As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a menu item is checked.\plain\f3\fs20\b 
+\par Property Let Checked(ByVal lIndex As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a menu item is checked.\plain\f3\fs20\b 
+\par Property Get RadioCheck(ByVal lIndex As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a menu item is checked with a radio (option-box) style indicator.\plain\f3\fs20\b 
+\par Property Let RadioCheck(ByVal lIndex As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a menu item is checked with a radio (option-box) style indicator.\plain\f3\fs20\b 
+\par Sub GroupToggle(ByVal lIndex As Long, Optional ByVal bRadio As Boolean=True)
+\par \plain\f3\fs20 Toggles the value of one radio item within a group (between separators within the same menu)\plain\f3\fs20\b 
+\par Property Get Enabled(ByVal lIndex As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether an item in a popup menu is enabled.\plain\f3\fs20\b 
+\par Property Let Enabled(ByVal lIndex As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether an item in a popup menu is enabled.\plain\f3\fs20\b 
+\par Property Get Caption(ByVal lIndex As Long) As String
+\par \plain\f3\fs20 Gets/sets the caption for a menu item.\plain\f3\fs20\b 
+\par Property Let Caption(ByVal lIndex As Long, RHS As String)
+\par \plain\f3\fs20 Gets/sets the caption for a menu item.\plain\f3\fs20\b 
+\par Property Get Header(ByVal lIndex As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a menu item is drawn as a Text Header.  Same as setting the first character of the menu item's caption to "-".\plain\f3\fs20\b 
+\par Property Let Header(ByVal lIndex As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a menu item is drawn as a Text Header.  Same as setting the first character of the menu item's caption to "-".\plain\f3\fs20\b 
+\par Property Get OwnerDraw(ByVal lIndex As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control should raise MeasureItem and DrawItem events before it is drawn, allowing you to override the default drawing style.\plain\f3\fs20\b 
+\par Property Let OwnerDraw(ByVal lIndex As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control should raise MeasureItem and DrawItem events before it is drawn, allowing you to override the default drawing style.\plain\f3\fs20\b 
+\par Property Get Default(ByVal lIndex As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a menu item is drawn as a default selection (bolded).\plain\f3\fs20\b 
+\par Property Let Default(ByVal lIndex As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a menu item is drawn as a default selection (bolded).\plain\f3\fs20\b 
+\par Sub Clear
+\par \plain\f3\fs20 Removes all menu items and clears up any resources associated with them.\plain\f3\fs20\b 
+\par Function ShowPopupMenu(ByVal lLeft As Long, ByVal lTop As Long, Optional ByVal lExcludeLeft As Long=0, Optional ByVal lExcludeTop As Long=0, Optional ByVal lExcludeRight As Long=0, Optional ByVal lExcludeBottom As Long=0, Optional ByVal bTryToKeepLeft As Boolean=True) As Long
+\par \plain\f3\fs20 Shows the current Popup menu.  This function returns the selected menu item index or 0 if nothing was selected.\plain\f3\fs20\b 
+\par Function ShowPopupMenuAtIndex(ByVal lLeft As Long, ByVal lTop As Long, Optional ByVal lExcludeLeft As Long=0, Optional ByVal lExcludeTop As Long=0, Optional ByVal lExcludeRight As Long=0, Optional ByVal lExcludeBottom As Long=0, Optional ByVal bTryToKeepLeft As Boolean=True, Optional ByVal lIndex As Long=1) As Long
+\par \plain\f3\fs20 Shows a child Popup menu within the current menu.  This function returns the selected menu item index or 0 if nothing was selected.\plain\f3\fs20\b 
+\par Function ShowPopupAbsolute(ByVal lLeftPixel As Long, ByVal lTopPixel As Long, Optional ByVal lIndex As Long=0, Optional ByVal bTryToKeepLeft As Boolean=True) As Long
+\par \plain\f3\fs20 Shows a popup menu at an absolute position on the screen specified in pixels.\plain\f3\fs20\b 
+\par Property Get hMenu(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Returns the Windows API menu handle for the menu in which a menu item is located.  Do not call Windows API methods which modify the menu on this handle - you may disrupt the operation of the control.  This value is only valid until the next call of Clear\plain\f3\fs20\b 
+\par Property Let TickIconIndex(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets a zero based index of an icon in the ImageList to use to override the default check marks in the menu.  Set to -1 for the default.\plain\f3\fs20\b 
+\par Property Get TickIconIndex() As Long
+\par \plain\f3\fs20 Gets/sets a zero based index of an icon in the ImageList to use to override the default check marks in the menu.  Set to -1 for the default.\plain\f3\fs20\b 
+\par Property Let OptionIconIndex(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets a zero based index of an icon in the ImageList to use to override the default radio (option) check  marks in the menu.  Set to -1 for the default.\plain\f3\fs20\b 
+\par Property Get OptionIconIndex() As Long
+\par \plain\f3\fs20 Gets/sets a zero based index of an icon in the ImageList to use to override the default radio (option) check  marks in the menu.  Set to -1 for the default.\plain\f3\fs20\b 
+\par Sub CreateSubClass(ByVal hWndA As Long)
+\par \plain\f3\fs20 Enables menu subclassing, so that the Click event will fire.\plain\f3\fs20\b 
+\par Sub DestroySubClass
+\par \plain\f3\fs20 Stops subclassing the menu.\plain\f3\fs20\b 
+\par Property Get MenuItemHeight(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets the height of a menu item.\plain\f3\fs20\b 
+\par Property Get MenuItemWidth(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets the width of a menu item.  The widest menu item within the menu actually sets the overall width of the menu.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event Click(ByVal ItemNumber As Long)
+\par \plain\f3\fs20 Fired when a menu item is clicked AND the CreateSubClass method has been called since the menu was last shown.  Normally the return value of the ShowPopupMenu event tells you which item is clicked.\plain\f3\fs20\b 
+\par Public Event ItemHighlight(ByVal ItemNumber As Long, ByVal bEnabled As Boolean, ByVal bSeparator As Boolean)
+\par \plain\f3\fs20 Raised when an item is highlighted in a pop-up menu.\plain\f3\fs20\b 
+\par Public Event MenuExit
+\par \plain\f3\fs20 Raised when a popup menu is exited.\plain\f3\fs20\b 
+\par Public Event InitPopupMenu(ByVal ParentItemNumber As Long)
+\par \plain\f3\fs20 Raised when a submenu is about to be shown.  You can modify the pop-up menu's contents in this event without any problem.\plain\f3\fs20\b 
+\par Public Event DrawItem(ByVal HDC As Long, ByVal lMenuIndex As Long, ByVal lLeft As Long, ByVal lTop As Long, ByVal lRight As Long, ByVal lBottom As Long, ByVal bSelected As Boolean, ByVal bChecked As Boolean, ByVal bDisabled As Boolean, ByVal bDoDefault As Boolean)
+\par 
+\par Public Event MeasureItem(ByVal lMenuIndex As Long, ByVal lWidth As Long, ByVal lHeight As Long)
+\par \plain\f4\fs20 
+\par 
+\par }
+ 

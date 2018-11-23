@@ -1,0 +1,452 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Text At Any Angle</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Text At Any Angle</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>Convert a VB StdFont to a GDI font, and get more control over font use.</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\graphics_and_gdi\text_at_any_angle\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><img src="..\..\images\sidelogo.gif" alt="[Vertical Text Picture]" width="222" height="212"></p>
+	<p>
+	<table border="0">
+	<tr>
+		<td width="20">&nbsp;</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>21 March 1999</i>
+		</font>
+		</td>
+		<td width="20">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The previous version of the font code didn't take the character set into account,
+		so you could not display symbol or international fonts correctly.  Thanks to
+		Lance Franklin for providing the fix to this code.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<p><a href="sidelogo.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the SideLogo project files (11kb)</a></p>	
+	<p>
+	VB doesn't provide you with any method to change the angle text is written out at 
+	on a Form or PictureBox.  This seems to be a curious oversight of the OLE StdFont object, 
+	because it is in fact very simple to create a font with angles other than horizontal.  This
+	article shows you how to do it.  The source code provides a class which creates a side logo
+	bar like the one shown in the picture above, additionally demonstrating a method of drawing
+	gradients which run between any two colours.
+	<br>
+	To create a font with a different angle, you must delve into the API world of creating fonts 
+	rather than use the StdFont object.  In the API world, you build up a LOGFONT structure with
+	information about the font, and then pass this into the CreateFontIndirect function.  This 
+	returns a handle to the newly created font, which can then be selected into a Device context
+	using the GDI SelectObject method.  The LOGFONT structure is quite closely related to the
+	standard font options we normally use, but some of the options need a bit of playing with before
+	it works.
+	<br>
+	</p>
+	</font>
+<p>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Private Type LOGFONT <br>
+&nbsp &nbsp lfHeight As Long</font><font face="Lucida Console,courier new" size="1" color="#999999"> ' The font size (see below)<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfWidth As Long</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Normally you don't set this, just let Windows create the default<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfEscapement As Long</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' The angle, in 0.1 degrees, of the font<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfOrientation As Long</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Leave as default <br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfWeight As Long</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Bold, Extra Bold, Normal etc<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfItalic As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' As it says<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfUnderline As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' As it says<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfStrikeOut As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' As it says<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfCharSet As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' As it says<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfOutPrecision As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Leave for default<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfClipPrecision As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Leave for default<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfQuality As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Leave as default (see end of article)<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfPitchAndFamily As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' Leave as default (see end of article)<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp lfFaceName(LF_FACESIZE) As Byte</font><font face="Lucida Console,courier new" size="1" color="#999999">  ' The font name converted to a byte array<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+End Type <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	The main differences between this and the StdFont object are:
+	<ul>
+	<li>Face name must be specified as a byte array rather than a string.
+	<li>The font size is specified through lfHeight.  However, you can't just put the size in points
+	here - first you have to make it negative and work out what the font size should be given the number
+	of logical pixels per item vertically.
+	<li>The Bold option accepts a number of different settings, which normally have no effect, such as
+	extra bold, extra light and so forth.
+	</ul>
+</p>
+<p>
+	To make it simple to fill in this type, here is a sub which takes a StdFont object and fills a
+	LOGFONT structure with the equivalent settings:
+</p>
+</font>
+<p>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Private Sub pOLEFontToLogFont(fntThis As StdFont, hDC As Long, tLF As LOGFONT) <br>
+Dim sFont As String <br>
+Dim iChar As Integer <br>
+ <br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp ' Convert an OLE StdFont to a LOGFONT structure: <br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp With tLF <br>
+&nbsp &nbsp &nbsp &nbsp sFont = fntThis.Name <br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp &nbsp &nbsp ' There is a quicker way involving StrConv and CopyMemory, but <br>
+&nbsp &nbsp &nbsp &nbsp ' this is simpler!: <br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp &nbsp &nbsp For iChar = 1 To Len(sFont) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp .lfFaceName(iChar - 1) = CByte(Asc(Mid$(sFont, iChar, 1))) <br>
+&nbsp &nbsp &nbsp &nbsp Next iChar <br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp &nbsp &nbsp ' Based on the Win32SDK documentation: <br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp &nbsp &nbsp .lfHeight = -MulDiv((fntThis.Size), (GetDeviceCaps(hDC, LOGPIXELSY)), 72) <br>
+&nbsp &nbsp &nbsp &nbsp .lfItalic = fntThis.Italic <br>
+&nbsp &nbsp &nbsp &nbsp If (fntThis.Bold) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp .lfWeight = FW_BOLD <br>
+&nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp .lfWeight = FW_NORMAL <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp .lfUnderline = fntThis.Underline <br>
+&nbsp &nbsp &nbsp &nbsp .lfStrikeOut = fntThis.Strikethrough <br>
+</font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp &nbsp &nbsp ' Fix to ensure the correct character set is selected.  Otherwise you<br>
+&nbsp &nbsp &nbsp &nbsp ' cannot display Wingdings or international fonts:<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp &nbsp &nbsp .lfCharset = fntThis.CharSet <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp End With<br>
+<br>
+End Sub <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+Using this you can create a LOGFONT structure easily, and then set the angle.  For example, here
+is code you could use to draw some text vertically on a form:
+</p>
+</font>
+<p>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Dim tLF As LOGFONT<br>
+Dim hFnt As Long<br>
+Dim hFntOld As Long<br>
+<br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp 	'  Using the form's font, create a vertical copy<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	pOLEFontToLogFont Me.Font, Me.hDC, tLF<br>
+&nbsp &nbsp 	tLF.lfEscapement = 900	</font><font face="Lucida Console,courier new" size="1" color="#999999">' This is the angle to display at x 10<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	hFnt = CreateFontIndirect(tLF)<br>
+<br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp 	'  Select the font into the Form's Device context, storing the font that was already there<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	hFntOld = SelectObject(Me.hDC, hFnt)<br>
+<br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp 	' Now we can print text vertically using either VB or API methods<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	Me.CurrentX = 16*Screen.TwipsPerPixelX<br>
+&nbsp &nbsp 	Me.CurrentY = Me.ScaleHeight-16*Screen.TwipsPerPixelY<br>
+&nbsp &nbsp 	Me.Print "This Text is Vertical"<br>
+<br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp 	'  Clear up the font by putting the original one back and deleting the vertical copy:<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	SelectObject Me.hDC, hFntOld<br>
+&nbsp &nbsp 	DeleteObject hFnt<br>
+<br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>That's all there is to it. 
+For convenience, here are all the API declarations you will need to make
+the code above work:</p>
+</font>
+<p>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Private Declare Function GetDeviceCaps Lib "gdi32" ( _<br>
+&nbsp &nbsp &nbsp &nbsp ByVal hDC As Long, ByVal nIndex As Long <br>
+&nbsp &nbsp ) As Long <br>
+&nbsp &nbsp Private Const LOGPIXELSX = 88</font><font face="Lucida Console,courier new" size="1" color="#999999">'  Logical pixels/inch in X <br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp Private Const LOGPIXELSY = 90</font><font face="Lucida Console,courier new" size="1" color="#999999">'  Logical pixels/inch in Y <br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Declare Function MulDiv Lib "kernel32" ( _<br>
+&nbsp &nbsp ByVal nNumber As Long, ByVal nNumerator As Long, ByVal nDenominator As Long _<br>
+&nbsp &nbsp ) As Long <br>
+Private Const LF_FACESIZE = 32 <br>
+Private Type LOGFONT <br>
+&nbsp &nbsp lfHeight As Long <br>
+&nbsp &nbsp lfWidth As Long <br>
+&nbsp &nbsp lfEscapement As Long <br>
+&nbsp &nbsp lfOrientation As Long <br>
+&nbsp &nbsp lfWeight As Long <br>
+&nbsp &nbsp lfItalic As Byte <br>
+&nbsp &nbsp lfUnderline As Byte <br>
+&nbsp &nbsp lfStrikeOut As Byte <br>
+&nbsp &nbsp lfCharSet As Byte <br>
+&nbsp &nbsp lfOutPrecision As Byte <br>
+&nbsp &nbsp lfClipPrecision As Byte <br>
+&nbsp &nbsp lfQuality As Byte <br>
+&nbsp &nbsp lfPitchAndFamily As Byte <br>
+&nbsp &nbsp lfFaceName(LF_FACESIZE) As Byte<br>
+End Type<br>
+Private Declare Function CreateFontIndirect Lib "gdi32" Alias "CreateFontIndirectA" ( _<br>
+&nbsp &nbsp &nbsp &nbsp lpLogFont As LOGFONT _<br>
+&nbsp &nbsp ) As Long<br>
+Private Declare Function SelectObject Lib "gdi32" ( _<br>
+&nbsp &nbsp &nbsp &nbsp ByVal hDC As Long, ByVal hObject As Long _<br>
+&nbsp &nbsp ) As Long<br>
+Private Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long<br>
+Private Const FW_NORMAL = 400<br>
+Private Const FW_BOLD = 700<br>
+Private Const FF_DONTCARE = 0<br>
+Private Const DEFAULT_QUALITY = 0<br>
+Private Const DEFAULT_PITCH = 0<br>
+Private Const DEFAULT_CHARSET = 1<br>
+ <br>
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<b>More</b><br>
+There are more things you can do with this.  The <i>lfOrientation</i> member of the <i>LOGFONT</i>
+type specifies the orientation of the characters independently of which angle the text is drawn at.
+To make this member work you have to call <i>SetGraphicsMode</i> on the DC to draw in to set the
+graphics mode to <i>GM_ADVANCED</i>:<br><br>
+</font>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Private Declare Function SetGraphicsMode Lib "gdi32" Alias "SetGraphicsMode" _<br>
+&nbsp;&nbsp;&nbsp;(ByVal hdc As Long, ByVal iMode As Long) As Long<br>
+Private Const GM_ADVANCED = 2<br>
+<br>
+... <br>
+<br>
+&nbsp &nbsp SetGraphicsMode Me.hdc, GM_ADVANCED<br>
+&nbsp &nbsp 	tLF.lfEscapement = 300	</font><font face="Lucida Console,courier new" size="1" color="#999999">' This is the angle to display at x 10<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	tLF.lfOrientation = 1200 </font><font face="Lucida Console,courier new" size="1" color="#999999">' Set the angle to display the characters at x 10<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	hFnt = CreateFontIndirect(tLF)<br>
+<br></font><font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp 	'  Select the font into the Form's Device context, storing the font that was already there<br></font><font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp &nbsp 	hFntOld = SelectObject(Me.hDC, hFnt)<br>
+<br>
+... <br>
+<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Finally, here are the values you can use for the other constants:<br><br>
+</font>
+<font face="Lucida Console,courier new" size="1" color="#999999">
+' lfQuality Constants:<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const DEFAULT_QUALITY        = 0</font><font face="Lucida Console,courier new" size="1" color="#999999"> ' Appearance of the font is set to default</font><font face="Lucida Console,courier new" size="1" color="#000000"><br>
+Private Const DRAFT_QUALITY          = 1</font><font face="Lucida Console,courier new" size="1" color="#999999"> ' Appearance is less important that PROOF_QUALITY.</font><font face="Lucida Console,courier new" size="1" color="#000000"><br>
+Private Const PROOF_QUALITY          = 2</font><font face="Lucida Console,courier new" size="1" color="#999999"> ' Best character quality</font><font face="Lucida Console,courier new" size="1" color="#000000"><br>
+Private Const NONANTIALIASED_QUALITY = 3</font><font face="Lucida Console,courier new" size="1" color="#999999"> ' Don't smooth font edges even if system is set to smooth font edges</font><font face="Lucida Console,courier new" size="1" color="#000000"><br>
+Private Const ANTIALIASED_QUALITY    = 4</font><font face="Lucida Console,courier new" size="1" color="#999999"> ' Ensure font edges are smoothed if system is set to smooth font edges<br>
+<br>
+' lfPitchAndFamilyConstants - or together one from pitch and one from family:<br>
+' Pitch:<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const DEFAULT_PITCH       =    0<br>
+Private Const FIXED_PITCH         =    1<br>
+Private Const VARIABLE_PITCH      =    2<br>
+</font><font face="Lucida Console,courier new" size="1" color="#999999">
+' Family:<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const FF_DONTCARE         = 0  </font><font face="Lucida Console,courier new" size="1" color="#999999">' Don't care or don't know.<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const FF_ROMAN            = 16 </font><font face="Lucida Console,courier new" size="1" color="#999999">' Variable stroke width, serifed.<br>
+&nbsp;&nbsp;&nbsp; ' Times Roman, Century Schoolbook, etc.<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const FF_SWISS           = 32  </font><font face="Lucida Console,courier new" size="1" color="#999999">' Variable stroke width, sans-serifed.<br>
+&nbsp;&nbsp;&nbsp; 'Helvetica, Swiss, etc.<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const FF_MODERN          = 48  </font><font face="Lucida Console,courier new" size="1" color="#999999">' Constant stroke width, serifed or sans-serifed.<br>
+&nbsp;&nbsp;&nbsp; '  Pica, Elite, Courier, etc.<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const FF_SCRIPT          = 64  </font><font face="Lucida Console,courier new" size="1" color="#999999">' Cursive, etc.<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const FF_DECORATIVE      = 80  </font><font face="Lucida Console,courier new" size="1" color="#999999">' Old English, etc.<br>
+<br><br>
+</font><font face="Lucida Console,courier new" size="1" color="#999999">
+' Character sets:<br>
+</font><font face="Lucida Console,courier new" size="1" color="#000000">
+Private Const ANSI_CHARSET            = 0<br>
+Private Const DEFAULT_CHARSET         = 1<br>
+Private Const SYMBOL_CHARSET          = 2<br>
+Private Const SHIFTJIS_CHARSET        = 128<br>
+Private Const HANGEUL_CHARSET         = 129<br>
+Private Const HANGUL_CHARSET          = 129<br>
+Private Const GB2312_CHARSET          = 134<br>
+Private Const CHINESEBIG5_CHARSET     = 136<br>
+Private Const OEM_CHARSET             = 255<br>
+Private Const JOHAB_CHARSET           = 130<br>
+Private Const HEBREW_CHARSET          = 177<br>
+Private Const ARABIC_CHARSET          = 178<br>
+Private Const GREEK_CHARSET           = 161<br>
+Private Const TURKISH_CHARSET         = 162<br>
+Private Const VIETNAMESE_CHARSET      = 163<br>
+Private Const THAI_CHARSET            = 222<br>
+Private Const EASTEUROPE_CHARSET      = 238<br>
+Private Const RUSSIAN_CHARSET         = 204<br>
+Private Const MAC_CHARSET             = 77<br>
+Private Const BALTIC_CHARSET          = 186<br>
+<br>
+</font>
+</p>
+<font size="2" face="Verdana, Arial, Helvetica">
+	
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	<br><br>
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 1999
+	</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

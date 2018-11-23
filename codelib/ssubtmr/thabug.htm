@@ -1,0 +1,252 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Find and Fixing a Bug in SSubTmr.DLL</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	</font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Find and Fixing a <a href="..\..\tla.htm#secbug">Bug</a> in SSUBTMR</b><br></p>
+	<img src="..\..\images\gunfoot.gif" alt="Basic - You Shoot Yourself In The Foot, but it takes so long for the bullet to reach your foot that you forget why you started in the first place." width="142" height="134">
+	<p align="center">
+	&quot;The introduction of the AddressOf operator to VB5 allows you to subclass, although it 
+	is not nearly as simple as it ought to be. The SSUBTMR.DLL component is a stable and consistent 
+	way of working around difficulties in subclassing.&quot;</p>
+	<p>
+	That's how SSUBTMR.DLL is <a href="ssubtmr.htm">introduced</a> on the site.  It holds true now
+	as it did then, except in the first release there was a bug in it just waiting to happen, and
+	I was the lucky person to make it happen with the new <a href="..\comctl\retbar.htm">vbAccelerator Toolbar and Rebar controls</a>
+	(Or maybe you were? I can't apologise enough.  <a href="mailto:steve@vbaccelerator.com">Send your
+	rant!</a>).<br><br>
+	I can't start without thanking Jim Parzych for pointing
+	out the problem.  Also, I should note that although this component was based on SUBTMR.DLL 
+	designed by Bruce McKinney, author of <a href="..\..\linxadv.htm#sechcvb">Hardcore Visual Basic</a>
+	the bug is all my own fault (although coincidentally I found and fixed a bug in the original.  What goes around...)<br><br>
+	<b>The problem</b><br>
+	When multiple controls subclassed the same message on the same window, the SSUBTMR code
+	didn't check if it had already called the default window procedure for the
+	message.<br><br>
+	<b>As a Consequence...</b><br>
+	Consider the case of the vbAccelerator Rebar/Toolbar control in a form, where there
+	is one Rebar control and one Toolbar.	Both the toolbar and rebar control must subclass 
+	the WM_NOTIFY message, and this message is sent to the parent of the control.<br><br>
+	The rebar has to capture WM_NOTIFY to detemine if its height has changed, and the toolbar
+	captures it to determine whether buttons or dropdowns have been clicked.  Everything
+	works fine so far because the Rebar and Toolbar are both implemented within the same
+	OCX, and therefore share the <i>same</i> version of the subclasser.  But it starts to 
+	go pear-shaped when you add another external common control to the form with the Rebar and Toolbar
+	on.<br><br>
+	All the common controls use WM_NOTIFY messaging to the parent form.  So when
+	you do anything to a common control which raises an event (for example, clicking on
+	a item in a ListView) a WM_NOTIFY is sent.  Both the toolbar and
+	rebar intercept this message.<br><br>
+	So consider the case when a form contains a rebar, a toolbar and a COMCTL32.OCX ListView.  Note
+	that the 
+	rebar/toolbar requires that the toolbar's subclass is set up first and the rebar second.
+	This is what happens when you cause an event in the ListView:
+	<ul>
+	<li> Clicking a ListView causes the ListView to raise a WM_NOTIFY message.  This is sent
+	to the Parent of the ListView, which is the form the ListView is located on (note it is
+	irrelevant whether the <i>Container</i> of the ListView is another control, because the <i>Parent</i>
+	is always going to evaluate to the form).
+	<li> The subclasser intercepts the message because the toolbar and rebar also need to
+	check WM_NOTIFY messages sent to the parent form.  It (correctly) identifies that
+	the message wants to be sent firstly to the toolbar and then to the rebar.
+	<li> The subclasser calls the default window procedure (correct) and then
+	passes the message to the toolbar (correct).  Note that the toolbar ignores this
+	message because it determines from the NMHDR structure associated with all WM_NOTIFY
+	messages that the message is not associated with its own hWnd.  This is also correct.
+	<li> Then the subclasser calls the default window procedure again 
+	(<u>WRONG,WRONG, WRONG!!!!!</u>) before passing the message to the rebar correctly.
+	Again, the rebar ignores the message as the message is sent from a different hWnd to the rebar.
+	</ul>
+	So if you do anything to a Common Control (ListView, TreeView, Progress Bar, UpDown, Slider, 
+	Tab, Pager, Animation...) the event will apparently occur twice.  This gets
+	even worse if you add a second toolbar to the rebar - the events occur three
+	times... As you can have an unlimited number of toolbars the problem clearly can't be worked 
+	around in any sensible way in code because the number of events you get is the number of rebars
+	(always 1) plus the number of toolbars (0 to n where n is only really restricted by screen space.  
+	Word 8 is very nice, but are we sure we need 14+ toolbars?).<br><br>
+	<b>The Solution</b><br>
+	The solution is obvious, although of course solutions always are once you know
+	what the problem is. I now cannot believe it was not implemented from the
+	start and feel someone should take me to a dark room and
+	proceed to beat me vigorously with a printed copy of the MSDN documentation
+	on subclassing.  But that is enough already about my personal problems and predilictions.<br><br>
+	It is implemented by a setting a boolean flag in the subclass procedure to 
+	determine whether the default window procedure has been called already and then
+	NOT CALLING IT AGAIN...<br><br>
+	<b>So Why Hasn't This Been a Problem Yet?</b><br>
+	The thing is, SSUBTMR.DLL is a production component and I have distributed it in many live
+	applications (I don't just distribute any old thing on this site, honest, and if you'd seen the 
+	code in the components alluded to in some of the <a href="..\..\biog.htm">'coming soon'</a> 
+	notes of the Source Code sections you would know exactly why!).  There haven't been
+	any problems in over a year of operation (that's not entirely true, but anything that has
+	gone wrong hasn't been caused by the DLLs or controls...)<br><br>
+	Anyway, the reason is actually that whilst SSUBTMR allowed multiple messages on the same
+	window to be subclassed, whenever this occurred in a real life application of my 
+	controls, SSUBTMR.DLL always ran in the same process space as the DLL doing the subclassing.
+	And because in-process DLLs and OCXs share the same module, the problem never arose.  And of 
+	course, when I designed the Rebar/Toolbar control, my idea was to do away with COMCTL32.OCX
+	forever if you could do without it - so I never tested it with a ListView.  How stupid am I?
+	<br><br>
+	<b>Get the Fix</b><br>
+	SSUBTMR is a binary compatible component so the new version will run without problems
+	with any controls you've downloaded before.  The new version is available for download
+	at <a href="ssubtmr.htm">Subclassing without the crashes</a>.<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+	<br><br><br><br><br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	This document was put together whilst <a href="..\..\whatson.htm">listening to the following CDs</a>:
+	<ul>
+	<li>Aluminium Tunes: Switched on Volume 3 by Sterelab (Duophonic LP, 1998)<br>Stereolab's third collection of rare/previously unreleased songs.
+	<li>Kill At Will by Ice Cube.  (4th and Broadway EP, 1990)<br>I can't find it in myself to dislike this record.
+	<li>Surfer Rosa by The Pixies (4AD LP, 1984)<br>A band at the height of its powers.
+	<li>On by Aphex Twin (Warp 12, 1993)<br>I finally found this amongst a set of PC magazine cover CDs. How sad is that?  The drum beats on this record are created from distorted sine-waves and hitting metal objects, thus fulfiling my number one criteria for creating good music.
+	<li>Space Invaders are Smoking Grass by I-F (Interdimensional Transmissions 12, 1997)<br>Complete and utter rubbish.  I like it a lot.
+	</ul>
+	</p>
+	</font>	
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 14 October 1998</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>
+lspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 14 October 1998</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

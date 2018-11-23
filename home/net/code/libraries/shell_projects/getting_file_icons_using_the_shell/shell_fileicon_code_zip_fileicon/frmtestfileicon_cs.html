@@ -1,0 +1,399 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: FileIcon\frmTestFileIcon.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: FileIcon\frmTestFileIcon.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Getting File Icons Using The Shell</a>&#160;.&#160;<a href="..\shell_fileicon_code.html">Shell FileIcon Code</a>&#160;.&#160;FileIcon</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="shell_fileicon_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Shell FileIcon Code</a> (27K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4371</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4371&type=zip&title=frmtestfileicon.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />4 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\auto-file_completion_for_text_boxes_and_combo_boxes\article.html">Auto-File and URL Completion for Text Boxes and Combo Boxes</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\..\vb\code\libraries\xp_visual_styles\using_xp_visual_styles_in_vb\article.html">Adding XP Visual Styles to Your Visual Basic Application</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: FileIcon\frmTestFileIcon.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+using vbAccelerator.Controls.TextBox;
+using vbAccelerator.Components.Shell;
+
+namespace FileIconTester
+{
+   /// &lt;summary&gt;
+   /// Simple test form for the vbAccelerator FileIcon and
+   /// AutoCompleteTextBox classes.
+   /// &lt;/summary&gt;
+   public class frmTestFileIcon : System.Windows.Forms.Form
+   {
+      private System.Windows.Forms.OpenFileDialog cdlOpen;
+      private Icon testIcon = null;
+      private vbAccelerator.Controls.TextBox.AutoCompleteTextBox txtFileName;
+      private System.Windows.Forms.Label lblFile;
+      private System.Windows.Forms.Button btnPick;
+      private System.ComponentModel.IContainer components = null;
+      private System.Windows.Forms.Label lblSmallIcon;
+      private System.Windows.Forms.Label lblFileType;
+      private System.Windows.Forms.Label lblDisplayName;
+      private System.Windows.Forms.TextBox txtFileType;
+      private System.Windows.Forms.TextBox txtDisplayName;
+      private System.Windows.Forms.ImageList ilsLargeIcons;
+      private System.Windows.Forms.ImageList ilsSmallIcons;
+      private System.Windows.Forms.Label lblLargeIcon;
+      private System.Windows.Forms.Button btnGetDetails;
+
+      /// &lt;summary&gt;
+      /// A simple form to demonstrate usage of the FileIcon class
+      /// &lt;/summary&gt;
+      public frmTestFileIcon()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         try
+         {
+            this.txtFileName.AutoCompleteFlags =
+             AutoCompleteTextBox.SHAutoCompleteFlags.SHACF_FILESYS_ONLY;
+         }
+         catch
+         {
+            // call would fail on NT4 if it did not have IE5 installed;
+            // not important since it is only a UI helper.
+         }
+         this.Paint += new PaintEventHandler(frmTestFileIcon_Paint);
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmTestFileIcon));
+         this.cdlOpen = new System.Windows.Forms.OpenFileDialog();
+         this.txtFileName = new
+          vbAccelerator.Controls.TextBox.AutoCompleteTextBox();
+         this.lblFile = new System.Windows.Forms.Label();
+         this.btnPick = new System.Windows.Forms.Button();
+         this.btnGetDetails = new System.Windows.Forms.Button();
+         this.lblLargeIcon = new System.Windows.Forms.Label();
+         this.lblSmallIcon = new System.Windows.Forms.Label();
+         this.lblFileType = new System.Windows.Forms.Label();
+         this.lblDisplayName = new System.Windows.Forms.Label();
+         this.txtFileType = new System.Windows.Forms.TextBox();
+         this.txtDisplayName = new System.Windows.Forms.TextBox();
+         this.ilsLargeIcons = new
+          System.Windows.Forms.ImageList(this.components);
+         this.ilsSmallIcons = new
+          System.Windows.Forms.ImageList(this.components);
+         this.SuspendLayout();
+         // 
+         // txtFileName
+         // 
+         this.txtFileName.AutoCompleteFlags =
+          vbAccelerator.Controls.TextBox.AutoCompleteTextBox.SHAutoCompleteFlags
+         .SHACF_FILESYS_ONLY;
+         this.txtFileName.Location = new System.Drawing.Point(72, 8);
+         this.txtFileName.Name = "txtFileName";
+         this.txtFileName.Size = new System.Drawing.Size(304, 21);
+         this.txtFileName.TabIndex = 0;
+         this.txtFileName.Text = "";
+         // 
+         // lblFile
+         // 
+         this.lblFile.Location = new System.Drawing.Point(8, 8);
+         this.lblFile.Name = "lblFile";
+         this.lblFile.Size = new System.Drawing.Size(60, 16);
+         this.lblFile.TabIndex = 1;
+         this.lblFile.Text = "File:";
+         // 
+         // btnPick
+         // 
+         this.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnPick.Location = new System.Drawing.Point(380, 8);
+         this.btnPick.Name = "btnPick";
+         this.btnPick.Size = new System.Drawing.Size(24, 20);
+         this.btnPick.TabIndex = 2;
+         this.btnPick.Text = "...";
+         this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
+         // 
+         // btnGetDetails
+         // 
+         this.btnGetDetails.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnGetDetails.Location = new System.Drawing.Point(76, 36);
+         this.btnGetDetails.Name = "btnGetDetails";
+         this.btnGetDetails.Size = new System.Drawing.Size(116, 32);
+         this.btnGetDetails.TabIndex = 4;
+         this.btnGetDetails.Text = "Get Details";
+         this.btnGetDetails.Click += new
+          System.EventHandler(this.btnGetDetails_Click);
+         // 
+         // lblLargeIcon
+         // 
+         this.lblLargeIcon.Location = new System.Drawing.Point(76, 76);
+         this.lblLargeIcon.Name = "lblLargeIcon";
+         this.lblLargeIcon.Size = new System.Drawing.Size(84, 16);
+         this.lblLargeIcon.TabIndex = 7;
+         this.lblLargeIcon.Text = "Large Icon";
+         // 
+         // lblSmallIcon
+         // 
+         this.lblSmallIcon.Location = new System.Drawing.Point(168, 76);
+         this.lblSmallIcon.Name = "lblSmallIcon";
+         this.lblSmallIcon.Size = new System.Drawing.Size(84, 16);
+         this.lblSmallIcon.TabIndex = 9;
+         this.lblSmallIcon.Text = "Small Icon";
+         // 
+         // lblFileType
+         // 
+         this.lblFileType.Location = new System.Drawing.Point(76, 188);
+         this.lblFileType.Name = "lblFileType";
+         this.lblFileType.Size = new System.Drawing.Size(84, 16);
+         this.lblFileType.TabIndex = 10;
+         this.lblFileType.Text = "File Type:";
+         // 
+         // lblDisplayName
+         // 
+         this.lblDisplayName.Location = new System.Drawing.Point(76, 208);
+         this.lblDisplayName.Name = "lblDisplayName";
+         this.lblDisplayName.Size = new System.Drawing.Size(84, 16);
+         this.lblDisplayName.TabIndex = 11;
+         this.lblDisplayName.Text = "Display Name:";
+         // 
+         // txtFileType
+         // 
+         this.txtFileType.BackColor = System.Drawing.SystemColors.Control;
+         this.txtFileType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+         this.txtFileType.Location = new System.Drawing.Point(168, 188);
+         this.txtFileType.Name = "txtFileType";
+         this.txtFileType.ReadOnly = true;
+         this.txtFileType.Size = new System.Drawing.Size(180, 14);
+         this.txtFileType.TabIndex = 12;
+         this.txtFileType.Text = "";
+         // 
+         // txtDisplayName
+         // 
+         this.txtDisplayName.BackColor = System.Drawing.SystemColors.Control;
+         this.txtDisplayName.BorderStyle =
+          System.Windows.Forms.BorderStyle.None;
+         this.txtDisplayName.Location = new System.Drawing.Point(168, 208);
+         this.txtDisplayName.Name = "txtDisplayName";
+         this.txtDisplayName.ReadOnly = true;
+         this.txtDisplayName.Size = new System.Drawing.Size(180, 14);
+         this.txtDisplayName.TabIndex = 13;
+         this.txtDisplayName.Text = "";
+         // 
+         // ilsLargeIcons
+         // 
+         this.ilsLargeIcons.ColorDepth =
+          System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsLargeIcons.ImageSize = new System.Drawing.Size(32, 32);
+         this.ilsLargeIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // ilsSmallIcons
+         // 
+         this.ilsSmallIcons.ColorDepth =
+          System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsSmallIcons.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // frmTestFileIcon
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(408, 266);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.txtDisplayName,
+                                                        this.txtFileType,
+                                                        this.lblDisplayName,
+                                                        this.lblFileType,
+                                                        this.lblSmallIcon,
+                                                        this.lblLargeIcon,
+                                                        this.btnGetDetails,
+                                                        this.btnPick,
+                                                        this.lblFile,
+                                                        this.txtFileName});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmTestFileIcon";
+         this.Text = "FileIcon Class Tester";
+         this.Load += new System.EventHandler(this.frmTestFileIcon_Load);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Main Entry point - start the File Icon Tester form.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmTestFileIcon());
+      }
+
+      private void frmTestFileIcon_Load(object sender, System.EventArgs e)
+      {
+         // want to respond to return keys in the filename box:
+         this.txtFileName.KeyDown += new
+          KeyEventHandler(this.txtFileName_KeyDown);
+      }
+
+      private void frmTestFileIcon_Paint(object sender, PaintEventArgs e)
+      {
+         // clear area behind icons:
+         Rectangle rc = new Rectangle(
+            lblLargeIcon.Left,
+            lblLargeIcon.Top + lblLargeIcon.Height + 2,
+            96, 
+            lblFileType.Top - (lblLargeIcon.Top + lblLargeIcon.Height + 2));
+         e.Graphics.FillRectangle(SystemBrushes.Control, rc);
+
+         // draw icons (if any):
+         if (ilsLargeIcons.Images.Count &gt; 0)
+         {
+            ilsLargeIcons.Draw(e.Graphics, 
+               rc.Left,
+               rc.Top, 
+               0);
+            e.Graphics.DrawIcon(testIcon, rc.Left + 32, rc.Top);
+         }
+         if (ilsSmallIcons.Images.Count &gt; 0)
+         {
+            ilsSmallIcons.Draw(e.Graphics, 
+               lblSmallIcon.Left,
+               rc.Top, 
+               0);
+         }
+      }
+
+      private void btnGetDetails_Click(object sender, System.EventArgs e)
+      {
+         // show the selected icons:
+         getDetails();
+      }
+
+      private void btnPick_Click(object sender, System.EventArgs e)
+      {
+         // show a common dialog to pick a file.  Note you could
+         // use a FolderBrowser in file mode here if you wanted
+         // to allow folders to picked as well.
+         this.cdlOpen.Filter = "All Files (*.*)|*.*";
+         if (this.cdlOpen.ShowDialog(this) == DialogResult.OK)
+         {
+            // file selected, show the details:
+            txtFileName.Text = cdlOpen.FileName;
+            getDetails();
+         }
+      }
+
+      private void getDetails()
+      {
+         ilsSmallIcons.Images.Clear();
+         ilsLargeIcons.Images.Clear();
+
+         // by default the FileIcon will return DisplayName
+         // and file type with a large icon:
+         string fileName = txtFileName.Text;
+         FileIcon fileIcon = 
+            new FileIcon(fileName);
+         ilsLargeIcons.Images.Add(fileIcon.ShellIcon);
+         txtFileType.Text = fileIcon.TypeName;
+         txtDisplayName.Text = fileIcon.DisplayName;
+         testIcon = fileIcon.ShellIcon;
+
+         // Only request the small icon:
+         fileIcon.Flags = fileIcon.Flags 
+            | FileIcon.SHGetFileInfoConstants.SHGFI_SMALLICON &amp; 
+            ~(FileIcon.SHGetFileInfoConstants.SHGFI_DISPLAYNAME |
+             FileIcon.SHGetFileInfoConstants.SHGFI_TYPENAME |
+            FileIcon.SHGetFileInfoConstants.SHGFI_ATTRIBUTES |
+             FileIcon.SHGetFileInfoConstants.SHGFI_EXETYPE );
+         fileIcon.GetInfo();
+         ilsSmallIcons.Images.Add(fileIcon.ShellIcon);
+         this.Invalidate();
+      }
+
+      private void txtFileName_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Return)
+         {
+            getDetails();
+         }
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Getting File Icons Using The Shell</a>&#160;.&#160;<a href="..\shell_fileicon_code.html">Shell FileIcon Code</a>&#160;.&#160;FileIcon</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

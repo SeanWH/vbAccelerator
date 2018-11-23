@@ -1,0 +1,533 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: frmTestIconCombo.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: frmTestIconCombo.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">vbAccelerator IconComboBox Control</a>&#160;.&#160;<a href="iconcombobox_demonstration.html">IconComboBox Demonstration</a>&#160;.&#160;frmTestIconCombo.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="iconcombobox_control_binary.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Control Binary</a> (16K)</p><p class="nav"><a href="iconcombobox_control_documentation.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Control Documentation</a> (119K)</p><p class="nav"><a href="iconcombobox_control_source.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Control Source</a> (47K)</p><p class="nav"><a href="iconcombobox_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconComboBox Demonstration</a> (30K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13053</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13053&type=zip&title=iconcombobox_20demonstration_2ezip_5ffrmtesticoncombo.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />11 Jan 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\shell_projects\auto-file_completion_for_text_boxes_and_combo_boxes\article.html">Auto-File and URL Completion for Text Boxes and Combo Boxes</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\textbox_icon\article.html">Adding an Icon or Control to a TextBox or ComboBox</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\flat_style_combo_boxes\article.asp\index.html">Flat Style Combo Boxes</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: frmTestIconCombo.cs</h1><pre>using System;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using System.Xml.Serialization;
+using System.IO;
+using System.IO.IsolatedStorage;
+
+using vbAccelerator.Components.Controls;
+
+namespace IconComboBoxCS
+{
+   /// &lt;summary&gt;
+   /// A form for demonstrating the features of the IconCombo control.
+   /// &lt;/summary&gt;
+   public class frmTestIconCombo : System.Windows.Forms.Form
+   {
+      private System.Windows.Forms.ImageList ilsIcons;
+      private vbAccelerator.Components.Controls.IconComboBox cboIndented;
+      private vbAccelerator.Components.Controls.IconComboBox cboColumns;
+      private System.Windows.Forms.Button btnRearrange;
+      private System.Windows.Forms.Button btnHideColumns;
+      private System.Windows.Forms.Label lblIdentInfo;
+      private System.Windows.Forms.Label label1;
+      private System.Windows.Forms.Label label2;
+      private vbAccelerator.Components.Controls.IconComboBox cboDropDownList;
+      private System.ComponentModel.IContainer components;
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the form.
+      /// &lt;/summary&gt;
+      public frmTestIconCombo()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         // Set up the Indented Icon Combo Box:
+         populateIndentedIconCombo();
+         // demonstrate new close up event:
+         cboIndented.CloseUp += new EventHandler(cboIndented_CloseUp);
+         // demonstrate how SelectedIndexChanged fires when auto-complete is set
+         cboIndented.SelectedIndexChanged += new
+          EventHandler(cboIndented_SelectedIndexChanged);
+
+         // Set up the drop-down Combo Box:
+         populateDropDownListCombo();
+
+         // Set up the multi-column Combo Box
+         populateMultiColumnCombo();         
+
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmTestIconCombo));
+         this.cboIndented = new
+          vbAccelerator.Components.Controls.IconComboBox();
+         this.ilsIcons = new System.Windows.Forms.ImageList(this.components);
+         this.cboColumns = new vbAccelerator.Components.Controls.IconComboBox();
+         this.btnRearrange = new System.Windows.Forms.Button();
+         this.btnHideColumns = new System.Windows.Forms.Button();
+         this.lblIdentInfo = new System.Windows.Forms.Label();
+         this.label1 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
+         this.cboDropDownList = new
+          vbAccelerator.Components.Controls.IconComboBox();
+         this.SuspendLayout();
+         // 
+         // cboIndented
+         // 
+         this.cboIndented.AutoComplete = true;
+         this.cboIndented.BorderStyle =
+          vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10;
+         this.cboIndented.DrawMode =
+          System.Windows.Forms.DrawMode.OwnerDrawVariable;
+         this.cboIndented.FullRowSelect = false;
+         this.cboIndented.GridLines = false;
+         this.cboIndented.HighlightStyle =
+          vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10;
+         this.cboIndented.ImageList = null;
+         this.cboIndented.IndentationSize = 16;
+         this.cboIndented.Location = new System.Drawing.Point(8, 28);
+         this.cboIndented.Name = "cboIndented";
+         this.cboIndented.Size = new System.Drawing.Size(288, 22);
+         this.cboIndented.TabIndex = 1;
+         this.cboIndented.Text = "Indented Icon Combo";
+         this.cboIndented.TextBoxIcon = true;
+         // 
+         // ilsIcons
+         // 
+         this.ilsIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsIcons.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsIcons.ImageStream =
+          ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsIcon
+         s.ImageStream")));
+         this.ilsIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // cboColumns
+         // 
+         this.cboColumns.AutoComplete = true;
+         this.cboColumns.BorderStyle =
+          vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10;
+         this.cboColumns.DrawMode =
+          System.Windows.Forms.DrawMode.OwnerDrawVariable;
+         this.cboColumns.FullRowSelect = false;
+         this.cboColumns.GridLines = false;
+         this.cboColumns.HighlightStyle =
+          vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10;
+         this.cboColumns.ImageList = null;
+         this.cboColumns.IndentationSize = 16;
+         this.cboColumns.Location = new System.Drawing.Point(8, 136);
+         this.cboColumns.Name = "cboColumns";
+         this.cboColumns.Size = new System.Drawing.Size(284, 22);
+         this.cboColumns.TabIndex = 5;
+         this.cboColumns.Text = "Column Icon Combo";
+         this.cboColumns.TextBoxIcon = true;
+         // 
+         // btnRearrange
+         // 
+         this.btnRearrange.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnRearrange.Location = new System.Drawing.Point(8, 168);
+         this.btnRearrange.Name = "btnRearrange";
+         this.btnRearrange.Size = new System.Drawing.Size(68, 40);
+         this.btnRearrange.TabIndex = 6;
+         this.btnRearrange.Text = "Rearrange Columns";
+         this.btnRearrange.Click += new
+          System.EventHandler(this.btnRearrange_Click);
+         // 
+         // btnHideColumns
+         // 
+         this.btnHideColumns.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnHideColumns.Location = new System.Drawing.Point(84, 168);
+         this.btnHideColumns.Name = "btnHideColumns";
+         this.btnHideColumns.Size = new System.Drawing.Size(68, 40);
+         this.btnHideColumns.TabIndex = 7;
+         this.btnHideColumns.Text = "Hide Columns";
+         this.btnHideColumns.Click += new
+          System.EventHandler(this.btnHideColumns_Click);
+         // 
+         // lblIdentInfo
+         // 
+         this.lblIdentInfo.BackColor = System.Drawing.SystemColors.ControlDark;
+         this.lblIdentInfo.ForeColor =
+          System.Drawing.SystemColors.ControlLightLight;
+         this.lblIdentInfo.Location = new System.Drawing.Point(8, 8);
+         this.lblIdentInfo.Name = "lblIdentInfo";
+         this.lblIdentInfo.Size = new System.Drawing.Size(288, 16);
+         this.lblIdentInfo.TabIndex = 0;
+         this.lblIdentInfo.Text = " Icon Combo Box with Indentations and
+          AutoComplete";
+         this.lblIdentInfo.TextAlign =
+          System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // label1
+         // 
+         this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
+         this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+         this.label1.Location = new System.Drawing.Point(8, 116);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(284, 16);
+         this.label1.TabIndex = 4;
+         this.label1.Text = " Multi-Column Icon Combo Box";
+         this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // label2
+         // 
+         this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
+         this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+         this.label2.Location = new System.Drawing.Point(8, 60);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(288, 16);
+         this.label2.TabIndex = 2;
+         this.label2.Text = " DropDownList Icon Combo Box";
+         this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // cboDropDownList
+         // 
+         this.cboDropDownList.AutoComplete = true;
+         this.cboDropDownList.BorderStyle =
+          vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10;
+         this.cboDropDownList.DrawMode =
+          System.Windows.Forms.DrawMode.OwnerDrawVariable;
+         this.cboDropDownList.DropDownStyle =
+          System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboDropDownList.FullRowSelect = false;
+         this.cboDropDownList.GridLines = false;
+         this.cboDropDownList.HighlightStyle =
+          vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10;
+         this.cboDropDownList.ImageList = null;
+         this.cboDropDownList.IndentationSize = 16;
+         this.cboDropDownList.Location = new System.Drawing.Point(8, 80);
+         this.cboDropDownList.Name = "cboDropDownList";
+         this.cboDropDownList.Size = new System.Drawing.Size(288, 22);
+         this.cboDropDownList.TabIndex = 3;
+         this.cboDropDownList.TextBoxIcon = false;
+         // 
+         // frmTestIconCombo
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(304, 266);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.label2,
+                                                        this.cboDropDownList,
+                                                        this.label1,
+                                                        this.lblIdentInfo,
+                                                        this.btnHideColumns,
+                                                        this.btnRearrange,
+                                                        this.cboColumns,
+                                                        this.cboIndented});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmTestIconCombo";
+         this.Text = "vbAccelerator IconComboBox Demonstration";
+         this.Load += new System.EventHandler(this.frmTestIconCombo_Load);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmTestIconCombo());
+      }
+
+      private void frmTestIconCombo_Load(object sender, System.EventArgs e)
+      {
+      }
+      
+
+      private void populateDropDownListCombo()
+      {
+         // Set up the image list and appearance:
+         cboDropDownList.ImageList = ilsIcons;
+
+         // Add some test items to the control:
+         for (int i = 0; i &lt; ilsIcons.Images.Count; i++)
+         {
+            // Create the item:
+            IconComboItem ici = new IconComboItem();
+            // Set text:
+            ici.Text = "Test Item " + i;
+            // Set 0-based icon index in ImageList:
+            ici.Icon = i;
+            // Set Indentation.  This size is multiplied by 
+            // the combo's IndentationSize property when the
+            // item is rendered.
+            ici.Indentation = i % 4;
+            // For this demo, every item with ident = 0 has
+            // a bold font:
+            if (ici.Indentation == 0)
+            {
+               ici.Font = new Font(cboDropDownList.Font.Name,
+                cboDropDownList.Font.Size, FontStyle.Bold);
+            }
+
+            // Add the item to the control:
+            cboDropDownList.Items.Add(ici);
+         }
+
+         cboDropDownList.SelectedIndex = 0;
+      }
+
+
+      private void populateIndentedIconCombo()
+      {
+         // Set up the image list and appearance:
+         cboIndented.ImageList = ilsIcons;
+         cboIndented.TextBoxIcon = true;         
+
+         // Add some test items to the control:
+         for (int i = 0; i &lt; ilsIcons.Images.Count; i++)
+         {
+            // Create the item:
+            IconComboItem ici = new IconComboItem();
+            // Set text:
+            ici.Text = "Test Item " + i;
+            // Set 0-based icon index in ImageList:
+            ici.Icon = i;
+            // Set Indentation.  This size is multiplied by 
+            // the combo's IndentationSize property when the
+            // item is rendered.
+            ici.Indentation = i % 4;
+
+            // Add the item to the control:
+            cboIndented.Items.Add(ici);
+         }
+
+         // select a default item:
+         cboIndented.SelectedIndex = 0;
+      }
+
+      private void populateMultiColumnCombo()
+      {
+         // Set up the image list and appearance:
+         cboColumns.ImageList = ilsIcons;
+         cboColumns.TextBoxIcon = true;
+         cboColumns.GridLines = true;
+         
+         // Set up the columns to display.  Note that by default
+         // an IconComboBox already has one column at order 0.
+         cboColumns.Columns[0].ColumnWidth = 128;
+         IconComboBoxColumn column = new IconComboBoxColumn();
+         column.ColumnWidth = 32;
+         cboColumns.Columns.Add(column);
+         column = new IconComboBoxColumn();
+         column.ColumnWidth = 96;
+         cboColumns.Columns.Add(column);
+         column = new IconComboBoxColumn();
+         column.ColumnWidth = 64;
+         cboColumns.Columns.Add(column);
+
+         // Set the drop-down width using the columns we've just set
+         // up.  By adding the width of the vertical scroll bar we 
+         // can ensure that each row is exactly shown regardless of
+         // whether the scroll appears or not.
+         int dropDownWidth = SystemInformation.VerticalScrollBarWidth;
+         foreach (IconComboBoxColumn col in cboColumns.Columns)
+         {
+            dropDownWidth += col.ColumnWidth;
+         }
+         cboColumns.DropDownWidth = dropDownWidth;
+         // Show 12 items at a time in the drop-down
+         cboColumns.MaxDropDownItems = 12;
+
+
+         // Add some demonstration items
+         
+         // This is a custom string formatter we'll use to align
+         // the decimal numeric items to the right (in L-t-R environment):
+         StringFormat format = new StringFormat();
+         format.Alignment = StringAlignment.Far;
+         format.LineAlignment = StringAlignment.Center;
+         format.FormatFlags = StringFormatFlags.LineLimit |
+          StringFormatFlags.NoWrap;
+         format.Trimming = StringTrimming.EllipsisCharacter;
+
+         int imageCount = ilsIcons.Images.Count;
+         for (int i = 0; i &lt; imageCount * 10; i++)
+         {
+            // Create a new item:
+            IconComboItem ici = new IconComboItem();
+            ici.Text = "Test Item " + i;
+            ici.Icon = i % imageCount;
+            
+            // Add a numeric sub item and format it to one
+            // decimal place, aligned Far:
+            IconComboSubItem subItem = new IconComboSubItem();
+            subItem.Text = i / 3.0F;
+            subItem.StringFormat = format;
+            subItem.TextFormat = "{0:0.0} ";
+            ici.SubItems.Add(subItem);
+
+            // Add a date item, formatted with a custom date format:
+            subItem = new IconComboSubItem();
+            subItem.Text = DateTime.Now;
+            subItem.TextFormat = "{0:d MMMM yyyy}";
+            ici.SubItems.Add(subItem);
+
+            // Add a final sub item which has an icon and displays
+            // the text "Img:" followed by its icon number if Hex:
+            subItem = new IconComboSubItem();
+            subItem.Icon = (i / 2) % imageCount;
+            subItem.Text = subItem.Icon;
+            subItem.TextFormat = "Img:{0:X2}";
+            ici.SubItems.Add(subItem);
+
+            // Add the item to the control:
+            cboColumns.Items.Add(ici);
+         }
+
+         // select a default item:
+         cboColumns.SelectedIndex = 0;
+
+      }
+
+
+
+      private void btnRearrange_Click(object sender, System.EventArgs e)
+      {
+         
+         if (cboColumns.Columns[0].ColumnOrder == 3)
+         {
+            for (int i = 0; i &lt; cboColumns.Columns.Count; i++)
+            {
+               cboColumns.Columns[i].ColumnOrder = i;
+            }
+         }
+         else
+         {
+            cboColumns.Columns[3].ColumnOrder = 0;
+            cboColumns.Columns[0].ColumnOrder = 1;
+            cboColumns.Columns[1].ColumnOrder = 2;
+            cboColumns.Columns[2].ColumnOrder = 3;   
+         }
+
+      }
+
+      private void btnHideColumns_Click(object sender, System.EventArgs e)
+      {
+         if (cboColumns.Columns[1].ColumnWidth == 0)
+         {
+            cboColumns.Columns[1].ColumnWidth = 32;
+            cboColumns.Columns[2].ColumnWidth = 96;
+            btnHideColumns.Text = "Hide Columns";
+         }
+         else
+         {
+            cboColumns.Columns[1].ColumnWidth = 0;
+            cboColumns.Columns[2].ColumnWidth = 0;
+            btnHideColumns.Text = "Show Columns";
+         }
+
+         int dropDownWidth = SystemInformation.VerticalScrollBarWidth;
+         foreach (IconComboBoxColumn col in cboColumns.Columns)
+         {
+            dropDownWidth += col.ColumnWidth;
+         }
+         cboColumns.DropDownWidth = dropDownWidth;
+
+      }
+
+      private void cboIndented_CloseUp(object sender, EventArgs e)
+      {
+         Console.Write("cboIndented Closed Up");
+      }
+
+      private void cboIndented_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         string text = "No selection";
+         if (cboIndented.SelectedItem != null)
+         {
+            text = cboIndented.SelectedItem.ToString();
+         }
+         Console.WriteLine("cboIndented Selected item Changed to {0}", text);
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">vbAccelerator IconComboBox Control</a>&#160;.&#160;<a href="iconcombobox_demonstration.html">IconComboBox Demonstration</a>&#160;.&#160;frmTestIconCombo.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

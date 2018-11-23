@@ -1,0 +1,254 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Streaming .WAV File Player</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<a name="sectop">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#999966">
+	<td valign="top"  width="32">
+	<font color="#993300" face="verdana,arial,helvetica" size="6"><strong>4</strong></font>
+	</td>
+	<td>
+	<font color="#993300" face="verdana,arial,helvetica" size="4"><strong>vb<I>Media</I></strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Streaming .WAV File Player</b>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td>
+	<font color="#999966" face="verdana,arial,helvetica" size="1">
+	&nbsp;Play .WAV files of any length using the Multimedia API without problems
+	</font>
+	</td>	
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\vbmedia\audio\streaming_wav_file_player\article.asp\index.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\wavestr.gif" alt="Wave Streaming Demo Application" width="195" height="171"></p>
+	<p><a href="wavestr.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4">Download the WaveStream Sample application and class (47kb)</a></p>
+
+	<p>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+
+	<p>
+	<b>Playing Waves</b><br>
+	Playing digital audio can be achieved at a number of different levels under windows.  At
+	the simplest level, there is the <b>M</b>ultimedia <b>C</b>ontrol <b>I</b>nterface (MCI) 
+	control provided with VB.  This is turn is a very thin wrapper around the MCI API provided
+	with Win32, which offers about the same level of control for playing waves as the 
+	API<i>PlaySound</i> and <i>sndPlaySound</i> functions.	
+	<br><br>
+	At a deeper level, your application can take charge of reading chunks of audio from disk
+	and streaming it directly to the sound card.  The advantage of these methods is you 
+	get more control over how the audio is played.  With the MCI and PlaySound methods, the
+	system has to allocate memory for the entire sound before it starts.  With a streaming
+	approach, you can read the sound in in small chunks (say 0.1s of audio) allowing you to
+	play audio samples of any length (and remember that a CD quality stereo WAV file 
+	occupies around	10Mb/minute!).  Another advantage of using the multimedia methods is
+	you can affect the sound before you play it.  You could filter it by averaging the bytes
+	before putting them into the sound card's buffer.  Or you could create an echo effect by
+	preparing an additional audio buffer which you save attenuated samples of the main sound
+	to.
+	<br><br>
+	Using the multimedia API at this level gives you more control, but the downside is
+	additional complexity.  This sample demonstrates how you can play back standard .WAV files,
+	however, if you need to be able to play back sounds which have are not directly compatible
+	with your soundcard (for example, .WAV files with ADPCM compression or .MP3 files) then
+	this sample alone will not work because it would need to invoke the <b>A</b>udio
+	<b>C</b>ompression <b>M</b>anager (ACM) functions to do that (which is the subject of a 
+	future article, if I can figure it out!).
+	<br><br>
+
+	<b>The cWavPlayer class</b><br>
+	The cWavPlayer class supplied with the download wraps up access to stream digital audio
+	to the sound card.  Fundamentally, it works like this:
+	<ul>
+	<li>OpenFile<br>
+	Opens a Multimedia IO device handle, reads the header of the WAV file
+	to check the format of the WAV file and then creates a number of buffers to hold
+	0.1s each of the wave data read in from the file.
+	<li>Play<br>
+	Creates a WaveOut handle for passing data to the soundcard from the WAV file and
+	specifies that when data is needed by the soundcard it should post a message to 
+	the window.  It then prepares each of the buffers to send data to the wave out 
+	handle and initiates the play callback loop by posting the message to the window.
+	<li>Play callback loop<br>
+	Reads data from the file into the wave buffer pointed to by the wave header,
+	and then writes it out to the sound card's driver.  When the data is exhausted,
+	the buffer is unprepared and finally once all the buffers have been unprepared
+	the WaveOut handle is closed.
+	</ul>
+	To use the class is straightforward.  Add the class to your project, and ensure the
+	project references <a href="..\codelib\ssubtmr\ssubtmr.htm">SSubTmr.DLL</a>.  Then
+	open a .WAV file with the <i>OpenFile</i> method.  At this stage you can read
+	various information about the wave file, such as the sampling frequency (<i>SamplesPerSecond</i>),
+	the bit depth (<i>BitsPerSample</i>), whether the file is stereo or mono (<i>Channels</i>).
+	<br><br>
+	To play the file, use the <i>Play</i> method.  You can pause it at any time by choosing the <i>Stop</i>
+	method, and change the position in the file using the <i>FileSeek</i> method.
+	<br><br>
+	You can get the position of the playback at any time using the <i>Position</i> method.
+	Remember that the audio is buffered into 0.1s chunks for playback, so that is the minimum
+	resolution.  To get a better resolution, you can reduce the buffer time in the cWavPlay 
+	class by changing the <i>BUFFER_SECONDS</i> constant value, but this
+	can lead to problems on slower machines.
+	</p>			
+	<p>
+
+	<br><br>
+
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overmed.htm"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back"></a>Back to <a href="..\..\overmed.htm" target="vbamain">vbMedia</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+	</p>
+	</font>
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

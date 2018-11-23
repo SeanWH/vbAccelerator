@@ -1,0 +1,582 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Storing Objects Against ItemData and Tag properties</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        &nbsp;<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3&nbsp;</strong></font>
+        </td>
+        <td width="100%">
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Storing Objects Against ItemData and Tag properties</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	<p>Build a Collection that runs 100 times faster than the VB version and enhance many controls with this code.</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\techniques\storing_objects_against_itemdata_and_tag_properties\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><img src="..\..\images\objstore.gif" width="224" height="234" alt="Object Storage Test project." border="0"></p>
+        <p><a href="objstore.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator Object Store Sample (26kb)</a></p>
+        </font>
+	<p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The source code project requires the <a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+        </table>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<td>
+        <p>
+	<br><br>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Overview</b><br>
+	ListBox and Combo boxes have an <i>ItemData</i> property to allow you to store an additional
+	long value against each ListItem.  Similarly, ListView items and TreeView nodes have a <i>Tag</i>
+	property which can be used to store a string.  But what if you want to associate more
+	data along with an item?  Clearly you can make some use of a long value to store a key, or
+	use the bitfield technique to store multiple items.  With a string you can generate cunning
+	schemes to store multiple strings and numbers in the same string.  But it would be a lot
+	nicer if you could just store an object against each item.  Then data of any complexity 
+	can be stored against the item just by setting the item data to point to the instance of
+	the object.
+	<br><br>
+	This article explores three methods you can use to store objects using only a long value to store
+	the object, and hence you can associate the long value with either the <i>ItemData</i> property
+	of a List or Combo box, or (by using CStr and CLng) with the <i>Tag</i> property of Microsoft control.
+	<br><br>	
+	The uses don't stop there.  You can replace VB's collection object with an object that runs up to
+	100x faster using a ListBox.  You could attach custom class data to the items in an
+	<a href="..\sgrid\sgrid.htm">S-Grid</a> control.  Take advantage of the technique when building 
+	controls directly from the API to store lots of data in the <i>lParam</i> member of the items...
+	this is great stuff!
+	<br><br>
+	<b>Three Ways To Store Objects</b><br>
+	Storing objects against ListBox items requires a pretty flexible way to allocate and remove
+	the objects.  You can add items to a ListBox, but you can also insert items at any position.
+	Likewise you can delete items from any position.  That really rules out using arrays as your
+	storage method without a lot of pain, because whilst arrays are always the fastest way
+	to work in VB if you add and remove to the end of the list, they are difficult to manage
+	and slow if you want to insert or delete from the middle.   (Although it is possible if
+	you implement a Linked List structure as part of the array - article coming in a future
+	vbAccelerator update!).
+	<ul>
+	<li><i>Oh Dear: VB's Collection Object</i><br>
+	At first glance VB's collection object would seem to provide a good solution to this problem.
+	You can Add, Insert and Delete items in the collection at any point, and you can store an
+	object against each item in the collection.  Also you can give every item in the collection
+	a unique key to identify it, and although this must be a string there is no problem using
+	a Long value (which you can use to link the ListBox's ItemData to the item in the collection)
+	as long as you ensure VB thinks it is a string when you add the item.  The sample code 
+	uses a counter to generate unique keys, and hence is limited to only (ahem) adding and 
+	up to 4 billion items before it wraps and could then possibly generate a duplicate key.  However
+	note that that limit is equivalent to 100 days of continuous running doing nothing else except 
+	adding and removing objects in blocks of 100 (on my machine).
+	<br><br>
+	And basically this technique works... except for one thing: performance.  If the ListBox has a
+	small number of items, everything is fine.  But if the ListBox has thousands of items then 
+	this technique is unsuitable.  I would recommend this technique for small numbers of items just
+	because it is simple... except that there is actually an even simpler method in coding terms!
+	<br><br>	
+
+	<li><i>Using IUnknown and ObjPtr</i><br>
+	A COM object is fundamentally the same as a C++ object: a &quot;reference&quot; to an object is just a
+	pointer to a structure in memory called the <i>Virtual Table</i> or <i>vtable</i>.
+	In COM terms, however, there is a difference between just knowing the pointer to the 
+	vtable and having a workable object. This difference is enforced by the COM contract and implemented
+	through the <i>IUnknown</i> interface.  All COM objects must support this interface and all must 
+	work according to the contract in order to work successfully.
+	<br><br>
+	The <i>IUnknown</i> object has just three methods:
+	<ol>
+	<li>AddRef
+	<li>Release	
+	<li>QueryInterface	
+	</ol>
+	The <i>QueryInterface</i> is the method COM and Automation can use to determine which facilities
+	the object supports, and provides a directory to those objects.  The interesting objects (at 
+	least for the purposes of this article) are the <i>AddRef</i> and <i>Release</i> methods>.
+	<br><br>
+	All COM objects use an <i>AddRef</i> and <i>Release</i> scheme to determine when they are being used.  Whenever
+	a COM object is created, or a program obtains a reference to the object, the
+	<i>AddRef</i> method of the object is called.  Whenever a reference to an object is set to nothing,
+	the <i>Release</i> method is called.  The COM object is in charge of internally counting the number
+	of AddRef and Release calls, and when its internal counter of references reaches 0 it terminates,
+	freeing up any memory allocated to the object.
+	<br><br>
+	Since all VB objects implement the COM contract, we can take advantage of the <i>IUnknown</i>
+	interface to create valid COM references to objects but without using the VB Object type or
+	the native object type itself.  It's easy!  We just do what any COM-conversant object must do
+	to store an object, i.e. keep a copy of the pointer to the object but also call 
+	the <i>IUnknown</i> <i>AddRef</i> method.	
+	<br><br>
+	This technique would be fine, but unfortunately VB does not allow you to call either <i>AddRef</i>
+	or <i>Release</i>.  You can create an object of type <i>IUnknown</i> or reference an existing 
+	object using this interface, but any attempt to call the methods results in an unfriendly
+	error message:<br><br> 
+	<menu>
+	&quot;Function or interface marked as restricted, or the function uses an Automation type not supported
+	in VB&quot;
+	</menu>
+	<br>
+	(Incidentally, if you try to include a public method called <i>Release</i> in a VB5 UserControl, something
+	even worse happens!  Try compiling one and see if you can interpret <i>that</i> error message...)<br>
+	The only way to work around this is to use a version of <i>IUnknown</i> that you can call yourself;
+	and that means using a Type Library.  For this sample I have used Brad Martinez's 
+	<a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+	to get at IUnknown; you can also find implementations in a number of other Type Libraries, including
+	Bruce McKinney's Win.TLB and WinU.TLB provided with &quot;Hardcore Visual Basic&quot;.
+	<br><br>	
+	Once you have a reference to the Type Library you can then safely store classes using just their
+	object pointer, like this:
+	<br><br>
+	</font>
+<font face="lucida console,courier new,courier" size="1" color="#000000">
+&nbsp;&nbsp;&nbsp;Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long)<br>
+<br><br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;' To Store An Object to a Long:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;Public Sub Store(objThis As Object) As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim iU As IShellFolderEx_TLB.IUnknown<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set iU = objThis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iU.AddRef<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set iU = Nothing<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Store = ObjPtr(objThis)<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' objThis cannot terminate until we call iU.Release on it<br>
+<font color="#000000">
+<br>
+&nbsp;&nbsp;&nbsp;End Sub<br>
+<br><br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;' To Retrieve the Object From the Long Value:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;Private Property Get ObjectFromPtr(ByVal lPtr As Long) As Object<br>
+&nbsp;&nbsp;&nbsp;Dim objT As Object<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ' Bruce McKinney's code for getting an Object from the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ' object pointer:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   CopyMemory objT, lPtr, 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Set ObjectFromPtr = objT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   CopyMemory objT, 0&, 4<br>
+&nbsp;&nbsp;&nbsp;End Property<br>
+<br><br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;' To Delete The Object:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;Public Sub Delete(ByVal lPtr As Long) As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim objThis As Object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set objThis = ObjectFromPtr(lPtr)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim iU As IShellFolderEx_TLB.IUnknown<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set iU = objThis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iU.Release<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set iU = Nothing<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set objThis = Nothing<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' objThis now terminates if there are no other external <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' references to it.<br>
+<font color="#000000">
+<br>
+&nbsp;&nbsp;&nbsp;End Sub<br>
+<br><br>
+</font>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br>
+
+	<li><i>Using IMalloc</i><br>
+	The last method took advantage of COM support in VB objects to create an &quot;object&quot;
+	which lasts as long as the pointer to it does.  Another way to create an object that lasts
+	is through Persistence.
+	<br><br>
+	In the persistence scheme, the object is coded so it is capable of storing all the information
+	required to create a completely new object that looks the same as the one you started with.
+	The persistent information can be stored in a format external to the object itself, hence
+	allowing a new version of the object to be stored at a later date by creating a new object
+	and loading the external data in.  The most obvious example of a persistent object in VB
+	is the UserControl object, which includes a <i>PropertyBag</i> implementation to allow 
+	details about the UserControl to be stored and restored to the control's parent
+	.FRM and .FRX files.
+	<br><br>
+	The only question about persistance is how to store the data.  You can see some sample 
+	techniques for persisting information in the article <a href="imalloc.htm">malloc in VB?</a>
+	which demonstrates saving byte arrays, UDTs and strings.  Storing longs, bytes and integers is 
+	simple, and it is straightforward to aggregate these techniques together. When I say 
+	straightforward, however, I should point out that another way of putting this is 
+	"tedious and error prone".  You can do it, but it isn't easy.  
+	<br><br>
+	A better way of persisting data is to have a class which controls reading and 
+	writing data to a single memory chunk and have that provide a memory pointer for saving
+	purposes.  The VB <i>PropertyBag</i> object is an example of such an object - this can save
+	properties in many different data types to a byte array in memory (which is extremely
+	simple to persist to memory or file).  Unfortunately, this object is only exposed in VB6
+	and then it is only available to public classes.  A better method would be a PropertyBag
+	which was available regardless of type and VB version (Hey!!! If any VB designers are 
+	reading, <a href="mailto:steve@vbaccelerator.com">please mail me</a> and tell me how come
+	something I can do with only a little trouble is not possible in VB?).  An example of
+	this type of object at the site is the <a href="..\xml\xmlpbag.htm">XML Property Bag</a>
+	object, which can be implemented by any class you choose and is adept at turning
+	complex combinations of variables into a neat package.  (Not just that; it has the 
+	by default benefit of delivering XML, the ideal way of sending your data to another
+	machine or process... And right now just the initials XML are enough to send business 
+	sponsors and colleagues alike into a frenzy of excitement!)
+	</ul>
+
+	<br><br>
+	<b>Performance Comparison</b><br>
+	The following table shows the results from running the sample application provided with the
+	download for differing numbers of items.  All the tests were performed on a 266MHz Pentium II desktop
+	with 256Mb RAM.  Below 500 items the performance differences are insignificant - you can use any
+	technique you want.  However, as the number of items increases we begin to see that the VB Collection
+	object is useless, and performance worsens exponentially.  Both the <i>IUnknown</i> and the <i>IMalloc</i>
+	method however provide almost equal high performance which varies much more linearly to the number of 
+	items.  The <i>IMalloc</i> method is quickest at adding and removing items, whilst the <I>IUnknown</i>
+	method is quickest for accessing items:
+	</P>
+	</font>
+	<p>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR bgcolor="#EEEEEE">
+<TD COLSPAN="16"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+</TR>
+<TR VALIGN="bottom" bgcolor="#EEEEEE">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;&nbsp;&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD COLSPAN="4" ALIGN="center"><FONT FACE="verdana,arial,helvetica" SIZE="2"><b>&nbsp;Collection&nbsp;</b></FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD COLSPAN="4" ALIGN="center"><FONT FACE="verdana,arial,helvetica" SIZE="2"><b>&nbsp;IUnknown&nbsp;</b></FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD COLSPAN="4" ALIGN="center"><FONT FACE="verdana,arial,helvetica" SIZE="2"><b>&nbsp;IMalloc&nbsp;</b></FONT></TD>
+</TR>
+<TR bgcolor="#EEEEEE">
+<TD></TD>
+<TD COLSPAN="15"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+</TR>
+<TR VALIGN="bottom" bgcolor="#EEEEEE">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;&nbsp;&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Add&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Enum&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Clear&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Total&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Add&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Enum&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Clear&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Total&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Add&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Enum&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Clear&nbsp;</FONT></TD>
+<TD ALIGN="left"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;Total&nbsp;</FONT></TD>
+</TR>
+<TR bgcolor="#EEEEEE">
+<TD COLSPAN="16"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+</TR>
+<TR VALIGN="bottom">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;100&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;54&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;7&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;9&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;70&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;41&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;10&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;52&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;25&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;34&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;9&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;68&nbsp;</FONT></TD>
+</TR>
+<TR VALIGN="bottom">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;500&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;190&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;39&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;72&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;301&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;110&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;8&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;52&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;170&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;84&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;41&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;30&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;155&nbsp;</FONT></TD>
+</TR>
+<TR VALIGN="bottom">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1000&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;383&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;91&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;224&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;698&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;201&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;15&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;94&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;310&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;157&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;83&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;69&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;309&nbsp;</FONT></TD>
+</TR>
+<TR VALIGN="bottom">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;5&nbsp;000&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;2 184&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;490&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;4&nbsp;510&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;7&nbsp;184&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;008&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;73&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;436&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1 517&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;843&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;464&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;298&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;605&nbsp;</FONT></TD>
+</TR>
+<TR VALIGN="bottom">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;10&nbsp;000&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;4&nbsp;423&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;068&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;28&nbsp;531&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;34&nbsp;022&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;963&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;168&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;857&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;2&nbsp;988&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;642&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;935&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;502&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;3&nbsp;079&nbsp;</FONT></TD>
+</TR>
+<TR VALIGN="bottom">
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;25&nbsp;000&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;12&nbsp;352&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;8&nbsp;947&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;241&nbsp;672&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;262&nbsp;971&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;5&nbsp;601&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;793&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;2&nbsp;400&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;8&nbsp;794&nbsp;</FONT></TD>
+<td><img src="..\..\images\grpixel.gif" width="1" height="100%"></td>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;4&nbsp;458&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;2&nbsp;149&nbsp;</FONT></TD>
+<TD ALIGN="right"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;1&nbsp;559&nbsp;</FONT></TD>
+<TD ALIGN="right" bgcolor="#FFFFCC"><FONT FACE="verdana,arial,helvetica" SIZE="2">&nbsp;8&nbsp;166&nbsp;</FONT></TD>
+</TR>
+<TR bgcolor="#EEEEEE">
+<TD COLSPAN="16"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+</TR>
+</Table>
+	</p>
+	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<small><b>Table Comparing Object Storage Performance</b></small><br><br>
+	The IUnknown reference count control method has to be highly recommended.  You get very quick access
+	to the objects you have created with hardly any new code to write.
+
+	</p>
+	</font>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	<br>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

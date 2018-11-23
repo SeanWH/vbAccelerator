@@ -1,0 +1,524 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>vbAccelerator Image List Control and Class</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop">Source Code</a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>vbAccelerator Image List Control and Class v1.4</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>Use COMCTL32.DLL directly to create an ImageList and take full control of icons at all colour depths and sizes.</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\imagelist\vbaccelerator_image_list_control\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><br><img src="..\..\images\ilsiprop.gif" alt="Image List Control Property Page" width="206" height="202"></p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="5" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td> 	
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="vbalils.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalils.zip">VB5 Control Binary (33kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="vbalils6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalils6.zip">VB6 Control Binary (33kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="vbalilsd.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalilsd.zip">VB5 Demonstration Project (56kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="vbalilsd6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalilsd6.zip">VB6 Demonstration Project (56kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="vbalilsc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalilsc.zip">VB5 Full Source Code (113kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="vbalilsc6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalilsc6.zip">VB6 Full Source Code (113kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="vbalilsx.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td colspan="4"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalilsx.zip">ImageList Class Example, VB5 or VB6 (55kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table border="0">
+	<tr>
+		<td width="20">&nbsp;</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated! v1.4</b> <i>21 March 2000</i>
+		</font>
+		</td>
+		<td width="20">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Posted VB6 version.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Fixed bugs in Images Property Page: when two images were swapped, the keys did not
+		move with them and sometimes the key was not saved for images.  Also put the images
+		into their own control so you can navigate them with the cursor keys.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Fixed control bug - attempt to refer to the first item in the ImageList by key caused
+		a subscript out of range error.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp;</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated! v1.2</b> <i>21 March 1999</i>
+		</font>
+		</td>
+		<td width="20">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		When loading an icon, the control now chooses the icon resource with the size most
+		closely matching the image list size.  Previously, the control always picked the
+		resource at the default system icon size if that existed - causing the stretching 
+		problem the control was supposed to solve!
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Multiple files can now be selected together when adding images. A stupid omission from
+		the last version!
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Image Keys can now be set up in the property page and are persisted in the control's
+		PropertyBag.  The control's property page also has a toggle to allow keys to be automatically 
+		generated based on the filenames being added - very useful!
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Allow load of .GIF, .CUR and .ANI files as well as .BMP and .ICO.  For animated
+		cursors, you can choose whether to load just the first frame or import
+		all frames.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		When adding a bitmap, the control can now automatically determine the transparent
+		colour from the top-left hand pixel of the image.  However, you can still set it 
+		manually, although now there is the assistance of a colour picker Common Dialog to
+		do it rather than having to remember the RGB values yourself!
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Bugs causing the control to crash when buttons pressed in the property page at 
+		an unexpected point and also to place the images in the wrong order in the control
+		have all been removed.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Resource leak when adding icons fixed. (Call <i>DestroyIcon</i> or <i>DestroyCursor</i>
+		as appropriate rather than calling <i>DeleteObject</i>)
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	As a number of my controls require image list support (<a href="retbar.htm">Rebar and Toolbar
+	control</a>, <a href="tabctrl.htm">Tab Control</a>, <a href="..\sgrid\sgrid.htm">S-Grid</a>,
+	<a href="..\cpopmenu\article.htm">Icon Menu Control</a>, <a href="..\cpopmenu\cnewmenu.htm">ActiveX Popup Menu DLL</a>, 
+	<a href="..\odcbolst\comboex.htm">Owner Drawn ComboEx Control</a> and the 
+	<a href="..\odcbolst\article.htm">Owner Drawn Combo and List box Control</a>), it was about 
+	time I provided an Image List control to support them, so you don't have to distribute 
+	590kb of COMCTL32.OCX just to get images in your app.
+		</font>
+		</td>	
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Well here it is.  I completed the control, and it has a full design-time interface (see above)
+	with a number of new features which you will probably find very useful if you're used to the
+	MS version.  But, having done it I was alarmed to discover than my OCX was <i>131kb</i>! 
+	The problem is with this control is you need nice serialisation code and property page support
+	otherwise it isn't any use.  But the penalty of this is that you are bound to end up with
+	something heavier than if you go the code-only route.
+	</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Another option if you are interested in lean, serious code is to get all the functionality
+	from a class, which will add just 30kb of code to your project.  There's no subclassing or
+	hooky API calls, so there's no danger of making your project unstable in the IDE by adding it.  
+	You can load all the icons in one go from a picture strip containing all the images in series (stored as a file or a resource bitmap).
+	The control version lets you create a picture strip and save it and then you ditch the control
+	and use the class instead.  A bit of an expensive use of a control, but anyway...
+	</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Note that this control isn't a direct replacement for the Common Controls version.  You can't
+	directly attach it to a TreeView or ListView etc and get that to work.  It does, however,
+	directly attach to all the vbAccelerator controls that require an ImageList (note that they
+	also support the MS ImageList).  Just pass the return value of the hIml property to the
+	relevant ImageList method.
+	<br><br>
+	</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Features</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		The features of this image list control are:<br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<ul>
+	<li>Add all images at the same time from a picture containing a strip of images.  
+	Also, the image list has a method which creates a picture strip from icons added in.
+	Images can be loaded easily from files, resources, bitmap handles or VB Picture objects.
+	<li>No icon size/colour depth restriction.  If you have icons that are 24x24 in millions of 
+	colours, the ImageList will load them, unlike the VB/COM StdPicture object which first stretches
+	them to 32x32, reduces the colour depth to 16 colours and then squashes them back to 24x24!<br>
+	<b>Updated!</b> the previous version could fail to pick the correct icon size from multi-resource
+	icons, leading to stretching or squashing.  The closest size match is now used.
+	<li>Specify the colour depth the ImageList should run in.  Lower colour depths mean less 
+	resource usage, higher depths mean better icons!
+	<li>At design time, you can clear the images, or change their order without having to add/
+	remove each one separately.
+	<li>Image draw method supports drawing icons in normal, selected, dithered with specified colour
+	and disabled modes.
+	<li>Swap or make copies of images in the image list.
+	<li>Get a real API hIcon from any image in the image list, regardless of what format it was
+	originally added in.  This function will make for a great icon editor!  Just remember to 
+	call <i>DestroyIcon</i> on the hIcon returned when you've finished with it...
+	<li><b>New!</b> Add .CUR (cursor) and .ANI (animated cursor) files to the Image List.  If 
+	you import an animated cursor, you get the option of importing all frames or just the
+	first one.
+	<li><b>New!</b> A much better user interface for the control version.  
+	<ol>
+	<li>Set up keys at design time - optionally you can have the key automatically set based on the filename
+	of the image you are adding, which can be a great time saver. 
+	<li>Add multiple files from the File Open dialog.
+	<li>Choose whether the control automatically determines the transparent colour of bitmaps 
+	you are adding, or choose the transparent colour using a Colour Picker dialog (rather than 
+	having to remember the correct RGB value..)
+	</ol>
+	</ul>
+	To get a feel for the methods and use of the image list, download one of the sample files 
+	and check it out.
+	<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Documentation</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Documentation for the Image List control is available in RTF format.  This documentation was
+	created with the <a href="..\actvxdoc\article.htm">Active X Documenter</a>, which is also available
+	for download.
+	</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<a href="vbaliml.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" height="16" width="20" border="0" hspace="4">Click here to download/view the Image List control method documentation</a>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18 February 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+llspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18 February 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

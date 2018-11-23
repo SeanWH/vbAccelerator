@@ -1,0 +1,529 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarItem.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarItem.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ExplorerBarItem.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="explorerbar_control_binary.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Binary</a> (40K)</p><p class="nav"><a href="explorerbar_control_demonstration.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Demonstration</a> (47K)</p><p class="nav"><a href="explorerbar_control_documentation.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Documentation</a> (265K)</p><p class="nav"><a href="explorerbar_control_source_code.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Source Code</a> (201K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:14471</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=14471&type=zip&title=explorerbar_20control_20source_20code_2ezip_5facclexplorerbar_5fexplorerbari[1].html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />17 Apr 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\vb\code\controls\explorer_bar_control\article.html">vbAccelerator Explorer Bar Control</a></p><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\libraries\graphics\reading_exif_tags_from_jpg_files\article.html">Reading EXIF Tags From JPEG Files</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarItem.cs</h1><pre>using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
+using vbAccelerator.Components.Controls.ExplorerBarFramework;
+
+namespace vbAccelerator.Components.Controls
+{
+   /// &lt;summary&gt;
+   /// An abstract class which all items within the Explorer Bar control
+   /// must derive from.  
+   /// &lt;/summary&gt;
+   public abstract class ExplorerBarItem : IExplorerBarControlItem
+   {
+      /// &lt;summary&gt;
+      /// Instance of the &lt;see cref="acclExplorerBar"/&gt; control
+      /// which owns this item.
+      /// &lt;/summary&gt;
+      private acclExplorerBar owner = null;
+
+      private object tag = null;
+      private string toolTipText = "";
+      private int spacingAfter = 0;
+
+      private int marginSize = 12;
+      private int heightWithScroll = 0;
+      private int heightWithoutScroll = 0;
+      private int widthWithScroll = 0;
+      private int widthWithoutScroll = 0;
+      private int top = 0;
+
+      private bool mouseDown = false;      
+      private bool mouseOver = false;
+      private bool hasFocus = false;
+
+      /// &lt;summary&gt;
+      /// Constructs a new, default instance of this class.
+      /// &lt;/summary&gt;
+      public ExplorerBarItem()
+      {
+      }
+
+      #region Interface implementation
+      /// &lt;summary&gt;
+      /// Creates a clone of this object.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;Cloned object&lt;/returns&gt;
+      public abstract object Clone();
+
+      /// &lt;summary&gt;
+      /// Determines whether the specified location hits this Item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="location"&gt;Point to test&lt;/param&gt;
+      /// &lt;param name="width"&gt;Client width of the owning control.&lt;/param&gt;
+      /// &lt;param name="scrollShowing"&gt;Whether the scroll bar is showing or
+       not&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the point is within this item, &lt;c&gt;false&lt;/c&gt;
+       otherwise&lt;/returns&gt;
+      public bool HitTest(Point location, int width, bool scrollShowing)
+      {
+         bool hitTest = false;
+         int checkHeight = (scrollShowing ? heightWithScroll :
+          heightWithoutScroll);
+         if ((location.Y &gt;= top) &amp;&amp; (location.Y &lt;= top + checkHeight))
+         {
+            int checkWidth = (scrollShowing ? widthWithScroll :
+             widthWithoutScroll);
+            if ((location.X &gt;= marginSize * 2) &amp;&amp; (location.X &lt;= marginSize * 4
+             + checkWidth))
+            {
+               hitTest = true;
+            }
+         }
+         return hitTest;
+      }      
+      
+      /// &lt;summary&gt;
+      /// Gets/sets whether this item has the focus
+      /// &lt;/summary&gt;
+      public virtual bool Focused
+      {
+         get
+         {
+            return hasFocus;
+         }
+         set
+         {
+            hasFocus = value;
+            if (value)
+            {
+               if ((owner != null) &amp;&amp; (value))
+               {
+                  owner.InternalOnItemFocus(this);
+               }
+               EnsureVisible();
+            }
+            OnAppearanceChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Determines whether this item contains the specified mnemonic
+      /// &lt;/summary&gt;
+      /// &lt;param name="charCode"&gt;Mnemonic key&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the item contains the mnemonic, &lt;c&gt;false&lt;/c&gt;
+      /// otherwise.&lt;/returns&gt;
+      public abstract bool ContainsMnemonic(char charCode);
+      
+      /// &lt;summary&gt;
+      /// Gets whether the control can get input focus.
+      /// &lt;/summary&gt;
+      public abstract bool ShowFocus
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the mouse is over the item
+      /// &lt;/summary&gt;
+      public bool MouseOver
+      {
+         get
+         {
+            return mouseOver;
+         }
+         set
+         {
+            if (mouseOver != value)
+            {
+               mouseOver = value;
+               if (value)
+               {
+                  owner.InternalOnItemMouseOver(this);
+               }
+               OnAppearanceChanged();
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the mouse is down on the item
+      /// &lt;/summary&gt;
+      public bool MouseDown
+      {
+         get
+         {
+            return mouseDown;
+         }
+         set
+         {
+            if (mouseDown != value)
+            {
+               mouseDown = value;
+               if (value)
+               {
+                  Focused = value;
+               }
+               if (value)
+               {
+                  owner.InternalOnItemMouseDown(this);
+               }
+               OnAppearanceChanged();
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether this item can be clicked to perform an action.
+      /// &lt;/summary&gt;
+      public abstract bool Clickable
+      {
+         get;
+      }
+
+      /// &lt;summary&gt;
+      /// Called when the item is clicked
+      /// &lt;/summary&gt;
+      public virtual void Click()
+      {
+      }
+      #endregion
+         
+      /// &lt;summary&gt;
+      /// Gets the Bar which owns this item, if any.
+      /// &lt;/summary&gt;
+      public ExplorerBar Bar
+      {
+         get
+         {
+            return owner.InternalBarForItem(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets an object to be associated with this Item.
+      /// &lt;/summary&gt;
+      public object Tag
+      {
+         get
+         {
+            return tag;
+         }
+         set
+         {
+            tag = value;
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Gets/sets the tool tip text to be shown when the mouse hovers
+      /// over this item.
+      /// &lt;/summary&gt;
+      public String ToolTipText
+      {
+         get
+         {
+            return toolTipText;
+         }
+         set
+         {
+            toolTipText = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the space to add after this item.
+      /// &lt;/summary&gt;
+      public int SpacingAfter
+      {
+         get
+         {
+            return spacingAfter;
+         }
+         set
+         {
+            if (spacingAfter != value)
+            {
+               spacingAfter = value;
+               OnSizeChanged();
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Ensures that this item is visible in the control.
+      /// &lt;/summary&gt;             
+      public void EnsureVisible()
+      {
+         if (owner != null)
+         {
+            owner.InternalEnsureVisible(this);
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Notifies the owner that the size of this item may have changed and it
+       needs to
+      /// be remeasured.
+      /// &lt;/summary&gt;
+      protected virtual void OnSizeChanged()
+      {
+         if (owner != null)
+         {
+            owner.InternalOnItemSizeChanged(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies the owner that the appearance of this item has changed and
+       it needs to
+      /// be redrawn.
+      /// &lt;/summary&gt;
+      protected virtual void OnAppearanceChanged()
+      {
+         if (owner != null)
+         {
+            owner.InternalOnItemRedraw(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Sets the Owning Explorer Bar control for this item or bar.
+      /// &lt;/summary&gt;
+      /// &lt;param name="newOwner"&gt;Explorer Bar control to make
+      /// the owner of this object.&lt;/param&gt;
+      public virtual void SetOwner(acclExplorerBar newOwner)
+      {
+         if ((owner == null) || (owner != newOwner))
+         {
+            if (owner != null)
+            {
+               owner.InternalOnItemRemoved(this);
+            }
+            owner = newOwner;
+            // notify control that we're there...
+            if (owner != null)
+            {
+               owner.InternalOnItemAdd(this);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called by the owning control to measure this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="measureItemParams"&gt;Class specifying details required to 
+      /// measure the item.&lt;/param&gt;
+      internal void InternalMeasureItem(
+         ExplorerBarMeasureItemParams measureItemParams
+         )
+      {
+         MeasureItem(measureItemParams);
+      }
+
+      /// &lt;summary&gt;
+      /// Called by the owning control to measure this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="measureItemParams"&gt;Class specifying details required to 
+      /// measure the item.&lt;/param&gt;
+      protected abstract void MeasureItem(
+         ExplorerBarMeasureItemParams measureItemParams
+         );
+
+      /// &lt;summary&gt;
+      /// Called by the owning control to draw this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="drawItemParams"&gt;Class specifying details required to 
+      /// draw the item.&lt;/param&gt;
+      internal void InternalDrawItem(
+         ExplorerBarDrawItemParams drawItemParams
+         )
+      {
+         top = drawItemParams.Top;
+         DrawItem(drawItemParams);
+      }
+
+      /// &lt;summary&gt;
+      /// Called by the owning control to draw this item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="drawItemParams"&gt;Class specifying details required to 
+      /// draw the item.&lt;/param&gt;
+      protected abstract void DrawItem(
+         ExplorerBarDrawItemParams drawItemParams
+         );
+
+      /// &lt;summary&gt;
+      /// Clones the fields associated with this object.  Used to supports the
+      /// Clone method for concrete instances of the class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="cloneTo"&gt;Object to clone fields to.&lt;/param&gt;
+      protected virtual void CloneFields(ExplorerBarItem cloneTo)
+      {
+         cloneTo.SpacingAfter = spacingAfter;
+         cloneTo.Tag = tag;
+         cloneTo.ToolTipText = toolTipText;         
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the left and right margin size for this item
+      /// &lt;/summary&gt;
+      protected virtual int MarginSize
+      {
+         get
+         {
+            return marginSize;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the height of this item when the scroll bar is showing.
+      /// Implementations should set this member in the override of 
+      /// &lt;see cref="MeasureItem"/&gt; procedure.
+      /// &lt;/summary&gt;
+      public virtual int HeightWithScroll
+      {
+         get
+         {
+            return heightWithScroll;
+         }
+         set
+         {
+            heightWithScroll = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the height of this item when the scroll bar is not
+      /// showing. Implementations should set this member in the 
+      /// override of the &lt;see cref="MeasureItem"/&gt; procedure.
+      /// &lt;/summary&gt;
+      public virtual int HeightWithoutScroll
+      {
+         get
+         {
+            return heightWithoutScroll;
+         }
+         set
+         {
+            heightWithoutScroll = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the total width of this item when the scroll
+      /// bar is showing. Implementations should set this member in the
+       override of 
+      /// &lt;see cref="MeasureItem"/&gt; procedure.
+      /// &lt;/summary&gt;
+      protected virtual int WidthWithScroll
+      {
+         get
+         {
+            return widthWithScroll;
+         }
+         set
+         {
+            widthWithScroll = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the total width of this item when the scroll
+      /// bar is not showing. Implementations should set this member in the
+       override of 
+      /// &lt;see cref="MeasureItem"/&gt; procedure.
+      /// &lt;/summary&gt;
+      protected virtual int WidthWithoutScroll
+      {
+         get
+         {
+            return widthWithoutScroll;
+         }
+         set
+         {
+            widthWithoutScroll = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the location of the top of this item relative to the control.
+      /// This is provided to allow items to position child controls relative
+      /// to the control. 
+      /// &lt;/summary&gt;
+      protected int Top
+      {
+         get
+         {
+            return top;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the control which currently owns this item.
+      /// &lt;/summary&gt;
+      protected acclExplorerBar Owner
+      {
+         get
+         {
+            return owner;
+         }
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ExplorerBarItem.cs</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 18 April 2004</p></td><td></td></tr></table>
+</body></html>

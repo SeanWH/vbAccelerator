@@ -1,0 +1,292 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Goldfish Clipboard Cache</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	&nbsp;<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>Resources
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#666699">
+	<td valign="bottom" width="32">
+	&nbsp;<font color="#CCCCCC" face="verdana,arial,helvetica" size="6"><strong>2&nbsp;</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#CCCCCC" face="verdana,arial,helvetica" size="4"><strong>Type Libraries</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>VB Type Library Registration Utility</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#666699" face="verdana,arial,helvetica" size="1">
+	<p>Register, Unregister and Manage Type Libraries on your system</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\utilities\type_library_registration_utility\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table>
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><img src="..\..\images\vbtlbreg.gif" width="269" height="256" alt="VB TLB registration utility" border="0"></p>
+	<p><a href="vbregtlb.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the VB Type Library Registration Utility and Source Code (58kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                The source code project requires the <a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.tlb)</a>.  Make sure you have loaded 
+		and registered this before trying the project - I recommend using this utility to register it!
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <p>
+	Whilst all systems are provided with the <a href="..\..\insprob.htm#secregsvr32">regsvr32</a>
+	tool for register ActiveX controls and DLLs, there is not an equivalent tool available
+	for Type Libraries.  This page provides a Type Library registration utility that
+	allows you to register Type Libraries more reliably than using VB's Project->References
+	dialog. It also allows you to unregister Type Libraries and browse through all the 
+	type libraries installed on the system, including deleting entries for old and deleted
+	items.
+	<br><br>
+	The site source code used in this sample includes:
+	<ul>
+	<li><a href="..\inireg\registry.htm">Complete Registry control</a>
+	<li><a href="..\cmdlgd\cmdlgd.htm">Common Dialogs without COMDLG32.OCX</a>
+	<li><a href="..\..\tips\vba0029.htm">Set Left and Right Margin of Text Boxes and Combo Boxes</a>
+	<li>Using <a href="..\shell\shellex.htm">ShellExecute</a> from Visual Basic - start any document from its filename only
+	<li><a href="..\imalloc\objstore.htm">Store Objects against a Control's Tag or ItemData property.</a>
+	</ul>
+	<b>Calling Unicode Functions in DLLs with String Parameters</b><br>
+	The code also demonstrates how to make the following calls from Visual Basic:
+	<ul>
+	<li><i>LoadTypeLib</i>
+	<li><i>RegisterTypeLib</i>
+	<li><i>UnRegisterTypeLib</i>
+	<li><i>CLSIDFromString</i>
+	</ul>
+	These calls are interesting because they only have a Unicode implementation, even under Win9x.
+	Visual Basic coders are used to calling ANSI functions in DLLs, and setting up all string parameters
+	to DLL calls as (for example) <i>ByVal lpszPath As String</i>.  When every you use ByVal with a string
+	parameter in a declare, you are telling VB to convert its internal Unicode representation of the string
+	into an ANSI version, and then to pass a pointer to the ANSI string to the function.  When the function
+	returns, VB converts the ANSI string back to unicode and puts the data back into your string.
+	<br><br>
+	When you are using a Unicode function, however, you need to ensure Visual Basic never makes the ANSI 
+	conversion.  That means you can't use the <i>As String</i> construct in Unicode function declares.  
+	So when a Unicode function call requires a String variable parameter, you have three possibilities:
+	<ol>
+	<li>Modify <i>ByVal .. As String</i> to <i>ByRef .. As Byte</i> and pass the first element of a byte 
+	array containing the Unicode (double byte) representation to the parameter.<br>
+	</font>
+	<font color="#000000" face="lucida console,courier new,courier" size="1">
+	<br>
+	<font color="#999999">
+	' 1. - Using Byte Arrays:<br>
+	' <br>
+	<font color="#000000">
+Private Declare Function LoadTypeLib Lib "oleaut32.dll" ( _<br>
+&nbsp;&nbsp;&nbsp;    pFileName As Byte, pptlib As Object) As Long<br>
+	<br>
+Dim sLib As String<br>
+Dim suLib() As Byte<br>
+Dim errOK As Long<br>
+Dim tlb As Object<br>
+<br>
+&nbsp;&nbsp;&nbsp;sLib = "C:\Windows\System\ISHF_Ex.TLB"<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Basic automatically translates strings to Unicode Byte arrays</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' but doesn't null-terminate, so you must do it yourself</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;suLib = sLib & vbNullChar<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Pass first byte of array</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;errOK = LoadTypeLib(suLib(0), tlb)<br>
+<br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li>Modify <i>ByVal .. As String</i> to <i>ByVal .. As Long</i> and pass <i>StrPtr(sThis)</i> where
+	sThis is your string to the Long parameter.<br>
+	</font>
+	<font color="#000000" face="lucida console,courier new,courier" size="1">
+<br>	
+	<font color="#999999">
+	' 2. - Using String Pointers:<br>
+	' <br>
+	<font color="#000000">
+Private Declare Function LoadTypeLib Lib "oleaut32.dll" ( _<br>
+&nbsp;&nbsp;&nbsp;    ByVal pFileName As Long, pptlib As Object) As Long<br>
+	<br>
+Dim sLib As String<br>
+Dim errOK As Long<br>
+Dim tlb As Object<br>
+<br>
+&nbsp;&nbsp;&nbsp;sLib = "C:\Windows\System\ISHF_Ex.TLB"<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Pass StrPtr to the String argument:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;errOK = LoadTypeLib(StrPtr(sLib), tlb)<br>
+<br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li>Write a Type Library.  Then you can specify that the parameter is of the <i>BSTR</i> Automation type,
+	which happens to be the native VB implementation for strings.  vbAccelerator is aiming to have some
+	articles on building Type Libraries towards the end of 1999.
+	</ol>
+
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	With Win2000 Microsoft have announced that new function prototypes on the system will not have a 
+	corresponding ANSI version, and therefore there will be an increasing number of calls which need to
+	be made with direct Unicode strings.
+	</p>
+
+	<br><br><br>
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\resources.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Resources"></a>Back to <a href="..\..\resources.htm">Resources</a></p>
+
+        </font>
+	
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>

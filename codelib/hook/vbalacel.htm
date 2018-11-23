@@ -1,0 +1,232 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>vbAccelerator Accelerator Control</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>vbAccelerator Accelerator Control</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Intercept <i>all</i> the accelerator keys on the keyboard, and set accelerators up at design time.</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\hooks\accelerator_control\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><img src="..\..\images\vbalaccl.gif" width="290" height="161" alt="Alt-Left Arrow Accelerator in VB" border="0"></p>
+        <p><a href="vbalaccl.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator Accelerator Control, Source and Demo (34kb)</a><br>
+	</p>
+        </font>
+        <p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<b>Overview</b><br>
+	If you've ever tried to pick a keyboard accelerator for the menu items Back and Next in your
+	application, you might have discovered a limitation in VB's ability to set up accelerators.
+	IE offers some sensibly chosen keyboard accelerators for its Back, Next, Home shortcuts,
+	as shown in the image above, but you won't be able to set them up in standard VB!
+	<br><br>
+	Another thing that can be annoying is that you cannot set up accelerators at run-time,
+	only at design time.  This means if you are loading custom menus then you won't be
+	able to give them an accelerator.  Well, you could try using a 
+	<a href="..\ssubtmr\hotkeyr.htm">Registered HotKey</a>, but remember that HotKeys are 
+	<i>system-wide</i> in scope, so you might end up triggering the key when you don't want
+	to!  And what if you have two applications with the same accelerator?
+	<br><br><br>
+	<b>The vbAccelerator Accelerator Control</b><br>
+	This control uses a <a href="vbalhook.htm">Windows Hook</a> to intercept keyboard messages
+	whilst your application is running.  Because it affects all windows within your application's
+	thread, it doesn't matter which window has focus, the accelerator will also be detected.
+	(So beware! Don't, for example, set up an accelerator on the 'A' key...)
+	<br><br>
+	Using the control is simple.  Just drop one control on your application's main form and
+	then call the <i>AddAccelerator</i> method with the key code, shift constants added together
+	and a string property to identify the accelerator.  Then whenever the accelerator is pressed
+	the control's <i>Accelerator</i> event will fire, passing you the index of the accelerator
+	in the control's array.  You can get the string key property which identifies the accelerator
+	from the index with the <i>Key</i> property.
+	<br><br>
+	To indicate that an accelerator is associated with a menu, you can set the caption of the
+	menu to show the accelerator.  To do this, just set the caption property of the menu
+	to the regular caption plus a tab plus the text for the accelerator.  So for example to
+	set up a Home menu item with Alt+Home as the displayed accelerator, do this:
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;mnu.Caption = &quot;&Home Page&quot; & vbTab & &quot;Alt+Home&quot;<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<b>Why Is This an OCX and Not a DLL?</b><br>
+	Normally I would code this sort of component as a DLL because you don't need the overhead
+	of a control implementation to achieve this (particularly when there are no property pages
+	or real design-time features).
+	<br><br>
+	The main problem with implementing accelerators is that they can interfere with the IDE.
+	What happens if you set up an accelerator on the Ctrl+Break key combination?  
+	With a Windows Hook, this can eat the message before it gets to the VB IDE, leaving you
+	with no way to interrupt the code whilst it is running.
+	<br><br>
+	There appears to be only one solution to this in VB: to check the <i>EventsFrozen</i> property of
+	a the <i>Ambient</i> object.  But the <i>Ambient</i> object is only available in a UserControl.
+	Having said that, the <a href="..\..\linxref.htm#secvbowner">Debug Object for AddressOf Subclassing</a>
+	available from the <a href="..\..\linxref.htm#secvbowner">MSDN Visual Basic owner's area</a> seems
+	to solve this problem.   Anyone got an idea how its done?	
+	<br><br>
+	</p>
+	</font>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	<br>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

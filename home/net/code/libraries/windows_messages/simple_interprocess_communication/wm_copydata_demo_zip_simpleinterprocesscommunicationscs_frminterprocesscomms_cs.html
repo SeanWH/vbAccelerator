@@ -1,0 +1,354 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_frmInterProcessComms.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_frmInterProcessComms.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsCS_frmInterProcessComms.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="wm_copydata_demo.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WM_COPYDATA Demo</a> (62K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13465&type=zip&title=wm_5fcopydata_20demo_2ezip_5fsimpleinterprocesscommunicationscs_5ffrminterpr.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />10 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_frmInterProcessComms.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+using vbAccelerator.Components.Win32;
+
+namespace SimpleInterprocessCommunications
+{
+   /// &lt;summary&gt;
+   /// A Windows form demonstrating using the CopyData class for
+   /// inter-process messaging.
+   /// &lt;/summary&gt;
+   public class frmInterProcessComms : System.Windows.Forms.Form
+   {
+      /// &lt;summary&gt;
+      /// The CopyData class used for message sending.
+      /// &lt;/summary&gt;
+      private CopyData copyData = null;
+      private System.Windows.Forms.GroupBox grpSend;
+      private System.Windows.Forms.ComboBox cboChannels;
+      private System.Windows.Forms.TextBox txtToSend;
+      private System.Windows.Forms.Button btnSend;
+      private System.Windows.Forms.GroupBox grpReceive;
+      private System.Windows.Forms.ListBox lstReceived;
+      private System.Windows.Forms.Button btnClear;
+      private System.Windows.Forms.Label lblRecipients;
+
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this form
+      /// &lt;/summary&gt;
+      public frmInterProcessComms()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmInterProcessComms));
+         this.grpSend = new System.Windows.Forms.GroupBox();
+         this.cboChannels = new System.Windows.Forms.ComboBox();
+         this.txtToSend = new System.Windows.Forms.TextBox();
+         this.btnSend = new System.Windows.Forms.Button();
+         this.grpReceive = new System.Windows.Forms.GroupBox();
+         this.lstReceived = new System.Windows.Forms.ListBox();
+         this.btnClear = new System.Windows.Forms.Button();
+         this.lblRecipients = new System.Windows.Forms.Label();
+         this.grpSend.SuspendLayout();
+         this.grpReceive.SuspendLayout();
+         this.SuspendLayout();
+         // 
+         // grpSend
+         // 
+         this.grpSend.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                             
+                                         this.lblRecipients,
+                                                              this.cboChannels,
+                                                              this.txtToSend,
+                                                              this.btnSend});
+         this.grpSend.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.grpSend.Location = new System.Drawing.Point(4, 4);
+         this.grpSend.Name = "grpSend";
+         this.grpSend.Size = new System.Drawing.Size(292, 100);
+         this.grpSend.TabIndex = 4;
+         this.grpSend.TabStop = false;
+         this.grpSend.Text = "Send Data";
+         // 
+         // cboChannels
+         // 
+         this.cboChannels.DropDownStyle =
+          System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboChannels.Location = new System.Drawing.Point(8, 20);
+         this.cboChannels.Name = "cboChannels";
+         this.cboChannels.Size = new System.Drawing.Size(192, 21);
+         this.cboChannels.TabIndex = 6;
+         // 
+         // txtToSend
+         // 
+         this.txtToSend.Location = new System.Drawing.Point(8, 44);
+         this.txtToSend.Multiline = true;
+         this.txtToSend.Name = "txtToSend";
+         this.txtToSend.Size = new System.Drawing.Size(192, 40);
+         this.txtToSend.TabIndex = 5;
+         this.txtToSend.Text = "This is the data to send on the selected
+          channel.";
+         // 
+         // btnSend
+         // 
+         this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnSend.Location = new System.Drawing.Point(208, 20);
+         this.btnSend.Name = "btnSend";
+         this.btnSend.TabIndex = 4;
+         this.btnSend.Text = "&amp;Send";
+         this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+         // 
+         // grpReceive
+         // 
+         this.grpReceive.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                                this.btnClear,
+                                                               
+                                         this.lstReceived});
+         this.grpReceive.Location = new System.Drawing.Point(4, 108);
+         this.grpReceive.Name = "grpReceive";
+         this.grpReceive.Size = new System.Drawing.Size(288, 176);
+         this.grpReceive.TabIndex = 5;
+         this.grpReceive.TabStop = false;
+         this.grpReceive.Text = "Received Data";
+         // 
+         // lstReceived
+         // 
+         this.lstReceived.Location = new System.Drawing.Point(8, 20);
+         this.lstReceived.Name = "lstReceived";
+         this.lstReceived.Size = new System.Drawing.Size(192, 147);
+         this.lstReceived.TabIndex = 3;
+         // 
+         // btnClear
+         // 
+         this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnClear.Location = new System.Drawing.Point(204, 20);
+         this.btnClear.Name = "btnClear";
+         this.btnClear.TabIndex = 5;
+         this.btnClear.Text = "&amp;Clear";
+         this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+         // 
+         // lblRecipients
+         // 
+         this.lblRecipients.Location = new System.Drawing.Point(208, 48);
+         this.lblRecipients.Name = "lblRecipients";
+         this.lblRecipients.Size = new System.Drawing.Size(76, 16);
+         this.lblRecipients.TabIndex = 7;
+         // 
+         // frmInterProcessComms
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(300, 290);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.grpReceive,
+                                                        this.grpSend});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmInterProcessComms";
+         this.Text = "Simple Interprocess Data Sender";
+         this.Load += new System.EventHandler(this.frmInterProcessComms_Load);
+         this.grpSend.ResumeLayout(false);
+         this.grpReceive.ResumeLayout(false);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmInterProcessComms());
+      }
+
+      /// &lt;summary&gt;
+      /// Performs initialization on the CopyData class once the form
+      /// has loaded and its handle has been assigned.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;The form instance.&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used.&lt;/param&gt;
+      private void frmInterProcessComms_Load(object sender, System.EventArgs e)
+      {
+         // Create a new instance of the class:
+         copyData = new CopyData();
+         
+         // Assign the handle:
+         copyData.AssignHandle(this.Handle);
+
+         // Create the named channels to send and receive on.  The name
+         // is arbitary; it can be anything you want.
+         copyData.Channels.Add("DataClass1");
+         copyData.Channels.Add("DataClass2");         
+
+         // Display the channels in the combo box and pick
+         // the first:
+         foreach (CopyDataChannel channel in copyData.Channels)
+         {
+            cboChannels.Items.Add(channel.ChannelName);
+         }
+         cboChannels.SelectedIndex = 0;
+
+         // Hook up event notifications whenever a message is received:
+         copyData.DataReceived += new DataReceivedEventHandler(
+            copyData_DataReceived);
+      }
+
+      /// &lt;summary&gt;
+      /// Fired whenever message is received from another instance
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;The CopyData class which receieved the
+       data.&lt;/param&gt;
+      /// &lt;param name="e"&gt;Data that was receieved.&lt;/param&gt;
+      private void copyData_DataReceived(object sender, DataReceivedEventArgs e)
+      {         
+         // Display the data in the logging list box:
+         if (e.ChannelName.Equals("DataClass1"))
+         {
+            DataClassExample1 data = (DataClassExample1)e.Data;
+            lstReceived.Items.Add(
+               String.Format("{0} : {1}", e.ChannelName,data.CommandLine));
+         }
+         else
+         {
+            DataClassExample2 data = (DataClassExample2)e.Data;
+            lstReceived.Items.Add(
+               String.Format("{0} : {1}", e.ChannelName,data.CommandLine));
+         }
+         lstReceived.SelectedIndex = lstReceived.Items.Count - 1;
+      }
+
+      /// &lt;summary&gt;
+      /// Sends data in response to the send button being clicked.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;The button that was clicked.&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used.&lt;/param&gt;
+      private void btnSend_Click(object sender, System.EventArgs e)
+      {
+         // Pick the channel name to send on:
+         string channelName =
+          (string)cboChannels.Items[cboChannels.SelectedIndex];
+         int recipients = 0;
+         // Create some demonstration data and send it on the named
+         // channel:
+         if (channelName.Equals("DataClass1"))
+         {
+            DataClassExample1 data = new DataClassExample1(txtToSend.Text,
+             DateTime.Now);
+            recipients = copyData.Channels[channelName].Send(data);
+         }
+         else
+         {
+            DataClassExample2 data = new DataClassExample2(txtToSend.Text,
+             DateTime.Now);
+            recipients = copyData.Channels[channelName].Send(data);
+         }
+         // Display how many other instances receieved the message:
+         lblRecipients.Text = String.Format("{0} recipients", recipients);
+      }
+
+      /// &lt;summary&gt;
+      /// Clears the log in response to the clear button being clicked.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;The button that was clicked.&lt;/param&gt;
+      /// &lt;param name="e"&gt;Not used.&lt;/param&gt;
+      private void btnClear_Click(object sender, System.EventArgs e)
+      {
+         lstReceived.Items.Clear();
+      }
+
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="javascript:window.alert(&quot;http://vbaccelerator.com/home/include/adredir.asp?url=http://oneandone.co.uk/xml/init?k_id=5791003&image=http://oneandone.co.uk/xml/banner?size=1&number=3\nThis link was not retrieved.&quot;)" ><IMG SRC="..\..\..\..\..\..\..\oneandone_co_uk\xml\banner\size=1&number=3.html" ALT="1&1 Web Hosting" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsCS_frmInterProcessComms.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 15 November 2003</p></td><td></td></tr></table>
+</body></html>

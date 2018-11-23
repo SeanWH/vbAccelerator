@@ -1,0 +1,308 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Asynchronous Transfer Component</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<a name="sectop"></a>
+
+<!-- SECTION:START -->
+<!-- SECTION:CODE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop">Source Code</a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:CODE:END -->
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<!-- AREA:INTERNET:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#996666">
+        <td valign="top" width="32">
+        <font color="#CC9966" face="verdana,arial,helvetica" size="6"><strong>5</strong></font>
+        </td>
+        <td valign="center" width="100%">
+        <font color="#CC9966" face="verdana,arial,helvetica" size="4"><strong>Internet</strong></font>
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+<!-- AREA:INTERNET:END -->
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Asynchronous Transfer Component</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>Download files and data asynchronously from the Internet</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><br><img src="..\..\images\asynctx.gif" alt="Get Downloading" width="196" height="96">
+	<br><br><br>
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="csasynctransfer.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="csasynctransfer.zip">Download the VB6 Asynchronous Transfer DLL and Demonstration Project (16kb)</a></font></td>
+	</tr>
+	<tr>
+	<td><a href="asynctx5.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="asynctx5.zip">Download VB5 Binary Asynchronous Transfer DLL (9kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Proving that things don't have to be complicated to be really useful, this ActiveX DLL from
+		Dion Wiggins (<a href="mailto:dionwiggins@hotmail.com">dionwiggins@hotmail.com</a>) allows
+		you to manage as many asynchronous data downloads from the Internet as you want.
+		Code is provided in VB6 format, but is compatible with VB5 and can quite easily be loaded 
+		(ignore any errors thrown by VB5 and delete the lines which cause an error!)  
+		A VB5 binary is also provided in case you have problems.
+		<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Description</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		This DLL performs asynchronous transfers from the net. There is no limit to
+		the number of transfers that it can do at once, so long as the key you pass
+		is unique.
+		<br><br>
+		The DLL is implemented as a wrapper to an invisible form which contains a
+		single instance of a private usercontrol. Usercontrols have a lot of this
+		functionality already built in, and it is a simple case of wrapping it to
+		make it work as a DLL.
+		<br><br>
+		The included demo application transfers a vbAccelerator logo 50 times.
+		<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Coding with the DLL</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		There is one Method:
+		<br><br>
+</font>
+<font face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;DownloadFile( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strFileKey As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strPath As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal lngFileType As enumDownloadFileTypes, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strData As String) As Boolean<br>
+</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	If the transfer is started successfully then True is returned, otherwise
+	False.  An error may be raised by the control if you are not connected to the Internet
+	(see <a href="..\..\tips\vba0033.htm">Determining Whether There is an Internet Connection</a>).<br><br>
+	<ul>
+	<li><i>strFileKey</i> must be unique within the currently transferring files. If a file
+	has completed transferring, then the key can be reused.
+	<li><i>strPath</i> is the URL of the file to transfer
+	<li><i>lngFileType</i> must be one of the values exposed by <i>enumDownloadFileTypes</i>
+	<li><i>strData</i> can be any string, and is simply passed back when the events are
+	triggered.
+	</ul>
+	There is one enum:<br>
+	<br>
+</font>
+<font face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;Public Enum enumDownloadFileTypes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    dftFile = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    dftPicture = 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    dftPicture16 = 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    dftPicture32 = 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    dftByteArray = 5<br>
+&nbsp;&nbsp;&nbsp;End Enum<br>
+<br><br>
+</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	And there are two events:
+<br><br>
+</font>
+<font face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;Event FileReadComplete( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strFileKey As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal lngFileType As enumDownloadFileTypes, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    AsyncProp As AsyncProperty, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strData As String)<br>
+<br>
+&nbsp;&nbsp;&nbsp;Event FileReadProgress( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strFileKey As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal lngFileType As enumDownloadFileTypes, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    AsyncProp As AsyncProperty, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ByVal strData As String)<br>
+<br>
+</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+The values for both events are the same, and the <i>AsyncProp</i> object is documented in
+Visual Basic by the <i>AsyncProperty</i> object.	
+
+		</font>
+		</td>
+	</tr>
+	</table>
+	</p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 June 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

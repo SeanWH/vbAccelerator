@@ -1,0 +1,239 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Find Out Which COMCTL32.DLL Version You Have</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop">Source Code</a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Find Out Which COMCTL32.DLL Version You Have</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>Use this code to work out which of the sexy common controls features your target system will support</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><br><img src="..\..\images\comctlv.gif" alt="Internet Explorer 5 Installed" width="343" height="160">
+	<br><br><br>
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="comctlv.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="comctlv.zip">Download the Common Controls Version code (7kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	As you will read from my other Common Controls project the facilities provided by COMCTL32.DLL
+	depend on what version you have installed.  This sample covers the VB code you need to find
+	out what version is installed on a user's machine.<br><br>
+	Version checking is achieved using by first checking whether the DLLGetVersion function is
+	exported by the library.  If it isn't, this means you have a pre Internet Explorer version, i.e.
+	4.0.  If the function is exported, the code calls it and returns the version number and build.<br><br>
+	Here is the source for the ComCtlVersion function:
+	</p>
+	<p>
+<font face="Lucida Console,courier new" size="1">
+Private Const S_OK = &H0 <br>
+Private Type DLLVERSIONINFO <br>
+&nbsp &nbsp cbSize As Long <br>
+&nbsp &nbsp dwMajor As Long <br>
+&nbsp &nbsp dwMinor As Long <br>
+&nbsp &nbsp dwBuildNumber As Long <br>
+&nbsp &nbsp dwPlatformID As Long <br>
+End Type <br>
+Private Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As Long <br>
+Private Declare Function FreeLibrary Lib "kernel32" (ByVal hLibModule As Long) As Long <br>
+Private Declare Function GetProcAddress Lib "kernel32" (ByVal hModule As Long, ByVal lpProcName As String) As Long <br>
+Private Declare Function DllGetVersion Lib "comctl32" (pdvi As DLLVERSIONINFO) As Long <br>
+ <br>
+Public Function ComCtlVersion( _ <br>
+&nbsp &nbsp &nbsp &nbsp ByRef lMajor As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByRef lMinor As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional ByRef lBuild As Long _ <br>
+&nbsp &nbsp ) As Boolean <br>
+Dim hMod As Long <br>
+Dim lR As Long <br>
+Dim lptrDLLVersion As Long <br>
+Dim tDVI As DLLVERSIONINFO <br>
+ <br>
+&nbsp &nbsp lMajor = 0: lMinor = 0: lBuild = 0 <br>
+ <br>
+&nbsp &nbsp hMod = LoadLibrary("comctl32.dll") <br>
+&nbsp &nbsp If (hMod <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp lR = S_OK <br>
+</font>
+<font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp &nbsp &nbsp '/* <br>
+&nbsp &nbsp &nbsp &nbsp ' You must get this function explicitly because earlier versions of the DLL <br>
+&nbsp &nbsp &nbsp &nbsp ' don't implement this function. That makes the lack of implementation of the <br>
+&nbsp &nbsp &nbsp &nbsp ' function a version marker in itself.   */ <br>
+</font>
+<font face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp lptrDLLVersion = GetProcAddress(hMod, "DllGetVersion") <br>
+&nbsp &nbsp &nbsp &nbsp If (lptrDLLVersion <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp tDVI.cbSize = Len(tDVI) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lR = DllGetVersion(tDVI) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If (lR = S_OK) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lMajor = tDVI.dwMajor <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lMinor = tDVI.dwMinor <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lBuild = tDVI.dwBuildNumber <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp Else <br>
+</font>
+<font face="Lucida Console,courier new" size="1" color="#999999">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 'If GetProcAddress failed, then the DLL is a version previous to the one <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 'shipped with IE 3.x. <br>
+</font>
+<font face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lMajor = 4 <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp FreeLibrary hMod <br>
+&nbsp &nbsp &nbsp &nbsp ComCtlVersion = True <br>
+&nbsp &nbsp End If<br>
+<br>
+End Function<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	
+
+	</p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><Br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 22 November 1998</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

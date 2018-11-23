@@ -1,0 +1,466 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: FontComboVB_FontComboBox.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: FontComboVB_FontComboBox.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontComboVB_FontComboBox.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="font_combobox_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Font ComboBox Code and Demonstration</a> (75K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13338</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13338&type=zip&title=font_20combobox_20code_20and_20demonstration_2ezip_5ffontcombovb_5ffontcombo.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\icon_combobox\article.html">vbAccelerator IconComboBox Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: FontComboVB_FontComboBox.vb</h1><pre>Namespace FontCombo
+
+    '' &lt;summary&gt;
+    '' Summary description for FontCombo.
+    '' &lt;/summary&gt;
+    Public Class FontComboBox
+        Inherits vbAccelerator.Components.Controls.IconComboBox
+
+        ''' &lt;summary&gt;
+        ''' Collection of Most-Recently used fonts
+        ''' &lt;/summary&gt;
+        Private m_mruFonts As MRUFonts
+        ''' &lt;summary&gt;
+        ''' Number of MRU fonts currently displayed
+        ''' &lt;/summary&gt;
+        Private mruItemCount As Integer = 0
+        ''' &lt;summary&gt;
+        ''' Enable state before/whilst background thread loading in progress
+        ''' &lt;/summary&gt;
+        Private origEnable As Boolean = True
+        ''' &lt;summary&gt;
+        ''' Whether the actual control's enable state can be modified
+        ''' &lt;/summary&gt;
+        Private allowEnable As Boolean = False
+        ''' &lt;summary&gt;
+        ''' An interlock which prevents events from being raised when items
+        ''' are being added or swapped Integero the MRU font list
+        ''' &lt;/summary&gt;
+        Private interlock As Boolean = False
+
+#Region " Events"
+        ''' &lt;summary&gt;
+        ''' Raised when the font combo box has been populated.  Fonts are
+        ''' populated asynchronously on a background thread.
+        ''' &lt;/summary&gt;
+        Public Event Populated(ByVal sender As Object, ByVal e As EventArgs)
+#End Region
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of this class.
+        ''' &lt;/summary&gt;
+        Public Sub New()
+            MyBase.New()
+            MyBase.MaxDropDownItems = 16
+            MyBase.DropDownWidth = 300
+            MyBase.AutoComplete = True
+            m_mruFonts = New MRUFonts(Me)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets/sets whether the control is enabled.  Whilst font loading
+        ''' is occuring on a background thread, changes to this property
+        ''' won't appear until loading has completed.
+        ''' &lt;/summary&gt;
+        Public Shadows Property Enabled() As Boolean
+            Get
+                If Not (allowEnable) Then
+                    Return origEnable
+                Else
+                    Return MyBase.Enabled
+                End If
+            End Get
+            Set(ByVal Value As Boolean)
+                If Not (allowEnable) Then
+                    origEnable = Value
+                Else
+                    MyBase.Enabled = Value
+                End If
+            End Set
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Raises the &lt;see cref="HandleCreated"/&gt; event and populates
+        ''' the combo box with fonts.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="e"&gt;Not used&lt;/param&gt;
+        Protected Overrides Sub OnHandleCreated(ByVal e As EventArgs)
+
+            MyBase.OnHandleCreated(e)
+
+            LoadFonts()
+
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Raises the &lt;see cref="SelectedIndexChanged"/&gt; event,
+        ''' also the MRU cache is correctly populated.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="e"&gt;&lt;/param&gt;
+        Protected Overrides Sub OnSelectedIndexChanged(ByVal e As EventArgs)
+            If Not (interlock) Then
+                MyBase.OnSelectedIndexChanged(e)
+
+                If ((MyBase.SelectedIndex &gt; -1) And Not (MyBase.DroppedDown))
+                 Then
+                    addMRUFont(MyBase.SelectedItem.ToString())
+                End If
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets the collection of most-recently used fonts in the control.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property MostRecentlyUsedFonts() As MRUFonts
+            Get
+                Return m_mruFonts
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Adds a font family to the Most-Recently Used
+        ''' font cache.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="familyName"&gt;Font family name to add&lt;/param&gt;
+        Private Sub addMRUFont(ByVal familyName As String)
+
+            interlock = True
+
+            If (m_mruFonts.Size &gt; 0) Then
+                Dim presentIndex As Integer = -1
+                Dim i As Integer
+                For i = 0 To mruItemCount - 1
+                    Dim ici As vbAccelerator.Components.Controls.IconComboItem
+                     = MyBase.Items(i)
+                    If (ici.Text.ToString().Equals(familyName)) Then
+                        presentIndex = i
+                        Exit For
+                    End If
+                Next i
+
+                Dim oldMruItemCount As Integer = mruItemCount
+                If (presentIndex &gt; -1) Then
+                    '' remove existing item:
+                    MyBase.Items.RemoveAt(presentIndex)
+                    mruItemCount -= 1
+                ElseIf ((m_mruFonts.Size = mruItemCount)) Then
+                    '' remove the last MRU font:
+                    MyBase.Items.RemoveAt(mruItemCount - 1)
+                    mruItemCount -= 1
+                End If
+
+                ' Find the item:
+                Dim realItem As Integer = MyBase.FindStringExact(familyName)
+                Dim realIconComboItem As
+                 vbAccelerator.Components.Controls.IconComboItem =
+                 MyBase.Items(realItem)
+
+                ' insert the item:         
+                Dim mruItem As vbAccelerator.Components.Controls.IconComboItem
+                 = New vbAccelerator.Components.Controls.IconComboItem()
+                mruItem.Text = realIconComboItem.Text
+                mruItem.Font = realIconComboItem.Font
+                mruItem.Tag = "MRU"
+                MyBase.Items.Insert(0, mruItem)
+
+                mruItemCount += 1
+
+                If (oldMruItemCount &gt; 0) Then
+                    '' remove underscore:
+                    Dim oldLastMruItem As
+                     vbAccelerator.Components.Controls.IconComboItem =
+                     MyBase.Items(oldMruItemCount - 1)
+                    oldLastMruItem.LineBelow = False
+                End If
+
+                m_mruFonts.Add(familyName)
+
+                MyBase.SelectedIndex = 0
+            End If
+
+            interlock = False
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Reparses the contents of the MRU Font object after it
+        ''' has been updated by the user of the control.
+        ''' &lt;/summary&gt;
+        Protected Overridable Sub OnMRUChanged()
+            If Not (interlock) Then
+                '' redraw the MRU Fonts based on the newly specified ones.
+                interlock = True
+
+                MyBase.BeginUpdate()
+                Dim i As Integer
+                For i = 0 To mruItemCount - 1
+                    MyBase.Items.Remove(0)
+                Next i
+                mruItemCount = 0
+
+                If (m_mruFonts.Size &gt; 0) Then
+                    For i = m_mruFonts.Size - 1 To 0 Step -1
+                        Dim ici As
+                         vbAccelerator.Components.Controls.IconComboItem = New
+                         vbAccelerator.Components.Controls.IconComboItem()
+
+                        Dim realItem As Integer =
+                         MyBase.FindStringExact(m_mruFonts(i))
+                        Dim realIconComboItem As
+                         vbAccelerator.Components.Controls.IconComboItem =
+                         MyBase.Items(realItem)
+
+                        ' insert the item:         
+                        Dim mruItem As
+                         vbAccelerator.Components.Controls.IconComboItem = New
+                         vbAccelerator.Components.Controls.IconComboItem()
+                        mruItem.Text = realIconComboItem.Text
+                        mruItem.Font = realIconComboItem.Font
+                        mruItem.Tag = "MRU"
+                        MyBase.Items.Insert(0, ici)
+                    Next i
+                    Dim newLastMRUItem As
+                     vbAccelerator.Components.Controls.IconComboItem =
+                     MyBase.Items(mruItemCount - 1)
+                    newLastMRUItem.LineBelow = True
+                End If
+
+                MyBase.EndUpdate()
+
+                interlock = False
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Initiates a load of all fonts asynchronously.  The
+        ''' &lt;see cref="Populated"/&gt; event will be fired once
+        ''' all fonts are available.  Called automatically
+        ''' whenever the control is created.
+        ''' &lt;/summary&gt;
+        Public Sub LoadFonts()
+
+            If Not (Me.Site Is Nothing) Then
+                If (Me.Site.DesignMode) Then
+                    Return
+                End If
+            End If
+
+            origEnable = MyBase.Enabled
+            MyBase.Enabled = False
+            allowEnable = False
+            interlock = True
+
+            MyBase.Items.Clear()
+
+            '' run font population on a background thread
+            Dim populator As PopulateFontComboHandler = New
+             PopulateFontComboHandler(AddressOf PopulateFontCombo)
+            populator.BeginInvoke(Nothing, Nothing)
+
+        End Sub
+
+#Region " Asynchronous Font Population"
+        Private Delegate Sub PopulateFontComboHandler()
+
+        Private Sub PopulateFontCombo()
+
+            ' This graphics object is used for determining the Panose
+            ' number of the font
+            Dim gfx As Graphics = Graphics.FromHwnd(MyBase.Handle)
+
+            ' Get the collection of installed fonts:
+            Dim fonts As System.Drawing.Text.InstalledFontCollection = _
+                New System.Drawing.Text.InstalledFontCollection()
+
+            ' For each item:
+            Dim family As FontFamily
+            For Each family In fonts.Families
+                ' Find which style can be rendered (if any!)
+                Dim theFont As Font = Nothing
+                If (family.IsStyleAvailable(FontStyle.Regular)) Then
+                    theFont = New Font(family.Name, 12)
+                ElseIf (family.IsStyleAvailable(FontStyle.Bold)) Then
+                    theFont = New Font(family.Name, 12, FontStyle.Bold)
+                ElseIf (family.IsStyleAvailable(FontStyle.Italic)) Then
+                    theFont = New Font(family.Name, 12, FontStyle.Italic)
+                End If
+
+                ' Here you could still add the item even if there are no
+                ' styles you can render it in (although that probably
+                ' wouldn't be much use...)
+                If Not (theFont Is Nothing) Then
+                    ' Create a new item:
+                    Dim ici As vbAccelerator.Components.Controls.IconComboItem
+                     = New vbAccelerator.Components.Controls.IconComboItem()
+                    ' Set the text:
+                    ici.Text = family.Name
+
+                    ' Set the font to display the item in.
+                    ' Don't try and display fonts like Wingdings using 
+                    ' the font itself:
+                    If (FontUtility.PanoseFontFamilyType(gfx, theFont) &lt;&gt; _
+                     FontUtility.PanoseFontFamilyTypes.PAN_FAMILY_PICTORIAL)
+                      Then
+                        ici.Font = theFont
+                    End If
+                    MyBase.Items.Add(ici)
+                End If
+            Next
+            gfx.Dispose()
+
+            Dim complete As PopulateFontComboCompleteHandler = New
+             PopulateFontComboCompleteHandler(AddressOf
+             PopulateFontComboComplete)
+            complete.BeginInvoke(Nothing, Nothing)
+
+        End Sub
+
+        Private Delegate Sub PopulateFontComboCompleteHandler()
+
+        Private Sub PopulateFontComboComplete()
+
+            ' Shift the MRU fonts to the top of the list:
+            Dim i As Integer
+            For i = m_mruFonts.Count - 1 To 0 Step -1
+                addMRUFont(m_mruFonts(i))
+            Next i
+            MyBase.Enabled = origEnable
+            allowEnable = True
+            interlock = False
+
+            OnPopulateComplete(New EventArgs())
+
+        End Sub
+#End Region
+
+        ''' &lt;summary&gt;
+        ''' Raises the &lt;see cref="Populated"/&gt; event.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="e"&gt;Not used.&lt;/param&gt;
+        Protected Overridable Sub OnPopulateComplete(ByVal e As EventArgs)
+            RaiseEvent Populated(Me, e)
+        End Sub
+
+
+        ''' &lt;summary&gt;
+        ''' Most Recently Used fonts collection associated with 
+        ''' a &lt;see cref="FontComboBox"/&gt; control.
+        ''' &lt;/summary&gt;
+        &lt;SerializableAttribute()&gt; _
+        Public Class MRUFonts
+            Inherits MRUQueue
+
+            ''' &lt;summary&gt;
+            ''' The owning control for this collection
+            ''' &lt;/summary&gt;
+            Private m_owner As FontComboBox = Nothing
+
+            ''' &lt;summary&gt;
+            ''' Constructs a new instance of this class, associating
+            ''' it with the owning &lt;see cref="FontComboBox"/&gt;.  Used
+            ''' Integerernally by the &lt;see cref="FontComboBox"/&gt; control.
+            ''' &lt;/summary&gt;
+            ''' &lt;param name="owner"&gt;&lt;/param&gt;
+            Public Sub New(ByVal owner As FontComboBox)
+                MyBase.New()
+                m_owner = owner
+            End Sub
+
+            ''' &lt;summary&gt;
+            ''' Gets the font family at the specified index.
+            ''' &lt;/summary&gt;
+            Default Public Shadows ReadOnly Property Item(ByVal index As
+             Integer) As String
+                Get
+                    Return MyBase.innerList(index)
+                End Get
+            End Property
+
+            ''' &lt;summary&gt;
+            ''' Adds the specified font name to the MRU queue.  If the queue
+            ''' already contains the specified item, it is shifted up
+            ''' to the first position.  Otherwise, it is added at the
+            ''' first position and any existing items are shuffled 
+            ''' downwards.
+            ''' &lt;/summary&gt;
+            ''' &lt;param name="fontName"&gt;fontName to add&lt;/param&gt;
+            Public Shadows Sub Add(ByVal fontName As String)
+                MyBase.Add(fontName)
+                m_owner.OnMRUChanged()
+            End Sub
+
+            ''' &lt;summary&gt;
+            ''' Clears the MRU collection and notifies the control
+            ''' of the change.
+            ''' &lt;/summary&gt;
+            Protected Overrides Sub OnClear()
+                MyBase.OnClear()
+                m_owner.OnMRUChanged()
+            End Sub
+
+            ''' &lt;summary&gt;
+            ''' Changes the size of the MRU collection and notifies the
+            ''' control of the change.
+            ''' &lt;/summary&gt;
+            Protected Overrides Sub OnSizeChanged()
+                MyBase.OnSizeChanged()
+                m_owner.OnMRUChanged()
+            End Sub
+
+        End Class
+
+    End Class
+
+End Namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="javascript:window.alert(&quot;http://vbaccelerator.com/home/include/adredir.asp?url=http://oneandone.co.uk/xml/init?k_id=5791003&image=http://oneandone.co.uk/xml/banner?size=1&number=6\nThis link was not retrieved.&quot;)" ><IMG SRC="..\..\..\..\..\..\..\oneandone_co_uk\xml\banner\size=1&number=6.html" ALT="1&1 Web Hosting" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontComboVB_FontComboBox.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,531 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: FolderBrowserTest\frmFolderBrowserTest.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: FolderBrowserTest\frmFolderBrowserTest.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Folder Browser Dialog</a>&#160;.&#160;<a href="..\folderbrowser_code.html">FolderBrowser Code</a>&#160;.&#160;FolderBrowserTest</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="folderbrowser_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />FolderBrowser Code</a> (41K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4504</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4504&type=zip&title=frmfolderbrowsertest.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />8 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: FolderBrowserTest\frmFolderBrowserTest.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+using vbAccelerator.Components.Shell;
+
+namespace FolderBrowserTest
+{
+   /// &lt;summary&gt;
+   /// Provides a Form for testing the Folder Browser class.
+   /// &lt;/summary&gt;
+   public class frmFolderBrowserTest : System.Windows.Forms.Form
+   {
+      #region Member Variables
+      private System.Windows.Forms.ListBox lstEvents;
+      private System.Windows.Forms.Button btnShowDialog;
+      private System.Windows.Forms.GroupBox grpFileProperties;
+      private System.Windows.Forms.TextBox txtRootPath;
+      private System.Windows.Forms.Label lblRootPath;
+      private System.Windows.Forms.TextBox txtInitialPath;
+      private System.Windows.Forms.Label lblInitialPath;
+      private System.Windows.Forms.GroupBox grpDisplayProperties;
+      private System.Windows.Forms.CheckBox chkNewDialog;
+      private System.Windows.Forms.CheckBox chkEditBox;
+      private System.Windows.Forms.CheckBox chkValidateEditBox;
+      private System.Windows.Forms.CheckBox chkNoNewFolder;
+      private System.Windows.Forms.CheckBox chkIncludeFiles;
+      private System.Windows.Forms.CheckBox chkFilter;
+      private System.Windows.Forms.TextBox txtStatusText;
+      private System.Windows.Forms.Label lblStatusText;
+      private System.Windows.Forms.TextBox txtTitle;
+      private System.Windows.Forms.Label lblTitle;
+      private System.Windows.Forms.TextBox txtSelection;
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+      #endregion
+
+      #region Constructor and Dispose
+      /// &lt;summary&gt;
+      /// Constructs a new Folder Browser Test form
+      /// &lt;/summary&gt;
+      public frmFolderBrowserTest()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         this.txtInitialPath.Text = 
+            System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+      #endregion
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmFolderBrowserTest));
+         this.btnShowDialog = new System.Windows.Forms.Button();
+         this.lstEvents = new System.Windows.Forms.ListBox();
+         this.grpFileProperties = new System.Windows.Forms.GroupBox();
+         this.txtRootPath = new System.Windows.Forms.TextBox();
+         this.lblRootPath = new System.Windows.Forms.Label();
+         this.txtInitialPath = new System.Windows.Forms.TextBox();
+         this.lblInitialPath = new System.Windows.Forms.Label();
+         this.grpDisplayProperties = new System.Windows.Forms.GroupBox();
+         this.chkNewDialog = new System.Windows.Forms.CheckBox();
+         this.chkEditBox = new System.Windows.Forms.CheckBox();
+         this.chkValidateEditBox = new System.Windows.Forms.CheckBox();
+         this.chkNoNewFolder = new System.Windows.Forms.CheckBox();
+         this.chkIncludeFiles = new System.Windows.Forms.CheckBox();
+         this.chkFilter = new System.Windows.Forms.CheckBox();
+         this.txtStatusText = new System.Windows.Forms.TextBox();
+         this.lblStatusText = new System.Windows.Forms.Label();
+         this.txtTitle = new System.Windows.Forms.TextBox();
+         this.lblTitle = new System.Windows.Forms.Label();
+         this.txtSelection = new System.Windows.Forms.TextBox();
+         this.grpFileProperties.SuspendLayout();
+         this.grpDisplayProperties.SuspendLayout();
+         this.SuspendLayout();
+         // 
+         // btnShowDialog
+         // 
+         this.btnShowDialog.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnShowDialog.Location = new System.Drawing.Point(12, 328);
+         this.btnShowDialog.Name = "btnShowDialog";
+         this.btnShowDialog.Size = new System.Drawing.Size(88, 23);
+         this.btnShowDialog.TabIndex = 0;
+         this.btnShowDialog.Text = "Show Dialog";
+         this.btnShowDialog.Click += new
+          System.EventHandler(this.btnShowDialog_Click);
+         // 
+         // lstEvents
+         // 
+         this.lstEvents.Location = new System.Drawing.Point(12, 364);
+         this.lstEvents.Name = "lstEvents";
+         this.lstEvents.Size = new System.Drawing.Size(404, 95);
+         this.lstEvents.TabIndex = 1;
+         // 
+         // grpFileProperties
+         // 
+         this.grpFileProperties.Controls.AddRange(new
+          System.Windows.Forms.Control[] {
+                                                                    
+                                         this.txtRootPath,
+                                                                    
+                                         this.lblRootPath,
+                                                                    
+                                         this.txtInitialPath,
+                                                                    
+                                         this.lblInitialPath});
+         this.grpFileProperties.Location = new System.Drawing.Point(8, 8);
+         this.grpFileProperties.Name = "grpFileProperties";
+         this.grpFileProperties.Size = new System.Drawing.Size(408, 92);
+         this.grpFileProperties.TabIndex = 8;
+         this.grpFileProperties.TabStop = false;
+         this.grpFileProperties.Text = "File Properties";
+         // 
+         // txtRootPath
+         // 
+         this.txtRootPath.Location = new System.Drawing.Point(80, 44);
+         this.txtRootPath.Name = "txtRootPath";
+         this.txtRootPath.Size = new System.Drawing.Size(316, 21);
+         this.txtRootPath.TabIndex = 10;
+         this.txtRootPath.Text = "";
+         // 
+         // lblRootPath
+         // 
+         this.lblRootPath.Location = new System.Drawing.Point(8, 48);
+         this.lblRootPath.Name = "lblRootPath";
+         this.lblRootPath.Size = new System.Drawing.Size(72, 16);
+         this.lblRootPath.TabIndex = 9;
+         this.lblRootPath.Text = "&amp;Root Path:";
+         // 
+         // txtInitialPath
+         // 
+         this.txtInitialPath.Location = new System.Drawing.Point(80, 20);
+         this.txtInitialPath.Name = "txtInitialPath";
+         this.txtInitialPath.Size = new System.Drawing.Size(316, 21);
+         this.txtInitialPath.TabIndex = 8;
+         this.txtInitialPath.Text = "";
+         // 
+         // lblInitialPath
+         // 
+         this.lblInitialPath.Location = new System.Drawing.Point(8, 24);
+         this.lblInitialPath.Name = "lblInitialPath";
+         this.lblInitialPath.Size = new System.Drawing.Size(72, 16);
+         this.lblInitialPath.TabIndex = 7;
+         this.lblInitialPath.Text = "&amp;Initial Path:";
+         // 
+         // grpDisplayProperties
+         // 
+         this.grpDisplayProperties.Controls.AddRange(new
+          System.Windows.Forms.Control[] {
+                                                                       
+                                         this.txtStatusText,
+                                                                       
+                                         this.lblStatusText,
+                                                                       
+                                         this.txtTitle,
+                                                                       
+                                         this.lblTitle,
+                                                                       
+                                         this.chkFilter,
+                                                                       
+                                         this.chkIncludeFiles,
+                                                                       
+                                         this.chkNoNewFolder,
+                                                                       
+                                         this.chkValidateEditBox,
+                                                                       
+                                         this.chkEditBox,
+                                                                       
+                                         this.chkNewDialog});
+         this.grpDisplayProperties.Location = new System.Drawing.Point(8, 104);
+         this.grpDisplayProperties.Name = "grpDisplayProperties";
+         this.grpDisplayProperties.Size = new System.Drawing.Size(408, 216);
+         this.grpDisplayProperties.TabIndex = 9;
+         this.grpDisplayProperties.TabStop = false;
+         this.grpDisplayProperties.Text = "Display Properties";
+         // 
+         // chkNewDialog
+         // 
+         this.chkNewDialog.Checked = true;
+         this.chkNewDialog.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.chkNewDialog.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkNewDialog.Location = new System.Drawing.Point(12, 24);
+         this.chkNewDialog.Name = "chkNewDialog";
+         this.chkNewDialog.Size = new System.Drawing.Size(380, 20);
+         this.chkNewDialog.TabIndex = 8;
+         this.chkNewDialog.Text = "&amp;New Dialog Style";
+         // 
+         // chkEditBox
+         // 
+         this.chkEditBox.Checked = true;
+         this.chkEditBox.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.chkEditBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkEditBox.Location = new System.Drawing.Point(28, 44);
+         this.chkEditBox.Name = "chkEditBox";
+         this.chkEditBox.Size = new System.Drawing.Size(356, 20);
+         this.chkEditBox.TabIndex = 9;
+         this.chkEditBox.Text = "&amp;Edit Box";
+         // 
+         // chkValidateEditBox
+         // 
+         this.chkValidateEditBox.Checked = true;
+         this.chkValidateEditBox.CheckState =
+          System.Windows.Forms.CheckState.Checked;
+         this.chkValidateEditBox.FlatStyle =
+          System.Windows.Forms.FlatStyle.System;
+         this.chkValidateEditBox.Location = new System.Drawing.Point(28, 64);
+         this.chkValidateEditBox.Name = "chkValidateEditBox";
+         this.chkValidateEditBox.Size = new System.Drawing.Size(356, 20);
+         this.chkValidateEditBox.TabIndex = 10;
+         this.chkValidateEditBox.Text = "&amp;Validate Edit Box";
+         // 
+         // chkNoNewFolder
+         // 
+         this.chkNoNewFolder.Checked = true;
+         this.chkNoNewFolder.CheckState =
+          System.Windows.Forms.CheckState.Checked;
+         this.chkNoNewFolder.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkNoNewFolder.Location = new System.Drawing.Point(28, 84);
+         this.chkNoNewFolder.Name = "chkNoNewFolder";
+         this.chkNoNewFolder.Size = new System.Drawing.Size(356, 20);
+         this.chkNoNewFolder.TabIndex = 11;
+         this.chkNoNewFolder.Text = "No &amp;New Folder Button";
+         // 
+         // chkIncludeFiles
+         // 
+         this.chkIncludeFiles.Checked = true;
+         this.chkIncludeFiles.CheckState =
+          System.Windows.Forms.CheckState.Checked;
+         this.chkIncludeFiles.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkIncludeFiles.Location = new System.Drawing.Point(28, 104);
+         this.chkIncludeFiles.Name = "chkIncludeFiles";
+         this.chkIncludeFiles.Size = new System.Drawing.Size(356, 20);
+         this.chkIncludeFiles.TabIndex = 12;
+         this.chkIncludeFiles.Text = "&amp;Show Files";
+         // 
+         // chkFilter
+         // 
+         this.chkFilter.CheckAlign =
+          System.Drawing.ContentAlignment.MiddleCenter;
+         this.chkFilter.Checked = true;
+         this.chkFilter.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.chkFilter.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkFilter.Location = new System.Drawing.Point(44, 124);
+         this.chkFilter.Name = "chkFilter";
+         this.chkFilter.Size = new System.Drawing.Size(340, 20);
+         this.chkFilter.TabIndex = 13;
+         this.chkFilter.Text = "&amp;Filter Files (.jpg Files Only)";
+         // 
+         // txtStatusText
+         // 
+         this.txtStatusText.Location = new System.Drawing.Point(80, 172);
+         this.txtStatusText.Name = "txtStatusText";
+         this.txtStatusText.Size = new System.Drawing.Size(316, 21);
+         this.txtStatusText.TabIndex = 17;
+         this.txtStatusText.Text = "";
+         // 
+         // lblStatusText
+         // 
+         this.lblStatusText.Location = new System.Drawing.Point(8, 176);
+         this.lblStatusText.Name = "lblStatusText";
+         this.lblStatusText.Size = new System.Drawing.Size(72, 16);
+         this.lblStatusText.TabIndex = 16;
+         this.lblStatusText.Text = "&amp;Status Text:";
+         // 
+         // txtTitle
+         // 
+         this.txtTitle.Location = new System.Drawing.Point(79, 148);
+         this.txtTitle.Name = "txtTitle";
+         this.txtTitle.Size = new System.Drawing.Size(316, 21);
+         this.txtTitle.TabIndex = 15;
+         this.txtTitle.Text = "Select file or folder to process.";
+         // 
+         // lblTitle
+         // 
+         this.lblTitle.Location = new System.Drawing.Point(8, 152);
+         this.lblTitle.Name = "lblTitle";
+         this.lblTitle.Size = new System.Drawing.Size(72, 16);
+         this.lblTitle.TabIndex = 14;
+         this.lblTitle.Text = "&amp;Title:";
+         // 
+         // txtSelection
+         // 
+         this.txtSelection.BackColor = System.Drawing.SystemColors.Control;
+         this.txtSelection.Location = new System.Drawing.Point(104, 328);
+         this.txtSelection.Name = "txtSelection";
+         this.txtSelection.ReadOnly = true;
+         this.txtSelection.Size = new System.Drawing.Size(312, 21);
+         this.txtSelection.TabIndex = 10;
+         this.txtSelection.Text = "";
+         // 
+         // frmFolderBrowserTest
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(428, 466);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.txtSelection,
+                                                       
+                                         this.grpDisplayProperties,
+                                                        this.grpFileProperties,
+                                                        this.lstEvents,
+                                                        this.btnShowDialog});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmFolderBrowserTest";
+         this.Text = "FolderBrowser Tester";
+         this.Load += new System.EventHandler(this.Form1_Load);
+         this.grpFileProperties.ResumeLayout(false);
+         this.grpDisplayProperties.ResumeLayout(false);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      #region EntryPoint
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmFolderBrowserTest());
+      }
+      #endregion
+
+      private void showDialog()
+      {
+         using (FolderBrowser f = new FolderBrowser())
+         {         
+            // Add events:
+            EventHandler initEventHandler = new EventHandler(
+               folderBrowser_Initialised);
+            f.Initialized += initEventHandler;
+            SelectionChangedEventHandler selChangeEventHandler = 
+               new SelectionChangedEventHandler(
+               folderBrowser_SelectionChanged);
+            f.SelectionChanged += selChangeEventHandler;
+            ValidationFailedEventHandler validationFailedEventHandler = 
+               new ValidationFailedEventHandler(
+               folderBrowser_ValidationFailed);
+            f.ValidationFailed += validationFailedEventHandler;
+
+            // Set main properties:
+            f.Title = this.txtTitle.Text;
+            f.StatusText = this.txtStatusText.Text;
+            f.NewDialogStyle = (this.chkNewDialog.Checked);
+            f.ShowEditBox = (this.chkEditBox.Checked);
+            f.ValidateEditBox = (this.chkValidateEditBox.Checked);
+            f.NoNewFolderButton = (this.chkNoNewFolder.Checked);
+            f.IncludeFiles = (this.chkIncludeFiles.Checked);
+            f.InitialPath = this.txtInitialPath.Text;
+            f.RootPath = this.txtRootPath.Text;
+
+            // Add a filter:
+            f.Filter.ApplyFilter = (this.chkFilter.Checked);
+            if (f.Filter.ApplyFilter)
+            {
+               f.Filter.Items.Add(
+                  new FileFilterSpecification(".jpg", true, false));
+            }
+
+            if (DialogResult.OK == f.ShowDialog(this))
+            {
+               txtSelection.Text = f.SelectedPath;
+            }
+            else
+            {
+               txtSelection.Text = "Dialog Cancelled";
+            }
+
+            // Remove events
+            f.Initialized -= initEventHandler;
+            f.SelectionChanged -= selChangeEventHandler;
+            f.ValidationFailed -= validationFailedEventHandler;
+         } // Dispose f
+      }
+
+      #region Event Response
+      private void btnShowDialog_Click(object sender, System.EventArgs e)
+      {
+         showDialog();
+      }
+
+      private void folderBrowser_ValidationFailed(object sender,
+       ValidationFailedEventArgs e)
+      {
+         lstEvents.Items.Add(
+            String.Format("ValidationFailed: Message {0}", e.Message));
+         lstEvents.SelectedIndex = lstEvents.Items.Count - 1;
+
+         if (MessageBox.Show(this, 
+            String.Format(
+               "The path '{0}' could not be found.  Click Retry to correct or
+                Cancel to exit.", 
+               e.Message), 
+            this.Text,
+            MessageBoxButtons.RetryCancel,
+            MessageBoxIcon.Warning) == DialogResult.Retry)
+         {
+            e.Cancel = false;
+         }
+
+      }
+
+      private void folderBrowser_Initialised(object sender, System.EventArgs e)
+      {
+         lstEvents.Items.Add(
+            String.Format("Initialised: hWnd={0}",
+             ((FolderBrowser)sender).Handle));
+         lstEvents.SelectedIndex = lstEvents.Items.Count - 1;
+
+         // centre the dialog to this window:
+         FolderBrowser f = (FolderBrowser)sender;
+         Console.WriteLine("{0} {1}", this.Size.ToString(), f.Size.ToString());
+         Size sz = f.Size;
+         Point pt = new Point(
+            Math.Max(0, this.Left + (this.Width - sz.Width)/2),
+            Math.Max(0, this.Top + (this.Height - sz.Height)/2)
+            );
+         f.Position = pt;
+      }
+
+      private void folderBrowser_SelectionChanged(object sender,
+       SelectionChangedEventArgs e)
+      {
+         lstEvents.Items.Add(
+            String.Format("Selection Changed: {0} {1}", e.Pidl, e.Path));
+         lstEvents.SelectedIndex = lstEvents.Items.Count - 1;
+      }
+
+      private void Form1_Load(object sender, System.EventArgs e)
+      {
+      
+      }
+      #endregion
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">Folder Browser Dialog</a>&#160;.&#160;<a href="..\folderbrowser_code.html">FolderBrowser Code</a>&#160;.&#160;FolderBrowserTest</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,179 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Change the drop-down width of a Combo Box</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="This tip shows you how to get and set the width of the drop down portion of a combo box. It also includes code to automatically set the drop down width based on the contents of a combo box by measuring the size of the text in each combo box item." /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">VB</a>&#160;.&#160;<a href="..\index.asp\index.html">Tips</a>&#160;.&#160;Change the drop-down width of a Combo Box</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:1381</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=1381&type=article&title=change_20the_20drop_2ddown_20width_20of_20a_20combo_20box.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />12 Oct 1998<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Change the drop-down width of a Combo Box</h1><p /><p>This tip shows you how to get and set the width of the drop down portion of a combo box. It also includes code to automatically set the drop down width based on the contents of a combo box by measuring the size of the text in each combo box item.</p><p>Start a new project and add a module. Then add the following code to the module:</p><pre>
+' These functions required to set the drop-down width: 
+Private Declare Function SendMessageLong Lib "user32" _
+       Alias "SendMessageA" _
+       (ByVal hwnd As Long, ByVal wMsg As Long, _
+       ByVal wParam As Long, ByVal lParam As Long) As Long 
+Private Const CB_GETDROPPEDWIDTH = &amp;H15F 
+Private Const CB_SETDROPPEDWIDTH = &amp;H160 
+
+' These are only required if you want to automatically 
+' calculate the drop-down width: 
+Private Type RECT 
+    Left As Long 
+    Top As Long 
+    Right As Long 
+    Bottom As Long 
+End Type 
+Private Declare Function DrawText Lib "user32" _
+       Alias "DrawTextA" _
+       (ByVal hdc As Long, _
+       ByVal lpStr As String, ByVal nCount As Long, _
+      lpRect As RECT, ByVal wFormat As Long) As Long 
+Private Const DT_CALCRECT = &amp;H400 
+
+Public Property Let DropDownWidth(ByRef cboThis As ComboBox, ByVal lWidth As Long) 
+    SendMessageLong cboThis.hwnd, CB_SETDROPPEDWIDTH, lWidth, 0 
+End Property 
+
+Public Property Get DropDownWidth(ByRef cboThis As ComboBox) As Long 
+Dim lW As Long 
+    DropDownWidth = SendMessageLong(cboThis.hwnd, CB_GETDROPPEDWIDTH, 0, 0) 
+End Property 
+
+Public Sub DropDownWidthFromContents( _
+        ByRef cboThis As ComboBox, _
+        Optional ByVal lMaxWidth = -1 _ 
+    ) 
+Dim i As Long 
+Dim tR As RECT 
+Dim lW As Long 
+Dim lWidth As Long 
+Dim lHDC As Long 
+
+    ' Evaluate the width of each item in the 
+    ' combo box: 
+    
+    ' First set the combo's parent form font to the 
+    ' combo font: 
+    With cboThis.Parent.Font 
+        .Name = cboThis.Font.Name 
+        .Size = cboThis.Font.Size 
+        .Bold = cboThis.Font.Bold 
+        ' Surely you don't have a combo box with 
+        ' italic font? 
+        .Italic = cboThis.Font.Italic
+        .CharSet = cboThis.Font.CharSet
+    End With 
+    ' Cache the HDC of the parent form for speed: 
+    lHDC = cboThis.Parent.hdc 
+    
+    ' Loop through each combo box list item &amp; get its 
+    ' width, storing the largest: 
+    For i = 0 To cboThis.ListCount - 1 
+        DrawText lHDC, cboThis.List(i), -1, tR, DT_CALCRECT 
+        lW = tR.Right - tR.Left + 8 
+        If (lW &gt; lWidth) Then 
+            lWidth = lW 
+        End If 
+    Next i 
+    
+    ' Don't allow width to exceed specified max 
+    ' width, or the width of the screen: 
+    If lMaxWidth &lt;= 0 Then 
+        lMaxWidth = Screen.Width \ Screen.TwipsPerPixelX - 16 
+    End If 
+    If (lWidth &gt; lMaxWidth) Then 
+        lWidth = lMaxWidth 
+    End If 
+    
+    ' Combo box looks a bit strange when the 
+    ' drop down portion is smaller than the 
+    ' combo box itself: 
+    If (lWidth &lt; cboThis.Width \ Screen.TwipsPerPixelX) Then 
+        lWidth = cboThis.Width \ Screen.TwipsPerPixelX 
+    End If 
+    
+    ' Set the drop down width: 
+    DropDownWidth(cboThis) = lWidth 
+End Sub 
+</pre><p>To try out a the function, add a Combo box, a Label and three Command buttons to your project's form. Set the captions for the command buttons as follows:</p><ul><li>Command1     A&amp;dd String</li><li>Command2     &amp;Calc Width</li><li>Command3     &amp;Set Width...</li></ul><p>Then add this code to the form:</p><pre>
+Private Sub Command1_Click() 
+Dim sI As String 
+    sI = InputBox("Enter string", , "New item") 
+    If (sI &lt;&gt; "") Then 
+        Combo1.AddItem sI 
+    End If 
+End Sub 
+
+Private Sub Command2_Click() 
+    DropDownWidthFromContents Combo1 
+    Label1.Caption = DropDownWidth(Combo1) 
+End Sub 
+
+Private Sub Command3_Click() 
+Dim sI As String 
+    sI = InputBox("Enter width", , DropDownWidth(Combo1)) 
+    If IsNumeric(sI) Then 
+        DropDownWidth(Combo1) = CLng(sI) 
+        Label1.Caption = DropDownWidth(Combo1) 
+    End If 
+End Sub 
+
+Private Sub Form_Load() 
+    Label1.Caption = DropDownWidth(Combo1) 
+End Sub 
+</pre><p>Start the project. The width of the combo box wil lbe added to the label control. You can use the Add String button to add new items to the combo box, Calc Width to automatically set the drop down width to the control's contents and Set Width to set your own width. Note that all widths are specified in pixels.</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">VB</a>&#160;.&#160;<a href="..\index.asp\index.html">Tips</a>&#160;.&#160;Change the drop-down width of a Combo Box</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 1998-2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 28 November 2002</p></td><td></td></tr></table>
+</body></html>

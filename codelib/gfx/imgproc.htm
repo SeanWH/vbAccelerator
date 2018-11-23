@@ -1,0 +1,325 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Image Processing in VB</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+</tr>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#999966">
+	<td valign="top"  width="32">
+	<font color="#993300" face="verdana,arial,helvetica" size="6"><strong>4</strong></font>
+	</td>
+	<td>
+	<font color="#993300" face="verdana,arial,helvetica" size="4"><strong>vb<I>Media</I></strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>VB Image Processing Sample</b><br></p>
+	<p><img src="..\..\images\imgproc.gif" alt="[vbAccelerator Image Processing Demp Application]" width="407" height="247"></p>
+	<p><a href="imgproc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Image Processing Sample application (107kb)</a></p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>This sample requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a> because it includes an implementation of my 
+	<a href="..\comctl\progbar.htm">Progress Bar control</a>.  Make sure you have loaded and registered this before trying the HotKey project.</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><a href="cimgproc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Image Processing Class Only (4kb)</a></p>
+	<p>
+	Now VB can compile applications to native code, there are a whole load of new things you can use
+	VB for
+	which were previously all but practical.  Image processing is one of them.  Image processing code
+	requires a huge number of bytes to be read and parsed (for example, blurring a 24 bit picture
+	of 640x480 resolution requires 23,040,000 multiplications and additions!).  Whilst this sort of thing runs at
+	a hopeless crawl in the VB IDE or in p-code, when you compile to native code it can easily run
+	within a second.  Cool!
+	<br><br>
+	This sample demonstrates a 24 bit image processor, which implements:
+	</p>
+	<ul>
+	<li>Blurring and softening
+	<li>Sharpening
+	<li>Unsharp masking (a method of sharpening where you subtract a blurred version of the image from
+	a multiple of the original)
+	<li>Embossing
+	<li>Customised filters
+	</ul>
+	<p>
+	It operates at blinding speed when compiled to native code, and is easy to adapt to further
+	image processing types, such as erosion, diffusion, count and averaging filters.
+	</p>
+	<p>
+	<b>Introduction to the Sample</b><br>
+	This sample operates directly on the bitmap bits contained within a PictureBox using a 
+	technique described in the Black Belt programming section of VBPJ, which also appears in a
+	number of great samples at <a href="..\..\linx.htm#secur">David Brebner's Unlimited Realities</a>
+	site.  Check the code to see how it works.<br><br>
+	I have purposely limited this sample to 24 bit images only.  This unfortunately means you have
+	to set your display colour depth to 16 bits or higher, since VB refuses to load a picture with
+	24 bit colour depth in lower display settings (it converts it down to the display colour depth).
+	I will provide another version of this sample later in the year which uses GDI objects to work
+	around this limitation.<br><br>
+	<b>Theory of Image Processing</b><br>
+	Standard image processing techniques (blurring, sharpening, embossing, edge detection etc) all
+	operate aby applying a matrix to each pixel which in some way modifies the pixel's value 
+	accounting for the neighbouring pixels.  In this section I will describe how these standard
+	image processing filters work.<br><br>
+	<b>Blurring and Smoothing Filters</b><br>
+	Blurring or smoothing filers are known as <i>low-pass</i> filters.  These filters add a contribution
+	from the neighbouring pixels and reduce the contribution from the pixel itself.  Here is an
+	example blurring filter:
+	</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 1/9 &nbsp &nbsp 1/9 &nbsp &nbsp 1/9<br>
+&nbsp &nbsp 1/9 &nbsp &nbsp 1/9 &nbsp &nbsp 1/9<br>
+&nbsp &nbsp 1/9 &nbsp &nbsp 1/9 &nbsp &nbsp 1/9<br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	So, say we had a red pixel surrounded by blue pixels in a bitmap:
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp .. &nbsp &nbsp (0,0,255) &nbsp &nbsp (0,0,255) &nbsp &nbsp (0,0,255) &nbsp &nbsp ..<br>
+&nbsp &nbsp .. &nbsp &nbsp (0,0,255) &nbsp &nbsp (255,0,0) &nbsp &nbsp (0,0,255) &nbsp &nbsp ..<br>
+&nbsp &nbsp .. &nbsp &nbsp (0,0,255) &nbsp &nbsp (0,0,255) &nbsp &nbsp (0,0,255) &nbsp &nbsp ..<br>
+&nbsp &nbsp .. 
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+The result for the centre pixel will be the sum of 1/9 of each of the pixel's values, i.e.
+</p>
+</font>
+<font face="Lucida Console,courier new" size="2">
+&nbsp &nbsp (255/9),0,8x(255/9)
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+This is a mostly blue purple colour, so the single red value has been blurred by its blue neighbours to
+a much bluer shade.
+<br><br>
+Normally, rather than expressing the filter in terms of floating point values (i.e. 1/9), we use integers
+to express the filter values and then give the filter an integer weight.  The integer matrix is used for
+multiplication and the final values are divided by the weight.  So the 3x3 matrix above is written:
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp &nbsp Weight: 9<br>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp 1 <br>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp 1 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+You can modify the filter to blur more by increasing the number of pixels that are sampled in the
+matrix (e.g. use a 5x5 or 7x7 matrix rather than a 3x3 one) and by increasing the contribution for
+the pixels surrounding the central one.<br><br>
+To decrerase the blurring effect and get a softening effect, increase the weight of the contribution
+from the central pixel:
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp  1 &nbsp &nbsp &nbsp Weight: 18<br>
+&nbsp &nbsp 1 &nbsp &nbsp 10 &nbsp &nbsp 1 <br>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp  1 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+<b>Sharpening Filters</b><br>
+A sharpening filter, also called a <i>high-pass</i> filter, emphasizes discontinuities in the pixel 
+values by subtracting a contribution from the surrounding pixels from an increased central pixels.
+This means that when the surrounding pixels are dark, the central pixel is increased in brightness
+which enhances the edges of an image.  A typical sharpening filter looks like this:
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 0 &nbsp &nbsp -1 &nbsp &nbsp  0 &nbsp &nbsp &nbsp Weight: 2<br>
+&nbsp &nbsp -1 &nbsp &nbsp 6 &nbsp &nbsp -1 <br>
+&nbsp &nbsp 0 &nbsp &nbsp -1 &nbsp &nbsp  0 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+<b>Other Filters</b><br>
+An unsharp mask filter achieves a sharpening effect by subtracting a blurred version of an image
+from a multiple of the original.  In my sample unsharpening is achieved by subtracting the image
+filtered using a 3x3 blur matrix from twice the original value.<br><br>
+Embossing is achieved by setting pixels black except where there is a change in intensity.  Typical
+filter matrices for embossing look like this:
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 1 &nbsp &nbsp 0 &nbsp &nbsp  0 &nbsp &nbsp &nbsp Weight: 1<br>
+&nbsp &nbsp 0 &nbsp &nbsp 0 &nbsp &nbsp 0 <br>
+&nbsp &nbsp 0 &nbsp &nbsp 0 &nbsp &nbsp  -1 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<p>
+<b>Embossing filter which detects changes in the upper-left direction</b>
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp -1 &nbsp &nbsp 0 &nbsp &nbsp  0 &nbsp &nbsp &nbsp Weight: 1<br>
+&nbsp &nbsp 0 &nbsp &nbsp 0 &nbsp &nbsp 0 <br>
+&nbsp &nbsp 0 &nbsp &nbsp 0 &nbsp &nbsp  1 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<p>
+<b>Embossing filter which detects changes in the lower-right direction</b>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+In the code sample, 127 is added to all the pixel values output from the embossing filter to colour
+the embossed image grey.  This gives a better 3d visual embossing effect.  The effect can be made
+more attractive by colourising the result afterwards.
+<br><br>
+Further edge detection filters can be implemented using Prewitt edge detection matrices.  Examples of
+these are:
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp  -1 &nbsp &nbsp &nbsp Weight: 1<br>
+&nbsp &nbsp 1 &nbsp &nbsp -2 &nbsp &nbsp -1 <br>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp  -1 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<p>
+<b>Left-hand edge detection</b>
+</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp 1 &nbsp &nbsp 1 &nbsp &nbsp  1 &nbsp &nbsp &nbsp Weight: 1<br>
+&nbsp &nbsp 1 &nbsp &nbsp -2 &nbsp &nbsp -1 <br>
+&nbsp &nbsp 1 &nbsp &nbsp -1 &nbsp &nbsp  -1 <br>
+</p>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<p>
+<b>Upper-left hand edge detection</b>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<b>Suggestions for Further Enhancements</b><br>
+The image processing class provided with this sample is a good start for further enhancements.<br><br>
+There is a custom filter option provided in the demonstration which you can use to try out your
+own custom filter matrices (these are saved in the registry, so you can build up a library of
+interesting ones).<br><br>
+Further filters can easily be added.  You could implement non-linear filters such as maximium or minimum
+which provide fascinating, almost impressionistic effects to images.  A maximum filter looks at all the pixels
+in a n x n array and picks the highest.  Similarly a minimum filter picks the minimum value.  An average
+filter sets the output pixel to an average of the pixels in the array.<br><br>
+You could also try applying mathematical functions, such as sin and cos to the colour values of pixels.
+By this means you can achieve ripple effects, highlights and so forth.<br><br>
+Enjoy!
+	
+	<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 24 June 1998</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

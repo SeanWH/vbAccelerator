@@ -1,0 +1,1007 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SysTrayTester_SysTray.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SysTrayTester_SysTray.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Shell Projects</a>&#160;.&#160;<a href="article.html">SysTray from .NET</a>&#160;.&#160;<a href="systray_code.html">SysTray Code</a>&#160;.&#160;SysTrayTester_SysTray.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="systray_code.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />SysTray Code</a> (54K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4408</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=4408&type=zip&title=systray_20code_2ezip_5fsystraytester_5fsystray.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 1 / 1</a></p><p class="nav">Updated:18 November 2003</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />1 Nov 2003<br /><p class="update">The revious pversion could leave an orphan icon in the SysTray if you changed
+a property which caused the Window handle to be recreated (for example, the 
+<span class="code">ShowInSysTray</span> property. This is now fixed and the 
+demonstration code shows how to ensure you stay in the SysTray in such a
+case by overriding <span class="code">OnHandleChanged</span>.</p></p><p class="update"><a href="updates.html">Update History &gt;</a></p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows_messages\subclassing_in__net\article.html">Subclassing In .NET</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SysTrayTester_SysTray.cs</h1><pre>using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Shell
+{
+
+   //As Platform SDK rather sniffily has it in the Remarks section:
+   // 'The taskbar notification area is sometimes erroneously called the
+    "tray."'
+   
+   #region Public Enumerations
+   [Flags]   
+   public enum NotifyIconBalloonIconFlags : int
+   {
+      /// &lt;summary&gt;
+      /// No Icon
+      /// &lt;/summary&gt;
+      NIIF_NONE  = 0x00000000,
+      /// &lt;summary&gt;
+      /// Information icon
+      /// &lt;/summary&gt;
+      NIIF_INFO  = 0x00000001,
+      /// &lt;summary&gt;
+      /// Warning icon
+      /// &lt;/summary&gt;
+      NIIF_WARNING = 0x00000002,
+      /// &lt;summary&gt;
+      /// Error icon
+      /// &lt;/summary&gt;
+      NIIF_ERROR = 0x00000003,
+      /// &lt;summary&gt;
+      /// Don't play sound. XP only
+      /// &lt;/summary&gt;
+      NIIF_NOSOUND = 0x00000010         
+   }
+   #endregion
+
+   #region SysTray 
+   /// &lt;summary&gt;
+   /// Allows a form to create a taskbar notification icon which
+   /// supports balloon tips under XP.
+   /// &lt;/summary&gt;
+   public class SysTray : System.Windows.Forms.NativeWindow, IDisposable
+   {
+      #region Events
+      /// &lt;summary&gt;
+      /// Raised when the icon in the SysTray area is clicked.
+      /// &lt;/summary&gt;
+      public event EventHandler Click;
+      /// &lt;summary&gt;
+      /// Raised when the icon in the SysTray area is double clicked.
+      /// &lt;/summary&gt;
+      public event EventHandler DoubleClick;
+      /// &lt;summary&gt;
+      /// Occurs when the user presses the mouse button while the pointer 
+      /// is over the icon in the status notification area of the taskbar.
+      /// &lt;/summary&gt;
+      public event MouseEventHandler MouseDown;
+      /// &lt;summary&gt;
+      /// Occurs when the user moves the mouse while the pointer is over the 
+      /// icon in the status notification area of the taskbar.
+      /// &lt;/summary&gt;
+      public event MouseEventHandler MouseMove;
+      /// &lt;summary&gt;
+      /// Occurs when the user releases the mouse button while the pointer 
+      /// is over the icon in the status notification area of the taskbar.
+      /// &lt;/summary&gt;
+      public event MouseEventHandler MouseUp;
+      /// &lt;summary&gt;
+      /// Raised if a user selects a notify icon with the keyboard and
+       activates 
+      /// it with the space bar or ENTER key.  SE/2000 or above only.
+      /// &lt;/summary&gt;
+      public event EventHandler KeySelect;
+      /// &lt;summary&gt;
+      /// Raised if a user selects a notify icon with the mouse and activates 
+      /// it with the space bar or ENTER key.  SE/2000 or above only.
+      /// &lt;/summary&gt;
+      public event EventHandler EnterSelect;
+      /// &lt;summary&gt;
+      /// Fired when a balloon tip is shown (balloons are queued up by the
+      /// system). ME/2000 or above only.
+      /// &lt;/summary&gt;      
+      public event EventHandler BalloonShow;
+      /// &lt;summary&gt;
+      /// Sent if the balloon is hidden for a reason other than it timing
+      /// out or the user clicking it. ME/2000 or above only.
+      /// &lt;/summary&gt;
+      public event EventHandler BalloonHide;
+      /// &lt;summary&gt;
+      /// Sent if the balloon is being hidden because it has timed out.
+      /// ME/2000 or above only.
+      /// &lt;/summary&gt;
+      public event EventHandler BalloonTimeOut;
+      /// &lt;summary&gt;
+      /// Send if the user dismisses the balloon by clicking it.
+      /// ME/2000 or above only.
+      /// &lt;/summary&gt;
+      public event EventHandler BalloonClicked;
+      #endregion
+
+      #region Private Enumerations
+      [Flags]
+         private enum NotifyIconDataFlags : int
+      {
+         /// &lt;summary&gt;
+         /// The uCallbackMessage member is valid. 
+         /// &lt;/summary&gt;
+         NIF_MESSAGE  = 0x1,
+         /// &lt;summary&gt;
+         /// The hIcon member is valid.  
+         /// &lt;/summary&gt;
+         NIF_ICON = 0x2,
+         /// &lt;summary&gt;
+         /// The szTip member is valid. 
+         /// &lt;/summary&gt;
+         NIF_TIP = 0x4, 
+         /// &lt;summary&gt;
+         /// The dwState and dwStateMask members are valid. 
+         /// &lt;/summary&gt;
+         NIF_STATE = 0x8, 
+         /// &lt;summary&gt;
+         /// Use a balloon ToolTip instead of a standard ToolTip. The szInfo, 
+         /// uTimeout, szInfoTitle, and dwInfoFlags members are valid.
+         /// &lt;/summary&gt;
+         NIF_INFO = 0x10,
+         /// &lt;summary&gt;
+         /// Reserved. 
+         /// &lt;/summary&gt;
+         NIF_GUID = 0x20 
+      }
+
+      [Flags]
+         private enum NotifyIconDataStateFlags : int
+      {
+         /// &lt;summary&gt;
+         /// The Icon is hidden
+         /// &lt;/summary&gt;
+         NIS_HIDDEN = 0x00000001,
+         /// &lt;summary&gt;
+         /// The icon is shared
+         /// &lt;/summary&gt;
+         NIS_SHAREDICON = 0x00000002
+      }
+      
+      private enum NotifyIconMessages : int
+      {
+         /// &lt;summary&gt;
+         /// Adds an icon to the status area. The hWnd and uID members 
+         /// of the NOTIFYICONDATA structure pointed to by lpdata will be 
+         /// used to identify the icon in later calls to Shell_NotifyIcon. 
+         /// &lt;/summary&gt;
+         NIM_ADD = 0x00000000,
+         /// &lt;summary&gt;
+         /// Modifies an icon in the status area. Use the hWnd and uID members 
+         /// of the NOTIFYICONDATA structure pointed to by lpdata to identify 
+         /// the icon to be modified. 
+         /// &lt;/summary&gt;
+         NIM_MODIFY = 0x00000001,
+         /// &lt;summary&gt;
+         /// Deletes an icon from the status area. Use the hWnd and uID 
+         /// members of the NOTIFYICONDATA structure pointed to by lpdata 
+         /// to identify the icon to be deleted. 
+         /// &lt;/summary&gt;
+         NIM_DELETE = 0x00000002,
+         /// &lt;summary&gt;
+         /// Returns focus to the taskbar notification area. Taskbar icons 
+         /// should use this message when they have completed their user 
+         /// interface operation. For example, if the taskbar icon displays a 
+         /// shortcut menu, but the user presses ESCAPE to cancel it, use 
+         /// NIM_SETFOCUS to return focus to the taskbar notification area
+         /// &lt;/summary&gt;
+         NIM_SETFOCUS = 0x00000003,
+         /// &lt;summary&gt;
+         /// Instructs the taskbar to behave according to the version number 
+         /// specified in the uVersion member of the structure pointed to by 
+         /// lpdata. This message allows you to specify whether you want the 
+         /// version 5.0 behavior found on Microsoft Windows 2000 systems, or 
+         /// that found with earlier Shell versions. The default value for 
+         /// uVersion is zero, indicating that the original Windows 95 notify 
+         /// icon behavior should be used.
+         /// &lt;/summary&gt;
+         NIM_SETVERSION = 0x00000004
+      }
+
+      #endregion
+
+      #region Private Structures
+
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=4, Size=0,
+       CharSet=CharSet.Auto)]
+      private struct NOTIFYICONDATA 
+      { 
+         /// &lt;summary&gt;
+         /// Size of structure.  Note for pre-Windows 2000 systems the
+         /// szTip member is 64 characters long and ends the structure.
+         /// &lt;/summary&gt;
+         public int cbSize; 
+         /// &lt;summary&gt;
+         /// Window handle to sed messages to
+         /// &lt;/summary&gt;
+         public IntPtr hWnd; 
+         /// &lt;summary&gt;
+         /// Application-defined identifier for the taskbar item.  A
+         /// single hWnd can have multiple taskbar icons using this
+         /// member.
+         /// &lt;/summary&gt;
+         public int uID; 
+         /// &lt;summary&gt;
+         /// Flags that indicate which of the other members contain valid data
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.U4)] public NotifyIconDataFlags uFlags; 
+         /// &lt;summary&gt;
+         /// Application-defined message identifier. The system uses this 
+         /// identifier to send notifications to the window identified in hWnd. 
+         /// These notifications are sent when a mouse event occurs in the 
+         /// bounding rectangle of the icon, or when the icon is selected or
+          activated 
+         /// with the keyboard. The wParam parameter of the message contains
+          the 
+         /// identifier of the taskbar icon in which the event occurred. 
+         /// The lParam parameter holds the mouse or keyboard message
+          associated 
+         /// with the event. For example, when the pointer moves over a taskbar
+          icon, 
+         /// lParam is set to WM_MOUSEMOVE. 
+         /// &lt;/summary&gt;
+         public int uCallbackMessage; 
+         /// &lt;summary&gt;
+         /// Handle to the icon to be added, modified or deleted.
+         /// &lt;/summary&gt;
+         public IntPtr hIcon; 
+         /// &lt;summary&gt;
+         /// Tool tip string
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=128)] public string
+          szTip;
+         /// &lt;summary&gt;
+         /// State of the icon
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.U4)] public NotifyIconDataStateFlags dwState; 
+         /// &lt;summary&gt;
+         /// A mask to determine which items are retrieved/set by the dwState
+         /// member.
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.U4)] public NotifyIconDataStateFlags
+          dwStateMask;
+         /// &lt;summary&gt;
+         /// Text for a balloon tool-tip.
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=256)] public string
+          szInfo; 
+         /// &lt;summary&gt;
+         /// When used as timeout:
+         /// The timeout value, in milliseconds, for a balloon ToolTip. The 
+         /// system enforces minimum and maximum timeout values. uTimeout
+          values that 
+         /// are too large are set to the maximum value and values that are too
+          small 
+         /// default to the minimum value. The system minimum and maximum
+          timeout 
+         /// values are currently set at 10 seconds and 30 seconds,
+          respectively.
+         /// When used as version:
+         /// Specifies whether the Shell notify icon interface should use
+          Windows 95 or 
+         /// Windows 2000 behavior.  Allowable values are 0 or
+          NOTIFYICON_VERSION
+         /// &lt;/summary&gt;
+         public int uTimeoutOrVersion; 
+         /// &lt;summary&gt;
+         /// Title for the balloon tip.
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.ByValTStr, SizeConst=64)] public string
+          szInfoTitle; 
+         /// &lt;summary&gt;
+         /// Flags for controlling the icon in the balloon tip
+         /// &lt;/summary&gt;
+         [MarshalAs(UnmanagedType.U4)] public NotifyIconBalloonIconFlags
+          dwInfoFlags; 
+         /// &lt;summary&gt;
+         /// Reserved. XP only.
+         /// &lt;/summary&gt;
+         public Guid guidItem;
+      }
+      private const int NOTIFYICON_VERSION = 3;
+      private const int NOTIFYICONDATAA_V1_SIZE = 88;
+      private const int NOTIFYICONDATAA_V2_SIZE = 488;
+
+      private const int WM_DESTROY = 0x2;
+
+      private const int WM_MOUSEMOVE = 0x200;
+      private const int WM_LBUTTONDOWN = 0x201;
+      private const int WM_LBUTTONUP = 0x202;
+      private const int WM_LBUTTONDBLCLK = 0x203;
+      private const int WM_RBUTTONDOWN = 0x204;
+      private const int WM_RBUTTONUP = 0x205;
+      private const int WM_RBUTTONDBLCLK = 0x206;
+
+      private const int WM_USER = 0x400;
+
+      
+      private const int NIN_SELECT = WM_USER;
+      private const int NINF_KEY = 0x1;
+      private const int NIN_KEYSELECT = (NIN_SELECT | NINF_KEY);
+      private const int NIN_BALLOONSHOW = (WM_USER + 2);
+      private const int NIN_BALLOONHIDE = (WM_USER + 3);
+      private const int NIN_BALLOONTIMEOUT = (WM_USER + 4);
+      private const int NIN_BALLOONUSERCLICK = (WM_USER + 5);
+
+      /// &lt;summary&gt;
+      /// For sending private messages within a window class,
+      /// an application can use any integer in the range WM_USER through 
+      /// 0x7FFF
+      /// &lt;/summary&gt;      
+      private const int NOTIFYMESSAGE = WM_USER + 0x4FB5;
+      
+      #endregion
+
+      #region UnManagedMethods
+
+      [DllImport("shell32.dll", CharSet = CharSet.Auto)]
+      private extern static int Shell_NotifyIcon(
+         [MarshalAs(UnmanagedType.U4)] NotifyIconMessages dwMessage,
+         ref NOTIFYICONDATA lpData);
+
+      /* Could use this to generate our message, but it adds
+       * overhead because the message is globally registered...
+      [DllInport("user32.dll", CharSet=CharSet.Auto)]
+      private extern static IntPtr RegisterWindowMessage(
+         [MarshalAs(UnmanagedType.LPTStr)] string lpString   // message string
+         );
+      */
+
+      [DllImport("user32.dll")]
+      private extern static int DestroyIcon(
+         IntPtr hIcon);
+
+      [DllImport("user32.dll")]
+      private extern static int GetCursorPos(
+         ref System.Drawing.Point lpPoint);
+
+      [DllImport("user32.dll")]
+      private extern static int TrackPopupMenu(
+         IntPtr hMenu, 
+         int wFlags, 
+         int x, 
+         int y, 
+         int nReserved, 
+         IntPtr hwnd, 
+         ref System.Drawing.Rectangle lprc);
+
+      [DllImport("user32.dll")]
+      private extern static int SetForegroundWindow (
+         IntPtr hwnd );
+
+      private const int TPM_RETURNCMD = 0x0100;
+
+      [DllImport("comctl32.dll")]
+      private extern static IntPtr ImageList_GetIcon(
+         IntPtr himl,
+         int i,  
+         int flags       
+         );
+
+      #endregion
+
+      #region Unmanaged Icon
+      private class UnManagedIcon : IDisposable
+      {
+         private IntPtr hIcon = IntPtr.Zero;
+
+         public IntPtr Handle
+         {
+            get
+            {
+               return this.hIcon;
+            }
+            set
+            {
+               this.hIcon = value;
+            }
+         }
+
+         public UnManagedIcon(IntPtr hIcon)
+         {
+            this.hIcon = hIcon;
+         }
+         public UnManagedIcon()
+         {
+         }
+
+         public void Dispose()
+         {            
+            if (hIcon != IntPtr.Zero)
+            {
+               DestroyIcon(hIcon);
+            }
+            hIcon = IntPtr.Zero;
+         }
+      }
+      #endregion
+
+      #region Member Variables
+      /// &lt;summary&gt;
+      /// The Form to associate the SysTray with
+      /// &lt;/summary&gt;
+      private System.Windows.Forms.Form ownerForm = null;
+      /// &lt;summary&gt;
+      /// The ImageList to use
+      /// &lt;/summary&gt;
+      private System.Windows.Forms.ImageList ilsIcons = null;
+      /// &lt;summary&gt;
+      /// The context menu to use
+      /// &lt;/summary&gt;
+      private System.Windows.Forms.ContextMenu mnuContext = null;
+      /// &lt;summary&gt;
+      /// The icon index to show
+      /// &lt;/summary&gt;
+      private int iconIndex = 0;
+      /// &lt;summary&gt;
+      /// The Unmanaged version of the icon extracted from the 
+      /// image list
+      /// &lt;/summary&gt;
+      private UnManagedIcon icon = null;
+      /// &lt;summary&gt;
+      /// The ToolTip to show
+      /// &lt;/summary&gt;
+      private string toolTip = "";
+      /// &lt;summary&gt;
+      /// Whether we're currently in the SysTray or not
+      /// &lt;/summary&gt;
+      private bool inSysTray = false;
+      /// &lt;summary&gt;
+      /// Whether we were installed in the SysTray before the
+      /// handle changed.
+      /// &lt;/summary&gt;
+      private bool wasInSysTray = false;
+      #endregion
+
+      #region Constructor, Dispose
+      /// &lt;summary&gt;
+      /// Creates a new instance of the SysTray object, associating
+      /// it with the top level Form.
+      /// &lt;/summary&gt;
+      /// &lt;param name="form"&gt;The top level Form to
+      /// associate with&lt;/param&gt;
+      public SysTray(System.Windows.Forms.Form form)
+      {
+         this.ownerForm = form;
+         this.AssignHandle(this.ownerForm.Handle);
+      }
+
+      /// &lt;summary&gt; 
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         showInSysTray(false);
+         if (this.Handle != IntPtr.Zero)
+         {
+            this.ReleaseHandle();
+         }
+      }
+
+      #endregion
+
+      #region Methods and Properties
+      /// &lt;summary&gt;
+      /// Gets/sets the ImageList used as a source of icons
+      /// in the SysTray
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ImageList IconImageList
+      {
+         get
+         {
+            return this.ilsIcons;
+         }
+         set
+         {
+            this.ilsIcons = value;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets the context menu to show in response 
+      /// to a SysTray click
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ContextMenu Menu
+      {
+         get
+         {
+            return this.mnuContext;
+         }
+         set
+         {
+            this.mnuContext = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the IconIndex to use in the SysTray
+      /// &lt;/summary&gt;
+      public int IconIndex
+      {
+         get
+         {
+            return this.iconIndex;
+         }
+         set
+         {
+            this.iconIndex = value;
+            if (this.inSysTray)
+            {
+               NOTIFYICONDATA ids = newNotifyIconData();
+               setIcon(ref ids);
+               int ret = Shell_NotifyIcon(
+                  NotifyIconMessages.NIM_MODIFY,
+                  ref ids);            
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the tool tip text to display when the
+      /// user hovers above the item
+      /// &lt;/summary&gt;
+      public string ToolTipText
+      {
+         get
+         {
+            return this.toolTip;
+         }
+         set
+         {
+            this.toolTip = value;
+            if (this.inSysTray)
+            {
+               NOTIFYICONDATA ids = newNotifyIconData();
+               setMessage(ref ids);
+               int ret = Shell_NotifyIcon(
+                  NotifyIconMessages.NIM_MODIFY,
+                  ref ids);         
+            }
+         }
+      }
+   
+      /// &lt;summary&gt;
+      /// Shows a balloon tip over the item with no icon, no title
+      /// and for the maximum timeout value.  ME/2000 or above only.
+      /// &lt;/summary&gt;
+      /// &lt;param name="message"&gt;Balloon tip message to display (max 256
+       chars)&lt;/param&gt;
+      public void ShowBalloonTip(
+         string message)
+      {
+         ShowBalloonTip(
+            message,
+            NotifyIconBalloonIconFlags.NIIF_NONE,
+            "",
+            30000);
+      }
+      /// &lt;summary&gt;
+      /// Shows a balloon tip over the item with the specified icon
+      /// and message for the maximum timeout value.  ME/2000 or above only.
+      /// &lt;/summary&gt;
+      /// &lt;param name="message"&gt;Balloon tip message to display (max 256
+       chars)&lt;/param&gt;
+      /// &lt;param name="icon"&gt;Icon to show&lt;/param&gt;
+      public void ShowBalloonTip(
+         string message,
+         NotifyIconBalloonIconFlags icon
+         )
+      {
+         ShowBalloonTip(
+            message,
+            icon,
+            "",
+            100000);
+      }
+      /// &lt;summary&gt;
+      /// Shows a balloon tip over the item with the specified icon,
+      /// message and title, for the maximum timeout value.  ME/2000 or above
+       only.
+      /// &lt;/summary&gt;
+      /// &lt;param name="message"&gt;Balloon tip message to display (max 256
+       chars)&lt;/param&gt;
+      /// &lt;param name="icon"&gt;Icon to show&lt;/param&gt;
+      /// &lt;param name="title"&gt;Title of the balloon tip (max 64 chars)&lt;/param&gt;
+      public void ShowBalloonTip(
+         string message,
+         NotifyIconBalloonIconFlags icon,
+         string title
+         )
+      {
+         ShowBalloonTip(
+            message,
+            icon,
+            title,
+            100000);
+      }
+      /// &lt;summary&gt;
+      /// Shows a balloon tip over the item with the specified icon,
+      /// message and title for the specified timeout interval.  ME/2000 or
+       above only.
+      /// &lt;/summary&gt;
+      /// &lt;param name="message"&gt;Balloon tip message to display (max 256
+       chars)&lt;/param&gt;
+      /// &lt;param name="icon"&gt;Icon to show&lt;/param&gt;
+      /// &lt;param name="title"&gt;Title of balloon tip (max 64 chars)&lt;/param&gt;
+      /// &lt;param name="timeOut"&gt;Timeout in milliseconds.  The system restricts
+       timeouts
+      /// to the range 10,000 - 30,000 ms.&lt;/param&gt;
+      public void ShowBalloonTip(
+         string message,
+         NotifyIconBalloonIconFlags icon,
+         string title,
+         int timeOut
+         )
+      {
+         if (this.inSysTray)
+         {
+            // show the balloon tip:
+            NOTIFYICONDATA ids = newNotifyIconData();
+            ids.uFlags = NotifyIconDataFlags.NIF_INFO;
+            ids.szInfo  = message;
+            ids.szInfoTitle = title;
+            ids.dwInfoFlags = icon;
+            ids.uTimeoutOrVersion = timeOut;
+
+            int ret = Shell_NotifyIcon(
+               NotifyIconMessages.NIM_MODIFY,
+               ref ids);            
+         }
+         else
+         {
+            // should throw exception?
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets whether the item is shown in the SysTray or not.
+      /// &lt;/summary&gt;
+      public bool ShowInSysTray
+      {
+         get
+         {
+            return this.inSysTray;
+         }
+         set
+         {
+            showInSysTray(value);
+         }
+      }
+      /// &lt;summary&gt;
+      /// Sets focus to your icon in the SysTray.  Should be called
+      /// once you've completed a UI operation such as a menu.
+      /// ME/2000 or above only.
+      /// &lt;/summary&gt;
+      public void SetFocus()
+      {
+         NOTIFYICONDATA ids = newNotifyIconData();
+         int ret = Shell_NotifyIcon(
+            NotifyIconMessages.NIM_SETFOCUS,
+            ref ids);            
+         
+      }
+      #endregion
+
+      #region Private helper routines
+      private NOTIFYICONDATA newNotifyIconData()
+      {
+         return this.newNotifyIconData(false);
+      }
+
+      private NOTIFYICONDATA newNotifyIconData(bool useLastHandle)
+      {
+         NOTIFYICONDATA ids = new NOTIFYICONDATA();
+            
+         ids.uCallbackMessage = NOTIFYMESSAGE;
+         ids.hWnd = this.Handle;
+         ids.uID = 1;         
+
+         if (Environment.OSVersion.Version.Major &gt;= 5)
+         {
+            ids.cbSize = Marshal.SizeOf(ids);
+            ids.uTimeoutOrVersion = NOTIFYICON_VERSION;
+         }
+         else
+         {
+            ids.cbSize = NOTIFYICONDATAA_V1_SIZE;
+         }
+         return ids;
+      }
+
+      private void setIcon(ref NOTIFYICONDATA ids)
+      {
+         if (this.ilsIcons != null)
+         {
+            // Let's see if we can get the icon:
+            if (icon != null)
+            {
+               icon.Dispose();
+            }
+            IntPtr hIcon = ImageList_GetIcon(
+               ilsIcons.Handle,
+               iconIndex,
+               0);
+            if (hIcon != IntPtr.Zero)
+            {
+               icon = new UnManagedIcon(hIcon);
+               ids.uFlags |= NotifyIconDataFlags.NIF_ICON;
+               ids.hIcon = icon.Handle;
+            }
+               
+         }
+      }
+
+      private void setMessage(ref NOTIFYICONDATA ids)
+      {
+         if (this.toolTip.Length &gt; 0)
+         {
+            ids.uFlags |= NotifyIconDataFlags.NIF_TIP;
+            ids.szTip = this.toolTip;
+         }
+      }
+
+      private void showInSysTray(bool state)
+      {
+         NOTIFYICONDATA ids = newNotifyIconData(!state);
+         ids.uFlags = NotifyIconDataFlags.NIF_MESSAGE;
+
+         if (state)
+         {   
+            if (!this.inSysTray)
+            {
+               setIcon(ref ids);
+               setMessage(ref ids);
+
+               // add to systray:
+               int ret = Shell_NotifyIcon(
+                  NotifyIconMessages.NIM_ADD,
+                  ref ids);
+               // set version:
+               if (ids.uTimeoutOrVersion == NOTIFYICON_VERSION)
+               {
+                  ret = Shell_NotifyIcon(
+                     NotifyIconMessages.NIM_SETVERSION,
+                     ref ids);
+               }
+            }
+         }
+         else
+         {
+            if (this.inSysTray)
+            {
+               // remove from systray
+               Shell_NotifyIcon(
+                  NotifyIconMessages.NIM_DELETE,
+                  ref ids);
+               if (icon != null)
+               {
+                  icon.Dispose();
+               }
+            }
+         }
+         this.inSysTray = state;
+         this.wasInSysTray = this.inSysTray;
+
+      }
+      private MouseEventArgs getMouseEventArgs(
+         MouseButtons button
+         )
+      {
+         Point pt = new Point(0,0);
+         GetCursorPos(ref pt);
+         int delta = 0;
+         int clicks = 0;
+         MouseEventArgs e = new MouseEventArgs(
+            button,
+            clicks,
+            pt.X, pt.Y,
+            delta);
+         return e;
+      }
+      #endregion
+
+      #region Message Processing
+      protected override void WndProc(ref System.Windows.Forms.Message m)
+      {
+         if (m.Msg == NOTIFYMESSAGE)
+         {
+            // process SysTray notification
+            switch ((int)m.LParam)
+            {
+               case WM_MOUSEMOVE:
+                  if (MouseMove != null)
+                  {
+                     MouseEventArgs e = getMouseEventArgs(MouseButtons.None);
+                     MouseMove(this, e);
+                  }
+                  break;
+               case WM_LBUTTONUP:
+                  if (MouseUp != null)
+                  {
+                     MouseEventArgs e = getMouseEventArgs(MouseButtons.Left);
+                     MouseUp(this, e);
+                  }
+                  if (Click != null)
+                  {
+                     Click(this, null);
+                  }
+                  break;
+               case WM_LBUTTONDOWN:
+                  if (MouseDown != null)
+                  {
+                     MouseEventArgs e = getMouseEventArgs(MouseButtons.Left);
+                     MouseDown(this, e);
+                  }
+                  break;
+               case WM_LBUTTONDBLCLK:
+                  if (DoubleClick != null)
+                  {
+                     DoubleClick(this, null);
+                  }
+                  break;
+               case WM_RBUTTONDOWN:
+                  if (MouseDown != null)
+                  {
+                     MouseEventArgs e = getMouseEventArgs(MouseButtons.Right);
+                     MouseDown(this, e);
+                  }
+                  break;
+               case WM_RBUTTONUP:
+                  if (MouseUp != null)
+                  {
+                     MouseEventArgs e = getMouseEventArgs(MouseButtons.Right);
+                     MouseUp(this, e);
+                  }
+
+                  // if a context menu is set then show it
+                  if (mnuContext != null)
+                  {
+                     System.Drawing.Point pos = new System.Drawing.Point(0,0);
+                     GetCursorPos(ref pos);                     
+                     IntPtr hMenu = mnuContext.Handle;
+                     if (hMenu != IntPtr.Zero)
+                     {
+                        Rectangle rc = new Rectangle(0,0,0,0);
+                        SetForegroundWindow(this.Handle);
+                        TrackPopupMenu(
+                           hMenu, 
+                           0, 
+                           pos.X, pos.Y, 
+                           0, 
+                           this.Handle, 
+                           ref rc);
+                        SetFocus();
+                     }
+                  }
+                  
+                  if (Click != null)
+                  {
+                     Click(this, null);
+                  }
+                  break;
+
+               case WM_RBUTTONDBLCLK:
+                  if (DoubleClick != null)
+                  {
+                     this.DoubleClick(this, null);
+                  }
+                  break;
+
+               case NIN_KEYSELECT:
+                  if (KeySelect != null)
+                  {
+                     KeySelect(this, null);
+                  }
+                  break;
+
+               case NIN_SELECT:
+                  if (EnterSelect != null)
+                  {
+                     EnterSelect(this, null);
+                  }
+                  break;
+
+               case NIN_BALLOONSHOW:
+                  if (BalloonShow != null)
+                  {                     
+                     BalloonShow(this, null);
+                  }
+                  break;
+
+               case NIN_BALLOONHIDE:
+                  if (BalloonHide != null)
+                  {
+                     BalloonHide(this, null);
+                  }
+                  break;
+
+               case NIN_BALLOONTIMEOUT:
+                  if (BalloonTimeOut != null)
+                  {
+                     BalloonTimeOut(this, null);
+                  }
+                  break;
+
+               case NIN_BALLOONUSERCLICK:
+                  if (BalloonClicked != null)
+                  {
+                     BalloonClicked(this, null);
+                  }
+                  break;
+            }
+         }
+         // Added 2003-09-27 to prevent problem with
+         // handle changing
+         else if (m.Msg == WM_DESTROY)
+         {
+            // remove.
+            this.wasInSysTray = this.inSysTray;
+            showInSysTray(false);
+         }
+         base.DefWndProc(ref m);
+      }
+      #endregion
+
+      private void SysTray_Load(object sender, System.EventArgs e)
+      {
+      
+      }
+   }
+   #endregion
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Shell Projects</a>&#160;.&#160;<a href="article.html">SysTray from .NET</a>&#160;.&#160;<a href="systray_code.html">SysTray Code</a>&#160;.&#160;SysTrayTester_SysTray.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,249 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Highlighting and Shadowing Image List Images</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+For some reason, the System.Windows.Forms.ImageList does not provide a Draw
+method that allows an image to be drawn highlighted or selected,
+even though this is part of the basic functionality of the 
+underlying ComCtl32 ImageList.  This article provides a method
+of drawing selected and lightened images using Managed Code and
+also describes how to do it using unmanaged methods.
+" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ImageList</a>&#160;.&#160;Highlighting and Shadowing Image List Images</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="iconhighlight.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconHighlight</a> (84K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:12675</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=12675&type=article&title=highlighting_20and_20shadowing_20image_20list_20images.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />6 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\shell_projects\sysimagelist\article.html">System Image List</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Highlighting and Shadowing Image List Images</h1><p class="splash">Demonstrates how to produce XP Explorer-style icon highlighting effects using managed and unmanaged code.</p><img src="iconhighlight.png" width="206" height="178" alt="Icon Highlighting Sample" /><p /><p>
+For some reason, the <span class="code">System.Windows.Forms.ImageList</span> does not provide a <span class="code">Draw</span>
+method that allows an image to be drawn highlighted or selected,
+even though this is part of the basic functionality of the 
+underlying ComCtl32 ImageList.  This article provides a method
+of drawing selected and lightened images using Managed Code and
+also describes how to do it using unmanaged methods.
+</p><h2>Highlighting Icons with Managed Code</h2><p>
+There are two techniques you can use from Managed Code to create
+highlighting type effects:
+</p><ol><li>Gamma Correction.</li><li>Alpha Blending.</li></ol><p>
+I'll cover these in turn.
+</p><h3>Gamma Correction</h3><p>
+Gamma correction was developed to make it easier to adjust colours displayed on Cathode Ray Tube (CRT) displays.
+CRT displays produce a light intensity (luminance) proportional to the input
+voltage raised to a power.  Since no two CRTs are exactly alike in their luminance
+characteristic, a way of adjusting the input image so the displayed colours match
+a reference is needed.  This is done by adjusting the colours to be displayed by a 
+power which is termed <span class="i">gamma</span>.
+</p><p>
+Since gamma lightens or darkens the colours in an image it can be used for image
+processing effects as well as the normal colour profile adjustment.
+Gamma is normally restricted to the range <sup>1</sup>/<sub>5</sub> to 5, where a value
+less than 1 lightens the image, a value of 1 leaves the image unaffected and an value
+greater than 1 darkens the image:
+</p><img src="gamma.png" width="149" height="60" alt="The effects of modifying gamma." /><p class="caption">Effects of modifying gamma.</p><p>
+Gamma correction in the .NET framework is provided
+by using the <span class="code">ImageAttributes</span> class from the 
+<span class="code">System.Drawing.Imaging</span> namespace.   Here's an example
+of how to use it to draw an image in VB.NET:
+</p><pre>
+   ' Set up the gamma:
+   Dim imageAttr As System.Drawing.Imaging.ImageAttributes = _
+       New System.Drawing.Imaging.ImageAttributes()
+   imageAttr.SetGamma(0.5)
+
+   ' Draw the image with the gamma applied:
+   Dim img As Image = iconImageList.Images(iconIndex)
+   graphics.DrawImage( _
+       img, _
+       destRect, _
+       1, 1, iconImageList.ImageSize.Width, iconImageList.ImageSize.Height, _
+       GraphicsUnit.Pixel, imageAttr)
+
+   ' Done.
+   imageAttr.Dispose()
+</pre><h3>Alpha Blending</h3><p>
+As the .NET Framework drawing code is based on GDI+, all drawing can take advantage
+of alpha blending.  Unfortunately, there are two problems with this in terms of highlighting
+an icon:
+</p><ol><li><strong>Icons and alpha</strong><br />
+Icons often aren't represented the way you would like
+them to be to take best advantage of transparency.  You might hope that the 
+transparent area of an icon would be represented as an area where the alpha channel 
+was set to 0 (fully transparent).  However, this generally isn't the case and instead 
+the draw routines for icons hack the transparent area by using boolean operations and 
+the mask image of the icon.  Personally I think it would make a lot of sense if future
+versions of the NET Framework dropped the idea of an icon completely and instead converted
+native Win32 icons into an alpha-bitmap.
+</li><li><strong>Compositing limitations.</strong><br />
+To highlight an icon with a colour, what you want to be able to do is to draw a translucent
+colour over the top of the icon but not where the icon is transparent.  This is the Porter-Duff <span class="i">dst_atop</span> compositing operation, which isn't directly supported by the 
+.NET Framework which currently only supports <span class="i">src</span> 
+and <span class="i">src_over</span> in the <span class="code">CompositingMode</span> enumeration.
+</li></ol><p>
+Despite these limitations, it's possible to hack things to highlight just the coloured 
+area of an icon.  The technique works as follows:
+</p><ol><li>Create an offscreen work bitmap to create the colourised image.</li><li>Draw the icon over a background colour that's unlikely to occur
+in any of your icons.</li><li>Paint over the entire offscreen bitmap with the translucent colour to highlight the
+icon with.</li><li>Draw the offscreen image onto the target using the colour remap table
+feature of the <span class="code">ImageAttributes</span> class.</li></ol><p>
+Here's the VB.NET code which achieves this:
+</p><pre>
+   ' Create an offscreen bitmap for working on.  This is one bigger than
+   ' the icon so we know for sure that the top row of pixels will be
+   ' transparent
+   Dim bm As Bitmap = New Bitmap( _
+       iconImageList.ImageSize.Width, iconImageList.ImageSize.Height + 1 _
+       )
+   Dim gfx As Graphics = graphics.FromImage(bm)
+
+   ' Set the background colour to a colour that "won't" appear in the icon:
+   Dim br As Brush = New SolidBrush(Color.FromArgb(254, 253, 254))
+   gfx.FillRectangle(br, 0, 0, bm.Width, bm.Height)
+   br.Dispose()
+
+   ' Draw the icon starting at the second row in the bitmap:
+   iconImageList.Draw(gfx, 0, 1, iconIndex)
+
+   ' Overdraw with the highlight colour:
+   br = New SolidBrush(Color.FromArgb(highlightAmount, highlightColor))
+   gfx.FillRectangle(br, 0, 0, bm.Width, bm.Height)
+   br.Dispose()
+   gfx.Dispose()
+
+   ' Now set up a colour mapping from the colour of the pixel
+   ' at 0,0 to transparent:
+   Dim imageAttr As System.Drawing.Imaging.ImageAttributes = _
+       New System.Drawing.Imaging.ImageAttributes()
+   Dim map(0) As System.Drawing.Imaging.ColorMap
+   map(0) = New System.Drawing.Imaging.ColorMap()
+   map(0).OldColor = bm.GetPixel(0, 0)
+   map(0).NewColor = Color.FromArgb(0, 0, 0, 0)
+   imageAttr.SetRemapTable(map)
+   If (gamma &lt;&gt; 1.0) Then
+       imageAttr.SetGamma(1.0)
+   End If
+
+   ' Draw the image with the colour mapping, so that only the 
+   ' portion of the image with the new colour over the top 
+   ' gets mapped:
+   graphics.DrawImage(bm, destRect, 1, 1, _
+       iconImageList.ImageSize.Width, iconImageList.ImageSize.Height, _
+       GraphicsUnit.Pixel, imageAttr)
+
+   ' Done.
+   imageAttr.Dispose()
+   bm.Dispose()
+</pre><p>
+Examples of the result of applying this effect are shown below:
+</p><img src="alphahighlight.png" width="291" height="62" alt="Various alpha-colourised examples." /><p class="caption">Various alpha-colourised examples.</p><p>
+You can combine the results of applying these effects in various ways, for example, a shadowed
+icon effect can easily be created by drawing a version of the icon which has been strongly alpha-colourised with the shadow colour underneath an icon.
+</p><h2>Highlighting ImageList Icons with Unmanaged Code</h2><p>
+The ComCtl32.DLL ImageList API provides <span class="code">ImageList_Draw</span>,
+<span class="code">ImageList_DrawEx</span> and <span class="code">ImageList_DrawIndirect</span>
+methods, all of which can be used to highlight an icon.
+</p><p>If you link 
+to v6.0 of ComCtl32.DLL using a Manifest on a Windows XP machine, highlighting is
+achieved using alpha blending.  Earlier versions achieve the highlighting by using
+a dithered brush to draw over the icon.
+</p><p>
+This code demonstrates how to use the -Ex variety of the drawing routine to draw 
+highlighted and cut icons:
+</p><pre>
+Private Declare Function ImageList_DrawEx Lib "comctl32" ( _
+   ByVal hIml As IntPtr, _
+   ByVal i As Integer, _
+   ByVal hdcDst As IntPtr, _
+   ByVal x As Integer, _
+   ByVal y As Integer, _
+   ByVal dx As Integer, _
+   ByVal dy As Integer, _
+   ByVal rgbBk As Integer, _
+   ByVal rgbFg As Integer, _
+   ByVal fStyle As Integer) As Integer
+
+Private Const ILD_NORMAL As Integer = 0
+Private Const ILD_TRANSPARENT As Integer = 1
+Private Const ILD_BLEND25 As Integer = 2
+Private Const ILD_SELECTED As Integer = 4
+Private Const ILD_MASK As Integer = &amp;H10
+Private Const ILD_IMAGE As Integer = &amp;H20
+</pre><p>
+Here's how you would use this to draw highlighted and cut icons:
+</p><pre>
+   Dim hDC As IntPtr = gfx.GetHdc()
+   Dim hIml As IntPtr = ilsIcons.Handle
+   Dim rgbFg As Integer
+
+   ' Highlighted:
+   rgbFg = Color.FromKnownColor(KnownColor.Highlight)
+   ImageList_DrawEx _
+      hIml, iconIndex, hdc, x, y, 0, 0, _
+      -1, rgbFg, _
+      ILD_TRANSPARENT or ILD_SELECTED
+
+   ' Cut
+   rgbFg = Color.White
+   ImageList_DrawEx _
+      hIml, iconIndex, hdc, x, y, 0, 0, _
+      -1, rgbFg, _
+      ILD_TRANSPARENT or ILD_SELECTED
+
+   gfx.ReleaseHdc(hDC);
+</pre><h2>Conclusion</h2><p>
+This article has demonstrated how to work around the lack of icon highlighting in the .NET 
+Framework API using either managed or unmanaged techniques.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ImageList</a>&#160;.&#160;Highlighting and Shadowing Image List Images</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 8 September 2003</p></td><td></td></tr></table>
+</body></html>

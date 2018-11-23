@@ -1,0 +1,284 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: CancellableEditPopupVB_frmEditPopupDemo.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: CancellableEditPopupVB_frmEditPopupDemo.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.asp\index.html">Cancellable In-Place Edit Popups</a>&#160;.&#160;<a href="cancellable_edit_popup_demonstration.html">Cancellable Edit Popup Demonstration</a>&#160;.&#160;CancellableEditPopupVB_frmEditPopupDemo.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="cancellable_edit_popup_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Cancellable Edit Popup Demonstration</a> (51K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13368</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13368&type=zip&title=cancellable_20edit_20popup_20demonstration_2ezip_5fcancellableeditpopupvb_5f[2].html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 0</a></p><p class="nav">Updated:8 January 2004</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\popup_windows\article.html">Use .NET Forms as Popup Windows</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\listbar\outlook_list_bar\article.html">.NET Outlook Style ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: CancellableEditPopupVB_frmEditPopupDemo.vb</h1><pre>Public Class frmEditPopupDemo
+    Inherits System.Windows.Forms.Form
+
+    Private WithEvents popupNotifier As
+     vbAccelerator.Components.Controls.PopupCancelNotifier
+
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+        popupNotifier = New
+         vbAccelerator.Components.Controls.PopupCancelNotifier()
+
+        Dim i As Integer
+        For i = 0 To 99
+            listBox1.Items.Add(String.Format("Test Item {0}", i))
+        Next i
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents label1 As System.Windows.Forms.Label
+    Friend WithEvents lblInfo2 As System.Windows.Forms.Label
+    Friend WithEvents lblClickToEdit As System.Windows.Forms.Label
+    Friend WithEvents txtPopupEdit As System.Windows.Forms.TextBox
+    Friend WithEvents listBox1 As
+     vbAccelerator.Components.Controls.EditableListBox
+    &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub InitializeComponent()
+        Dim resources As System.Resources.ResourceManager = New
+         System.Resources.ResourceManager(GetType(frmEditPopupDemo))
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.lblInfo2 = New System.Windows.Forms.Label()
+        Me.lblClickToEdit = New System.Windows.Forms.Label()
+        Me.txtPopupEdit = New System.Windows.Forms.TextBox()
+        Me.listBox1 = New
+         CancellableEditPopupVB.vbAccelerator.Components.Controls.EditableListBo
+        x()
+        Me.SuspendLayout()
+        '
+        'label1
+        '
+        Me.label1.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.label1.Location = New System.Drawing.Point(8, 8)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(284, 20)
+        Me.label1.TabIndex = 8
+        Me.label1.Text = " Editable ListBox"
+        Me.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblInfo2
+        '
+        Me.lblInfo2.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.lblInfo2.Location = New System.Drawing.Point(8, 200)
+        Me.lblInfo2.Name = "lblInfo2"
+        Me.lblInfo2.Size = New System.Drawing.Size(284, 20)
+        Me.lblInfo2.TabIndex = 7
+        Me.lblInfo2.Text = " Editable Label"
+        Me.lblInfo2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblClickToEdit
+        '
+        Me.lblClickToEdit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblClickToEdit.Location = New System.Drawing.Point(8, 224)
+        Me.lblClickToEdit.Name = "lblClickToEdit"
+        Me.lblClickToEdit.Size = New System.Drawing.Size(284, 20)
+        Me.lblClickToEdit.TabIndex = 6
+        Me.lblClickToEdit.Text = "Click to edit in-place"
+        Me.lblClickToEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtPopupEdit
+        '
+        Me.txtPopupEdit.AcceptsReturn = True
+        Me.txtPopupEdit.BorderStyle =
+         System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPopupEdit.Location = New System.Drawing.Point(128, 240)
+        Me.txtPopupEdit.Multiline = True
+        Me.txtPopupEdit.Name = "txtPopupEdit"
+        Me.txtPopupEdit.Size = New System.Drawing.Size(144, 16)
+        Me.txtPopupEdit.TabIndex = 5
+        Me.txtPopupEdit.Text = ""
+        Me.txtPopupEdit.Visible = False
+        '
+        'listBox1
+        '
+        Me.listBox1.IsReadOnly = False
+        Me.listBox1.Location = New System.Drawing.Point(8, 32)
+        Me.listBox1.Name = "listBox1"
+        Me.listBox1.Size = New System.Drawing.Size(284, 160)
+        Me.listBox1.TabIndex = 9
+        '
+        'frmEditPopupDemo
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
+        Me.ClientSize = New System.Drawing.Size(300, 266)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.listBox1,
+         Me.label1, Me.lblInfo2, Me.lblClickToEdit, Me.txtPopupEdit})
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "frmEditPopupDemo"
+        Me.Text = "vbAccelerator PopupCancel Notifier"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub popupNotifier_PopupCancel(ByVal sender As Object, ByVal e As
+     CancellableEditPopupVB.vbAccelerator.Components.Controls.PopupCancelEventAr
+    gs) Handles popupNotifier.PopupCancel
+        EndTextEdit(True)
+
+    End Sub
+
+
+    Private Sub SetTextBoxSize()
+        Dim text As String = txtPopupEdit.Text
+        If (Text.Length = 0) Then
+            Text = "Xg"
+        End If
+        Dim maxWidth As Integer = lblClickToEdit.Width - 10
+
+        Dim gfx As Graphics = Graphics.FromHwnd(txtPopupEdit.Handle)
+        Dim flags As StringFormatFlags = StringFormatFlags.LineLimit Or _
+            IIf(txtPopupEdit.RightToLeft = RightToLeft.Yes,
+             StringFormatFlags.DirectionRightToLeft, 0)
+        Dim fmt As StringFormat = New StringFormat(flags)
+        fmt.Alignment = StringAlignment.Center
+        Dim textSize As SizeF = gfx.MeasureString(Text, lblClickToEdit.Font,
+         10000, fmt)
+        textSize.Width += 8
+        fmt.Dispose()
+        gfx.Dispose()
+
+        If (textSize.Width &lt; 24) Then
+            textSize.Width = 24
+        ElseIf (textSize.Width &gt; maxWidth) Then
+            textSize.Width = maxWidth
+        End If
+        If (textSize.Height &lt; lblClickToEdit.ClientRectangle.Height) Then
+            textSize.Height = lblClickToEdit.ClientRectangle.Height
+        End If
+
+        txtPopupEdit.Size = New Size(textSize.Width + 6, textSize.Height)
+    End Sub
+
+    Private Sub StartTextEdit()
+        Me.Focus()
+
+        txtPopupEdit.Text = lblClickToEdit.Text
+        lblClickToEdit.Tag = lblClickToEdit.Text
+        lblClickToEdit.Text = ""
+        SetTextBoxSize()
+        Dim location As Point = lblClickToEdit.Location
+        location.Offset(1, 1)
+        txtPopupEdit.Location = location
+        txtPopupEdit.Visible = True
+        txtPopupEdit.BringToFront()
+        txtPopupEdit.Focus()
+
+        popupNotifier.StartTracking(txtPopupEdit)
+    End Sub
+
+    Private Sub EndTextEdit(ByVal commit As Boolean)
+        If (commit) Then
+            lblClickToEdit.Text = txtPopupEdit.Text
+        Else
+            lblClickToEdit.Text = lblClickToEdit.Tag
+        End If
+        txtPopupEdit.Visible = False
+        popupNotifier.StopTracking()
+    End Sub
+
+
+    Private Sub lblClickToEdit_MouseDown(ByVal sender As Object, ByVal e As
+     System.Windows.Forms.MouseEventArgs) Handles lblClickToEdit.MouseDown
+        If ((e.Button = MouseButtons.Left) And Not (txtPopupEdit.Visible)) Then
+            StartTextEdit()
+        End If
+    End Sub
+
+    Private Sub txtPopupEdit_TextChanged(ByVal sender As Object, ByVal e As
+     System.EventArgs) Handles txtPopupEdit.TextChanged
+        SetTextBoxSize()
+    End Sub
+
+    Private Sub txtPopupEdit_KeyDown(ByVal sender As Object, ByVal e As
+     System.Windows.Forms.KeyEventArgs) Handles txtPopupEdit.KeyDown
+        Select Case (e.KeyData)
+            Case Keys.Return
+                '// end editing:
+                EndTextEdit(True)
+
+            Case Keys.Escape
+                '// cancel editing:
+                EndTextEdit(False)
+        End Select
+    End Sub
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.asp\index.html">Cancellable In-Place Edit Popups</a>&#160;.&#160;<a href="cancellable_edit_popup_demonstration.html">Cancellable Edit Popup Demonstration</a>&#160;.&#160;CancellableEditPopupVB_frmEditPopupDemo.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,601 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: VListBox_VListBox.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: VListBox_VListBox.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Virtual ListBox</a>&#160;.&#160;<a href="vlistbox.html">VListBox</a>&#160;.&#160;VListBox_VListBox.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="vlistbox.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />VListBox</a> (46K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13290</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13290&type=zip&title=vlistbox_2ezip_5fvlistbox_5fvlistbox.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />1 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: VListBox_VListBox.cs</h1><pre>using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Controls
+{
+   /// &lt;summary&gt;
+   /// A simple implementation of a Virtual ListBox.  A virtual ListBox
+   /// contains no data, instead it just allocates space for a specified
+   /// number of rows.  Whenever a row needs to be shown, the &lt;see
+    cref="OnDrawItem"/&gt;
+   /// method is fired which in turn fires the &lt;see cref="DrawItem"/&gt; event.
+   /// &lt;/summary&gt;
+   public class VListBox : ListBox
+   {
+      /*
+      * Listbox Styles
+      */
+      private const int LBS_NOTIFY            = 0x0001;
+      private const int LBS_SORT              = 0x0002;
+      private const int LBS_NOREDRAW          = 0x0004;
+      private const int LBS_MULTIPLESEL       = 0x0008;
+      private const int LBS_OWNERDRAWFIXED    = 0x0010;
+      private const int LBS_OWNERDRAWVARIABLE = 0x0020;
+      private const int LBS_HASSTRINGS        = 0x0040;
+      private const int LBS_USETABSTOPS       = 0x0080;
+      private const int LBS_NOINTEGRALHEIGHT  = 0x0100;
+      private const int LBS_MULTICOLUMN       = 0x0200;
+      private const int LBS_WANTKEYBOARDINPUT = 0x0400;
+      private const int LBS_EXTENDEDSEL       = 0x0800;
+      private const int LBS_DISABLENOSCROLL   = 0x1000;
+      private const int LBS_NODATA            = 0x2000;
+
+      private const int LB_GETCOUNT             = 0x018B;
+      private const int LB_SETCOUNT             = 0x01A7;
+
+      private const int LB_SETSEL               = 0x0185;
+      private const int LB_SETCURSEL            = 0x0186;
+      private const int LB_GETSEL               = 0x0187;
+      private const int LB_GETCURSEL            = 0x0188;
+      private const int LB_GETSELCOUNT          = 0x0190;
+      private const int LB_GETSELITEMS          = 0x0191;
+
+      [DllImport("user32", CharSet = CharSet.Auto)]
+      private extern static int SendMessage(IntPtr hWnd, int msg, int wParam,
+       IntPtr lParam);
+
+      #region Member Variables
+      private int selectedIndex = -1;
+      private VListBox.SelectedIndexCollection selectedIndices = null;
+      #endregion
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class.
+      /// &lt;/summary&gt;
+      public VListBox() : base()
+      {
+         selectedIndices = new VListBox.SelectedIndexCollection(this);
+      }
+
+      public void DefaultDrawItem(
+         DrawItemEventArgs e,
+         String text
+         )
+      {
+         bool selected = ((e.State &amp; DrawItemState.Selected) ==
+          DrawItemState.Selected);
+
+         if (selected)
+         {
+            e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
+         }
+         else
+         {
+            e.Graphics.FillRectangle(SystemBrushes.Window, e.Bounds);
+         }
+
+         e.Graphics.DrawString(
+            text, 
+            this.Font, 
+            selected ? SystemBrushes.HighlightText : SystemBrushes.WindowText,
+            new RectangleF(e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2,
+             e.Bounds.Height - 2));
+      }
+
+      /// &lt;summary&gt;
+      /// Gets or sets the number of virtual items in the ListBox.
+      /// &lt;/summary&gt;
+      public int Count
+      {
+         get
+         {
+            return SendMessage(this.Handle, LB_GETCOUNT, 0, IntPtr.Zero);
+         }
+         set
+         {
+            SendMessage(this.Handle, LB_SETCOUNT, value, IntPtr.Zero);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the DrawMode of the ListBox.  The DrawMode must always
+      /// be set to &lt;see cref="System.Windows.Forms.DrawMode.OwnerDrawFixed"/&gt;.
+      /// &lt;/summary&gt;
+      [Browsable(false)]
+      public new System.Windows.Forms.DrawMode DrawMode
+      {
+         get
+         {
+            return System.Windows.Forms.DrawMode.OwnerDrawFixed;
+         }
+         set
+         {
+            if (value != System.Windows.Forms.DrawMode.OwnerDrawFixed)
+            {
+               throw new ArgumentException("DrawMode must be set to
+                OwnerDrawFixed in a Virtual ListBox");
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Throws an exception.  All the items for a Virtual ListBox are
+       externally managed.
+      /// &lt;/summary&gt;
+      [BrowsableAttribute(false)]
+      public new ObjectCollection Items
+      {
+         get
+         {
+            throw new InvalidOperationException("A Virtual ListBox does not
+             have an Items collection.");
+         }
+      }      
+      
+      /// &lt;summary&gt;
+      /// Throws an exception.  All the items for a Virtual ListBox are
+       externally managed.
+      /// &lt;/summary&gt;
+      /// &lt;remarks&gt;The selected index can be obtained using the &lt;see
+       cref="SelectedIndex"/&gt; and
+      /// &lt;see cref="SelectedIndices"/&gt; properties.
+      /// &lt;/remarks&gt;
+      [BrowsableAttribute(false)]
+      public new SelectedObjectCollection SelectedItems
+      {
+         get
+         {
+            throw new InvalidOperationException("A Virtual ListBox does not
+             have a SelectedObject collection");
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Hides the Sorted property of the ListBox control.  Any attempt to set
+       this property
+      /// to true will result in an exception.
+      /// &lt;/summary&gt;
+      [BrowsableAttribute(false)]
+      public new bool Sorted
+      {
+         get
+         {
+            return false;
+         }
+         set
+         {
+            if (value)
+            {
+               throw new InvalidOperationException("A Virtual ListBox cannot be
+                sorted.");
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the selected index in the control.  If the control has the
+       multi-select
+      /// style, then the first selected item is returned.
+      /// &lt;/summary&gt;
+      public new int SelectedIndex
+      {
+         get
+         {
+            int selIndex = -1;
+            if (SelectionMode == System.Windows.Forms.SelectionMode.One)
+            {
+               selIndex = SendMessage(this.Handle, LB_GETCURSEL, 0,
+                IntPtr.Zero);
+            }         
+            else if ((SelectionMode ==
+             System.Windows.Forms.SelectionMode.MultiExtended) || 
+               (SelectionMode ==
+                System.Windows.Forms.SelectionMode.MultiSimple))
+            {
+               int selCount = SendMessage(this.Handle, LB_GETSELCOUNT, 0,
+                IntPtr.Zero);
+               if (selCount &gt; 0)
+               {
+                  IntPtr buf = Marshal.AllocCoTaskMem(4);
+                  SendMessage(this.Handle, LB_GETSELITEMS, 1, buf);
+                  selIndex = Marshal.ReadInt32(buf);
+                  Marshal.FreeCoTaskMem(buf);
+               }
+            }
+            return selIndex;
+         }
+         set
+         {
+            if (SelectionMode == System.Windows.Forms.SelectionMode.One)
+            {
+               SendMessage(this.Handle, LB_SETCURSEL, value, IntPtr.Zero);
+            }
+            else if ((SelectionMode ==
+             System.Windows.Forms.SelectionMode.MultiExtended) || 
+               (SelectionMode ==
+                System.Windows.Forms.SelectionMode.MultiSimple))
+            {
+               Console.WriteLine("Working on it");
+            }
+         }   
+      }      
+
+      /// &lt;summary&gt;
+      ///  todo
+      /// &lt;/summary&gt;
+      public new SelectedIndexCollection SelectedIndices 
+      {
+         get
+         {
+            return selectedIndices;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the selection state for an item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index of the item.&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if selected, &lt;c&gt;false&lt;/c&gt; otherwise.&lt;/returns&gt;
+      public bool ItemSelected(int index)
+      {
+         bool state = false;
+         if (SelectionMode == System.Windows.Forms.SelectionMode.One)
+         {
+            state = (SelectedIndex == index);
+         }         
+         else if ((SelectionMode ==
+          System.Windows.Forms.SelectionMode.MultiExtended) || 
+            (SelectionMode == System.Windows.Forms.SelectionMode.MultiSimple))
+         {
+            state = (SendMessage(this.Handle, LB_GETSEL, index, IntPtr.Zero) !=
+             0);
+         }
+         return state;
+      }
+
+      /// &lt;summary&gt;
+      /// Sets the selection state for an item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index of the item.&lt;/param&gt;
+      /// &lt;param name="state"&gt;New selection state for the item.&lt;/param&gt;
+      public void ItemSelected(int index, bool state)
+      {
+         if (SelectionMode == System.Windows.Forms.SelectionMode.One)
+         {
+            if (state)
+            {
+               SelectedIndex = index;
+            }
+         }         
+         else if ((SelectionMode ==
+          System.Windows.Forms.SelectionMode.MultiExtended) || 
+            (SelectionMode == System.Windows.Forms.SelectionMode.MultiSimple))
+         {
+            SendMessage(this.Handle, LB_SETSEL, (state ? 1 : 0), (IntPtr)
+             index);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called when an item in the control needs to be drawn, and raises the 
+      /// &lt;see cref="DrawItem"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Details about the item that is to be drawn.&lt;/param&gt;
+      protected override void OnDrawItem(DrawItemEventArgs e)
+      {
+         if ((e.State &amp; DrawItemState.Selected ) == DrawItemState.Selected )
+         {
+            selectedIndex = e.Index;
+         }
+         base.OnDrawItem(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Sets up the &lt;see cref="CreateParams"/&gt; object to tell Windows
+      /// how the ListBox control should be created.  In this instance
+      /// the default configuration is modified to remove &lt;c&gt;LBS_HASSTRINGS&lt;/c&gt;
+      /// and &lt;c&gt;LBS_SORT&lt;/c&gt; styles and to add &lt;c&gt;LBS_NODATA&lt;/c&gt;
+      /// and &lt;c&gt;LBS_OWNERDRAWFIXED&lt;/c&gt; styles. This converts the ListBox
+      /// into a Virtual ListBox.
+      /// &lt;/summary&gt;
+      protected override System.Windows.Forms.CreateParams CreateParams
+      {
+         get
+         {
+            CreateParams defParams = base.CreateParams;
+            Console.WriteLine("In Param style: {0:X8}", defParams.Style);
+            defParams.Style = defParams.Style &amp; ~LBS_HASSTRINGS;
+            defParams.Style = defParams.Style &amp; ~LBS_SORT;
+            defParams.Style = defParams.Style | LBS_OWNERDRAWFIXED | LBS_NODATA;
+            Console.WriteLine("Out Param style: {0:X8}", defParams.Style);
+            return defParams;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called when the ListBox handle is destroyed.  
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Not used&lt;/param&gt;
+      protected override void OnHandleDestroyed(EventArgs e)
+      {
+         // Nasty.  The problem is with the call to NativeUpdateSelection,
+         // which calls the EnsureUpToDate on the SelectedObjectCollection
+          method, 
+         // and that is broken.
+         try
+         {
+            base.OnHandleDestroyed(e);
+         }
+         catch (Exception)
+         {
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Implements a read-only collection of selected items in the
+      /// VListBox.
+      /// &lt;/summary&gt;
+      public new class SelectedIndexCollection : ICollection, IEnumerable
+      {
+         private VListBox owner = null;
+
+         /// &lt;summary&gt;
+         /// Creates a new instance of this class
+         /// &lt;/summary&gt;
+         /// &lt;param name="owner"&gt;The VListBox which owns the collection&lt;/param&gt;
+         public SelectedIndexCollection(VListBox owner)
+         {
+            this.owner = owner;
+         }
+
+         /// &lt;summary&gt;
+         /// Returns an enumerator which allows iteration through the selected
+          items
+         /// collection.
+         /// &lt;/summary&gt;
+         /// &lt;returns&gt;&lt;/returns&gt;
+         public IEnumerator GetEnumerator()
+         {
+            return new SelectedIndexCollectionEnumerator(this.owner);
+         }
+
+         /// &lt;summary&gt;
+         /// Not implemented. Throws an exception.
+         /// &lt;/summary&gt;
+         /// &lt;param name="dest"&gt;Array to copy items to&lt;/param&gt;
+         /// &lt;param name="startIndex"&gt;First index in array to put items
+          in.&lt;/param&gt;
+         public void CopyTo(Array dest, int startIndex)
+         {
+            throw new InvalidOperationException("Not implemented");
+         }
+
+         /// &lt;summary&gt;
+         /// Returns the number of items in the collection.
+         /// &lt;/summary&gt;
+         public int Count
+         {
+            get
+            {
+               return SendMessage(owner.Handle, LB_GETSELCOUNT, 0, IntPtr.Zero);
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Returns the selected item with the specified 0-based index in the
+          collection
+         /// of selected items.  
+         /// &lt;/summary&gt;
+         /// &lt;remarks&gt;
+         /// Do not use this method to enumerate through all selected
+         /// items as it gets the collection of selected items each item it 
+         /// is called.  The &lt;c&gt;foreach&lt;/c&gt; enumerator only gets the collection
+         /// of items once when it is constructed and is therefore quicker.
+         /// &lt;/remarks&gt;
+         public int this[int index]
+         {
+            get
+            {
+               int selIndex = -1;
+               int selCount = SendMessage(owner.Handle, LB_GETSELCOUNT, 0,
+                IntPtr.Zero);
+               if ((index &lt; selCount) &amp;&amp; (index &gt; 0))
+               {
+                  IntPtr buf = Marshal.AllocCoTaskMem(4 * (index + 1));
+                  SendMessage(owner.Handle, LB_GETSELITEMS, selCount, buf);
+                  selIndex = Marshal.ReadInt32(buf, index * 4);
+                  Marshal.FreeCoTaskMem(buf);
+               }
+               else
+               {
+                  throw new ArgumentException("Index out of bounds", "index");
+               }
+               return selIndex;
+               
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Returns &lt;c&gt;false&lt;/c&gt;.  This collection is not synchronized for
+         /// concurrent access from multiple threads.
+         /// &lt;/summary&gt;
+         public bool IsSynchronized
+         {
+            get
+            {
+               return false;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Not implemented. Throws an exception.
+         /// &lt;/summary&gt;
+         public object SyncRoot
+         {
+            get
+            {
+               throw new InvalidOperationException("Synchronization not
+                supported.");
+            }
+         }
+
+
+      }
+
+      /// &lt;summary&gt;
+      /// Implements the &lt;see cref="IEnumerator"/&gt; interface for the selected
+       indexes
+      /// within a &lt;see cref="VListBox"/&gt; control.
+      /// &lt;/summary&gt;
+      public class SelectedIndexCollectionEnumerator : IEnumerator, IDisposable
+      {
+         private IntPtr buf = IntPtr.Zero;
+         private int size = 0;
+         private int offset = 0;
+      
+         /// &lt;summary&gt;
+         /// Constructs a new instance of this class.
+         /// &lt;/summary&gt;
+         /// &lt;param name="owner"&gt;The &lt;see cref="VListBox"/&gt; which owns the
+          collection.&lt;/param&gt;
+         public SelectedIndexCollectionEnumerator(VListBox owner)
+         {
+            int selCount = SendMessage(owner.Handle, LB_GETSELCOUNT, 0,
+             IntPtr.Zero);
+            if (selCount &gt; 0)
+            {
+               buf = Marshal.AllocCoTaskMem(4 * selCount);
+               SendMessage(owner.Handle, LB_GETSELITEMS, selCount, buf);
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Clears up any resources associated with this enumerator.
+         /// &lt;/summary&gt;
+         public void Dispose()
+         {
+            if (!buf.Equals(IntPtr.Zero))
+            {
+               Marshal.FreeCoTaskMem(buf);
+               buf = IntPtr.Zero;
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Resets the enumerator to the start of the list.
+         /// &lt;/summary&gt;
+         public void Reset()
+         {
+            offset = 0;
+         }
+
+         /// &lt;summary&gt;
+         /// Returns the current object.
+         /// &lt;/summary&gt;
+         public object Current
+         {
+            get
+            {
+               if (offset &gt;= size)
+               {
+                  throw new Exception("Collection is exhausted.");
+               }
+               else
+               {
+                  int index = Marshal.ReadInt32(buf, offset * 4);
+                  return (object) index;
+               }
+
+            }
+         }
+
+         /// &lt;summary&gt;
+         /// Advances the enumerator to the next element of the collection.
+         /// &lt;/summary&gt;
+         /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the enumerator was successfully advanced
+          to the next element; 
+         /// &lt;c&gt;false&lt;/c&gt; if the enumerator has passed the end of the
+          collection.&lt;/returns&gt;
+         public bool MoveNext()
+         {
+            bool success = false;
+            offset++;
+            if (offset &lt; size)
+            {
+               success = true;
+            }
+            return success;
+         }
+      }
+
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Virtual ListBox</a>&#160;.&#160;<a href="vlistbox.html">VListBox</a>&#160;.&#160;VListBox_VListBox.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 2 November 2003</p></td><td></td></tr></table>
+</body></html>

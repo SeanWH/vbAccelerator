@@ -1,0 +1,135 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalSbar Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalSbar (vbAccelerator Status Bar Control)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\vbalSbar\\vbalSbar.ocx
+\par GUID:\tab \{418F6080-7954-11D2-805B-00C04FA4EE99\}
+\par Version:\tab 2.1
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalSbar.
+\par 
+\par Public Enum ESTBRPanelStyle
+\par \tab estbrStandard=0
+\par \tab estbrNoBorders=256
+\par \tab estbrRaisedBorder=512
+\par \tab estbrTooltips=2048
+\par \tab estbrOwnerDraw=4096
+\par \tab estbrCaps=4097
+\par \tab estbrNum=4098
+\par \tab estbrIns=4099
+\par \tab estbrScrl=4100
+\par \tab estbrTime=4101
+\par \tab estbrDate=4102
+\par \tab estbrDateTime=4103
+\par End Enum
+\par Public Enum ESTBRSimplePanelStyle
+\par \tab estbrsStandard=0
+\par \tab estbrsNoBorders=256
+\par \tab estbrsRaisedBorder=512
+\par \tab estbrsTooltips=2048
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalSbar.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b vbalStatusBar \{D589225C-832F-11D2-8E21-08B404C10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get SimpleMode() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the status bar works in simple mode (a single panel only) or normal mode,\plain\f3\fs20\b 
+\par Property Let SimpleMode(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the status bar works in simple mode (a single panel only) or normal mode,\plain\f3\fs20\b 
+\par Property Get PanelKey(ByVal lIndex As Long) As Variant
+\par \plain\f3\fs20 Gets/sets the key used to identify a panel.\plain\f3\fs20\b 
+\par Property Let PanelKey(ByVal lIndex As Long, RHS As Variant)
+\par \plain\f3\fs20 Gets/sets the key used to identify a panel.\plain\f3\fs20\b 
+\par Property Get PanelIndex(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Returns the index of a panel given the panel's key.\plain\f3\fs20\b 
+\par Property Let PanelText(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets the text to show in a panel.\plain\f3\fs20\b 
+\par Property Get PanelText(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets the text to show in a panel.\plain\f3\fs20\b 
+\par Property Let SimpleText(RHS  As String)
+\par \plain\f3\fs20 Gets/sets the text displayed in the status bar when in simple mode.  Note this text is independent of any panels added to the control.\plain\f3\fs20\b 
+\par Property Get SimpleText() As String
+\par \plain\f3\fs20 Gets/sets the text displayed in the status bar when in simple mode.  Note this text is independent of any panels added to the control.\plain\f3\fs20\b 
+\par Property Get SimpleStyle() As ESTBRSimplePanelStyle
+\par \plain\f3\fs20 Gets/sets the style used to draw the status bar when it is in Simple Mode.\plain\f3\fs20\b 
+\par Property Let SimpleStyle(RHS  As ESTBRSimplePanelStyle)
+\par \plain\f3\fs20 Gets/sets the style used to draw the status bar when it is in Simple Mode.\plain\f3\fs20\b 
+\par Property Let PanelToolTipText(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets the tool tip text to show in a panel.  Note that tool tips are only displayed for panels that have an icon and either have no text or not all text is visible in the panel.\plain\f3\fs20\b 
+\par Property Get PanelToolTipText(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets the tool tip text to show in a panel.  Note that tool tips are only displayed for panels that have an icon and either have no text or not all text is visible in the panel.\plain\f3\fs20\b 
+\par Property Let PanelSpring(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a panel springs to fit the available space.  Only one panel at a time can have the spring property set to true.\plain\f3\fs20\b 
+\par Property Get PanelSpring(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a panel springs to fit the available space.  Only one panel at a time can have the spring property set to true.\plain\f3\fs20\b 
+\par Property Let PanelFitToContents(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a panel should automatically size to its contents.\plain\f3\fs20\b 
+\par Property Get PanelFitToContents(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a panel should automatically size to its contents.\plain\f3\fs20\b 
+\par Property Get PanelIcon(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the 0 based index of an image in the associated image list to display in a panel.\plain\f3\fs20\b 
+\par Property Get PanelhIcon(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets an icon handle to draw in a panel.  If reading this property, do not call DestroyIcon the returned hIcon - it is a handle to the actual icon used by the control, not a copy.  If setting this property, the hIcon will be automatically destroyed w\plain\f3\fs20\b 
+\par Property Let PanelIcon(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the 0 based index of an image in the associated image list to display in a panel.\plain\f3\fs20\b 
+\par Property Let PanelhIcon(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets an icon handle to draw in a panel.  If reading this property, do not call DestroyIcon the returned hIcon - it is a handle to the actual icon used by the control, not a copy.  If setting this property, the hIcon will be automatically destroyed w\plain\f3\fs20\b 
+\par Property Let PanelStyle(ByVal vKey As Variant, RHS As ESTBRPanelStyle)
+\par \plain\f3\fs20 Gets/sets the style used to draw a panel.\plain\f3\fs20\b 
+\par Property Get PanelStyle(ByVal vKey As Variant) As ESTBRPanelStyle
+\par \plain\f3\fs20 Gets/sets the style used to draw a panel.\plain\f3\fs20\b 
+\par Property Get PanelMinWidth(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the minimum allowable width for a panel.  Note that icons and the sizing grip add additional width to the minimum.\plain\f3\fs20\b 
+\par Property Get PanelIdealWidth(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the width of the panel calculated for auto-sizing panels.\plain\f3\fs20\b 
+\par Property Let PanelIdealWidth(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the width of the panel calculated for auto-sizing panels.\plain\f3\fs20\b 
+\par Property Get PanelCount() As Long
+\par \plain\f3\fs20 Gets the number of panels in the status bar.\plain\f3\fs20\b 
+\par Sub GetPanelRect(ByVal vKey As Variant, ByVal iLeftPixels As Long, ByVal iTopPixels As Long, ByVal iRightPixels As Long, ByVal iBottomPixels As Long)
+\par \plain\f3\fs20 Gets the outside bounding rectangle of a panel in the control.\plain\f3\fs20\b 
+\par Property Get Font() As Font
+\par \plain\f3\fs20 Gets/sets the font used to draw the status bar panels.\plain\f3\fs20\b 
+\par Property Set Font() As Font
+\par \plain\f3\fs20 Gets/sets the font used to draw the status bar panels.\plain\f3\fs20\b 
+\par Property Get Enabled() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control is enabled.\plain\f3\fs20\b 
+\par Property Let Enabled(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control is enabled.\plain\f3\fs20\b 
+\par Function AddPanel(Optional ByVal eStyle As ESTBRPanelStyle=0, Optional ByVal sText As String=, Optional ByVal sToolTipText As String=, Optional ByVal iImgIndex As Long=-1, Optional ByVal lMinWidth As Long=64, Optional ByVal bSpring As Boolean=False, Optional ByVal bFitContents As Boolean=False, Optional ByVal lItemData As Long=0, Optional ByVal sKey As String=, Optional ByVal vKeyBefore As Variant) As Long
+\par \plain\f3\fs20 Adds or inserts a panel to the status bar control.\plain\f3\fs20\b 
+\par Function RemovePanel(ByVal vKey As Variant) As Variant
+\par \plain\f3\fs20 Removes a panel from the control.\plain\f3\fs20\b 
+\par Property Let BackColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the back colour of the status bar control.\plain\f3\fs20\b 
+\par Property Get BackColor() As ULong
+\par \plain\f3\fs20 Gets/sets the back colour of the status bar control.\plain\f3\fs20\b 
+\par Property Let ImageList(RHS  As Variant)
+\par \plain\f3\fs20 Associates an ImageList with the status bar. The ImageList can either be a COMCTL32.OCX image list, a vbAccelerator image list or a long hImageList handle to an image list created using the COMCTL32.DLL API.\plain\f3\fs20\b 
+\par Sub RedrawPanel(ByVal vKey As Variant)
+\par \plain\f3\fs20 Forces a panel to redraw.\plain\f3\fs20\b 
+\par Property Get SizeGrip() As Boolean
+\par \plain\f3\fs20 Gets/sets whether a sizing grip will be displayed at the right-hand bottom corner of the status bar.\plain\f3\fs20\b 
+\par Property Let SizeGrip(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a sizing grip will be displayed at the right-hand bottom corner of the status bar.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event Click(ByVal iPanel As Long, ByVal x As Single, ByVal y As Single, ByVal eButton As MouseButtonConstants)
+\par \plain\f3\fs20 Raised when a panel in the status bar is clicked.\plain\f3\fs20\b 
+\par Public Event DblClick(ByVal iPanel As Long, ByVal x As Single, ByVal y As Single, ByVal eButton As MouseButtonConstants)
+\par \plain\f3\fs20 Raised when a panel in the status bar is double clicked.\plain\f3\fs20\b 
+\par Public Event DrawItem(ByVal lHDC As Long, ByVal iPanel As Long, ByVal lLeftPixels As Long, ByVal lTopPixels As Long, ByVal lRightPixels As Long, ByVal lBottomPixels As Long)
+\par \plain\f3\fs20 Raised when a panel with the Owner-Draw style set needs to be redrawn.\plain\f3\fs20\b 
+\par Public Event Timer
+\par \plain\f3\fs20 Raised when an the internal status bar timer fires.  The internal status bar timer only operates to check key states and/or draw dates or times, so if your control does not use these custom styles then this event will not be raised.\plain\f3\fs20\b 
+\par Public Event Resize
+\par \plain\f3\fs20 Raised when the control is resized or one of the panels is resized.\plain\f4\fs20 
+\par 
+\par }
+ 

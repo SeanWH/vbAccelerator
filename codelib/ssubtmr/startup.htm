@@ -1,0 +1,618 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Passing command line parameters to an existing instance of your app, and making sure only one instance runs</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\shell_projects\registering_file_associations\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><b>Passing Command Line Parameters to an Existing Instance of your App</b><br></p>
+        <p><img src="..\..\images\startup.gif" width="330" height="177" alt="Associations in Explorer" border="0"></p>
+        <p><a href="startup.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Startup files (50kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>21 March 2000</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Fixed a problem with the document icon support.  The previous version of this article stated that to 
+		create an icon for a document, you should refer to the resource ID of the icon within the application's
+		.RES file.  This was incorrect: in fact you should use the 0-based index of the icon in the resource
+		script (noting that if your app has a standard VB icon, this automatically gets compiled in 
+		as the first icon within the app).<br><br>
+		Also the updated <a href="..\inireg\registry.htm">cRegistry</a> class is incorporated to ensure the
+		app works with the HKEY_LOCAL_MACHINE\SOFTWARE\Classes registry hive as well as the standard 
+		HKEY_CLASSES_ROOT hive.
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                This project requires the <a href="ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+				<br><br>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <p>
+	Many windows applications register file associations.  When you double click on an associated
+	file, it is nice to have the flexibility to decide what happens.  The built-in support for 
+	this in VB is like the Notepad SDI model - if you double click on a .TXT file you get a new instance.  But other
+	apps, for example Microsoft Word and WinZip, detect if a window is already open to handle the
+	file, and if it is that window is used to open the file.
+	<br><br>
+	To do this you need to be able to achieve the following:
+	<ol>
+	<li>Register a file association.
+	<li>Detect whether an instance of your app is running or not.
+	<li>Send the command line of one instance of your app cross-instance to the existing one.
+	</ol>
+	<a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+	<br><br>
+	<b>1. Registering a File Association</b><br>
+	Associating a file type is achieved through the registry. For example, say you want to 
+	associate files of type *.GCF with your app, calling them 'Goldfish Clipboard Files'.  Then
+	you need to set up the following in the registry:
+	</p>
+	</font>
+	<p><pre><font color="#000000" face="lucida console,courier" size="1">
+  <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">HKEY_CLASSES_ROOT
+     <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">.GCF (default) = "Goldfish.ClipboardFile"
+         ...
+     <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">Goldfish.ClipboardFile (default) = "Goldfish Clipboard File"
+        <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">shell
+           <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">open
+              <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">command (default) = "[Executable Path] "%1""</font></pre></p>	
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	The simplest way to do this is to use the <i>CreateEXEAssociation</i> method of the 
+	vbAccelerator <a href="..\inireg\registry.htm">cRegistry</a> class (note - this has
+	been bug fixed to ensure that the EXE Association is still created when you do not specify
+	a default document icon, and is	also provided with the demonstration project).<br><br>
+	Once you have done this, then when a user double clicks on the file with the extension
+	specified Windows will shell your application, passing the filename on the command line.
+	You can get this from VB's <i>Command</i> function.<br><br>
+	The above registry structure creates a default Open association.  You can also add other
+	associations so when a user right clicks on a file or selects it and chooses the File
+	menu in explorer additional menu items apply. For example, VB5 creates the following structure to 
+	provide the Open, Make and Run commands	for .VBP files:
+	</p>
+	</font>
+	<p><pre><font color="#000000" face="lucida console,courier" size="1">
+  <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">HKEY_CLASSES_ROOT
+     <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">.VBP (default) = "VisualBasic.Project"
+         ...
+     <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">VisualBasic.Project (default) = "Visual Basic Project"
+        <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">shell
+           <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">Make
+              <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">command (default) = C:\Program Files\DevStudio\VB\vb5.exe "%1" /make
+           <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">open
+              <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">command (default) = C:\Program Files\DevStudio\VB\vb5.exe "%1"
+           <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">Run Project
+              <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">command (default) = C:\Program Files\DevStudio\VB\vb5.exe "%1" /run</font></pre></p>	
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This functionality is available throught the cRegistry <i>CreateAdditionalEXEAssociations</i>
+	function.  Check the demo project code to see how it works.
+	<br><br>
+	The final thing you can do for a fully professional effect is to associate a particular icon
+	with documents associated with your application.  This is achieved by setting a registry key
+	like this:
+	</p>
+	</font>
+	<p><pre><font color="#000000" face="lucida console,courier" size="1">
+  <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">HKEY_CLASSES_ROOT
+     <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">Goldfish.ClipboardFile (default) = "Goldfish Clipboard File"
+        <img src="..\..\images\folder.gif" width="15" height="13" border="0" hspace="4">DefaultIcon (default) = "[Executable Path],[0 Based Index of Resource Icon]"</font></pre></p>	
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	The [0 Based Index of Resource Icon] should be an index to an icon resource within your 
+	project.  Resource identifier 0 is automatically created for VB EXEs and is the executable's 
+    icon.  However, you can add further	icon resources to your application through a resource file.  
+	<b>Note</b>: you cannot use the 
+	Resource Editor VB Add-in (provided with VB6, and available for VB5 from the 
+	<a href="..\..\linxref.htm#secvbowner">MS VB Programmer's area</a> to do this because all 
+	resources it creates are private and not exposed to the outside applications.  
+	You must instead
+	use the external <a href="..\article\usingrc.htm">resource compiler RC.EXE</a> to do this
+	instead.
+	<br><br>
+	The default icon setting can also be set through the cRegistry <i>CreateEXEAssociation</i>
+	method.  The demonstration provides a resource script and the code used to do this.
+	<br><br>
+	If you only want to create an SDI app which has multiple instances, that is all you need to
+	do.  But if you want to control what happens next, then read on...
+	<br><br>	
+	<a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+	<br><br>
+	<b>2. Detect whether an instance of your app is running or not</b><br>
+	This could be the easy bit, but I decided to make it harder.  vbAccelerator isn't about
+	advanced source code for nothing you know!<br><br>
+	The easy way of checking whether your app is running is to use the <i>PrevInstance</i> property
+	of VB's <i>App</i> object.  For 99% of cases this will work perfectly well.  However, if your
+	app has a long start-up time, it is possible for App.PrevInstance to return False even when
+	there is an existing instance running.  If you relied on App.PrevInstance there is small
+	but nightmarish (in support terms, at least!) possibility that you get two instances of
+	your app.<br><br>
+	To be sure only one instance runs, you can take advantage of the <i>Mutex</i> functions 
+	provided in Win32, which are normally used for thread synchronisation.  
+	You can create a virtually unlimited number of Mutex handles in Win32.  Each one has it's own
+	name and handle value.  The only disadvantage of this method occurs in the VB IDE.  A Mutex 
+	applies to an entire process, and when you are debugging an application in the VB IDE it runs
+	in the VB IDE's process.  So if you create a Mutex in the IDE, but fail to destroy it for some
+	reason (say for example you do a nasty and press the stop button) then the Mutex continues to
+	exist until the IDE is closed.  Clearly this makes things difficult to debug, so my code 
+	works around this by using App.PrevInstance unless the app is running as compiled code.  To
+	detect whether you are in the VB IDE or not is easy but a hack - check it out!
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Private Declare Function CreateMutex Lib &quot;kernel32&quot; Alias &quot;CreateMutexA&quot; _<br>
+&nbsp;&nbsp;&nbsp;(ByVal lpMutexAttributes As Long, ByVal bInitialOwner As Long, ByVal lpName As String) As Long<br>
+Private Declare Function CloseHandle Lib &quot;kernel32&quot; (ByVal hObject As Long) As Long<br>
+Private Const ERROR_ALREADY_EXISTS = 183&<br>
+Private m_hMutex As Long<br>
+Private m_bInDevelopment As Boolean<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Change this line to match your app:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Const mcTHISAPPID = &quot;vbAcceleratorGOLDFISH&quot;<br>
+<br>
+Public Sub Main()<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Check if this is the first instance:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;If (WeAreAlone(mcTHISAPPID & &quot;_APPLICATION_MUTEX&quot;)) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Do startup code here:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Pass command line if not empty, or</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' activate existing app:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;Endif<br>
+End Sub<br>
+<br>
+Private Function WeAreAlone(ByVal sMutex As String) As Boolean<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Don't call Mutex when in VBIDE because it will apply</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' for the entire VB IDE session, not just the app's</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' session.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;If InDevelopment Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeAreAlone = Not (App.PrevInstance)<br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Ensures we don't run a second instance even</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' if the first instance is in the start-up phase</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_hMutex = CreateMutex(ByVal 0&, 1, sMutex)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (Err.LastDllError = ERROR_ALREADY_EXISTS) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseHandle m_hMutex<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeAreAlone = True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Function<br>
+<br>
+Public Function InDevelopment() As Boolean<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Debug.Assert code not run in an EXE.  Therefore</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' m_bInDevelopment variable is never set.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;Debug.Assert InDevelopmentHack() = True<br>
+&nbsp;&nbsp;&nbsp;InDevelopment = m_bInDevelopment<br>
+End Function<br>
+<br>
+Private Function InDevelopmentHack() As Boolean<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' .... '</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;m_bInDevelopment = True<br>
+&nbsp;&nbsp;&nbsp;InDevelopmentHack = m_bInDevelopment<br>
+End Function<br>
+<br>
+Public Function EndApp()<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Call this to remove the Mutex.  It will be cleared</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' anyway by windows, but this ensures it works.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;If (m_hMutex &lt;&gt; 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CloseHandle m_hMutex<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;m_hMutex = 0<br>
+End Function<br><br>
+</font>
+</p>
+
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	The CreateMutex calls probably have many other uses in VB I haven't thought
+	of yet, given a bit of imagination!<br><br>
+	<a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+	<br><br>
+	<b>3. Send the command line of one instance of your app cross-instance to the existing one.</b><br>
+	The code so far has been tty trivial.  Now we get on to why you need subclassing to 
+	achieve this task and also delve into the Windows API a bit more. <br><br>	
+	This task can be broken down into two parts:
+	<ul>
+	<li>Firstly, how do you find a window?
+	<li>Secondly, how do you pass data across instances?
+	</ul>
+	So, how do you find a window?  There are various techniques to achieve this.  But I warn you that
+	a large number of the published versions are based on Win16 code which can't really be guaranteed to work
+	under Win32. Without exception all the rest I have seen rely on some part of the window's caption
+	or class name to find a window.  Now I don't know about you but I find the whole idea of finding
+	a window given that the caption is something like "My Cool App -*" and that its class is 
+	"ThunderWindowClass" somewhat less than desirable. <br><br>
+ 	The worst thing these dubious methods is that you can do it properly with very few 
+	lines of code.  For further reference to the methods I describe here, see my articles 
+	<a href="..\enum\enum.htm">Using Enumeration API methods in VB</a> and 
+	<a href="ssubtmr.htm#secwindb">Subclassing without the Crashes - Use 
+	Window's built-in database to store information against hWnds</a>.
+	<br><br>
+	The first thing you should do if you want to locate a window is to give it a property that
+	guarantees you can find it again.  To make sure you can find it, just choose a string value
+	for the property that no-one else is going to use.  (BTW: If you're really serious about this, 
+	use the appropriate OLE function to create a new GUID!) 
+	Once you have a string, use the <i>SetProp</i> method to associate the string and a long value 
+	with the window.
+	<br><br>
+	Having done, this you need to loop through all top-level windows to find the one which
+	has the unique string value you set.  To loop through top-level windows in Win32, you must
+	use the EnumWindows function (using any other method could result in continuous loops
+	or a failure to identify all top-level windows because Win32's pre-emptive Multi-Threading
+	could modify the window list before you get them.  Particularly in multi-processor NT systems).
+	Here is the code I use to set the properties and get the top-level windows:
+	</p>
+	</font>
+
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Private Declare Function EnumWindows Lib &quot;user32&quot; _<br>
+&nbsp;&nbsp;&nbsp;(ByVal lpEnumFunc As Long, ByVal lparam As Long) As Long<br>
+Private Declare Function GetProp Lib &quot;user32&quot; Alias &quot;GetPropA&quot; _<br>
+&nbsp;&nbsp;&nbsp;(ByVal hWnd As Long, ByVal lpString As String) As Long<br>
+Private Declare Function SetProp Lib &quot;user32&quot; Alias &quot;SetPropA&quot; _<br>
+&nbsp;&nbsp;&nbsp;(ByVal hWnd As Long, ByVal lpString As String, ByVal hData As Long) As Long<br>
+Private m_hWndPrevious As Long<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Change this line:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Const mcTHISAPPID = &quot;vbAcceleratorGOLDFISH&quot;<br>
+<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">'... Sub Main frament:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' We have an existing instance.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' First try to find it:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+EnumerateWindows<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' If we get it:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+If (m_hWndPrevious &lt;&gt; 0) Then<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Send information:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+End If<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' ... End</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+<br>
+Public Sub TagWindow(ByVal hWnd As Long)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Applies a window property to allow the window to</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' be clearly identified.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;SetProp hWnd, mcTHISAPPID & &quot;_APPLICATION&quot;, 1<br>
+End Sub<br>
+<br>
+Private Function IsThisApp(ByVal hWnd As Long) As Boolean<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Check if the windows property is set for this</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' window handle:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;If GetProp(hWnd, mcTHISAPPID & &quot;_APPLICATION&quot;) = 1 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IsThisApp = True<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Function<br>
+<br>
+Public Function EnumWindowsProc( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal hWnd As Long, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal lparam As Long _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) As Long<br>
+&nbsp;&nbsp;&nbsp;Dim bStop As Boolean<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Customised windows enumeration procedure.  Stops</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' when it finds another application with the Window</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' property set, or when all windows are exhausted.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;bStop = False<br>
+&nbsp;&nbsp;&nbsp;If IsThisApp(hWnd) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EnumWindowsProc = 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_hWndPrevious = hWnd<br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EnumWindowsProc = 1<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Function<br>
+<br>
+Public Function EnumerateWindows() As Boolean<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Enumerate top-level windows:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;EnumWindows AddressOf EnumWindowsProc, 0<br>
+End Function<br>
+<br>
+</font>
+</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+	<br><br>
+	The final stage is how to send information across processes.  Sending information can be achieved in
+	many ways, but one of the easiest is to use Window's <i>WM_COPYDATA</i> message.  This message
+	is used with the <i>SendMessage</i> function and 
+	is a wrapper around the more complicated <i>File Mapping</i> interprocess communication method. 
+	It is ideal when you are sending a small amount of information, say less than 4Kb.<br><br>
+	
+	You call the <i>WM_COPYDATA</i> message with <i>SendMessage</i> like this:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Public Const WM_COPYDATA = &H4A<br>
+Public Type COPYDATASTRUCT<br>
+&nbsp;&nbsp;&nbsp;dwData As Long   <font color="#999999" face="Lucida Console,Courier New" size="1">' A long value to pass to other application</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;cbData As Long   <font color="#999999" face="Lucida Console,Courier New" size="1">' The size of the data pointed to by lpData</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;lpData As Long   <font color="#999999" face="Lucida Console,Courier New" size="1">' A pointer to data</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+End Type<br>
+Private Declare Function SendMessage Lib &quot;user32&quot; Alias &quot;SendMessageA&quot; _<br>
+&nbsp;&nbsp;&nbsp; (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long<br>
+<br>
+Public Sub SendData(ByVal hWndTo As Long, ByVal sString As String, ByVal lData As Long)<br>
+&nbsp;&nbsp;&nbsp;Dim b() As Byte<br>
+&nbsp;&nbsp;&nbsp;Dim tCDS As COPYDATASTRUCT<br>
+<br>
+&nbsp;&nbsp;&nbsp;If (sString &lt;&gt; &quot;&quot;) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = StrConv(Command, vbFromUnicode)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tCDS.dwData = lData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Add Null Char:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tCDS.cbData = UBound(b) + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Set lpData to point to the byte array</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tCDS.lpData = VarPtr(b(0))<br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReDim b(0 To 0) As Byte<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tCDS.dwData = lData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tCDS.cbData = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Set lpData to point to byte array of Null Char:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tCDS.lpData = VarPtr(b(0))<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;SendMessage hWndTo, WM_COPYDATA, 0, tCDS<br>
+<br>
+End Sub<br>
+<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This sends the message to the window hWndTo.  Now you need to receive it and process it
+	in the main window of the receiving application.  This is achieved by subclassing the 
+	window for the WM_COPYDATA message:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Option Explicit<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Implement the subclassing interface:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Implements ISubclass<br>
+<br>
+Private Sub Form_Load()<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Start subclassing:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;AttachMessage Me, Me.hWnd, WM_COPYDATA<br>
+End Sub<br>
+<br>
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' stop subclassing:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;DetachMessage Me, Me.hWnd, WM_COPYDATA<br>
+End Sub<br>
+<br>
+Private Property Let ISubclass_MsgResponse(ByVal RHS As SSubTimer.EMsgResponse)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Not needed.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+End Property<br>
+<br>
+Private Property Get ISubclass_MsgResponse() As SSubTimer.EMsgResponse<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' This will tell you which message you are responding to:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' WM_COPYDATA, send response after we've done with it:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;ISubclass_MsgResponse = emrPostProcess<br>
+<br>
+End Property<br>
+<br>
+Private Function ISubclass_WindowProc( _<br>
+&nbsp;&nbsp;&nbsp;ByVal hWnd As Long, ByVal iMsg As Long, _<br>
+&nbsp;&nbsp;&nbsp;ByVal wParam As Long, ByVal lParam As Long _<br>
+&nbsp;&nbsp;&nbsp;) As Long<br>
+&nbsp;&nbsp;&nbsp;Dim tCDS As COPYDATASTRUCT<br>
+&nbsp;&nbsp;&nbsp;Dim b() As Byte<br>
+&nbsp;&nbsp;&nbsp;Dim sCommand As String<br>
+<br>
+&nbsp;&nbsp;&nbsp;Select Case iMsg<br>
+&nbsp;&nbsp;&nbsp;Case WM_COPYDATA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Copy for processing:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory tCDS, ByVal lParam, Len(tCDS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (tCDS.cbData &gt; 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReDim b(0 To tCDS.cbData - 1) As Byte<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory b(0), ByVal tCDS.lpData, tCDS.cbData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sCommand = StrConv(b, vbUnicode)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' We've got the info, now do it:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParseCommand sCommand<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;End Select<br>
+<br>
+End Function<br>
+<br>
+Public Sub ParseCommand(ByVal sCommand As String)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Here you do with the command line whatever</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' you need for the application.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+End Sub<br>
+<br>
+
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	With this in place you can now fully achieve files associations and pass information between 
+	instances.  The only things remaining to consider are:
+	<ul>
+	<li>If the window you are passing the command to is iconized, you probably want to restore
+	it.  Send a <i>WM_COMMAND</i> message with the wParam set to <i>SC_RESTORE</i> to the window
+	handle.
+	<li>If the window is hidden (say the application resides in the SysTray) then you will want
+	to make it visible even when there is no command line.  I do this by passing
+	an empty command line to the application.
+	</ul>
+	The full source for the main module is provided in the demonstration download, and
+	this is the same source which is used in the <a href="..\custclip\goldfish.htm">Goldfish</a>
+	demonstration application.
+</p>
+</font>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br><br>
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>	
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

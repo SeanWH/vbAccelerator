@@ -1,0 +1,216 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalComboEx Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalComboEx (vbAccelerator ComboBoxEx Control)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\vbalcbex\\Release\\vbalCbEx.ocx
+\par GUID:\tab \{436403CD-EDD8-11D2-8040-00C04FA4EE99\}
+\par Version:\tab 12.0
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalComboEx.
+\par 
+\par Public Enum ECCXColumnType
+\par \tab eccxTextString=0
+\par \tab eccxTextNumber=1
+\par \tab eccxTextDateTime=2
+\par \tab eccxImageListIcon=4
+\par End Enum
+\par Public Enum ECCXComboStyle
+\par \tab eccxDropDownCombo=0
+\par \tab eccxSimple=1
+\par \tab eccxDropDownList=2
+\par End Enum
+\par Public Enum ECCXDrawMode
+\par \tab eccxDrawDefault=0
+\par \tab eccxDrawDefaultThenClient=1
+\par \tab eccxDrawODCboList=2
+\par \tab eccxDrawODCboListThenClient=3
+\par \tab eccxOwnerDraw=4
+\par \tab eccxColourPickerWithNames=5
+\par \tab eccxColourPickerNoNames=6
+\par \tab eccxSysColourPicker=7
+\par \tab eccxFontPicker=8
+\par \tab eccxDriveList=9
+\par End Enum
+\par Public Enum ECCXEndEditReason
+\par \tab CBENF_KILLFOCUS=1
+\par \tab CBENF_RETURN=2
+\par \tab CBENF_ESCAPE=3
+\par \tab CBENF_DROPDOWN=4
+\par End Enum
+\par Public Enum ECCXExtendedStyle
+\par \tab eccxNoEditImage=1
+\par \tab eccxNoImages=2
+\par \tab eccxCaseSensitiveSearch=16
+\par End Enum
+\par Public Enum EDriveType
+\par \tab DRIVE_REMOVABLE=2
+\par \tab DRIVE_FIXED=3
+\par \tab DRIVE_REMOTE=4
+\par \tab DRIVE_CDROM=5
+\par \tab DRIVE_RAMDISK=6
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalComboEx.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b vbalCboEx \{9EF584D2-1796-11D3-8E21-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get AutoCompleteItemsAreSorted() As Boolean
+\par \plain\f3\fs20 Gets/sets whether items should be regarded as sorted by the Auto-Completion code.\plain\f3\fs20\b 
+\par Property Let AutoCompleteItemsAreSorted(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether items should be regarded as sorted by the Auto-Completion code.\plain\f3\fs20\b 
+\par Property Get AutoCompleteListItemsOnly() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the Auto Completion code allows items not in the list to be typed in.\plain\f3\fs20\b 
+\par Property Let AutoCompleteListItemsOnly(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the Auto Completion code allows items not in the list to be typed in.\plain\f3\fs20\b 
+\par Property Get DoAutoComplete() As Boolean
+\par \plain\f3\fs20 Sets whether the control will attempt to automatically complete the user's typing into the text box portion of the combo.\plain\f3\fs20\b 
+\par Property Let DoAutoComplete(RHS  As Boolean)
+\par \plain\f3\fs20 Sets whether the control will attempt to automatically complete the user's typing into the text box portion of the combo.\plain\f3\fs20\b 
+\par Sub AutoCompleteKeyPress(ByVal iKeyAscii As Integer)
+\par \plain\f3\fs20 The code automatically run in response to a key down when DoAutoComplete is set True.\plain\f3\fs20\b 
+\par Property Get ExtendedStyle(ByVal eStyle As ECCXExtendedStyle) As Boolean
+\par \plain\f3\fs20 Gets/sets extended style properties of the control, e.g. case sensitivity and whether images shown in the edit portion.\plain\f3\fs20\b 
+\par Property Let ExtendedStyle(ByVal eStyle As ECCXExtendedStyle, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets extended style properties of the control, e.g. case sensitivity and whether images shown in the edit portion.\plain\f3\fs20\b 
+\par Property Get DrawStyle() As ECCXDrawMode
+\par \plain\f3\fs20 Gets/sets the way in which items in the control will be drawn.\plain\f3\fs20\b 
+\par Property Let DrawStyle(RHS  As ECCXDrawMode)
+\par \plain\f3\fs20 Gets/sets the way in which items in the control will be drawn.\plain\f3\fs20\b 
+\par Property Get Font() As Font
+\par \plain\f3\fs20 Gets/sets the default font used to draw the control's items.\plain\f3\fs20\b 
+\par Property Set Font() As Font
+\par \plain\f3\fs20 Gets/sets the default font used to draw the control's items.\plain\f3\fs20\b 
+\par Property Get Enabled() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control is enabled.\plain\f3\fs20\b 
+\par Property Let Enabled(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control is enabled.\plain\f3\fs20\b 
+\par Property Get Style() As ECCXComboStyle
+\par \plain\f3\fs20 Gets/sets whether the control appears as a Drop-Down Combo, a Drop-Down List or a Simple Combo.\plain\f3\fs20\b 
+\par Property Let Style(RHS  As ECCXComboStyle)
+\par \plain\f3\fs20 Gets/sets whether the control appears as a Drop-Down Combo, a Drop-Down List or a Simple Combo.\plain\f3\fs20\b 
+\par Property Get Sorted() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control is sorted.\plain\f3\fs20\b 
+\par Property Let Sorted(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control is sorted.\plain\f3\fs20\b 
+\par Property Get DropDownWidth() As Long
+\par \plain\f3\fs20 Gets/sets the width of the drop-down portion of the combo box.\plain\f3\fs20\b 
+\par Property Let DropDownWidth(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the width of the drop-down portion of the combo box.\plain\f3\fs20\b 
+\par Property Get ComboIsDropped() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the drop down portion of the control is visible.\plain\f3\fs20\b 
+\par Sub ShowDropDown(ByVal bstate As Boolean)
+\par \plain\f3\fs20 Forces the drop-down portion of the control to show.\plain\f3\fs20\b 
+\par Property Get ListCount() As Long
+\par \plain\f3\fs20 Gets the number of list items in the control.\plain\f3\fs20\b 
+\par Property Get ListIndex() As Long
+\par \plain\f3\fs20 Gets/sets the currently selected item in the control.\plain\f3\fs20\b 
+\par Property Let ListIndex(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the currently selected item in the control.\plain\f3\fs20\b 
+\par Property Get NewIndex() As Long
+\par \plain\f3\fs20 Gets the ListIndex of the last item added to the control.\plain\f3\fs20\b 
+\par Property Get SelLength() As Long
+\par \plain\f3\fs20 Gets the length of the selected text in the control.\plain\f3\fs20\b 
+\par Property Let SelLength(RHS  As Long)
+\par \plain\f3\fs20 Gets the length of the selected text in the control.\plain\f3\fs20\b 
+\par Property Get SelStart() As Long
+\par \plain\f3\fs20 Gets the 0-based index of the first selected character in the text portion of the control.\plain\f3\fs20\b 
+\par Property Let SelStart(RHS  As Long)
+\par \plain\f3\fs20 Gets the 0-based index of the first selected character in the text portion of the control.\plain\f3\fs20\b 
+\par Property Get SelText() As String
+\par \plain\f3\fs20 Gets the selected text from the text portion of the control.\plain\f3\fs20\b 
+\par Property Get Text() As String
+\par \plain\f3\fs20 Gets/sets the text in the text portion of the control.\plain\f3\fs20\b 
+\par Property Let Text(RHS  As String)
+\par \plain\f3\fs20 Gets/sets the text in the text portion of the control.\plain\f3\fs20\b 
+\par Property Get MaxLength() As Long
+\par \plain\f3\fs20 Gets/sets the maximum length of text which can be typed into the edit portion of the control.\plain\f3\fs20\b 
+\par Property Let MaxLength(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the maximum length of text which can be typed into the edit portion of the control.\plain\f3\fs20\b 
+\par Property Get Redraw() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control redraws itself in response to changes.  Set to False to speed up the addition of items.\plain\f3\fs20\b 
+\par Property Let Redraw(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control redraws itself in response to changes.  Set to False to speed up the addition of items.\plain\f3\fs20\b 
+\par Property Get hwnd() As Long
+\par \plain\f3\fs20 Gets the window handle of the control.\plain\f3\fs20\b 
+\par Property Get hWndComboEx() As Long
+\par \plain\f3\fs20 Gets the window handle of the ComboBoxEx container of the combo box control.\plain\f3\fs20\b 
+\par Property Get hWndCombo() As Long
+\par \plain\f3\fs20 Gets the window handle of the drop-down combo portion of the combo box control.\plain\f3\fs20\b 
+\par Property Get hWndEdit() As Long
+\par \plain\f3\fs20 Returns the window handle of the Edit portion of the combo box control.\plain\f3\fs20\b 
+\par Sub Clear
+\par \plain\f3\fs20 Removes all items from the ComboBox's list.\plain\f3\fs20\b 
+\par Property Get ExtendedUI() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control drops down in response to the Return key rather than F4.\plain\f3\fs20\b 
+\par Property Let ExtendedUI(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control drops down in response to the Return key rather than F4.\plain\f3\fs20\b 
+\par Sub AddItem(ByVal sText As String)
+\par \plain\f3\fs20 Adds an item to the list.\plain\f3\fs20\b 
+\par Sub AddItemAndData(ByVal sText As String, Optional ByVal iIcon As Long=-1, Optional ByVal iIconSelected As Long=-1, Optional ByVal lItemData As Long=0, Optional ByVal lIndent As Long=0)
+\par \plain\f3\fs20 Adds an item to the list, optionally setting other properties at the same time.  Quicker if you want to set multiple properties for each item being added.\plain\f3\fs20\b 
+\par Sub InsertItem(ByVal sText As String, Optional ByVal lIndexBefore As Long=-1)
+\par \plain\f3\fs20 Same as AddItem but instead Inserts the item into the control.\plain\f3\fs20\b 
+\par Sub InsertItemAndData(ByVal sText As String, Optional ByVal lIndexBefore As Long=-1, Optional ByVal iIcon As Long=-1, Optional ByVal iIconSelected As Long=-1, Optional ByVal lItemData As Long=0, Optional ByVal lIndent As Long=0)
+\par \plain\f3\fs20 Same as AddItemAndData but instead inserts the item and associated information into the control.\plain\f3\fs20\b 
+\par Function FindItemIndex(ByVal sToFind As String, Optional ByVal bExactMatch As Boolean=False) As Long
+\par \plain\f3\fs20 Attempts to find the specified item, either exactly matching or partially matching, and returns the index if found or -1 otherwise.\plain\f3\fs20\b 
+\par Property Get ItemIndent(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets/sets the indentation of an  item in the control's list.  Indentation is set in multiples of the ImageList icon size, or defaulting to 16 pixels if there is no ImageList.\plain\f3\fs20\b 
+\par Property Let ItemIndent(ByVal lIndex As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the indentation of an  item in the control's list.  Indentation is set in multiples of the ImageList icon size, or defaulting to 16 pixels if there is no ImageList.\plain\f3\fs20\b 
+\par Property Get ItemIcon(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets/sets the 0-based icon index  associated with an item in the control's list.\plain\f3\fs20\b 
+\par Property Let ItemIcon(ByVal lIndex As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the 0-based icon index  associated with an item in the control's list.\plain\f3\fs20\b 
+\par Property Get ItemData(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets/sets a long value associated with an item in the control's list.\plain\f3\fs20\b 
+\par Property Let ItemData(ByVal lIndex As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets a long value associated with an item in the control's list.\plain\f3\fs20\b 
+\par Property Get ItemIconSelected(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets/sets the 0-based icon index  to be used when the item is selected associated with an item in the control's list.\plain\f3\fs20\b 
+\par Property Let ItemIconSelected(ByVal lIndex As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the 0-based icon index  to be used when the item is selected associated with an item in the control's list.\plain\f3\fs20\b 
+\par Property Get List(ByVal lIndex As Long) As String
+\par \plain\f3\fs20 Gets/sets the text for a list item in the control.\plain\f3\fs20\b 
+\par Property Let List(ByVal lIndex As Long, RHS As String)
+\par \plain\f3\fs20 Gets/sets the text for a list item in the control.\plain\f3\fs20\b 
+\par Sub RemoveItem(ByVal lIndex As Long)
+\par \plain\f3\fs20 Removes an Item from the control.\plain\f3\fs20\b 
+\par Property Let ImageList(RHS  As Variant)
+\par \plain\f3\fs20 Associates an ImageList with the ComboBoxEx control.  This can be a Microsoft COMCTL32 ImageList or any valid Image List handle.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event AutoCompleteSelection(ByVal sItem As String, ByVal lIndex As Long)
+\par \plain\f3\fs20 Raised whenever the Auto Complete mode selects an item.\plain\f3\fs20\b 
+\par Public Event BeginEdit(ByVal iIndex As Long)
+\par \plain\f3\fs20 Raised when the user begins editing the text box section of the ComboBox.\plain\f3\fs20\b 
+\par Public Event Change
+\par \plain\f3\fs20 Raised when the text in the combo box is changed.\plain\f3\fs20\b 
+\par Public Event Click
+\par \plain\f3\fs20 Raised when the user selects an item by clicking on it and when the ListIndex property is set in code.\plain\f3\fs20\b 
+\par Public Event CloseUp
+\par \plain\f3\fs20 Raised when the ComboBox portion of the control is closed up.\plain\f3\fs20\b 
+\par Public Event DblClick
+\par \plain\f3\fs20 Raised when the control is double clicked.\plain\f3\fs20\b 
+\par Public Event DrawItem(ByVal ItemIndex As Long, ByVal hdc As Long, ByVal bSelected As Boolean, ByVal bEnabled As Boolean, ByVal LeftPixels As Long, ByVal TopPixels As Long, ByVal RightPixels As Long, ByVal BottomPixels As Long, ByVal hFntOld As Long)
+\par \plain\f3\fs20 Raised when an item in the combo box must be drawn.\plain\f3\fs20\b 
+\par Public Event DropDown
+\par \plain\f3\fs20 Raised whenever the drop-down portion of the combo-box is shown.\plain\f3\fs20\b 
+\par Public Event EndEdit(ByVal iIndex As Long, ByVal bChanged As Boolean, ByVal sText As String, ByVal eWHy As ECCXEndEditReason, ByVal iNewIndex As Long)
+\par \plain\f3\fs20 Raised when the user finished editing the text portion of the Combo Box.\plain\f3\fs20\b 
+\par Public Event KeyDown(ByVal KeyCode As Integer, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when a KeyDown occurs in the control.\plain\f3\fs20\b 
+\par Public Event KeyUp(ByVal KeyCode As Integer, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when a KeyUp occurs in the control.\plain\f3\fs20\b 
+\par Public Event KeyPress(ByVal KeyAscii As Integer)
+\par \plain\f3\fs20 Raised when a Key is pressed  in the control.\plain\f3\fs20\b 
+\par Public Event RequestDropDownResize(ByVal lLeft As Long, ByVal lTop As Long, ByVal lRight As Long, ByVal lBottom As Long, ByVal bCancel As Boolean)
+\par \plain\f3\fs20 Raised when the drop down portion of the control is about to be shown.  You can customise the position at which the drop down appears.\plain\f4\fs20 
+\par 
+\par }
+ 

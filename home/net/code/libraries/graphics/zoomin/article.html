@@ -1,0 +1,113 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - A .NET Implementation of the ZoomIn Utility</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="The ZoomIn Utility enables you to look at any area of the screen and capture the
+display.  This can be an excellent way to snip graphics from other applications or
+to work out the exact details of how other controls are drawn.  A copy of this is provided 
+along with Visual Studio as a tool and also as sample MFC source code from Microsoft, so 
+it is instructive to see how much easier this is to do in .NET.  As it is easier, this
+example provides a number of enhancements, such as Saving, Printing, Gridlines and a 
+StatusBar for pixel position and RGB values." /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;A .NET Implementation of the ZoomIn Utility</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="zoomin.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ZoomIn</a> (78K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:2183</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=2183&type=article&title=a_20_2enet_20implementation_20of_20the_20zoomin_20utility.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Dec 2002<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>A .NET Implementation of the ZoomIn Utility</h1><img src="zoomin.png" width="409" height="271" alt="ZoomIn Utility in Action" /><p /><p>The ZoomIn Utility enables you to look at any area of the screen and capture the
+display.  This can be an excellent way to snip graphics from other applications or
+to work out the exact details of how other controls are drawn.  A copy of this is provided 
+along with Visual Studio as a tool and also as sample MFC source code from Microsoft, so 
+it is instructive to see how much easier this is to do in .NET.  As it is easier, this
+example provides a number of enhancements, such as Saving, Printing, Gridlines and a 
+StatusBar for pixel position and RGB values.</p><h2>Zoom-In Basics</h2><p>The idea of ZoomIn is to allow the user to select any area of the desktop and to display 
+it within the ZoomIn window, where it can be zoomed up to 32x its original size.  In order
+to do this you need to be able to create a UI which allows you to select a point 
+on the desktop and one which works out the contents.  This part of the application is
+slightly beyond the .NET framework as it doesn't contain any wrapper for getting at the
+desktop itself.  However, the <i>System.Drawing</i> implementation is based on
+GDI+ and contains a number of methods which make it easy to interoperate with a handful
+of Unmanaged GDI methods to perform this.</p><h2>Drawing A Selection Rectangle</h2><p>To draw a selection rectangle on the desktop, we take advantage of the fact that if you
+XOR the same bits with any pattern twice you end up with the same result.   For example:</p><pre>
+    // XOR once:
+    0x6A ^ 0xF0 = 0x9A
+    // XOR again:
+    0x9A ^ 0xF0 = 0x6A
+</pre><p>In a bitmap on a display, if the colour you are XORing with is black then the effect 
+of the XOR is similar to inverting the image.  This is how
+almost all drag rectangles are drawn in Win32 applications.  Rather unfortunately, the
+concept of XOR drawing is not present at all in .NET (neither is it present in GDI+ for that
+matter).  In any case, GDI allows us to perform XOR drawing through the <i>BitBlt</i>,
+<i>StretchBlt</i> and <i>PatBlt</i> methods.  In this case I am using <i>PatBlt</i>, which
+paints a rectangle using the brush currently selected into a device context, combining
+the brush color with the surface color using a number of raster operations.
+</p><p>So to draw the selection rectangle, all we need to do is to draw the four edges of the
+rectangle using the XOR operation (which is known as DSTINVERT in the GDI API) and then 
+remember where it was last drawn.  To erase the previous rectangle, just draw the exact
+same image.</p><h2>Working with the Desktop Device Context</h2><p>Windows allows you to work with the Desktop through its device context, which is provided
+as a handle.  To get the desktop handle, use the GDI <i>GetDC</i> method, passing in 0 as 
+the window handle to get the DC for.  Once you've finished working with a DC returned by
+the <i>GetDC</i> method you need to release it again using <i>ReleaseDC</i>, otherwise 
+Windows keeps allocating resources until it runs out of memory.  These methods
+are equivalent to the <i>System.Drawing</i><i>GetHdc</i> and <i>ReleaseHdc</i> methods, except that
+<i>System.Drawing</i> complains more if you don't perform the operations in pairs, which is
+probably a good thing.</p><p>Once you have a device context, the simplest way to transfer the information to the
+Managed world is to use the GDI <i>StretchBlt</i> (or <i>BitBlt</i>) methods to copy the
+data to a hdc obtained from a <i>System.Drawing.Graphics</i> object.</p><h2>Putting it Together</h2><p>Once this small amout of Unmanaged code is in place, the other features 
+of the ZoomIn application are trivial to implement.  The standard <i>System.Windows.Forms.Form</i>
+mouse events can be used to scroll the selection window around.  <i>System.Drawing</i> 
+features can be used to create copies of the image for pixel interrogation, saving and copying
+to the clipboard.</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;A .NET Implementation of the ZoomIn Utility</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2002 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 23 December 2002</p></td><td></td></tr></table>
+</body></html>

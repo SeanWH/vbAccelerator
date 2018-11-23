@@ -1,0 +1,555 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: DataCDWriterVB\frmDataCDCreator.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: DataCDWriterVB\frmDataCDCreator.vb" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./Data_CD_Writer.asp" /><link rel="meta" type="application/rdf+xml" href="./Data CD Writer.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Writing Data CDs</a>&#160;.&#160;<a href="..\data_cd_writer.html">Data CD Writer</a>&#160;.&#160;DataCDWriterVB</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="data_cd_writer.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Data CD Writer</a> (138K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15485</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15485&type=zip&title=frmdatacdcreator.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\imapi\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: DataCDWriterVB\frmDataCDCreator.vb</h1><p>This file is part of the download <a href="data_cd_writer.html">Data CD Writer</a>, which is described in the article <a href="article.html">Writing Data CDs</a>.</p><pre>Imports vbAccelerator.Components.ImapiWrapper
+Imports System.Threading
+Imports System.IO
+Imports System.Windows.Forms.Design
+
+Public Class frmDataCDCreator
+    Inherits System.Windows.Forms.Form
+
+    Private WithEvents discMaster As discMaster = Nothing
+    Private jolietDiscMaster As JolietDiscMaster = Nothing
+    Private cancel As Boolean = False
+    Private burnInProgress As Boolean = False
+    Private creator As DataCDCreator = Nothing
+    Private createCDHandler As CreateCDDelegate = Nothing
+
+
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+        AddHandler Application.ThreadException, AddressOf
+         application_ThreadException
+
+        Show()
+        Refresh()
+
+        '// Create the disc master object and initialse the recorder list:
+        GetRecorders()
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents label1 As System.Windows.Forms.Label
+    Friend WithEvents btnBrowse As System.Windows.Forms.Button
+    Friend WithEvents txtFolder As System.Windows.Forms.TextBox
+    Friend WithEvents lblFolder As System.Windows.Forms.Label
+    Friend WithEvents chkOverwrite As System.Windows.Forms.CheckBox
+    Friend WithEvents chkEjectWhenComplete As System.Windows.Forms.CheckBox
+    Friend WithEvents chkSimulate As System.Windows.Forms.CheckBox
+    Friend WithEvents btnBurn As System.Windows.Forms.Button
+    Friend WithEvents cboRecorder As System.Windows.Forms.ComboBox
+    Friend WithEvents lblRecorder As System.Windows.Forms.Label
+    Friend WithEvents sbrMain As System.Windows.Forms.StatusBar
+    &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub InitializeComponent()
+        Dim resources As System.Resources.ResourceManager = New
+         System.Resources.ResourceManager(GetType(frmDataCDCreator))
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.btnBrowse = New System.Windows.Forms.Button()
+        Me.txtFolder = New System.Windows.Forms.TextBox()
+        Me.lblFolder = New System.Windows.Forms.Label()
+        Me.chkOverwrite = New System.Windows.Forms.CheckBox()
+        Me.chkEjectWhenComplete = New System.Windows.Forms.CheckBox()
+        Me.chkSimulate = New System.Windows.Forms.CheckBox()
+        Me.btnBurn = New System.Windows.Forms.Button()
+        Me.cboRecorder = New System.Windows.Forms.ComboBox()
+        Me.lblRecorder = New System.Windows.Forms.Label()
+        Me.sbrMain = New System.Windows.Forms.StatusBar()
+        Me.SuspendLayout()
+        '
+        'label1
+        '
+        Me.label1.Location = New System.Drawing.Point(88, 32)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(396, 44)
+        Me.label1.TabIndex = 34
+        Me.label1.Text = "Note: this simple demo only allows you to burn a
+         single folder (and all subfolder" &amp; _
+        "s) from disc.  The IMAPI library allows you to burn any source file to
+         any desti" &amp; _
+        "nation on the disc."
+        '
+        'btnBrowse
+        '
+        Me.btnBrowse.Location = New System.Drawing.Point(88, 108)
+        Me.btnBrowse.Name = "btnBrowse"
+        Me.btnBrowse.Size = New System.Drawing.Size(92, 24)
+        Me.btnBrowse.TabIndex = 33
+        Me.btnBrowse.Text = "&amp;Browse..."
+        '
+        'txtFolder
+        '
+        Me.txtFolder.Location = New System.Drawing.Point(84, 76)
+        Me.txtFolder.Name = "txtFolder"
+        Me.txtFolder.Size = New System.Drawing.Size(400, 21)
+        Me.txtFolder.TabIndex = 32
+        Me.txtFolder.Text = ""
+        '
+        'lblFolder
+        '
+        Me.lblFolder.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.lblFolder.Location = New System.Drawing.Point(4, 80)
+        Me.lblFolder.Name = "lblFolder"
+        Me.lblFolder.Size = New System.Drawing.Size(76, 16)
+        Me.lblFolder.TabIndex = 31
+        Me.lblFolder.Text = "&amp;Folder:"
+        '
+        'chkOverwrite
+        '
+        Me.chkOverwrite.Checked = True
+        Me.chkOverwrite.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkOverwrite.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.chkOverwrite.Location = New System.Drawing.Point(184, 224)
+        Me.chkOverwrite.Name = "chkOverwrite"
+        Me.chkOverwrite.Size = New System.Drawing.Size(236, 16)
+        Me.chkOverwrite.TabIndex = 30
+        Me.chkOverwrite.Text = "&amp;Overwrite files on CDRW disc"
+        '
+        'chkEjectWhenComplete
+        '
+        Me.chkEjectWhenComplete.Checked = True
+        Me.chkEjectWhenComplete.CheckState =
+         System.Windows.Forms.CheckState.Checked
+        Me.chkEjectWhenComplete.FlatStyle =
+         System.Windows.Forms.FlatStyle.System
+        Me.chkEjectWhenComplete.Location = New System.Drawing.Point(184, 204)
+        Me.chkEjectWhenComplete.Name = "chkEjectWhenComplete"
+        Me.chkEjectWhenComplete.Size = New System.Drawing.Size(236, 16)
+        Me.chkEjectWhenComplete.TabIndex = 29
+        Me.chkEjectWhenComplete.Text = "&amp;Eject When Complete"
+        '
+        'chkSimulate
+        '
+        Me.chkSimulate.Checked = True
+        Me.chkSimulate.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkSimulate.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.chkSimulate.Location = New System.Drawing.Point(184, 184)
+        Me.chkSimulate.Name = "chkSimulate"
+        Me.chkSimulate.Size = New System.Drawing.Size(236, 16)
+        Me.chkSimulate.TabIndex = 28
+        Me.chkSimulate.Text = "&amp;Simulate"
+        '
+        'btnBurn
+        '
+        Me.btnBurn.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnBurn.Location = New System.Drawing.Point(92, 184)
+        Me.btnBurn.Name = "btnBurn"
+        Me.btnBurn.Size = New System.Drawing.Size(88, 24)
+        Me.btnBurn.TabIndex = 27
+        Me.btnBurn.Text = "&amp;Burn"
+        '
+        'cboRecorder
+        '
+        Me.cboRecorder.DropDownStyle =
+         System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboRecorder.Location = New System.Drawing.Point(88, 4)
+        Me.cboRecorder.Name = "cboRecorder"
+        Me.cboRecorder.Size = New System.Drawing.Size(404, 21)
+        Me.cboRecorder.TabIndex = 26
+        '
+        'lblRecorder
+        '
+        Me.lblRecorder.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.lblRecorder.Location = New System.Drawing.Point(8, 8)
+        Me.lblRecorder.Name = "lblRecorder"
+        Me.lblRecorder.Size = New System.Drawing.Size(76, 16)
+        Me.lblRecorder.TabIndex = 25
+        Me.lblRecorder.Text = "&amp;Recorder:"
+        '
+        'sbrMain
+        '
+        Me.sbrMain.Location = New System.Drawing.Point(0, 254)
+        Me.sbrMain.Name = "sbrMain"
+        Me.sbrMain.Size = New System.Drawing.Size(492, 20)
+        Me.sbrMain.TabIndex = 24
+        '
+        'frmDataCDCreator
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
+        Me.ClientSize = New System.Drawing.Size(492, 274)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.label1,
+         Me.btnBrowse, Me.txtFolder, Me.lblFolder, Me.chkOverwrite,
+         Me.chkEjectWhenComplete, Me.chkSimulate, Me.btnBurn, Me.cboRecorder,
+         Me.lblRecorder, Me.sbrMain})
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "frmDataCDCreator"
+        Me.Text = "vbAccelerator Data CD Creator"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub application_ThreadException(ByVal sender As Object, ByVal e As
+     ThreadExceptionEventArgs)
+        MessageBox.Show(Me, String.Format("An untrapped exception occurred:
+         {0}.  The application will now close.", e.Exception), _
+             Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Close()
+    End Sub
+
+
+    Protected Overrides Sub OnClosing(ByVal e As
+     System.ComponentModel.CancelEventArgs)
+
+        '// Don't close if burn in progress
+        If (burnInProgress) Then
+            e.Cancel = True
+         MessageBox.Show(Me, "A CD burn is currently in progress.  Cancel the
+          burn before closing this application.",  _
+               Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        '// Clear up:
+        MyBase.OnClosing(e)
+        Cursor.Current = Cursors.WaitCursor
+        sbrMain.Text = "Closing IMAPI interface..."
+        jolietDiscMaster.Dispose()
+        discMaster.Dispose()
+        Cursor.Current = Cursors.Default
+
+    End Sub
+
+    Private Sub GetRecorders()
+        Dim ex As Exception
+        Try
+            discMaster = New DiscMaster()
+            jolietDiscMaster = discMaster.JolietDiscMaster()
+            Dim recorder As DiscRecorder
+            For Each recorder In discMaster.DiscRecorders
+                cboRecorder.Items.Add( _
+                 New ComboRecorderWrapper(recorder))
+            Next
+
+            If (cboRecorder.Items.Count &gt; 0) Then
+                cboRecorder.SelectedIndex = 0
+            End If
+        Catch ex
+            MessageBox.Show(Me, String.Format("Unable to initialise the IMAPI
+             library {0}", ex), _
+              Text, MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            If Not (discMaster Is Nothing) Then
+                discMaster.Dispose()
+            End If
+        End Try
+    End Sub
+
+
+
+
+    Private Sub discMaster_AddProgress(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.ProgressEventArgs) Handles
+     discMaster.AddProgress
+        sbrMain.Text = String.Format("Adding {0} of {1}", args.Completed,
+         args.Total)
+    End Sub
+
+    Private Sub discMaster_BlockProgress(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.ProgressEventArgs) Handles
+     discMaster.BlockProgress
+        sbrMain.Text = String.Format("Block {0} of {1}", args.Completed,
+         args.Total)
+    End Sub
+
+    Private Sub discMaster_BurnComplete(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.CompletionStatusEventArgs) Handles
+     discMaster.BurnComplete
+        sbrMain.Text = String.Format("Burn Complete!")
+    End Sub
+
+    Private Sub discMaster_ClosingDisc(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.EstimatedTimeOperationEventArgs)
+     Handles discMaster.ClosingDisc
+        sbrMain.Text = String.Format("Closing disc (estimated time {0}s)...", _
+            args.EstimatedSeconds)
+    End Sub
+
+    Private Sub discMaster_EraseComplete(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.CompletionStatusEventArgs) Handles
+     discMaster.EraseComplete
+        sbrMain.Text = String.Format("Erase Complete!")
+    End Sub
+
+    Private Sub discMaster_PnPActivity(ByVal sender As Object, ByVal e As
+     System.EventArgs) Handles discMaster.PnPActivity
+
+    End Sub
+
+    Private Sub discMaster_PreparingBurn(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.EstimatedTimeOperationEventArgs)
+     Handles discMaster.PreparingBurn
+        sbrMain.Text = String.Format("Preparing to burn disc (estimated time
+         {0}s)...", _
+         args.EstimatedSeconds)
+    End Sub
+
+    Private Sub discMaster_QueryCancel(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.QueryCancelEventArgs) Handles
+     discMaster.QueryCancel
+        args.Cancel = cancel
+    End Sub
+
+    Private Sub discMaster_TrackProgress(ByVal sender As Object, ByVal args As
+     vbAccelerator.Components.ImapiWrapper.ProgressEventArgs) Handles
+     discMaster.TrackProgress
+        If (args.Completed &lt; args.Total) Then
+            sbrMain.Text = String.Format("Track {0} of {1}", args.Completed +
+             1, args.Total)
+        Else
+            sbrMain.Text = String.Format("Completed adding last track")
+        End If
+    End Sub
+
+    Private Sub cboRecorder_SelectedIndexChanged(ByVal sender As Object, ByVal
+     e As System.EventArgs) Handles cboRecorder.SelectedIndexChanged
+        If (cboRecorder.SelectedIndex &gt; -1) Then
+            Dim wrapper As ComboRecorderWrapper = cboRecorder.SelectedItem
+            discMaster.DiscRecorders.ActiveDiscRecorder = wrapper.DiscRecorder
+        End If
+    End Sub
+
+    Private Sub btnBurn_Click(ByVal sender As Object, ByVal e As
+     System.EventArgs) Handles btnBurn.Click
+        If (burnInProgress) Then
+            cancel = True
+        Else
+            BurnCd(chkSimulate.Checked, chkEjectWhenComplete.Checked,
+             chkOverwrite.Checked)
+        End If
+    End Sub
+
+    Private Function ValidateFolder() As Boolean
+        Dim folder As String = txtFolder.Text
+        If (Directory.Exists(folder)) Then
+            Return True
+        Else
+            MessageBox.Show(Me, "Please choose a valid folder on the file
+             system to copy from.", _
+              Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return False
+        End If
+    End Function
+
+    '/// &lt;summary&gt;
+    '/// Burns the CD asynchronously
+    '/// &lt;/summary&gt;
+    '/// &lt;param name="simulate"&gt;&lt;c&gt;true&lt;/c&gt; to simulate, &lt;c&gt;false&lt;/c&gt; to really
+     burn&lt;/param&gt;
+    '/// &lt;param name="ejectWhenComplete"&gt;&lt;c&gt;true&lt;/c&gt; if the tray should be
+     ejected once
+    '/// burn has finished.&lt;/param&gt;
+    '/// &lt;param name="overwrite"&gt;&lt;c&gt;true&lt;/c&gt; to overwrite existing files on the
+     disc.&lt;/param&gt;
+    Private Sub BurnCd(ByVal simulate As Boolean, ByVal ejectWhenComplete As
+     Boolean, ByVal overwrite As Boolean)
+        '// If the folder is good
+        If (ValidateFolder()) Then
+            '// Check that we have media:
+            If (CheckMedia()) Then
+                '// Asynchronously invoke the creator
+                creator = New DataCDCreator(discMaster, jolietDiscMaster)
+                creator.AddDirectory(txtFolder.Text, True)
+
+                createCDHandler = AddressOf creator.CreateCD
+                Dim callback As AsyncCallback = AddressOf createCD_Complete
+                Dim ar As IAsyncResult = createCDHandler.BeginInvoke( _
+                    simulate, ejectWhenComplete, overwrite, callback, Nothing)
+
+                SetApplicationMode(True)
+
+            End If
+        End If
+    End Sub
+
+    '/// &lt;summary&gt;
+    '/// Called when CD creation completes
+    '/// &lt;/summary&gt;
+    '/// &lt;param name="ar"&gt;Result of method call (none)&lt;/param&gt;
+    Private Sub createCD_Complete(ByVal ar As IAsyncResult)
+        SetApplicationMode(False)
+        createCDHandler.EndInvoke(ar)
+    End Sub
+
+    '/// &lt;summary&gt;
+    '/// Sets the application's mode
+    '/// &lt;/summary&gt;
+    '/// &lt;param name="burning"&gt;&lt;c&gt;true&lt;/c&gt; if a burn is in progress&lt;/param&gt;
+    Private Sub SetApplicationMode(ByVal burning As Boolean)
+        If (burning) Then
+            burnInProgress = True
+            cancel = False
+            btnBurn.Text = "Cancel"
+
+            cboRecorder.Enabled = False
+        Else
+            burnInProgress = False
+            btnBurn.Text = "&amp;Burn"
+
+            cboRecorder.Enabled = True
+        End If
+    End Sub
+
+    '/// &lt;summary&gt;
+    '/// Checks the media in the drive.
+    '/// &lt;/summary&gt;
+    '/// &lt;returns&gt;&lt;/returns&gt;
+    Private Function CheckMedia() As Boolean
+        Dim mediaOk As Boolean = False
+
+        sbrMain.Text = "Checking media in recorder..."
+        Cursor.Current = Cursors.WaitCursor
+        Dim recorder As DiscRecorder = cboRecorder.SelectedItem.DiscRecorder
+        recorder.OpenExclusive()
+        Dim media As MediaDetails = recorder.GetMediaDetails()
+        recorder.CloseExclusive()
+
+        Cursor.Current = Cursors.Default
+        If (media.MediaPresent) Then
+            If ((media.MediaFlags And MEDIA_FLAGS.MEDIA_WRITABLE) =
+             MEDIA_FLAGS.MEDIA_WRITABLE) Then
+                sbrMain.Text = "Preparing to burn CD."
+                mediaOk = True
+            Else
+                sbrMain.Text = "Media cannot be written to."
+                MessageBox.Show(Me, _
+                 String.Format("The disc in drive {0} ({1}) is either not blank
+                  or cannot be written to.", recorder.DriveLetter,
+                  recorder.PnPID), _
+                 Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            End If
+        Else
+            sbrMain.Text = "No media in drive."
+            MessageBox.Show(Me, _
+             String.Format("Please insert blank, writable media into drive {0}
+              ({1})", recorder.DriveLetter, recorder.PnPID), _
+             Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        End If
+        Return mediaOk
+    End Function
+
+
+    Private Sub btnBrowse_Click(ByVal sender As Object, ByVal e As
+     System.EventArgs) Handles btnBrowse.Click
+        '
+        '''TODO
+        '
+    End Sub
+
+    '/// &lt;summary&gt;
+    '/// Slight class to wrap a DiscRecorder allowing it to be associated
+    '/// with a combo box.
+    '/// &lt;/summary&gt;
+    Class ComboRecorderWrapper
+        Private ReadOnly recorder As DiscRecorder
+
+        Public Sub New(ByVal recorderParam As DiscRecorder)
+            recorder = recorderParam
+        End Sub
+
+        Public ReadOnly Property DiscRecorder() As DiscRecorder
+            Get
+                Return recorder
+            End Get
+        End Property
+
+        Public Overrides Function ToString() As String
+            Return String.Format("{0} ({1} {2} {3})", _
+              recorder.DriveLetter, recorder.Vendor, recorder.Product,
+               recorder.Revision)
+        End Function
+    End Class
+
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Writing Data CDs</a>&#160;.&#160;<a href="..\data_cd_writer.html">Data CD Writer</a>&#160;.&#160;DataCDWriterVB</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

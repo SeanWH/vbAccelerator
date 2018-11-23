@@ -1,0 +1,281 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsVB_frmInterProcessComms.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsVB_frmInterProcessComms.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsVB_frmInterProcessComms.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="wm_copydata_demo.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WM_COPYDATA Demo</a> (62K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13465&type=zip&title=wm_5fcopydata_20demo_2ezip_5fsimpleinterprocesscommunicationsvb_5ffrminterpr.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />10 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsVB_frmInterProcessComms.vb</h1><pre>Namespace SimpleInterprocessCommunications
+    Public Class frmInterProcessComms
+        Inherits System.Windows.Forms.Form
+
+        ''' &lt;summary&gt;
+        ''' The CopyData class used for message sending.
+        ''' &lt;/summary&gt;
+        Private WithEvents copyData As vbAccelerator.Components.Win32.CopyData
+         = Nothing
+
+
+#Region " Windows Form Designer generated code "
+
+        Public Sub New()
+            MyBase.New()
+
+            'This call is required by the Windows Form Designer.
+            InitializeComponent()
+
+            'Add any initialization after the InitializeComponent() call
+
+        End Sub
+
+        'Form overrides dispose to clean up the component list.
+        Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing Then
+                If Not (components Is Nothing) Then
+                    components.Dispose()
+                End If
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+        'Required by the Windows Form Designer
+        Private components As System.ComponentModel.IContainer
+
+        'NOTE: The following procedure is required by the Windows Form Designer
+        'It can be modified using the Windows Form Designer.  
+        'Do not modify it using the code editor.
+        Friend WithEvents grpReceive As System.Windows.Forms.GroupBox
+        Friend WithEvents btnClear As System.Windows.Forms.Button
+        Friend WithEvents lstReceived As System.Windows.Forms.ListBox
+        Friend WithEvents grpSend As System.Windows.Forms.GroupBox
+        Friend WithEvents lblRecipients As System.Windows.Forms.Label
+        Friend WithEvents cboChannels As System.Windows.Forms.ComboBox
+        Friend WithEvents txtToSend As System.Windows.Forms.TextBox
+        Friend WithEvents btnSend As System.Windows.Forms.Button
+        &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub
+         InitializeComponent()
+            Me.grpReceive = New System.Windows.Forms.GroupBox()
+            Me.btnClear = New System.Windows.Forms.Button()
+            Me.lstReceived = New System.Windows.Forms.ListBox()
+            Me.grpSend = New System.Windows.Forms.GroupBox()
+            Me.lblRecipients = New System.Windows.Forms.Label()
+            Me.cboChannels = New System.Windows.Forms.ComboBox()
+            Me.txtToSend = New System.Windows.Forms.TextBox()
+            Me.btnSend = New System.Windows.Forms.Button()
+            Me.grpReceive.SuspendLayout()
+            Me.grpSend.SuspendLayout()
+            Me.SuspendLayout()
+            '
+            'grpReceive
+            '
+            Me.grpReceive.Controls.AddRange(New System.Windows.Forms.Control()
+             {Me.btnClear, Me.lstReceived})
+            Me.grpReceive.Location = New System.Drawing.Point(4, 108)
+            Me.grpReceive.Name = "grpReceive"
+            Me.grpReceive.Size = New System.Drawing.Size(288, 176)
+            Me.grpReceive.TabIndex = 7
+            Me.grpReceive.TabStop = False
+            Me.grpReceive.Text = "Received Data"
+            '
+            'btnClear
+            '
+            Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.System
+            Me.btnClear.Location = New System.Drawing.Point(204, 20)
+            Me.btnClear.Name = "btnClear"
+            Me.btnClear.TabIndex = 5
+            Me.btnClear.Text = "&amp;Clear"
+            '
+            'lstReceived
+            '
+            Me.lstReceived.Location = New System.Drawing.Point(8, 20)
+            Me.lstReceived.Name = "lstReceived"
+            Me.lstReceived.Size = New System.Drawing.Size(192, 147)
+            Me.lstReceived.TabIndex = 3
+            '
+            'grpSend
+            '
+            Me.grpSend.Controls.AddRange(New System.Windows.Forms.Control()
+             {Me.lblRecipients, Me.cboChannels, Me.txtToSend, Me.btnSend})
+            Me.grpSend.FlatStyle = System.Windows.Forms.FlatStyle.System
+            Me.grpSend.Location = New System.Drawing.Point(4, 4)
+            Me.grpSend.Name = "grpSend"
+            Me.grpSend.Size = New System.Drawing.Size(292, 100)
+            Me.grpSend.TabIndex = 6
+            Me.grpSend.TabStop = False
+            Me.grpSend.Text = "Send Data"
+            '
+            'lblRecipients
+            '
+            Me.lblRecipients.Location = New System.Drawing.Point(208, 48)
+            Me.lblRecipients.Name = "lblRecipients"
+            Me.lblRecipients.Size = New System.Drawing.Size(76, 16)
+            Me.lblRecipients.TabIndex = 7
+            '
+            'cboChannels
+            '
+            Me.cboChannels.DropDownStyle =
+             System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cboChannels.Location = New System.Drawing.Point(8, 20)
+            Me.cboChannels.Name = "cboChannels"
+            Me.cboChannels.Size = New System.Drawing.Size(192, 21)
+            Me.cboChannels.TabIndex = 6
+            '
+            'txtToSend
+            '
+            Me.txtToSend.Location = New System.Drawing.Point(8, 44)
+            Me.txtToSend.Multiline = True
+            Me.txtToSend.Name = "txtToSend"
+            Me.txtToSend.Size = New System.Drawing.Size(192, 40)
+            Me.txtToSend.TabIndex = 5
+            Me.txtToSend.Text = "This is the data to send on the selected
+             channel."
+            '
+            'btnSend
+            '
+            Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.System
+            Me.btnSend.Location = New System.Drawing.Point(208, 20)
+            Me.btnSend.Name = "btnSend"
+            Me.btnSend.TabIndex = 4
+            Me.btnSend.Text = "&amp;Send"
+            '
+            'frmInterProcessComms
+            '
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+            Me.ClientSize = New System.Drawing.Size(300, 290)
+            Me.Controls.AddRange(New System.Windows.Forms.Control()
+             {Me.grpReceive, Me.grpSend})
+            Me.Name = "frmInterProcessComms"
+            Me.Text = "Form1"
+            Me.grpReceive.ResumeLayout(False)
+            Me.grpSend.ResumeLayout(False)
+            Me.ResumeLayout(False)
+
+        End Sub
+
+#End Region
+
+        Private Sub frmInterProcessComms_Load(ByVal sender As Object, ByVal e
+         As System.EventArgs) Handles MyBase.Load
+            ' Create a new instance of the class:
+            copyData = New vbAccelerator.Components.Win32.CopyData()
+
+            ' Assign the handle:
+            copyData.AssignHandle(Me.Handle)
+
+            ' Create the named channels to send and receive on.  The name
+            ' is arbitary; it can be anything you want.
+            copyData.Channels.Add("DataClass1")
+            copyData.Channels.Add("DataClass2")
+
+            ' Display the channels in the combo box and pick
+            ' the first:
+            Dim channel As vbAccelerator.Components.Win32.CopyDataChannel
+            For Each channel In copyData.Channels
+                cboChannels.Items.Add(channel.ChannelName)
+            Next
+            cboChannels.SelectedIndex = 0
+
+        End Sub
+
+        Private Sub copyData_DataReceived(ByVal sender As Object, ByVal e As
+         SimpleInterprocessCommunicationsVB.vbAccelerator.Components.Win32.DataR
+        eceivedEventArgs) Handles copyData.DataReceived
+            ' Display the data in the logging list box:
+            If (e.ChannelName.Equals("DataClass1")) Then
+                Dim data As DataClassExample1 = e.Data
+                lstReceived.Items.Add( _
+                 String.Format("{0} : {1}", e.ChannelName, data.CommandLine))
+
+            Else
+                Dim data As DataClassExample2 = e.Data
+                lstReceived.Items.Add( _
+                 String.Format("{0} : {1}", e.ChannelName, data.CommandLine))
+            End If
+            lstReceived.SelectedIndex = lstReceived.Items.Count - 1
+
+        End Sub
+
+        Private Sub btnSend_Click(ByVal sender As System.Object, ByVal e As
+         System.EventArgs) Handles btnSend.Click
+            ' Pick the channel name to send on:
+            Dim channelName As String =
+             cboChannels.Items(cboChannels.SelectedIndex)
+            Dim recipients As Integer = 0
+            ' Create some demonstration data and send it on the named
+            ' channel:
+            If (channelName.Equals("DataClass1")) Then
+                Dim data As DataClassExample1 = New
+                 DataClassExample1(txtToSend.Text, DateTime.Now)
+                recipients = copyData.Channels(channelName).Send(data)
+            Else
+                Dim data As DataClassExample2 = New
+                 DataClassExample2(txtToSend.Text, DateTime.Now)
+                recipients = copyData.Channels(channelName).Send(data)
+            End If
+            ' Display how many other instances receieved the message:
+            lblRecipients.Text = String.Format("{0} recipients", recipients)
+
+        End Sub
+
+        Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As
+         System.EventArgs) Handles btnClear.Click
+            lstReceived.Items.Clear()
+        End Sub
+    End Class
+End Namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsVB_frmInterProcessComms.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 15 November 2003</p></td><td></td></tr></table>
+</body></html>

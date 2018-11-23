@@ -1,0 +1,637 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsVB_CopyData.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsVB_CopyData.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsVB_CopyData.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="wm_copydata_demo.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WM_COPYDATA Demo</a> (62K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13465&type=zip&title=wm_5fcopydata_20demo_2ezip_5fsimpleinterprocesscommunicationsvb_5fcopydata.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />10 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsVB_CopyData.vb</h1><pre>Namespace vbAccelerator.Components.Win32
+
+    Public Delegate Sub DataReceivedEventHandler(ByVal sender As Object, ByVal
+     e As DataReceivedEventArgs)
+
+    ''' &lt;summary&gt;
+    ''' A class which wraps using Windows native WM_COPYDATA
+    ''' message to send interprocess data between applications.
+    ''' This is a simple technique for interprocess data sends
+    ''' using Windows.  The alternative to this is to use
+    ''' Remoting, which requires a network card and a way
+    ''' to register the Remoting name of an object so it
+    ''' can be read by other applications.
+    ''' &lt;/summary&gt;
+    Public Class CopyData
+        Inherits NativeWindow
+        Implements IDisposable
+
+        ''' &lt;summary&gt;
+        ''' Event raised when data is received on any of the channels 
+        ''' this class is subscribed to.
+        ''' &lt;/summary&gt;
+        Public Event DataReceived As DataReceivedEventHandler
+
+        &lt;System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServi
+        ces.LayoutKind.Sequential)&gt; _
+        Private Structure COPYDATASTRUCT
+            Public dwData As IntPtr
+            Public cbData As Integer
+            Public lpData As Integer
+        End Structure
+
+        Private Const WM_COPYDATA As Integer = &amp;H4A
+        Private Const WM_DESTROY As Integer = &amp;H2
+
+#Region "Member Variables"
+        Private m_channels As CopyDataChannels = Nothing
+        Private m_disposed As Boolean = False
+#End Region
+
+        ''' &lt;summary&gt;
+        ''' Override for a form's Window Procedure to handle WM_COPYDATA
+        ''' messages sent by other instances of this class.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="m"&gt;The Windows Message information.&lt;/param&gt;
+        Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+            If (m.Msg = WM_COPYDATA) Then
+                Dim cds As COPYDATASTRUCT = New COPYDATASTRUCT()
+                cds =
+                 System.Runtime.InteropServices.Marshal.PtrToStructure(m.LParam,
+                 cds.GetType())
+                If (cds.cbData &gt; 0) Then
+                    Dim data(cds.cbData - 1) As Byte
+                    Dim source As IntPtr = New IntPtr(cds.lpData)
+                    Dim length As Integer = cds.cbData
+                    System.Runtime.InteropServices.Marshal.Copy(source, data,
+                     0, length)
+                    Dim stream As System.IO.MemoryStream = New
+                     System.IO.MemoryStream(data)
+                    Dim b As
+                     System.Runtime.Serialization.Formatters.Binary.BinaryFormat
+                    ter = New
+                     System.Runtime.Serialization.Formatters.Binary.BinaryFormat
+                    ter()
+                    Dim cdo As CopyDataObjectData = b.Deserialize(stream)
+
+                    If (channels.Contains(cdo.Channel)) Then
+                        Dim d As DataReceivedEventArgs = New
+                         DataReceivedEventArgs(cdo.Channel, cdo.Data, cdo.Sent)
+                        OnDataReceived(d)
+                        m.Result = New IntPtr(1)
+                    End If
+                End If
+            ElseIf (m.Msg = WM_DESTROY) Then
+                ' WM_DESTROY fires before OnHandleChanged and is
+                ' a better place to ensure that we've cleared 
+                ' everything up.
+                channels.OnHandleChange()
+                MyBase.OnHandleChange()
+            End If
+            MyBase.WndProc(m)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Raises the DataReceived event from this class.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="e"&gt;The data which has been received.&lt;/param&gt;
+        Overridable Sub OnDataReceived(ByVal e As DataReceivedEventArgs)
+            RaiseEvent DataReceived(Me, e)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' If the form's handle changes, the properties associated
+        ''' with the window need to be cleared up. This override ensures
+        ''' that it is done.  Note that the CopyData class will then
+        ''' stop responding to events and it should be recreated once
+        ''' the new handle has been assigned.
+        ''' &lt;/summary&gt;
+        Protected Overrides Sub OnHandleChange()
+            ' need to clear up everything we had set.
+            channels.OnHandleChange()
+            MyBase.OnHandleChange()
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets the collection of channels.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property Channels() As CopyDataChannels
+            Get
+                Return m_channels
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Clears up any resources associated with this object.
+        ''' &lt;/summary&gt;
+        Public Sub Dispose() _
+            Implements IDisposable.Dispose
+            If Not (m_disposed) Then
+                Channels.Clear()
+                m_channels = Nothing
+                m_disposed = True
+                GC.SuppressFinalize(Me)
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of the CopyData class
+        ''' &lt;/summary&gt;
+        Public Sub New()
+            m_channels = New CopyDataChannels(Me)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Finalises a CopyData class which has not been disposed.
+        ''' There may be a minor resource leak if this class is finalised
+        ''' after the form it is associated with.
+        ''' &lt;/summary&gt;
+        Protected Overrides Sub Finalize()
+            MyBase.Finalize()
+            Dispose()
+        End Sub
+    End Class
+
+    ''' &lt;summary&gt;
+    ''' Contains data and other information associated with data
+    ''' which has been sent from another application.
+    ''' &lt;/summary&gt;
+    Public Class DataReceivedEventArgs
+
+        Private m_channelName As String = ""
+        Private m_data As Object = Nothing
+        Private m_sent As DateTime
+        Private m_received As DateTime
+
+        ''' &lt;summary&gt;
+        ''' Gets the channel name that this data was sent on.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property ChannelName() As String
+            Get
+                Return m_channelName
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Gets the data object which was sent.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property Data() As Object
+            Get
+                Return m_data
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Gets the date and time which at the data was sent
+        ''' by the sending application.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property Sent() As DateTime
+            Get
+                Return m_sent
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Gets the date and time which this data item as
+        ''' received.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property Received() As DateTime
+            Get
+                Return m_received
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Constructs an instance of this class.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="channelName"&gt;The channel that the data was received
+         from&lt;/param&gt;
+        ''' &lt;param name="data"&gt;The data which was sent&lt;/param&gt;
+        ''' &lt;param name="sent"&gt;The date and time the data was sent&lt;/param&gt;
+        Friend Sub New(ByVal channelName As String, ByVal data As Object, ByVal
+         sent As DateTime)
+            m_channelName = channelName
+            m_data = data
+            m_sent = sent
+            m_received = DateTime.Now
+        End Sub
+    End Class
+
+    ''' &lt;summary&gt;
+    ''' A strongly-typed collection of channels associated with the CopyData
+    ''' class.
+    ''' &lt;/summary&gt;
+    Public Class CopyDataChannels
+        Inherits DictionaryBase
+
+        Private m_owner As NativeWindow = Nothing
+
+        ''' &lt;summary&gt;
+        ''' Returns an enumerator for each of the CopyDataChannel objects
+        ''' within this collection.
+        ''' &lt;/summary&gt;
+        ''' &lt;returns&gt;An enumerator for each of the CopyDataChannel objects
+        ''' within this collection.&lt;/returns&gt;
+        Public Shadows Function GetEnumerator() As
+         System.Collections.IEnumerator
+            Return Me.Dictionary.Values.GetEnumerator()
+        End Function
+
+        ''' &lt;summary&gt;
+        ''' Returns the CopyDataChannel at the specified 0-based index.
+        ''' &lt;/summary&gt;
+        Default Public ReadOnly Property Item(ByVal Index As Integer) As
+         CopyDataChannel
+            Get
+                Dim ret As CopyDataChannel = Nothing
+                Dim i As Integer = 0
+                Dim cdc As CopyDataChannel
+                For Each cdc In Me.Dictionary.Values
+                    i += 1
+                    If (i = index) Then
+                        ret = cdc
+                        Exit For
+                    End If
+                Next
+                Return ret
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Returns the CopyDataChannel for the specified channelName
+        ''' &lt;/summary&gt;
+        Default Public ReadOnly Property Item(ByVal channelName As String) As
+         CopyDataChannel
+            Get
+                Return Me.Dictionary(channelName)
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Adds a new channel on which this application can send and
+        ''' receive messages.
+        ''' &lt;/summary&gt;
+        Public Sub Add(ByVal channelName As String)
+            Dim cdc As CopyDataChannel = New CopyDataChannel(m_owner,
+             channelName)
+            Me.Dictionary.Add(channelName, cdc)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Removes an existing channel.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="channelName"&gt;The channel to remove&lt;/param&gt;
+        Public Sub Remove(ByVal channelName As String)
+            Me.Dictionary.Remove(channelName)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets/sets whether this channel contains a CopyDataChannel
+        ''' for the specified channelName.
+        ''' &lt;/summary&gt;
+        Public Function Contains(ByVal channelName As String) As Boolean
+            Return Me.Dictionary.Contains(channelName)
+        End Function
+
+        ''' &lt;summary&gt;
+        ''' Ensures the resources associated with a CopyDataChannel
+        ''' object collected by this class are cleared up.
+        ''' &lt;/summary&gt;
+        Protected Overrides Sub OnClear()
+            Dim cdc As CopyDataChannel
+            For Each cdc In Me.Dictionary.Values
+                cdc.Dispose()
+            Next
+            MyBase.OnClear()
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Ensures any resoures associated with the CopyDataChannel object
+        ''' which has been removed are cleared up.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="key"&gt;The channelName&lt;/param&gt;
+        ''' &lt;param name="data"&gt;The CopyDataChannel object which has
+        ''' just been removed&lt;/param&gt;
+        Protected Overrides Sub OnRemoveComplete(ByVal key As Object, ByVal
+         data As Object)
+            Dim cdc As CopyDataChannel
+            cdc = data
+            cdc.Dispose()
+            MyBase.OnRemove(key, data)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' If the form's handle changes, the properties associated
+        ''' with the window need to be cleared up. This override ensures
+        ''' that it is done.  Note that the CopyData class will then
+        ''' stop responding to events and it should be recreated once
+        ''' the new handle has been assigned.
+        ''' &lt;/summary&gt;
+        Public Sub OnHandleChange()
+
+            Dim cdc As CopyDataChannel
+            For Each cdc In Me.Dictionary.Values
+                cdc.OnHandleChange()
+            Next
+
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of the CopyDataChannels collection.
+        ''' Automatically managed by the CopyData class.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="owner"&gt;The NativeWindow this collection
+        ''' will be associated with&lt;/param&gt;
+        Friend Sub New(ByVal owner As NativeWindow)
+            m_owner = owner
+        End Sub
+    End Class
+
+
+    ''' &lt;summary&gt;
+    ''' A channel on which messages can be sent.
+    ''' &lt;/summary&gt;
+    Public Class CopyDataChannel
+        Implements IDisposable
+
+#Region " Unmanaged Code"
+        Private Declare Auto Function GetProp Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByVal lpString As String) As Integer
+        Private Declare Auto Function SetProp Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByVal lpString As String, _
+         ByVal hData As IntPtr) As Integer
+        Private Declare Auto Function RemoveProp Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByVal lpString As String) As Integer
+
+        Private Declare Auto Function SendMessage Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByVal wMsg As Integer, _
+         ByVal wParam As Integer, _
+         ByRef lParam As COPYDATASTRUCT _
+         ) As Integer
+
+        &lt;System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServi
+        ces.LayoutKind.Sequential)&gt; _
+        Private Structure COPYDATASTRUCT
+            Public dwData As IntPtr
+            Public cbData As Integer
+            Public lpData As IntPtr
+        End Structure
+
+        Private Const WM_COPYDATA As Integer = &amp;H4A
+#End Region
+
+#Region " Member Variables"
+        Private m_channelName As String = ""
+        Private m_disposed As Boolean = False
+        Private m_owner As NativeWindow = Nothing
+        Private m_recreateChannel As Boolean = False
+#End Region
+
+        ''' &lt;summary&gt;
+        ''' Gets the name associated with this channel.
+        ''' &lt;/summary&gt;
+        Public ReadOnly Property ChannelName() As String
+            Get
+                Return m_channelName
+            End Get
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Sends the specified object on this channel to any other
+        ''' applications which are listening.  The object must have the
+        ''' SerializableAttribute set, or must implement ISerializable.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="obj"&gt;The object to send&lt;/param&gt;
+        ''' &lt;returns&gt;The number of recipients&lt;/returns&gt;
+        Public Function Send(ByVal obj As Object) As Integer
+
+            Dim recipients As Integer = 0
+
+            If (m_disposed) Then
+                Throw New InvalidOperationException("Object has been disposed")
+            Else
+
+                If (m_recreateChannel) Then ' handle has changed
+                    addChannel()
+                End If
+
+                Dim cdo As CopyDataObjectData = New CopyDataObjectData(obj,
+                 m_channelName)
+
+                ' Try to do a binary serialization on obj.
+                ' This will throw and exception if the object to
+                ' be passed isn't serializable.
+                Dim b As
+                 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+                 = New
+                 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter(
+                )
+                Dim stream As System.IO.MemoryStream = New
+                 System.IO.MemoryStream()
+                b.Serialize(stream, cdo)
+                stream.Flush()
+
+                ' Now move the data into a pointer so we can send
+                ' it using WM_COPYDATA:
+                ' Get the length of the data:
+                Dim dataSize As Integer = stream.Length
+                If (dataSize &gt; 0) Then
+                    ' This isn't very efficient if your data is very large.
+                    ' First we copy to a byte array, then copy to a CoTask 
+                    ' Mem object... And when we use WM_COPYDATA windows will
+                    ' make yet another copy!  But if you're talking about 4K
+                    ' or less of data then it doesn't really matter.
+                    Dim data(dataSize) As Byte
+                    stream.Seek(0, System.IO.SeekOrigin.Begin)
+                    stream.Read(data, 0, dataSize)
+                    Dim ptrData As IntPtr =
+                     System.Runtime.InteropServices.Marshal.AllocCoTaskMem(dataS
+                    ize)
+                    System.Runtime.InteropServices.Marshal.Copy(data, 0,
+                     ptrData, dataSize)
+
+                    ' Enumerate all windows which have the
+                    ' channel name, send the data to each one
+                    Dim ew As EnumWindows = New EnumWindows()
+                    ew.GetWindows()
+
+                    ' Send the data to each window identified on
+                    ' the channel:
+                    Dim window As EnumWindowsItem
+                    For Each window In ew.Items
+                        If Not (window.Handle.Equals(m_owner.Handle)) Then
+                            If (GetProp(window.Handle, Me.ChannelName) &lt;&gt; 0)
+                             Then
+                                Dim cds As COPYDATASTRUCT = New COPYDATASTRUCT()
+                                cds.cbData = dataSize
+                                cds.dwData = IntPtr.Zero
+                                cds.lpData = ptrData
+                                Dim res As Integer = SendMessage(window.Handle,
+                                 WM_COPYDATA, m_owner.Handle.ToInt32(), cds)
+                                recipients +=
+                                 IIf(System.Runtime.InteropServices.Marshal.GetL
+                                astWin32Error() = 0, 1, 0)
+                            End If
+                        End If
+                    Next
+
+                    ' Clear up the data:
+                    System.Runtime.InteropServices.Marshal.FreeCoTaskMem(ptrData
+                    )
+                End If
+                stream.Close()
+            End If
+            Return recipients
+        End Function
+
+        Private Sub addChannel()
+            ' Tag this window with property "channelName"
+            SetProp(m_owner.Handle, m_channelName, m_owner.Handle)
+        End Sub
+
+        Private Sub removeChannel()
+            ' Remove the "channelName" property from this window
+            RemoveProp(m_owner.Handle, m_channelName)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' If the form's handle changes, the properties associated
+        ''' with the window need to be cleared up. This method ensures
+        ''' that it is done.  Note that the CopyData class will then
+        ''' stop responding to events and it should be recreated once
+        ''' the new handle has been assigned.
+        ''' &lt;/summary&gt;
+        Public Sub OnHandleChange()
+            removeChannel()
+            m_recreateChannel = True
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Clears up any resources associated with this channel.
+        ''' &lt;/summary&gt;
+        Public Sub Dispose() _
+            Implements IDisposable.Dispose
+            If Not (m_disposed) Then
+                If (ChannelName.Length &gt; 0) Then
+                    removeChannel()
+                End If
+                m_channelName = ""
+                m_disposed = True
+                GC.SuppressFinalize(Me)
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of a CopyData channel.  Called
+        ''' automatically by the CopyDataChannels collection.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="owner"&gt;The owning native window&lt;/param&gt;
+        ''' &lt;param name="channelName"&gt;The name of the channel to
+        ''' send messages on&lt;/param&gt;
+        Friend Sub New(ByVal owner As NativeWindow, ByVal channelName As String)
+            m_owner = owner
+            m_channelName = channelName
+            addChannel()
+        End Sub
+
+        Protected Overrides Sub Finalize()
+            Dispose()
+            MyBase.Finalize()
+        End Sub
+    End Class
+
+    ''' &lt;summary&gt;
+    ''' A class which wraps the data being copied, used
+    ''' internally within the CopyData class objects.
+    ''' &lt;/summary&gt;
+    &lt;Serializable()&gt; _
+    Friend Class CopyDataObjectData
+        ''' &lt;summary&gt;
+        ''' The Object to copy.  Must be Serializable.
+        ''' &lt;/summary&gt;
+        Public Data As Object
+        ''' &lt;summary&gt;
+        ''' The date and time this object was sent.
+        ''' &lt;/summary&gt;
+        Public Sent As DateTime
+        ''' &lt;summary&gt;
+        ''' The name of the channel this object is being sent on
+        ''' &lt;/summary&gt;
+        Public Channel As String
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of this object
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="data"&gt;The data to copy&lt;/param&gt;
+        ''' &lt;param name="channel"&gt;The channel name to send on&lt;/param&gt;
+        ''' &lt;exception cref="ArgumentException"&gt;If data is not
+         serializable.&lt;/exception&gt;
+        Public Sub New(ByVal theData As Object, ByVal theChannel As String)
+            Data = theData
+            If Not (Data.GetType().IsSerializable) Then
+                Throw New ArgumentException("Data object must be
+                 serializable.", "data")
+            End If
+            Channel = theChannel
+            Sent = DateTime.Now
+        End Sub
+    End Class
+
+end namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsVB_CopyData.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 15 November 2003</p></td><td></td></tr></table>
+</body></html>

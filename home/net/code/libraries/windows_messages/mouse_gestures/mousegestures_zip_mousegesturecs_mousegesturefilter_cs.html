@@ -1,0 +1,581 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: MouseGestureCS_MouseGestureFilter.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: MouseGestureCS_MouseGestureFilter.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Adding Mouse Gesture Support to .NET Windows Applications</a>&#160;.&#160;<a href="mousegestures.html">MouseGestures</a>&#160;.&#160;MouseGestureCS_MouseGestureFilter.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="mousegestures.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />MouseGestures</a> (154K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13128</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13128&type=zip&title=mousegestures_2ezip_5fmousegesturecs_5fmousegesturefilter.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Oct 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: MouseGestureCS_MouseGestureFilter.cs</h1><pre>using System;
+using System.Collections;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Win32
+{
+
+   /// &lt;summary&gt;
+   /// Enumerated flag values for the mouse gestures supported by 
+   /// the MouseGesture class.
+   /// &lt;/summary&gt;
+   [FlagsAttribute()]
+   public enum MouseGestureTypes : int
+   {
+      /// &lt;summary&gt;
+      /// No mouse gesture.
+      /// &lt;/summary&gt;
+      NoGesture = 0x0,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move north
+      /// &lt;/summary&gt;
+      NorthGesture = 0x1,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move south
+      /// &lt;/summary&gt;
+      SouthGesture = 0x2,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move east
+      /// &lt;/summary&gt;
+      EastGesture = 0x4,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move west
+      /// &lt;/summary&gt;
+      WestGesture = 0x8,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move north-east
+      /// &lt;/summary&gt;
+      NorthThenEastGesture = 0x10,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move south-east
+      /// &lt;/summary&gt;
+      SouthThenEastGesture = 0x20,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move south-west
+      /// &lt;/summary&gt;
+      SouthThenWestGesture = 0x40,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move north-west
+      /// &lt;/summary&gt;      
+      NorthThenWestGesture = 0x80,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move north-east
+      /// &lt;/summary&gt;
+      EastThenNorthGesture = 0x100,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move south-east
+      /// &lt;/summary&gt;
+      EastThenSouthGesture = 0x200,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move south-west
+      /// &lt;/summary&gt;
+      WestThenSouthGesture = 0x400,
+      /// &lt;summary&gt;
+      /// Mouse Gesture move north-west
+      /// &lt;/summary&gt;      
+      WestThenNorthGesture = 0x800,
+      /// &lt;summary&gt;
+      /// All mouse gestures
+      /// &lt;/summary&gt;
+      AllGestureTypes = 0xFFF
+   }
+
+   /// &lt;summary&gt;
+   /// Holds the arguments for a gesture event.  The &lt;c&gt;acceptGesture&lt;/c&gt;
+   /// property is used to tell the class which raises the message whether
+   /// the consuming application acknowledged the gesture and therefore to 
+   /// cancel the right mouse up event.
+   /// &lt;/summary&gt;
+   public class MouseGestureEventArgs : EventArgs
+   {
+      private MouseGestureTypes gestureType;
+      private Point gestureStartPosition;
+      private Point gestureEndPosition;
+      private bool acceptGesture;
+
+      /// &lt;summary&gt;
+      /// Gets the gesture type.
+      /// &lt;/summary&gt;
+      public MouseGestureTypes GestureType
+      {
+         get
+         {
+            return this.gestureType;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the mouse location for the point at which the gesture
+      /// was started, relative to the screen.
+      /// &lt;/summary&gt;
+      public Point GestureStartPosition
+      {
+         get
+         {
+            return this.gestureStartPosition;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the mouse location for the point at which the gesture
+      /// was ended, relative to the screen.
+      /// &lt;/summary&gt;
+      public Point GestureEndPosition
+      {
+         get
+         {
+            return this.gestureEndPosition;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the gesture has been processed by the 
+      /// application.  By default, gestures are presumed to be unaccepted,
+      /// in which case the standard right mouse up behaviour will be 
+      /// activated.  By setting this property to &lt;c&gt;true&lt;/c&gt; the right
+      /// mouse up is filtered and the application can process the gesture.
+      /// &lt;/summary&gt;
+      public bool AcceptGesture
+      {
+         get
+         {
+            return this.acceptGesture;
+         }
+         set
+         {
+            this.acceptGesture = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructor
+      /// &lt;/summary&gt;
+      /// &lt;param name="gestureType"&gt;Type of gesture which was detected&lt;/param&gt;
+      /// &lt;param name="gestureStartPosition"&gt;Position of mouse relative to
+       screen when gesture
+      /// was started&lt;/param&gt;
+      /// &lt;param name="gestureEndPosition"&gt;Position of mouse relative to screen
+       when gesture
+      /// was completed&lt;/param&gt;
+      public MouseGestureEventArgs(
+            MouseGestureTypes gestureType,
+            Point gestureStartPosition,
+            Point gestureEndPosition
+         )
+      {
+         this.gestureType = gestureType;
+         this.gestureStartPosition = gestureStartPosition;
+         this.gestureEndPosition = gestureEndPosition;
+         this.acceptGesture = false;
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// Represents the method which handles the &lt;c&gt;MouseGesture&lt;/c&gt; event
+   /// raised by the &lt;c&gt;MouseGestureFilter&lt;/c&gt; class.
+   /// &lt;/summary&gt;
+   public delegate void MouseGestureEventHandler(object sender,
+    MouseGestureEventArgs args);
+
+   /// &lt;summary&gt;
+   /// A Windows Message Loop filter which enables mouse gestures to 
+   /// be detected over any control or window.
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;Controls which perform processing on Right Mouse
+   /// Down (rather than the standard Right Mouse Up) will still
+   /// perform the right mouse action regardless of whether a gesture
+   /// is made.&lt;/remarks&gt;
+   public class MouseGestureFilter : IMessageFilter
+   {
+      /// &lt;summary&gt;
+      /// 
+      /// &lt;/summary&gt;
+      public event MouseGestureEventHandler MouseGesture;
+
+      [DllImport("user32", CharSet = CharSet.Auto)]
+      private extern static int PostMessage (
+         IntPtr hwnd, 
+         int wMsg, 
+         int wParam, 
+         int lParam);
+
+      private const int WM_ACTIVATE = 0x6;
+      private const int WM_RBUTTONDOWN = 0x204;
+      private const int WM_MOUSEMOVE = 0x200;
+      private const int WM_RBUTTONUP = 0x205;
+
+      /// &lt;summary&gt;
+      /// The default absolute number of pixels the mouse must travel
+      /// in any direction for the gesture to be acknowledged.
+      /// &lt;/summary&gt;
+      private const int DEFAULT_HYSTERESIS_PIXELS = 8;
+
+      /// &lt;summary&gt;
+      /// How far does the mouse have to move before it is 
+      /// interpreted as a gesture?
+      /// &lt;/summary&gt;
+      protected int hysteresis = DEFAULT_HYSTERESIS_PIXELS;
+      /// &lt;summary&gt;
+      /// The configured mouse gesture types
+      /// &lt;/summary&gt;
+      private MouseGestureTypes gestureTypes = MouseGestureTypes.NoGesture;
+      /// &lt;summary&gt;
+      /// Whether we are checking for a gesture or not.
+      /// &lt;/summary&gt;
+      private bool checkingGesture = false;
+      /// &lt;summary&gt;
+      /// The recorded mouse gesture during gesture checking
+      /// &lt;/summary&gt;
+      private MouseGestureTypes recordedGesture = MouseGestureTypes.NoGesture;
+      /// &lt;summary&gt;
+      /// &lt;c&gt;ArrayList&lt;/c&gt; of mouse points recorded during gesture.
+      /// &lt;/summary&gt;
+      private ArrayList gesture = null;
+      
+      
+      /// &lt;summary&gt;
+      /// Gets/sets the mouse gesture types to look for.
+      /// &lt;/summary&gt;
+      public MouseGestureTypes GestureTypes
+      {
+         get
+         {
+            return this.gestureTypes;
+         }
+         set
+         {
+            this.gestureTypes = value;
+         }
+      }
+
+      
+      /// &lt;summary&gt;
+      /// Prefilters all application messages to check whether
+      /// the message is a gesture or not.
+      /// &lt;/summary&gt;
+      /// &lt;param name="m"&gt;The Windows message to prefilter&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; if the message should be filtered (was a 
+      /// processed gesture), &lt;c&gt;false&lt;/c&gt; otherwise.&lt;/returns&gt;
+      public bool PreFilterMessage(
+         ref Message m
+         )
+      {
+         bool retValue = false;
+
+         if (this.gestureTypes &gt; 0)
+         {
+            if (this.checkingGesture)
+            {
+               if (m.Msg == WM_MOUSEMOVE)
+               {
+                  AddToMouseGesture();
+               }
+               else if (m.Msg == WM_RBUTTONUP)
+               {
+                  retValue = EndMouseGesture();
+                  if (retValue)
+                  {
+                     // Windows will skip the next mouse down if we consume
+                     // a mouse up.  m cannot be modified, despite being byref,
+                     // so post a new one to a location which is offscreen:
+                     int offScreen = 0x7fff7fff;
+                     PostMessage(m.HWnd, WM_RBUTTONUP, (int)m.WParam,
+                      offScreen);
+                  }
+               }
+               else if (m.Msg == WM_ACTIVATE)
+               {
+                  this.checkingGesture = false;            
+               }
+            }
+            else if (m.Msg == WM_RBUTTONDOWN)
+            {
+               BeginMouseGesture();
+            }
+         }
+         return retValue;
+      }
+
+      /// &lt;summary&gt;
+      /// 
+      /// &lt;/summary&gt;
+      private void BeginMouseGesture()
+      {
+         gesture = new ArrayList();
+         gesture.Add(Cursor.Position);
+         this.checkingGesture = true;
+      }
+
+      /// &lt;summary&gt;
+      /// 
+      /// &lt;/summary&gt;
+      private void AddToMouseGesture()
+      {
+         gesture.Add(Cursor.Position);
+      }
+
+      /// &lt;summary&gt;
+      /// 
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      private bool EndMouseGesture()
+      {
+         this.checkingGesture = false;
+
+         bool retValue = false;
+
+         // add the end point:
+         gesture.Add(Cursor.Position);
+
+         // get start and end:
+         Point first = (Point) gesture[0];
+         Point last = (Point) gesture[gesture.Count - 1];
+
+         // check which directions we register a change in:
+         int xDiff = first.X - last.X;
+         int yDiff = first.Y - last.Y;
+
+         bool north, south, east, west;
+         north = south = east = west = false;
+
+         if (Math.Abs(yDiff) &gt; DEFAULT_HYSTERESIS_PIXELS)
+         {
+            north = (yDiff &gt; 0);
+            south = !north;
+         }
+         if (Math.Abs(xDiff) &gt; DEFAULT_HYSTERESIS_PIXELS)
+         {
+            west = (xDiff &gt; 0);
+            east = !west;
+         }
+         // check for very narrow angles as these are probably not compound
+          gestures
+         if ((north || south) &amp;&amp; (east || west))
+         {
+            if (Math.Abs(xDiff) &gt; Math.Abs(yDiff))
+            {
+               if ((Math.Abs(xDiff) / (Math.Abs(yDiff) * 1.0)) &gt; 7.0)
+               {
+                  north = south = false;
+               }
+            }
+            else
+            {
+               if ((Math.Abs(yDiff) / (Math.Abs(xDiff) * 1.0)) &gt; 7.0)
+               {
+                  east = west = false;
+               }
+            }
+         }
+
+         recordedGesture = MouseGestureTypes.NoGesture;
+
+         if (north || south) 
+         {
+            if (east || west)
+            {
+               // compound gesture:
+               recordedGesture = interpretCompoundGesture(first, last, north,
+                south, east, west);
+            }
+            else
+            {
+               // pure vertical gesture:
+               if (north)
+               {
+                  recordedGesture = MouseGestureTypes.NorthGesture;
+               }
+               else
+               {
+                  recordedGesture = MouseGestureTypes.SouthGesture;
+               }
+            }
+         }
+         else if (east || west)
+         {
+            // pure horizontal gesture
+            if (east)
+            {
+               recordedGesture = MouseGestureTypes.EastGesture;
+            }
+            else
+            {
+               recordedGesture = MouseGestureTypes.WestGesture;
+            }
+         }
+
+         if (recordedGesture != MouseGestureTypes.NoGesture)
+         {            
+            if ((gestureTypes &amp; recordedGesture) != 0)
+            {
+               MouseGestureEventArgs args = new MouseGestureEventArgs(
+                  recordedGesture, first, last);
+               if (this.MouseGesture != null)
+               {
+                  this.MouseGesture(this, args);
+                  retValue = args.AcceptGesture;
+               }
+            }         
+         }
+
+         return retValue;
+      }
+
+      private MouseGestureTypes interpretCompoundGesture(
+         Point first, Point last,
+         bool north, bool south, bool east, bool west)
+      {
+         MouseGestureTypes retValue = MouseGestureTypes.NoGesture;
+
+         // draw a diagonal line between start &amp; end
+         // and determine if most points are y above 
+         // the line or not:
+         int pointAbove = 0;
+         int pointBelow = 0;
+         
+         foreach (Point point in gesture)
+         {
+            int diagY = ((point.X - first.X) * (first.Y - last.Y)) / (first.X -
+             last.X) + first.Y;
+            if (point.Y &gt; diagY)
+            {
+               pointAbove++;
+            }
+            else
+            {
+               pointBelow++;
+            }
+         }
+
+         if (north)
+         {
+            if (east)
+            {
+               if (pointAbove &gt; pointBelow)
+               {
+                  retValue = MouseGestureTypes.EastThenNorthGesture;
+               }
+               else
+               {
+                  retValue = MouseGestureTypes.NorthThenEastGesture;
+               }
+            }
+            else
+            {
+               if (pointAbove &gt; pointBelow)
+               {
+                  retValue = MouseGestureTypes.WestThenNorthGesture;
+               }
+               else
+               {
+                  retValue = MouseGestureTypes.NorthThenWestGesture;
+               }
+
+            }
+         }
+         else if (south)
+         {
+            if (east)
+            {
+               if (pointAbove &gt; pointBelow)
+               {
+                  retValue = MouseGestureTypes.SouthThenEastGesture;
+               }
+               else
+               {
+                  retValue = MouseGestureTypes.EastThenSouthGesture;
+               }
+            }
+            else
+            {
+               if (pointAbove &gt; pointBelow)
+               {
+                  retValue = MouseGestureTypes.SouthThenWestGesture;
+               }
+               else
+               {
+                  retValue = MouseGestureTypes.WestThenSouthGesture;
+               }
+            }
+         }
+
+         return retValue;
+      }
+
+
+      /// &lt;summary&gt;
+      /// Constructs a default instance of this class.  The class
+      /// checks for all &lt;c&gt;MouseGestureTypes&lt;/c&gt;.
+      /// &lt;/summary&gt;       
+      public MouseGestureFilter()
+      {
+         this.gestureTypes =  MouseGestureTypes.AllGestureTypes;
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class and starts checking for
+      /// the specified mouse gestures.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gestureTypes"&gt;&lt;/param&gt;
+      public MouseGestureFilter(MouseGestureTypes gestureTypes)
+      {
+         this.gestureTypes = gestureTypes;
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Adding Mouse Gesture Support to .NET Windows Applications</a>&#160;.&#160;<a href="mousegestures.html">MouseGestures</a>&#160;.&#160;MouseGestureCS_MouseGestureFilter.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 November 2003</p></td><td></td></tr></table>
+</body></html>

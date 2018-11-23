@@ -1,0 +1,436 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - .NET Button ListBar Control</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+The Button ListBar control provides an emulation of the ListBar provided in the Windows
+Add/Remove Programs window.  Under XP it uses the UxTheme API to draw parts of the toolbar,
+and degrades to use standard GDI drawing calls when used on earlier OS versions.  Both
+C# and VB.NET versions of the same code are provided.
+" /><link rel="stylesheet" href="../../../../../res/screen.css" codebase="..\..\..\..\..\res\"  media="SCREEN" /><link rel="stylesheet" href="../../../../../res/print.css" codebase="..\..\..\..\..\res\"  media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;.NET Button ListBar Control</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="button_list_bar_net.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Button List Bar.NET</a> (159K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:11824</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=11824&type=article&title=_2enet_20button_20listbar_20control.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Jan 2004<br /><p class="update">Corrected resource leak in drawing code.  The 
+<span class="code">hFont</span> being returned by the <span class="code">ToHfont</span>
+method was not being cleared up using <span class="code">DeleteObject</span>.</p></p><p class="update"><a href="updates.html">Update History &gt;</a></p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\controls\listbar\button_list_bar\article.html">Button ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>.NET Button ListBar Control</h1><img src="buttonlistbar.png" width="382" height="286" alt=".NET Button ListBar in XP" /><p /><p>
+The Button ListBar control provides an emulation of the ListBar provided in the Windows
+Add/Remove Programs window.  Under XP it uses the UxTheme API to draw parts of the toolbar,
+and degrades to use standard GDI drawing calls when used on earlier OS versions.  Both
+C# and VB.NET versions of the same code are provided.
+</p><h2>About The Control</h2><p>
+As a consequence of rebuilding a PC from scratch, I had occasion to visit Windows Add/Remove
+Programs Dialog and thought it might be a good idea to build a reusable control to provide
+the same functionality.  
+    </p><img src="addremove.png" width="281" height="184" alt="Windows XP Add/Remove Programs Dialog" /><p><small><strong>Windows XP Add/Remove Programs Dialog</strong></small></p><p>
+This control was first implemented using <a href="..\..\..\..\..\vb\code\controls\listbar\button_list_bar\article.html">in VB 
+classic</a>, and presented some considerable, although not insurmountable difficulties, 
+so it was particularly interesting to see if was easier to do the same thing using the 
+.NET Framework.  I'm pleased to say that despite the learning curve of the new framework that
+it was, as the .NET Framework's authors luckily seem to have seen most of the issues
+that afflicted VB controls and have finally provided support for these issues.
+The main points which made using .NET easier were:
+    </p><ol><li>Massively improved ability to handle key events - including Alt-mnemonics.  
+Previously in VB you needed to replace the in-process vtable of the control to get at
+the <span class="code">IOleControl</span> interface needed to do this!</li><li>Built-in support for Windows scrollbars from any control using the AutoScroll.. methods.  
+Previously in VB you needed to declare the scrollbar functions, apply a subclass and hack 
+the Window style of the object to do this.  (Incidentally it isn't all good, though, since 
+for reasons best known to the Framework's authors the AutoScroll implementation is 
+restricted to a 16-bit scroll range, which will be a problem for large controls)</li><li>Massively improved drawing libraries based on GDI+.</li><li>Ease of providing collection-based interfaces for controls with inherent 
+<span class="code">For-Each</span> support;  so each of the button's properties is accessed 
+through a <span class="code">ButtonListBarItem</span> object, collected in the 
+<span class="code">ButtonListBarItems</span> collection rather 
+than the more basic flat model forced upon the VB Classic version.</li><li>The .NET properties dialog is more powerful
+than the VB Classic one and hence provides many more design-time features without writing
+any code.</li><li>Better support for declaring API functions.  In particular for this case the 
+<span class="code">CharSet</span> attribute.  The C# way of declaring external API functions
+is great and makes you wish that the verbose VB-style was never invented...
+</li></ol><h2>Using the Control</h2><p>
+The ListBar allows you to add as many buttons as you wish to a single bar.  The buttons
+display images sourced from an ImageList, tooltips and resize to fit as many lines of text 
+as you supply for the caption.  Buttons can also be disabled if required.  The control
+supports both keyboard and mouse navigation, either of which can be overridden.
+    </p><p>
+To use the control, add either the <i>ButtonListBar.vb</i> or <i>ButtonListBar.cs</i> file
+to your project.  You should find the control automatically appears in the Toolbox; if not
+you'll need to force the toolbox to display the control: typically I find that double
+clicking on the control source file to open its designer causes this to occur. The namespace of 
+the control
+is <span class="code">vbAccelerator.Controls.ListBar</span>.
+</p><h3>Configuring the Control</h3><p>
+Typically, an instance of the control will appear on either the right or left of a form,
+so you'll probably want to set the <span class="code">Dock</span> property of the control.
+An <span class="code">ImageList</span> and a <span class="code">Tooltip</span> object 
+can be associated with the control either at design-time or at run-time.
+</p><h3>Adding and Removing Buttons</h3><p>
+Buttons are added and removed through the <span class="code">Items</span> property of the control,
+which returns a <span class="code">ButtonListBarItems</span> object. This is provides access to the
+collection of <span class="code">ButtonListBarItem</span> objects associated with the control.
+The simplest way to set up a control is to take advantage of the constructors
+of the objects, which mean you can set up all of the properties at the same 
+time:
+</p><p><small><strong>Adding five buttons in C#</strong></small></p><pre>
+using vbAccelerator.Controls.ListBar;
+   ButtonListBarItem[] items = new ButtonListBarItem[5] 
+      {
+         new ButtonListBarItem(
+            "Check Your Work &amp;Calendar", 0),
+         new ButtonListBarItem(
+            "Book &amp;Timecards", 1, 
+            "Book and submit your weekly timecards, and track your time."),
+         new ButtonListBarItem( 
+            "Contact &amp;Notes", 2, 
+            "View meeting and lead notes"),
+         new ButtonListBarItem( 
+            "&amp;Pinboard Notes", 3, "", false),
+         new ButtonListBarItem( 
+            "Confi&amp;gure Options", 4, 
+            "Set up offline options and configure the program")
+      };
+   barMain.Items.Add(items );
+</pre><p><small><strong>Same code in VB.NET:</strong></small></p><pre>
+   Dim item(5) As ButtonListBarItem
+   item(0) = New ButtonListBarItem( _
+      "Check Your Work &amp;Calendar", 0)
+   item(1) = New ButtonListBarItem( _
+      "Book &amp;Timecards", 1, _
+      "Book and submit your weekly timecards, and track your time.")
+   item(2) = New ButtonListBarItem( _
+       "Contact &amp;Notes", 2, _
+       "View meeting and lead notes")
+   item(3) = New ButtonListBarItem( _
+       "&amp;Pinboard Notes", 3, "", False)
+   item(4) = New ButtonListBarItem( _
+       "Confi&amp;gure Options", 4, _
+       "Set up offline options and configure the program")
+
+   barMain.Items.Add(item)
+</pre><p>
+Properties are also provided for each of a bar item's settings,
+and items can be enumerated, inserted and removed through the <span class="code">ButtonListBarItems</span> 
+collection.
+</p><h3>Setting The Size of the Control</h3><p>
+Once the control is in place and has buttons, you can configure the width of the buttons
+using the <span class="code">ButtonWidth</span> property.  This is used to set the width rather than the 
+normal <span class="code">Width</span> property because the actual width of the control changes depending
+on whether a vertical scroll bar needs to be displayed or not, in the same way as the
+Windows version.  You can then resize other controls on the form to take account of the
+actual size by making sure the
+client area of the form is resized in response to the control's <span class="code">Resize</span> event.
+</p><h3>Responding to Selections and Clicks</h3><p>
+When a button is clicked or selected using the keyboard, the <span class="code">ItemClick</span> event
+is raised.  This event doesn't fire when a button is selected in code, however, so
+you may wish to respond to the <span class="code">SelectionChanged</span> event instead if you want
+the same behaviour to occur regardless of how a button is selected.  Events are
+raised using the standard <span class="code">virtual</span> (<span class="code">Overridable</span> in VB.NET) 
+<span class="code">OnEventName</span>
+mechanism and the naming convention of the events and arguments follows the .NET
+framework standards.
+</p><h2>Drawing With XP Visual Styles in .NET</h2><p>
+The .NET Framework doesn't provide any native support for drawing using the XP Visual
+Styles.  However, using <span class="code">InteropServices</span> it is straightforward to declare the
+calls you need to perform this drawing.  As described in the VB Classic article
+<a href="..\..\..\..\..\vb\code\libraries\xp_visual_styles\drawing_with_xp_visual_styles\article.html">Drawing with XP Visual Styles</a>, XP contains an API
+for drawing all of the XP style components in the DLL <span class="i">uxtheme.dll</span>.  Components
+are divided into Classes (the type of object to draw, for example, a Button or a Window),
+Parts (the part of the object to draw, for example, the thumb of a scroll bar or the border
+of a control) and States (the state to draw the object in, for example, enabled or disabled).
+The API then provides methods to select the current visual style and draw and measure
+the items.
+</p><p>
+The required declares for drawing are provided in the <span class="i">UnManaged Code</span> region of the
+downloads.  Here are the declares from the C# version:
+</p><pre>
+   [StructLayout(LayoutKind.Sequential)]
+   private struct RECT
+   {
+   	public int left;
+   	public int top;
+   	public int right;
+   	public int bottom;
+
+   	public override string ToString()
+   	{
+   	   return String.Format("({0},{1})-({2},{3})", left, top, right, bottom);
+   	}
+   }
+   [StructLayout(LayoutKind.Sequential)]
+   private struct SIZEAPI
+   {
+   	public int cx;
+   	public int cy;
+
+   	public override string ToString()
+   	{
+   	   return String.Format("{0} x {1}", cx, cy);
+   	}
+   }
+
+   [DllImport("gdi32")]
+   private extern static IntPtr SelectObject(
+   	IntPtr hDC,
+   	IntPtr hObject);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static IntPtr OpenThemeData(
+   	IntPtr hWnd,
+   	string pszClassList
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int CloseThemeData(
+   	IntPtr hTheme);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int DrawThemeBackground(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	ref RECT pRect,
+   	ref RECT pClipRect
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int DrawThemeParentBackground(
+   	IntPtr hTheme,
+   	IntPtr hDC, 
+   	ref RECT prc
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int GetThemeBackgroundContentRect(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	ref RECT pBoundingRect,
+   	ref RECT pContentRect
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int DrawThemeText(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	string pszText,
+   	int iCharCount,
+   	int dwTextFlag,
+   	int dwTextFlags2,
+   	ref RECT pRect
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int DrawThemeIcon(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	ref RECT pRect,
+   	IntPtr hIml,
+   	int iImageIndex
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int GetThemePartSize(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	ref RECT pRect,
+   	int iSize,
+   	ref SIZEAPI pSz
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int GetThemeTextExtent(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	string pszText,
+   	int iCharCount,
+   	int dwTextFlags,   	
+   	ref RECT pBoundingRect,   	
+   	ref RECT pExtentRect
+   	);
+
+   [DllImport("uxtheme.dll", CharSet=CharSet.Unicode)]
+   private extern static int DrawThemeBackground(
+   	IntPtr hTheme,
+   	IntPtr hDC,
+   	int iPartId,
+   	int iStateId,
+   	ref RECT pDestRect,
+   	int uEdge,
+   	int uFlags,
+   	ref RECT pContentRect
+   	);
+
+   private const int S_OK = 0;
+   private const int HWND_DESKTOP = 0;
+
+   // THEMESIZE
+   // minimum size
+   private const int TS_MIN  = 0; 
+   // size without stretching           
+   private const int TS_TRUE  = 1;
+   // size that theme mgr will use to draw part
+   private const int TS_DRAW  = 2;
+
+   // Button class
+   private const string UXTHEMEBUTTONCLASS = "Button";
+   private const string UXTHEMETOOLBARCLASS = "Toolbar";
+   // Button part
+   private const int TP_BUTTON  = 1;
+   private const int BP_PUSHBUTTON  = 1;
+   // Button states
+   private const int TS_NORMAL  = 1;
+   private const int TS_HOT  = 2;
+   private const int TS_PRESSED  = 3;
+   private const int TS_DISABLED  = 4;
+   private const int TS_CHECKED  = 5;
+   private const int TS_HOTCHECKED  = 6;
+   private const int PBS_DISABLED  = 4;
+
+   // DrawTextFlags
+   private const int DT_TOP  = 0x0;
+   private const int DT_LEFT  = 0x0;
+   private const int DT_CENTER  = 0x1;
+   private const int DT_RIGHT  = 0x2;
+   private const int DT_VCENTER  = 0x4;
+   private const int DT_BOTTOM  = 0x8;
+   private const int DT_WORDBREAK  = 0x10;
+   private const int DT_SINGLELINE  = 0x20;
+   private const int DT_EXPANDTABS  = 0x40;
+   private const int DT_TABSTOP  = 0x80;
+   private const int DT_NOCLIP  = 0x100;
+   private const int DT_EXTERNALLEADING  = 0x200;
+   private const int DT_CALCRECT  = 0x400;
+   private const int DT_NOPREFIX  = 0x800;
+   private const int DT_INTERNAL  = 0x1000;
+   private const int DT_EDITCONTROL  = 0x2000;
+   private const int DT_PATH_ELLIPSIS  = 0x4000;
+   private const int DT_END_ELLIPSIS  = 0x8000;
+   private const int DT_MODIFYSTRING  = 0x10000;
+   private const int DT_RTLREADING  = 0x20000;
+   private const int DT_WORD_ELLIPSIS  = 0x40000;
+   private const int DT_NOFULLWIDTHCHARBREAK  = 0x80000;
+   private const int DT_HIDEPREFIX  = 0x100000;
+   private const int DT_PREFIXONLY  = 0x200000;
+
+   // UxTheme DrawText Additional Flag
+   private const int DTT_GRAYED  = 0x1;
+</pre><p>
+These declares only include the details for drawing standard toolbar buttons.
+You can find the details of all the other available classes, parts and states if 
+you check out the the <span class="i">uxtheme.xml</span> file provided with the VB Classic 
+<a href="..\..\..\..\..\vb\code\libraries\xp_visual_styles\drawing_with_xp_visual_styles\article.html">XP Theme Explorer</a> utility.
+</p><p>
+Here's an example of how to use the declares to draw into a simple toolbar button
+into a .NET <span class="code">Graphics</span> object <span class="code">gfx</span>:
+</p><pre>
+   // First open the XP Theme Data for this object's 
+   // window handle:
+   IntPtr hTheme = OpenThemeData(
+      this.Handle, 
+      UXTHEMEBUTTONCLASS);
+
+   if (hTheme != IntPtr.Zero)
+   {
+       // Convert graphics object into a handle we 
+       // can use with the Theme API:
+       IntPtr hdc = gfx.GetHdc();
+
+       // Need to ensure the font is a GDI version:
+       IntPtr hFontOld = SelectObject(hdc, this.Font.ToHfont());
+
+       RECT tItemR = new RECT();
+       tItemR.right = 128;
+       tItemR.bottom = 64;
+       RECT tContentR = new RECT();
+
+       // Now we can draw with the theme:
+       DrawThemeBackground(hTheme, hdc, TP_BUTTON, TS_NORMAL, 
+          ref tItemR, ref tItemR);
+       GetThemeBackgroundContentRect(hTheme, hdc, TP_BUTTON, TS_NORMAL,
+          ref tItemR, ref tContentR);
+       DrawThemeText(hTheme, hdc, TP_BUTTON, TS_NORMAL,
+          "XP Style Button", -1, 
+          DT_CENTER | DT_WORDBREAK, 
+          0,
+          ref tContentR);
+
+       // Clear up the font we selected:
+       SelectObject(hdc, hFontOld);
+
+       // Release the graphics object (.NET will complain
+       // otherwise):
+       gfx.ReleaseHdc(hdc);
+
+      // Remember to clear up afterwards:
+      CloseThemeData(hTheme);
+   }
+</pre><p>
+For more examples of use, and VB.NET versions of the declares refer to the downloads.
+</p><h2>When To Use</h2><p>This control makes an intuitive replacement for a tab control when there are a relatively 
+small number of tab panels to choose from (although you could have hundreds of items, the scroll
+bar gets quite long).  It can also be used as a shortcut selector in the same way that Windows
+uses one in the File Open and Save Common Dialogs.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;.NET Button ListBar Control</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 2 February 2004</p></td><td></td></tr></table>
+</body></html>

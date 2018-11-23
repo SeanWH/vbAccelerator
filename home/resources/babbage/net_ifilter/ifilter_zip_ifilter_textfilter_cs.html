@@ -1,0 +1,1309 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IFilter_TextFilter.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IFilter_TextFilter.cs" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) .NET IFilter Sample - Demonstrates using the Indexing Service to Convert Documents to Text</a>&#160;.&#160;<a href="ifilter.html">IFilter</a>&#160;.&#160;IFilter_TextFilter.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="ifilter.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IFilter</a> (86K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12419</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12419&type=zip&title=ifilter_2ezip_5fifilter_5ftextfilter.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IFilter_TextFilter.cs</h1><pre>using System;
+using System.Runtime.InteropServices;
+using System.Text;
+using Microsoft.Win32;
+using System.Collections ;
+
+namespace vbAccelerator.Components.TextFilter
+{
+
+   #region Public IFilter Enumerations
+   /// &lt;summary&gt;
+   /// Flags controlling the operation of the TextFilter
+   /// instance.
+   /// &lt;/summary&gt;
+   [Flags]
+   public enum IFILTER_INIT : int
+   {
+      /// &lt;summary&gt;
+      /// Paragraph breaks should be marked with the Unicode PARAGRAPH
+       SEPARATOR (0x2029)
+      /// &lt;/summary&gt;
+      IFILTER_INIT_CANON_PARAGRAPHS          = 1,
+      /// &lt;summary&gt;
+      /// Soft returns, such as the newline character in Microsoft Word, should
+       be replaced by hard returnsLINE SEPARATOR (0x2028). Existing hard
+       returns can be doubled. A carriage return (0x000D), line feed (0x000A),
+       or the carriage return and line feed in combination should be considered
+       a hard return. The intent is to enable pattern-expression matches that
+       match against observed line breaks. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_HARD_LINE_BREAKS          = 2,
+      /// &lt;summary&gt;
+      /// Various word-processing programs have forms of hyphens that are not
+       represented in the host character set, such as optional hyphens
+       (appearing only at the end of a line) and nonbreaking hyphens. This flag
+       indicates that optional hyphens are to be converted to nulls, and
+       non-breaking hyphens are to be converted to normal hyphens (0x2010), or
+       HYPHEN-MINUSES (0x002D). 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_CANON_HYPHENS             = 4,
+      /// &lt;summary&gt;
+      /// Just as the IFILTER_INIT_CANON_HYPHENS flag standardizes hyphens,
+       this one standardizes spaces. All special space characters, such as
+       nonbreaking spaces, are converted to the standard space character
+       (0x0020). 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_CANON_SPACES              = 8,
+      /// &lt;summary&gt;
+      /// Indicates that the client wants text split into chunks representing
+       internal value-type properties. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_APPLY_INDEX_ATTRIBUTES    = 16,
+      /// &lt;summary&gt;
+      /// Indicates that the client wants text split into chunks representing
+       properties determined during the indexing process. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_APPLY_CRAWL_ATTRIBUTES    = 256,
+      /// &lt;summary&gt;
+      /// Any properties not covered by the IFILTER_INIT_APPLY_INDEX_ATTRIBUTES
+       and IFILTER_INIT_APPLY_CRAWL_ATTRIBUTES flags should be emitted. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_APPLY_OTHER_ATTRIBUTES    = 32,
+      /// &lt;summary&gt;
+      /// Optimizes IFilter for indexing because the client calls the
+       IFilter::Init method only once and does not call IFilter::BindRegion.
+       This eliminates the possibility of accessing a chunk both before and
+       after accessing another chunk. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_INDEXING_ONLY             = 64,
+      /// &lt;summary&gt;
+      /// The text extraction process must recursively search all linked
+       objects within the document. If a link is unavailable, the
+       IFilter::GetChunk call that would have obtained the first chunk of the
+       link should return FILTER_E_LINK_UNAVAILABLE. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_SEARCH_LINKS              = 128,
+      /// &lt;summary&gt;
+      /// The content indexing process can return property values set by the
+       filter. 
+      /// &lt;/summary&gt;
+      IFILTER_INIT_FILTER_OWNED_VALUE_OK     = 512
+   }
+
+   
+   /// &lt;summary&gt;
+   /// Standard property id definitions, from OLE2 documentation.   
+   /// &lt;/summary&gt;
+   public enum PROPID : int
+   {
+      PID_UNKNOWN = -1,
+
+      // integer count + array of entries
+      PID_DICTIONARY  = 0 ,
+      /// &lt;summary&gt;
+      /// Document Code Page, short integer
+      /// &lt;/summary&gt;
+      PID_CODEPAGE   = 1,      
+      /// &lt;summary&gt;
+      /// Document title, string
+      /// &lt;/summary&gt;
+      PID_TITLE      =  2,   
+      /// &lt;summary&gt;
+      /// Subject, string
+      /// &lt;/summary&gt;
+      PID_SUBJECT       =3  , 
+      /// &lt;summary&gt;
+      /// Author, string
+      /// &lt;/summary&gt;
+      PID_AUTHOR        =4  , 
+      /// &lt;summary&gt;
+      /// Keywords, string
+      /// &lt;/summary&gt;
+      PID_KEYWORDS      =5  , 
+      /// &lt;summary&gt;
+      /// Comments, string
+      /// &lt;/summary&gt;
+      PID_COMMENTS      =6  , 
+      /// &lt;summary&gt;
+      /// Template name, string
+      /// &lt;/summary&gt;
+      PID_TEMPLATE      =7  , 
+      /// &lt;summary&gt;
+      /// Last Author, string
+      /// &lt;/summary&gt;
+      PID_LASTAUTHOR    =8 , 
+      /// &lt;summary&gt;
+      ///  Revision Number, string
+      /// &lt;/summary&gt;
+      PID_REVNUMBER     =9  , 
+      /// &lt;summary&gt;
+      /// Edit Date Time, DateTime
+      /// &lt;/summary&gt;
+      PID_EDITTIME     =10  , 
+      /// &lt;summary&gt;
+      /// Last Printed, DateTime
+      /// &lt;/summary&gt;
+      PID_LASTPRINTED  =11  , 
+      /// &lt;summary&gt;
+      /// Create date time, DateTime
+      /// &lt;/summary&gt;
+      PID_CREATE_DTM   =12  ,
+      /// &lt;summary&gt;
+      /// Last save date time, DateTime
+      /// &lt;/summary&gt;
+      PID_LASTSAVE_DTM =13  , 
+      /// &lt;summary&gt;
+      /// Page count, integer
+      /// &lt;/summary&gt;
+      PID_PAGECOUNT    =14  , 
+      /// &lt;summary&gt;
+      /// Word count, integer
+      /// &lt;/summary&gt;
+      PID_WORDCOUNT    =15  , 
+      /// &lt;summary&gt;
+      ///  Character count, integer
+      /// &lt;/summary&gt;
+      PID_CHARCOUNT    =16  , 
+      /// &lt;summary&gt;
+      /// Thumbnail, clipboard format + metafile/bitmap (not supported)
+      /// &lt;/summary&gt;
+      PID_THUMBNAIL    =17  , 
+      /// &lt;summary&gt;
+      /// App used for creation, string
+      /// &lt;/summary&gt;
+      PID_APPNAME      =18  , 
+      /// &lt;summary&gt;
+      /// Security, integer
+      /// &lt;/summary&gt;
+      PID_SECURITY     =19  
+   }
+
+   /// &lt;summary&gt;
+   /// Enumerates the different breaking types that occur between 
+   /// chunks of text read out by the TextFilter.
+   /// &lt;/summary&gt;
+   public enum CHUNK_BREAKTYPE : int
+   {
+      /// &lt;summary&gt;
+      /// No break is placed between the current chunk and the previous chunk.
+       The chunks are glued together. 
+      /// &lt;/summary&gt;
+      CHUNK_NO_BREAK = 0,
+      /// &lt;summary&gt;
+      /// A word break is placed between this chunk and the previous chunk that
+       had the same attribute. 
+      /// Use of CHUNK_EOW should be minimized because the choice of word
+       breaks is language-dependent, 
+      /// so determining word breaks is best left to the search engine. 
+      /// &lt;/summary&gt;
+      CHUNK_EOW      = 1,
+      /// &lt;summary&gt;
+      /// A sentence break is placed between this chunk and the previous chunk
+       that had the same attribute. 
+      /// &lt;/summary&gt;
+      CHUNK_EOS      = 2,
+      /// &lt;summary&gt;
+      /// A paragraph break is placed between this chunk and the previous chunk
+       that had the same attribute.
+      /// &lt;/summary&gt;         
+      CHUNK_EOP      = 3,
+      /// &lt;summary&gt;
+      /// A chapter break is placed between this chunk and the previous chunk
+       that had the same attribute. 
+      /// &lt;/summary&gt;
+      CHUNK_EOC      = 4
+   }
+   #endregion
+
+   #region Internal IFilter Enumerations
+   /// &lt;summary&gt;
+   /// Types of properties returned by IFilter
+   /// &lt;/summary&gt;
+   internal enum PROPSPECKIND : int
+   {
+      /// &lt;summary&gt;
+      /// Property is a string
+      /// &lt;/summary&gt;
+      PRSPEC_LPWSTR = 0,
+      /// &lt;summary&gt;
+      /// Property is a property id
+      /// &lt;/summary&gt;
+      PRSPEC_PROPID = 1
+   }
+
+   /// &lt;summary&gt;
+   /// Types of chunks returned by IFilter
+   /// &lt;/summary&gt;
+   internal enum CHUNKSTATE : int
+   {
+      /// &lt;summary&gt;
+      /// The current chunk is a text-type property.
+      /// &lt;/summary&gt;
+      CHUNK_TEXT               = 0x1,
+      /// &lt;summary&gt;
+      /// The current chunk is a value-type property. 
+      /// &lt;/summary&gt;
+      CHUNK_VALUE              = 0x2,
+      /// &lt;summary&gt;
+      /// Reserved
+      /// &lt;/summary&gt;
+      CHUNK_FILTER_OWNED_VALUE = 0x4
+   }
+   #endregion
+
+   #region Internal IFilter Types
+   [StructLayoutAttribute(LayoutKind.Sequential)]         
+   internal struct STAT_CHUNK
+   {
+      /// &lt;summary&gt;
+      /// The chunk identifier. Chunk identifiers must be unique for the
+       current instance of the IFilter interface. 
+      /// Chunk identifiers must be in ascending order. The order in which
+       chunks are numbered should correspond to the order in which they appear
+       in the source document. Some search engines can take advantage of the
+       proximity of chunks of various properties. If so, the order in which
+       chunks with different properties are emitted will be important to the
+       search engine. 
+      /// &lt;/summary&gt;
+      public int idChunk;
+      /// &lt;summary&gt;
+      /// The type of break that separates the previous chunk from the current
+       chunk. Values are from the CHUNK_BREAKTYPE enumeration. 
+      /// &lt;/summary&gt;
+      [MarshalAs(UnmanagedType.U4)]
+      public CHUNK_BREAKTYPE breakType;
+      /// &lt;summary&gt;
+      /// Flags indicate whether this chunk contains a text-type or a
+       value-type property. 
+      /// Flag values are taken from the CHUNKSTATE enumeration. If the
+       CHUNK_TEXT flag is set, 
+      /// IFilter::GetText should be used to retrieve the contents of the chunk
+       as a series of words. 
+      /// If the CHUNK_VALUE flag is set, IFilter::GetValue should be used to
+       retrieve 
+      /// the value and treat it as a single property value. If the filter
+       dictates that the same 
+      /// content be treated as both text and as a value, the chunk should be
+       emitted twice in two 
+      /// different chunks, each with one flag set. 
+      /// &lt;/summary&gt;
+      [MarshalAs(UnmanagedType.U4)]
+      public CHUNKSTATE flags;
+      /// &lt;summary&gt;
+      /// The language and sublanguage associated with a chunk of text. Chunk
+       locale is used 
+      /// by document indexers to perform proper word breaking of text. If the
+       chunk is 
+      /// neither text-type nor a value-type with data type VT_LPWSTR, VT_LPSTR
+       or VT_BSTR, 
+      /// this field is ignored. 
+      /// &lt;/summary&gt;
+      public int locale;
+      /// &lt;summary&gt;
+      /// The property to be applied to the chunk. If a filter requires that
+       the same text 
+      /// have more than one property, it needs to emit the text once for each
+       property 
+      /// in separate chunks. 
+      /// &lt;/summary&gt;
+      public FULLPROPSPEC attribute;
+      /// &lt;summary&gt;
+      /// The ID of the source of a chunk. The value of the idChunkSource
+       member depends on the nature of the chunk: 
+      /// If the chunk is a text-type property, the value of the idChunkSource
+       member must be the same as the value of the idChunk member. 
+      /// If the chunk is an internal value-type property derived from textual
+       content, the value of the idChunkSource member is the chunk ID for the
+       text-type chunk from which it is derived. 
+      /// If the filter attributes specify to return only internal value-type
+       properties, there is no content chunk from which to derive the current
+       internal value-type property. In this case, the value of the
+       idChunkSource member must be set to zero, which is an invalid chunk. 
+      /// &lt;/summary&gt;
+      public int idChunkSource;
+      /// &lt;summary&gt;
+      /// The offset from which the source text for a derived chunk starts in
+       the source chunk. 
+      /// &lt;/summary&gt;
+      public int cwcStartSource;
+      /// &lt;summary&gt;
+      /// The length in characters of the source text from which the current
+       chunk was derived. 
+      /// A zero value signifies character-by-character correspondence between
+       the source text and 
+      /// the derived text. A nonzero value means that no such direct
+       correspondence exists
+      /// &lt;/summary&gt;
+      public int cwcLenSource;
+   } 
+      
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+   internal struct  FULLPROPSPEC
+   {
+      public Guid guidPropSet;
+      public PROPSPEC psProperty;
+   }
+        
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+   internal struct PROPSPEC 
+   {
+      [MarshalAs(UnmanagedType.U4)]
+      public PROPSPECKIND ulKind;        // PRSPEC_LPWSTR or PRSPEC_PROPID
+      public IntPtr data;
+   } 
+   #endregion
+
+   #region TextFilterException
+   /// &lt;summary&gt;
+   /// Exception type used to throw exceptions occuring during Text Filter
+    operations
+   /// &lt;/summary&gt;
+   public class TextFilterException : System.Exception 
+   {
+      /// &lt;summary&gt;
+      /// Constructs a new, blank TextFilterException
+      /// &lt;/summary&gt;
+      public TextFilterException() : base()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new TextFilterException with the specified error message
+      /// &lt;/summary&gt;
+      /// &lt;param name="msg"&gt;Error Message&lt;/param&gt;
+      public TextFilterException(string msg) : base(msg)
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new TextFilterException with the specified error message
+      /// containing the specified inner exception.
+      /// &lt;/summary&gt;
+      /// &lt;param name="msg"&gt;Error Message&lt;/param&gt;
+      /// &lt;param name="innerException"&gt;Inner Exception&lt;/param&gt;
+      public TextFilterException(string msg, Exception innerException) : base
+       (msg, innerException)
+      {
+      }
+   }
+   #endregion
+
+   #region TextFilter
+   /// &lt;summary&gt;
+   /// A Managed Code class for invoking an Indexing Service IFilter
+   /// object on a document to convert it to a text only representation.
+   /// &lt;/summary&gt;
+   public class TextFilter
+   {
+      #region Unmanaged Code
+
+      [DllImport("query.dll", CharSet = CharSet.Unicode)]
+      private extern static int LoadIFilter(
+         string pwcsPath,
+         ref IUnknown pUnkOuter,
+         ref IFilter ppIUnk
+         );
+
+      [DllImport("iprop.dll", CharSet = CharSet.Unicode)]
+      private extern static int PropVariantClear (IntPtr pvar );
+      #endregion
+
+      #region Com Interop for IUnknown
+      [ComImport, Guid("00000000-0000-0000-C000-000000000046")]
+         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IUnknown
+      {
+         [PreserveSig]
+         IntPtr QueryInterface(ref Guid riid, out IntPtr pVoid);
+      
+         [PreserveSig]
+         IntPtr AddRef();
+
+         [PreserveSig]
+         IntPtr Release();
+      }
+      #endregion
+
+      #region Com Interop for IFilter
+      [ComImport, Guid("89BCB740-6119-101A-BCB7-00DD010655AF")]
+         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+         private interface IFilter
+      {
+         /// &lt;summary&gt;
+         /// The IFilter::Init method initializes a filtering session.
+         /// &lt;/summary&gt;
+         [PreserveSig]         
+         IFilterReturnCodes Init(
+            //[in] Flag settings from the IFILTER_INIT enumeration for
+             controlling text standardization, property output, embedding
+             scope, and IFilter access patterns. 
+            [MarshalAs(UnmanagedType.U4)]
+            IFILTER_INIT grfFlags, 
+            // [in] The size of the attributes array. When nonzero, cAttributes
+             takes 
+            // precedence over attributes specified in grfFlags. If no
+             attribute flags 
+            // are specified and cAttributes is zero, the default is given by
+             the 
+            // PSGUID_STORAGE storage property set, which contains the date and
+             time 
+            // of the last write to the file, size, and so on; and by the
+             PID_STG_CONTENTS 
+            // 'contents' property, which maps to the main contents of the
+             file. 
+            // For more information about properties and property sets, see
+             Property Sets. 
+            int cAttributes, 
+            //[in] Array of pointers to FULLPROPSPEC structures for the
+             requested properties. 
+            // When cAttributes is nonzero, only the properties in aAttributes
+             are returned. 
+            // pdwFlags 
+            IntPtr aAttributes, 
+            // [out] Information about additional properties available to the
+             caller; from the IFILTER_FLAGS enumeration. 
+            [MarshalAs(UnmanagedType.U4)]
+            ref IFILTER_FLAGS pdwFlags);
+
+         /// &lt;summary&gt;
+         /// The IFilter::GetChunk method positions the filter at the beginning
+          of the next chunk, 
+         /// or at the first chunk if this is the first call to the GetChunk
+          method, and returns a description of the current chunk. 
+         /// &lt;/summary&gt;
+         [PreserveSig]
+         IFilterReturnCodes GetChunk(
+            ref STAT_CHUNK pStat
+            );
+
+         /// &lt;summary&gt;
+         /// The IFilter::GetText method retrieves text (text-type properties)
+          from the current chunk, 
+         /// which must have a CHUNKSTATE enumeration value of CHUNK_TEXT.
+         /// &lt;/summary&gt;
+         [PreserveSig]
+         IFilterReturnCodes GetText(
+            // [in/out] On entry, the size of awcBuffer array in wide/Unicode
+             characters. On exit, the number of Unicode characters written to
+             awcBuffer. 
+            // Note that this value is not the number of bytes in the buffer. 
+            ref int pcwcBuffer,
+            // Text retrieved from the current chunk. Do not terminate the
+             buffer with a character.  
+            [Out(), MarshalAs(UnmanagedType.LPWStr)] 
+            StringBuilder awcBuffer
+            );
+
+         /// &lt;summary&gt;
+         /// The IFilter::GetValue method retrieves a value (internal
+          value-type property) from a chunk, 
+         /// which must have a CHUNKSTATE enumeration value of CHUNK_VALUE.
+         /// &lt;/summary&gt;
+         [PreserveSig]         
+         IFilterReturnCodes GetValue(
+            // Allocate the PROPVARIANT structure with CoTaskMemAlloc. Some
+             PROPVARIANT 
+            // structures contain pointers, which can be freed by calling the
+             PropVariantClear function. 
+            // It is up to the caller of the GetValue method to call the
+             PropVariantClear method.                        
+            ref IntPtr ppPropValue
+            );
+
+         /// &lt;summary&gt;
+         /// The IFilter::BindRegion method retrieves an interface representing
+          the specified portion of the object. 
+         /// Currently reserved for future use.
+         /// &lt;/summary&gt;
+         [PreserveSig]
+         IFilterReturnCodes BindRegion(
+            ref FILTERREGION origPos,
+            ref Guid riid,
+            ref IUnknown ppunk
+            );
+
+      }
+      #endregion
+
+      #region Private IFilter Types
+      [StructLayoutAttribute(LayoutKind.Sequential, Pack=4, Size=0,
+       CharSet=CharSet.Auto)]
+         private struct PROPVARIANT
+      {
+         public Int16 vt;
+         public Int16 wReserved1;
+         public Int16 wReserved2;
+         public Int16 wReserved3;
+         public IntPtr data;
+      }
+      [StructLayoutAttribute(LayoutKind.Sequential)]
+         private struct FILTERREGION
+      {
+         public int idChunk;
+         public int cwcStart;
+         public int cwcExtent;
+      }
+
+      #endregion
+
+      #region Private IFilter Enumerations
+      private enum VariantTypes
+      {
+         /// &lt;summary&gt;
+         /// A property with a type indicator of VT_EMPTY has no data
+          associated with it; that is, the size of the value is zero. 
+         /// &lt;/summary&gt;
+         VT_EMPTY = 0,
+         /// &lt;summary&gt;
+         /// This is like a pointer to NULL. 
+         /// &lt;/summary&gt;
+         VT_NULL = 1,
+         /// &lt;summary&gt;
+         /// cVal 1-byte signed integer. 
+         /// &lt;/summary&gt;
+         VT_I1 = 16,
+         /// &lt;summary&gt;
+         /// bVal 1-byte unsigned integer. 
+         /// &lt;/summary&gt;
+         VT_UI1 = 17,
+         /// &lt;summary&gt;
+         /// Two bytes representing a 2-byte signed integer value. 
+         /// &lt;/summary&gt;
+         VT_I2 = 2,
+         /// &lt;summary&gt;
+         /// 2-byte unsigned integer. 
+         /// &lt;/summary&gt;
+         VT_UI2 = 18,
+         /// &lt;summary&gt;
+         /// 4-byte signed integer value. 
+         /// &lt;/summary&gt;
+         VT_I4 = 3,
+         /// &lt;summary&gt;
+         /// 4-byte signed integer value (equivalent to VT_I4). 
+         /// &lt;/summary&gt;
+         VT_INT = 22,
+         /// &lt;summary&gt;
+         /// 4-byte unsigned integer. 
+         /// &lt;/summary&gt;
+         VT_UI4 = 19,
+         /// &lt;summary&gt;
+         /// 4-byte unsigned integer (equivalent to VT_UI4). 
+         /// &lt;/summary&gt;
+         VT_UINT = 23,
+         /// &lt;summary&gt;
+         /// 8-byte signed integer. 
+         /// &lt;/summary&gt;
+         VT_I8 = 20,
+         /// &lt;summary&gt;
+         /// 8-byte unsigned integer. 
+         /// &lt;/summary&gt;
+         VT_UI8 = 21,
+         /// &lt;summary&gt;
+         /// 32-bit IEEE floating point value. 
+         /// &lt;/summary&gt;
+         VT_R4 = 4,
+         /// &lt;summary&gt;
+         /// 64-bit IEEE floating point value. 
+         /// &lt;/summary&gt;
+         VT_R8 = 5,
+         /// &lt;summary&gt;
+         /// 8-byte two's complement integer (scaled by 10,000). This type is
+          commonly used for currency amounts. 
+         /// &lt;/summary&gt;
+         VT_CY = 6,
+         /// &lt;summary&gt;
+         /// A 64-bit floating point number representing the number of days
+          (not seconds) since December 31, 1899. For example, January 1, 1900,
+          is 2.0, January 2, 1900, is 3.0, and so on). This is stored in the
+          same representation as VT_R8. 
+         /// &lt;/summary&gt;
+         VT_DATE = 7 ,
+         /// &lt;summary&gt;
+         /// bstrVal Pointer to a null-terminated Unicode string. The string is
+          immediately preceded 
+         /// by a DWORD representing the byte count, but bstrVal points past
+          this DWORD to 
+         /// the first character of the string. BSTRs must be allocated and
+          freed using the 
+         /// Automation SysAllocString and SysFreeString calls. 
+         /// &lt;/summary&gt;
+         VT_BSTR = 8,
+         /// &lt;summary&gt;
+         /// (bool in earlier designs) Boolean value, a WORD containing 0
+          (FALSE) or -1 (TRUE). 
+         /// &lt;/summary&gt;
+         VT_BOOL = 11 ,
+         /// &lt;summary&gt;
+         /// A DWORD containing a status code. 
+         /// &lt;/summary&gt;
+         VT_ERROR= 10,
+         /// &lt;summary&gt;
+         /// filetime 64-bit FILETIME structure as defined by Win32. It is
+          recommended that all times be stored in Universal Coordinate Time
+          (UTC). 
+         /// &lt;/summary&gt;
+         VT_FILETIME = 64,
+         /// &lt;summary&gt;
+         /// Pointer to a null-terminated ANSI string in the system default
+          code page. 
+         /// &lt;/summary&gt;
+         VT_LPSTR = 30,
+         /// &lt;summary&gt;
+         /// Pointer to a null-terminated Unicode string in the user's default
+          locale. 
+         /// &lt;/summary&gt;
+         VT_LPWSTR = 31,
+         /// &lt;summary&gt;
+         /// Pointer to a class identifier (CLSID) (or other globally unique
+          identifier (GUID)). 
+         /// &lt;/summary&gt;
+         VT_CLSID = 72 ,
+         /// &lt;summary&gt;
+         /// Pointer to a clipdata structure
+         /// &lt;/summary&gt;
+         VT_CF = 71,
+         /// &lt;summary&gt;
+         /// DWORD count of bytes, followed by that many bytes of data. The
+          byte 
+         /// count does not include the four bytes for the length of the count
+          itself; 
+         /// an empty blob member would have a count of zero, followed by zero
+          bytes. 
+         /// This is similar to the value VT_BSTR but does not guarantee a null
+          byte at the end of the data. 
+         /// &lt;/summary&gt;
+         VT_BLOB = 65,
+         /// &lt;summary&gt;
+         /// A blob member containing a serialized object in the same
+          representation that would appear in VT_STREAMED_OBJECT. 
+         /// That is, a DWORD byte count (where the byte count does not include
+          the size of itself) which is in the 
+         /// format of a class identifier followed by initialization data for
+          that class. 
+         /// The only significant difference between VT_BLOB_OBJECT and
+          VT_STREAMED_OBJECT is that the former does not 
+         /// have the system-level storage overhead that the latter would have,
+          and is therefore more 
+         /// suitable for scenarios involving numbers of small objects.
+         /// &lt;/summary&gt;
+         VT_BLOBOBJECT = 70,
+         /// &lt;summary&gt;
+         /// pStream Pointer to an IStream interface, representing a stream
+          which is a sibling to the "Contents" stream. 
+         /// &lt;/summary&gt;
+         VT_STREAM = 66,
+         /// &lt;summary&gt;
+         /// pStream As in VT_STREAM, but indicates that the stream contains a
+          serialized object, which is a CLSID followed by initialization data
+          for the class. The stream is a sibling to the "Contents" stream that
+          contains the property set. 
+         /// &lt;/summary&gt;
+         VT_STREAMED_OBJECT = 68,
+         /// &lt;summary&gt;
+         /// pStorage Pointer to an IStorage interface, representing a storage
+          object that is a sibling to the "Contents" stream. 
+         /// &lt;/summary&gt;
+         VT_STORAGE = 67,
+         /// &lt;summary&gt;
+         /// pStorage As in VT_STORAGE, but indicates that the designated
+          IStorage contains a loadable object. 
+         /// &lt;/summary&gt;
+         VT_STORED_OBJECT = 69,
+         /// &lt;summary&gt;
+         /// decVal A DECIMAL structure. 
+         /// &lt;/summary&gt;
+         VT_DECIMAL= 14,
+         /// &lt;summary&gt;
+         /// ca* If the type indicator is combined with VT_VECTOR by using an
+          OR operator, the value is 
+         /// one of the counted array values. This creates a DWORD count of
+          elements, followed by a 
+         /// pointer to the specified repetitions of the value. 
+         /// For example, a type indicator of VT_LPSTR|VT_VECTOR has a DWORD
+          element count, 
+         /// followed by a pointer to an array of LPSTR elements.
+         /// VT_VECTOR can be combined by an OR operator with the following
+          types: 
+         /// VT_I1, VT_UI1, VT_I2, VT_UI2, VT_BOOL, VT_I4, VT_UI4, VT_R4,
+          VT_R8, VT_ERROR, VT_I8, 
+         /// VT_UI8, VT_CY, VT_DATE, VT_FILETIME, VT_CLSID, VT_CF, VT_BSTR,
+          VT_LPSTR, VT_LPWSTR, and VT_VARIANT.
+         /// &lt;/summary&gt;
+         VT_VECTOR = 0x1000,
+         /// &lt;summary&gt;
+         /// If the type indicator is combined with VT_ARRAY by an OR operator,
+          the value is 
+         /// a pointer to a SAFEARRAY. VT_ARRAY can use the OR with the
+          following data types: 
+         /// VT_I1, VT_UI1, VT_I2, VT_UI2, VT_I4, VT_UI4, VT_INT, VT_UINT,
+          VT_R4, VT_R8, VT_BOOL, 
+         /// VT_DECIMAL, VT_ERROR, VT_CY, VT_DATE, and VT_BSTR. VT_ARRAY cannot
+          use OR with VT_VECTOR. 
+         /// &lt;/summary&gt;
+         VT_ARRAY = 0x2000,
+         /// &lt;summary&gt;
+         /// If the type indicator is combined with VT_BYREF by an OR operator,
+          the value is a reference. 
+         /// Reference types are interpreted as a reference to data, similar to
+          the 
+         /// reference type in C++ (for example, "int&amp;"). 
+         /// VT_BYREF can use OR with the following types: VT_I1, VT_UI1,
+          VT_I2, VT_UI2, VT_I4, VT_UI4, 
+         /// VT_INT, VT_UINT, VT_R4, VT_R8, VT_BOOL, VT_DECIMAL, VT_ERROR,
+          VT_CY, VT_DATE, 
+         /// VT_BSTR, VT_ARRAY, and VT_VARIANT.
+         /// &lt;/summary&gt;
+         VT_BYREF = 0x4000 ,      
+         /// &lt;summary&gt;
+         /// A DWORD type indicator followed by the corresponding value.
+          VT_VARIANT can be used 
+         /// only with VT_VECTOR or VT_BYREF. 
+         /// &lt;/summary&gt;
+         VT_VARIANT = 12, 
+         /// &lt;summary&gt;
+         /// Used as a mask for VT_VECTOR and other modifiers to extract the
+          raw VT value. 
+         /// &lt;/summary&gt;
+         VT_TYPEMASK = 0xFFF   
+      }
+
+      [Flags]
+         private enum IFILTER_FLAGS : int
+      {
+         /// &lt;summary&gt;
+         /// The caller should use the IPropertySetStorage and IPropertyStorage
+          interfaces to locate additional properties. 
+         /// When this flag is set, properties available through COM
+          enumerators should not be returned from IFilter. 
+         /// &lt;/summary&gt;
+         IFILTER_FLAGS_OLE_PROPERTIES    = 1
+      }
+
+      private enum IFilterReturnCodes : uint
+      {
+         /// &lt;summary&gt;
+         /// Success
+         /// &lt;/summary&gt;
+         S_OK                     = 0,
+         /// &lt;summary&gt;
+         /// The function was denied access to the filter file. 
+         /// &lt;/summary&gt;
+         E_ACCESSDENIED               = 0x80070005,
+         /// &lt;summary&gt;
+         /// The function encountered an invalid handle, probably due to a
+          low-memory situation. 
+         /// &lt;/summary&gt;
+         E_HANDLE                  = 0x80070006,
+         /// &lt;summary&gt;
+         /// The function received an invalid parameter.
+         /// &lt;/summary&gt;
+         E_INVALIDARG               = 0x80070057,
+         /// &lt;summary&gt;
+         /// Out of memory
+         /// &lt;/summary&gt;
+         E_OUTOFMEMORY               = 0x8007000E,
+         /// &lt;summary&gt;
+         /// Not implemented
+         /// &lt;/summary&gt;
+         E_NOTIMPL                  = 0x80004001,
+         /// &lt;summary&gt;
+         /// Unknown error
+         /// &lt;/summary&gt;
+         E_FAIL                     = 0x80000008,
+         /// &lt;summary&gt;
+         /// File not filtered due to password protection
+         /// &lt;/summary&gt;
+         FILTER_E_PASSWORD            = 0x8004170B,
+         /// &lt;summary&gt;
+         /// The document format is not recognised by the filter
+         /// &lt;/summary&gt;
+         FILTER_E_UNKNOWNFORMAT         = 0x8004170C,
+         /// &lt;summary&gt;
+         /// No text in current chunk
+         /// &lt;/summary&gt;
+         FILTER_E_NO_TEXT            = 0x80041705,
+         /// &lt;summary&gt;
+         /// No more chunks of text available in object
+         /// &lt;/summary&gt;
+         FILTER_E_END_OF_CHUNKS           = 0x80041700,
+         /// &lt;summary&gt;
+         /// No more text available in chunk
+         /// &lt;/summary&gt;
+         FILTER_E_NO_MORE_TEXT            = 0x80041701,
+         /// &lt;summary&gt;
+         /// No more property values available in chunk
+         /// &lt;/summary&gt;
+         FILTER_E_NO_MORE_VALUES          = 0x80041702,
+         /// &lt;summary&gt;
+         /// Unable to access object
+         /// &lt;/summary&gt;
+         FILTER_E_ACCESS                  = 0x80041703,
+         /// &lt;summary&gt;
+         /// Moniker doesn't cover entire region
+         /// &lt;/summary&gt;
+         FILTER_W_MONIKER_CLIPPED         = 0x00041704,
+         /// &lt;summary&gt;
+         /// Unable to bind IFilter for embedded object
+         /// &lt;/summary&gt;
+         FILTER_E_EMBEDDING_UNAVAILABLE   = 0x80041707,
+         /// &lt;summary&gt;
+         /// Unable to bind IFilter for linked object
+         /// &lt;/summary&gt;
+         FILTER_E_LINK_UNAVAILABLE        = 0x80041708,
+         /// &lt;summary&gt;
+         ///  This is the last text in the current chunk
+         /// &lt;/summary&gt;
+         FILTER_S_LAST_TEXT               = 0x00041709,
+         /// &lt;summary&gt;
+         /// This is the last value in the current chunk
+         /// &lt;/summary&gt;
+         FILTER_S_LAST_VALUES             = 0x0004170A
+      }
+      #endregion
+
+      #region Member Variables
+      private TextFilterItems m_textItems = null;
+      private TextFilterPropertyItems m_propertyItems = null;
+      private string m_fileName = "";
+      #endregion
+
+      #region Implementation
+      /// &lt;summary&gt;
+      /// Gets the Text chunks returned by the TextFilter
+      /// &lt;/summary&gt;
+      public TextFilterItems TextItems
+      {
+         get
+         {
+            return m_textItems;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the property items returned by the TextFilter
+      /// &lt;/summary&gt;
+      public TextFilterPropertyItems PropertyItems
+      {
+         get
+         {
+            return m_propertyItems;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the file name which has been filtered
+      /// &lt;/summary&gt;
+      public string FileName
+      {
+         get
+         {
+            return m_fileName;
+         }         
+      }
+      #endregion
+
+      #region Constructors, Dispose
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a TextFilter and
+      /// parses the specified file using the default flags
+      /// (search links and apply all attributes)
+      /// &lt;/summary&gt;
+      /// &lt;param name="file"&gt;File to filter&lt;/param&gt;
+      /// &lt;exception cref="TextFilterException"&gt;If the filter cannot be created
+       or initialised for this instance&lt;/exception&gt;
+      public TextFilter(string file) :
+         this(file,  
+            IFILTER_INIT.IFILTER_INIT_SEARCH_LINKS | 
+            IFILTER_INIT.IFILTER_INIT_APPLY_CRAWL_ATTRIBUTES |
+            IFILTER_INIT.IFILTER_INIT_APPLY_INDEX_ATTRIBUTES |
+            IFILTER_INIT.IFILTER_INIT_APPLY_OTHER_ATTRIBUTES)
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of TextFilter and parses
+      /// the specified file, using the selected filter flags
+      /// &lt;/summary&gt;
+      /// &lt;param name="file"&gt;File to filter&lt;/param&gt;
+      /// &lt;param name="flags"&gt;IFilter initialisation flags&lt;/param&gt;
+      /// &lt;exception cref="TextFilterException"&gt;If the filter cannot be created
+       or initialised for this instance&lt;/exception&gt;
+      public TextFilter(string file, IFILTER_INIT flags)
+      {
+         IFilter iflt = null;
+         IUnknown iunk = null;
+         int i = LoadIFilter(file, ref iunk, ref iflt);
+         if (i != (int)IFilterReturnCodes.S_OK)
+         {
+            throw new TextFilterException(
+               String.Format("IFilter instance not found for file {0}", file));
+         }
+
+         IFilterReturnCodes scode;
+         ArrayList textItems = new ArrayList();
+
+         int attr = 0;
+         IFILTER_FLAGS flagsSet = 0;
+         scode = iflt.Init(flags, attr, IntPtr.Zero, ref flagsSet);
+         if (scode != IFilterReturnCodes.S_OK)
+         {
+            throw new TextFilterException(
+               String.Format("IFilter initialisation failed: {0}", 
+               Enum.GetName(scode.GetType(), scode)));
+         }
+
+         int bufSize = 65536;
+         StringBuilder buf = new StringBuilder(bufSize, bufSize);
+         
+         STAT_CHUNK stat = new STAT_CHUNK();         
+         while (scode == IFilterReturnCodes.S_OK)
+         {
+            scode = iflt.GetChunk(ref stat);
+            if (scode == IFilterReturnCodes.S_OK)
+            {
+               //Console.WriteLine("New Chunk: {0}\n--------------------",
+                stat.idChunk);
+               if (stat.flags == CHUNKSTATE.CHUNK_TEXT)
+               {
+                  bufSize = 65536;
+                  IFilterReturnCodes scodeText = iflt.GetText( 
+                     ref bufSize,
+                     buf);
+                  if (bufSize &gt; 0)
+                  {
+                     TextFilterItem ti = new TextFilterItem(
+                        stat,
+                        buf.ToString(0, bufSize));
+                     textItems.Add(ti);
+                  }
+               }
+               else if (stat.flags == CHUNKSTATE.CHUNK_VALUE)
+               {
+                  /*
+                  Console.WriteLine(stat.attribute.guidPropSet.ToString());
+                  Console.WriteLine(stat.attribute.psProperty.ulKind.ToString())
+                  ;
+                  
+                  if (stat.attribute.psProperty.ulKind ==
+                   PROPSPECKIND.PRSPEC_LPWSTR)
+                  {
+                     string property =
+                      Marshal.PtrToStringUni(stat.attribute.psProperty.data);
+                     Console.WriteLine("String Property {0}", property);
+                  }
+                  else
+                  {
+                     PROPID propId =
+                      (PROPID)((int)stat.attribute.psProperty.data);
+                     Console.WriteLine(propId);
+                  }
+
+                  IFilterReturnCodes scodeGetValue = IFilterReturnCodes.S_OK;  
+                                  
+                  IntPtr valuePtr = IntPtr.Zero;
+                  scodeGetValue = iflt.GetValue(ref valuePtr);
+                  if (scodeGetValue == IFilterReturnCodes.S_OK)
+                  {
+                     Console.WriteLine(valuePtr);
+                  }
+                  else
+                  {
+                     Console.WriteLine("Call Failed");
+                  }
+                  */
+               }
+            }
+         }
+         this.m_textItems = new TextFilterItems(textItems);
+
+      }
+      #endregion
+   }
+   #endregion
+
+   #region TextFilterItems
+   /// &lt;summary&gt;
+   /// Collection of TextFilterItem chunks returned by
+   /// the TextFilter class
+   /// &lt;/summary&gt;
+   public class TextFilterItems : ReadOnlyCollectionBase
+   {
+      /// &lt;summary&gt;
+      /// Gets the Text Filter Item with the specified index 
+      /// &lt;/summary&gt;      
+      public TextFilterItem this[int index]
+      {
+         get
+         {
+            return (TextFilterItem)this.InnerList[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Internal constructor for the Text Filter Items
+      /// Collection, used by the TextFilter class
+      /// &lt;/summary&gt;
+      /// &lt;param name="items"&gt;ArrayList containing
+      /// TextFilterItems to add&lt;/param&gt;
+      internal TextFilterItems(ArrayList items)
+      {
+         foreach (TextFilterItem ti in items)
+         {
+            this.InnerList.Add(ti);
+         }
+      }
+   }
+   #endregion
+
+   #region TextFilterItem
+   /// &lt;summary&gt;
+   /// Maintains a chunk of text extracted by the Text Filter.
+   /// &lt;/summary&gt;
+   public class TextFilterItem
+   {
+      #region Member Variables
+      private STAT_CHUNK m_stat;
+      private string m_text;
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The chunk identifier for this piece of text from the
+      /// TextFilter
+      /// &lt;/summary&gt;
+      public int Id
+      {
+         get
+         {
+            return m_stat.idChunk;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the type of break which separates this piece of
+      /// text from the previous piece.
+      /// &lt;/summary&gt;
+      public CHUNK_BREAKTYPE BreakType
+      {
+         get
+         {
+            return m_stat.breakType;            
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// The offset from which the source text for a derived chunk starts in
+       the source chunk
+      /// &lt;/summary&gt;
+      public int SourceStartOffset
+      {
+         get
+         {
+            return m_stat.cwcStartSource;            
+         }
+      }         
+
+      /// &lt;summary&gt;
+      /// The length, in characters, of the source region from which this text
+       chunk was
+      /// derived, or 0 if no correspondence exists between this and the source.
+      /// &lt;/summary&gt;
+      public int SourceLength
+      {
+         get
+         {
+            return m_stat.cwcLenSource;
+         }
+      }   
+
+      /// &lt;summary&gt;
+      /// The locale identifier for this chunk of text.  Same as the LCID
+      /// in the System.Globalization.CultureInfo object.
+      /// &lt;/summary&gt;
+      public int LCID
+      {
+         get
+         {
+            return m_stat.locale;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the Guid for this chunk
+      /// &lt;/summary&gt;
+      public Guid ItemGuid
+      {
+         get
+         {
+            return m_stat.attribute.guidPropSet;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the property id of this text if it corresponds to one
+      /// of the standard properties, or PROPID.PID_UNKNOWN otherwise
+      /// &lt;/summary&gt;
+      public PROPID PropertyId
+      {
+         get
+         {
+            PROPID ret = PROPID.PID_UNKNOWN;
+            if (m_stat.attribute.psProperty.ulKind ==
+             PROPSPECKIND.PRSPEC_PROPID)
+            {
+               ret = (PROPID)((int)m_stat.attribute.psProperty.data);
+            }
+            return ret;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the name of the property id of this text.
+      /// &lt;/summary&gt;
+      public string PropertyName
+      {
+         get
+         {
+            string ret = "";
+            if (m_stat.attribute.psProperty.ulKind ==
+             PROPSPECKIND.PRSPEC_PROPID)
+            {
+               ret = Enum.GetName(m_stat.attribute.psProperty.ulKind.GetType(),
+                (int)m_stat.attribute.psProperty.data);
+            }
+            else
+            {
+               ret = Marshal.PtrToStringUni(m_stat.attribute.psProperty.data);
+            }
+            return ret;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the text for this chunk
+      /// &lt;/summary&gt;
+      public string Text
+      {
+         get
+         {
+            
+            return m_text;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Internal constructor for the a Text Filter Item,
+      /// used by the TextFilter class
+      /// &lt;/summary&gt;
+      /// &lt;param name="stat"&gt;STAT_CHUNK for this piece of text&lt;/param&gt;
+      /// &lt;param name="text"&gt;Text&lt;/param&gt;
+      internal TextFilterItem( 
+         STAT_CHUNK stat,
+         string text
+         )
+      {
+         m_stat = stat;
+         m_text = text;
+      }
+   }
+   #endregion
+
+   #region TextFilterPropertyItems
+   /// &lt;summary&gt;
+   /// Maintains a collection of property items extracted by the
+   /// TextFilter
+   /// &lt;/summary&gt;
+   public class TextFilterPropertyItems : ReadOnlyCollectionBase
+   {
+      /// &lt;summary&gt;
+      /// Gets the text filter property item with the specified index
+      /// &lt;/summary&gt;
+      public TextFilterPropertyItem this[int index]
+      {
+         get
+         {
+            return (TextFilterPropertyItem)this.InnerList[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Internal constructor for a Text Filter Property Item
+      /// collection, used by the TextFilter class.
+      /// &lt;/summary&gt;
+      internal TextFilterPropertyItems()
+      {
+      }
+   }
+   #endregion
+
+   #region TextFilterPropertyItem
+   /// &lt;summary&gt;
+   /// Maintains a Property item extracted by the TextFilter
+   /// &lt;/summary&gt;
+   public class TextFilterPropertyItem
+   {
+
+      /// &lt;summary&gt;
+      /// Internal constructor for a Text Filter Property Item,
+      /// used by the TextFilter class.
+      /// &lt;/summary&gt;
+      internal TextFilterPropertyItem()
+      {
+      }
+   }
+   #endregion
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\index.html" ><IMG SRC="..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) .NET IFilter Sample - Demonstrates using the Indexing Service to Convert Documents to Text</a>&#160;.&#160;<a href="ifilter.html">IFilter</a>&#160;.&#160;IFilter_TextFilter.cs</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

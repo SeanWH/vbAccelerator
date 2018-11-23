@@ -1,0 +1,446 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: CancellableEditPopupCS_PopupCancelNotifier.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: CancellableEditPopupCS_PopupCancelNotifier.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.asp\index.html">Cancellable In-Place Edit Popups</a>&#160;.&#160;<a href="cancellable_edit_popup_demonstration.html">Cancellable Edit Popup Demonstration</a>&#160;.&#160;CancellableEditPopupCS_PopupCancelNotifier.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="cancellable_edit_popup_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Cancellable Edit Popup Demonstration</a> (51K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13368</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13368&type=zip&title=cancellable_20edit_20popup_20demonstration_2ezip_5fcancellableeditpopupcs_5f[3].html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 0</a></p><p class="nav">Updated:8 January 2004</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\popup_windows\article.html">Use .NET Forms as Popup Windows</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\listbar\outlook_list_bar\article.html">.NET Outlook Style ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: CancellableEditPopupCS_PopupCancelNotifier.cs</h1><pre>using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Controls
+{
+   /// &lt;summary&gt;
+   /// Represents the method that handles the &lt;see
+    cref="PopupCancelNotifier.PopupCancel"/&gt; event
+   /// raised by this class.
+   /// &lt;/summary&gt;
+   public delegate void PopupCancelEventHandler(object sender,
+    PopupCancelEventArgs e);
+
+   /// &lt;summary&gt;
+   /// Arguments to a &lt;see cref="PopupCancelEvent"/&gt;.  Provides a
+   /// reference to the popup form that is to be closed and 
+   /// allows the operation to be cancelled.
+   /// &lt;/summary&gt;
+   public class PopupCancelEventArgs : EventArgs
+   {
+      /// &lt;summary&gt;
+      /// Whether to cancel the operation
+      /// &lt;/summary&gt;
+      private bool cancel = false;
+      /// &lt;summary&gt;
+      /// Mouse down location
+      /// &lt;/summary&gt;
+      private Point location;
+      /// &lt;summary&gt;
+      /// Popup control.
+      /// &lt;/summary&gt;
+      private Control popup = null;
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="popup"&gt;The popup form&lt;/param&gt;
+      /// &lt;param name="location"&gt;The mouse location, if any, where the
+      /// mouse event that would cancel the popup occured.&lt;/param&gt;
+      public PopupCancelEventArgs(Control popup, Point location)
+      {
+         this.popup = popup;
+         this.location = location;
+         this.cancel = false;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the popup control
+      /// &lt;/summary&gt;
+      public Control Popup
+      {
+         get
+         {
+            return this.popup;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the location that the mouse down which would cancel this 
+      /// popup occurred
+      /// &lt;/summary&gt;
+      public Point CursorLocation
+      {
+         get
+         {
+            return this.location;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether to cancel closing the form. Set to
+      /// &lt;c&gt;true&lt;/c&gt; to prevent the popup from being closed.
+      /// &lt;/summary&gt;
+      public bool Cancel
+      {
+         get
+         {
+            return this.cancel;
+         }
+         set
+         {
+            this.cancel = value;
+         }
+      }
+
+   }
+
+
+   /// &lt;summary&gt;
+   /// 
+   /// A class which provides the functionality required to 
+   /// cancel a popup window.  This class wraps two pieces of 
+   /// functionality:
+   /// 
+   /// &lt;list type="number"&gt;Firstly, it checks whether the form (or the form
+    owner
+   /// for the control) receives a &lt;c&gt;WM_APPACTIVATE&lt;/c&gt; message with
+   /// wParam = 0.  This indicates the window has gone out
+   /// of focus because the user has clicked on another one.&lt;/list&gt;
+   /// &lt;list type="number"&gt;Secondly, it installs a &lt;see
+    cref="System.Windows.Forms.IMessageFilter"/&gt;
+   /// message filter implementation which checks for mouse presses anywhere 
+   /// else in the application.
+   /// 
+   /// &lt;remarks&gt;
+   /// Copyright &amp;#169; 2003 Steve McMahon for vbAccelerator.com.
+   /// vbAccelerator is a Trade Mark of vbAccelerator Ltd.  All Rights
+   /// Reserved.  Please visit http://vbaccelerator.com/ for more
+   /// on this and other VB and .NET Framework code.
+   /// &lt;/remarks&gt;
+   /// 
+   /// &lt;/summary&gt;
+   public class PopupCancelNotifier : NativeWindow
+   {
+      private const int WM_ACTIVATEAPP = 0x01C;
+
+      /// &lt;summary&gt;
+      /// Raised when the popup control is about to be cancelled.
+      /// &lt;/summary&gt;
+      public event PopupCancelEventHandler PopupCancel;
+
+      /// &lt;summary&gt;
+      /// The &lt;see cref="System.Windows.Forms.IMessageFilter"/&gt; object
+      /// which checks for mouse down outside the control
+      /// &lt;/summary&gt;
+      private PopupCancelNotifierMessageFilter filter = null;       
+
+      /// &lt;summary&gt;
+      /// Owning Form's Window handle to track for popup cancellation
+      /// &lt;/summary&gt;
+      private IntPtr trackHandle = IntPtr.Zero;
+
+      /// &lt;summary&gt;
+      /// Control to track for popup cancellation
+      /// &lt;/summary&gt;
+      private Control trackControl = null;
+
+      /// &lt;summary&gt;
+      /// Start tracking for a popup cancellation.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ctl"&gt;The &lt;c&gt;Control&lt;/c&gt; or &lt;c&gt;Form&lt;/c&gt;
+      /// to use when tracking Window inactivation messages. This can
+      /// either be a control or a Form.&lt;/param&gt;
+      public void StartTracking(Control ctl)
+      {
+         IntPtr handle = IntPtr.Zero;
+
+         Control ctlOwnerForm = ctl;
+         Control ctlTest = null;
+         while (!typeof(Form).IsAssignableFrom(ctlOwnerForm.GetType()))
+         {
+            ctlTest = ctlOwnerForm.Parent;
+            if (ctlTest == null)
+            {
+               break;
+            }
+            else
+            {
+               ctlOwnerForm = ctlTest;
+            }
+         }
+                  
+         this.trackControl = ctl;
+         filter.Popup = ctl;
+         this.trackHandle = ctlOwnerForm.Handle;
+         this.AssignHandle(trackHandle);
+         Application.AddMessageFilter(filter);         
+         
+      }
+
+      /// &lt;summary&gt;
+      /// Check for the WM_APPACTIVATE message and stop
+      /// tracking if the window is inactivated.
+      /// &lt;/summary&gt;
+      /// &lt;param name="msg"&gt;Message details for this window procedure
+      /// event.&lt;/param&gt;
+      protected override void WndProc(ref Message msg)
+      {
+         base.WndProc(ref msg);
+         if (msg.Msg == WM_ACTIVATEAPP)
+         {
+            if (((int)msg.WParam) == 0)
+            {
+               PopupCancelEventArgs e = new PopupCancelEventArgs(
+                  this.trackControl, Cursor.Position);
+               OnPopupCancel(e);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Stop tracking. Called automatically if this class determines
+      /// the popup should be cancelled.
+      /// &lt;/summary&gt;
+      public void StopTracking()
+      {
+         if (!this.trackHandle.Equals(IntPtr.Zero))
+         {
+            this.ReleaseHandle();
+            this.trackHandle = IntPtr.Zero;
+            Application.RemoveMessageFilter(filter);
+            filter.Popup = null;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Pass through for the PopupCancel event of the Message Filter
+      /// &lt;/summary&gt;
+      /// &lt;param name="sender"&gt;The &lt;see
+       cref="PopupCancelNotifierEventFilter"/&gt;&lt;/param&gt;
+      /// &lt;param name="e"&gt;&lt;see cref="PopupCancelEventArgs"/&gt; describing the
+       event
+      /// that will cancel the popup.&lt;/param&gt;
+      private void filter_PopupCancel(object sender, PopupCancelEventArgs e)
+      {
+         OnPopupCancel(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Notify when the popup should be cancelled,
+      /// and uninstall tracking.
+      /// &lt;/summary&gt;
+      protected virtual void OnPopupCancel(PopupCancelEventArgs e)
+      {
+         if (PopupCancel != null)
+         {
+            PopupCancel(this, e);
+         }
+         if (!e.Cancel)
+         {
+            StopTracking();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the PopupCancelNotifier
+      /// class.
+      /// &lt;/summary&gt;
+      public PopupCancelNotifier() : base()
+      {
+         this.filter = new PopupCancelNotifierMessageFilter(this);
+         this.filter.PopupCancel += new
+          PopupCancelEventHandler(filter_PopupCancel);
+      }
+   }
+
+   #region PopupWindowHelperMessageFilter
+   /// &lt;summary&gt;
+   /// A Message Loop filter which detect mouse events whilst the popup form is
+    shown
+   /// and notifies the owning &lt;see cref="PopupWindowHelper"/&gt; class when a
+    mouse
+   /// click outside the popup occurs.
+   /// &lt;/summary&gt;
+   public class PopupCancelNotifierMessageFilter : IMessageFilter
+   {
+      private const int WM_LBUTTONDOWN = 0x201;
+      private const int WM_RBUTTONDOWN = 0x204;
+      private const int WM_MBUTTONDOWN = 0x207;
+      private const int WM_NCLBUTTONDOWN = 0x0A1;
+      private const int WM_NCRBUTTONDOWN = 0x0A4;
+      private const int WM_NCMBUTTONDOWN = 0x0A7;
+
+      /// &lt;summary&gt;
+      /// Raised when the Popup COntrol is about to be cancelled.  The
+      /// &lt;see cref="PopupCancelEventArgs.Cancel"/&gt; property can be
+      /// set to &lt;c&gt;true&lt;/c&gt; to prevent the control from being cancelled.
+      /// &lt;/summary&gt;
+      public event PopupCancelEventHandler PopupCancel;
+      
+      /// &lt;summary&gt;
+      /// The popup control
+      /// &lt;/summary&gt;
+      private Control popup = null;
+      /// &lt;summary&gt;
+      /// The owning &lt;see cref="PopupCancelNotifier"/&gt; object.
+      /// &lt;/summary&gt;
+      private PopupCancelNotifier owner = null;
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class and sets the owning
+      /// object.
+      /// &lt;/summary&gt;
+      /// &lt;param name="owner"&gt;The &lt;see cref="PopupCancelNotifier"/&gt; object
+      /// which owns this class.&lt;/param&gt;
+      public PopupCancelNotifierMessageFilter(PopupCancelNotifier owner)
+      {
+         this.owner = owner;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the popup &lt;see cref="System.Windows.Forms.Control"/&gt; which
+       is being displayed.
+      /// &lt;/summary&gt;
+      public Control Popup
+      {
+         get
+         {
+            return this.popup;
+         }
+         set
+         {
+            this.popup = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Checks the message loop for mouse messages whilst the popup
+      /// window is displayed.  If one is detected the position is
+      /// checked to see if it is outside the form, and the owner
+      /// is notified if so.
+      /// &lt;/summary&gt;
+      /// &lt;param name="m"&gt;Windows Message about to be processed by the
+      /// message loop&lt;/param&gt;
+      /// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; to filter the message, &lt;c&gt;false&lt;/c&gt; otherwise.
+      /// This implementation always returns &lt;c&gt;false&lt;/c&gt;.&lt;/returns&gt;
+      public bool PreFilterMessage(ref Message m)
+      {
+         if (this.popup != null)
+         {
+            switch (m.Msg)
+            {            
+               case WM_LBUTTONDOWN:
+               case WM_RBUTTONDOWN:
+               case WM_MBUTTONDOWN:
+               case WM_NCLBUTTONDOWN:
+               case WM_NCRBUTTONDOWN:
+               case WM_NCMBUTTONDOWN:
+                  OnMouseDown();
+                  break;
+            }
+         }
+         return false;
+      }
+
+      /// &lt;summary&gt;
+      /// Checks the mouse location and calls the OnCancelPopup method
+      /// if the mouse is outside the popup form.      
+      /// &lt;/summary&gt;
+      private void OnMouseDown()
+      {
+         Console.WriteLine("Filter:OnMouseDown");
+         if (this.popup != null)
+         {
+            // Get the cursor location
+            Point cursorPos = Cursor.Position;
+            // To control coordinates:
+            cursorPos = this.popup.PointToClient(cursorPos);
+            // Check if it is within the popup control
+            if (!popup.ClientRectangle.Contains(cursorPos))
+            {
+               // If not, then call to see if it should be closed               
+               OnCancelPopup(new PopupCancelEventArgs(popup, cursorPos));
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="PopupCancel"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;The &lt;see cref="PopupCancelEventArgs"/&gt; associated 
+      /// with the cancel event.&lt;/param&gt;
+      protected virtual void OnCancelPopup(PopupCancelEventArgs e)
+      {
+         if (this.PopupCancel != null)
+         {
+            this.PopupCancel(this, e);
+         }
+         if (!e.Cancel)
+         {
+            owner.StopTracking();
+            // Clear reference for GC
+            popup = null;
+         }
+      }
+
+
+   }
+   #endregion
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.asp\index.html">Cancellable In-Place Edit Popups</a>&#160;.&#160;<a href="cancellable_edit_popup_demonstration.html">Cancellable Edit Popup Demonstration</a>&#160;.&#160;CancellableEditPopupCS_PopupCancelNotifier.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

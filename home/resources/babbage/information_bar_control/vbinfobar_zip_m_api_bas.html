@@ -1,0 +1,530 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: m_API.bas</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: m_API.bas" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Information Bar Control</a>&#160;.&#160;<a href="vbinfobar.html">VBInfoBar</a>&#160;.&#160;m_API.bas</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="vbinfobar.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />VBInfoBar</a> (54K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12379</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12379&type=zip&title=vbinfobar_2ezip_5fm_5fapi.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;Graeme Grant</p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing Without The Crashes</a></p><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\controls\imagelist\vbaccelerator_image_list_control\article.html">vbAccelerator ImageList Control and Class v2.0</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: m_API.bas</h1><pre>Attribute VB_Name = "m_API"
+Option Explicit
+
+Public Enum ECGTextAlignFlags
+   DT_TOP = &amp;H0&amp;
+   DT_LEFT = &amp;H0&amp;
+   DT_CENTER = &amp;H1&amp;
+   DT_RIGHT = &amp;H2&amp;
+   DT_VCENTER = &amp;H4&amp;
+   DT_BOTTOM = &amp;H8&amp;
+   DT_WORDBREAK = &amp;H10&amp;
+   DT_SINGLELINE = &amp;H20&amp;
+   DT_EXPANDTABS = &amp;H40&amp;
+   DT_TABSTOP = &amp;H80&amp;
+   DT_NOCLIP = &amp;H100&amp;
+   DT_EXTERNALLEADING = &amp;H200&amp;
+   DT_CALCRECT = &amp;H400&amp;
+   DT_NOPREFIX = &amp;H800&amp;
+   DT_INTERNAL = &amp;H1000&amp;
+'#if(WINVER &gt;= =&amp;H0400)
+   DT_EDITCONTROL = &amp;H2000&amp;
+   DT_PATH_ELLIPSIS = &amp;H4000&amp;
+   DT_END_ELLIPSIS = &amp;H8000&amp;
+   DT_MODIFYSTRING = &amp;H10000
+   DT_RTLREADING = &amp;H20000
+   DT_WORD_ELLIPSIS = &amp;H40000
+End Enum
+
+Public Type RECT
+   Left As Long
+   Top As Long
+   Right As Long
+   Bottom As Long
+End Type
+
+' Rectangle functions:
+Public Declare Function EqualRect Lib "user32" (lpRect1 As RECT, lpRect2 As
+ RECT) As Long
+Public Declare Function InflateRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Public Declare Function OffsetRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Public Declare Function PtInRect Lib "user32" (lpRect As RECT, ByVal ptX As
+ Long, ByVal ptY As Long) As Long
+Public Declare Function FillRect Lib "user32" (ByVal hdc As Long, lpRect As
+ RECT, ByVal hBrush As Long) As Long
+
+Public Declare Function OleTranslateColor Lib "OLEPRO32.DLL" (ByVal OLE_COLOR
+ As Long, ByVal HPALETTE As Long, pccolorref As Long) As Long
+Public Const CLR_INVALID = -1
+
+Public Declare Function SetTextColor Lib "gdi32" (ByVal hdc As Long, ByVal
+ crColor As Long) As Long
+Public Declare Function SetBkColor Lib "gdi32" (ByVal hdc As Long, ByVal
+ crColor As Long) As Long
+Public Declare Function SetBkMode Lib "gdi32" (ByVal hdc As Long, ByVal nBkMode
+ As Long) As Long
+    Public Const OPAQUE = 2
+    Public Const TRANSPARENT = 1
+
+Public Declare Function DrawText Lib "user32" Alias "DrawTextA" (ByVal hdc As
+ Long, ByVal lpStr As String, ByVal nCount As Long, lpRect As RECT, ByVal
+ wFormat As Long) As Long
+Public Declare Function GetClientRect Lib "user32" (ByVal hWnd As Long, lpRect
+ As RECT) As Long
+
+Public Declare Function GetSysColorBrush Lib "user32" (ByVal nIndex As Long) As
+ Long
+Public Const COLOR_HIGHLIGHT = 13
+Public Const COLOR_HIGHLIGHTTEXT = 14
+Public Declare Function CreateSolidBrush Lib "gdi32" (ByVal crColor As Long) As
+ Long
+
+Public Declare Function CreateDCAsNull Lib "gdi32" Alias "CreateDCA" (ByVal
+ lpDriverName As String, _
+           lpDeviceName As Any, lpOutput As Any, lpInitData As Any) As Long
+Public Declare Function SelectObject Lib "gdi32" (ByVal hdc As Long, ByVal
+ hObject As Long) As Long
+Public Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long
+Public Declare Function GetObjectAPI Lib "gdi32" Alias "GetObjectA" (ByVal
+ hObject As Long, ByVal nCount As Long, lpObject As Any) As Long
+Public Declare Function GetDC Lib "user32" (ByVal hWnd As Long) As Long
+Public Declare Function DeleteDC Lib "gdi32" (ByVal hdc As Long) As Long
+Public Declare Function ReleaseDC Lib "user32" (ByVal hWnd As Long, ByVal hdc
+ As Long) As Long
+Public Declare Function CreateCompatibleDC Lib "gdi32" (ByVal hdc As Long) As
+ Long
+Public Declare Function CreateCompatibleBitmap Lib "gdi32" (ByVal hdc As Long,
+ ByVal nWidth As Long, ByVal nHeight As Long) As Long
+Public Declare Function BitBlt Lib "gdi32" (ByVal hDestDC As Long, ByVal x As
+ Long, ByVal y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal
+ hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal dwRop As Long)
+ As Long
+
+' Corrected Draw State function declarations:
+Public Declare Function DrawState Lib "user32" Alias "DrawStateA" _
+   (ByVal hdc As Long, _
+   ByVal hBrush As Long, _
+   ByVal lpDrawStateProc As Long, _
+   ByVal lParam As Long, _
+   ByVal wParam As Long, _
+   ByVal x As Long, _
+   ByVal y As Long, _
+   ByVal cx As Long, _
+   ByVal cy As Long, _
+   ByVal fuFlags As Long) As Long
+Public Declare Function DrawStateString Lib "user32" Alias "DrawStateA" _
+   (ByVal hdc As Long, _
+   ByVal hBrush As Long, _
+   ByVal lpDrawStateProc As Long, _
+   ByVal lpString As String, _
+   ByVal cbStringLen As Long, _
+   ByVal x As Long, _
+   ByVal y As Long, _
+   ByVal cx As Long, _
+   ByVal cy As Long, _
+   ByVal fuFlags As Long) As Long
+
+' Missing Draw State constants declarations:
+'/* Image type */
+Public Const DST_COMPLEX = &amp;H0
+Public Const DST_TEXT = &amp;H1
+Public Const DST_PREFIXTEXT = &amp;H2
+Public Const DST_ICON = &amp;H3
+Public Const DST_BITMAP = &amp;H4
+
+' /* State type */
+Public Const DSS_NORMAL = &amp;H0
+Public Const DSS_UNION = &amp;H10
+Public Const DSS_DISABLED = &amp;H20
+Public Const DSS_MONO = &amp;H80
+Public Const DSS_RIGHT = &amp;H8000
+
+' Create a new icon based on an image list icon:
+Public Declare Function ImageList_GetIcon Lib "COMCTL32.DLL" ( _
+        ByVal hIml As Long, _
+        ByVal i As Long, _
+        ByVal diIgnore As Long _
+    ) As Long
+' Draw an item in an ImageList:
+Public Declare Function ImageList_Draw Lib "COMCTL32.DLL" ( _
+        ByVal hIml As Long, _
+        ByVal i As Long, _
+        ByVal hdcDst As Long, _
+        ByVal x As Long, _
+        ByVal y As Long, _
+        ByVal fStyle As Long _
+    ) As Long
+' Draw an item in an ImageList with more control over positioning
+' and colour:
+Public Declare Function ImageList_DrawEx Lib "COMCTL32.DLL" ( _
+      ByVal hIml As Long, _
+      ByVal i As Long, _
+      ByVal hdcDst As Long, _
+      ByVal x As Long, _
+      ByVal y As Long, _
+      ByVal dx As Long, _
+      ByVal dy As Long, _
+      ByVal rgbBk As Long, _
+      ByVal rgbFg As Long, _
+      ByVal fStyle As Long _
+   ) As Long
+' Built in ImageList drawing methods:
+Public Const ILD_NORMAL = 0
+Public Const ILD_TRANSPARENT = 1
+Public Const ILD_BLEND25 = 2
+Public Const ILD_SELECTED = 4
+Public Const ILD_FOCUS = 4
+Public Const ILD_OVERLAYMASK = 3840
+' Use default rgb colour:
+Public Const CLR_NONE = -1
+Public Declare Function DestroyIcon Lib "user32" (ByVal hIcon As Long) As Long
+Public Declare Function ImageList_GetIconSize Lib "comctl32" (ByVal hImageList
+ As Long, cx As Long, cy As Long) As Long
+Public Declare Function ImageList_GetImageCount Lib "comctl32" (ByVal
+ hImageList As Long) As Long
+
+' Standard GDI draw icon function:
+Public Declare Function DrawIconEx Lib "user32" (ByVal hdc As Long, ByVal xLeft
+ As Long, ByVal yTop As Long, ByVal hIcon As Long, ByVal cxWidth As Long, ByVal
+ cyWidth As Long, ByVal istepIfAniCur As Long, ByVal hbrFlickerFreeDraw As
+ Long, ByVal diFlags As Long) As Long
+Public Const DI_MASK = &amp;H1
+Public Const DI_IMAGE = &amp;H2
+Public Const DI_NORMAL = &amp;H3
+Public Const DI_COMPAT = &amp;H4
+Public Const DI_DEFAULTSIZE = &amp;H8
+
+Public Declare Function LoadImageByNum Lib "user32" Alias "LoadImageA" (ByVal
+ hInst As Long, ByVal lpsz As Long, ByVal un1 As Long, ByVal n1 As Long, ByVal
+ n2 As Long, ByVal un2 As Long) As Long
+Public Const LR_LOADMAP3DCOLORS = &amp;H1000
+Public Const LR_LOADFROMFILE = &amp;H10
+Public Const LR_LOADTRANSPARENT = &amp;H20
+Public Const IMAGE_BITMAP = 0
+
+Public Declare Function DrawEdge Lib "user32" (ByVal hdc As Long, qrc As RECT,
+ ByVal edge As Long, ByVal grfFlags As Long) As Boolean
+    
+Public Const BDR_RAISEDOUTER = &amp;H1
+Public Const BDR_SUNKENOUTER = &amp;H2
+Public Const BDR_RAISEDINNER = &amp;H4
+Public Const BDR_SUNKENINNER = &amp;H8
+
+Public Const BDR_OUTER = &amp;H3
+Public Const BDR_INNER = &amp;HC
+Public Const BDR_RAISED = &amp;H5
+Public Const BDR_SUNKEN = &amp;HA
+
+Public Const EDGE_RAISED = (BDR_RAISEDOUTER Or BDR_RAISEDINNER)
+Public Const EDGE_SUNKEN = (BDR_SUNKENOUTER Or BDR_SUNKENINNER)
+Public Const EDGE_ETCHED = (BDR_SUNKENOUTER Or BDR_RAISEDINNER)
+Public Const EDGE_BUMP = (BDR_RAISEDOUTER Or BDR_SUNKENINNER)
+
+Public Const BF_LEFT = &amp;H1
+Public Const BF_TOP = &amp;H2
+Public Const BF_RIGHT = &amp;H4
+Public Const BF_BOTTOM = &amp;H8
+
+Public Const BF_TOPLEFT = (BF_TOP Or BF_LEFT)
+Public Const BF_TOPRIGHT = (BF_TOP Or BF_RIGHT)
+Public Const BF_BOTTOMLEFT = (BF_BOTTOM Or BF_LEFT)
+Public Const BF_BOTTOMRIGHT = (BF_BOTTOM Or BF_RIGHT)
+Public Const BF_RECT = (BF_LEFT Or BF_TOP Or BF_RIGHT Or BF_BOTTOM)
+
+Public Const BF_DIAGONAL = &amp;H10
+
+' For diagonal lines, the BF_RECT flags specify the end point of
+' the vector bounded by the rectangle parameter.
+Public Const BF_DIAGONAL_ENDTOPRIGHT = (BF_DIAGONAL Or BF_TOP _
+             Or BF_RIGHT)
+Public Const BF_DIAGONAL_ENDTOPLEFT = (BF_DIAGONAL Or BF_TOP _
+             Or BF_LEFT)
+Public Const BF_DIAGONAL_ENDBOTTOMLEFT = (BF_DIAGONAL Or BF_BOTTOM _
+             Or BF_LEFT)
+Public Const BF_DIAGONAL_ENDBOTTOMRIGHT = (BF_DIAGONAL Or BF_BOTTOM _
+             Or BF_RIGHT)
+
+Public Const BF_MIDDLE = &amp;H800    ' Fill in the middle.
+Public Const BF_SOFT = &amp;H1000     ' Use for softer buttons.
+Public Const BF_ADJUST = &amp;H2000   ' Calculate the space left over.
+Public Const BF_FLAT = &amp;H4000     ' For flat rather than 3-D borders.
+Public Const BF_MONO = &amp;H8000     ' For monochrome borders.
+
+Public Function TranslateColor(ByVal oClr As OLE_COLOR, _
+                        Optional hPal As Long = 0) As Long
+    ' Convert Automation color to Windows color
+    If OleTranslateColor(oClr, hPal, TranslateColor) Then
+        TranslateColor = CLR_INVALID
+    End If
+End Function
+
+Public Sub DrawGraduatedBackdrop(ByVal lHDC As Long, _
+                                 ByVal lLeft As Long, _
+                                 ByVal lTop As Long, _
+                                 ByVal lRight As Long, _
+                                 ByVal lBottom As Long, _
+                                 Optional ByVal eStartColour As OLE_COLOR =
+                                  &amp;H0&amp;, _
+                                 Optional ByVal eEndColour As OLE_COLOR =
+                                  vbButtonShadow, _
+                                 Optional ByVal bVertical As Boolean = False)
+
+    Dim lSRed As Long, lSGreen As Long, lSBlue As Long
+    Dim lERed As Long, lEGreen As Long, lEBlue As Long
+    Dim lRed As Long, lGreen As Long, lBlue As Long
+    Dim lLastRed As Long, lLastGreen As Long, lLastBlue As Long
+    Dim lRGB As Long
+    Dim hBr As Long
+    Dim tR As RECT
+    Dim iPos As Long, lSize As Long, lMinStep As Long
+
+    With tR
+        .Left = lLeft
+        .Top = lTop
+        .Right = lRight
+        .Bottom = lBottom
+    End With
+
+    If (eStartColour = eEndColour) Then
+        ' Simple! (but dull...)
+        hBr = CreateSolidBrush(eStartColour)
+        FillRect lHDC, tR, hBr
+        DeleteObject hBr
+    Else
+        ' Create a gradation:
+        lSRed = eStartColour And &amp;HFF&amp;
+        lSGreen = (eStartColour And &amp;HFF00&amp;) \ &amp;H100&amp;
+        lSBlue = (eStartColour And &amp;HFF0000) \ &amp;H10000
+        lERed = eEndColour And &amp;HFF&amp;
+        lEGreen = (eEndColour And &amp;HFF00&amp;) \ &amp;H100&amp;
+        lEBlue = (eEndColour And &amp;HFF0000) \ &amp;H10000
+
+        If (bVertical) Then
+            ' Vertical graduation:
+            lSize = lBottom - lTop
+            tR.Bottom = tR.Top + 1
+            For iPos = 1 To lSize + 1
+                lRed = Abs(lSRed + ((lERed - lSRed) * iPos) \ lSize)
+                lGreen = Abs(lSGreen + ((lEGreen - lSGreen) * iPos) \ lSize)
+                lBlue = Abs(lSBlue + ((lEBlue - lSBlue) * iPos) \ lSize)
+                lRGB = RGB(lRed, lGreen, lBlue)
+                hBr = CreateSolidBrush(lRGB)
+                FillRect lHDC, tR, hBr
+                DeleteObject hBr
+                tR.Top = tR.Top + 1
+                tR.Bottom = tR.Top + 1
+            Next
+        Else
+            ' Horizontal graduation:
+            lSize = lRight - lLeft
+            lMinStep = lSize \ 64
+            If (lMinStep = 0) Then lMinStep = 1
+            lLastRed = lSRed: lLastGreen = lSGreen: lLastBlue = lSBlue
+            tR.Right = tR.Left + lMinStep
+            For iPos = 1 To lSize + 1 Step lMinStep
+                lRed = lSRed + ((lERed - lSRed) * iPos) \ lSize
+                lGreen = lSGreen + ((lEGreen - lSGreen) * iPos) \ lSize
+                lBlue = lSBlue + ((lEBlue - lSBlue) * iPos) \ lSize
+                If (lGreen = lLastGreen) And (lRed = lLastRed) And (lBlue =
+                 lLastBlue) Then
+                    tR.Right = tR.Right + lMinStep
+                Else
+                    hBr = CreateSolidBrush(RGB(lLastRed, lLastGreen, lLastBlue))
+                    FillRect lHDC, tR, hBr
+                    DeleteObject hBr
+                    tR.Left = tR.Right
+                    tR.Right = tR.Left + lMinStep
+                    lLastRed = lRed
+                    lLastGreen = lGreen
+                    lLastBlue = lBlue
+                End If
+            Next
+        End If
+    End If
+
+End Sub
+
+Public Sub TileArea(ByVal hdc As Long, _
+                    ByVal x As Long, _
+                    ByVal y As Long, _
+                    ByVal Width As Long, _
+                    ByVal Height As Long, _
+                    ByVal lSrcDC As Long, _
+                    ByVal lBitmapW As Long, _
+                    ByVal lBitmapH As Long, _
+                    ByVal lSrcOffsetX As Long, _
+                    ByVal lSrcOffsetY As Long)
+
+    Dim lSrcX           As Long
+    Dim lSrcY           As Long
+    Dim lSrcStartX      As Long
+    Dim lSrcStartY      As Long
+    Dim lSrcStartWidth  As Long
+    Dim lSrcStartHeight As Long
+    Dim lDstX           As Long
+    Dim lDstY           As Long
+    Dim lDstWidth       As Long
+    Dim lDstHeight      As Long
+
+    lSrcStartX = ((x + lSrcOffsetX) Mod lBitmapW)
+    lSrcStartY = ((y + lSrcOffsetY) Mod lBitmapH)
+    lSrcStartWidth = (lBitmapW - lSrcStartX)
+    lSrcStartHeight = (lBitmapH - lSrcStartY)
+    lSrcX = lSrcStartX
+    lSrcY = lSrcStartY
+
+    lDstY = y
+    lDstHeight = lSrcStartHeight
+
+    Do While lDstY &lt; (y + Height)
+        If (lDstY + lDstHeight) &gt; (y + Height) Then
+            lDstHeight = y + Height - lDstY
+        End If
+        lDstWidth = lSrcStartWidth
+        lDstX = x
+        lSrcX = lSrcStartX
+        Do While lDstX &lt; (x + Width)
+            If (lDstX + lDstWidth) &gt; (x + Width) Then
+                lDstWidth = x + Width - lDstX
+                If (lDstWidth = 0) Then
+                    lDstWidth = 4
+                End If
+            End If
+            'If (lDstWidth &gt; Width) Then lDstWidth = Width
+            'If (lDstHeight &gt; Height) Then lDstHeight = Height
+            BitBlt hdc, lDstX, lDstY, lDstWidth, lDstHeight, lSrcDC, lSrcX,
+             lSrcY, vbSrcCopy
+            lDstX = lDstX + lDstWidth
+            lSrcX = 0
+            lDstWidth = lBitmapW
+        Loop
+        lDstY = lDstY + lDstHeight
+        lSrcY = 0
+        lDstHeight = lBitmapH
+    Loop
+
+End Sub
+
+Public Sub DrawImage(ByVal hIml As Long, _
+                     ByVal iIndex As Long, _
+                     ByVal hdc As Long, _
+                     ByVal xPixels As Integer, _
+                     ByVal yPixels As Integer, _
+                     ByVal lIconSizeX As Long, ByVal lIconSizeY As Long, _
+                     Optional ByVal bSelected = False, _
+                     Optional ByVal bCut = False, _
+                     Optional ByVal bDisabled = False, _
+                     Optional ByVal oCutDitherColour As OLE_COLOR =
+                      vbWindowBackground, _
+                     Optional ByVal hExternalIml As Long = 0)
+
+    Dim hIcon     As Long
+    Dim lFlags    As Long
+    Dim lhIml     As Long
+    Dim lColor    As Long
+    Dim iImgIndex As Long
+
+    ' Draw the image at 1 based index or key supplied in vKey.
+    ' on the hDC at xPixels,yPixels with the supplied options.
+    ' You can even draw an ImageList from another ImageList control
+    ' if you supply the handle to hExternalIml with this function.
+
+    iImgIndex = iIndex
+    If (iImgIndex &gt; -1) Then
+        If (hExternalIml &lt;&gt; 0) Then
+            lhIml = hExternalIml
+        Else
+            lhIml = hIml
+        End If
+
+        lFlags = ILD_TRANSPARENT
+        If (bSelected) Or (bCut) Then
+            lFlags = lFlags Or ILD_SELECTED
+        End If
+
+        If (bCut) Then
+            ' Draw dithered:
+            lColor = TranslateColor(oCutDitherColour)
+            If (lColor = -1) Then lColor = TranslateColor(vbWindowBackground)
+            ImageList_DrawEx lhIml, _
+                             iImgIndex, _
+                             hdc, _
+                             xPixels, yPixels, 0, 0, _
+                             CLR_NONE, lColor, _
+                             lFlags
+        ElseIf (bDisabled) Then
+            ' extract a copy of the icon:
+            hIcon = ImageList_GetIcon(hIml, iImgIndex, 0)
+            ' Draw it disabled at x,y:
+            DrawState hdc, 0, 0, hIcon, 0, xPixels, yPixels, lIconSizeX,
+             lIconSizeY, DST_ICON Or DSS_DISABLED
+            ' Clear up the icon:
+            DestroyIcon hIcon
+
+        Else
+            ' Standard draw:
+            ImageList_Draw lhIml, _
+                           iImgIndex, _
+                           hdc, _
+                           xPixels, _
+                           yPixels, _
+                           lFlags
+        End If
+    End If
+
+End Sub
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Information Bar Control</a>&#160;.&#160;<a href="vbinfobar.html">VBInfoBar</a>&#160;.&#160;m_API.bas</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,1525 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: DcModule1.bas</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: DcModule1.bas" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;DcModule1.bas</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="dockcontrol.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />DockControl</a> (190K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12483</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12483&type=zip&title=dockcontrol_2ezip_5fdcmodule1.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Mark Grimes</a></p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing Without The Crashes</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: DcModule1.bas</h1><pre>Attribute VB_Name = "DcModule1"
+Option Explicit
+Option Private Module
+
+Type POINTAPI
+ x              As Long
+ y              As Long
+End Type
+
+Type WINDOWPOS
+ hwnd As Long
+ hWndInsertAfter As Long
+ x As Long
+ y As Long
+ cx As Long
+ cy As Long
+ flags As Long
+End Type
+
+Type MINMAXINFO
+ ptReserved     As POINTAPI
+ ptMaxSize      As POINTAPI
+ ptMaxPosition  As POINTAPI
+ ptMinTrackSize As POINTAPI
+ ptMaxTrackSize As POINTAPI
+End Type
+
+Type RECT
+ Left           As Long
+ Top            As Long
+ Right          As Long
+ Bottom         As Long
+End Type
+
+Type CtlLengths
+ LLength        As Long
+ TLength        As Long
+ RLength        As Long
+ BLength        As Long
+End Type
+
+Type WindowRect
+ Left           As Long
+ Top            As Long
+ Width          As Long
+ Height         As Long
+End Type
+
+Public Type DockInfo
+ SplitRect      As RECT
+ ChildRect      As WindowRect
+ szPercent      As Single
+ DcColIndex     As Integer
+End Type
+
+Public Const LF_FACESIZE = 32
+Public Type LOGFONT
+    lfHeight As Long
+    lfWidth As Long
+    lfEscapement As Long
+    lfOrientation As Long
+    lfWeight As Long
+    lfItalic As Byte
+    lfUnderline As Byte
+    lfStrikeOut As Byte
+    lfCharSet As Byte
+    lfOutPrecision As Byte
+    lfClipPrecision As Byte
+    lfQuality As Byte
+    lfPitchAndFamily As Byte
+    lfFaceName(0 To LF_FACESIZE - 1) As Byte
+End Type
+
+Public Type NMLOGFONT
+    lfHeight As Long
+    lfWidth As Long
+    lfEscapement As Long
+    lfOrientation As Long
+    lfWeight As Long
+    lfItalic As Byte
+    lfUnderline As Byte
+    lfStrikeOut As Byte
+    lfCharSet As Byte
+    lfOutPrecision As Byte
+    lfClipPrecision As Byte
+    lfQuality As Byte
+    lfPitchAndFamily As Byte
+    lfFaceName(0 To LF_FACESIZE - 3) As Byte
+End Type
+
+Public Type NONCLIENTMETRICS
+    cbSize As Long
+    iBorderWidth As Long
+    iScrollWidth As Long
+    iScrollHeight As Long
+    iCaptionWidth As Long
+    iCaptionHeight As Long
+    lfCaptionFont As NMLOGFONT
+    iSMCaptionWidth As Long
+    iSMCaptionHeight As Long
+    lfSMCaptionFont As NMLOGFONT
+    iMenuWidth As Long
+    iMenuHeight As Long
+    lfMenuFont As NMLOGFONT
+    lfStatusFont As NMLOGFONT
+    lfMessageFont As NMLOGFONT
+End Type
+
+
+Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
+Public Const VK_LBUTTON = &amp;H1
+
+Declare Function IsZoomed Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function FillRect Lib "user32" (ByVal hdc As Long, lpRect As RECT,
+ ByVal hBrush As Long) As Long
+Declare Function GetSysColorBrush Lib "user32" (ByVal nIndex As Long) As Long
+Declare Function GetWindowDC Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function SystemParametersInfo Lib "user32" Alias
+ "SystemParametersInfoA" (ByVal uAction As Long, ByVal uParam As Long, lpvParam
+ As Any, ByVal fuWinIni As Long) As Long
+Declare Function CreateFontIndirect Lib "gdi32" Alias "CreateFontIndirectA"
+ (lpLogFont As LOGFONT) As Long
+Declare Function SelectObject Lib "gdi32" (ByVal hdc As Long, ByVal hObject As
+ Long) As Long
+Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long
+Declare Function SetBkMode Lib "gdi32" (ByVal hdc As Long, ByVal nBkMode As
+ Long) As Long
+Declare Function SetTextColor Lib "gdi32" (ByVal hdc As Long, ByVal crColor As
+ Long) As Long
+Declare Function GetSysColor Lib "user32" (ByVal nIndex As Long) As Long
+Declare Function CreateRectRgn Lib "gdi32" (ByVal X1 As Long, ByVal Y1 As Long,
+ ByVal X2 As Long, ByVal Y2 As Long) As Long
+Public Const COLOR_BTNFACE = 15
+Public Const COLOR_INACTIVECAPTION = 3
+Public Const COLOR_CAPTIONTEXT = 9
+Public Const COLOR_ACTIVECAPTION = 2
+Public Const COLOR_INACTIVECAPTIONTEXT = 19
+Public Const SPI_GETNONCLIENTMETRICS = 41
+Public Const SPI_SETNONCLIENTMETRICS = 42
+
+Declare Function ExtSelectClipRgn Lib "gdi32" (ByVal hdc As Long, ByVal hrgn As
+ Long, ByVal fnMode As Long) As Long
+Public Const RGN_AND = 1
+Public Const RGN_COPY = 5
+Public Const RGN_DIFF = 4
+Public Const RGN_OR = 2
+Public Const RGN_XOR = 3
+   
+Private Declare Function OleTranslateColor Lib "OLEPRO32.DLL" (ByVal OLE_COLOR
+ As Long, ByVal HPALETTE As Long, pccolorref As Long) As Long
+Private Declare Function CreateSolidBrush Lib "gdi32" (ByVal crColor As Long)
+ As Long
+
+Declare Function SetFocus Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hwnd
+ As Long, ByVal nIndex As Long) As Long
+Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd
+ As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
+Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal
+ hWndInsertAfter As Long, ByVal x As Long, ByVal y As Long, ByVal cx As Long,
+ ByVal cy As Long, ByVal wFlags As Long) As Long
+
+Declare Function EnumChildWindows Lib "user32" (ByVal hWndParent As Long, ByVal
+ lpEnumFunc As Long, ByVal lParam As Long) As Long
+Declare Function RedrawWindow Lib "user32" (ByVal hwnd As Long, lprcUpdate As
+ RECT, ByVal hrgnUpdate As Long, ByVal fuRedraw As Long) As Long
+Declare Function SetForegroundWindow Lib "user32" (ByVal hwnd As Long) As Long
+
+Declare Function ValidateRect Lib "user32" (ByVal hwnd As Long, lpRect As RECT)
+ As Long
+Declare Function GetWindowRect Lib "user32" (ByVal hwnd As Long, lpRect As
+ RECT) As Long
+Declare Function ClientToScreen Lib "user32" (ByVal hwnd As Long, lpPoint As
+ POINTAPI) As Long
+Declare Function DrawEdge Lib "user32" (ByVal hdc As Long, qrc As RECT, ByVal
+ edge As Long, ByVal grfFlags As Long) As Long
+
+Declare Function DrawFrameControl Lib "user32" (ByVal hdc As Long, lpRect As
+ RECT, ByVal uType As Long, ByVal uState As Long) As Long
+
+Declare Function FindWindowEx Lib "user32" Alias "FindWindowExA" (ByVal hWnd1
+ As Long, ByVal hWnd2 As Long, ByVal lpsz1 As String, ByVal lpsz2 As String) As
+ Long
+Declare Function IsWindowEnabled Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function IsWindowVisible Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function WindowFromPoint Lib "user32" (ByVal xPoint As Long, ByVal
+ yPoint As Long) As Long
+Declare Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long
+Declare Function BringWindowToTop Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function GetClassName Lib "user32" Alias "GetClassNameA" (ByVal hwnd As
+ Long, ByVal lpClassName As String, ByVal nMaxCount As Long) As Long
+Declare Function GetWindow Lib "user32" (ByVal hwnd As Long, ByVal wCmd As
+ Long) As Long
+Declare Function IsChild Lib "user32" (ByVal hWndParent As Long, ByVal hwnd As
+ Long) As Long
+Declare Function ScreenToClient Lib "user32" (ByVal hwnd As Long, lpPoint As
+ POINTAPI) As Long
+Declare Function DestroyCaret Lib "user32" () As Long
+Declare Function GetFocus Lib "user32" () As Long
+
+
+Declare Function GetActiveWindow Lib "user32" () As Long
+Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As
+ Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As
+ Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (pDest As Any, pSrc
+ As Any, ByVal ByteLen As Long)
+Declare Function MoveWindow Lib "user32" (ByVal hwnd As Long, ByVal x As Long,
+ ByVal y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal bRepaint
+ As Long) As Long
+Declare Function GetCapture Lib "user32" () As Long
+Declare Function SetCapture Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function ReleaseCapture Lib "user32" () As Long
+
+Declare Function DrawCaption Lib "user32" (ByVal hwnd As Long, ByVal hdc As
+ Long, pcRect As RECT, ByVal un As Long) As Long
+Declare Function DrawText Lib "user32" Alias "DrawTextA" (ByVal hdc As Long,
+ ByVal lpStr As String, ByVal nCount As Long, lpRect As RECT, ByVal wFormat As
+ Long) As Long
+Declare Function PtInRect Lib "user32" (lpRect As RECT, ByVal x As Long, ByVal
+ y As Long) As Long
+Declare Function SetRectEmpty Lib "user32" (lpRect As RECT) As Long
+Declare Sub OffsetRect Lib "user32" (lpRect As RECT, ByVal x As Long, ByVal y
+ As Long)
+Declare Function InflateRect Lib "user32" (lpRect As RECT, ByVal x As Long,
+ ByVal y As Long) As Long
+
+Declare Function SetBkColor Lib "gdi32" (ByVal hdc As Long, ByVal crColor As
+ Long) As Long
+Declare Function DrawFocusRect Lib "user32" (ByVal hdc As Long, lpRect As RECT)
+ As Long
+Declare Function GetDCEx Lib "user32" (ByVal hwnd As Long, ByVal hrgnclip As
+ Long, ByVal fdwOptions As Long) As Long
+Declare Function ReleaseDC Lib "user32" (ByVal hwnd As Long, ByVal hdc As Long)
+ As Long
+
+Declare Function GetParent Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal
+ hWndNewParent As Long) As Long
+Declare Function GetClientRect Lib "user32" (ByVal hwnd As Long, lpRect As
+ RECT) As Long
+Declare Function ShowWindow Lib "user32" (ByVal hwnd As Long, ByVal nCmdShow As
+ Long) As Long
+
+
+Public Const HTERROR = (-2)
+Public Const HTTRANSPARENT = (-1)
+Public Const HTNOWHERE = 0
+Public Const HTCLIENT = 1
+Public Const HTCAPTION = 2
+Public Const HTSYSMENU = 3
+Public Const HTGROWBOX = 4
+Public Const HTMENU = 5
+Public Const HTHSCROLL = 6
+Public Const HTVSCROLL = 7
+Public Const HTMINBUTTON = 8
+Public Const HTMAXBUTTON = 9
+Public Const HTLEFT = 10
+Public Const HTRIGHT = 11
+Public Const HTTOP = 12
+Public Const HTTOPLEFT = 13
+Public Const HTBOTTOM = 15
+Public Const HTBOTTOMLEFT = 16
+Public Const HTBOTTOMRIGHT = 17
+Public Const HTBORDER = 18
+
+
+Public Const DT_SINGLELINE = &amp;H20
+Public Const DT_LEFT = &amp;H0
+Public Const DT_WORD_ELLIPSIS = &amp;H40000
+Public Const DT_END_ELLIPSIS = &amp;H8000
+
+Public Const DT_FLAGS = DT_SINGLELINE Or DT_LEFT Or DT_WORD_ELLIPSIS
+
+Public Const DCX_PARENTCLIP = &amp;H20&amp;
+Public Const DCX_WINDOW = &amp;H1&amp;
+Public Const TRANSPARENT = 1
+
+
+Public Const GWL_STYLE = (-16)
+Public Const GWL_EXSTYLE = (-20)
+
+'App Window Style Value
+Public Const WS_VISIBLE = &amp;H10000000
+
+'ToolWindowStyles
+Private Const TW_STYLE = 113508352
+Private Const TW_EXSTYLE = 392&amp;
+
+'DockWindowStyles
+Private Const DKW_STYLE = 1442840576
+Private Const DKW_EXSTYLE = 72&amp;
+
+Public Const SWP_NOSIZE = &amp;H1
+Public Const SWP_NOMOVE = &amp;H2
+Public Const SWP_NOREDRAW = &amp;H8
+Public Const SWP_NOACTIVATE = &amp;H10
+Public Const SWP_FRAMECHANGED = &amp;H20
+Public Const SWP_STYLECHANGE = SWP_NOSIZE Or SWP_NOMOVE Or SWP_FRAMECHANGED Or
+ SWP_NOACTIVATE
+
+Public Const WM_MOVE = &amp;H3
+Public Const WM_SIZE = &amp;H5
+Public Const WM_GETMINMAXINFO = &amp;H24
+Public Const WM_SETREDRAW = &amp;HB
+Public Const WM_WINDOWPOSCHANGING = &amp;H46
+Public Const WM_WINDOWPOSCHANGED = &amp;H47
+Public Const WM_ENABLE = &amp;HA
+
+Public Const WM_NCLBUTTONDOWN = &amp;HA1
+Public Const WM_NCLBUTTONUP = &amp;HA2
+Public Const WM_NCLBUTTONDBLCLK = &amp;HA3
+Public Const WM_NCMBUTTONDOWN = &amp;HA7
+Public Const WM_NCMBUTTONUP = &amp;HA8
+Public Const WM_NCMOUSEMOVE = &amp;HA0
+Public Const WM_NCRBUTTONDOWN = &amp;HA4
+Public Const WM_NCRBUTTONUP = &amp;HA5
+Public Const WM_NCHITTEST = &amp;H84&amp;
+
+Public Const WM_MDIACTIVATE = &amp;H222
+Public Const WM_MDIGETACTIVE = &amp;H229
+Public Const WM_MDIDESTROY = &amp;H221
+Public Const WM_ACTIVATEAPP = &amp;H1C
+
+Public Const WM_LBUTTONDBLCLK = &amp;H203
+Public Const WM_ACTIVATE = &amp;H6
+Public Const WM_NCACTIVATE = &amp;H86
+Public Const WM_SETFOCUS = &amp;H7
+Public Const WM_KILLFOCUS = &amp;H8
+Public Const WM_MOUSEMOVE = &amp;H200
+Public Const WM_MOUSEACTIVATE = &amp;H21
+Public Const WM_SETCURSOR = &amp;H20
+Public Const WM_PARENTNOTIFY = &amp;H210
+Public Const WM_NCDESTROY = &amp;H82
+Public Const WM_NCPAINT = &amp;H85
+
+
+Public Const SF_NCPAINT = 8000&amp;
+Public Const SF_ACTIVATE = 8001&amp;
+
+Public Const SW_HIDE = 0
+Public Const SW_SHOWNORMAL = 1
+
+Public Const GW_HWNDFIRST = 0
+Public Const GW_HWNDNEXT = 2
+Public Const GW_CHILD = 5
+
+
+Public Const DFCS_CAPTIONCLOSE = &amp;H0
+Public Const DFC_CAPTION = &amp;H1
+Public Const DFCS_PUSHED = &amp;H200
+
+
+Public Const BF_LEFT = &amp;H1
+Public Const BF_RIGHT = &amp;H4
+Public Const BF_TOP = &amp;H2
+Public Const BF_BOTTOM = &amp;H8
+Public Const BF_RECT = (BF_LEFT Or BF_TOP Or BF_RIGHT Or BF_BOTTOM)
+
+Public Const RDW_ALLCHILDREN = &amp;H80
+Public Const RDW_INVALIDATE = &amp;H1
+Public Const RDW_NOERASE = &amp;H20
+Public Const RDW_UPDATENOW = &amp;H100
+Public Const RDW_NOFRAME = &amp;H800
+Public Const RDW_UPDATEFLAGS = RDW_INVALIDATE Or RDW_NOERASE Or RDW_ALLCHILDREN
+ 'Or RDW_NOFRAME
+
+
+Public CursorV          As Picture
+Public CursorH          As Picture
+Public DockService      As Service
+Public SubFormsLoaded   As Boolean
+Public DisableRedraw    As Boolean
+
+Public m_SubDock        As Variant
+Public m_SubForm        As Variant
+Public m_Form           As New Collection
+Public m_MdiChwnd       As Long
+Public m_ActiveSubIndx  As Integer
+Public m_ActiveToolIndx As Integer
+Public m_ActiveSubWnd   As Long
+Public m_MdiActive      As Long
+Public AppObj           As Form
+Public m_CapFnt         As Long
+
+Public m_AppInactive    As Boolean
+Public m_MouseActivated As Boolean
+Public m_ModalHwnd As Long
+
+Public MousePos         As POINTAPI
+Public FormMoving       As Integer
+Public DrwRect          As RECT
+Public NewAlign         As Integer
+Public TagDock          As Integer
+Public TwipsX           As Long
+Public TwipsY           As Long
+
+Dim SdRects()           As RECT
+Dim SfRects()           As RECT
+Dim BdRects()           As RECT
+Dim UdRect              As RECT
+Dim DrwThickness        As Integer
+
+Public Intializing      As Boolean
+
+Function HiWord(dw As Long) As Integer
+    If dw And &amp;H80000000 Then
+          HiWord = (dw \ 65535) - 1
+    Else: HiWord = dw \ 65535
+    End If
+End Function
+
+Function LoWord(dw As Long) As Integer
+    If dw And &amp;H8000&amp; Then
+          LoWord = &amp;H8000 Or (dw And &amp;H7FFF&amp;)
+    Else: LoWord = dw And &amp;HFFFF&amp;
+    End If
+End Function
+Public Sub SetDockWindowStyle(ByVal m_hwnd As Long, ByVal DockParent As Long)
+ 
+ Call SetWindowLong(m_hwnd, GWL_STYLE, DKW_STYLE)
+ Call SetWindowLong(m_hwnd, GWL_EXSTYLE, DKW_EXSTYLE)
+ Call SetParent(m_hwnd, DockParent)
+ Call SetWindowPos(m_hwnd, 0, -20000, -20000, 0, 0, SWP_STYLECHANGE Xor
+  SWP_NOMOVE)
+ 
+End Sub
+
+Public Sub SetToolWindowStyle(ByVal m_hwnd As Long)
+ Call SetWindowLong(m_hwnd, GWL_STYLE, TW_STYLE)
+ Call SetWindowLong(m_hwnd, GWL_EXSTYLE, TW_EXSTYLE)
+ Call SetWindowPos(m_hwnd, 0, 0, 0, 0, 0, SWP_STYLECHANGE)
+ Call SetParent(m_hwnd, 0&amp;)
+End Sub
+Private Function TranslateColor(ByVal clr As OLE_COLOR, _
+                        Optional hPal As Long = 0) As Long
+    If OleTranslateColor(clr, hPal, TranslateColor) Then
+        TranslateColor = -1 'CLR_INVALID
+    End If
+End Function
+      
+Public Sub DrawGraduatedBackdrop( _
+      ByVal lhdc As Long, _
+      CpRect As RECT, _
+      ByVal bActive As Boolean, _
+      Optional ByVal eActiveStartColour As OLE_COLOR = &amp;H0&amp;, _
+      Optional ByVal eActiveEndColour As OLE_COLOR = vbActiveTitleBar, _
+      Optional ByVal eInactiveStartColour As OLE_COLOR = &amp;H0&amp;, _
+      Optional ByVal eInactiveEndColour As OLE_COLOR = vbInactiveTitleBar, _
+      Optional ByVal bVertical As Boolean = False _
+   )
+Dim lStartColour As Long, lEndColour As Long
+Dim lSRed As Long, lSGreen As Long, lSBlue As Long
+Dim lERed As Long, lEGreen As Long, lEBlue As Long
+Dim lRed As Long, lGreen As Long, lBlue As Long
+Dim lLastRed As Long, lLastGreen As Long, lLastBlue As Long
+Dim hBr As Long
+Dim tR As RECT
+Dim iPos As Long, lSize As Long, lMinStep As Long
+
+   tR.Left = CpRect.Left: tR.Top = CpRect.Top: tR.Right = CpRect.Right:
+    tR.Bottom = CpRect.Bottom
+   
+   If (bActive) Then
+      lStartColour = TranslateColor(eActiveStartColour)
+      lEndColour = TranslateColor(eActiveEndColour)
+   Else
+      lStartColour = TranslateColor(eInactiveStartColour)
+      lEndColour = TranslateColor(eInactiveEndColour)
+   End If
+   If (lStartColour = lEndColour) Then
+      ' Simple! (but dull...)"
+      hBr = CreateSolidBrush(lStartColour)
+      tR.Top = tR.Top - 1
+      FillRect lhdc, tR, hBr
+      DeleteObject hBr
+   Else
+      ' Create a gradation:
+      lSRed = lStartColour And &amp;HFF&amp;
+      lSGreen = (lStartColour And &amp;HFF00&amp;) \ &amp;H100&amp;
+      lSBlue = (lStartColour And &amp;HFF0000) \ &amp;H10000
+      lERed = lEndColour And &amp;HFF&amp;
+      lEGreen = (lEndColour And &amp;HFF00&amp;) \ &amp;H100&amp;
+      lEBlue = (lEndColour And &amp;HFF0000) \ &amp;H10000
+            
+      If (bVertical) Then
+         ' Vertical graduation:
+         lSize = CpRect.Bottom - CpRect.Top
+         tR.Top = tR.Top - 1
+         tR.Bottom = tR.Top + 1
+         For iPos = 1 To lSize + 1
+            lRed = Abs(lSRed + ((lERed - lSRed) * iPos) \ lSize)
+            lGreen = Abs(lSGreen + ((lEGreen - lSGreen) * iPos) \ lSize)
+            lBlue = Abs(lSBlue + ((lEBlue - lSBlue) * iPos) \ lSize)
+            hBr = CreateSolidBrush(RGB(lRed, lGreen, lBlue))
+            FillRect lhdc, tR, hBr
+            DeleteObject hBr
+            tR.Top = tR.Top + 1
+            tR.Bottom = tR.Top + 1
+         Next iPos
+      Else
+         ' Horizontal graduation:
+         lSize = CpRect.Right - CpRect.Left
+         lMinStep = lSize \ 64
+        
+         lLastRed = lSRed: lLastGreen = lSGreen: lLastBlue = lSBlue
+         tR.Right = tR.Left + lMinStep - 1
+         For iPos = 1 To lSize + 1 Step lMinStep
+            lRed = Abs(lSRed + ((lERed - lSRed) * iPos) \ lSize)
+            lGreen = Abs(lSGreen + ((lEGreen - lSGreen) * iPos) \ lSize)
+            lBlue = Abs(lSBlue + ((lEBlue - lSBlue) * iPos) \ lSize)
+            If (lGreen = lLastGreen) And (lRed = lLastRed) And (lBlue =
+             lLastBlue) Then
+               tR.Right = tR.Right + lMinStep
+            Else
+               hBr = CreateSolidBrush(RGB(lLastRed, lLastGreen, lLastBlue))
+               FillRect lhdc, tR, hBr
+               DeleteObject hBr
+               tR.Left = tR.Right
+               tR.Right = tR.Left + lMinStep
+               lLastRed = lRed
+               lLastGreen = lGreen
+               lLastBlue = lBlue
+            End If
+         Next iPos
+      End If
+   End If
+   
+End Sub
+      
+
+Function SetContainerFocus(ByVal hwnd As Long, ByVal lParam As Long) As Long
+ 
+ 
+ If IsChild(hwnd, lParam) = 1 Then
+  SetFocus hwnd
+  Exit Function
+ End If
+ 
+ SetContainerFocus = 1
+ 
+End Function
+
+Public Sub SetRedraw(ByVal ReDrawHwnd As Long, ReDrawState As Boolean)
+ 
+ Dim lpRect As RECT
+ Dim clp    As POINTAPI
+ 
+ If DisableRedraw Then Exit Sub   'Ensures minimal redraw Calls
+ 
+ If Not ReDrawState Then
+  'Turn Draw off for this hwnd
+  SendMessage ReDrawHwnd, WM_SETREDRAW, 0, 0
+ 
+ Else
+  'Ensure Drawing is on for this hwnd...
+  SendMessage ReDrawHwnd, WM_SETREDRAW, 1, 0
+  
+  'Get-Set WindowFrame to client coordinates for complete redraw of window
+  GetWindowRect ReDrawHwnd, lpRect
+  clp.x = lpRect.Left: clp.y = lpRect.Top
+  ScreenToClient ReDrawHwnd, clp
+  lpRect.Left = clp.x: lpRect.Top = clp.y
+  clp.x = lpRect.Right: clp.y = lpRect.Bottom
+  ScreenToClient ReDrawHwnd, clp
+  lpRect.Right = clp.x: lpRect.Bottom = clp.y
+  
+  'Redraw it
+  RedrawWindow ReDrawHwnd, lpRect, 0&amp;, RDW_UPDATEFLAGS Or RDW_UPDATENOW
+  
+ End If
+ 
+End Sub
+Public Sub AutoSize()
+ Dim MinWh As Long
+ Dim N As Integer
+  
+ For N = vbAlignTop To vbAlignRight
+  
+  If AppObj.WindowState = 1 Then Exit For
+  MinWh = m_SubDock(N).MinWh
+ 
+ If m_SubDock(N).Visible Or TagDock = N Then
+   
+   If m_SubDock(N).Align &lt; vbAlignLeft And m_SubDock(N).Height &lt; MinWh Then
+    Call SetRedraw(AppObj.hwnd, False)
+    m_SubDock(N).Height = MinWh
+    Call SetRedraw(AppObj.hwnd, True)
+   End If
+   
+   If m_SubDock(N).Align &gt; vbAlignBottom And m_SubDock(N).Width &lt; MinWh Then
+    Call SetRedraw(AppObj.hwnd, False)
+    m_SubDock(N).Width = MinWh
+    Call SetRedraw(AppObj.hwnd, True)
+   End If
+  End If
+ Next
+ 
+ Call AutoSizeP
+ 
+End Sub
+
+Public Sub AutoSizeP()
+ Dim N As Integer
+ Dim J As Integer
+ Dim CtlDims As CtlLengths
+ Dim cRect  As RECT
+ Dim ySpace As Long
+ Dim xSpace As Long
+  
+ For N = vbAlignRight To vbAlignTop Step -1
+       
+   If Not m_SubDock(N).Visible And TagDock &lt;&gt; N Then GoTo DNext
+    
+    CtlDims = ControlDims()
+    GetClientRect AppObj.hwnd, cRect
+    
+    If (CtlDims.TLength + CtlDims.BLength) &gt; cRect.Bottom And
+     m_SubDock(N).Height &gt; m_SubDock(N).MinWh Then
+      
+     If m_SubDock(N).Align = vbAlignTop Then
+      CtlDims.TLength = CtlDims.TLength - m_SubDock(N).Height / TwipsY
+      ySpace = cRect.Bottom - (CtlDims.BLength + CtlDims.TLength)
+      
+      Call SetRedraw(AppObj.hwnd, False)
+      
+      If ySpace &gt; m_SubDock(N).MinWh / TwipsY Then
+        m_SubDock(N).Height = ySpace * TwipsY
+      Else
+       m_SubDock(N).Height = m_SubDock(N).MinWh
+      End If
+      
+      Call SetRedraw(AppObj.hwnd, True)
+      
+     End If
+       
+     If m_SubDock(N).Align = vbAlignBottom Then
+      CtlDims.BLength = CtlDims.BLength - m_SubDock(N).Height / TwipsY
+      ySpace = cRect.Bottom - (CtlDims.BLength + CtlDims.TLength)
+      
+      Call SetRedraw(AppObj.hwnd, False)
+      
+      If ySpace &gt; m_SubDock(N).MinWh / TwipsY Then
+       m_SubDock(N).Height = ySpace * TwipsY
+      Else
+       m_SubDock(N).Height = m_SubDock(N).MinWh
+      End If
+      
+      Call SetRedraw(AppObj.hwnd, True)
+      
+     End If
+      
+    End If
+      
+    If (CtlDims.LLength + CtlDims.RLength) &gt; cRect.Right And m_SubDock(N).Width
+     &gt; m_SubDock(N).MinWh Then
+       
+     If m_SubDock(N).Align = vbAlignLeft Then
+      CtlDims.LLength = CtlDims.LLength - m_SubDock(N).Width / TwipsX
+      xSpace = cRect.Right - (CtlDims.RLength + CtlDims.LLength)
+      
+      Call SetRedraw(AppObj.hwnd, False)
+      
+      If xSpace &gt; m_SubDock(N).MinWh \ TwipsX Then
+       m_SubDock(N).Width = xSpace * TwipsX
+      Else
+       m_SubDock(N).Width = m_SubDock(N).MinWh
+      End If
+     
+      Call SetRedraw(AppObj.hwnd, True)
+     
+     End If
+       
+     If m_SubDock(N).Align = vbAlignRight Then
+      CtlDims.RLength = CtlDims.RLength - m_SubDock(N).Width / TwipsX
+      xSpace = cRect.Right - (CtlDims.RLength + CtlDims.LLength)
+      
+      Call SetRedraw(AppObj.hwnd, False)
+      
+      If xSpace &gt; m_SubDock(N).MinWh \ TwipsX Then
+       m_SubDock(N).Width = xSpace * TwipsX
+      Else
+       m_SubDock(N).Width = m_SubDock(N).MinWh
+      End If
+     
+      Call SetRedraw(AppObj.hwnd, True)
+     
+     End If
+      
+    
+      
+    End If
+
+DNext:
+
+ Next
+ 
+End Sub
+
+
+
+Public Function ControlDims(Optional LessDock As Boolean) As CtlLengths
+ Dim CObject As Control
+ Dim CwRect  As CtlLengths
+ Dim TstString As String
+ Dim AddWidth  As Boolean
+ 
+ On Local Error Resume Next
+ 
+ For Each CObject In AppObj.Controls
+ 
+  TstString = RTrim(TypeName(CObject))
+  
+  Select Case TstString
+   Case "SubDock"
+    If LessDock Then
+     AddWidth = False
+    Else
+     If IsWindowVisible(ByVal CObject.hwnd) Then
+      AddWidth = True
+     ElseIf CObject.Align = TagDock Then
+      AddWidth = True
+     Else
+      AddWidth = False
+     End If
+    End If
+    
+   Case "PictureBox", "CoolBar", "StatusBar", "Toolbar", "ProgressBar"
+    If IsWindowVisible(ByVal CObject.hwnd) Then AddWidth = True
+   Case Else
+    AddWidth = False
+  End Select
+  
+  
+    
+  If AddWidth Then
+    If GetParent(CObject.hwnd) = AppObj.hwnd Then
+     Select Case CObject.Align
+      Case vbAlignTop
+       CwRect.TLength = CwRect.TLength + CObject.Height / TwipsY
+      Case vbAlignBottom
+       CwRect.BLength = CwRect.BLength + CObject.Height / TwipsY
+      Case vbAlignLeft
+       CwRect.LLength = CwRect.LLength + CObject.Width / TwipsX
+      Case vbAlignRight
+       CwRect.RLength = CwRect.RLength + CObject.Width / TwipsX
+     End Select
+    End If
+  End If
+  
+  
+ 
+ Next
+ 
+ ControlDims = CwRect
+ 
+End Function
+
+Public Sub DragFocus(ByVal dHwnd As Long, DrwRect As RECT, ByVal Thickness As
+ Long)
+   
+   Dim sDc          As Long
+   Dim r            As Long
+   Dim J            As Long
+   Dim DRect        As RECT
+   
+   
+   DRect = DrwRect
+   
+   sDc = GetDCEx(ByVal dHwnd, 0, DCX_WINDOW Or DCX_PARENTCLIP)
+   Call SetBkColor(sDc, QBColor(7))
+   
+   DrawFocusRect sDc, DRect
+   
+   
+   For J = 1 To Thickness
+    DRect.Left = DRect.Left + 1
+    DRect.Top = DRect.Top + 1
+    DRect.Right = DRect.Right - 1
+    DRect.Bottom = DRect.Bottom - 1
+    DrawFocusRect sDc, DRect
+   Next
+   
+   
+   r = ReleaseDC(ByVal dHwnd, sDc)
+   
+   
+End Sub
+
+
+Public Sub NcMouseDown(ByVal SfIndex As Integer)
+ Dim N          As Integer
+ Dim clp        As POINTAPI
+ Dim Olp        As POINTAPI
+ Dim Ms         As POINTAPI
+ 
+ 
+ Dim SdIndex    As Integer
+ Dim cRect      As RECT
+ Dim pwRect     As RECT
+ Dim pwWidth    As Long
+ Dim pwHeight   As Long
+ Dim pwCount    As Integer
+ Dim NwWidth    As Long
+ Dim NwHeight   As Long
+ Dim CtlDims    As CtlLengths
+ 
+ CtlDims = ControlDims(True)
+ 
+ 
+ 
+ ReDim SdRects(1 To m_SubDock.Count)
+ ReDim SfRects(1 To m_SubDock.Count)
+ ReDim BdRects(1 To 8)
+ 
+ 'Call GetCursorPos(MousePos)
+ SdIndex = m_SubForm(SfIndex).DockPos
+ 
+ 
+  
+ GetWindowRect m_MdiChwnd, cRect
+ GetClientRect AppObj.hwnd, pwRect
+ ClientToScreen AppObj.hwnd, clp
+ OffsetRect pwRect, clp.x, clp.y
+ clp = Olp
+ 
+ 
+ pwRect.Left = pwRect.Left + CtlDims.LLength
+ pwRect.Top = pwRect.Top + CtlDims.TLength
+ pwRect.Right = pwRect.Right - CtlDims.RLength
+ pwRect.Bottom = pwRect.Bottom - CtlDims.BLength
+ 
+ NwHeight = (cRect.Bottom - cRect.Top) \ 4
+ NwWidth = (cRect.Right - cRect.Left) \ 4
+ 
+ If NwWidth &lt; 72 Then NwWidth = 72
+ If NwHeight &lt; 72 Then NwHeight = 72
+ 
+ 
+ BdRects(1).Left = pwRect.Left - 4
+ BdRects(1).Top = pwRect.Top - 4
+ BdRects(1).Bottom = cRect.Top
+ BdRects(1).Right = pwRect.Right + 4
+ 
+ BdRects(2).Left = pwRect.Left - 4
+ BdRects(2).Top = cRect.Bottom
+ BdRects(2).Right = pwRect.Right + 4
+ BdRects(2).Bottom = pwRect.Bottom + 4
+  
+ BdRects(3).Left = pwRect.Left - 4
+ BdRects(3).Top = cRect.Top
+ BdRects(3).Right = cRect.Left
+ BdRects(3).Bottom = cRect.Bottom
+  
+ BdRects(4).Left = cRect.Right
+ BdRects(4).Top = cRect.Top
+ BdRects(4).Right = pwRect.Right + 4
+ BdRects(4).Bottom = cRect.Bottom
+  
+ If Not m_SubDock(1).Visible Then
+  BdRects(5).Left = cRect.Left
+  BdRects(5).Top = cRect.Top
+  BdRects(5).Right = cRect.Right
+  BdRects(5).Bottom = cRect.Top + 48
+  SdRects(1) = BdRects(5)
+  SdRects(1).Left = 0: SdRects(1).Right = pwRect.Right - pwRect.Left
+  SdRects(1).Bottom = cRect.Top + NwHeight
+ Else
+  GetWindowRect m_SubDock(1).hwnd, BdRects(5)
+ End If
+  
+ If Not m_SubDock(2).Visible Then
+  BdRects(6).Left = cRect.Left
+  BdRects(6).Top = cRect.Bottom - 48
+  BdRects(6).Right = cRect.Right
+  BdRects(6).Bottom = cRect.Bottom
+  SdRects(2) = BdRects(6)
+  SdRects(2).Left = 0: SdRects(2).Right = pwRect.Right - pwRect.Left
+  SdRects(2).Top = cRect.Bottom - NwHeight
+ Else
+  GetWindowRect m_SubDock(2).hwnd, BdRects(6)
+ End If
+  
+ If Not m_SubDock(3).Visible Then
+  BdRects(7).Left = cRect.Left
+  BdRects(7).Top = cRect.Top
+  BdRects(7).Right = cRect.Left + 48
+  BdRects(7).Bottom = cRect.Bottom
+  SdRects(3) = BdRects(7)
+  SdRects(3).Right = cRect.Left + NwWidth
+ Else
+  GetWindowRect m_SubDock(3).hwnd, BdRects(7)
+ End If
+  
+ If Not m_SubDock(4).Visible Then
+  BdRects(8).Left = cRect.Right - 48
+  BdRects(8).Top = cRect.Top
+  BdRects(8).Right = cRect.Right
+  BdRects(8).Bottom = cRect.Bottom
+  SdRects(4) = BdRects(8)
+  SdRects(4).Left = cRect.Right - NwWidth
+ Else
+  GetWindowRect m_SubDock(4).hwnd, BdRects(8)
+ End If
+  
+ For N = 1 To 8
+  clp = Olp
+  ScreenToClient AppObj.hwnd, clp
+  OffsetRect BdRects(N), clp.x, clp.y
+ Next
+  
+ For N = 1 To m_SubDock.Count
+  clp = Olp
+  If IsWindowVisible(m_SubDock(N).hwnd) Then
+   GetClientRect m_SubDock(N).hwnd, SdRects(N)
+   ClientToScreen m_SubDock(N).hwnd, clp
+   ScreenToClient AppObj.hwnd, clp
+   OffsetRect SdRects(N), clp.x, clp.y
+  End If
+ Next
+ 
+ For N = 1 To m_SubDock.Count
+  clp = Olp
+  If (N &lt;&gt; SdIndex) Or (N = SdIndex And Not m_SubForm(SfIndex).Docked) Then
+   Call SizerAlign(N, SdRects(N).Right - SdRects(N).Left, SdRects(N).Bottom -
+    SdRects(N).Top, cRect)
+   pwCount = m_SubDock(N).VisibleCount + 1
+   
+   If pwCount &gt; 0 Then
+    Select Case N
+     Case vbAlignTop, vbAlignBottom
+      'TmpRect = CRect
+      pwWidth = 4 + (((cRect.Right - cRect.Left) - (pwCount * 4)) / (pwCount +
+       1))
+      SfRects(N).Right = SfRects(N).Left + pwWidth
+      SfRects(N).Bottom = cRect.Bottom - cRect.Top
+     Case vbAlignLeft, vbAlignRight
+      pwWidth = 4 + (((cRect.Bottom - cRect.Top) - (pwCount * 4)) / (pwCount +
+       1))
+      SfRects(N).Right = cRect.Right - cRect.Left
+      SfRects(N).Bottom = SfRects(N).Top + pwWidth
+    End Select
+   
+   Else
+    SfRects(N).Right = cRect.Right - cRect.Left
+    SfRects(N).Bottom = cRect.Bottom - cRect.Top
+    
+   End If
+   
+   ClientToScreen m_SubForm(SfIndex).hwnd, clp
+   ScreenToClient m_SubDock(SdIndex).hwnd, clp
+   OffsetRect SfRects(N), clp.x, clp.y
+   
+  Else
+   GetClientRect m_SubForm(SfIndex).hwnd, SfRects(N)
+   ClientToScreen m_SubForm(SfIndex).hwnd, clp
+   ScreenToClient m_SubDock(SdIndex).hwnd, clp
+   OffsetRect SfRects(N), clp.x, clp.y
+  End If
+  
+  If SfRects(N).Bottom - SfRects(N).Top &lt; 16 Then
+   SfRects(N).Bottom = SfRects(N).Top + 16
+  End If
+  
+ Next
+ 
+ 
+ 
+ Ms = MousePos
+ 
+ ScreenToClient m_SubDock(SdIndex).hwnd, Ms
+ clp = Olp
+ 
+ If Not m_SubForm(SfIndex).Docked Then
+  GetWindowRect m_SubForm(SfIndex).FrmHwnd, UdRect
+  ScreenToClient m_SubDock(SdIndex).hwnd, clp
+  OffsetRect UdRect, clp.x, clp.y
+ Else
+  If (m_SubForm(SfIndex).UdWidth = 0) And (m_SubForm(SfIndex).UdLeft = 0) And
+   (m_SubForm(SfIndex).UdHeight = 0) And (m_SubForm(SfIndex).UdTop = 0) Then
+   UdRect = SfRects(SdIndex)
+   UdRect.Bottom = UdRect.Top + 144
+   UdRect.Right = UdRect.Left + 168
+   clp.x = Ms.x - (168 * (Ms.x / SfRects(SdIndex).Right))
+   UdRect.Left = clp.x
+   UdRect.Right = clp.x + 168
+  Else
+   UdRect = SfRects(SdIndex)
+   UdRect.Bottom = UdRect.Top + m_SubForm(SfIndex).UdHeight
+   UdRect.Right = UdRect.Left + m_SubForm(SfIndex).UdWidth
+   clp.x = Ms.x - (m_SubForm(SfIndex).UdWidth * (Ms.x / SfRects(SdIndex).Right))
+   UdRect.Left = clp.x
+   UdRect.Right = clp.x + m_SubForm(SfIndex).UdWidth
+  End If
+  
+ End If
+ 
+ clp = Olp
+ 
+ 
+ 
+ For N = 1 To m_SubDock.Count
+   If m_SubForm(SfIndex).Docked And N &lt;&gt; SdIndex Then
+    clp.x = Ms.x - ((SfRects(N).Right - SfRects(N).Left) * (Ms.x /
+     SfRects(SdIndex).Right))
+    clp.y = SfRects(N).Right - SfRects(N).Left
+    SfRects(N).Left = clp.x
+    SfRects(N).Right = clp.x + clp.y
+   ElseIf Not m_SubForm(SfIndex).Docked Then
+    OffsetRect SfRects(N), -SfRects(N).Left, -SfRects(N).Top
+    OffsetRect SfRects(N), UdRect.Left + 4, (UdRect.Top + 4)
+    clp.x = Ms.x - (SfRects(N).Right - SfRects(N).Left) * ((Ms.x - UdRect.Left)
+     / (UdRect.Right - UdRect.Left))
+    clp.y = SfRects(N).Right - SfRects(N).Left
+    SfRects(N).Left = clp.x
+    SfRects(N).Right = (clp.x + clp.y)
+    
+   End If
+  
+ Next
+  
+  
+ 'Shift Draw Rect to AppMainForm
+ GetWindowRect AppObj.hwnd, cRect
+ GetWindowRect m_SubDock(SdIndex).hwnd, pwRect
+ clp.x = pwRect.Left - cRect.Left
+ clp.y = pwRect.Top - cRect.Top
+ 
+ OffsetRect UdRect, clp.x, clp.y
+ 
+ For N = 1 To m_SubDock.Count
+  OffsetRect SfRects(N), clp.x, clp.y
+ Next
+ 
+ 
+ If Not m_SubForm(SfIndex).Docked Then
+  DrwRect = UdRect
+  DrwThickness = 3
+ Else
+  DrwRect = SfRects(SdIndex)
+  DrwThickness = 0
+ End If
+ 
+  DragFocus AppObj.hwnd, DrwRect, DrwThickness
+ SetCapture m_SubForm(SfIndex).hwnd
+
+ FormMoving = 1
+ 
+End Sub
+
+Public Sub NcMouseUp(ByVal SfIndex As Integer, Optional KillDrag As Boolean =
+ False)
+ 
+ On Local Error Resume Next
+ 
+ Dim Ms             As POINTAPI
+ Dim WrkRect        As RECT
+ Dim NewCord        As POINTAPI
+ Dim NewPos         As Integer
+ Dim TLHit          As Boolean
+ Dim N              As Integer
+ Dim M_Shift        As Long
+ Dim m_ActiveObject As Object
+ 
+ Call NcMouseMove(SfIndex)
+ 
+ If FormMoving &gt; 0 Then
+  DragFocus AppObj.hwnd, DrwRect, DrwThickness
+  DrwThickness = 0
+ End If
+ 
+ If FormMoving &lt; 2 Or KillDrag Then GoTo fNC
+ 
+ Call GetCursorPos(Ms)
+ 
+ If NewAlign &gt; 0 Then
+  ScreenToClient m_SubDock(NewAlign).hwnd, Ms
+  NewPos = m_SubDock(NewAlign).GetInsertPos(Ms.x, Ms.y, TLHit)
+ End If
+ 
+ If NewAlign = -1 Then
+   
+  GetWindowRect AppObj.hwnd, WrkRect
+  NewCord.x = WrkRect.Left
+  NewCord.y = WrkRect.Top
+  OffsetRect UdRect, NewCord.x, NewCord.y
+  
+  If Not m_SubForm(SfIndex).Docked Then
+   MoveWindow m_SubForm(SfIndex).FrmHwnd, UdRect.Left, UdRect.Top, UdRect.Right
+    - UdRect.Left, UdRect.Bottom - UdRect.Top, 1
+   GoTo fNC
+  Else
+   
+   Set m_ActiveObject = m_Form(SfIndex).ActiveControl
+   m_SubForm(SfIndex).Hide
+   m_SubForm(SfIndex).Docked = False
+   SendMessage m_SubForm(SfIndex).FrmHwnd, WM_SETFOCUS, 0, 0
+   SetToolWindowStyle m_SubForm(SfIndex).FrmHwnd
+   MoveWindow m_SubForm(SfIndex).FrmHwnd, UdRect.Left, UdRect.Top, UdRect.Right
+    - UdRect.Left, UdRect.Bottom - UdRect.Top, 0
+   m_Form(SfIndex).Visible = True
+   m_ActiveSubWnd = m_SubForm(SfIndex).hwnd
+   m_ActiveToolIndx = SfIndex
+   
+   DoEvents
+   If Not m_ActiveObject Is Nothing Then m_ActiveObject.SetFocus
+   
+   GoTo fNC
+  End If
+ End If
+ 
+ 
+ If Not m_SubForm(SfIndex).Docked Then
+     
+   If m_ActiveSubIndx &lt;&gt; 0 Then
+    SendMessage m_SubForm(m_ActiveSubIndx).hwnd, SF_ACTIVATE, 0, 0
+   End If
+   
+   
+   m_SubForm(SfIndex).Hide
+   m_SubForm(SfIndex).Docked = True
+   SetDockWindowStyle m_SubForm(SfIndex).FrmHwnd, m_SubForm(SfIndex).hwnd
+   DoEvents
+   m_ActiveSubIndx = SfIndex: m_ActiveToolIndx = 0
+   
+   If NewAlign = m_SubForm(SfIndex).DockPos Then
+     
+     If m_SubDock(NewAlign).DockCol.Count = 1 Then
+      GoSub SetDwidths: m_SubForm(SfIndex).Show
+      GoTo fNC
+     ElseIf m_SubDock(NewAlign).DockCol.Count &gt; 1 Then
+      Call SetRedraw(m_SubDock(NewAlign).hwnd, False)
+      DisableRedraw = True
+      
+      m_SubForm(SfIndex).Show
+            
+      If ((NewPos - m_SubForm(SfIndex).OrgPos = 1) And
+       (m_SubDock(NewAlign).VisibleCount(True) = 1)) Then
+       'No changes needed
+      ElseIf ((NewPos = m_SubForm(SfIndex).OrgPos) And (NewPos =
+       m_SubForm(SfIndex).Pos)) Then
+       'No changes needed
+      ElseIf m_SubDock(NewAlign).VisibleCount(True) &gt; 0 And
+       m_SubForm(SfIndex).OrgPos &gt;= NewPos Then
+       Call m_SubDock(NewAlign).InsertChild(NewPos, m_SubForm(SfIndex).Pos,
+        TLHit)
+      ElseIf m_SubDock(NewAlign).VisibleCount(True) &gt; 0 Then
+       Call m_SubDock(NewAlign).InsertChild(NewPos + 1, m_SubForm(SfIndex).Pos,
+        TLHit)
+      End If
+     
+      DisableRedraw = False
+      Call SetRedraw(m_SubDock(NewAlign).hwnd, True)
+     
+     End If
+    
+   ElseIf NewAlign &lt;&gt; m_SubForm(SfIndex).DockPos Then
+    Call SetRedraw(AppObj.hwnd, False)
+    DisableRedraw = True
+    m_SubForm(SfIndex).Show
+    GoTo Md
+   
+   
+   End If
+   
+ Else
+ 
+  If NewAlign = m_SubForm(SfIndex).DockPos Then
+   Call SetRedraw(m_SubDock(NewAlign).hwnd, False)
+   DisableRedraw = True
+   Call m_SubDock(NewAlign).InsertChild(NewPos, m_SubForm(SfIndex).Pos, TLHit)
+   
+   DisableRedraw = False
+   Call SetRedraw(m_SubDock(NewAlign).hwnd, True)
+      
+  ElseIf NewAlign &gt; 0 Then
+Md:
+      
+   Call SetRedraw(AppObj.hwnd, False)
+   DisableRedraw = True
+  
+   If m_SubDock(NewAlign).DockCol.Count = 0 Then GoSub SetDwidths
+    
+  
+   Call
+    m_SubDock(m_SubForm(SfIndex).DockPos).RemoveChild(m_SubForm(SfIndex).Pos)
+   m_SubDock(NewAlign).DockCol.Add m_SubForm(SfIndex)
+  
+   Set m_SubForm(SfIndex).Container = m_SubDock(NewAlign)
+  
+   m_SubForm(SfIndex).Pos = m_SubDock(NewAlign).DockCol.Count - 1
+   m_SubForm(SfIndex).OrgPos = m_SubForm(SfIndex).Pos
+   m_SubDock(NewAlign).UnMaxChild
+   m_SubForm(SfIndex).IsHidden = False
+   m_SubDock(NewAlign).ShowChild
+   
+   If m_ActiveSubIndx &lt;&gt; 0 Then
+    SendMessage m_SubForm(m_ActiveSubIndx).hwnd, SF_ACTIVATE, 0, 0
+   End If
+  
+   Call m_SubDock(NewAlign).InsertChild(NewPos, m_SubForm(SfIndex).Pos, TLHit)
+   m_SubForm(SfIndex).Visible = True
+  
+   If Not m_SubDock(NewAlign).Visible Then m_SubDock(NewAlign).Visible = True
+    
+   DisableRedraw = False
+   Call SetRedraw(AppObj.hwnd, True)
+  
+   AutoSize
+   m_SubDock(NewAlign).TileSubDock
+   SendMessage m_SubForm(SfIndex).hwnd, SF_ACTIVATE, 1, 0
+    
+  End If
+ End If
+ 
+fNC:
+
+   FormMoving = 0
+   NewAlign = 0
+ 
+ Exit Sub
+
+
+SetDwidths:
+   
+    If m_SubDock(NewAlign).Align &lt; vbAlignLeft Then
+     M_Shift = (m_SubDock(NewAlign).Height - (SfRects(NewAlign).Bottom -
+      SfRects(NewAlign).Top) * TwipsY)
+     If M_Shift &lt;= 0 Then
+      m_SubDock(NewAlign).Move m_SubDock(NewAlign).Left,
+       m_SubDock(NewAlign).Top + M_Shift, m_SubDock(NewAlign).Width,
+       (SfRects(NewAlign).Bottom - SfRects(NewAlign).Top) * TwipsY
+     Else
+      m_SubDock(NewAlign).Height = (SfRects(NewAlign).Bottom -
+       SfRects(NewAlign).Top) * TwipsY
+     End If
+    
+    Else
+     M_Shift = (m_SubDock(NewAlign).Width - (SfRects(NewAlign).Right -
+      SfRects(NewAlign).Left) * TwipsX)
+     If M_Shift &lt;= 0 Then
+      m_SubDock(NewAlign).Move m_SubDock(NewAlign).Left + M_Shift,
+       m_SubDock(NewAlign).Top, (SfRects(NewAlign).Right -
+       SfRects(NewAlign).Left) * TwipsX, m_SubDock(NewAlign).Height
+     Else
+      m_SubDock(NewAlign).Width = (SfRects(NewAlign).Right -
+       SfRects(NewAlign).Left) * TwipsX
+     End If
+    
+    End If
+   
+
+Return
+  
+End Sub
+
+Public Sub NcMouseMove(ByVal SfIndex As Integer)
+ Dim Ms             As POINTAPI
+ Dim N              As Integer
+ Dim x              As Long
+ Dim y              As Long
+ Dim InrRect        As RECT
+ 
+ 
+ If FormMoving &gt; 0 Then
+    
+    Call GetCursorPos(Ms)
+    x = Ms.x - MousePos.x
+    y = Ms.y - MousePos.y
+    
+   If x &lt;&gt; 0 Or y &lt;&gt; 0 Then
+     
+     
+     DragFocus AppObj.hwnd, DrwRect, DrwThickness
+     
+     
+     NewAlign = 0
+     FormMoving = 2
+     MousePos = Ms
+     ScreenToClient AppObj.hwnd, Ms
+     DrwThickness = 0
+     
+     For N = 1 To 4
+      OffsetRect SfRects(N), x, y
+     Next
+     
+     OffsetRect UdRect, x, y
+     
+     For N = 1 To 4
+      
+      If PtInRect(BdRects(N), Ms.x, Ms.y) = 1 Then
+       
+       If (N &lt;&gt; m_SubForm(SfIndex).DockPos) Or (Not m_SubForm(SfIndex).Docked)
+        Then
+        InrRect = BdRects(N)
+       
+        If InrRect.Right - InrRect.Left &gt; 48 And InrRect.Bottom - InrRect.Top &gt;
+         48 Then
+         InflateRect InrRect, -24, -24
+         If PtInRect(InrRect, Ms.x, Ms.y) = 1 Then
+          
+          GoTo Dgt
+         End If
+        End If
+       End If
+       
+       DrwRect = SfRects(N)
+       NewAlign = N
+       GoTo Dgf
+      End If
+     Next
+    
+     
+     
+     For N = 5 To 8
+      If PtInRect(BdRects(N), Ms.x, Ms.y) = 1 Then
+        
+       Select Case N
+        Case 5, 6
+         If PtInRect(BdRects(7), Ms.x, Ms.y) = 1 Then
+          DrwRect = SfRects(7 - 4)
+          NewAlign = 3
+          GoTo Dgf
+         ElseIf PtInRect(BdRects(8), Ms.x, Ms.y) = 1 Then
+          DrwRect = SfRects(8 - 4)
+          NewAlign = 4
+          GoTo Dgf
+         Else
+          DrwRect = SfRects(N - 4)
+          NewAlign = N - 4
+          GoTo Dgf
+         End If
+        
+        Case Else
+         DrwRect = SfRects(N - 4)
+         NewAlign = N - 4
+         GoTo Dgf
+          
+       End Select
+      
+      End If
+     Next
+          
+     If N &gt; 4 Then
+Dgt:
+      NewAlign = -1
+      DrwRect = UdRect
+      DrwThickness = 3
+     End If
+     
+Dgf:
+     DragFocus AppObj.hwnd, DrwRect, DrwThickness
+    
+    End If
+ End If
+ 
+End Sub
+
+
+Public Sub SetRectsToSplits(Di() As DockInfo, ExAlign As Integer, ByVal Count
+ As Integer)
+    Dim N As Integer
+    
+    
+    
+    For N = Count - 1 To 0 Step -1
+     
+     If ExAlign &lt; 3 Then
+       If Di(N + 1).SplitRect.Left - Di(N).SplitRect.Left &lt; 8 Then
+        Di(N).SplitRect.Left = Di(N + 1).SplitRect.Left - 8
+        Di(N).SplitRect.Right = Di(N).SplitRect.Left + 4
+       End If
+      
+       If Di(N).SplitRect.Left &lt; 4 Then
+        Di(N).SplitRect.Left = 4
+        Di(N).SplitRect.Right = Di(N).SplitRect.Left + 4
+       End If
+      
+       
+       Di(N + 1).ChildRect.Left = Di(N).SplitRect.Right
+       Di(N + 1).ChildRect.Width = Di(N + 1).SplitRect.Left -
+        Di(N).SplitRect.Right
+       
+       If N = 0 Then
+        Di(N).ChildRect.Width = Di(N).SplitRect.Left
+       End If
+      
+     ElseIf ExAlign &gt; 2 Then
+       If Di(N + 1).SplitRect.Top - Di(N).SplitRect.Top &lt; 8 Then
+        Di(N).SplitRect.Top = Di(N + 1).SplitRect.Top - 8
+        Di(N).SplitRect.Bottom = Di(N).SplitRect.Top + 4
+       End If
+      
+       If Di(N).SplitRect.Top &lt; 4 Then
+        Di(N).SplitRect.Top = 4
+        Di(N).SplitRect.Bottom = Di(N).SplitRect.Top + 4
+       End If
+      
+       
+       Di(N + 1).ChildRect.Top = Di(N).SplitRect.Bottom
+       Di(N + 1).ChildRect.Height = Di(N + 1).SplitRect.Top -
+        Di(N).SplitRect.Bottom
+       
+       If N = 0 Then
+        Di(N).ChildRect.Height = Di(N).SplitRect.Top
+       End If
+     
+     End If
+    
+    Next
+    
+    
+    
+End Sub
+
+Public Function SizerAlign(ByVal ParentAlign As Integer, ByVal pWidth As Long,
+ ByVal pHeight As Long, pClientRect As RECT) As RECT
+    
+    If ParentAlign &lt; 3 Then
+     
+     pClientRect.Left = 0
+     pClientRect.Right = pWidth
+     
+     SizerAlign.Left = 0
+     SizerAlign.Right = pWidth
+     
+     
+     If ParentAlign = 1 Then
+      pClientRect.Top = 0
+      pClientRect.Bottom = pHeight - 4
+      SizerAlign.Top = pHeight - 4
+      SizerAlign.Bottom = pHeight
+     Else
+      pClientRect.Top = 4
+      pClientRect.Bottom = pHeight
+      SizerAlign.Top = 0
+      SizerAlign.Bottom = 4
+     End If
+
+    Else
+     pClientRect.Top = 0
+     pClientRect.Bottom = pHeight
+     SizerAlign.Top = 0
+     SizerAlign.Bottom = pHeight
+
+     If ParentAlign = 3 Then
+      pClientRect.Left = 0
+      pClientRect.Right = pWidth - 4
+      SizerAlign.Left = pWidth - 4
+      SizerAlign.Right = pWidth
+     Else
+      pClientRect.Left = 4
+      pClientRect.Right = pWidth
+      SizerAlign.Left = 0
+      SizerAlign.Right = 4
+     End If
+    End If
+
+End Function
+
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\index.html" ><IMG SRC="..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;DcModule1.bas</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,495 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: FontComboVB_frmFontComboDemo.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: FontComboVB_frmFontComboDemo.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontComboVB_frmFontComboDemo.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="font_combobox_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Font ComboBox Code and Demonstration</a> (75K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13338</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13338&type=zip&title=font_20combobox_20code_20and_20demonstration_2ezip_5ffontcombovb_5ffrmfontco.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\icon_combobox\article.html">vbAccelerator IconComboBox Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: FontComboVB_frmFontComboDemo.vb</h1><pre>Public Class Form1
+    Inherits System.Windows.Forms.Form
+
+#Region "RichEdit Unmanaged Code"
+    Private Const WM_SETREDRAW As Integer = &amp;HB
+    Private Const WM_USER As Integer = &amp;H400
+    Private Const EM_GETEVENTMASK As Integer = (WM_USER + 59)
+    Private Const EM_SETEVENTMASK As Integer = (WM_USER + 69)
+
+    Private Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As
+     IntPtr, ByVal msg As Integer, ByVal wParam As Integer, ByVal lParam As
+     IntPtr) As IntPtr
+
+#End Region
+
+    Private interlock As Boolean = False
+
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+        Dim sizes(17) As String
+        sizes(0) = "8"
+        sizes(1) = "9"
+        sizes(2) = "10"
+        sizes(3) = "10.5"
+        sizes(4) = "11"
+        sizes(5) = "12"
+        sizes(6) = "14"
+        sizes(7) = "16"
+        sizes(8) = "18"
+        sizes(9) = "20"
+        sizes(10) = "22"
+        sizes(11) = "24"
+        sizes(12) = "26"
+        sizes(13) = "28"
+        sizes(14) = "36"
+        sizes(15) = "48"
+        sizes(16) = "72"
+        Dim size As String
+        For Each size In sizes
+            Dim sizeItem As vbAccelerator.Components.Controls.IconComboItem =
+             New vbAccelerator.Components.Controls.IconComboItem()
+            sizeItem.Text = size
+            cboSize.Items.Add(sizeItem)
+        Next
+        cboSize.Text = String.Format("{0:0}", richTextBox1.Font.Size)
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents cboSize As vbAccelerator.Components.Controls.IconComboBox
+    Friend WithEvents richTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents cboFonts As FontCombo.FontComboBox
+    &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub InitializeComponent()
+        Dim resources As System.Resources.ResourceManager = New
+         System.Resources.ResourceManager(GetType(Form1))
+        Me.cboSize = New vbAccelerator.Components.Controls.IconComboBox()
+        Me.richTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.cboFonts = New FontComboVB.FontCombo.FontComboBox()
+        Me.SuspendLayout()
+        '
+        'cboSize
+        '
+        Me.cboSize.AutoComplete = True
+        Me.cboSize.BorderStyle =
+         vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10
+        Me.cboSize.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
+        Me.cboSize.FullRowSelect = True
+        Me.cboSize.GridLines = False
+        Me.cboSize.HighlightStyle =
+         vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10
+        Me.cboSize.ImageList = Nothing
+        Me.cboSize.IndentationSize = 16
+        Me.cboSize.Location = New System.Drawing.Point(148, 8)
+        Me.cboSize.MaxDropDownItems = 16
+        Me.cboSize.Name = "cboSize"
+        Me.cboSize.Size = New System.Drawing.Size(44, 21)
+        Me.cboSize.TabIndex = 4
+        Me.cboSize.TextBoxIcon = False
+        '
+        'richTextBox1
+        '
+        Me.richTextBox1.Font = New System.Drawing.Font("Arial", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.richTextBox1.HideSelection = False
+        Me.richTextBox1.Location = New System.Drawing.Point(8, 36)
+        Me.richTextBox1.Name = "richTextBox1"
+        Me.richTextBox1.Size = New System.Drawing.Size(504, 296)
+        Me.richTextBox1.TabIndex = 3
+        Me.richTextBox1.Text = "richTextBox1"
+        '
+        'cboFonts
+        '
+        Me.cboFonts.AutoComplete = True
+        Me.cboFonts.BorderStyle =
+         vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10
+        Me.cboFonts.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
+        Me.cboFonts.DropDownWidth = 300
+        Me.cboFonts.FullRowSelect = True
+        Me.cboFonts.GridLines = False
+        Me.cboFonts.HighlightStyle =
+         vbAccelerator.Components.Controls.IconComboBox.DrawingStyle.Office10
+        Me.cboFonts.ImageList = Nothing
+        Me.cboFonts.IndentationSize = 16
+        Me.cboFonts.Location = New System.Drawing.Point(8, 8)
+        Me.cboFonts.MaxDropDownItems = 16
+        Me.cboFonts.Name = "cboFonts"
+        Me.cboFonts.Size = New System.Drawing.Size(136, 21)
+        Me.cboFonts.TabIndex = 5
+        Me.cboFonts.TextBoxIcon = False
+        '
+        'Form1
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+        Me.ClientSize = New System.Drawing.Size(520, 342)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.cboFonts,
+         Me.cboSize, Me.richTextBox1})
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "Form1"
+        Me.Text = "vbAccelerator Font Combo Demonstration"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub frmFontComboDemo_SizeChanged(ByVal sender As Object, ByVal e As
+     EventArgs) _
+              Handles MyBase.SizeChanged
+        Me.richTextBox1.Size = New Size( _
+         Me.ClientRectangle.Width - Me.richTextBox1.Left * 2, _
+         Me.ClientRectangle.Height - Me.richTextBox1.Top - Me.richTextBox1.Left)
+    End Sub
+
+    Private Sub richTextBox1_SelectionChanged(ByVal sender As Object, ByVal e
+     As EventArgs) _
+               Handles richTextBox1.SelectionChanged
+        If Not (interlock) Then
+            interlock = True
+
+            Dim selectedFont As Font = richTextBox1.SelectionFont
+
+            If (selectedFont Is Nothing) Then '' more than one font selected
+                cboFonts.SelectedIndex = -1
+                cboFonts.Text = ""
+                cboSize.Text = ""
+            Else
+                cboSize.Text = String.Format("{0:#0}", selectedFont.Size)
+                Console.WriteLine(selectedFont.Size)
+                Dim index As Integer =
+                 cboFonts.FindStringExact(selectedFont.Name)
+                If (index &gt; -1) Then
+                    cboFonts.SelectedIndex = index
+                End If
+            End If
+
+            interlock = False
+        End If
+    End Sub
+
+
+    Private Sub cboFonts_SelectedIndexChanged(ByVal sender As Object, ByVal e
+     As EventArgs) _
+           Handles cboFonts.SelectedIndexChanged
+        If Not (cboFonts.DroppedDown) Then
+            setFontFromCombo()
+        End If
+    End Sub
+
+    Private Sub cboFonts_CloseUp(ByVal sender As Object, ByVal e As EventArgs) _
+        Handles cboFonts.CloseUp
+        setFontFromCombo()
+    End Sub
+
+
+    Private Sub cboSize_SelectedIndexChanged(ByVal sender As Object, ByVal e As
+     EventArgs) _
+          Handles cboSize.SelectedIndexChanged
+        If Not (cboSize.DroppedDown) Then '' whilst combo is dropped we don't
+         change the font
+            setSizeFromCombo()
+        End If
+    End Sub
+
+    Private Sub cboSize_CloseUp(ByVal sender As Object, ByVal e As EventArgs) _
+              Handles cboSize.CloseUp
+        setSizeFromCombo()
+    End Sub
+
+    Private Sub cboFonts_Populated(ByVal sender As Object, ByVal e As
+     EventArgs) _
+          Handles cboFonts.Populated
+        richTextBox1_SelectionChanged(sender, e)
+    End Sub
+
+    Private Sub setFontFromCombo()
+        If Not (interlock) Then
+
+            interlock = True
+            Dim item As vbAccelerator.Components.Controls.IconComboItem =
+             cboFonts.SelectedItem
+            Dim newSelFont As Font = item.Font
+            If (newSelFont Is Nothing) Then '' case for Wingdings etc          
+                  
+                Dim newSize As Single = 8.0
+                Dim family As FontFamily = New
+                 FontFamily(cboFonts.SelectedItem.Text.ToString())
+                newSelFont = New Font( _
+                 family, newSize)
+            End If
+            Console.WriteLine("Selected Font Changed {0}",
+             newSelFont.FontFamily)
+
+            Dim size As Single = richTextBox1.Font.Size
+            Dim sizeOk As Boolean = True
+            Try
+                size = Single.Parse(cboSize.Text)
+            Catch ex As System.FormatException
+                sizeOk = False
+            End Try
+
+            If (sizeOk) Then
+                richTextBox1.SelectionFont = New Font(newSelFont.FontFamily,
+                 size, newSelFont.Style)
+            Else
+                ' need to parse through the items to 
+
+                ' We want to suspend redrawing because we need to select each
+                 character in turn
+                ' to determine its fonts. However, RichTextBox appears to be
+                 missing some properties
+                ' to set these fields:
+                richTextBox1.SuspendLayout()
+                ' Stops RichText redrawing:
+                SendMessage(richTextBox1.Handle, WM_SETREDRAW, 0, IntPtr.Zero)
+                ' Stops RichText sending any events:
+                Dim eventMask As IntPtr = SendMessage(richTextBox1.Handle,
+                 EM_GETEVENTMASK, 0, IntPtr.Zero)
+
+                ' Ok now we can enumerate through, just setting the size of the
+                 font:
+                Dim lastFont As Font = Nothing
+                Dim selectedFont As Font = Nothing
+                Dim selStart As Integer = richTextBox1.SelectionStart
+                Dim selEnd As Integer = richTextBox1.SelectionStart +
+                 richTextBox1.SelectionLength
+                Dim currentStart As Integer = selStart
+                Dim currentSize As Integer = 0
+                Dim i As Integer
+                For i = selStart To selEnd - 1
+                    richTextBox1.Select(i, 1)
+                    selectedFont = richTextBox1.SelectionFont
+                    If Not (lastFont Is Nothing) Then
+                        Dim newStyle As Boolean = Not
+                         (selectedFont.Style.Equals(lastFont.Style))
+                        Dim newFontSize As Boolean = Not (selectedFont.Size =
+                         lastFont.Size)
+                        If (newFontSize Or newStyle) Then
+                            Dim newFont As Font = Nothing
+                            Try
+                                newFont = New Font(newSelFont.FontFamily,
+                                 lastFont.Size, lastFont.Style)
+                            Catch argEx As System.ArgumentException
+                                newFont = New Font(newSelFont.FontFamily,
+                                 lastFont.Size, newSelFont.Style)
+                            End Try
+                            richTextBox1.Select(currentStart, currentSize)
+                            richTextBox1.SelectionFont = newFont
+                            currentStart = i
+                            currentSize = 0
+                        End If
+                    End If
+                    lastFont = selectedFont
+                    currentSize += 1
+                Next i
+                If (currentSize &gt; 0) Then
+                    Dim newFont As Font = New Font(newSelFont.FontFamily,
+                     lastFont.Size, lastFont.Style)
+                    richTextBox1.Select(currentStart, currentSize)
+                    richTextBox1.SelectionFont = newFont
+                End If
+
+                ' Turn events back on again:
+                SendMessage(richTextBox1.Handle, EM_SETEVENTMASK, 0, eventMask)
+                ' Select the correct range (we must do this with events on
+                 otherwise
+                ' the scroll state is inconsistent):
+                richTextBox1.Select(selStart, selEnd - selStart)
+                ' Turn redraw back on again:
+                SendMessage(richTextBox1.Handle, WM_SETREDRAW, 1, IntPtr.Zero)
+                richTextBox1.ResumeLayout()
+                ' Show changes
+                richTextBox1.Invalidate()
+
+            End If
+            interlock = False
+
+            ' Switch focus to the RichEdit control
+            richTextBox1.Focus()
+        End If
+
+    End Sub
+
+    Private Sub setSizeFromCombo()
+
+        If Not (interlock) Then
+            interlock = True
+
+            Dim selectedFont As Font = richTextBox1.SelectionFont
+            Dim newSize As Single =
+             Single.Parse(cboSize.SelectedItem.ToString())
+
+            If Not (selectedFont Is Nothing) Then ' more than one font selected
+                Dim newFont As Font = New Font(selectedFont.FontFamily,
+                 newSize, selectedFont.Style)
+                richTextBox1.SelectionFont = newFont
+
+            Else
+
+                ' need to enumerate through the selected text, checking each
+                 font, and setting
+                ' the size correctly.
+
+                ' We want to suspend redrawing because we need to select each
+                 character in turn
+                ' to determine its fonts. However, RichTextBox appears to be
+                 missing some properties
+                ' to set these fields:
+                richTextBox1.SuspendLayout()
+                ' Stops RichText redrawing:
+                SendMessage(richTextBox1.Handle, WM_SETREDRAW, 0, IntPtr.Zero)
+                ' Stops RichText sending any events:
+                Dim eventMask As IntPtr = SendMessage(richTextBox1.Handle,
+                 EM_GETEVENTMASK, 0, IntPtr.Zero)
+
+                ' Ok now we can enumerate through, just setting the size of the
+                 font:
+                Dim lastFont As Font = Nothing
+                Dim selStart As Integer = richTextBox1.SelectionStart
+                Dim selEnd As Integer = richTextBox1.SelectionStart +
+                 richTextBox1.SelectionLength
+                Dim currentStart As Integer = selStart
+                Dim currentSize As Integer = 0
+                Dim i As Integer
+                For i = selStart To selEnd - 1
+                    richTextBox1.Select(i, 1)
+                    selectedFont = richTextBox1.SelectionFont
+                    If Not (lastFont Is Nothing) Then
+                        Dim newFamily As Boolean = Not
+                         (selectedFont.FontFamily.Equals(lastFont.FontFamily))
+                        Dim newStyle As Boolean = Not (selectedFont.Style =
+                         lastFont.Style)
+                        If (newFamily Or newStyle) Then
+                            Dim newFont As Font = New Font(lastFont.FontFamily,
+                             newSize, lastFont.Style)
+                            richTextBox1.Select(currentStart, currentSize)
+                            richTextBox1.SelectionFont = newFont
+                            currentStart = i
+                            currentSize = 0
+                        End If
+                    End If
+                    lastFont = selectedFont
+                    currentSize += 1
+                Next i
+                If (currentSize &gt; 0) Then
+                    Dim newFont As Font = New Font(lastFont.FontFamily,
+                     newSize, lastFont.Style)
+                    richTextBox1.Select(currentStart, currentSize)
+                    richTextBox1.SelectionFont = newFont
+                End If
+
+                ' Turn events back on again:
+                SendMessage(richTextBox1.Handle, EM_SETEVENTMASK, 0, eventMask)
+                ' Select the correct range (we must do this with events on
+                 otherwise
+                ' the scroll state is inconsistent):
+                richTextBox1.Select(selStart, selEnd - selStart)
+                ' Turn redraw back on again:
+                SendMessage(richTextBox1.Handle, WM_SETREDRAW, 1, IntPtr.Zero)
+                richTextBox1.ResumeLayout()
+
+                ' Display changes:
+                richTextBox1.Invalidate()
+            End If
+            interlock = False
+
+            ' Switch focus to the RichEdit control
+            richTextBox1.Focus()
+
+        End If
+    End Sub
+
+    Private Sub frmFontComboDemo_Load(ByVal sender As Object, ByVal e As
+     EventArgs) _
+        Handles MyBase.Load
+        Dim exeDir As String =
+         System.IO.Path.GetDirectoryName(Application.ExecutablePath)
+        Dim loadFile As String = System.IO.Path.Combine(exeDir, "trying.rtf")
+        If (System.IO.File.Exists(loadFile)) Then
+            richTextBox1.LoadFile(loadFile)
+        End If
+    End Sub
+
+
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Font ComboBox</a>&#160;.&#160;<a href="font_combobox_code_and_demonstration.html">Font ComboBox Code and Demonstration</a>&#160;.&#160;FontComboVB_frmFontComboDemo.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

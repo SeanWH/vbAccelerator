@@ -1,0 +1,414 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: DesktopParent_frmFloatControl.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: DesktopParent_frmFloatControl.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.html">Floating Controls, Tooltip-style</a>&#160;.&#160;<a href="floating_control_code_and_demonstration.html">Floating Control Code and Demonstration</a>&#160;.&#160;DesktopParent_frmFloatControl.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="floating_control_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Floating Control Code and Demonstration</a> (138K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13386</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13386&type=zip&title=floating_20control_20code_20and_20demonstration_2ezip_5fdesktopparent_5ffrmf.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />1 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\listbar\vsnet_style_list_bar\article.html">VS.NET ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: DesktopParent_frmFloatControl.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using vbAccelerator.Components.Controls;
+
+namespace DesktopParent
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmFloatControl : System.Windows.Forms.Form
+   {
+      private FloatControl sponsorMessage;
+      private FloatControl listBoxHover;
+      private int lastListItemOver = -1;
+
+      private System.Windows.Forms.Button btnHover;
+      private System.Windows.Forms.ListBox lstLongItemPopup;
+      private System.Windows.Forms.PictureBox picRes;
+      private System.Windows.Forms.Label lblInfo;
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      public frmFloatControl()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         // Resizable form:
+         this.SizeChanged += new EventHandler(frmFloatControl_OnSizeChanged);
+
+         // 
+         // Set up the floating "SponsorMessage" control
+         // 
+         this.sponsorMessage = new FloatControl();
+         // Here 
+         this.sponsorMessage.BackgroundImage = 
+            ((System.Drawing.Bitmap)(new
+             System.Resources.ResourceManager(typeof(frmFloatControl)).GetObject
+            ("picRes.Image")));
+         this.sponsorMessage.Name = "sponsorMessage";
+         this.sponsorMessage.TabStop = false;
+         this.sponsorMessage.Visible = false;
+         this.sponsorMessage.Size = this.sponsorMessage.BackgroundImage.Size;
+
+         btnHover.MouseHover += new EventHandler(btnHover_MouseHover);
+         btnHover.MouseLeave += new EventHandler(btnHover_MouseLeave);
+
+         // Add some items to the ListBox which go beyond the visibility of the
+          box
+         for (int i = 0; i &lt; 100; i++)
+         {
+            if ((i % 2) == 0)
+            {
+               this.lstLongItemPopup.Items.Add(
+                  String.Format("This is long item {0} which can go beyond the
+                   width of the list box.", i));
+            }
+            else
+            {
+               this.lstLongItemPopup.Items.Add(String.Format("Short Item {0}",
+                i));
+            }
+         }
+
+         // Create the control which will show the item the mouse is over in
+          the 
+         // list box:
+         this.listBoxHover = new FloatControl();
+         this.listBoxHover.Name = "listBoxHover";
+         this.listBoxHover.TabStop = false;
+         this.listBoxHover.Visible = false;
+         this.listBoxHover.BackColor = SystemColors.Info;
+         this.listBoxHover.ForeColor = SystemColors.InfoText;
+
+         this.lstLongItemPopup.MouseEnter += new
+          EventHandler(lstLongItemPopup_MouseEnter);
+         this.lstLongItemPopup.MouseDown += new
+          MouseEventHandler(lstLongItemPopup_MouseDown);
+         this.lstLongItemPopup.MouseMove += new
+          MouseEventHandler(lstLongItemPopup_MouseMove);
+         this.lstLongItemPopup.MouseLeave += new
+          EventHandler(lstLongItemPopup_MouseLeave);
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmFloatControl));
+         this.btnHover = new System.Windows.Forms.Button();
+         this.lstLongItemPopup = new System.Windows.Forms.ListBox();
+         this.picRes = new System.Windows.Forms.PictureBox();
+         this.lblInfo = new System.Windows.Forms.Label();
+         this.SuspendLayout();
+         // 
+         // btnHover
+         // 
+         this.btnHover.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnHover.Location = new System.Drawing.Point(8, 200);
+         this.btnHover.Name = "btnHover";
+         this.btnHover.Size = new System.Drawing.Size(100, 40);
+         this.btnHover.TabIndex = 1;
+         this.btnHover.Text = "&amp;Visit our Sponsor...";
+         // 
+         // lstLongItemPopup
+         // 
+         this.lstLongItemPopup.Location = new System.Drawing.Point(8, 48);
+         this.lstLongItemPopup.Name = "lstLongItemPopup";
+         this.lstLongItemPopup.Size = new System.Drawing.Size(276, 147);
+         this.lstLongItemPopup.TabIndex = 2;
+         // 
+         // picRes
+         // 
+         this.picRes.Image =
+          ((System.Drawing.Bitmap)(resources.GetObject("picRes.Image")));
+         this.picRes.Location = new System.Drawing.Point(164, 200);
+         this.picRes.Name = "picRes";
+         this.picRes.Size = new System.Drawing.Size(92, 48);
+         this.picRes.TabIndex = 3;
+         this.picRes.TabStop = false;
+         this.picRes.Visible = false;
+         // 
+         // lblInfo
+         // 
+         this.lblInfo.Location = new System.Drawing.Point(8, 4);
+         this.lblInfo.Name = "lblInfo";
+         this.lblInfo.Size = new System.Drawing.Size(276, 40);
+         this.lblInfo.TabIndex = 4;
+         this.lblInfo.Text = "This sample demonstrates how to make a control
+          float over other controls and make" +
+            " it transparent to the mouse.";
+         // 
+         // frmFloatControl
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(292, 246);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.lblInfo,
+                                                        this.picRes,
+                                                        this.lstLongItemPopup,
+                                                        this.btnHover});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmFloatControl";
+         this.Text = "vbAccelerator Float Control Demonstration";
+         this.Load += new System.EventHandler(this.frmFloatControl_Load);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmFloatControl());
+      }
+
+
+      private void frmFloatControl_Load(object sender, System.EventArgs e)
+      {
+      
+      }
+
+      private void frmFloatControl_OnSizeChanged(object sender, EventArgs e)
+      {
+         try
+         {
+            this.SuspendLayout();
+            int listHeight = this.ClientRectangle.Height - lstLongItemPopup.Top
+             - btnHover.Height - 4;
+            lstLongItemPopup.Size = new Size(this.ClientRectangle.Width -
+             lstLongItemPopup.Left * 2, 
+               listHeight);
+            btnHover.Top = lstLongItemPopup.Top + listHeight;
+            lblInfo.Width = this.ClientRectangle.Width - lblInfo.Left * 2;
+            this.ResumeLayout();
+         }
+         catch
+         {
+         }
+      }
+
+      private void btnHover_MouseHover(object sender, EventArgs e)
+      {
+         if (!sponsorMessage.Visible)
+         {
+            Point pt = btnHover.Location;
+            pt.Offset(0, btnHover.Height / 2);
+            pt = this.PointToScreen(pt);
+            sponsorMessage.Location = pt;
+            sponsorMessage.ShowFloating();
+         }
+      }
+
+      private void btnHover_MouseLeave(object sender, EventArgs e)
+      {
+         if (sponsorMessage.Visible)
+         {
+            sponsorMessage.Hide();
+         }
+      }
+
+      private void lstLongItemPopup_MouseMove(object sender, MouseEventArgs e)
+      {
+         if (e.Button == 0)
+         {
+            OnListBoxMouseMove();         
+         }
+         else
+         {
+            OnListBoxMouseCancel();
+         }
+      }
+
+      private void lstLongItemPopup_MouseDown(object sender, MouseEventArgs e)
+      {
+         OnListBoxMouseCancel();
+      }
+
+      private void lstLongItemPopup_MouseEnter(object sender, EventArgs e)
+      {
+         OnListBoxMouseMove();
+      }
+
+      private void lstLongItemPopup_MouseLeave(object sender, EventArgs e)
+      {         
+         OnListBoxMouseCancel();
+      }
+
+      private void OnListBoxMouseCancel()
+      {
+         if (listBoxHover.Visible)
+         {
+            listBoxHover.Hide();
+            lastListItemOver = -1;
+         }
+      }
+
+      private void OnListBoxMouseMove()
+      {
+         int itemOver = -1;
+         int newPopupItemOver = -1;
+
+         Point pt = GetHoverItemLocation(ref itemOver);
+         Size hoverItemSize = new Size(0, 0);
+         if (itemOver != lastListItemOver)
+         {
+            if (itemOver &gt; -1)
+            {
+               listBoxHover.Font = lstLongItemPopup.Font;
+               hoverItemSize = GetHoverItemSize(itemOver);
+               if (hoverItemSize.Width &gt; lstLongItemPopup.ClientRectangle.Width)
+               {
+                  newPopupItemOver = itemOver;
+               }
+            }
+
+            if (newPopupItemOver &gt; -1)
+            {
+               listBoxHover.Location = pt;
+               listBoxHover.Size = hoverItemSize;
+               if (!listBoxHover.Visible)
+               {
+                  listBoxHover.ShowFloating();
+               }
+               listBoxHover.Text = lstLongItemPopup.Items[itemOver].ToString();
+            }
+            else
+            {
+               OnListBoxMouseCancel();
+            }
+         }
+         
+         lastListItemOver = newPopupItemOver;
+
+      }
+
+      private Point GetHoverItemLocation(ref int itemOver)
+      {
+         itemOver = -1;
+
+         Point cursorPosition = Cursor.Position;
+         Point location = new Point(0,0);         
+
+         // Convert cursor position to ListBox coordinates:
+         cursorPosition = lstLongItemPopup.PointToClient(cursorPosition);
+         if (lstLongItemPopup.ClientRectangle.Contains(cursorPosition))
+         {
+            // Determine which item (if any) we are over:
+            int height = lstLongItemPopup.ItemHeight;
+            int y = 0;
+            for (int i = lstLongItemPopup.TopIndex; i &lt;
+             lstLongItemPopup.Items.Count; i++)
+            {
+               if (cursorPosition.Y &gt;= y &amp;&amp; cursorPosition.Y &lt;= y + height)
+               {
+                  location = new Point(0, y);
+                  itemOver = i;
+                  break;
+               }
+               y += height;
+            }
+         }
+         return lstLongItemPopup.PointToScreen(location);
+      }
+
+      private Size GetHoverItemSize(int itemOver)
+      {
+         Graphics graphics = Graphics.FromHwnd(listBoxHover.Handle);
+         SizeF size =
+          graphics.MeasureString(lstLongItemPopup.Items[itemOver].ToString(),
+               lstLongItemPopup.Font);         
+         graphics.Dispose();
+         return new Size(((int) size.Width) + 4,
+          Math.Max(lstLongItemPopup.ItemHeight, ((int) size.Height) + 1));
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;<a href="article.html">Floating Controls, Tooltip-style</a>&#160;.&#160;<a href="floating_control_code_and_demonstration.html">Floating Control Code and Demonstration</a>&#160;.&#160;DesktopParent_frmFloatControl.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

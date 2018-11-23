@@ -1,0 +1,613 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: ZoomIn_ZoomIn_HotKeyFormLib.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: ZoomIn_ZoomIn_HotKeyFormLib.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">A .NET Implementation of the ZoomIn Utility</a>&#160;.&#160;<a href="zoomin.html">ZoomIn</a>&#160;.&#160;ZoomIn_ZoomIn_HotKeyFormLib.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="zoomin.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ZoomIn</a> (78K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:1465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=1465&type=zip&title=zoomin_2ezip_5fzoomin_5fzoomin_5fhotkeyformlib.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Dec 2002<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: ZoomIn_ZoomIn_HotKeyFormLib.cs</h1><pre>using System;
+using System.Collections;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.HotKey
+{
+   #region Unmanaged Methods
+   /// &lt;summary&gt;
+   /// A class that defines all the unmanaged methods used by the HotKeyForm
+   /// assembly.
+   /// &lt;/summary&gt;
+   internal class UnmanagedMethods
+   {
+      internal const int IDHOT_SNAPWINDOW = -1;          /* SHIFT-PRINTSCRN  */
+      internal const int IDHOT_SNAPDESKTOP = -2;         /* PRINTSCRN        */
+      internal const int WM_DESTROY = 0x2;
+      internal const int WM_HOTKEY = 0x312;
+      
+      [DllImport("user32")]
+      internal static extern bool RegisterHotKey(
+         IntPtr hWnd , 
+         int id, 
+         int fsModifiers, 
+         int vk);
+      [DllImport("user32")]
+      internal static extern bool UnregisterHotKey(
+         IntPtr hWnd, 
+         int id);
+      [DllImport("kernel32")] // GloablAddAtomA
+      internal static extern IntPtr GlobalAddAtom(
+         string lpString);
+      [DllImport("kernel32")]
+      internal static extern IntPtr GlobalDeleteAtom(
+         IntPtr nAtom);
+      // To Report API errors:
+      internal const int FORMAT_MESSAGE_ALLOCATE_BUFFER = 0x100;
+      internal const int FORMAT_MESSAGE_ARGUMENT_ARRAY = 0x2000;
+      internal const int FORMAT_MESSAGE_FROM_HMODULE = 0x800;
+      internal const int FORMAT_MESSAGE_FROM_STRING = 0x400;
+      internal const int FORMAT_MESSAGE_FROM_SYSTEM = 0x1000;
+      internal const int FORMAT_MESSAGE_IGNORE_INSERTS = 0x200;
+      internal const int FORMAT_MESSAGE_MAX_WIDTH_MASK = 0xFF;
+      [DllImport("kernel32")]
+      internal static extern int FormatMessage(
+         int dwFlags, 
+         IntPtr lpSource, 
+         int dwMessageId, 
+         int dwLanguageId, 
+         string lpBuffer, 
+         int nSize, 
+         ref int Arguments);
+      [DllImport("kernel32")]
+      internal static extern int GetTickCount();
+      [DllImport("user32")]
+      internal static extern int SendMessage(
+         IntPtr hwnd, 
+         int wMsg, 
+         IntPtr wParam, 
+         IntPtr lParam);
+      internal const int WM_SYSCOMMAND = 0x112;
+      internal const int SC_RESTORE = 0xF120;
+      [DllImport("user32")]
+      internal static extern bool IsIconic (IntPtr hwnd);
+      [DllImport("user32")]
+      internal static extern bool IsWindowVisible (IntPtr hwnd);
+      [DllImport("user32")]
+      internal static extern int SetForegroundWindow(IntPtr hwnd);
+      [DllImport("user32")]
+      internal static extern int ShowWindow (IntPtr hwnd , int nCmdShow);
+      internal const int SW_SHOW = 5;
+
+   }
+   #endregion
+
+   #region HotKeyCollection
+   /// &lt;summary&gt;
+   /// Class to store the collection of hotkeys associated with this
+   /// form (as an ArrayList).
+   /// &lt;/summary&gt;
+   public class HotKeyCollection : CollectionBase
+   {
+      System.Windows.Forms.Form ownerForm;
+
+      protected override void OnClear()
+      {
+         foreach (HotKey htk in this.InnerList)
+         {
+            RemoveHotKey(htk);
+         }
+         base.OnClear();
+      }
+
+      protected override void OnInsert(int index, object item)
+      {
+         // validate item is a hot key:
+         HotKey htk = new HotKey();
+         if (item.GetType().IsInstanceOfType(htk))
+         {
+            // check if the name, keycode and modifiers have been set up:
+            htk = (HotKey)item;
+            // throws ArgumentException if there is a problem:
+            htk.Validate();
+
+            // throws Unable to add HotKeyException:
+            AddHotKey(htk);
+
+            // ok
+            base.OnInsert(index, item);
+         }
+         else
+         {
+            throw new InvalidCastException("Invalid object.");
+         }
+      }
+      protected override void OnRemove(int index, object item)
+      {
+         // get the item to be removed:
+         HotKey htk = (HotKey)item;
+         RemoveHotKey(htk);
+         base.OnRemove(index, item);
+      }
+      protected override void OnSet(int index, object oldItem, object newItem)
+      {
+         // check if 
+
+         // get the item currently present
+
+         base.OnSet(index, oldItem, newItem);
+      }
+      protected override void OnValidate(object item)
+      {
+         ((HotKey)item).Validate();
+      }
+
+      /// &lt;summary&gt;
+      /// Adds a new HotKey to the form
+      /// &lt;/summary&gt;
+      /// &lt;param name="hotKey"&gt;The HotKey to add&lt;/param&gt;
+      /// &lt;exception cref="ArgumentException"&gt;Thrown if the HotKey being added 
+      /// has not been configured correctly.&lt;/exception&gt;
+      /// &lt;exception cref="ToDo"&gt;Thrown if the HotKey cannot be
+       added.&lt;/exception&gt;
+      public void Add(HotKey hotKey)
+      {
+         // throws argument exception:
+         hotKey.Validate();
+         // throws unable to add hot key exception:
+         AddHotKey(hotKey);
+
+         // assuming all is well:
+         this.InnerList.Add(hotKey);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the HotKey at the specified index.
+      /// &lt;/summary&gt;
+      public HotKey this[int index]
+      {
+         get
+         {
+            return (HotKey)this.InnerList[index];
+         }
+      }
+
+      private void RemoveHotKey(HotKey hotKey)
+      {
+         // remove the hot key:
+         UnmanagedMethods.UnregisterHotKey(ownerForm.Handle,
+          hotKey.AtomId.ToInt32());
+         // unregister the atom:
+         UnmanagedMethods.GlobalDeleteAtom(hotKey.AtomId);
+      }
+
+      private string WinErrorMsg(int lastDllError)
+      {
+         string buff = new String('\0', 256);
+         int a = 0;
+         int count = UnmanagedMethods.FormatMessage(
+            UnmanagedMethods.FORMAT_MESSAGE_FROM_SYSTEM |
+             UnmanagedMethods.FORMAT_MESSAGE_IGNORE_INSERTS,
+            IntPtr.Zero,
+            lastDllError,
+            0,
+            buff,
+            255,
+            ref a);
+         if (count &gt; 0)
+         {
+            return buff.Substring(0, count);
+         }
+         else
+         {
+            return "";
+         }
+      }
+
+      private void AddHotKey(HotKey hotKey)
+      {
+         // generate the id:
+         string atomName = hotKey.Name + "_" +
+          UnmanagedMethods.GetTickCount().ToString();
+         if (atomName.Length &gt; 255)
+         {
+            atomName = atomName.Substring(0, 255);
+         }
+         // Create a new atom:
+         IntPtr id = UnmanagedMethods.GlobalAddAtom(atomName);
+         if (id.Equals(IntPtr.Zero))
+         {
+            // failed
+            Console.WriteLine("Failed to add atom");
+            
+         }
+         else
+         {
+            // succeeded:
+            bool ret = UnmanagedMethods.RegisterHotKey(
+               ownerForm.Handle, 
+               id.ToInt32(), 
+               (int)hotKey.Modifiers, 
+               (int)hotKey.KeyCode);
+            if (!ret)
+            {
+               // failed
+               Console.WriteLine("Failed register hot key");
+               // Remove the atom:
+               UnmanagedMethods.GlobalDeleteAtom(id);
+            }
+            else
+            {
+               hotKey.AtomName = atomName;
+               hotKey.AtomId = id;
+            }            
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new HotKey collection.  This class is for use with 
+      /// HotKeyForm and is not intended to be created externally.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ownerForm"&gt;The &lt;/param&gt;
+      public HotKeyCollection(System.Windows.Forms.Form ownerForm)
+      {
+         this.ownerForm = ownerForm;
+      }
+   }
+   #endregion
+   
+   #region HotKey
+   public class HotKey
+   {
+      /// &lt;summary&gt;
+      /// Enumeration of HotKeyModifiers 
+      /// &lt;/summary&gt;
+      [Flags]
+      public enum HotKeyModifiers : int
+      {
+         MOD_ALT = 0x1,
+         MOD_CONTROL = 0x2,
+         MOD_SHIFT = 0x4,
+         MOD_WIN = 0x8
+      }
+      private string name;
+      private string atomName;
+      private IntPtr atomId;
+      private Keys keyCode;
+      private HotKeyModifiers modifiers;
+
+      /// &lt;summary&gt;
+      /// Gets/sets the id of the HotKey.
+      /// &lt;/summary&gt;
+      internal IntPtr AtomId
+      {
+         get
+         {
+            return atomId;
+         }
+         set
+         {
+            atomId = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the name of the atom used to generate the HotKey.
+      /// &lt;/summary&gt;
+      internal string AtomName
+      {
+         get
+         {
+            return atomName;
+         }
+         set
+         {
+            atomName = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the name of this HotKey.
+      /// &lt;/summary&gt;
+      public string Name
+      {
+         get
+         {
+            return name;
+         }
+         set
+         {
+            name = value;
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Gets/sets the key for this HotKey.
+      /// &lt;/summary&gt;
+      public Keys KeyCode
+      {
+         get
+         {
+            return keyCode;
+         }
+         set
+         {
+            keyCode = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the modifiers for this HotKey.
+      /// &lt;/summary&gt;
+      public HotKeyModifiers Modifiers
+      {
+         get
+         {
+            return modifiers;
+         }
+         set
+         {
+            modifiers = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Validates the HotKey class to confirm all required fields have
+      /// been set.   
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="ArgumentException"&gt;If the HotKey class has not been
+      /// set up correctly.&lt;/exception&gt;
+      public void Validate()
+      {
+         string msg = "";
+         // name validation:
+         if (name == null)
+         {
+            msg = "Name parameter cannot be null";
+         }
+         else if (name.Trim().Length == 0)
+         {
+            msg = "Name parameter cannot be zero-length";
+         }
+         /*
+         else if (keyCode == null)
+         {
+            msg = "KeyCode parameter must be set";
+         }
+         */
+         else if ((keyCode == Keys.Alt) ||
+            (keyCode == Keys.Control) ||
+            (keyCode == Keys.Shift) ||
+            (keyCode == Keys.ShiftKey) ||
+            (keyCode == Keys.ControlKey))
+         {
+            msg = "KeyCode cannot be set to a modifier key";
+         }
+         /*
+         else if (modifiers == null)
+         {
+            msg = "Modifiers cannot be null";
+         }
+         */
+         if (msg.Length &gt; 0)
+         {
+            throw new ArgumentException(msg);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new instance of a HotKey.
+      /// &lt;/summary&gt;
+      public HotKey()
+      {
+      }
+      
+      /// &lt;summary&gt;
+      /// Creates a new instance of a HotKey with the specified name,
+      /// key code and modifiers.
+      /// &lt;/summary&gt;
+      /// &lt;param name="keyCode"&gt;The Key for the HotKey&lt;/param&gt;
+      /// &lt;param name="modifiers"&gt;The Modifiers for the HotKey&lt;/param&gt;
+      /// &lt;param name="name"&gt;The Name for this HotKey&lt;/param&gt;
+      public HotKey(
+         string name,
+         Keys keyCode,
+         HotKeyModifiers modifiers
+         )
+      {
+         this.name = name;
+         this.keyCode = keyCode;
+         this.modifiers = modifiers;
+      }
+   }
+   #endregion
+
+   #region HotKeyForm
+   /// &lt;summary&gt;
+   /// A Windows Form which implements System-Wide HotKeys.
+   /// &lt;/summary&gt;
+   public class HotKeyForm : System.Windows.Forms.Form
+   {
+      #region Internal Properties
+      private HotKeyCollection hotKeys = null;
+      #endregion
+
+      #region Event declarations
+      public event HotKeyPressedEventHandler HotKeyPressed;
+      public event PrintWindowPressedEventHandler PrintWindowPressed;
+      public event PrintDesktopPressedEventHandler PrintDesktopPressed;
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Restores, activates and brings the form to the foreground.  
+      /// Use if you want to display your form in response to a 
+      /// HotKey event.
+      /// &lt;/summary&gt;
+      public void RestoreAndActivate()
+      {
+         if (!UnmanagedMethods.IsWindowVisible(this.Handle))
+         {
+            UnmanagedMethods.ShowWindow(this.Handle, UnmanagedMethods.SW_SHOW);
+         }
+         if (UnmanagedMethods.IsIconic(this.Handle))
+         {
+            UnmanagedMethods.SendMessage(this.Handle,
+             UnmanagedMethods.WM_SYSCOMMAND, 
+               (IntPtr)UnmanagedMethods.SC_RESTORE, IntPtr.Zero);
+         }
+         UnmanagedMethods.SetForegroundWindow(this.Handle);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the collection of HotKeys associated with the form.
+      /// &lt;/summary&gt;
+      public HotKeyCollection HotKeys
+      {
+         get
+         {
+            return this.hotKeys;
+         }
+      }
+
+      protected override void WndProc(ref System.Windows.Forms.Message m)
+      {
+         base.WndProc(ref m);
+         if (m.Msg == UnmanagedMethods.WM_HOTKEY)
+         {
+            int hotKeyId = m.WParam.ToInt32();
+            switch (hotKeyId)
+            {
+               case UnmanagedMethods.IDHOT_SNAPDESKTOP:
+                  if (PrintDesktopPressed != null)
+                  {
+                     System.EventArgs e = new System.EventArgs();
+                     PrintDesktopPressed(this, e);
+                  }
+                  break;
+               case UnmanagedMethods.IDHOT_SNAPWINDOW:
+                  if (PrintWindowPressed != null)
+                  {
+                     System.EventArgs e = new System.EventArgs();
+                     PrintWindowPressed(this, e);
+                  }
+                  break;
+               default:
+                  foreach (HotKey htk in hotKeys)
+                  {
+                     if (htk.AtomId.Equals(m.WParam))
+                     {
+                        if (HotKeyPressed != null)
+                        {
+                           HotKeyPressedEventArgs e = new
+                            HotKeyPressedEventArgs(htk);
+                           HotKeyPressed(this, e);
+                        }
+                     }
+                  }
+                  break;   
+            }
+         }
+      }
+
+      protected override void OnClosed ( System.EventArgs e )
+      {
+         hotKeys.Clear();
+         base.OnClosed(e);
+      }
+
+      public HotKeyForm() : base()
+      {
+         hotKeys = new HotKeyCollection(this);
+      }
+   }
+   #endregion
+
+   #region Delegate and Event Argument Declarations
+
+   public delegate void HotKeyPressedEventHandler(object sender,
+    HotKeyPressedEventArgs e);
+   public delegate void PrintWindowPressedEventHandler(object sender, EventArgs
+    e);
+   public delegate void PrintDesktopPressedEventHandler(object sender,
+    EventArgs e);
+
+   /// &lt;summary&gt;
+   /// Provides data for a HotKey pressed event
+   /// &lt;/summary&gt;
+   public class HotKeyPressedEventArgs : EventArgs
+   {
+      private HotKey hotKey;
+
+      public HotKey HotKey
+      {
+         get
+         {
+            return hotKey;
+         }
+      }
+
+      internal HotKeyPressedEventArgs(
+         HotKey hotKey
+         )
+      {
+         this.hotKey = hotKey;         
+      }
+
+   }
+   #endregion
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">A .NET Implementation of the ZoomIn Utility</a>&#160;.&#160;<a href="zoomin.html">ZoomIn</a>&#160;.&#160;ZoomIn_ZoomIn_HotKeyFormLib.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

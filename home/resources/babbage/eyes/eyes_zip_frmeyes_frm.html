@@ -1,0 +1,327 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: frmEyes.frm</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: frmEyes.frm" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Eyes</a>&#160;.&#160;<a href="eyes.html">Eyes</a>&#160;.&#160;frmEyes.frm</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="eyes.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Eyes</a> (26K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12353</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12353&type=zip&title=eyes_2ezip_5ffrmeyes.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: frmEyes.frm</h1><pre>VERSION 5.00
+Begin VB.Form frmEyes 
+   BorderStyle     =   0  'None
+   ClientHeight    =   3090
+   ClientLeft      =   1950
+   ClientTop       =   1965
+   ClientWidth     =   4680
+   ControlBox      =   0   'False
+   Icon            =   "frmEyes.frx":0000
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   3090
+   ScaleWidth      =   4680
+   ShowInTaskbar   =   0   'False
+   Begin VB.Timer tmrUpdate 
+      Interval        =   50
+      Left            =   2100
+      Top             =   2460
+   End
+End
+Attribute VB_Name = "frmEyes"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+
+Private Type POINTAPI
+   x As Long
+   y As Long
+End Type
+Private Declare Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long
+
+Private Declare Function SendMessageLong Lib "user32" Alias "SendMessageA"
+ (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As
+ Long) As Long
+Private Declare Function ReleaseCapture Lib "user32" () As Long
+Private Const WM_SYSCOMMAND = &amp;H112&amp;
+Private Const SC_MOVE = &amp;HF010&amp;
+Private Const WM_NCLBUTTONDOWN = &amp;HA1
+Private Const HTCAPTION = 2
+
+Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" _
+   (ByVal hwnd As Long, ByVal nIndex As Long) As Long
+Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" _
+   (ByVal hwnd As Long, ByVal nIndex As Long, _
+   ByVal dwNewLong As Long) As Long
+Private Const GWL_STYLE = (-16)
+Private Const GWL_EXSTYLE = (-20)
+
+'Requires Windows 2000 or later:
+Private Const WS_EX_LAYERED = &amp;H80000
+Private Type BLENDFUNCTION
+   BlendOp As Byte
+   BlendFlags As Byte
+   SourceConstantAlpha As Byte
+   AlphaFormat As Byte
+End Type
+'//
+'// currently defined blend function
+'//
+
+Private Const AC_SRC_OVER = &amp;H0
+
+'//
+'// alpha format flags
+'//
+Private Const AC_SRC_ALPHA = &amp;H1
+Private Const AC_SRC_NO_PREMULT_ALPHA = &amp;H1
+Private Const AC_SRC_NO_ALPHA = &amp;H2
+Private Const AC_DST_NO_PREMULT_ALPHA = &amp;H10
+Private Const AC_DST_NO_ALPHA = &amp;H20
+
+Private Declare Function SetLayeredWindowAttributes Lib "user32" _
+   (ByVal hwnd As Long, ByVal crKey As Long, _
+   ByVal bAlpha As Byte, ByVal dwFlags As Long) As Long
+Private Const LWA_COLORKEY = &amp;H1
+Private Const LWA_ALPHA = &amp;H2
+
+Private Declare Function UpdateLayeredWindow Lib "user32" _
+   (ByVal hwnd As Long, ByVal hdcDst As Long, pptDst As Any, _
+   psize As Any, ByVal hdcSrc As Long, _
+   pptSrc As Any, crKey As Long, _
+   ByVal pblend As Long, ByVal dwFlags As Long) As Long
+Private Const ULW_COLORKEY = &amp;H1
+Private Const ULW_ALPHA = &amp;H2
+Private Const ULW_OPAQUE = &amp;H4
+
+Private Declare Function RedrawWindow Lib "user32" (ByVal hwnd As Long,
+ lprcUpdate As Any, ByVal hrgnUpdate As Long, ByVal fuRedraw As Long) As Long
+Private Const RDW_ALLCHILDREN = &amp;H80
+Private Const RDW_ERASE = &amp;H4
+Private Const RDW_FRAME = &amp;H400
+Private Const RDW_INVALIDATE = &amp;H1
+
+' Set the position of a window:
+Private Const HWND_NOTOPMOST = -2
+Private Const HWND_TOP = 0
+Private Const HWND_TOPMOST = -1
+Private Const HWND_BOTTOM = 1
+Private Const SWP_NOACTIVATE = &amp;H10
+Private Const SWP_SHOWWINDOW = &amp;H40
+Private Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal
+ hWndInsertAfter As Long, ByVal x As Long, ByVal y As Long, ByVal cx As Long,
+ ByVal cy As Long, ByVal wFlags As Long) As Long
+
+Private m_cEyes As New cEyes
+
+Private Sub AlwaysOnTop( _
+        ByRef frmThis As Form, _
+        ByVal blnState As Integer)
+Dim lngParam As Long
+Dim lngRet As Long
+Dim lngLeft As Long
+Dim lngTop As Long
+Dim lngWidth As Long
+Dim lngHeight As Long
+    lngLeft = frmThis.Left
+    lngTop = frmThis.Top
+    lngWidth = frmThis.Width
+    lngHeight = frmThis.Height
+    If (blnState) Then
+        lngParam = HWND_TOPMOST
+    Else
+        lngParam = HWND_NOTOPMOST
+    End If
+    lngRet = SetWindowPos((frmThis.hwnd), lngParam, 0, 0, 0, 0, (SWP_NOACTIVATE
+     Or SWP_SHOWWINDOW))
+    frmThis.Move lngLeft, lngTop, lngWidth, lngHeight
+End Sub
+
+Private Sub create()
+   
+   m_cEyes.FileName = App.Path &amp; "\Large Eyes.bmp"
+   Me.Width = m_cEyes.CellWidth * 2 * Screen.TwipsPerPixelX
+   Me.Height = m_cEyes.CellHeight * Screen.TwipsPerPixelY
+   
+   Dim transColor As Long
+   transColor = &amp;HFF00FF
+   Me.BackColor = transColor
+   
+   Dim lStyle As Long
+   lStyle = GetWindowLong(hwnd, GWL_EXSTYLE)
+   lStyle = lStyle Or WS_EX_LAYERED
+   SetWindowLong hwnd, GWL_EXSTYLE, lStyle
+      
+   SetLayeredWindowAttributes Me.hwnd, transColor, 235, LWA_COLORKEY Or
+    LWA_ALPHA
+
+   AlwaysOnTop Me, True
+End Sub
+
+Private Sub Form_Load()
+   create
+End Sub
+
+Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y
+ As Single)
+   ' A better (more flexible) way of doing this is to use
+   ' the vbAccelerator WM_NCHITTEST interception library.
+   ' but if you want minimal code, here is the quick way!
+    If Button = vbLeftButton Then
+        'Fake a mouse down on the titlebar so form can be moved...
+        ReleaseCapture
+        SendMessageLong Me.hwnd, WM_NCLBUTTONDOWN, HTCAPTION, 0&amp;
+   End If
+End Sub
+
+
+Private Sub mnuContext_Click(Index As Integer)
+   Select Case Index
+   Case 0
+   Case 2
+      Unload Me
+   End Select
+End Sub
+
+Private Sub Form_MouseUp(Button As Integer, Shift As Integer, x As Single, y As
+ Single)
+   If Button = vbRightButton Then
+      Unload Me
+      'Me.PopupMenu mnuContextTOP, , x, y
+    End If
+
+End Sub
+
+Private Sub tmrUpdate_Timer()
+   
+   Dim cursorPoint As POINTAPI
+   GetCursorPos cursorPoint
+   
+   Dim leftEyeCentre As POINTAPI
+   leftEyeCentre.x = (Me.Left + Me.ScaleWidth \ 4) \ Screen.TwipsPerPixelX
+   leftEyeCentre.y = (Me.Top + Me.ScaleHeight \ 4) \ Screen.TwipsPerPixelY
+      
+   Dim leftEyeAngle As Double
+   leftEyeAngle = GetAngle(cursorPoint, leftEyeCentre) - 180
+   If (leftEyeAngle &lt; 0) Then
+      leftEyeAngle = 360 + leftEyeAngle
+   End If
+   m_cEyes.Frame = (leftEyeAngle / 360) * 35 + 1
+   If (cursorPoint.x &gt; leftEyeCentre.x - m_cEyes.CellWidth \ 2) And
+    (cursorPoint.x &lt; leftEyeCentre.x + m_cEyes.CellWidth \ 2) Then
+      If (cursorPoint.y &gt; leftEyeCentre.y - m_cEyes.CellHeight \ 2) And
+       (cursorPoint.y &lt; leftEyeCentre.y + m_cEyes.CellHeight \ 2) Then
+         m_cEyes.Frame = 0
+      End If
+   End If
+   m_cEyes.Draw Me.hDC, 0, 0
+   
+   Dim rightEyeCentre As POINTAPI
+   rightEyeCentre.x = leftEyeCentre.x + Me.ScaleWidth \ (2 *
+    Screen.TwipsPerPixelX)
+   rightEyeCentre.y = leftEyeCentre.y
+   
+   Dim rightEyeAngle As Double
+   rightEyeAngle = GetAngle(cursorPoint, rightEyeCentre) - 180
+   If (rightEyeAngle &lt; 0) Then
+      rightEyeAngle = 360 + rightEyeAngle
+   End If
+   m_cEyes.Frame = (rightEyeAngle / 360) * 35 + 1
+   If (cursorPoint.x &gt; rightEyeCentre.x - m_cEyes.CellWidth \ 2) And
+    (cursorPoint.x &lt; rightEyeCentre.x + m_cEyes.CellWidth \ 2) Then
+      If (cursorPoint.y &gt; rightEyeCentre.y - m_cEyes.CellHeight \ 2) And
+       (cursorPoint.y &lt; rightEyeCentre.y + m_cEyes.CellHeight \ 2) Then
+         m_cEyes.Frame = 0
+      End If
+   End If
+   m_cEyes.Draw Me.hDC, m_cEyes.CellWidth - 8, 0
+   
+   
+   
+End Sub
+Private Function GetAngle(cursorPoint As POINTAPI, eyeCentre As POINTAPI) As
+ Double
+   
+   ' work out the angle of the vectors:
+   If (eyeCentre.y = cursorPoint.y) Then
+      If (eyeCentre.x &lt; cursorPoint.x) Then
+         GetAngle = 90
+      Else
+         GetAngle = 270
+      End If
+   Else
+      Dim eyeAngle As Double
+      eyeAngle = Atn((eyeCentre.x - cursorPoint.x) / (eyeCentre.y -
+       cursorPoint.y)) * 45 / Atn(1)
+      If (eyeCentre.y &gt; cursorPoint.y) Then
+         If (eyeCentre.x &gt; cursorPoint.x) Then
+            GetAngle = 360 - eyeAngle
+         Else
+            GetAngle = -eyeAngle
+         End If
+      Else
+         If (eyeCentre.x &gt; cursorPoint.x) Then
+            GetAngle = 180 - eyeAngle
+         Else
+            GetAngle = 180 - eyeAngle
+         End If
+      End If
+   End If
+
+End Function
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\index.html" ><IMG SRC="..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Eyes</a>&#160;.&#160;<a href="eyes.html">Eyes</a>&#160;.&#160;frmEyes.frm</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

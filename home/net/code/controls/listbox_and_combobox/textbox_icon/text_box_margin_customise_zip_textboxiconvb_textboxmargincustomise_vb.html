@@ -1,0 +1,573 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: TextBoxIconVB_TextBoxMarginCustomise.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: TextBoxIconVB_TextBoxMarginCustomise.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Adding an Icon or Control to a TextBox or ComboBox</a>&#160;.&#160;<a href="text_box_margin_customise.html">Text Box Margin Customise</a>&#160;.&#160;TextBoxIconVB_TextBoxMarginCustomise.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="text_box_margin_customise.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Text Box Margin Customise</a> (91K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13078</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13078&type=zip&title=text_20box_20margin_20customise_2ezip_5ftextboxiconvb_5ftextboxmargincustomi.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Oct 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: TextBoxIconVB_TextBoxMarginCustomise.vb</h1><pre>Namespace vbAccelerator.Components.Controls
+
+
+    ''' &lt;summary&gt;
+    ''' A class for adding right and left margins to a TextBox
+    ''' or the embedded TextBox within a DropDown ComboBox.
+    ''' The margin can display an m_icon, a m_control or can
+    ''' be drawn using a custom routine implemented by the
+    ''' user.
+    ''' &lt;/summary&gt;
+    Public Class TextBoxMarginCustomise
+        Inherits NativeWindow
+
+
+#Region "Unmanaged Code"
+        &lt;System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServi
+        ces.LayoutKind.Sequential)&gt; _
+        Private Structure RECT
+            Public left As Integer
+            Public top As Integer
+            Public right As Integer
+            Public bottom As Integer
+        End Structure
+
+        Private Declare Auto Function SendMessage Lib "user32" ( _
+            ByVal hwnd As IntPtr, _
+            ByVal wMsg As Integer, _
+            ByVal wParam As Integer, _
+            ByVal lParam As Integer _
+            ) As Integer
+
+        Private Declare Auto Function FindWindowEx Lib "user32" ( _
+            ByVal hwndParent As IntPtr, _
+            ByVal hwndChildAfter As IntPtr, _
+            &lt;System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServ
+            ices.UnmanagedType.LPTStr)&gt; _
+            ByVal lpszClass As String, _
+            &lt;System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServ
+            ices.UnmanagedType.LPTStr)&gt; _
+            ByVal lpszWindow As String _
+            ) As IntPtr
+        Private Declare Auto Function GetWindowLong Lib "user32" ( _
+            ByVal hWnd As IntPtr, _
+            ByVal dwStyle As Integer _
+            ) As Integer
+        Private Declare Function GetDC Lib "user32" ( _
+            ByVal hwnd As IntPtr _
+            ) As IntPtr
+
+        Private Declare Function ReleaseDC Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByVal hdc As IntPtr _
+        ) As Integer
+
+        Private Declare Function GetClientRect Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByRef rc As RECT _
+         ) As Integer
+        Private Declare Function GetWindowRect Lib "user32" ( _
+         ByVal hwnd As IntPtr, _
+         ByRef rc As RECT _
+         ) As Integer
+
+        Private Const EC_LEFTMARGIN As Integer = &amp;H1
+        Private Const EC_RIGHTMARGIN As Integer = &amp;H2
+        Private Const EC_USEFONTINFO As Integer = &amp;HFFFF
+        Private Const EM_SETMARGINS As Integer = &amp;HD3
+        Private Const EM_GETMARGINS As Integer = &amp;HD4
+
+        Private Const WM_PAINT As Integer = &amp;HF
+
+        Private Const WM_SETFOCUS As Integer = &amp;H7
+        Private Const WM_KILLFOCUS As Integer = &amp;H8
+
+        Private Const WM_SETFONT As Integer = &amp;H30
+
+        Private Const WM_MOUSEMOVE As Integer = &amp;H200
+        Private Const WM_LBUTTONDOWN As Integer = &amp;H201
+        Private Const WM_RBUTTONDOWN As Integer = &amp;H204
+        Private Const WM_MBUTTONDOWN As Integer = &amp;H207
+        Private Const WM_LBUTTONUP As Integer = &amp;H202
+        Private Const WM_RBUTTONUP As Integer = &amp;H205
+        Private Const WM_MBUTTONUP As Integer = &amp;H208
+        Private Const WM_LBUTTONDBLCLK As Integer = &amp;H203
+        Private Const WM_RBUTTONDBLCLK As Integer = &amp;H206
+        Private Const WM_MBUTTONDBLCLK As Integer = &amp;H209
+
+        Private Const WM_KEYDOWN As Integer = &amp;H100
+        Private Const WM_KEYUP As Integer = &amp;H101
+        Private Const WM_CHAR As Integer = &amp;H102
+
+        Private Const GWL_EXSTYLE = (-20)
+        Private Const WS_EX_RIGHT As Integer = &amp;H1000
+        Private Const WS_EX_LEFT As Integer = &amp;H0
+        Private Const WS_EX_RTLREADING As Integer = &amp;H2000
+        Private Const WS_EX_LTRREADING As Integer = &amp;H0
+        Private Const WS_EX_LEFTSCROLLBAR As Integer = &amp;H4000
+        Private Const WS_EX_RIGHTSCROLLBAR As Integer = &amp;H0
+
+#End Region
+
+#Region "Member Variables"
+        Private m_imageList As System.Windows.Forms.ImageList = Nothing
+        Private m_icon As Integer = -1
+        Private m_control As Control = Nothing
+        Private m_customPainter As ITextBoxMarginCustomisePainter = Nothing
+        Private customWidth As Integer = 0
+#End Region
+
+        ''' &lt;summary&gt;
+        ''' Gets whether a Window is &lt;c&gt;RightToLeft.Yes&lt;/c&gt; from
+        ''' its &lt;c&gt;Handle&lt;/c&gt;.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="theHandle"&gt;Handle of window to check.&lt;/param&gt;
+        ''' &lt;returns&gt;&lt;c&gt;True&lt;/c&gt; if Window is RightToLeft, &lt;c&gt;False&lt;/c&gt;
+         otherwise.&lt;/returns&gt;
+        Private Shared Function IsRightToLeft(ByVal theHandle As IntPtr) As
+         Boolean
+            Dim style As Integer = GetWindowLong(theHandle, GWL_EXSTYLE)
+            IsRightToLeft = _
+             ((style And WS_EX_RIGHT) = WS_EX_RIGHT) Or _
+             ((style And WS_EX_RTLREADING) = WS_EX_RTLREADING) Or _
+             ((style And WS_EX_LEFTSCROLLBAR) = WS_EX_LEFTSCROLLBAR)
+        End Function
+
+        ''' &lt;summary&gt;
+        ''' Gets the far margin of a TextBox m_control or the
+        ''' TextBox contained within a ComboBox.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="ctl"&gt;The Control to get the far margin
+        ''' for&lt;/param&gt;
+        ''' &lt;returns&gt;Far margin, in pixels.&lt;/returns&gt;
+        Public Shared Function FarMargin(ByVal ctl As Control) As Integer
+
+            Dim theHandle As IntPtr = ctl.Handle
+
+            If TypeOf ctl Is System.Windows.Forms.ComboBox Then
+                theHandle = ComboEdithWnd(theHandle)
+            End If
+
+            FarMargin = FarMargin(theHandle)
+
+        End Function
+
+        Private Shared Function FarMargin(ByVal theHandle As IntPtr) As Integer
+            Dim theMargin As Integer = SendMessage(theHandle, EM_GETMARGINS, 0,
+             0)
+            If (IsRightToLeft(theHandle)) Then
+                theMargin = theMargin And &amp;HFFFF
+            Else
+                theMargin = (theMargin / &amp;H10000)
+            End If
+            FarMargin = theMargin
+        End Function
+
+
+        ''' &lt;summary&gt;
+        ''' Sets the far margin of a TextBox m_control or the
+        ''' TextBox contained within a ComboBox.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="ctl"&gt;The Control to set the far margin
+        ''' for&lt;/param&gt;
+        ''' &lt;param name="margin"&gt;New far margin in pixels, or -1
+        ''' to use the default far margin.&lt;/param&gt;
+        Public Shared Sub FarMargin(ByVal ctl As Control, ByVal margin As
+         Integer)
+            Dim theHandle As IntPtr = ctl.Handle
+            If TypeOf ctl Is System.Windows.Forms.ComboBox Then
+                theHandle = ComboEdithWnd(theHandle)
+            End If
+            FarMargin(theHandle, margin)
+        End Sub
+
+        Private Shared Sub FarMargin(ByVal theHandle As IntPtr, ByVal margin As
+         Integer)
+            Dim message As Integer = IIf(IsRightToLeft(theHandle),
+             EC_LEFTMARGIN, EC_RIGHTMARGIN)
+            If (message = EC_LEFTMARGIN) Then
+                margin = margin &amp; &amp;HFFFF
+            Else
+                margin = margin * &amp;H10000
+            End If
+            SendMessage(theHandle, EM_SETMARGINS, message, margin)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets the near margin of a TextBox m_control or the
+        ''' TextBox contained within a ComboBox.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="ctl"&gt;The Control to get the near margin
+        ''' for&lt;/param&gt;
+        ''' &lt;returns&gt;Near margin, in pixels.&lt;/returns&gt;
+        Public Shared Function NearMargin(ByVal ctl As Control) As Integer
+            Dim theHandle As IntPtr = ctl.Handle
+            If TypeOf ctl Is System.Windows.Forms.ComboBox Then
+                theHandle = ComboEdithWnd(theHandle)
+            End If
+            NearMargin = NearMargin(theHandle)
+        End Function
+
+        Private Shared Function NearMargin(ByVal theHandle As IntPtr) As Integer
+            Dim theMargin As Integer = SendMessage(theHandle, EM_GETMARGINS, 0,
+             0)
+            If (IsRightToLeft(theHandle)) Then
+                theMargin = theMargin / &amp;H10000
+            Else
+                theMargin = theMargin And &amp;HFFFF
+            End If
+            NearMargin = theMargin
+        End Function
+
+        ''' &lt;summary&gt;
+        ''' Sets the near margin of a TextBox m_control or the
+        ''' TextBox contained within a ComboBox.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="ctl"&gt;The Control to set the near margin
+        ''' for&lt;/param&gt;
+        ''' &lt;param name="margin"&gt;New near margin in pixels, or -1
+        ''' to use the default near margin.&lt;/param&gt;
+        Public Shared Sub NearMargin(ByVal ctl As Control, ByVal margin As
+         Integer)
+            Dim theHandle As IntPtr = ctl.Handle
+            If TypeOf ctl Is System.Windows.Forms.ComboBox Then
+                theHandle = ComboEdithWnd(theHandle)
+            End If
+            NearMargin(theHandle, margin)
+        End Sub
+
+        Private Shared Sub NearMargin(ByVal theHandle As IntPtr, ByVal margin
+         As Integer)
+            Dim message As Integer = IIf(IsRightToLeft(theHandle),
+             EC_RIGHTMARGIN, EC_LEFTMARGIN)
+            If (message = EC_LEFTMARGIN) Then
+                margin = margin And &amp;HFFFF
+            Else
+                margin = margin * &amp;H10000
+            End If
+            SendMessage(theHandle, EM_SETMARGINS, message, margin)
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets the handle of the TextBox contained within a 
+        ''' ComboBox m_control.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="handle"&gt;The ComboBox window handle.&lt;/param&gt;
+        ''' &lt;returns&gt;The handle of the contained text box.&lt;/returns&gt;
+        Public Shared Function ComboEdithWnd(ByVal theHandle As IntPtr) As
+         IntPtr
+            Dim findHandle As IntPtr = FindWindowEx(theHandle, IntPtr.Zero,
+             "EDIT", vbNullString)
+            ComboEdithWnd = findHandle
+        End Function
+
+        ''' &lt;summary&gt;
+        ''' Attaches an instance of this class to a ComboBox m_control.
+        ''' The m_control must have the "DropDown" style so it has a 
+        ''' TextBox.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="comboBox"&gt;ComboBox with DropDown style to
+        ''' attach to.&lt;/param&gt;
+        ''' &lt;remarks&gt;Use the &lt;see cref="AssignHandle"/&gt; method to attach 
+        ''' this class to an arbitrary TextBox m_control using its
+        ''' handle.&lt;/remarks&gt;
+        Public Sub Attach(ByVal comboBox As System.Windows.Forms.ComboBox)
+            If Not (Me.Handle.Equals(IntPtr.Zero)) Then
+                Me.ReleaseHandle()
+            End If
+            Dim theHandle As IntPtr = ComboEdithWnd(comboBox.Handle)
+            Me.AssignHandle(theHandle)
+            setMargin()
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Attaches an instance of this class to a TextBox m_control.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="textBox"&gt;TextBox to attach to.&lt;/param&gt;
+        ''' &lt;remarks&gt;Use the &lt;see cref="AssignHandle"/&gt; method to attach 
+        ''' this class to an arbitrary TextBox m_control using its
+        ''' handle.&lt;/remarks&gt;
+        Public Sub Attach(ByVal textBox As System.Windows.Forms.TextBox)
+            If Not (Me.Handle.Equals(IntPtr.Zero)) Then
+                Me.ReleaseHandle()
+            End If
+            Me.AssignHandle(textBox.Handle)
+            setMargin()
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Gets/sets the ImageList used to draw icons in the control.
+        ''' &lt;/summary&gt;
+        Public Property ImageList() As System.Windows.Forms.ImageList
+            Get
+                ImageList = m_imageList
+            End Get
+            Set(ByVal Value As System.Windows.Forms.ImageList)
+                m_imageList = Value
+                setMargin()
+            End Set
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Gets/sets the 0-based icon index to draw in the control.
+        ''' If the index is set &lt; 0 then the icon is not drawn.
+        ''' &lt;/summary&gt;
+        Public Property Icon() As Integer
+            Get
+                Icon = m_icon
+            End Get
+            Set(ByVal Value As Integer)
+                m_icon = Value
+                setMargin()
+            End Set
+        End Property
+
+        ''' &lt;summary&gt;
+        ''' Gets/sets the control to be displayed in the near margin.
+        ''' The &lt;see cref="ImageList"/&gt; property must be &lt;c&gt;Nothing&lt;/c&gt; if you
+        ''' want to display a m_control.
+        ''' &lt;/summary&gt;
+        Public Property Control() As System.Windows.Forms.Control
+            Get
+                Control = m_control
+            End Get
+            Set(ByVal Value As System.Windows.Forms.Control)
+                m_control = Value
+                setMargin()
+            End Set
+        End Property
+
+
+        ''' &lt;summary&gt;
+        ''' Gets/sets a class which implements the &lt;see
+         cref="ITextBoxMarginCustomisePainter "/&gt;
+        ''' interface to perform customised painting in the margin.
+        ''' The &lt;see cref="ImageList"/&gt; and &lt;see cref="Control"/&gt; properties
+         must 
+        ''' be &lt;c&gt;Nothing&lt;/c&gt; if you want to use this technique.
+        ''' &lt;/summary&gt;
+        Public Property CustomPainter() As ITextBoxMarginCustomisePainter
+            Get
+                CustomPainter = m_customPainter
+            End Get
+            Set(ByVal Value As ITextBoxMarginCustomisePainter)
+                m_customPainter = Value
+                setMargin()
+            End Set
+        End Property
+
+
+        ''' &lt;summary&gt;
+        ''' Sets the near margin to accommodate the specified m_control.
+        ''' &lt;/summary&gt;
+        Private Sub setMargin()
+            If Not (Me.Handle.Equals(IntPtr.Zero)) Then
+                If Not (m_control Is Nothing) Then
+                    NearMargin(Me.Handle, m_control.Width + 4)
+                    moveControl()
+                ElseIf (m_icon &gt; -1) Then
+                    If Not (m_imageList Is Nothing) Then
+                        NearMargin(Me.Handle, m_imageList.ImageSize.Width + 4)
+                    Else
+                        NearMargin(Me.Handle, 20)
+                    End If
+                ElseIf Not (CustomPainter Is Nothing) Then
+                    customWidth = CustomPainter.GetMarginWidth()
+                    NearMargin(Me.Handle, customWidth)
+                End If
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Moves the contained m_control to the appropriate 
+        ''' position
+        ''' &lt;/summary&gt;
+        Private Sub moveControl()
+            If Not (m_control Is Nothing) Then
+                Dim currentLocation As Point = m_control.Location
+                Dim rcWindow As RECT = New RECT()
+                GetWindowRect(Me.Handle, rcWindow)
+                Dim moveTo As Point = New Point(rcWindow.left + 2, _
+                 rcWindow.top + ((rcWindow.bottom - rcWindow.top) -
+                  m_control.Height) / 2)
+                If (IsRightToLeft(Me.Handle)) Then
+                    moveTo.X = rcWindow.right - m_control.Width - 2
+                End If
+                moveTo = m_control.Parent.PointToClient(moveTo)
+                If Not (currentLocation.Equals(moveTo)) Then
+                    m_control.Location = moveTo
+                    m_control.BringToFront()
+                End If
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Calls the base WndProc and performs WM_PAINT
+        ''' processing to draw the m_icon if necessary.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="m"&gt;Windows Message&lt;/param&gt;
+        Protected Overrides Sub WndProc(ByRef m As Message)
+
+            MyBase.WndProc(m)
+            If (m_control Is Nothing) Then
+                Select Case m.Msg
+                    Case WM_SETFONT
+                        setMargin()
+                    Case WM_PAINT
+                        RePaint()
+                    Case WM_SETFOCUS, WM_KILLFOCUS
+                        RePaint()
+                    Case WM_LBUTTONDOWN, WM_RBUTTONDOWN, WM_MBUTTONDOWN
+                        RePaint()
+                    Case WM_LBUTTONUP, WM_RBUTTONUP, WM_MBUTTONUP
+                        RePaint()
+                    Case WM_LBUTTONDBLCLK, WM_RBUTTONDBLCLK, WM_MBUTTONDBLCLK
+                        RePaint()
+                    Case WM_KEYDOWN, WM_KEYUP, WM_CHAR
+                        RePaint()
+                    Case WM_MOUSEMOVE
+                        If Not (m.WParam.Equals(IntPtr.Zero)) Then
+                            RePaint()
+                        End If
+                End Select
+            Else
+                Select Case m.Msg
+                    Case WM_PAINT
+                        moveControl()
+                End Select
+            End If
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Paints the control if necessary:
+        ''' &lt;/summary&gt;
+        Private Sub RePaint()
+
+            If (((m_icon &gt;= 0) And Not (m_imageList Is Nothing)) Or _
+              Not (m_customPainter Is Nothing)) Then
+
+                Dim rcClient As RECT = New RECT()
+                GetClientRect(Me.Handle, rcClient)
+                Dim rightToLeft As Boolean = IsRightToLeft(Me.Handle)
+
+                Dim theHandle As IntPtr = Me.Handle
+                Dim hdc As IntPtr = GetDC(theHandle)
+                Dim gfx As Graphics = Graphics.FromHdc(hdc)
+
+                If (m_customPainter Is Nothing) Then
+                    Dim itemSize As Integer = m_imageList.ImageSize.Height
+                    Dim pt As Point = New Point(0, rcClient.top +
+                     (rcClient.bottom - rcClient.top - itemSize) / 2)
+                    If (rightToLeft) Then
+                        pt.X = rcClient.right - itemSize - 2
+                    Else
+                        pt.X = 2
+                    End If
+
+                    m_imageList.Draw(gfx, pt.X, pt.Y, m_icon)
+
+                Else
+                    Dim rcDraw As Rectangle = New Rectangle( _
+                     New Point(0, 0), New Size(customWidth, rcClient.bottom -
+                      rcClient.top))
+                    m_customPainter.Draw(gfx, rcDraw, rightToLeft)
+                End If
+
+                gfx.Dispose()
+                ReleaseDC(theHandle, hdc)
+            End If
+
+        End Sub
+
+        ''' &lt;summary&gt;
+        ''' Constructs a new instance of this class
+        ''' &lt;/summary&gt;
+        Public Sub New()
+            ' intentionally blank
+        End Sub
+
+    End Class
+
+    ''' &lt;summary&gt;
+    ''' An interface which users of the &lt;see cref="TextBoxMarginCustomise"/&gt;
+    ''' class can use to provide a customised painting routine for the
+    ''' margin area.  Create an instance of this class and install it
+    ''' using the &lt;see cref="TextBoxMarginCustomise.CustomPainter"/&gt;
+    ''' accessor.
+    ''' &lt;/summary&gt;
+    Public Interface ITextBoxMarginCustomisePainter
+
+        ''' &lt;summary&gt;
+        ''' Called to obtain the width of the margin.
+        ''' &lt;/summary&gt;
+        ''' &lt;returns&gt;Width of the margin&lt;/returns&gt;
+        Function GetMarginWidth() As Integer
+
+        ''' &lt;summary&gt;
+        ''' Called whenever the margin area needs to
+        ''' be repainted.
+        ''' &lt;/summary&gt;
+        ''' &lt;param name="gfx"&gt;Graphics object to paint on.&lt;/param&gt;
+        ''' &lt;param name="rcDraw"&gt;Boundary of margin area.&lt;/param&gt;
+        ''' &lt;param name="rightToLeft"&gt;Whether the m_control is right 
+        ''' to left or not&lt;/param&gt;
+        Sub Draw(ByVal gfx As Graphics, ByVal rcDraw As Rectangle, ByVal
+         rightToLeft As Boolean)
+
+    End Interface
+
+
+End Namespace
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;<a href="article.html">Adding an Icon or Control to a TextBox or ComboBox</a>&#160;.&#160;<a href="text_box_margin_customise.html">Text Box Margin Customise</a>&#160;.&#160;TextBoxIconVB_TextBoxMarginCustomise.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 November 2003</p></td><td></td></tr></table>
+</body></html>

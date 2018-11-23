@@ -1,0 +1,277 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Netscape Style Free-Threaded In-Progress Indicator</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Knight Rider</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Well, if the Internet isn't for finding complete rubbish I don't know what its for...</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\ki.html" alt="Knight Industries Two Thousand.  Looks like a car to me." width="167" height="74">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+Brandon Tartikoff (crazy name, crazy guy), head of programming at NBC, once gave California magazine this
+version of the creation of Knight Rider: It seems he and one of his assistants were discussing 
+the problems of casting handsome leading men in the series, because many of them can't act. 
+Why not have a series, he mused, called "The Man of Six words," which would begin with the guy 
+getting out of a woman's bed and saying "Thank You." Then he would chase down some villians 
+and say "Freeze!" Finally the grateful almost-victims would thank him, and he would murmur, 
+"You're welcome." End of show. In between, the car could do the talking. 
+<br><br>
+The series that made 
+it to the air as Knight Rider was scarcely less preposterous than that, but it was played with
+such a twinkle in the eye that viewers--especially kids--made it one of the hits of the 1982 season.
+		<br><br>
+		And just check this for a tag line:<br>
+		</font>
+		<p>
+		<table>
+		<tr>
+		<td width="32">&nbsp;&nbsp;&nbsp;</td>
+		<td><font color="#000000" face="verdana,arial,helvetica" size="2">	
+		&quot;A shadowy flight into the dangerous world of a man who does not exist. 
+		Michael Knight, A young loner on a crusade to champion the cause of the innocent, 
+		the helpless, the powerless, in a world of criminals who operate above the law..&quot;
+		</font></td>
+		<td width="48">&nbsp;&nbsp;&nbsp;</td>
+		</table>
+		</p>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+I guess that that would just about cover it...
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>KITT</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	&quot;The Foundation's most important asset in achieving its goals of fighting crime and protecting 
+	the innocent is a top-secret super "car" known as the Knight Industries Two Thousand (KITT). 
+	In addition to being virtually indestructible, KITT possesses advanced artificial intelligence 
+	capable of accepting voice commands, as well as interacting with its operator and making 
+	decisions on its own. In fact, KITT's artificial intelligence is so advanced, that it has 
+	formed a kind of personality. This human characteristic has enabled KITT to gradually form 
+	a unique bond and partnership with Michael and the rest of the FLAG crew. Although his (<i>surely, it's? -Ed</i>) purpose 
+	is to fight criminals, KITT by nature is benevolent and compassionate.  KITT is programmed 
+	in such a way that his top priority is to protect human life, and thus he does not utilize 
+	lethal force.&quot;
+		<br><br>
+	Oh yes: the unfortunate called in to do all the actual talking in the series was William Daniels.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Resource (As If Such Things Were Needed...)</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+
+		<ul>
+		<li>Michael Knight, a lone crusader in a dangerous world...  <br>
+		<a href="javascript:window.alert(&quot;http://raven.cybercom.com/~hedgehog/knight/index.html\nThis link was not retrieved.&quot;)">The World of the Knight Rider</a>
+		<li>One man can make a difference...  <br>
+		<a href="javascript:window.alert(&quot;http://www.teamknightrider.com/welcome.html\nThis link was not retrieved.&quot;)">Team Knight Rider.</a>
+		<li>The Banshee is a complete conversion kit for your 1994 to 1997 Firebird or Trans Am.<br>
+		<a href="javascript:window.alert(&quot;http://www.knighton-line.com/default.htm\nThis link was not retrieved.&quot;)">Build your own KITT!</a><br>  
+		<li>"According to my projections, the source should be here within seconds, Michael."<br>
+		<a href="ksource.wav">Sound</a> (67 KB)
+		<li>Sound to accompany the moving lights...<br>
+		<a href="kscanr3.wav">Sound</a> (13 KB)
+		<li>Well, they had to call it something...<br>
+		<a href="javascript:window.alert(&quot;http://www.knightrider.com/\nThis link was not retrieved.&quot;)">Consultancy Knight Rider</a>
+		</ul>
+		
+		</font>
+		</td>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+llspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

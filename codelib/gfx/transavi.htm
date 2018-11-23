@@ -1,0 +1,458 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Notepad">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="Description" content="Provides controls allowing you to create drop-down windows from any VB Form. Includes full source.">
+<title>vbAccelerator Transparent AVI Control</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Transparent AVI Control</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Play any AVI file using the API directly; also demonstrates how to implement transparency</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+
+<!-- SPLASH:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\avi_player\transparent_avi_player\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<img src="..\..\images\transavi.gif" alt="Transparent AVI Player control" width="295" height="242"><br>
+	<br><br>
+	<!-- DOWNLOADS:START -->
+	<table border="0" cellspacing="0" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="5" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="vbalavi5.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalavi5.zip">VB5 Component Binary (14kb)</a></font></td>
+	<td width="3"></td>
+	<td valign="top"><a href="vbalavi6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalavi6.zip">VB6 Component Binary (14kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="vbalavip5dem.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalavip5dem.zip">VB5 Demonstration Project (56kb)</a></font></td>
+	<td width="3"></td>
+	<td valign="top"><a href="vbalavip6dem.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalavip6dem.zip">VB6 Demonstration Project (56kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="vbalavip5all.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalavip5all.zip">VB5 Full Source Code (83kb)</a></font></td>
+	<td width="3"></td>
+	<td valign="top"><a href="vbalavip6all.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalavip6all.zip">VB6 Full Source Code (83kb)</a></font></td>
+	</tr>
+
+	<tr>
+	<td colspan="2"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr.dll">vbAccelerator SSubTmr.DLL for VB5</a>
+	</td>
+	<td width="3"></td>
+	<td colspan="2"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr6.dll">vbAccelerator SSubTmr6.DLL for VB6</a>
+	</td>
+	</tr>
+	</table>
+	<!-- DOWNLOADS:END -->		</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Overview</b><br>	
+	The Animation control supplied with VB (and from various other VB websites) is derived from the 
+	implementation within COMCTL32.DLL.  However, this implementation only allows you to play
+	AVIs with no audio stream.  Also, its idea of transparency isn't quite what you might expect:
+	setting an AVI to transparent only sets one of the colours in the AVI to another colour,
+	rather than allowing you to draw part of the background.
+	<br><br>
+	If you want to play any type of AVI, or you want to modify the contents of the transparent
+	area, you must load and draw the AVI yourself using the API. Luckily, this API is easily
+	accessible to VB coders.
+	<br><br>
+	<p><b>The Transparent AVI Control</b><br>
+	The transparent AVI control supplied with the download is a simple implementation based around
+	reuse of a class, <i>cAVICtrl.cls</i>.  This class allows you to play an AVI onto any 
+	window.  The implementation includes code to tile a bitmap into the background of the control.
+	Use of the control is pretty self explanatory. To set up the control to show an AVI transparently
+	over a background bitmap the code looks like this:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+With vbalAVIPlayer1<br>
+&nbsp;&nbsp;&nbsp;.Filename = App.Path & &quot;\clock.avi&quot;<br>
+&nbsp;&nbsp;&nbsp;.Load<br>
+&nbsp;&nbsp;&nbsp;.Picture = picBackground.Picture<br>
+&nbsp;&nbsp;&nbsp;.Transparent = True<br>
+&nbsp;&nbsp;&nbsp;.TransparentColor = &H0&<br>
+End With<br>
+<br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	To start and stop the AVI playing, use the <i>.Running</i> property.
+	<br><br>
+	<p><b>The API for Playing AVIs</b><br>
+	Basically the API for playing AVIs is found in two DLLs: the AVI support DLL
+	<i>Avifil32.Dll</i> and the Video for Windows DLL <i>msvfw32.dll</i> (incidentally,
+	to find out more about working out which DLL contains which function, have a look
+	at the article <a href="..\article\exploc.htm">Sleuthing the Location of an API call</a>).
+	AVI loading, reading and interrogation is provided by the AVI support DLL, whilst Video
+	for Windows provides some functions for rendering a <a href="cdibsect.htm">DIB</a>
+	directly from memory onto a device context, without having to create an intermediate
+	GDI DIB Section or memory device context to Blit it from.  	
+	<br><br>
+	<p><b>The DrawDib API</b><br>
+	The DrawDib API is aimed at fast rendering of DIBs (Device Independent Bitmaps) to
+	screen without the intermediate use of any GDI objects.  This was important in 16 bit
+	versions of windows, however, most graphic card device drivers now deal with DIBs very quickly
+	so the performance aspect of this API is no longer relevant.  It does help simplify 
+	drawing AVI frames, however, so it is used in this project.  There are three DrawDib API
+	calls used:
+	<ul>
+	<li><i>DrawDibOpen</i><br>
+	Opens a DrawDib device and returns a handle to it.
+	<li><i>DrawDibDraw</i>
+	Draws a DIB from memory onto a device context.  This call is very similar to the GDI
+	<i>StretchBlt</i> call except rather than taking a source DC it takes a pointer to the
+	DIB bits and a pointer to the DIB colour table.  These pointers are provided directly
+	by the AVI API, as we will see next.
+	<li><i>DrawDibClose</i>
+	Closes a previously opened DrawDib device.
+	</ul>
+	<p><b>The AVI Support API</b><br>
+	AVIs work is performed using this DLL.  To start using the DLL, call <i>AVIFileInit()</i>
+	and when finished, call <i>AVIFileExit</i>.<br><br>
+	To open an AVI file for playing, the <i>AVIStreamOpenFromFile</i> function is used:
+	<br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<br>
+&nbsp;&nbsp;&nbsp;Private Declare Function AVIStreamOpenFromFile Lib &quot;avifil32.dll&quot; Alias &quot;AVIStreamOpenFromFileA&quot; ( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppavi As Any, ByVal szFile As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal fccType As Long, ByVal lParam As Long, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ByVal mode As Long, pclsidHandler As Any _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) As Long<br>
+<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<ul>
+	<li><b>ppAVI</b> is a pointer to the AVI stream , returned.  Passing a long value in as this parameter allows us to return this pointer.
+	<li><b>szFile</b> is the file to open
+	<li><b>fccType</b> defines which type of stream we want to read from, in this
+	case the video stream (MMIO type "vids", which is &H73646976 as a long
+	value)
+	<li><b>lParam</b> is an application defined value 
+	<li><b>mode</b> is the file mode, the same as the file mode values used in the
+	file APIs in Win32
+	<li><b>pclsidHandler</b> is a pointer to a CLSID if you take advantage of the 
+	OLE interface to the AVI functions (not used in this sample).
+	</ul>
+	The return value from the function is a COM <i>HRESULT</i>.  
+
+	<p><table width = "100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td valign="top"><img src="..\..\images\minitip.gif" width="10" height="14" hspace="10"></td>
+	<td bgcolor="#99CCFF"><font color="#000099" face="verdana,arial,helvetica" size="2">
+	<b>Tip</b> Using COM HRESULT values<br>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+	<td></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Whilst a <i>HRESULT</i> sounds like it should be a handle to a result, it is actually just
+	a long value where the bits are arranged in a specific sequence:<br><br>
+	<img src="..\..\images\hresult.gif" width="294" height="79" alt="Format of the HRESULT"><br>
+	<small><b>Format of the HRESULT</b></small>
+	<br>
+	The most significant bit of the HRESULT (bit 31, which can be extracted by ANDing with &H80000000)
+	determines whether the function call succeeded or failed.  It is set for failure.  
+	<br><br>
+	The bits betwen bit 30 and bit 16 contain what is termed the 'facility' code.  Microsoft use this
+	to separate different errors out, for example, control errors are supposed to 
+	set FACILITY_CONTROL (=10) in this section whilst Win32 errors set FACILITY_WINDOWS (=7).
+	<br><br>
+	The low order word is the return code which specifies the code for the success or failure 
+	condition.
+	<br><br>
+	Since HRESULTs can be either success or failure codes, it is not enough just to check 
+	whether the return value is zero or positive.  C and C++ coders take advantage of the Macros
+	FAILED and SUCCEEDED which are defined in one of the COM header files; but these are simple
+	to rewrite in VB:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private Function FAILED(ByVal hr As Long) As Boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAILED = Not (SUCCEEDED(hr))<br>
+&nbsp;&nbsp;&nbsp;End Function<br>
+&nbsp;&nbsp;&nbsp;Private Function SUCCEEDED(ByVal hr As Long) As Boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUCCEEDED = ((hr And &H80000000) = 0)<br>
+&nbsp;&nbsp;&nbsp;End Function<br>
+</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	</table>
+	</p>
+	<br><br>
+	If <i>AVIStreamOpenFromFile</i> succeeds, then the long variable passed into the ppAVI parameter
+	is a pointer to the AVI stream. We can then open the AVI for playing and find out 
+	more about the AVI.
+	<br><br>
+	To open the stream for playing, we call:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private Declare Function AVIStreamGetFrameOpen Lib &quot;avifil32.dll&quot; ( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pavi As Any, lpbiWanted As Any _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) As Long<br>
+<br>
+</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<ul>
+	<li><b>pavi</b> Takes a pointer to the AVI stream returned in the ppavi parameter earlier.  Because the original return value was a pointer to a pointer (**) we need to pass the value using the <i>ByVal</i> keyword into the pavi method of this call.  
+	The same applies for all subsequent calls which take pavi as a parameter.  
+	<li><b>lpbiWanted</b> This parameter allows you to pass in a BITMAPINFOHEADER structure indicating the format of DIB you would like the AVI functions to return.  
+	It can be set to Null (<i>ByVal 0&</i>) to return the default format.
+	</ul>
+	If this function succeeds it returns a long pointer to the GetFrame interface (pGF), 
+	otherwise it returns 0.  
+	<br><br>
+	Once both the pavi and pGF pointers have been returned, the AVI can then be queried for information about its size, shape and so forth.
+	All AVIs are encoded as a series of &quot;samples&quot; (i.e. frames)
+	which have a particular duration.  This function returns the time in milliseconds 
+	for a given sample in the AVI:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private Declare Function AVIStreamSampleToTime Lib &quot;avifil32.dll&quot; _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(pavi As Any, ByVal lSample As Long) As Long<br>
+<br>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The <i>AVIStreamLength</i> function returns the number of samples in the AVI, which in turn directly indicates the duration of the AVI if passed into the <i>AVIStreamSampleToTime</i> function:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private Declare Function AVIStreamLength Lib &quot;avifil32.dll&quot; (pavi As Any) As Long<br>
+<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	To find the position of the first sample in the AVI (which again can be converted into a time using <i>AVIStreamSampleToTime</i>)
+	we use AVIStreamStart:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private Declare Function AVIStreamStart Lib &quot;avifil32.dll&quot; (pavi As Any) As Long<br>
+<br>
+
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	To get more general information about the AVI, such as size, name, samples per second to
+	play and so forth, the <i>AVIStreamInfo</i> function fills in a <i>TAVISTREAMINFO</i> structure 
+	for a given AVI stream pointer.  The declare of the function looks like this:
+	<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+&nbsp;&nbsp;&nbsp;Private Declare Sub AVIStreamInfo Lib &quot;avifil32.dll&quot; Alias &quot;AVIStreamInfoA&quot; _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(pavi As Any, psi As TAVISTREAMINFO, ByVal lSize As Long)<br>
+<br>
+&nbsp;&nbsp;&nbsp;Private Type TAVISTREAMINFO <font color="#999999" face="Lucida Console,Courier New" size="1">' this is the ANSI version</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fccType As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fccHandler As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwFlags As Long         <font color="#999999" face="Lucida Console,Courier New" size="1">'/* Contains AVITF_* flags */</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwCaps As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wPriority As Integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wLanguage As Integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwScale As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwRate As Long <font color="#999999" face="Lucida Console,Courier New" size="1">' /* dwRate / dwScale == samples/second */</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwStart As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwLength As Long <font color="#999999" face="Lucida Console,Courier New" size="1">'; /* In units above... */</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwInitialFrames As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwSuggestedBufferSize As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwQuality As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwSampleSize As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rcFrame As RECT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwEditCount As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwFormatChangeCount As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;szName(0 To 63) As Byte<br>
+&nbsp;&nbsp;&nbsp;End Type<br>
+<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	
+	
+	</p>
+
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\avi_player\transparent_avi_player\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

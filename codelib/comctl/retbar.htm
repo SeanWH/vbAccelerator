@@ -1,0 +1,406 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Rebars and Toolbars</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<!-- SECTION:START -->
+<!-- SECTION:CODE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:CODE:END -->
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<!-- AREA:COMCTL:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- AREA:COMCTL:END -->
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td bgcolor="#EEEEEE" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>CoolMenus, Toolbars and Rebars</b>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	&nbsp;The Control that VB doesn't give you - complete menu, toolbar and rebar flexibility
+	</font>
+	<td>&nbsp</td>
+	</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\toolbar\vbaccelerator_toolbar_and_coolmenu_control\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\tbar_lge.gif" alt="CoolMenu, Toolbar and Rebar Demonstration" width="538" height="209"></p>
+	<p><a href="vbaltbar.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator Rebar and Toolbar control (72kb)</a><br>
+	<a href="vbaltbd.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Rebar and Toolbar control sample application code (88kb)</a><br>
+	<a href="vbaltbc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the complete demonstration and control source code (251kb)</a></p>
+	</font>
+	<p> 
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>New! New! New! - 30 May 1999</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Version 2.0.  A new level of stability and also supports CoolMenus.  <a href="tbarupd.htm">Read About It!</a>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		These projects require the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying any project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		CoolMenu support requires version  projects require version 2.00.0010 or higher of the
+		<a href="..\cpopmenu\cnewmenu.htm">ActiveX Popup Menu DLL</a>.  Make sure you have loaded and registered this before trying the projects.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<td>
+	<br><br>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>In The Beginning...</b><br>
+	In VB5, there is a toolbar control for VB included in COMCTL32.OCX.  In VB6 the same thing with some UI
+	improvements is available in MSCOMCTL.OCX.   You can also obtain a Microsoft rebar control for VB5; 
+	it is included with VB6.  These controls all have quite a nice design time interface, 
+	and they're relatively easy to use.
+	<br><br>
+	<b>...But...</b><br>
+	If you have seen Office 97, VB, DevStudio, Win98, IE4 or IE5 (in fact, almost
+	any application released by Microsoft...) you will have noticed that the VB controls 
+	<u>just don't cut it</u>:
+	<ul>
+	<li>Why does my menu sit on top of the toolbar?  
+	<li>Why aren't there any icons in the menus?
+	<li>Why are there no drop-down buttons in VB5?  
+	<li>Why doesn't the rebar work?  
+	<li>How come it is impossible to show a Chevron for a toolbar band that is too small?  
+	<li>Why can't I include a Pager to scroll through my toolbar?
+	</ul>
+	<b>Manifesto</b><br>
+	The vbAccelerator CoolMenu, Toolbar and Rebar control aims to give you this control.  Your
+	project will look cooler,  it'll weigh in at least 420kb less on disk and you'll be loved by 
+	colleagues and users alike (possibly).
+	<br><br>
+	Consider:
+	<ul>
+	<li>Do the cool things you can't with standard VB controls (or even straight <a href="..\..\tla.htm#secmfc">MFC</a>), such as
+	CoolMenus, Chevrons, choose to show captions on a button by button basis...
+	<li>If you just need a toolbar, then this is seriously lighter than the standard OCX.  160kb cf 
+	590kb for VB5 and an outrageous <b>1040kb</b> library for VB6!
+	</ul>	
+	</P>
+	<p><b>Features of the vbAccelerator CoolMenu, Toolbar and Rebar Control</b><br>
+	Here are the features of the controls:
+	<br><br>
+	<b>1) The Toolbar</b>
+	<ul>
+	<li><u>CoolMenu</u><br>
+	<img src="..\..\images\tbarddb.gif" alt="Drop Down Button" width="149" height="133" vspace="4"><br>
+	Any toolbar can now act as a menu if used with the <a href="..\cpopmenu\cnewmenu.htm">ActiveX
+	Popup Menu DLL</a>.  Built in <a href="..\hook\vbalhook.htm">Accelerator</a> support means 
+	you get full support for Alt- key accelerators in every button too  (regardless of whether the button is a 
+	menu button or not).
+	<br><br>
+	CoolMenu support is enabled for both standard forms <i>and</i> MDI forms.  In the MDI version, you
+	must add the toolbar to the <i>cToolBarHost</i> control included with the package, and set the
+	cToolbarHost's <i>MDIMenu</i> property.
+	<li><u>Drop Down Buttons</u><br>
+	<img src="..\..\images\tbarddb2.gif" alt="Drop Down Button" width="167" height="33" vspace="4"><br>
+	Support for both styles of drop-down buttons.  Drop down buttons can show an arrow to the left with
+	independent events or have an integral drop-down and only raise a drop-down event.
+	<li><u>List-Style Buttons</u><br>
+	<img src="..\..\images\tbarasb.gif" alt="Auto-sized, list style buttons" width="237" height="22" vspace="4"><br>
+	Toolbars can have the "list" style so the text appears to the right of the button image.  In
+	addition, buttons in all types of toolbar can have the autosize style so their width is 
+	calculated independently from the image and text on the button.  No more buttons that are three
+	miles long just to display the text "Open"!
+	<li><u>Access to System Image Lists</u><br>
+	<img src="..\..\images\tbariil.gif" alt="Use System Images" width="290" height="22" vspace="4"><br>
+	If these are the types of buttons you need, you get them for free from the in-built system
+	image lists.  Also provided are view and history toolbar button images.
+	<li><u>24x24 Buttons in Millions of Colours - No Problem</u><br>
+	<img src="..\..\images\tbarmci.gif" alt="IE5 Style Buttons" width="96" height="40" vspace="4"><br>
+	The VB/COM StdPicture object limitations are all banished in this control.  Provide it 
+	whatever image you want and this toolbar will display it (although multi colour icons are
+	only supported for systems with >8 bits/pixel display).  The toolbar provides an in-built 
+	method for determining the system colour depth and you can load all the button images 
+	at the same time from a single resource bitmap, file bitmap or VB picture object.  Alternatively,
+	you can use image lists.
+	And now there is a <a href="imglist.htm">vbAccelerator Image List control and class</a> you 
+	don't need to worry about distributing an enormous OCX just to do it!<br>
+	The demonstration downloads come with a set of Explorer and Internet Explorer 256 colour bitmaps,
+	in both hot and standard colours.  You can get more sets of icons from the 
+	<a href="..\..\iconlib.htm">Icon Library</a>.
+	<li><u>Toggle Text Visibility at Runtime</u><br>
+	In List Style toolbars you can toggle text on/off for individual buttons.  In a normal style toolbar,
+	toggling text visibility for any button automatically flips the text visibility of all the other 
+	buttons in the bar.
+	<li><u>Swap Between List and Standard Toolbar Style at Runtime</u>
+	<li><u>Set Independent Normal and Hot Button Images</u><br>
+	Just as the Internet Explorer toolbar, when you use Image Lists as the source of toolbar
+	images, you can set one set of images to display when the mouse	is not over the button 
+	and another when it is.  Check out the <a href="imglist.htm">vb Accelerator Image List control</a>
+	for a demonstration.
+	<li><u>Smooth Display</u><br>
+	Comctl32.OCX implements its toolbar by continually removing and re-adding buttons whenever
+	you change the properties.  Where possible, this toolbar modifies the buttons by in-built methods
+	of Comctl32.Dll which make the display much smoother.  The only property which causes a button
+	to be deleted and re-added is the ButtonCaption property.  And this minimises flicker by only
+	removing the affected button.
+	</ul>
+	<b>The Rebar</b>
+	<ul>
+	<li><u>Set Band Visibility</u><br>
+	Show and hide rebar bands with a single call.
+	<li><u>Chevron Support</u><br>
+	<img src="..\..\images\rbrchev.gif" width="116" height="51" alt="Rebar Chevron"><br>
+	Provided the target system has COMCTL32.DLL version 5 or higher, you can toggle Chevrons on or
+	off.  Chevrons display when a band is too small to show the entire contents.
+	<li><u>Background Bitmap</u><br>
+	Just as you can with the toolbar control, the rebar can have any background image loaded from a
+	resource bitmap, a file bitmap or a VB picture object.
+	<li><u>Add any control to the Rebar</u><br>
+	Provided a control has a hWnd property, you can add it as a rebar band.  If it doesn't have a
+	hWnd, just place it in a PictureBox and add the PictureBox to the rebar.
+	<li><u>Run-time Control over minimum band sizes</u>
+	<li><u>Specify whether bands are fixed or moveable in the rebar</u><br>
+	</ul>
+	</p>
+	<p><b>Getting the Best From the Control</b><br>
+	To get the best from the control, the target system will ideally have version 4.71 or higher
+	of Comctl32.Dll installed.  Some of the features are not supported in version 4.70, and also
+	Comctl32.Dll itself performs much more smoothly in subsequent versions.  You can find what
+	version of Comctl32.Dll the target system is running using the toolbar's GetCommCtrlVersion
+	method (see <a href="comctlv.htm">Find which version of Comctl32.Dll you have</a> for more
+	details). If you want to upgrade, visit Microsoft's MSDN site <a href="javascript:window.alert(&quot;http://www.microsoft.com/msdn/downloads/files/40comupd.htm\nThis link was not retrieved.&quot;)">
+	here</a>.  (Note you must register with <a href="..\..\linx.htm#secmsdn">MSDN</a> to follow this link, but it is free!).
+	<br><br>
+	<p><b>Quick Start Tutorials</b><br>
+	To get you up and running quickly with this control there are two Quick Start tutorials:
+	<ul>
+	<li><a href="retbarq1.htm">Quick Start 1 - Add a Rebar and a Toolbar to Your App</a>
+	<li><a href="retbarq2.htm">Quick Start 2 - Add a CoolMenu Support Your App</a>
+	</ul>
+	</p>
+
+	<p><b>Documentation</b><br>
+	Documentation for the CoolMenu Toolbar and Rebar control is available in RTF format.  This documentation was
+	created with the <a href="..\actvxdoc\article.htm">Active X Documenter</a>, which is also available
+	for download.<br><br>
+	<a href="vbaltbar.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Click here to download/view the CoolMenu Toolbar and Rebar method and event documentation</a>
+	<br><br>
+	</p>
+
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- END:Footer --></font>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,566 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: cCommandBarInt.cls</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: cCommandBarInt.cls" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Office 2003 CommandBars</a>&#160;.&#160;<a href="vbalcommandbar.html">vbalCommandBar</a>&#160;.&#160;cCommandBarInt.cls</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="vbalcommandbar.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />vbalCommandBar</a> (45K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13403</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=13403&type=zip&title=vbalcommandbar_2ezip_5fccommandbarint.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />5 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\menus_from_first_principles\article.html">(Incomplete) Menus From First Principles</a></p><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\controls\toolbar\vbaccelerator_office_docking_bar\article.html">vbAccelerator Office Docking Bar Control</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: cCommandBarInt.cls</h1><pre>VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+END
+Attribute VB_Name = "cCommandBarInt"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+' cComamndBarInt is the real cCommandBar object.
+' It holds a collection of object pointers to cCommandBarItemInt
+' objects as well as a collection of each of the controls which
+' own this command bar.
+
+Private m_colhWndUser As Collection
+
+Private m_sKey As String
+Private m_sTitle As String
+Private m_colItems As Collection
+
+Friend Sub Dump(ByVal indent As Long)
+Dim vlPtr As Variant
+Dim btnInt As cButtonInt
+   Debug.Print Space$(indent) &amp; m_sKey &amp; " (" &amp; m_sTitle &amp; ") :Bar"
+   For Each vlPtr In m_colItems
+      Set btnInt = ObjectFromPtr(vlPtr)
+      If Not (btnInt Is Nothing) Then
+         btnInt.Dump indent + 1
+      End If
+   Next
+End Sub
+Friend Function AddRefhWnd(ByVal hWnd As Long)
+   m_colhWndUser.Add hWnd, "H" &amp; hWnd
+End Function
+Friend Function ReleaseRef(ByVal hWnd As Long)
+   m_colhWndUser.Remove "H" &amp; hWnd
+End Function
+Friend Sub NotifyUsers(ByVal eventType As Long, Optional Item As cButtonInt =
+ Nothing)
+Dim vHwnd As Variant
+Dim ctlCmdBar As vbalCommandBar
+Static noRecurse As Boolean
+
+
+   If Not (Item Is Nothing) Then
+      If (eventType = CHANGENOTIFICATIONBUTTONCHECKCHANGE) Then
+         
+         If Not noRecurse Then
+         
+            Dim bThisIsChecked As Boolean
+            Dim bFoundCheckedItem As Boolean
+            Dim vlPtr As Variant
+            Dim btnInt As cButtonInt
+            Dim iIndex As Long
+            Dim iFirstIndex As Long
+            Dim iLastIndex As Long
+            Dim iBtnIndex As Long
+            Dim iCheckCount As Long
+            Dim bFoundButton As Boolean
+            
+            ' Confirm which other items to
+            ' change check state:
+            If (Item.Style = eRadio) Or (Item.Style = eRadioNullable) Then
+                           
+               bThisIsChecked = Item.Checked
+               bFoundCheckedItem = bThisIsChecked
+               
+               noRecurse = True
+               
+               For Each vlPtr In m_colItems
+                  iIndex = iIndex + 1
+                  Set btnInt = ObjectFromPtr(vlPtr)
+                  If (btnInt.Key = Item.Key) Then
+                     bFoundButton = True
+                     iBtnIndex = iIndex
+                  Else
+                     If (bFoundButton) Then
+                        If (btnInt.Style = eSeparator) Then
+                           iLastIndex = iIndex - 1
+                           Exit For
+                        Else
+                           iLastIndex = iIndex
+                        End If
+                     Else
+                        If (iFirstIndex = 0) Then
+                           iFirstIndex = iIndex
+                        ElseIf (btnInt.Style = eSeparator) Then
+                           iFirstIndex = iIndex + 1
+                        End If
+                     End If
+                  End If
+               Next
+               
+               If (Item.Style = eRadioNullable) Then
+                  ' any other items in the same group
+                  ' must be unchecked
+                  If (Item.Checked) Then
+                     For iIndex = iFirstIndex To iLastIndex
+                        If (iIndex &lt;&gt; iBtnIndex) Then
+                           Set btnInt = ObjectFromPtr(m_colItems(iIndex))
+                           btnInt.Checked = False
+                        End If
+                     Next iIndex
+                  End If
+                  
+               ElseIf (Item.Style = eRadio) Then
+                  ' any other items in the same group must
+                  ' be unchecked; if no items are checked
+                  ' then this item must be rechecked.
+                  If (Item.Checked) Then
+                     For iIndex = iFirstIndex To iLastIndex
+                        If (iIndex &lt;&gt; iBtnIndex) Then
+                           Set btnInt = ObjectFromPtr(m_colItems(iIndex))
+                           btnInt.Checked = False
+                        End If
+                     Next iIndex
+                  Else
+                     For iIndex = iFirstIndex To iLastIndex
+                        Set btnInt = ObjectFromPtr(m_colItems(iIndex))
+                        iCheckCount = iCheckCount + Abs(btnInt.Checked)
+                     Next iIndex
+                     If (iCheckCount = 0) Then
+                        Item.Checked = True
+                     End If
+                  End If
+                  
+               End If
+               
+               noRecurse = False
+            End If
+                     
+         End If
+      End If
+   End If
+
+   For Each vHwnd In m_colhWndUser
+      If ControlFromhWnd(vHwnd, ctlCmdBar) Then
+         ctlCmdBar.ChangeNotification Me, eventType, Item
+      End If
+   Next
+   
+End Sub
+Friend Sub fInit(ByVal sKey As String)
+   m_sKey = sKey
+End Sub
+Friend Property Get Key() As String
+   Key = m_sKey
+End Property
+Friend Property Get IndexOf(ByVal sBtnKey As String) As Long
+Dim iItem As Long
+Dim vlPtr As Variant
+Dim btnInt As cButtonInt
+   For Each vlPtr In m_colItems
+      iItem = iItem + 1
+      Set btnInt = ObjectFromPtr(vlPtr)
+      If (btnInt.Key = sBtnKey) Then
+         IndexOf = iItem
+         Exit For
+      End If
+   Next
+End Property
+Friend Property Get Title() As String
+   Title = m_sTitle
+End Property
+Friend Property Let Title(ByVal sTitle As String)
+   m_sTitle = sTitle
+   NotifyUsers 3
+End Property
+Friend Property Get Count() As Long
+   Count = m_colItems.Count
+End Property
+Friend Property Get Item(ByVal index As Variant) As cButtonInt
+Dim lPtr As Long
+   lPtr = m_colItems(index)
+   If Not (lPtr = 0) Then
+      Set Item = ObjectFromPtr(lPtr)
+   End If
+End Property
+Friend Sub Add(button As cButtonInt)
+Dim sKey As String
+   sKey = button.Key
+   If CollectionContains(m_colItems, sKey) Then
+      gErr 5
+   Else
+      m_colItems.Add ObjPtr(button), sKey
+      button.AddedToBar Me
+      NotifyUsers 1
+   End If
+End Sub
+Friend Sub InsertBefore(button As cButtonInt, buttonBefore As cButtonInt)
+   If CollectionContains(m_colItems, button.Key) Then
+      gErr 5
+   Else
+      If Not (CollectionContains(m_colItems, buttonBefore.Key)) Then
+         gErr 3
+      Else
+         m_colItems.Add ObjPtr(button), button.Key, buttonBefore
+         button.AddedToBar Me
+         NotifyUsers 1
+      End If
+   End If
+End Sub
+Friend Sub InsertAfter(button As cButtonInt, buttonAfter As cButtonInt)
+   If CollectionContains(m_colItems, button.Key) Then
+      gErr 5
+   Else
+      If Not (CollectionContains(m_colItems, buttonAfter.Key)) Then
+         gErr 3
+      Else
+         m_colItems.Add ObjPtr(button), button.Key, , buttonAfter
+         button.AddedToBar Me
+         NotifyUsers 1
+      End If
+   End If
+End Sub
+Friend Sub Remove(button As cButtonInt)
+   If CollectionContains(m_colItems, button.Key) Then
+      m_colItems.Remove button
+      button.RemovedFromBar Me
+      NotifyUsers 1
+   Else
+      gErr 3
+   End If
+End Sub
+Friend Sub Clear()
+Dim vlPtr As Variant
+Dim itm As cButtonInt
+   For Each vlPtr In m_colItems
+      Set itm = ObjectFromPtr(vlPtr)
+      If Not (itm Is Nothing) Then
+         itm.RemovedFromBar Me
+      End If
+   Next
+   Set m_colItems = New Collection
+   NotifyUsers 1
+End Sub
+Friend Sub CalculateMenuWithVisibleCheckSize( _
+      cMP As cMeasureButtonParams, _
+      ByRef menuWidth As Long, _
+      ByRef menuHeight As Long, _
+      ByRef Item() As cDisplayButtonInfo _
+   )
+   ' basically same as calculate menu size,
+   ' but we add an extra check width and ignore
+   ' if items are marked as invisible.
+   
+End Sub
+Friend Sub CalculateMenuSize( _
+      cMP As cMeasureButtonParams, _
+      ByRef menuWidth As Long, _
+      ByRef menuHeight As Long, _
+      ByRef Item() As cDisplayButtonInfo _
+   )
+   
+   '
+   menuWidth = 0
+   menuHeight = 0
+   
+   If (m_colItems.Count &gt; 0) Then
+      
+      ' ensure we calculate the required height first
+      ' time around:
+      cMP.Height = 0
+      
+      Dim vlPtr As Variant
+      Dim btnInt As cButtonInt
+      Dim btnWidth As Long
+      Dim btnHeight As Long
+      Dim iItem As Long
+      Dim maxWidth As Long
+            
+      For Each vlPtr In m_colItems
+         iItem = iItem + 1
+         
+         btnWidth = 0
+         btnHeight = 0
+
+         Set btnInt = ObjectFromPtr(vlPtr)
+         If Not (btnInt Is Nothing) Then
+            If (btnInt.Visible) Then
+               If Not (btnInt.InfrequentlyUsed) Or
+                mCommandBars.ShowingInfrequentlyUsed Then
+                  cMP.Height = 0
+                  btnWidth = btnInt.Size(cMP)
+                  btnHeight = cMP.Height
+                  If (btnWidth &gt; maxWidth) Then
+                     maxWidth = btnWidth
+                  End If
+               End If
+            End If
+         End If
+
+         Item(iItem).left = 0
+         If (menuHeight = 0) Then
+            menuHeight = 1
+         End If
+         Item(iItem).top = menuHeight
+         menuHeight = menuHeight + btnHeight
+         Item(iItem).bottom = menuHeight
+      Next
+      
+      menuWidth = maxWidth
+      ' Set the width for the items:
+      For iItem = 1 To m_colItems.Count
+         Item(iItem).right = menuWidth
+      Next
+      
+   End If
+   '
+End Sub
+Friend Sub Draw( _
+      cDP As cDrawButtonParams, _
+      Item() As cDisplayButtonInfo _
+   )
+   If (m_colItems.Count &gt; 0) Then
+      
+      Dim vlPtr As Variant
+      Dim btnInt As cButtonInt
+      Dim iItem As Long
+      
+      For Each vlPtr In m_colItems
+         iItem = iItem + 1
+         Set btnInt = ObjectFromPtr(vlPtr)
+         If Not (btnInt Is Nothing) Then
+            cDP.left = Item(iItem).left
+            cDP.top = Item(iItem).top
+            cDP.Size = Item(iItem).right - Item(iItem).left
+            cDP.Height = Item(iItem).bottom - Item(iItem).top
+            cDP.MouseDownButton = Item(iItem).mouseDown
+            cDP.MouseOverButton = Item(iItem).mouseOver
+            cDP.mouseDownSplit = Item(iItem).mouseDownSplit
+            cDP.mouseOverSplit = Item(iItem).mouseOverSplit
+            btnInt.Draw cDP
+         End If
+      Next
+   End If
+End Sub
+Friend Sub DrawOneButton( _
+      cDP As cDrawButtonParams, _
+      itemIndex As Long _
+   )
+Dim vlPtr As Variant
+Dim btnInt As cButtonInt
+   vlPtr = m_colItems(itemIndex)
+   Set btnInt = ObjectFromPtr(vlPtr)
+   If Not (btnInt Is Nothing) Then
+      btnInt.Draw cDP
+   End If
+End Sub
+Friend Sub ClickButton( _
+      index As Long _
+   )
+   If (Item(index).Style = eCheck) Or (Item(index).Style = eRadio) Or
+    (Item(index).Style = eRadioNullable) Then
+      ' this will cause notify users to be called.
+       Item(index).Checked = Not (Item(index).Checked)
+   Else
+      '
+   End If
+End Sub
+Friend Sub CalculateToolbarSize( _
+      cMP As cMeasureButtonParams, _
+      ByRef toolbarWidth As Long, _
+      ByRef toolbarHeight As Long, _
+      ByRef Item() As cDisplayButtonInfo _
+   )
+   
+   ' The toolbar width is constrained.  We calculate
+   ' the desired height for a single button and also
+   ' hide buttons with lower priorities if there isn't
+   ' enough room.  We also return the actual width
+   ' needed for the bar in the toolbarWidth param
+   '
+   ' The first loop calculates the total width we end up with
+   '
+   
+   Dim availableWidth As Long
+   availableWidth = toolbarWidth
+   toolbarWidth = 0
+   toolbarHeight = 0
+   
+   If (m_colItems.Count &gt; 0) Then
+      
+      cMP.Height = 0
+      
+      Dim vlPtr As Variant
+      Dim btnInt As cButtonInt
+      Dim btnWidth As Long
+      Dim btnHeight As Long
+      Dim iItem As Long
+      Dim lastRight As Long
+      Dim offset As Long
+      
+      If (cMP.RightToLeft) Then
+         lastRight = availableWidth
+      End If
+      
+      For Each vlPtr In m_colItems
+         iItem = iItem + 1
+         
+         Set btnInt = ObjectFromPtr(vlPtr)
+         If Not (btnInt Is Nothing) Then
+            If (btnInt.Visible) Then
+               btnWidth = btnInt.Size(cMP)
+               btnHeight = cMP.Height
+               If (btnHeight &gt; toolbarHeight) Then
+                  toolbarHeight = btnHeight
+               End If
+            Else
+               btnWidth = 0
+               btnHeight = 0
+            End If
+         End If
+
+         If (cMP.Orientation = eLeft) Or (cMP.Orientation = eRight) Then
+            Item(iItem).top = lastRight
+            lastRight = lastRight + btnWidth
+            Item(iItem).bottom = lastRight
+            Item(iItem).left = 0
+            Item(iItem).right = btnHeight
+         Else
+            If (cMP.RightToLeft) Then
+               Item(iItem).right = lastRight
+               lastRight = Item(iItem).right - btnWidth
+               Item(iItem).left = lastRight
+            Else
+               Item(iItem).left = lastRight
+               lastRight = Item(iItem).left + btnWidth
+               Item(iItem).right = lastRight
+            End If
+            Item(iItem).top = 0
+            Item(iItem).bottom = btnHeight
+         End If
+      Next
+      
+      toolbarWidth = lastRight
+            
+      ' Should hide lower priority buttons if the toolbar is too narrow
+      If (toolbarWidth &gt; availableWidth) Then
+         ' start making items invisible working
+         ' backwards from the end downwards:
+         ' TODO
+      End If
+      
+      ' If we're a vertical toolbar then there can be a difference
+      ' between an individual button's width and the width of the
+      ' toolbar as a whole:
+      If (cMP.Orientation = eLeft Or cMP.Orientation = eRight) Then
+         iItem = 0
+         For Each vlPtr In m_colItems
+            iItem = iItem + 1
+            Set btnInt = ObjectFromPtr(vlPtr)
+            If Not (btnInt Is Nothing) Then
+               If btnInt.Style = eSeparator Then
+                  Item(iItem).right = toolbarHeight
+               Else
+                  If (Item(iItem).right - Item(iItem).left &lt; toolbarHeight) Then
+                     ' centre:
+                     offset = (toolbarHeight - (Item(iItem).right -
+                      Item(iItem).left)) / 2
+                     Item(iItem).left = Item(iItem).left + offset
+                     Item(iItem).right = Item(iItem).right + offset
+                  End If
+               End If
+            End If
+         Next
+      End If
+   End If
+   
+   
+   '
+   
+End Sub
+Friend Sub CalculateWrappableToolbarSize( _
+      cMP As cMeasureButtonParams, _
+      ByRef toolbarWidth As Long, _
+      ByRef toolbarHeight As Long, _
+      ByRef Item() As cDisplayButtonInfo _
+   )
+   
+   ' The width is kind of constrained but it will be
+   ' adjusted to the nearest snap position if we need
+   ' to wrap
+   
+   '
+      
+End Sub
+
+Friend Sub Dispose()
+   Set m_colItems = New Collection
+   Set m_colhWndUser = New Collection
+End Sub
+
+Private Sub Class_Initialize()
+   Set m_colhWndUser = New Collection
+   Set m_colItems = New Collection
+End Sub
+
+Private Sub Class_Terminate()
+   Clear
+End Sub
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\index.html" ><IMG SRC="..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Office 2003 CommandBars</a>&#160;.&#160;<a href="vbalcommandbar.html">vbalCommandBar</a>&#160;.&#160;cCommandBarInt.cls</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 8 November 2003</p></td><td></td></tr></table>
+</body></html>

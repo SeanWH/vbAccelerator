@@ -1,0 +1,396 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Drawing Borders and Edges using the API DrawEdge Function</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td  width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="110%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td width="32" valign="top">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	<a href="..\..\overview.htm" target="vbamain">Source Code</a>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\graphics_and_gdi\drawedge_function\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Drawing Borders and Edges using the API DrawEdge Function</b><br></p>
+	<p><img src="..\..\images\drawedge.gif" alt="[Draw Edge Tester Project]" width="341" height="453"></p>
+	
+	The DrawEdge function is a useful function provided by the Win32 API.  It can draw a variety of
+	the edge styles used to draw buttons, frames and borders around controls and forms.  The source
+	code for this article shows you how to:
+	<ul>
+	<li> Use the DrawEdge to achieve a variety of edge styles
+	<li> Evaluate the client area within an edge and prevent it being overdrawn
+	</ul>
+	<p><a href="drawedge.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the DrawEdge project files (20kb)</a></p>	
+
+	<p>
+	DrawEdge is declared as follows:<br>
+<br>
+Private Declare Function DrawEdge Lib "user32" ( _<br>
+&nbsp &nbsp ByVal hDC As Long, _<br>
+&nbsp &nbsp qrc As RECT, _<br>
+&nbsp &nbsp ByVal edge As Long, _<br>
+&nbsp &nbsp ByVal grfFlags As Long) As Long <br>
+<br>
+<br>
+	The parameters to it are the hDC of the control, the rectangle in which to draw the edge, then two
+	parameters to determine how the edge is drawn.  
+	<ul>
+	<li><i>edge</i> determines what type of edge is drawn.  This can be set to show outer and inner border
+	parts, either sunken or raised.
+	<li><i>grfFlags</i> sets which parts (left, top, right, bottom) of the edge are going to be drawn, and
+	has some additional options which modify how the edge is drawn (although these don't seem to do anything
+	for me!).
+	</ul>
+	See the code below for a list of constants you can use in these parameters (EDEDBorderStyle enumerates
+	settings for edge, EDEDBorderParts the settings for grfFlags).<br>
+	<br>
+	Once you have drawn an edge, you then normally want to draw any other parts of the control within 
+	the edge rather than overdrawing it.  The Inner and Outer parts of the border occupy 1 pixel (or TwipsPerPixel
+	twips) each, so it isn't too difficult to work out what the client area within the border is.  The
+	EvaluateSize() function below shows how this is done.  This function also demonstrates how to make drawing
+	easier by preventing anything from being drawn over the border.<br>
+	<br>
+	This is done by selecting a 'clipping region' which excludes the border into the device you are drawing
+	into.  When the clipping region is in place, Windows will only draw within the clipping region, all other
+	drawing simply disappears.  To select a clipping region, first create it with a region creating API function.
+	The sample below uses CreateRectRgn, however you can create regions of any shape you like (see my article
+	<a href="..\winstyle\winshape.htm">A window that's star-shaped, circular or tank-shaped</a> for details on
+	creating more arbitrary shaped regions).  Once the region is created, you can make it the clipping region
+	by using SelectClipRgn.  To remove the region again, simply select a region handle of zero into the control.
+	</p>
+	<p>The code below provides a simple UserControl which allows all the DrawEdge options to be exercised,
+	and also demonstrates clipping to prevent drawing over the edge which has been drawn.  The code in the
+	download expands on the details below by drawing some text into the control to prove that the edge isn't
+	overwritten.  It also demonstrates a couple of other techniques:
+	<ul>	
+	<li>Providing a neat interface for choosing different edge options using a hierarchical tree (a simple
+	implementation of the control provided in my article <a href="..\treeset\treeset.htm">A Hierarchy Selector control</a>)
+	<li>Drawing text at any angle - in this case text is drawn at 30 degrees across the control (see also 
+	<a href="..\sidelogo\sidelogo.htm">Text at Any Angle</a> for more details)
+	</ul>
+	</p>
+	</font>
+<font face="Lucida Console,courier new" size="2">
+<p>
+' ================================================================== <br>
+' EDGE Drawing: <br>
+' ================================================================== <br>
+Public Enum EDEDBorderStyle <br>
+&nbsp &nbsp BDR_RAISEDOUTER = 1 <br>
+&nbsp &nbsp BDR_SUNKENOUTER = 2 <br>
+&nbsp &nbsp BDR_RAISEDINNER = 4 <br>
+&nbsp &nbsp BDR_SUNKENINNER = 8 <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp BDR_BUTTON = BDR_RAISEDINNER Or BDR_RAISEDOUTER <br>
+&nbsp &nbsp BDR_CONTROL = BDR_SUNKENINNER Or BDR_SUNKENOUTER <br>
+&nbsp &nbsp BDR_THINBUTTON = BDR_RAISEDOUTER <br>
+&nbsp &nbsp BDR_THINCONTROL = BDR_SUNKENOUTER <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp BDR_ETCHRAISE = BDR_RAISEDOUTER Or BDR_SUNKENINNER <br>
+&nbsp &nbsp BDR_ETCHINSET = BDR_SUNKENOUTER Or BDR_RAISEDINNER <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp BDR_ALL = BDR_BUTTON Or BDR_CONTROL <br>
+End Enum <br>
+Public Enum EDEDBorderParts <br>
+&nbsp &nbsp Bf_left = 1 <br>
+&nbsp &nbsp Bf_Top = 2 <br>
+&nbsp &nbsp Bf_right = 4 <br>
+&nbsp &nbsp Bf_bottom = 8 <br>
+&nbsp &nbsp BF_TOPLEFT = Bf_left Or Bf_Top <br>
+&nbsp &nbsp Bf_BOTTOMRIGHT = Bf_right Or Bf_bottom <br>
+&nbsp &nbsp BF_RECT = Bf_left Or Bf_Top Or Bf_right Or Bf_bottom <br>
+&nbsp &nbsp BF_MIDDLE = &H800 <br>
+&nbsp &nbsp BF_SOFT = &H1000 <br>
+&nbsp &nbsp BF_ADJUST = &H2000 <br>
+&nbsp &nbsp BF_FLAT = &H4000 <br>
+&nbsp &nbsp BF_MONO = &H8000 <br>
+&nbsp &nbsp BF_ALL = BF_RECT Or BF_MIDDLE Or BF_SOFT Or BF_ADJUST Or BF_FLAT Or BF_MONO <br>
+End Enum <br>
+Private Type RECT <br>
+&nbsp &nbsp Left As Long <br>
+&nbsp &nbsp Top As Long <br>
+&nbsp &nbsp Right As Long <br>
+&nbsp &nbsp Bottom As Long <br>
+End Type <br>
+Private Declare Function DrawEdge Lib "user32" (ByVal hDC As Long, qrc As RECT, ByVal edge As Long, ByVal grfFlags As Long) As Long <br>
+ <br>
+' ================================================================== <br>
+' Clipping functions: <br>
+' ================================================================== <br>
+Private Declare Function SelectClipRgn Lib "gdi32" (ByVal hDC As Long, ByVal hRgn As Long) As Long <br>
+Private Declare Function CreateRectRgn Lib "gdi32" (ByVal X1 As Long, ByVal y1 As Long, ByVal x2 As Long, ByVal y2 As Long) As Long <br>
+Private Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long <br>
+ <br>
+ <br>
+' ================================================================== <br>
+' Client Region: <br>
+' ================================================================== <br>
+Private m_lLeft As Long <br>
+Private m_lTop As Long <br>
+Private m_lWidth As Long <br>
+Private m_lHeight As Long <br>
+Private m_hRgn As Long <br>
+ <br>
+' ================================================================== <br>
+' Border styles: <br>
+' ================================================================== <br>
+Private m_lBorderStyle As Long <br>
+Private m_lFlags As Long <br>
+ <br>
+Public Property Get BackColor() As OLE_COLOR <br>
+&nbsp &nbsp BackColor = UserControl.BackColor <br>
+End Property <br>
+<br>
+Public Property Let BackColor(ByVal eColor As OLE_COLOR) <br>
+&nbsp &nbsp UserControl.BackColor = eColor <br>
+&nbsp &nbsp PropertyChanged "BackColor" <br>
+&nbsp &nbsp Draw <br>
+End Property <br>
+<br>
+Public Property Let BorderPart(ByVal ePart As EDEDBorderParts, ByVal bState As Boolean) <br>
+&nbsp &nbsp If (bState) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_lFlags = m_lFlags Or ePart <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp m_lFlags = m_lFlags And Not ePart <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp Draw <br>
+&nbsp &nbsp PropertyChanged "BorderPart" <br>
+End Property <br>
+<br>
+Public Property Get BorderPart(ByVal ePart As EDEDBorderParts) As Boolean <br>
+&nbsp &nbsp BorderPart = BitSet(m_lFlags, ePart) <br>
+End Property <br>
+<br>
+Public Property Let BorderStyle(ByVal eStyle As EDEDBorderStyle, ByVal bState As Boolean) <br>
+&nbsp &nbsp If (bState) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_lBorderStyle = m_lBorderStyle Or eStyle <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp m_lBorderStyle = m_lBorderStyle And Not eStyle <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp Draw <br>
+&nbsp &nbsp PropertyChanged "BorderStyle" <br>
+End Property <br>
+<br>
+Public Property Get BorderStyle(ByVal eStyle As EDEDBorderStyle) As Boolean <br>
+&nbsp &nbsp BorderStyle = BitSet(m_lBorderStyle, eStyle) <br>
+End Property <br>
+<br>
+Private Function BitSet(ByVal lIn As Long, ByVal lBits As Long) As Boolean <br>
+&nbsp &nbsp BitSet = ((lIn And lBits) = lBits) <br>
+End Function <br>
+<br>
+Private Sub EvaluateSize() <br>
+Dim lBSize As Long <br>
+&nbsp &nbsp m_lWidth = UserControl.ScaleWidth \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp m_lHeight = UserControl.ScaleHeight \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp m_lLeft = 0 <br>
+&nbsp &nbsp m_lTop = 0 <br>
+&nbsp &nbsp If (m_lBorderStyle >= 4) Then <br>
+&nbsp &nbsp &nbsp &nbsp lBSize = 2 <br>
+&nbsp &nbsp ElseIf (m_lBorderStyle >= 1) Then <br>
+&nbsp &nbsp &nbsp &nbsp lBSize = 1 <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp If (BitSet(m_lFlags, Bf_left)) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_lLeft = lBSize <br>
+&nbsp &nbsp &nbsp &nbsp m_lWidth = m_lWidth - lBSize <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp If (BitSet(m_lFlags, Bf_Top)) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_lTop = lBSize <br>
+&nbsp &nbsp &nbsp &nbsp m_lHeight = m_lHeight - lBSize <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp If (BitSet(m_lFlags, Bf_right)) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_lWidth = m_lWidth - lBSize <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp If (BitSet(m_lFlags, Bf_bottom)) Then <br>
+&nbsp &nbsp &nbsp &nbsp m_lHeight = m_lHeight - lBSize <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp DeleteObject m_hRgn <br>
+&nbsp &nbsp m_hRgn = CreateRectRgn(m_lLeft, m_lTop, m_lWidth + m_lLeft, m_lHeight + m_lTop) <br>
+&nbsp &nbsp SelectClipRgn UserControl.hDC, m_hRgn <br>
+End Sub <br>
+<br>
+Public Sub Draw() <br>
+Dim tR As RECT <br>
+ <br>
+&nbsp &nbsp ' Clear control: <br>
+&nbsp &nbsp If (m_hRgn <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp SelectClipRgn UserControl.hDC, 0 <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp UserControl.Cls <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp ' Draw the edge: <br>
+&nbsp &nbsp tR.Right = UserControl.ScaleWidth \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp tR.Bottom = UserControl.ScaleHeight \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp DrawEdge UserControl.hDC, tR, m_lBorderStyle, m_lFlags <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp ' Draw in the 'client area' <br>
+&nbsp &nbsp EvaluateSize <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp UserControl.Refresh <br>
+ <br>
+End Sub <br>
+ <br>
+Private Sub UserControl_Initialize() <br>
+&nbsp &nbsp m_lBorderStyle = BDR_CONTROL <br>
+&nbsp &nbsp m_lFlags = BF_RECT <br>
+End Sub <br>
+ <br>
+Private Sub UserControl_Paint() <br>
+&nbsp &nbsp Draw <br>
+End Sub <br>
+ <br>
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag) <br>
+&nbsp &nbsp m_lBorderStyle = PropBag.ReadProperty("BorderStyle", BDR_CONTROL) <br>
+&nbsp &nbsp m_lFlags = PropBag.ReadProperty("BorderPart", BF_RECT) <br>
+&nbsp &nbsp BackColor = PropBag.ReadProperty("BackColor", vbButtonFace) <br>
+End Sub <br>
+ <br>
+Private Sub UserControl_Resize() <br>
+&nbsp &nbsp Draw <br>
+End Sub <br>
+ <br>
+Private Sub UserControl_Terminate() <br>
+&nbsp &nbsp If (m_hRgn <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp SelectClipRgn UserControl.hDC, 0 <br>
+&nbsp &nbsp &nbsp &nbsp DeleteObject m_hRgn <br>
+&nbsp &nbsp End If <br>
+End Sub <br>
+ <br>
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag) <br>
+&nbsp &nbsp PropBag.WriteProperty "BorderStyle", m_lBorderStyle, BDR_CONTROL <br>
+&nbsp &nbsp PropBag.WriteProperty "BorderPart", m_lFlags, BF_RECT <br>
+&nbsp &nbsp PropBag.WriteProperty "BackColor", BackColor, vbButtonFace <br>
+End Sub
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	</p>
+	
+	<br><br>
+
+	<p>Back to <a href="#sectop">top</a></p>
+	<p>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 June 1998</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>

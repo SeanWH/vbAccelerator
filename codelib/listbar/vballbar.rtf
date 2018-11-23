@@ -1,0 +1,207 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+\viewkind4\uc1\pard\lang2057\b\f0\fs24 vbalLBar Interface Definition \par
+\par
+\fs20 General Information\par
+\pard\tx993\b0 Library:\tab vbalLBar (vbAccelerator List Bar)\par
+File:\tab C:\\Stevemac\\VB\\Controls\\vbalLBar\\Release\\vbalLBar.ocx\par
+GUID:\tab\{4E419C74-9175-11D3-8E24-44910FC10000\}\par
+Version:\tab 10.0\par
+\pard\f1\par
+\b\f0 Enumerations\par
+\b0 This section lists enumerations exposed by vbalLBar.\par
+\par
+Public Enum EVBALLBBBorderStyleConstants\par
+\tab _First=0\par
+\tab evlbNone=0\par
+\tab evlb3D=1\par
+\tab evlb3DThin=2\par
+\tab _Last=2\par
+End Enum\par
+Public Enum EVBALLBBSortOrderConstants\par
+\tab _First=0\par
+\tab evlbAscending=0\par
+\tab evlbDescending=1\par
+\tab _Last=1\par
+End Enum\par
+Public Enum EVBALLBIconSizeConstants\par
+\tab evlbLargeIcon=0\par
+\tab evlbSmallIcon=1\par
+End Enum\f1\par
+\par
+\b\f0 Interfaces\par
+\b0 This section lists the Classes exposed by vbalLBar.  For each class, the methods and events are listed.\par
+\f1\par
+\b\f0 cListBar \{C2C460C8-917F-11D3-8E24-44910FC10000\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Caption() As String\par
+\b0 Gets/sets the bar's caption.\b\par
+Property Let Caption(RHS  As String)\par
+\b0 Gets/sets the bar's caption.\b\par
+Property Get HelpText() As String\par
+\b0 Gets/sets the tooltip that will be shown when the mouse hovers over the bar's selection button.\b\par
+Property Let HelpText(RHS  As String)\par
+\b0 Gets/sets the tooltip that will be shown when the mouse hovers over the bar's selection button.\b\par
+Property Get Key() As String\par
+\b0 Gets/sets the key of the bar.\b\par
+Property Let Key(RHS  As String)\par
+\b0 Gets/sets the key of the bar.\b\par
+Property Get Tag() As String\par
+\b0 Gets/sets a string tag which can be used to associated data with the bar.\b\par
+Property Let Tag(RHS  As String)\par
+\b0 Gets/sets a string tag which can be used to associated data with the bar.\b\par
+Property Get Index() As Long\par
+\b0 Gets the 1-based numeric index of the bar in the ListBars collection.\b\par
+Property Get Items() As cListBarItems\par
+\b0 Gets a reference to the collection of items within the bar.\b\par
+Property Get SelectedItem() As cListBarItem\par
+\b0 Gets the last selected item within the bar.\b\par
+Property Get IconSize() As EVBALLBIconSizeConstants\par
+\b0 Gets/sets the size of the icons in the Bar.\b\par
+Property Let IconSize(RHS  As EVBALLBIconSizeConstants)\par
+\b0 Gets/sets the size of the icons in the Bar.\b\par
+Property Get BackColor() As ULong\par
+\b0 Gets/sets the background color of the bar.\b\par
+Property Let BackColor(RHS  As ULong)\par
+\b0 Gets/sets the background color of the bar.\b\par
+Property Get ForeColor() As ULong\par
+\b0 Gets/sets the foreground (text) color of the bar.\b\par
+Property Let ForeColor(RHS  As ULong)\par
+\b0 Gets/sets the foreground (text) color of the bar.\b\par
+Property Get Selected() As Boolean\par
+\b0 Gets whether the bar is currently selected within the control.\b\par
+Sub SelectBar\par
+\b0 Selects the bar within the control if it is not already selected.\b\par
+Sub Sort(ByVal eDir As EVBALLBBSortOrderConstants)\par
+\b0 Sorts the items in the bar according to their caption.\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 cListBarItem \{C2C460BC-917F-11D3-8E24-44910FC10000\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get HelpText() As String\par
+\b0 Gets/sets the Help Text which will be shown when the user hovers over the item within the bar.\b\par
+Property Let HelpText(RHS  As String)\par
+\b0 Gets/sets the Help Text which will be shown when the user hovers over the item within the bar.\b\par
+Property Get Caption() As String\par
+\b0 Gets/sets the caption of the item.\b\par
+Property Let Caption(RHS  As String)\par
+\b0 Gets/sets the caption of the item.\b\par
+Property Get Key() As String\par
+\b0 Gets/sets the Key associated with the item.\b\par
+Property Let Key(RHS  As String)\par
+\b0 Gets/sets the Key associated with the item.\b\par
+Property Get Tag() As String\par
+\b0 Gets/sets a string value which can be used to associate data with the item.\b\par
+Property Let Tag(RHS  As String)\par
+\b0 Gets/sets a string value which can be used to associate data with the item.\b\par
+Property Get itemData() As Long\par
+\b0 Gets/sets a long value associated with the item.\b\par
+Property Let itemData(RHS  As Long)\par
+\b0 Gets/sets a long value associated with the item.\b\par
+Property Get IconIndex() As Long\par
+\b0 Gets/sets the 0 based index of the icon within the ImageList to show for this item.\b\par
+Property Let IconIndex(RHS  As Long)\par
+\b0 Gets/sets the 0 based index of the icon within the ImageList to show for this item.\b\par
+Sub BeginEdit\par
+\b0 Initiates in-place editing of the item within the bar.\b\par
+Property Get Left() As Long\par
+\b0 Gets the Left position of the item within the bar.\b\par
+Property Get Top() As Long\par
+\b0 Gets the Top position of the item within the bar.\b\par
+Property Get Width() As Long\par
+\b0 Gets the Width of the item within the bar.\b\par
+Property Get Height() As Long\par
+\b0 Gets the Height of the item.\b\par
+Property Get Selected() As Boolean\par
+\b0 Gets whether the item was the last selected item in the bar or not.\b\par
+Sub SelectItem\par
+\b0 Selects this item within the bar.\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 cListBarItems \{C2C460BE-917F-11D3-8E24-44910FC10000\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get SelectedItem() As cListBarItem\par
+\b0 Gets the last selected item within the bar.\b\par
+Property Get Count() As Long\par
+\b0 Returns the number of items within the Bar.\b\par
+Property Get Item(ByVal Key As Variant) As cListBarItem\par
+\b0 Gets a specific item within the bar.\b\par
+Function Add(ByVal Key As Variant, ByVal Before As Variant, ByVal sCaption As String, Optional ByVal lIconIndex As Long=-1) As cListBarItem\par
+\b0 Adds or Inserts a new Item into the ListBar.\b\par
+Sub Remove(ByVal Key As Variant)\par
+\b0 Removes an item within the bar.\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 cListBars \{C2C460C0-917F-11D3-8E24-44910FC10000\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get Count() As Long\par
+\b0 Gets the number of bars within the control.\b\par
+Property Get Item(ByVal Key As Variant) As cListBar\par
+\b0 Gets a reference to a specific Bar.\b\par
+Function Add(ByVal Key As Variant, ByVal Before As Variant, ByVal sCaption As String, ByVal sHelpText As String) As cListBar\par
+\b0 Adds or inserts a new bar into the control.\b\par
+Sub Remove(ByVal Key As Variant)\par
+\b0 Removes a bar from the control.\b\par
+Sub Clear\par
+\b0 Removes all bars from the control.\par
+\ul Events\par
+\ulnone None \par
+\f1\par
+\b\f0 vbalListBar \{C2C460C3-917F-11D3-8E24-44910FC10000\}\par
+\b0\f1\par
+\ul\f0 Methods\ulnone\b\par
+Property Get hWnd() As Long\par
+\b0 Gets the Window Handle of the control.\b\par
+Property Get ForeColor() As ULong\par
+\b0 Gets/sets the foreground color of the control ( bar selection button text)\b\par
+Property Let ForeColor(RHS  As ULong)\par
+\b0 Gets/sets the foreground color of the control ( bar selection button text)\b\par
+Property Get BackColor() As ULong\par
+\b0 Gets/sets the background color of the control (appears behind the bar selection buttons)\b\par
+Property Let BackColor(RHS  As ULong)\par
+\b0 Gets/sets the background color of the control (appears behind the bar selection buttons)\b\par
+Property Get Font() As IFont\par
+\b0 Gets/sets the font to draw the control.\b\par
+Property Let Font(RHS  As IFont)\par
+\b0 Gets/sets the font to draw the control.\b\par
+Property Set Font() As IFont\par
+\b0 Gets/sets the font to draw the control.\b\par
+Property Get BackgroundPicture() As String\par
+\b0 Gets/sets a picture to display behind the items within a bar.\b\par
+Property Let BackgroundPicture(RHS  As String)\par
+\b0 Gets/sets a picture to display behind the items within a bar.\b\par
+Property Get Bars() As cListBars\par
+\b0 Returns a reference to the control's Bars collection.\b\par
+Property Get SelectedBar() As cListBar\par
+\b0 Gets a reference to the currently selected bar in the control.\b\par
+Property Let ImageList(Optional ByVal eSize As EVBALLBIconSizeConstants=0, RHS As Variant)\par
+\b0 Allows an ImageList to be associated with the control.  Either pass in a Microsoft ImageList control or a long value containing the hImageList handle to the ImageList.\b\par
+Property Set ImageList(Optional ByVal eSize As EVBALLBIconSizeConstants=0) As Variant\par
+\b0 Allows an ImageList to be associated with the control.  Either pass in a Microsoft ImageList control or a long value containing the hImageList handle to the ImageList.\b\par
+Property Get BorderStyle() As EVBALLBBBorderStyleConstants\par
+\b0 Gets/sets the type of border to show around the control.\b\par
+Property Let BorderStyle(RHS  As EVBALLBBBorderStyleConstants)\par
+\b0 Gets/sets the type of border to show around the control.\par
+\ul Events\par
+\ulnone\b\par
+Public Event BarClick(ByVal Bar As cListBar)\par
+\b0 Raised when a bar is selected.\b\par
+Public Event ItemClick(ByVal Item As cListBarItem, ByVal Bar As cListBar)\par
+\b0 Raised when a Item within the ListBar is clicked.\b\par
+Public Event ItemEndEdit(ByVal Item As cListBarItem, ByVal sText As String, ByVal bCancel As Boolean)\par
+\b0 Raised when the user completes editing an item in the bar.\b\par
+Public Event ItemRightClick(ByVal Item As cListBarItem, ByVal Bar As cListBar, ByVal x As Single, ByVal y As Single)\par
+\b0 Raised when the user right clicks an item in the bar.\b\par
+Public Event MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal y As Single)\par
+\b0 Raised when the user depresses the mouse button on a non-active part of the control (i.e. not a bar selector or an item)\b\par
+Public Event MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal y As Single)\par
+\b0 Raised when the user releases the mouse button on a non-active part of the control (i.e. not a bar selector or an item)\f1\par
+\par
+}
+ 

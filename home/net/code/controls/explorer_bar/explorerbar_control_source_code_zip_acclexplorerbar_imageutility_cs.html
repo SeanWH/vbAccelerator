@@ -1,0 +1,383 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: acclExplorerBar_ImageUtility.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: acclExplorerBar_ImageUtility.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ImageUtility.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="explorerbar_control_binary.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Binary</a> (40K)</p><p class="nav"><a href="explorerbar_control_demonstration.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Demonstration</a> (47K)</p><p class="nav"><a href="explorerbar_control_documentation.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Documentation</a> (265K)</p><p class="nav"><a href="explorerbar_control_source_code.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Source Code</a> (201K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:14471</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=14471&type=zip&title=explorerbar_20control_20source_20code_2ezip_5facclexplorerbar_5fimageutility.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />17 Apr 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\vb\code\controls\explorer_bar_control\article.html">vbAccelerator Explorer Bar Control</a></p><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\libraries\graphics\reading_exif_tags_from_jpg_files\article.html">Reading EXIF Tags From JPEG Files</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: acclExplorerBar_ImageUtility.cs</h1><pre>using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+
+namespace vbAccelerator.Components.Controls.ExplorerBarUtility
+{
+   /// &lt;summary&gt;
+   /// Provides utility methods for colourising bitmaps
+   /// and working with Windows DIB Section objects.
+   /// Uses unsafe native code to perform the colourisation
+   /// until (if) another way can be determined.
+   /// &lt;/summary&gt;
+   internal class ImageUtility
+   {
+      #region Unmanged Code
+      [StructLayout(LayoutKind.Sequential, Pack=4)]
+         private struct BITMAP
+      {
+         public Int32 bmType;
+         public Int32 bmWidth;
+         public Int32 bmHeight;
+         public Int32 bmWidthBytes;
+         public Int16 bmPlanes;
+         public Int16 bmBitsPixel;
+         public IntPtr bmBits;
+      }
+      [StructLayout(LayoutKind.Sequential, Pack=4)]
+         private struct BITMAPINFOHEADER
+      {
+         public int biSize;
+         public int biWidth;
+         public int biHeight;
+         public Int16 biPlanes;
+         public Int16 biBitCount;
+         public int biCompression;
+         public int biSizeImage;
+         public int biXPelsPerMeter;
+         public int biYPelsPerMeter;
+         public int biClrUsed;
+         public int bitClrImportant;
+      }
+      [StructLayout(LayoutKind.Sequential, Pack=4)]
+         private struct DIBSECTION
+      {
+         public BITMAP dsBm;
+         public BITMAPINFOHEADER dsBmih;
+         public int dsBitField1;
+         public int dsBitField2;
+         public int dsBitField3;
+         public IntPtr dshSection;
+         public int dsOffset;
+      }
+      [DllImport("gdi32", CharSet=CharSet.Auto, EntryPoint="GetObject")]
+      private static extern int GetObjectBitmap(IntPtr hObject, int nCount, ref
+       BITMAP lpObject );            
+      [DllImport("gdi32", CharSet=CharSet.Auto, EntryPoint="GetObject")]
+      private static extern int GetObjectDIBSection(IntPtr hObject, int nCount,
+       ref DIBSECTION lpObject );
+      [DllImport("gdi32")]
+      private static extern int BitBlt(
+         IntPtr hDestDC, 
+         int x , int y , int nWidth , int nHeight , 
+         IntPtr hSrcDC, 
+         int xSrc , int ySrc , int dwRop);
+      private const int SRCCOPY = 0xCC0020;
+      [DllImport("gdi32")]
+      private static extern IntPtr SelectObject (IntPtr hDC, IntPtr hObject);
+      [DllImport("gdi32")]
+      private static extern int DeleteObject(IntPtr hObject);
+      [DllImport("gdi32")]
+      private static extern IntPtr CreateCompatibleDC(IntPtr hDC);
+      [DllImport("gdi32")]
+      private static extern int DeleteDC(IntPtr hdc);
+      [DllImport("user32")]
+      private static extern IntPtr GetDesktopWindow();
+      [DllImport("user32")]
+      private static extern IntPtr GetDC(IntPtr hWnd);
+      [DllImport("user32")]
+      private static extern int ReleaseDC (IntPtr hWnd, IntPtr hDC);
+      [DllImport("kernel32", EntryPoint="RtlMoveMemory")]
+      private static extern int CopyMemory(
+         IntPtr lpvDest, 
+         IntPtr lpvSrc, 
+         int cbCopy);
+      #endregion
+
+
+      /// &lt;summary&gt;
+      /// Prevent instances of this class from being created
+      /// &lt;/summary&gt;
+      private ImageUtility()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Colourises a title bar bitmap glyph to match the
+      /// specified background colour.
+      /// &lt;/summary&gt;
+      /// &lt;param name="glyph"&gt;Uncolourised glyph&lt;/param&gt;
+      /// &lt;param name="backColor"&gt;Background colour&lt;/param&gt;
+      public static void ColouriseGlyph(
+         Bitmap glyph,
+         Color backColor
+         )
+      {
+         // Get transparent colour:
+         Color transColor = glyph.GetPixel(0, 0);
+         float transLuminance = transColor.GetBrightness();
+         float backLuminance = backColor.GetBrightness();
+         float backHue = backColor.GetHue();
+         float backSaturation = backColor.GetSaturation();
+         
+         // Loop through all the pixels, adjusting the hue, 
+         // saturation and luminance according to the desired 
+         // background colour:
+         // Lock the bitmap bits
+         BitmapData bmData = glyph.LockBits(
+            new Rectangle(0, 0, glyph.Width, glyph.Height),
+            ImageLockMode.ReadWrite,
+            PixelFormat.Format24bppRgb);
+         IntPtr scan0 = bmData.Scan0;
+         int nOffset = bmData.Stride - glyph.Width * 3;
+
+         unsafe
+         {
+            byte * pDest = (byte *)(void *)scan0;
+
+            for (int y = 0; y &lt; glyph.Height; ++y)
+            {
+               for (int x = 0; x &lt; glyph.Width; ++x)
+               {
+                  // Check whether transparent:
+                  if (transColor.R == pDest[2] &amp;&amp; 
+                     transColor.G == pDest[1] &amp;&amp;
+                     transColor.B == pDest[0])
+                  {
+                     // set to background colour
+                     pDest[2] = backColor.R;
+                     pDest[1] = backColor.G;
+                     pDest[0] = backColor.B;
+                  }
+                  else
+                  {
+                     // Get HLS of existing colour:
+                     Color pixel = Color.FromArgb(pDest[2], pDest[1], pDest[0]);
+                     float lumPixel = pixel.GetBrightness();
+                     if (lumPixel &lt;= 0.9F)
+                     {
+                        float lumOffset = lumPixel / transLuminance;
+                        lumPixel = backLuminance * lumOffset;
+                        if (lumPixel &gt; 1.0F)
+                        {
+                           lumPixel = 1.0F;
+                        }
+                     
+                     }
+                     // Calculate the new colour
+                     HLSRGB newPixel = new HLSRGB(backHue, lumPixel,
+                      backSaturation);
+
+                     // set the values:
+                     pDest[0] = newPixel.Blue;
+                     pDest[1] = newPixel.Green;
+                     pDest[2] = newPixel.Red;
+                  }
+                  // Move to next BGRA
+                  pDest += 3;
+               }
+               pDest += nOffset;
+            }
+         }
+         glyph.UnlockBits(bmData);
+
+      }
+
+      /// &lt;summary&gt;
+      /// Colourises a watermark so it matches the specified
+      /// background colour.
+      /// &lt;/summary&gt;
+      /// &lt;param name="watermark"&gt;Uncolourised watermark&lt;/param&gt;
+      /// &lt;param name="backColor"&gt;Background colour&lt;/param&gt;
+      public static void ColouriseWatermark(
+         Bitmap watermark,
+         Color backColor
+         )
+      {
+
+         // Get the reference colour:
+         Color refColor = watermark.GetPixel(0, 0);
+         float refLuminance = refColor.GetBrightness();
+         float backHue = backColor.GetHue();
+         float backSaturation = backColor.GetSaturation();
+
+         // Loop through all the pixels, adjusting the hue, 
+         // saturation and luminance according to the desired 
+         // background colour:
+         // Lock the bitmap bits
+         BitmapData bmData = watermark.LockBits(
+            new Rectangle(0, 0, watermark.Width, watermark.Height),
+            ImageLockMode.ReadWrite,
+            PixelFormat.Format32bppArgb);
+         IntPtr scan0 = bmData.Scan0;
+
+         unsafe
+         {
+            byte * pDest = (byte *)(void *)scan0;
+
+            for (int y = 0; y &lt; watermark.Height; ++y)
+            {
+               for (int x = 0; x &lt; watermark.Width; ++x)
+               {
+                  // Get HLS of existing colour:
+                  Color pixel = Color.FromArgb(pDest[2], pDest[1], pDest[0]);
+                  float lumOffset = pixel.GetBrightness() / refLuminance;
+                  // Apply the offset to the reference luminance:
+                  float lumPixel = backColor.GetBrightness() * lumOffset;
+                  // Calculate the new colour
+                  HLSRGB newPixel = new HLSRGB(backHue, lumPixel,
+                   backSaturation);
+                  // set the values:
+                  pDest[0] = newPixel.Blue;
+                  pDest[1] = newPixel.Green;
+                  pDest[2] = newPixel.Red;
+                  // leave alpha alone
+                     
+                  // Move to next BGRA
+                  pDest += 4;
+               }
+            }
+         }
+         watermark.UnlockBits(bmData);
+      }
+
+      /// &lt;summary&gt;
+      /// Converts a Windows DIBSection object to a Bitmap.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hDib"&gt;Handle to a Windows DIBSection.&lt;/param&gt;
+      /// &lt;returns&gt;Bitmap containing the DIBSection picture.&lt;/returns&gt;
+      public static Bitmap DibToBitmap(
+         IntPtr hDib
+         )
+      {
+         BITMAP tBM = new BITMAP();
+         GetObjectBitmap(hDib, Marshal.SizeOf(tBM), ref tBM);
+         Bitmap bm = new Bitmap(tBM.bmWidth, tBM.bmHeight);
+
+         // set the bitmap's data to the data from
+         // the DIB:
+         if (tBM.bmBitsPixel == 32)
+         {
+            // Bizarre but true: you *must* clone the newly created
+            // bitmap to get one with the correct pixel format, even
+            // if you attempted to create the original one with the 
+            // correct format...
+            bm = bm.Clone(new Rectangle(0, 0, tBM.bmWidth, tBM.bmHeight),
+               PixelFormat.Format32bppArgb);
+
+            // Lock the bitmap bits
+            BitmapData destData = bm.LockBits(
+               new Rectangle(0, 0, bm.Width, bm.Height),
+               ImageLockMode.ReadWrite,
+               PixelFormat.Format32bppArgb);
+            int destWidth = destData.Stride;
+            IntPtr destScan0 = destData.Scan0;
+
+            unsafe
+            {
+               byte * pDest = (byte *) (void *) destScan0;
+               // The DIB is upside down compared to a GDI+ bitmap
+               pDest += ((bm.Width * 4) * (bm.Height - 1));
+               byte * pSrc = (byte *) (void *) tBM.bmBits;
+
+               for (int y = 0; y &lt; bm.Height; ++y)
+               {
+                  for (int x = 0; x &lt; bm.Width; ++x)
+                  {
+                     pDest[0] = pSrc[0]; // blue
+                     pDest[1] = pSrc[1]; // green
+                     pDest[2] = pSrc[2]; // red
+                     pDest[3] = pSrc[3]; // alpha
+                     
+                     // Move to next BGRA
+                     pDest += 4;
+                     pSrc += 4;
+                  }
+                  pDest -= (bm.Width * 8);
+               }
+            }
+
+            bm.UnlockBits(destData);
+         }
+         else
+         {
+            // Easier to just copy src -&gt; dst using GDI.
+
+            // Put the DIB into a DC:
+            IntPtr hWndDesktop = GetDesktopWindow();
+            IntPtr hDCComp = GetDC(hWndDesktop);
+            IntPtr hDCSrc = CreateCompatibleDC(hDCComp);
+            ReleaseDC(hWndDesktop, hDCComp);
+            IntPtr hBmpOld = SelectObject(hDCSrc, hDib);
+
+            Graphics gfx = Graphics.FromImage(bm);
+            IntPtr hDCDest = gfx.GetHdc();
+            BitBlt(hDCDest, 0, 0, tBM.bmWidth, tBM.bmHeight, hDCSrc, 0, 0,
+             SRCCOPY);
+            gfx.ReleaseHdc(hDCDest);
+
+            SelectObject(hDCSrc, hBmpOld);
+            DeleteDC(hDCSrc);
+         }
+
+
+         return bm;
+
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ImageUtility.cs</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 18 April 2004</p></td><td></td></tr></table>
+</body></html>

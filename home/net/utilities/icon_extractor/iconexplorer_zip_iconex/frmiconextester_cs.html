@@ -1,0 +1,1027 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IconEx\frmIconExTester.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IconEx\frmIconExTester.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Utilities</a>&#160;.&#160;<a href="..\article.html">.NET Icon Explorer</a>&#160;.&#160;<a href="..\iconexplorer.html">IconExplorer</a>&#160;.&#160;IconEx</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="iconexplorer.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconExplorer</a> (119K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4621</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=4621&type=zip&title=frmiconextester.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 0</a></p><p class="nav">Updated:12 December 2003</p>
+<br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />28 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\code\libraries\shell_projects\folder_browser\article.html">Folder Browser Dialog</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IconEx\frmIconExTester.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using System.IO;
+
+using vbAccelerator.Components.Win32;
+using vbAccelerator.Components.ListBox;
+using vbAccelerator.Components.Menu;
+
+namespace vbAccelerator.Utilities.IconExtractor
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmIconExTester : System.Windows.Forms.Form
+   {
+      private IconEx ix = null;
+      private frmBatchExtraction batchExtractor = null;
+      private System.Windows.Forms.ToolBar tbrMain;
+      private System.Windows.Forms.StatusBar sbrMain;
+      private System.Windows.Forms.ImageList ilsToolbar;
+      private System.Windows.Forms.ImageList ilsSmallIcons;
+      private System.Windows.Forms.ImageList ilsLargeIcons;
+      private System.Windows.Forms.ToolBarButton tbtnOpen;
+      private System.Windows.Forms.ToolBarButton tbtnSave;
+      private System.Windows.Forms.ToolBarButton tbtnSep1;
+      private System.Windows.Forms.ToolBarButton tbtnProps;
+      private System.Windows.Forms.ToolBarButton tbtnLargeIcons;
+      private System.Windows.Forms.ToolBarButton tbtnSmallIcons;
+      private System.Windows.Forms.ToolBarButton tbtnDetails;
+      private System.Windows.Forms.ToolBarButton tbtnSep2;
+      private IconMainMenu mnuMain;
+      private IconMenuItem mnuFileTop;
+      private IconMenuItem mnuOpen;
+      private IconMenuItem mnuSave;
+      private IconMenuItem mnuSaveAll;
+      private IconMenuItem mnuFileSep1;
+      private IconMenuItem mnuProperties;
+      private IconMenuItem mnuFileSep2;
+      private IconMenuItem mnuExit;
+      private System.Windows.Forms.StatusBarPanel spnlFile;
+      private System.Windows.Forms.StatusBarPanel spnlIcon;
+      private IconMenuItem mnuViewTop;
+      private IconMenuItem mnuToolbar;
+      private IconMenuItem mnuStatusBar;
+      private IconMenuItem mnuViewSep1;
+      private IconMenuItem mnuLargeIcons;
+      private IconMenuItem mnuSmallIcons;
+      private IconMenuItem mnuDetails;
+      private IconMenuItem mnuHelpTop;
+      private IconMenuItem mnuAbout;
+      private IconMenuItem mnuToolsTop;
+      private IconMenuItem mnuBatchExtractor;
+      private System.Windows.Forms.ToolBarButton tbtnBatch;
+      private System.Windows.Forms.ToolBarButton tbtnSep3;
+      private vbAccelerator.Components.ListBox.IconExListBox lstDeviceImages;
+      private System.Windows.Forms.Splitter splitter2;
+      private System.Windows.Forms.ListView lvwIcons;
+      private System.Windows.Forms.ColumnHeader chdrName;
+      private System.Windows.Forms.ColumnHeader chdrDeviceCount;
+      private System.ComponentModel.IContainer components;
+
+      public frmIconExTester()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         // Add event handlers:
+         this.mnuOpen.Click += new EventHandler(mnu_Click);
+         this.mnuSave.Click += new EventHandler(mnu_Click);
+         this.mnuSaveAll.Click += new EventHandler(mnu_Click);
+         this.mnuProperties.Click += new EventHandler(mnu_Click);
+         this.mnuExit.Click += new EventHandler(mnu_Click);
+         this.mnuToolbar.Click += new EventHandler(mnu_Click);
+         this.mnuStatusBar.Click += new EventHandler(mnu_Click);
+         this.mnuLargeIcons.Click += new EventHandler(mnu_Click);
+         this.mnuSmallIcons.Click += new EventHandler(mnu_Click);
+         this.mnuDetails.Click += new EventHandler(mnu_Click);
+         this.mnuBatchExtractor.Click += new EventHandler(mnu_Click);
+         this.mnuAbout.Click += new EventHandler(mnu_Click);
+
+         this.tbrMain.ButtonClick += new
+          ToolBarButtonClickEventHandler(tbrMain_Click);
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmIconExTester));
+         this.tbrMain = new System.Windows.Forms.ToolBar();
+         this.tbtnOpen = new System.Windows.Forms.ToolBarButton();
+         this.tbtnSave = new System.Windows.Forms.ToolBarButton();
+         this.tbtnSep1 = new System.Windows.Forms.ToolBarButton();
+         this.tbtnProps = new System.Windows.Forms.ToolBarButton();
+         this.tbtnSep2 = new System.Windows.Forms.ToolBarButton();
+         this.tbtnBatch = new System.Windows.Forms.ToolBarButton();
+         this.tbtnSep3 = new System.Windows.Forms.ToolBarButton();
+         this.tbtnLargeIcons = new System.Windows.Forms.ToolBarButton();
+         this.tbtnSmallIcons = new System.Windows.Forms.ToolBarButton();
+         this.tbtnDetails = new System.Windows.Forms.ToolBarButton();
+         this.ilsToolbar = new System.Windows.Forms.ImageList(this.components);
+         this.sbrMain = new System.Windows.Forms.StatusBar();
+         this.spnlFile = new System.Windows.Forms.StatusBarPanel();
+         this.spnlIcon = new System.Windows.Forms.StatusBarPanel();
+         this.ilsLargeIcons = new
+          System.Windows.Forms.ImageList(this.components);
+         this.ilsSmallIcons = new
+          System.Windows.Forms.ImageList(this.components);
+         this.mnuMain = new vbAccelerator.Components.Menu.IconMainMenu();
+         this.mnuFileTop = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuOpen = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuSave = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuSaveAll = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuFileSep1 = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuProperties = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuFileSep2 = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuExit = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuViewTop = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuToolbar = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuStatusBar = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuViewSep1 = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuLargeIcons = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuSmallIcons = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuDetails = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuToolsTop = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuBatchExtractor = new
+          vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuHelpTop = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.mnuAbout = new vbAccelerator.Components.Menu.IconMenuItem();
+         this.lstDeviceImages = new
+          vbAccelerator.Components.ListBox.IconExListBox();
+         this.splitter2 = new System.Windows.Forms.Splitter();
+         this.lvwIcons = new System.Windows.Forms.ListView();
+         this.chdrName = new System.Windows.Forms.ColumnHeader();
+         this.chdrDeviceCount = new System.Windows.Forms.ColumnHeader();
+         ((System.ComponentModel.ISupportInitialize)(this.spnlFile)).BeginInit()
+         ;
+         ((System.ComponentModel.ISupportInitialize)(this.spnlIcon)).BeginInit()
+         ;
+         this.SuspendLayout();
+         // 
+         // tbrMain
+         // 
+         this.tbrMain.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+         this.tbrMain.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[]
+          {
+                                                                  this.tbtnOpen,
+                                                                  this.tbtnSave,
+                                                                  this.tbtnSep1,
+                                                                 
+                                         this.tbtnProps,
+                                                                  this.tbtnSep2,
+                                                                 
+                                         this.tbtnBatch,
+                                                                  this.tbtnSep3,
+                                                                 
+                                         this.tbtnLargeIcons,
+                                                                 
+                                         this.tbtnSmallIcons,
+                                                                 
+                                         this.tbtnDetails});
+         this.tbrMain.DropDownArrows = true;
+         this.tbrMain.ImageList = this.ilsToolbar;
+         this.tbrMain.Name = "tbrMain";
+         this.tbrMain.ShowToolTips = true;
+         this.tbrMain.Size = new System.Drawing.Size(564, 25);
+         this.tbrMain.TabIndex = 7;
+         this.tbrMain.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+         // 
+         // tbtnOpen
+         // 
+         this.tbtnOpen.ImageIndex = 0;
+         this.tbtnOpen.ToolTipText = "Open Icon or Library";
+         // 
+         // tbtnSave
+         // 
+         this.tbtnSave.Enabled = false;
+         this.tbtnSave.ImageIndex = 1;
+         this.tbtnSave.ToolTipText = "Save Icon";
+         // 
+         // tbtnSep1
+         // 
+         this.tbtnSep1.Style =
+          System.Windows.Forms.ToolBarButtonStyle.Separator;
+         // 
+         // tbtnProps
+         // 
+         this.tbtnProps.Enabled = false;
+         this.tbtnProps.ImageIndex = 2;
+         this.tbtnProps.ToolTipText = "Icon Properties";
+         // 
+         // tbtnSep2
+         // 
+         this.tbtnSep2.Style =
+          System.Windows.Forms.ToolBarButtonStyle.Separator;
+         // 
+         // tbtnBatch
+         // 
+         this.tbtnBatch.ImageIndex = 7;
+         // 
+         // tbtnSep3
+         // 
+         this.tbtnSep3.Style =
+          System.Windows.Forms.ToolBarButtonStyle.Separator;
+         // 
+         // tbtnLargeIcons
+         // 
+         this.tbtnLargeIcons.ImageIndex = 3;
+         this.tbtnLargeIcons.Pushed = true;
+         this.tbtnLargeIcons.Style =
+          System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+         this.tbtnLargeIcons.ToolTipText = "Large Icons";
+         // 
+         // tbtnSmallIcons
+         // 
+         this.tbtnSmallIcons.ImageIndex = 4;
+         this.tbtnSmallIcons.Style =
+          System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+         this.tbtnSmallIcons.ToolTipText = "Small Icons";
+         // 
+         // tbtnDetails
+         // 
+         this.tbtnDetails.ImageIndex = 6;
+         this.tbtnDetails.Style =
+          System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+         this.tbtnDetails.ToolTipText = "Details";
+         // 
+         // ilsToolbar
+         // 
+         this.ilsToolbar.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+         this.ilsToolbar.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsToolbar.ImageStream =
+          ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsTool
+         bar.ImageStream")));
+         this.ilsToolbar.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // sbrMain
+         // 
+         this.sbrMain.Location = new System.Drawing.Point(0, 383);
+         this.sbrMain.Name = "sbrMain";
+         this.sbrMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[]
+          {
+                                                                  this.spnlFile,
+                                                                 
+                                         this.spnlIcon});
+         this.sbrMain.ShowPanels = true;
+         this.sbrMain.Size = new System.Drawing.Size(564, 22);
+         this.sbrMain.TabIndex = 11;
+         this.sbrMain.Text = "Icon Explorer";
+         // 
+         // spnlFile
+         // 
+         this.spnlFile.AutoSize =
+          System.Windows.Forms.StatusBarPanelAutoSize.Spring;
+         this.spnlFile.Width = 448;
+         // 
+         // ilsLargeIcons
+         // 
+         this.ilsLargeIcons.ColorDepth =
+          System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsLargeIcons.ImageSize = new System.Drawing.Size(32, 32);
+         this.ilsLargeIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // ilsSmallIcons
+         // 
+         this.ilsSmallIcons.ColorDepth =
+          System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsSmallIcons.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsSmallIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // mnuMain
+         // 
+         this.mnuMain.IconImageList = this.ilsToolbar;
+         this.mnuMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                               this.mnuFileTop,
+                                                               this.mnuViewTop,
+                                                               this.mnuToolsTop,
+                                                              
+                                         this.mnuHelpTop});
+         // 
+         // mnuFileTop
+         // 
+         this.mnuFileTop.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuFileTop.IconIndex = -1;
+         this.mnuFileTop.Index = 0;
+         this.mnuFileTop.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+          {
+                                                                  this.mnuOpen,
+                                                                  this.mnuSave,
+                                                                 
+                                         this.mnuSaveAll,
+                                                                 
+                                         this.mnuFileSep1,
+                                                                 
+                                         this.mnuProperties,
+                                                                 
+                                         this.mnuFileSep2,
+                                                                 
+                                         this.mnuExit});
+         this.mnuFileTop.OwnerDraw = true;
+         this.mnuFileTop.Tag = "";
+         this.mnuFileTop.Text = "&amp;File";
+         // 
+         // mnuOpen
+         // 
+         this.mnuOpen.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuOpen.IconIndex = 0;
+         this.mnuOpen.Index = 0;
+         this.mnuOpen.OwnerDraw = true;
+         this.mnuOpen.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
+         this.mnuOpen.Tag = "";
+         this.mnuOpen.Text = "&amp;Open...";
+         // 
+         // mnuSave
+         // 
+         this.mnuSave.Enabled = false;
+         this.mnuSave.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuSave.IconIndex = 1;
+         this.mnuSave.Index = 1;
+         this.mnuSave.OwnerDraw = true;
+         this.mnuSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
+         this.mnuSave.Tag = "";
+         this.mnuSave.Text = "&amp;Save...";
+         // 
+         // mnuSaveAll
+         // 
+         this.mnuSaveAll.Enabled = false;
+         this.mnuSaveAll.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuSaveAll.IconIndex = -1;
+         this.mnuSaveAll.Index = 2;
+         this.mnuSaveAll.OwnerDraw = true;
+         this.mnuSaveAll.Tag = "";
+         this.mnuSaveAll.Text = "Save &amp;All...";
+         // 
+         // mnuFileSep1
+         // 
+         this.mnuFileSep1.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuFileSep1.IconIndex = -1;
+         this.mnuFileSep1.Index = 3;
+         this.mnuFileSep1.OwnerDraw = true;
+         this.mnuFileSep1.Tag = "";
+         this.mnuFileSep1.Text = "-";
+         // 
+         // mnuProperties
+         // 
+         this.mnuProperties.Enabled = false;
+         this.mnuProperties.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuProperties.IconIndex = 2;
+         this.mnuProperties.Index = 4;
+         this.mnuProperties.OwnerDraw = true;
+         this.mnuProperties.Tag = "";
+         this.mnuProperties.Text = "&amp;Properties...";
+         // 
+         // mnuFileSep2
+         // 
+         this.mnuFileSep2.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuFileSep2.IconIndex = -1;
+         this.mnuFileSep2.Index = 5;
+         this.mnuFileSep2.OwnerDraw = true;
+         this.mnuFileSep2.Tag = "";
+         this.mnuFileSep2.Text = "-";
+         // 
+         // mnuExit
+         // 
+         this.mnuExit.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuExit.IconIndex = -1;
+         this.mnuExit.Index = 6;
+         this.mnuExit.OwnerDraw = true;
+         this.mnuExit.Tag = "";
+         this.mnuExit.Text = "E&amp;xit";
+         // 
+         // mnuViewTop
+         // 
+         this.mnuViewTop.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuViewTop.IconIndex = -1;
+         this.mnuViewTop.Index = 1;
+         this.mnuViewTop.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+          {
+                                                                 
+                                         this.mnuToolbar,
+                                                                 
+                                         this.mnuStatusBar,
+                                                                 
+                                         this.mnuViewSep1,
+                                                                 
+                                         this.mnuLargeIcons,
+                                                                 
+                                         this.mnuSmallIcons,
+                                                                 
+                                         this.mnuDetails});
+         this.mnuViewTop.OwnerDraw = true;
+         this.mnuViewTop.Tag = "";
+         this.mnuViewTop.Text = "&amp;View";
+         // 
+         // mnuToolbar
+         // 
+         this.mnuToolbar.Checked = true;
+         this.mnuToolbar.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuToolbar.IconIndex = -1;
+         this.mnuToolbar.Index = 0;
+         this.mnuToolbar.OwnerDraw = true;
+         this.mnuToolbar.Tag = "";
+         this.mnuToolbar.Text = "&amp;Toolbar";
+         // 
+         // mnuStatusBar
+         // 
+         this.mnuStatusBar.Checked = true;
+         this.mnuStatusBar.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuStatusBar.IconIndex = -1;
+         this.mnuStatusBar.Index = 1;
+         this.mnuStatusBar.OwnerDraw = true;
+         this.mnuStatusBar.Tag = "";
+         this.mnuStatusBar.Text = "&amp;Status Bar";
+         // 
+         // mnuViewSep1
+         // 
+         this.mnuViewSep1.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuViewSep1.IconIndex = -1;
+         this.mnuViewSep1.Index = 2;
+         this.mnuViewSep1.OwnerDraw = true;
+         this.mnuViewSep1.Tag = "";
+         this.mnuViewSep1.Text = "-";
+         // 
+         // mnuLargeIcons
+         // 
+         this.mnuLargeIcons.Checked = true;
+         this.mnuLargeIcons.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuLargeIcons.IconIndex = 3;
+         this.mnuLargeIcons.Index = 3;
+         this.mnuLargeIcons.OwnerDraw = true;
+         this.mnuLargeIcons.RadioCheck = true;
+         this.mnuLargeIcons.Tag = "";
+         this.mnuLargeIcons.Text = "&amp;Large Icons";
+         // 
+         // mnuSmallIcons
+         // 
+         this.mnuSmallIcons.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuSmallIcons.IconIndex = 4;
+         this.mnuSmallIcons.Index = 4;
+         this.mnuSmallIcons.OwnerDraw = true;
+         this.mnuSmallIcons.RadioCheck = true;
+         this.mnuSmallIcons.Tag = "";
+         this.mnuSmallIcons.Text = "S&amp;mall Icons";
+         // 
+         // mnuDetails
+         // 
+         this.mnuDetails.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuDetails.IconIndex = 5;
+         this.mnuDetails.Index = 5;
+         this.mnuDetails.OwnerDraw = true;
+         this.mnuDetails.RadioCheck = true;
+         this.mnuDetails.Tag = "";
+         this.mnuDetails.Text = "&amp;Details";
+         // 
+         // mnuToolsTop
+         // 
+         this.mnuToolsTop.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuToolsTop.IconIndex = -1;
+         this.mnuToolsTop.Index = 2;
+         this.mnuToolsTop.MenuItems.AddRange(new
+          System.Windows.Forms.MenuItem[] {
+                                                                 
+                                         this.mnuBatchExtractor});
+         this.mnuToolsTop.OwnerDraw = true;
+         this.mnuToolsTop.Tag = "";
+         this.mnuToolsTop.Text = "&amp;Tools";
+         // 
+         // mnuBatchExtractor
+         // 
+         this.mnuBatchExtractor.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuBatchExtractor.IconIndex = 7;
+         this.mnuBatchExtractor.Index = 0;
+         this.mnuBatchExtractor.OwnerDraw = true;
+         this.mnuBatchExtractor.Tag = "";
+         this.mnuBatchExtractor.Text = "&amp;Batch Extractor...";
+         // 
+         // mnuHelpTop
+         // 
+         this.mnuHelpTop.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuHelpTop.IconIndex = -1;
+         this.mnuHelpTop.Index = 3;
+         this.mnuHelpTop.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+          {
+                                                                 
+                                         this.mnuAbout});
+         this.mnuHelpTop.OwnerDraw = true;
+         this.mnuHelpTop.Tag = "";
+         this.mnuHelpTop.Text = "&amp;Help";
+         // 
+         // mnuAbout
+         // 
+         this.mnuAbout.Font = new System.Drawing.Font("Tahoma", 11F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+         this.mnuAbout.IconIndex = -1;
+         this.mnuAbout.Index = 0;
+         this.mnuAbout.OwnerDraw = true;
+         this.mnuAbout.Tag = "";
+         this.mnuAbout.Text = "&amp;About...";
+         // 
+         // lstDeviceImages
+         // 
+         this.lstDeviceImages.Dock = System.Windows.Forms.DockStyle.Right;
+         this.lstDeviceImages.DrawMode =
+          System.Windows.Forms.DrawMode.OwnerDrawVariable;
+         this.lstDeviceImages.IconEx = null;
+         this.lstDeviceImages.Location = new System.Drawing.Point(440, 25);
+         this.lstDeviceImages.Name = "lstDeviceImages";
+         this.lstDeviceImages.SelectionMode =
+          System.Windows.Forms.SelectionMode.MultiExtended;
+         this.lstDeviceImages.Size = new System.Drawing.Size(124, 358);
+         this.lstDeviceImages.TabIndex = 19;
+         // 
+         // splitter2
+         // 
+         this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
+         this.splitter2.Location = new System.Drawing.Point(436, 25);
+         this.splitter2.Name = "splitter2";
+         this.splitter2.Size = new System.Drawing.Size(4, 358);
+         this.splitter2.TabIndex = 20;
+         this.splitter2.TabStop = false;
+         // 
+         // lvwIcons
+         // 
+         this.lvwIcons.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+          {
+                                                                  this.chdrName,
+                                                                 
+                                         this.chdrDeviceCount});
+         this.lvwIcons.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.lvwIcons.LargeImageList = this.ilsLargeIcons;
+         this.lvwIcons.Location = new System.Drawing.Point(0, 25);
+         this.lvwIcons.MultiSelect = false;
+         this.lvwIcons.Name = "lvwIcons";
+         this.lvwIcons.Size = new System.Drawing.Size(436, 358);
+         this.lvwIcons.SmallImageList = this.ilsSmallIcons;
+         this.lvwIcons.TabIndex = 21;
+         this.lvwIcons.SelectedIndexChanged += new
+          System.EventHandler(this.lvwIcons_SelectedIndexChanged);
+         // 
+         // chdrName
+         // 
+         this.chdrName.Width = 128;
+         // 
+         // frmIconExTester
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(564, 405);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.lvwIcons,
+                                                        this.splitter2,
+                                                        this.lstDeviceImages,
+                                                        this.sbrMain,
+                                                        this.tbrMain});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Menu = this.mnuMain;
+         this.Name = "frmIconExTester";
+         this.Text = "vbAccelerator .NET Icon Explorer";
+         this.Load += new System.EventHandler(this.frmIconExTester_Load);
+         ((System.ComponentModel.ISupportInitialize)(this.spnlFile)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.spnlIcon)).EndInit();
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmIconExTester());
+      }
+
+      private void doOpen()
+      {
+         OpenFileDialog o = new OpenFileDialog();
+         o.Filter = "All Icon Files (*.ICO;*.EXE;*.DLL)|*.ICO;*.EXE;*.DLL|Icon
+          Files (*.ICO)|*.ICO|Applications (*.EXE)|*.EXE|Libraries
+          (*.DLL)|*.DLL|All Files (*.*)|*.*";
+         o.FilterIndex = 1;
+         o.DefaultExt = "ICO";
+         o.CheckFileExists = true;
+         o.CheckPathExists = true;
+         if (o.ShowDialog(this) == DialogResult.OK)
+         {
+            this.spnlFile.Text = "";
+            this.spnlIcon.Text = "";
+
+            ilsSmallIcons.Images.Clear();
+            ilsLargeIcons.Images.Clear();
+            lvwIcons.Items.Clear();
+            lstDeviceImages.IconEx = null;
+
+            bool isLibraryFile = false;
+            string msg = "";
+
+            // Try to read library:
+            string ext = Path.GetExtension(o.FileName).ToUpper();              
+                      
+            if (ext.IndexOf(".ICO") &lt; 0)
+            {
+               try
+               {
+                  GroupIconResources gIR = new GroupIconResources(o.FileName);
+                  if (gIR.Count &gt; 0)
+                  {
+                     // add the icons to the ListView:
+                     populateListViewForLibrary(gIR, o.FileName);
+                     isLibraryFile = true;
+                  }
+               }
+               catch (Exception e)
+               {
+                  // couldn't load the library:
+                  msg = e.Message;
+               }
+            }               
+
+            // If not loaded, try to read as icon file:
+            if (!isLibraryFile)
+            {
+               try
+               {
+                  IconEx iEx = new IconEx(o.FileName);
+                  if (iEx.Items.Count &gt; 0)
+                  {
+                     populateListViewForIcon(iEx, o.FileName);
+                     msg = "";
+                  }
+                  else
+                  {
+                     msg = String.Format("Failed to read icon file {0}",
+                      o.FileName);
+                  }
+               }
+               catch (Exception e)
+               {
+                  msg += e.Message;
+               }
+            }
+
+            if (msg.Length &gt; 0)
+            {
+               MessageBox.Show(this, 
+                  String.Format("Could not read icons from the selected
+                   file.\n\n{0}", msg),
+                  this.Text,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Exclamation);
+            }
+         }
+      }
+
+      private void populateListViewForIcon(
+         IconEx iex,
+         string iconFile
+         )
+      {
+         this.spnlFile.Text = iconFile;
+
+         // Add best matching images to Image List:
+         addDeviceImage(ilsLargeIcons, iex);
+         addDeviceImage(ilsSmallIcons, iex);
+
+         // Add item to ListView:
+         ListViewItem item = new ListViewItem(
+            new string[] { "ICON", iex.Items.Count.ToString() },
+            ilsLargeIcons.Images.Count - 1);
+         item.Tag = iex;
+         lvwIcons.Items.Add(item);
+         lvwIcons.Items[0].Selected = true;
+      }
+
+      private void populateListViewForLibrary(
+         GroupIconResources gIR,
+         string resourceFile
+         )
+      {
+         this.spnlFile.Text = resourceFile;
+
+         foreach (GroupIconResource g in gIR)
+         {
+            string text = "";
+            IconEx iex = new IconEx();
+            if (g.IdIsNumeric)
+            {
+               text = String.Format("{0:N0}", g.Id);
+               try
+               {
+                  iex.FromLibrary(resourceFile, g.Id);
+               }
+               catch
+               {
+                  iex = null;
+               }
+            }
+            else
+            {
+               text = g.Name;
+               try
+               {
+                  iex.FromLibrary(resourceFile, g.Name);
+               }
+               catch
+               {
+                  iex = null;
+               }
+            }
+            
+            if (iex != null)
+            {
+               // Add best matching images to Image List:
+               addDeviceImage(ilsLargeIcons, iex);
+               addDeviceImage(ilsSmallIcons, iex);
+
+               // Add the item to the list view:
+               ListViewItem item = new ListViewItem(
+                  new string[] {text, iex.Items.Count.ToString() },
+                  ilsLargeIcons.Images.Count - 1);
+               item.Tag = iex;
+               lvwIcons.Items.Add(item);               
+            }
+         }
+         if (lvwIcons.Items.Count &gt; 0)
+         {
+            lvwIcons.Items[0].Selected = true;
+         }
+      }
+
+      private void addDeviceImage(
+         ImageList ils,
+         IconEx iex)
+      {         
+         /*
+         if ((System.Environment.OSVersion.Version.Major &gt; 5) ||
+            ((System.Environment.OSVersion.Version.Major == 5) &amp;&amp;
+             (System.Environment.OSVersion.Version.Minor &gt;= 1)))
+         {
+            // can do 32-bit icons
+         }
+         */
+         int minDiff = 0xFFFF;
+         ColorDepth lastColorDepth = ColorDepth.Depth4Bit;
+         int itemIndex = -1;
+         for (int i = 0; i &lt; iex.Items.Count; i++)
+         {
+            if (iex.Items[i].IconSize == ils.ImageSize)
+            {
+               minDiff = 0;
+               if (iex.Items[i].ColorDepth &gt; lastColorDepth)
+               {
+                  lastColorDepth = iex.Items[i].ColorDepth;
+                  itemIndex = i;
+               }
+            }
+            else
+            {
+               int thisDiff =
+                  Math.Abs(iex.Items[i].IconSize.Width - ils.ImageSize.Width) + 
+                  Math.Abs(iex.Items[i].IconSize.Height - ils.ImageSize.Height);
+               if (thisDiff &lt; minDiff)
+               {
+                  itemIndex = i;
+                  minDiff = thisDiff;
+               }
+            }
+         }
+         if (itemIndex == -1)
+         {
+            itemIndex = 0;
+         }
+         ils.Images.Add(iex.Items[itemIndex].Icon);
+      }
+
+      private void doSave()
+      {
+         
+      }
+
+      private void doSaveAll()
+      {
+      }
+      private void doProperties()
+      {
+      }
+      private void setIconView(View view)
+      {
+         tbtnLargeIcons.Pushed = (view == View.LargeIcon);
+         mnuLargeIcons.Checked = (view == View.LargeIcon);
+         tbtnSmallIcons.Pushed = (view == View.SmallIcon);
+         mnuSmallIcons.Checked = (view == View.SmallIcon);
+         tbtnDetails.Pushed = (view == View.Details);
+         mnuDetails.Checked = (view == View.Details);
+         lvwIcons.View = view;
+      }
+      private void doBatchExtraction()
+      {
+         if (batchExtractor == null)
+         {
+            batchExtractor = new frmBatchExtraction();
+            batchExtractor.Show();
+         }
+         else
+         {
+            batchExtractor.BringToFront();
+            batchExtractor.Focus();
+         }
+      }
+
+      private void tbrMain_Click(object sender, ToolBarButtonClickEventArgs e)
+      {
+         if (e.Button == this.tbtnOpen)
+         {
+            this.doOpen();
+         }
+         else if (e.Button == this.tbtnSave)
+         {
+            this.doSave();
+         }
+         else if (e.Button == this.tbtnProps)
+         {
+            this.doProperties();
+         }
+         else if (e.Button == this.tbtnBatch)
+         {
+            this.doBatchExtraction();
+         }
+         else if (e.Button == this.tbtnDetails)
+         {
+            setIconView(View.Details);
+         }
+         else if (e.Button == this.tbtnLargeIcons)
+         {
+            setIconView(View.LargeIcon);
+         }
+         else if (e.Button == this.tbtnSmallIcons)
+         {
+            setIconView(View.SmallIcon);
+         }
+      }
+
+      private void mnu_Click(object sender, System.EventArgs e)
+      {
+         if (sender != null)
+         {
+            if (sender == this.mnuOpen)
+            {
+               doOpen();
+            }
+            else if (sender == this.mnuSave)
+            {
+               doSave();
+            }
+            else if (sender == this.mnuSaveAll)
+            {
+               doSaveAll();
+            }
+            else if (sender == this.mnuProperties)
+            {
+               doProperties();
+            }
+            else if (sender == this.mnuExit)
+            {
+               this.Close();
+            }
+            else if (sender == this.mnuToolbar)
+            {
+               bool state = (!this.mnuToolbar.Checked);
+               this.mnuToolbar.Checked = state;
+               this.tbrMain.Visible = state;
+            }
+            else if (sender == this.mnuStatusBar)
+            {
+               bool state = (!this.mnuStatusBar.Checked);
+               this.mnuStatusBar.Checked = state;
+               this.sbrMain.Visible = state;
+            }
+            else if (sender == this.mnuLargeIcons)
+            {
+               setIconView(View.LargeIcon);
+            }
+            else if (sender == this.mnuSmallIcons)
+            {
+               setIconView(View.SmallIcon);
+            }
+            else if (sender == this.mnuDetails)
+            {
+               setIconView(View.Details);
+            }
+            else if (sender == this.mnuBatchExtractor)
+            {
+               doBatchExtraction();
+            }
+            else if (sender == this.mnuAbout)
+            {
+            }
+         }
+      }
+
+      private void frmIconExTester_Load(object sender, System.EventArgs e)
+      {
+      }      
+
+      private void lvwIcons_SelectedIndexChanged(object sender,
+       System.EventArgs e)
+      {
+         if (lvwIcons.SelectedItems.Count == 1)
+         {
+            IconEx iex = (IconEx)lvwIcons.SelectedItems[0].Tag;
+            lstDeviceImages.IconEx = iex;
+            this.spnlIcon.Text = String.Format("{0} of {1}",
+               lvwIcons.SelectedIndices[0] + 1, lvwIcons.Items.Count);
+         }
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Utilities</a>&#160;.&#160;<a href="..\article.html">.NET Icon Explorer</a>&#160;.&#160;<a href="..\iconexplorer.html">IconExplorer</a>&#160;.&#160;IconEx</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

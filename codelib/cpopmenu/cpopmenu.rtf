@@ -1,0 +1,212 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b cPopMenu Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab cPopMenu (vbAccelerator PopMenu Control - Creates Multilevel Menus with Icons)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\cIcoMenu\\Release\\cPopMenu.ocx
+\par GUID:\tab \{A22D979F-2684-11D2-8E21-10B404C10000\}
+\par Version:\tab 1.4
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by cPopMenu.
+\par 
+\par Public Enum CSPHighlightStyleConstants
+\par \tab cspHighlightStandard=0
+\par \tab cspHighlightButton=1
+\par End Enum
+\par Public Enum CSPPMENUSysCommandConstants
+\par \tab SC_RESTORE=61728
+\par \tab SC_MOVE=61456
+\par \tab SC_SIZE=61440
+\par \tab SC_MAXIMIZE=61488
+\par \tab SC_MINIMIZE=61472
+\par \tab SC_CLOSE=61536
+\par \tab SC_ARRANGE=61712
+\par \tab SC_HOTKEY=61776
+\par \tab SC_HSCROLL=61568
+\par \tab SC_KEYMENU=61696
+\par \tab SC_MANAGER_CONNECT=1
+\par \tab SC_MANAGER_CREATE_SERVICE=2
+\par \tab SC_MANAGER_ENUMERATE_SERVICE=4
+\par \tab SC_MANAGER_LOCK=8
+\par \tab SC_MANAGER_MODIFY_BOOT_CONFIG=32
+\par \tab SC_MANAGER_QUERY_LOCK_STATUS=16
+\par \tab SC_MOUSEMENU=61584
+\par \tab SC_NEXTWINDOW=61504
+\par \tab SC_PREVWINDOW=61520
+\par \tab SC_SCREENSAVE=61760
+\par \tab SC_TASKLIST=61744
+\par \tab SC_VSCROLL=61552
+\par \tab SC_ZOOM=61488
+\par \tab SC_ICON=61472
+\par End Enum
+\par Public Enum CSPShowPopupMenuConstants
+\par \tab TPM_CENTERALIGN=4
+\par \tab TPM_LEFTALIGN=0
+\par \tab TPM_LEFTBUTTON=0
+\par \tab TPM_RIGHTALIGN=8
+\par \tab TPM_RIGHTBUTTON=2
+\par \tab TPM_HORIZONTAL=0
+\par \tab TPM_VERTICAL=64
+\par \tab TPM_RECURSE=1
+\par \tab TPM_HORPOSANIMATION=1024
+\par \tab TPM_HORNEGANIMATION=2048
+\par \tab TPM_VERPOSANIMATION=4096
+\par \tab TPM_VERNEGANIMATION=8192
+\par \tab TPM_NOANIMATION=16384
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by cPopMenu.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b PopMenu \{A22D979C-2684-11D2-8E21-10B404C10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get HighlightStyle() As CSPHighlightStyleConstants
+\par \plain\f3\fs20 Under development.\plain\f3\fs20\b 
+\par Property Let HighlightStyle(RHS  As CSPHighlightStyleConstants)
+\par \plain\f3\fs20 Under development.\plain\f3\fs20\b 
+\par Function ShowPopupMenu(ByVal objTo As Object, ByVal vKeyParent As Variant, ByVal x As Single, ByVal y As Single, Optional ByVal eOptions As CSPShowPopupMenuConstants=0) As Long
+\par \plain\f3\fs20 Shows the popup menu associated with a given menu item.\plain\f3\fs20\b 
+\par Property Set BackgroundPicture() As Picture
+\par \plain\f3\fs20 Sets a picture to tile into the background of the menu.\plain\f3\fs20\b 
+\par Property Get BackgroundPicture() As Picture
+\par \plain\f3\fs20 Sets a picture to tile into the background of the menu.\plain\f3\fs20\b 
+\par Sub ClearBackgroundPicture
+\par \plain\f3\fs20 Removes the picture set with the BackgroundPicture property.\plain\f3\fs20\b 
+\par Sub GetVersion(ByVal lMajor As Long, ByVal lMinor As Long, ByVal lRevision As Long)
+\par \plain\f3\fs20 Returns the current control version string.\plain\f3\fs20\b 
+\par Property Get HighlightCheckedItems() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the background to icons for checked menu items are highlighted using a dither pattern when the menu item is selected.\plain\f3\fs20\b 
+\par Property Let HighlightCheckedItems(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the background to icons for checked menu items are highlighted using a dither pattern when the menu item is selected.\plain\f3\fs20\b 
+\par Property Get MenuExists(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Returns whether a given menu index or key exists in the menu.\plain\f3\fs20\b 
+\par Property Get MenuIndex(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets the index of the menu item with the specified key.\plain\f3\fs20\b 
+\par Property Get MenuKey(ByVal lIndex As Long) As String
+\par \plain\f3\fs20 Gets/sets a unique key string associated with a menu item.\plain\f3\fs20\b 
+\par Property Let MenuKey(ByVal lIndex As Long, RHS As String)
+\par \plain\f3\fs20 Gets/sets a unique key string associated with a menu item.\plain\f3\fs20\b 
+\par Property Get MenuTag(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets a string value associated with a menu item.\plain\f3\fs20\b 
+\par Property Let MenuTag(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets a string value associated with a menu item.\plain\f3\fs20\b 
+\par Property Get MenuDefault(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether the menu item should be shown in Bold font.\plain\f3\fs20\b 
+\par Property Let MenuDefault(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the menu item should be shown in Bold font.\plain\f3\fs20\b 
+\par Property Let TickIconIndex(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the 0 based index of an icon in the ImageList used to draw the check image for checked menu items if no other icon has been set.\plain\f3\fs20\b 
+\par Property Get TickIconIndex() As Long
+\par \plain\f3\fs20 Gets/sets the 0 based index of an icon in the ImageList used to draw the check image for checked menu items if no other icon has been set.\plain\f3\fs20\b 
+\par Property Get SystemMenuCaption(ByVal lPosition As Long) As String
+\par \plain\f3\fs20 Gets/sets the caption of a system menu item given its ID.\plain\f3\fs20\b 
+\par Property Get SystemMenuCount() As Long
+\par \plain\f3\fs20 Returns the number of items on the system menu.\plain\f3\fs20\b 
+\par Sub SystemMenuRemoveItem(ByVal lPosition As Long)
+\par \plain\f3\fs20 Removes an item from the system menu given its ID.\plain\f3\fs20\b 
+\par Function SystemMenuAppendItem(ByVal sCaption As String) As Long
+\par \plain\f3\fs20 Appends an item to the System Menu and returns its identifier ID.\plain\f3\fs20\b 
+\par Sub SystemMenuRestore
+\par \plain\f3\fs20 Restores the system menu to its default state.\plain\f3\fs20\b 
+\par Property Let ImageList(RHS  As Variant)
+\par \plain\f3\fs20 Associates an ImageList with the control.  This can either be a COMCTL32 image list, a vbAccelerator ImageList or an API hImageList handle.  Make sure the ImageList contains some icons before using this.\plain\f3\fs20\b 
+\par Property Get Caption(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets the caption of a menu item.\plain\f3\fs20\b 
+\par Property Let Caption(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets the caption of a menu item.\plain\f3\fs20\b 
+\par Property Get Enabled(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a menu item appears enabled or not.\plain\f3\fs20\b 
+\par Property Let Enabled(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a menu item appears enabled or not.\plain\f3\fs20\b 
+\par Property Get Checked(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a menu item is checked or not.\plain\f3\fs20\b 
+\par Property Let Checked(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a menu item is checked or not.\plain\f3\fs20\b 
+\par Property Get HelpText(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets a string associated with a menu item.  This can be used to display help text in response to the MenuHighlight event.\plain\f3\fs20\b 
+\par Property Let HelpText(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets a string associated with a menu item.  This can be used to display help text in response to the MenuHighlight event.\plain\f3\fs20\b 
+\par Property Let ItemIcon(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the 0 based index of an icon in the ImageList to be shown against a menu item.  Set to -1 to show no icon.\plain\f3\fs20\b 
+\par Property Get ItemIcon(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the 0 based index of an icon in the ImageList to be shown against a menu item.  Set to -1 to show no icon.\plain\f3\fs20\b 
+\par Property Get ItemData(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets a long value associated with a menu item.\plain\f3\fs20\b 
+\par Property Let ItemData(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets a long value associated with a menu item.\plain\f3\fs20\b 
+\par Property Get hPopupMenu(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Returns a Win32 hMenu handle to a popup menu under the specified menu item.\plain\f3\fs20\b 
+\par Property Get PositionInMenu(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Under development.\plain\f3\fs20\b 
+\par Property Get NextSibling(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets the next menu item from the specified menu item.\plain\f3\fs20\b 
+\par Property Get SiblingCount(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Returns the number of menu items at the same level as the specified menu item.\plain\f3\fs20\b 
+\par Property Get HasChildren(ByVal vKey As Variant) As Variant
+\par \plain\f3\fs20 Returns whether the specified menu item has any sub-menus.\plain\f3\fs20\b 
+\par Property Get FirstChild(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Returns the index of the first menu item below the specified item.\plain\f3\fs20\b 
+\par Property Get Parent(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets the index of the parent menu item for a given menu item.\plain\f3\fs20\b 
+\par Property Get UltimateParent(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets the ultimate parent menu item index of a given menu item.\plain\f3\fs20\b 
+\par Property Get IndexForMenuHierarchyParamArray(Optional ByVal vHierarchy() As Variant) As Long
+\par \plain\f3\fs20 Same as IndexForMenuHierarchy, but takes a parameter array rather than a long array type as the hierarchy.\plain\f3\fs20\b 
+\par Property Get IndexForMenuHierarchy(ByVal lHierarchy() As Long) As Long
+\par \plain\f3\fs20 Returns the index for the menu item which appears at the given hierarchy.\plain\f3\fs20\b 
+\par Sub GetHierarchyForIndexPosition(ByVal vKey As Variant, ByVal lHierarchy() As Long)
+\par \plain\f3\fs20 Returns a hierarchy for a given menu index.  The hierarchy is an array indicating the position of the menu at each level.\plain\f3\fs20\b 
+\par Property Get HierarchyPath(ByVal vKey As Variant, ByVal lStartLevel As Long, ByVal sSeparator As String) As String
+\par \plain\f3\fs20 Returns a string containing a path equivalent of a given menu item.  For example, this might be FavouritesSites.\plain\f3\fs20\b 
+\par Function ClearSubMenusOfItem(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Removes all sub menus of a particular menu item.\plain\f3\fs20\b 
+\par Sub RemoveItem(ByVal vKey As Variant)
+\par \plain\f3\fs20 Removes a given menu item.\plain\f3\fs20\b 
+\par Property Get IDForIndex(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Returns the Win32 Menu Identifier for a given menu item.\plain\f3\fs20\b 
+\par Function AddItem(ByVal sCaption As String, Optional ByVal sKey As String=, Optional ByVal sHelptext As String=, Optional ByVal lItemData As Long=0, Optional ByVal lParentIndex As Long=0, Optional ByVal lIconIndex As Long=-1, Optional ByVal bChecked As Boolean=False, Optional ByVal bEnabled As Boolean=True) As Long
+\par \plain\f3\fs20 Adds a new menu item and optionally sets extended properties.\plain\f3\fs20\b 
+\par Function ReplaceItem(ByVal vKey As Variant, Optional ByVal sCaption As Variant, Optional ByVal sHelptext As Variant, Optional ByVal lItemData As Variant, Optional ByVal lIconIndex As Variant, Optional ByVal bChecked As Variant, Optional ByVal bEnabled As Variant) As Long
+\par \plain\f3\fs20 Replaces a menu item with the specified properties.\plain\f3\fs20\b 
+\par Function InsertItem(ByVal sCaption As String, ByVal vKeyBefore As Variant, Optional ByVal sKey As String=, Optional ByVal sHelptext As String=, Optional ByVal lItemData As Long=0, Optional ByVal lIconIndex As Long=-1, Optional ByVal bChecked As Boolean=False, Optional ByVal bEnabled As Boolean=True) As Long
+\par \plain\f3\fs20 Same as the AddItem method, except the menu item is inserted before the specified menu item.\plain\f3\fs20\b 
+\par Sub EnsureMenuSeparators(ByVal hMenu As Long)
+\par \plain\f3\fs20 Under development.\plain\f3\fs20\b 
+\par Sub Clear
+\par \plain\f3\fs20 Removes all menus.\plain\f3\fs20\b 
+\par Property Get Count() As Integer
+\par \plain\f3\fs20 Gets the total number of menu items.\plain\f3\fs20\b 
+\par Sub SubClassMenu(Optional ByVal oForm As Object=Nothing, Optional ByVal bLeaveTopLevelMenus As Boolean=False)
+\par \plain\f3\fs20 Initialises the icon menu against a form's menu.  Call this method before using any other methods except ImageList.\plain\f3\fs20\b 
+\par Sub CheckForNewItems
+\par \plain\f3\fs20 Interogates the menu and checks for any new items or removed items (i.e. ones which have been Loaded, Unloaded or had their Visible property changed).  For each new item found, the RequestNewMenuDetails event is raised.\plain\f3\fs20\b 
+\par Property Get MenuItemsPerScreen() As Long
+\par \plain\f3\fs20 Returns the number of menu items which can be fitted vertically on the screen.\plain\f3\fs20\b 
+\par Sub UnsubclassMenu
+\par \plain\f3\fs20 Under development.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event Click(ByVal ItemNumber As Long)
+\par \plain\f3\fs20 Raised when a non-VB menu item(i.e. one added using this control)  is clicked.\plain\f3\fs20\b 
+\par Public Event SystemMenuClick(ByVal ItemNumber As Long)
+\par \plain\f3\fs20 Raised when a system menu item is clicked.\plain\f3\fs20\b 
+\par Public Event ItemHighlight(ByVal ItemNumber As Long, ByVal bEnabled As Boolean, ByVal bSeparator As Boolean)
+\par \plain\f3\fs20 Raised when a menu item is highlighted.\plain\f3\fs20\b 
+\par Public Event SystemMenuItemHighlight(ByVal ItemNumber As Long, ByVal bEnabled As Boolean, ByVal bSeparator As Boolean)
+\par \plain\f3\fs20 Raised when a system menu item is highlighted.\plain\f3\fs20\b 
+\par Public Event MenuExit
+\par \plain\f3\fs20 Raised when the user exits from a menu.\plain\f3\fs20\b 
+\par Public Event InitPopupMenu(ByVal ParentItemNumber As Long)
+\par \plain\f3\fs20 Raised just before a popup menu is about to be shown.  You can modify the items in this menu at this point.\plain\f3\fs20\b 
+\par Public Event WinIniChange
+\par \plain\f3\fs20 Raised when system settings are changed.\plain\f3\fs20\b 
+\par Public Event NewMDIMenu
+\par \plain\f3\fs20 Raised in an MDI project where child forms have their own menus.  When the child is shown, the control will detect the change in menu and raise this event.\plain\f3\fs20\b 
+\par Public Event RequestNewMenuDetails(ByVal sCaption As String, ByVal sKey As String, ByVal iIcon As Long, ByVal lItemData As Long, ByVal sHelptext As String, ByVal sTag As String)
+\par \plain\f3\fs20 Raised if the control finds a new menu item after the CheckForNewMenuItems method has been called.\plain\f4\fs20 
+\par 
+\par }
+ 

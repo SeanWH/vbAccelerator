@@ -1,0 +1,135 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Using Animated Cursors in .NET</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="The Cursor class provided with System.Windows.Forms doesn't support animated cursors - but
+this tiny class lets you use them interchangably with the existing .NET Framework cursors.  Also
+provided with the code is a technique for drawing cursors directly onto forms and animating on a 
+background thread." /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;Using Animated Cursors in .NET</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="anicursor_code.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />AniCursor Code</a> (26K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:4565</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=4565&type=article&title=using_20animated_20cursors_20in_20_2enet.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />31 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\resources\graphics_library\animated_cursors\article.html">Animated Cursors</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Using Animated Cursors in .NET</h1><img src="anicursor.png" width="238" height="237" alt="Animated Cursor Demonstration" /><p /><p>The <i>Cursor</i> class provided with System.Windows.Forms doesn't support animated cursors - but
+this tiny class lets you use them interchangably with the existing .NET Framework cursors.  Also
+provided with the code is a technique for drawing cursors directly onto forms and animating on a 
+background thread.</p><h2>Animated Cursors</h2><p>The <i>Cursor</i> class in System.Windows.Forms is another one of those sealed .NET Framework 
+classes which doesn't support all of the facilities of the underlying API (another obvious 
+example of this is the <i>ImageList</i> class).  Creating a class which allows you to use
+animated cursors is nice and easy though, and although it can't extend the existing Cursor class,
+it can provide an instance of a Cursor object containing an animated cursor that you can use
+interchangably with the existing class.</p><h2>AniCursor.cs Implementation</h2><p>
+The class provides the following methods and properties:
+</p><ul><li><strong>Constructors</strong><br />
+Constructors are provided for instantiating a cursor either from a file, a Win32 
+resource (although you will have to use a custom build process if you want
+to include a Win32 resource since VS.NET does not support adding Win32 resources) 
+and directly from another cursor handle.
+</li><li><strong>Cursor</strong><br />
+Returns the animated cursor as a <i>System.Windows.Forms.Cursor</i> which you
+can assign to the <i>Cursor</i> property of any control or form.
+</li><li><strong>Handle</strong><br />
+Returns the handle of the current animated cursor, if any, or <i>IntPtr.Zero</i> 
+otherwise.
+</li><li><strong>FrameCount</strong><br />
+Returns the number of frames within the currently loaded cursor.</li><li><strong>Frame</strong><br />
+Gets/sets the current frame of the cursor to draw using the <i>Draw</i> methods.
+The <i>Step</i> method moves to the next frame and manages looping back to the 
+beginning of the animation.</li><li><strong>Draw</strong><br />
+These methods allow you to draw the current frame of the cursor onto a 
+<i>System.Drawing.Graphics</i> object, optionally specifying the size and
+whether the cursor should be stretched to fit the available space.
+</li></ul><h2>Building AniCursor</h2><p>
+The AniCursor class is really very simple to build since the powerful <i>LoadImage</i> and <i>DrawIconEx</i> API calls provided with <i>user32.dll</i> on Window Systems do almost
+all of the work.  <i>LoadImage</i> is a multi-purpose
+function that can generally successfully load any bitmap, icon or cursor, including animated
+cursors, regardless of whether it is on disk or part of a resource in an executable or DLL.
+<i>DrawIconEx</i> can be used to draw elements of any icon or cursor including the frames of the
+cursors.  The only thing that can't be done as things stand is to instantiate an animated
+cursor from a .NET resource file without writing it to an intermediate temporary file
+on disk.  This is because <i>LoadImage</i> unfortunately does not provide a stream or
+byte array based overload.
+</p><h2>Drawing on a Background Thread</h2><p>
+Having experienced first-hand the pain involved in trying to create a free-threaded component 
+using VB6, the .NET way comes as a breath of fresh air.  Despite Matt Currland's best efforts in
+his great book "Advanced VB6", I was never entirely successful in getting a stable 
+free-threaded component running.  In .NET its a lot easier, but you still need to take a great
+deal of care to make sure things work properly.
+</p><p>
+This sample uses a modified version of some great code from the February 2003 issue of 
+<a href="javascript:window.alert(&quot;http://msdn.microsoft.com/\nThis link was not retrieved.&quot;)">MSDN Magazine</a> (<i>AsyncStart.cs</i>) which 
+makes it particularly easy to create a background threaded class which interacts with the UI.
+The best elements of this class are that it does most of the work in provided a nice model for
+cancelling a background threaded class from the UI and assists you avoiding some of the many
+thousands of ways you can inadvertently create a deadlock.
+</p><p>
+Only the cancellation functionality of the sample is actually used since 
+once you start running the Animated cursor on a background thread it
+just loops forever, sleeping and drawing.  Rather than having to call across
+onto the UI thread to perform the drawing (which would be blocked by the
+UI thread) the code takes advantage of System.Drawing to draw directly
+onto the window handle instead, like the way the Common Controls
+AVI player control works.  I'd be interested to hear if anyone has more
+direct experience of the legality of this method from a threading perspective
+as the .NET documentation isn't particularly friendly on the subject of the thread 
+safety or otherwise of the GDI+ wrapper.
+</p><h2>Conclusion</h2><p>
+A small amount of unmanaged code allows you to add animated cursor support to .NET applications.  
+The resulting cursor can either be used as a pointer in the normal way, or the frames
+within it can be drawn onto a <i>Graphics</i> object. 
+There is also a <a href="..\..\..\..\..\resources\graphics_library\animated_cursors\article.html">small collection of useful animated cursors to download</a> from the Graphics Library to use with the class.
+   </p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;Using Animated Cursors in .NET</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 11 April 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,217 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IMAPIPropertiesVB\frmIMAPIProperties.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IMAPIPropertiesVB\frmIMAPIProperties.vb" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./IMAPI_Wrapper_Demonstration.asp" /><link rel="meta" type="application/rdf+xml" href="./IMAPI Wrapper Demonstration.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper_demonstration.html">IMAPI Wrapper Demonstration</a>&#160;.&#160;IMAPIPropertiesVB</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="acclimapiwrapper_binary.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />acclImapiWrapper Binary</a> (21K)</p><p /><p class="nav"><a href="imapi_wrapper_demonstration.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Demonstration</a> (84K)</p><p class="nav"><a href="imapi_wrapper_documentation.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Documentation</a> (85K)</p><p class="nav"><a href="imapi_wrapper.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper</a> (89K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15416</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15416&type=zip&title=frmimapiproperties.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IMAPIPropertiesVB\frmIMAPIProperties.vb</h1><p>This file is part of the download <a href="imapi_wrapper_demonstration.html">IMAPI Wrapper Demonstration</a>, which is described in the article <a href="article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>.</p><pre>Imports vbAccelerator.Components.ImapiWrapper
+
+Public Class frmIMAPIProperties
+    Inherits System.Windows.Forms.Form
+
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+        Show()
+        Refresh()
+
+        DisplayRecorders()
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents tvwRecorders As System.Windows.Forms.TreeView
+    &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub InitializeComponent()
+        Dim resources As System.Resources.ResourceManager = New
+         System.Resources.ResourceManager(GetType(frmIMAPIProperties))
+        Me.tvwRecorders = New System.Windows.Forms.TreeView()
+        Me.SuspendLayout()
+        '
+        'tvwRecorders
+        '
+        Me.tvwRecorders.ImageIndex = -1
+        Me.tvwRecorders.Location = New System.Drawing.Point(8, 7)
+        Me.tvwRecorders.Name = "tvwRecorders"
+        Me.tvwRecorders.SelectedImageIndex = -1
+        Me.tvwRecorders.Size = New System.Drawing.Size(404, 428)
+        Me.tvwRecorders.TabIndex = 2
+        '
+        'frmIMAPIProperties
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
+        Me.ClientSize = New System.Drawing.Size(420, 446)
+        Me.Controls.AddRange(New System.Windows.Forms.Control()
+         {Me.tvwRecorders})
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "frmIMAPIProperties"
+        Me.Text = "IMAPI Properties Demonstration"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub DisplayRecorders()
+
+        Cursor.Current = Cursors.WaitCursor
+
+        tvwRecorders.Nodes.Clear()
+
+        Dim dm As DiscMaster = New DiscMaster()
+        Dim simpleRecorder As SimpleDiscRecorder = dm.SimpleDiscRecorder
+
+        Dim simpleNode As TreeNode = tvwRecorders.Nodes.Add("Simple CD Burner")
+        If (simpleRecorder.HasRecordableDrive()) Then
+
+            simpleNode.Nodes.Add( _
+                String.Format("Drive Letter: {0}",
+                 simpleRecorder.GetRecorderDriveLetter()))
+            simpleNode.Nodes.Add( _
+                String.Format("Staging Area: {0}",
+                 simpleRecorder.GetBurnStagingAreaFolder(Handle)))
+        Else
+            simpleNode.Nodes.Add("Not present")
+        End If
+        simpleNode.Expand()
+
+        Dim recordersNode As TreeNode = tvwRecorders.Nodes.Add("Recorders")
+        Dim recorderIndex As Integer = 0
+        Dim recorder As DiscRecorder
+        For Each recorder In dm.DiscRecorders
+            Dim recorderNode As TreeNode = recordersNode.Nodes.Add( _
+             String.Format("Recorder {0}", ++recorderIndex))
+
+            recorderNode.Nodes.Add( _
+               String.Format("Vendor: {0}", recorder.Vendor))
+         recorderNode.Nodes.Add( _
+               String.Format("Product: {0}", recorder.Product))
+         recorderNode.Nodes.Add( _
+               String.Format("Revision: {0}", recorder.Revision))
+         recorderNode.Nodes.Add( _
+               String.Format("OSPath: {0}", recorder.OsPath))
+         recorderNode.Nodes.Add( _
+               String.Format("DriveLetter: {0}", recorder.DriveLetter))
+
+            Dim mediaNode As TreeNode = recorderNode.Nodes.Add("Media")
+            recorder.OpenExclusive()
+            Dim media As MediaDetails = recorder.GetMediaDetails()
+            If (media.MediaPresent) Then
+                mediaNode.Nodes.Add( _
+                    String.Format("Sessions: {0}", media.Sessions))
+                mediaNode.Nodes.Add( _
+                    String.Format("LastTrack: {0}", media.LastTrack))
+                mediaNode.Nodes.Add( _
+                    String.Format("StartAddress: {0}", media.StartAddress))
+                mediaNode.Nodes.Add( _
+                    String.Format("NextWritable: {0}", media.NextWritable))
+                mediaNode.Nodes.Add( _
+                    String.Format("FreeBlocks: {0}", media.FreeBlocks))
+            mediaNode.Nodes.Add( _
+               String.Format("MediaType: {0}", media.MediaType))
+            mediaNode.Nodes.Add( _
+               String.Format("Flags: {0}", media.MediaFlags))
+            Else
+                mediaNode.Nodes.Add("No media present")
+            End If
+            recorder.CloseExclusive()
+
+            Dim props As DiscRecorderProperties = recorder.Properties
+            Dim propertyNode As TreeNode = recorderNode.Nodes.Add("Properties")
+            Dim prop As [Property]
+            For Each prop In props
+                propertyNode.Nodes.Add(String.Format("[{0}] {1} = {2}", _
+                    prop.Id, prop.Name, prop.Value))
+            Next
+            props.Dispose()
+            recordersNode.ExpandAll()
+
+            dm.Dispose()
+
+            Cursor.Current = Cursors.Default
+
+        Next
+
+    End Sub
+
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper_demonstration.html">IMAPI Wrapper Demonstration</a>&#160;.&#160;IMAPIPropertiesVB</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

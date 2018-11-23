@@ -1,0 +1,232 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Most Recently Used (MRU) File Lists</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>A drop-in Most Recently Used (MRU) File List class</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>A quick and reliable way of providing a Most-Recently Used file list in your application</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\filemru.gif" alt="[Most Recently Used File List Example]" width="289" height="238"></p>
+	<p><a href="filemru.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cMRUFileList Class (2kb)</a></br>
+	<a href="filemrud.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cMRUFileList Demo Application (17kb)</a></p>
+	<br>
+	<p>
+	cMRUFileList gives you a quick and reliable way to provide a Most-Recently Used (MRU) file list in your
+	application.  I wrote this because I found I'd tried rewritten the same code and had the same problems trying
+	to get it to work once too many!<br><br>
+	The class is simple really, but at least I can be sure it works. It supports:
+	<ul>
+	<li> Loading and saving the MRU list to the Registry (via my <a href="..\inireg\registry.htm" target="vbamain">
+	Registry class</a>).
+	<li> Customising the number of MRU entries to hold.
+	</ul>
+	Here is how you use it:	<br><br>
+	<b>To Load the Stored MRU List</b><br>
+	My class assumes that you will want to use the registry to hold other application information.  It expects
+	to receive a reference to a cRegistry class which is already pointing to the key and section where your
+	application is storing its persistent information:
+</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp Dim cR As New cRegistry <br>
+&nbsp &nbsp cR.ClassKey = HKEY_CURRENT_USER <br>
+&nbsp &nbsp cR.SectionKey = "Software\vbaccelerator\MRUDemo" <br>
+&nbsp &nbsp m_cMRU.Load cR <br>
+&nbsp &nbsp m_cMRU.MaxFileCount = 4 <br>
+&nbsp &nbsp pDisplayMRU
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<b>To Display The MRU List</b><br>
+	There are various ways to use menus to display the information.  The simplest way is to create sufficient
+	menu entries in a menu array and set them to invisible in the menu editor.  Then you do not have to worry
+	about loading new menu items, you just loop through the entries in the MRU list and make the menu item
+	visible/invisible as appropriate:
+	</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+Private Sub pDisplayMRU<br>
+Dim iFile As Long <br>
+&nbsp &nbsp ' Here I am assuming the MRU is held in a menu array <br>
+&nbsp &nbsp ' called mnuFile, to start at Index 2:<br>
+&nbsp &nbsp For iFile = 1 To m_cMRU.FileCount <br>
+&nbsp &nbsp &nbsp &nbsp <br>
+&nbsp &nbsp &nbsp &nbsp If (m_cMRU.FileExists(iFile)) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If iFile = 1 Then mnuFile(iFile + 1).Checked = True <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp mnuFile(iFile + 1).Visible = True <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp mnuFile(iFile + 1).Caption = m_cMRU.MenuCaption(iFile) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp mnuFile(iFile + 1).Tag = CStr(iFile) <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp Next iFile <br>
+&nbsp &nbsp mnuFile(2 + m_cMRU.FileCount).Visible = (m_cMRU.FileCount > 0) <br>
+<br>
+End Sub<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<b>Whenever a new file is opened, or choosen from the MRU List</b><br>
+	Call the m_cMRU.AddFile method with the chosen file as the parameter and then redisplay the MRU list.  
+	The AddFile
+	method will check whether the file in question is already in the list, if it is it
+	will simply reorder it to the top of the list.<br><br>
+
+	<b>To Save the Stored MRU List</b><br>
+	This works in a very similar way to the Load method:
+	</p>
+<font face="Lucida Console,courier new" size="2">
+<p>
+&nbsp &nbsp Dim cR As New cRegistry <br>
+&nbsp &nbsp cR.ClassKey = HKEY_CURRENT_USER <br>
+&nbsp &nbsp cR.SectionKey = "Software\vbaccelerator\MRUDemo" <br>
+&nbsp &nbsp m_cMRU.Save cR <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+<p>
+
+
+	<br><br>
+
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a>
+	<br><br>
+	</p>
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

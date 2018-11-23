@@ -1,0 +1,1169 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: mDIBSection.bas</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: mDIBSection.bas" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) ScreenMess - Realtime Drawing with DIB Sections</a>&#160;.&#160;<a href="screenmess.html">ScreenMess</a>&#160;.&#160;mDIBSection.bas</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="screenmess.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ScreenMess</a> (45K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12474</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12474&type=zip&title=screenmess_2ezip_5fmdibsection.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: mDIBSection.bas</h1><pre>Attribute VB_Name = "mDIBSectEffects"
+Option Explicit
+
+Public Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _
+    lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long)
+
+Public Type SAFEARRAYBOUND
+    cElements As Long
+    lLbound As Long
+End Type
+Public Type SAFEARRAY2D
+    cDims As Integer
+    fFeatures As Integer
+    cbElements As Long
+    cLocks As Long
+    pvData As Long
+    Bounds(0 To 1) As SAFEARRAYBOUND
+End Type
+Public Declare Function VarPtrArray Lib "msvbvm50.dll" Alias "VarPtr" (Ptr() As
+ Any) As Long
+
+Private Declare Function CreateDCAsNull Lib "gdi32" Alias "CreateDCA" ( _
+   ByVal lpDriverName As String, lpDeviceName As Any, lpOutput As Any,
+    lpInitData As Any) As Long
+
+Public Enum EChannelConstants
+   eBlue = 1
+   eGreen = 2
+   eRed = 3
+End Enum
+Private m_bChannel(1 To 3) As Boolean
+Public Enum EFilterConstants
+   eRFMedian
+   eRFMinimum
+   eRFMaximum
+End Enum
+Public Enum EFilterStandardTypes
+    [_Min]
+    eRFBlur
+    eRFBlurMore
+    eRFSoften
+    eRFvSoftenMore
+    eRFSharpen
+    eRFSharpenMore
+    [_Max]
+End Enum
+Private m_eFilterType As EFilterStandardTypes
+Private m_iSize As Long
+Private m_iWeight As Long
+Private m_iOffset As Long
+Private m_iFilt() As Long
+
+
+Private Property Let FilterType(ByVal eType As EFilterStandardTypes)
+    If (eType &gt; EFilterTypes.[_Min] And eType &lt; EFilterTypes.[_Max]) Then
+        m_eFilterType = eType
+        If (m_eFilterType &lt;&gt; eCustom) Then
+            pBuildFilterArray
+        End If
+    Else
+        Err.Raise eeFilterErrorBase + 2, App.EXEName &amp; ".cImageProcess",
+         "Invalid filter types."
+    End If
+End Property
+
+Private Property Let FilterArraySize(ByVal lSize As Long)
+    If (lSize Mod 2) = 0 Then
+        Err.Raise eeFilterErrorBase + 1, App.EXEName &amp; ".cImageProcess", "Size
+         must be an odd number"
+    Else
+        If (lSize &lt; 0) Or (lSize &gt; 9) Then
+            Err.Raise eeFilterErrorBase + 2, App.EXEName &amp; ".cImageProcess",
+             "Invalid size.  Size should be an odd number from 3 to 9"
+        Else
+            m_iSize = lSize
+            m_iOffset = m_iSize \ 2
+            ReDim m_iFilt(-m_iOffset To m_iOffset, -m_iOffset To m_iOffset) As
+             Long
+        End If
+    End If
+End Property
+Private Sub pBuildFilterArray()
+Dim i As Long, j As Long
+Dim iX As Long, iY As Long, iLM As Long
+
+    m_iWeight = 0
+    
+    Select Case m_eFilterType
+    Case eBlur, eBlurMore
+        If (m_eFilterType = eBlur) Then
+            FilterArraySize = 3
+        Else
+            FilterArraySize = 5
+        End If
+        For i = -m_iOffset To m_iOffset
+            For j = -m_iOffset To m_iOffset
+                m_iFilt(i, j) = 1
+                m_iWeight = m_iWeight + m_iFilt(i, j)
+            Next j
+        Next i
+        
+    Case eSoften, eSoftenMore
+        If (m_eFilterType = eSoften) Then
+            FilterArraySize = 3
+        Else
+            FilterArraySize = 5
+        End If
+        For i = -m_iOffset To m_iOffset
+            For j = -m_iOffset To m_iOffset
+                
+                iX = Abs(i)
+                iY = Abs(j)
+                If (iX &gt; iY) Then
+                    iLM = iX
+                Else
+                    iLM = iY
+                End If
+                
+                If (iLM = 0) Then
+                    m_iFilt(i, j) = (m_iSize * (m_iSize / 2#))
+                Else
+                    m_iFilt(i, j) = m_iOffset - iLM + 1
+                End If
+                Debug.Print m_iFilt(i, j); ",";
+                m_iWeight = m_iWeight + m_iFilt(i, j)
+            Next j
+            Debug.Print
+        Next i
+        Debug.Print m_iWeight
+        
+    Case eSharpen, eSharpenMore
+        FilterArraySize = 3
+        If (m_eFilterType = eSharpen) Then
+            m_iFilt(-1, -1) = -1: m_iFilt(-1, 0) = -1: m_iFilt(-1, 1) = -1
+            m_iFilt(0, -1) = -1: m_iFilt(0, 0) = 15: m_iFilt(0, 1) = -1
+            m_iFilt(1, -1) = -1: m_iFilt(1, 0) = -1: m_iFilt(1, 1) = -1
+        Else
+            m_iFilt(-1, -1) = 0: m_iFilt(-1, 0) = -1: m_iFilt(-1, 1) = 0
+            m_iFilt(0, -1) = -1: m_iFilt(0, 0) = 5: m_iFilt(0, 1) = -1
+            m_iFilt(1, -1) = 0: m_iFilt(1, 0) = -1: m_iFilt(1, 1) = 0
+        End If
+        For i = -m_iOffset To m_iOffset
+            For j = -m_iOffset To m_iOffset
+                m_iWeight = m_iWeight + m_iFilt(i, j)
+            Next j
+        Next i
+        
+    Case eEmboss
+        FilterArraySize = 3
+        m_iFilt(-1, -1) = -1: m_iFilt(1, 1) = 1
+        m_iWeight = 1
+        
+    End Select
+End Sub
+
+
+Public Property Get DoChannel(ByVal eChannel As EChannelConstants) As Boolean
+   DoChannel = m_bChannel(eChannel)
+End Property
+Public Property Let DoChannel(ByVal eChannel As EChannelConstants, ByVal bState
+ As Boolean)
+   m_bChannel(eChannel) = bState
+End Property
+
+Public Sub BlowApart(ByRef cDibPic As cDIBSection, ByRef cDibDisp As
+ cDIBSection, ByVal lAmount As Long)
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim x As Long, y As Long
+Dim xC As Long, yC As Long
+Dim xNew As Long, yNew As Long
+Dim xEnd As Long, yEnd As Long
+Dim bFinish As Boolean
+    
+    ' Get the bits in the from DIB section:
+    With tSAPic
+        .cbElements = 1
+        .cDims = 2
+        .Bounds(0).lLbound = 0
+        .Bounds(0).cElements = cDibPic.Height
+        .Bounds(1).lLbound = 0
+        .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+        .pvData = cDibPic.DIBSectionBitsPtr
+    End With
+    CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+    With tSADisp
+        .cbElements = 1
+        .cDims = 2
+        .Bounds(0).lLbound = 0
+        .Bounds(0).cElements = cDibDisp.Height
+        .Bounds(1).lLbound = 0
+        .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+        .pvData = cDibDisp.DIBSectionBitsPtr
+    End With
+    CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+    ' Copy the display picture to the dib:
+    cDibPic.LoadPictureBlt cDibDisp.hDC
+
+    xEnd = (cDibPic.Width - 1) * 3
+    yEnd = cDibPic.Height - 1
+    xC = xEnd \ 2
+    yC = yEnd \ 2
+    
+    For y = 0 To yEnd
+        For x = 0 To xEnd Step 3
+            If (bPic(x, y) &lt;&gt; 0) Then
+                bFinish = False
+                If (x &gt; xC) Then
+                    xNew = x + Rnd * lAmount * 3
+                    If (xNew &gt; xEnd) Then
+                        bFinish = True
+                    End If
+                Else
+                    xNew = x - Rnd * lAmount * 3
+                    If (xNew &lt; 0) Then
+                        bFinish = True
+                    End If
+                End If
+                
+                If (y &lt; yC) Then
+                    yNew = y - Rnd * lAmount
+                    If (yNew &lt; 0) Then
+                        bFinish = True
+                    End If
+                Else
+                    yNew = y + Rnd * lAmount
+                    If (yNew &gt; yEnd) Then
+                        bFinish = True
+                    End If
+                End If
+                
+                If Not (bFinish) Then
+                    bDisp(xNew, yNew) = bPic(x, y)
+                    bDisp(xNew + 1, yNew) = bPic(x + 1, y)
+                    bDisp(xNew + 2, yNew) = bPic(x + 2, y)
+                    
+                    bPic(xNew, yNew) = bPic(x, y)
+                    bPic(xNew + 1, yNew) = bPic(x + 1, y)
+                    bPic(xNew + 2, yNew) = bPic(x + 2, y)
+                End If
+            End If
+        Next x
+    Next y
+    
+    ' Clear the temporary array descriptor
+    ' (This does not appear to be necessary, but
+    ' for safety do it anyway)
+    CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+    CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+
+
+End Sub
+Public Sub DoStatic2( _
+      ByRef cDibPic As cDIBSection, _
+      ByRef cDibDisp As cDIBSection, _
+      ByRef cDibMask As cDIBSection, _
+      ByVal lX As Long, ByVal lY As Long, _
+      ByVal lAmount As Long _
+   )
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim tSAMask As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim bMask() As Byte
+Dim x As Long, y As Long, xC As Long, yC As Long, xNew As Long, yNew As Long
+Dim xInWork As Long, yInWork As Long, xInWorkStart As Long
+Dim xStart As Long, xEnd As Long, yStart As Long, yEnd As Long
+Dim lR As Long, lG As Long, lB As Long
+Dim lOR As Long, lOG As Long, lOB As Long
+Dim lOffR As Long, lOffG As Long, lOffB As Long
+Dim lColour As Long
+Dim bFinish As Boolean
+    
+   ' Get the bits in the from DIB section:
+   With tSAPic
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibPic.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+       .pvData = cDibPic.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+   With tSADisp
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibDisp.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+       .pvData = cDibDisp.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+   With tSAMask
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibMask.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibMask.BytesPerScanLine()
+       .pvData = cDibMask.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bMask()), VarPtr(tSAMask), 4
+
+   xStart = lX * 3
+   xEnd = xStart + (cDibDisp.Width - 1) * 3
+   xInWork = 0
+   If (xStart &lt; 0) Then
+      xInWork = -xStart
+      xInWorkStart = xInWork
+      xStart = 0
+   End If
+   If (xEnd &gt; (cDibPic.Width - 1) * 3) Then
+      xEnd = (cDibPic.Width - 1) * 3
+   End If
+   yStart = cDibPic.Height - lY - cDibDisp.Height
+   yEnd = yStart + cDibDisp.Height - 1
+   yInWork = 0
+   If (yStart &lt; 0) Then
+      yInWork = -yStart
+      yStart = 0
+   End If
+   If (yEnd &gt; cDibPic.Height - 1) Then
+      yEnd = cDibPic.Height - 1
+   End If
+    
+    xC = xStart + (xEnd - xStart) \ 2
+    yC = yEnd + (yEnd - yStart) \ 2
+   
+    ' Do filter on pict into pict2
+   cDibPic.PaintPicture cDibDisp.hDC, 0, 0, cDibDisp.Width, cDibDisp.Height,
+    lX, lY
+   
+   For y = yStart To yEnd
+      For x = xStart To xEnd Step 3
+                  
+         lB = bPic(x, y)
+         lG = bPic(x + 1, y)
+         lR = bPic(x + 2, y)
+                
+         bFinish = False
+         If (x &gt; xC) Then
+             xNew = x + Int(Rnd * lAmount) * 3
+             If (xNew &gt; xEnd) Then
+                 bFinish = True
+             End If
+         Else
+             xNew = x - Int(Rnd * lAmount) * 3
+             If (xNew &lt; xStart) Then
+                 bFinish = True
+             End If
+         End If
+         
+         If (y &lt; yC) Then
+             yNew = y - Int(Rnd * lAmount)
+             If (yNew &lt; yStart) Then
+                 bFinish = True
+             End If
+         Else
+             yNew = y + Int(Rnd * lAmount)
+             If (yNew &gt; yEnd) Then
+                 bFinish = True
+             End If
+         End If
+         
+         If Not (bFinish) Then
+            If bMask(xInWork + (xNew - x), yInWork + (yNew - y)) &gt; 8 Then
+               bDisp(xInWork + (xNew - x), yInWork + (yNew - y)) = lB
+               bDisp(xInWork + 1 + (xNew - x), yInWork + (yNew - y)) = lG
+               bDisp(xInWork + 2 + (xNew - x), yInWork + (yNew - y)) = lR
+            End If
+         End If
+         
+         xInWork = xInWork + 3
+      Next ' speed...
+      xInWork = xInWorkStart
+      yInWork = yInWork + 1
+   Next
+
+   ' Clear the temporary array descriptors:
+   CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bMask), 0&amp;, 4
+
+End Sub
+Public Sub DoStatic( _
+      ByRef cDibPic As cDIBSection, _
+      ByRef cDibDisp As cDIBSection, _
+      ByRef cDibMask As cDIBSection, _
+      ByVal lX As Long, ByVal lY As Long, _
+      ByVal lAmount As Long _
+   )
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim tSAMask As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim bMask() As Byte
+Dim x As Long, y As Long
+Dim xInWork As Long, yInWork As Long, xInWorkStart As Long
+Dim xStart As Long, xEnd As Long, yStart As Long, yEnd As Long
+Dim lR As Long, lG As Long, lB As Long
+Dim lOR As Long, lOG As Long, lOB As Long
+Dim lOffR As Long, lOffG As Long, lOffB As Long
+Dim lColour As Long
+    
+   ' Get the bits in the from DIB section:
+   With tSAPic
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibPic.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+       .pvData = cDibPic.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+   With tSADisp
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibDisp.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+       .pvData = cDibDisp.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+   With tSAMask
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibMask.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibMask.BytesPerScanLine()
+       .pvData = cDibMask.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bMask()), VarPtr(tSAMask), 4
+
+   xStart = lX * 3
+   xEnd = xStart + (cDibDisp.Width - 1) * 3
+   xInWork = 0
+   If (xStart &lt; 0) Then
+      xInWork = -xStart
+      xInWorkStart = xInWork
+      xStart = 0
+   End If
+   If (xEnd &gt; (cDibPic.Width - 1) * 3) Then
+      xEnd = (cDibPic.Width - 1) * 3
+   End If
+   yStart = cDibPic.Height - lY - cDibDisp.Height
+   yEnd = yStart + cDibDisp.Height - 1
+   yInWork = 0
+   If (yStart &lt; 0) Then
+      yInWork = -yStart
+      yStart = 0
+   End If
+   If (yEnd &gt; cDibPic.Height - 1) Then
+      yEnd = cDibPic.Height - 1
+   End If
+   
+   For y = yStart To yEnd
+      For x = xStart To xEnd Step 3
+         
+         lColour = Rnd * &amp;HFFFFFF
+         lOR = (lColour And &amp;HFF&amp;)
+         lOG = (lColour And &amp;HFF00&amp;) \ &amp;H100&amp;
+         lOB = (lColour And &amp;HFF0000) \ &amp;H10000
+         
+         lB = bPic(x, y)
+         lG = bPic(x + 1, y)
+         lR = bPic(x + 2, y)
+         
+         If (m_bChannel(1)) Then
+            lOffB = lOB - lB
+            lB = lB + lAmount * ((lOffB * bMask(xInWork, yInWork)) \ 255) \ 255
+         End If
+         If (m_bChannel(2)) Then
+            lOffG = lOG - lG
+            lG = lG + lAmount * ((lOffG * bMask(xInWork, yInWork)) \ 255) \ 255
+         End If
+         If m_bChannel(3) Then
+            lOffR = lOB - lR
+            lR = lR + lAmount * ((lOffR * bMask(xInWork, yInWork)) \ 255) \ 255
+         End If
+         
+         bDisp(xInWork, yInWork) = Abs(lB)
+         bDisp(xInWork + 1, yInWork) = Abs(lG)
+         bDisp(xInWork + 2, yInWork) = Abs(lR)
+         
+         xInWork = xInWork + 3
+      Next ' speed...
+      xInWork = xInWorkStart
+      yInWork = yInWork + 1
+   Next
+
+   ' Clear the temporary array descriptors:
+   CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bMask), 0&amp;, 4
+
+End Sub
+Public Sub DoFade( _
+      ByRef cDibPic As cDIBSection, _
+      ByRef cDibDisp As cDIBSection, _
+      ByRef cDibMask As cDIBSection, _
+      ByVal lX As Long, ByVal lY As Long, _
+      ByVal lAmount As Long _
+   )
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim tSAMask As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim bMask() As Byte
+Dim x As Long, y As Long
+Dim xInWork As Long, yInWork As Long, xInWorkStart As Long
+Dim xStart As Long, xEnd As Long, yStart As Long, yEnd As Long
+Dim lR As Long, lG As Long, lB As Long
+Dim lThisAmount As Long
+    
+   ' Get the bits in the from DIB section:
+   With tSAPic
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibPic.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+       .pvData = cDibPic.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+   With tSADisp
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibDisp.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+       .pvData = cDibDisp.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+   With tSAMask
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibMask.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibMask.BytesPerScanLine()
+       .pvData = cDibMask.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bMask()), VarPtr(tSAMask), 4
+
+   xStart = lX * 3
+   xEnd = xStart + (cDibDisp.Width - 1) * 3
+   xInWork = 0
+   If (xStart &lt; 0) Then
+      xInWork = -xStart
+      xInWorkStart = xInWork
+      xStart = 0
+   End If
+   If (xEnd &gt; (cDibPic.Width - 1) * 3) Then
+      xEnd = (cDibPic.Width - 1) * 3
+   End If
+   yStart = cDibPic.Height - lY - cDibDisp.Height
+   yEnd = yStart + cDibDisp.Height - 1
+   yInWork = 0
+   If (yStart &lt; 0) Then
+      yInWork = -yStart
+      yStart = 0
+   End If
+   If (yEnd &gt; cDibPic.Height - 1) Then
+      yEnd = cDibPic.Height - 1
+   End If
+   
+   For y = yStart To yEnd
+      For x = xStart To xEnd Step 3
+         
+         lB = bPic(x, y)
+         lG = bPic(x + 1, y)
+         lR = bPic(x + 2, y)
+         
+         If (m_bChannel(1)) Then
+            lB = Abs(lB - bMask(xInWork, yInWork) * lAmount \ 255)
+            If (lB &gt; 255) Then lB = 255
+         End If
+         If (m_bChannel(2)) Then
+            lG = Abs(lG - bMask(xInWork, yInWork) * lAmount \ 255)
+            If (lG &gt; 255) Then lG = 255
+         End If
+         If m_bChannel(3) Then
+            lR = Abs(lR - bMask(xInWork, yInWork) * lAmount \ 255)
+            If (lR &gt; 255) Then lR = 255
+         End If
+         
+         bDisp(xInWork, yInWork) = Abs(lB)
+         bDisp(xInWork + 1, yInWork) = Abs(lG)
+         bDisp(xInWork + 2, yInWork) = Abs(lR)
+         
+         xInWork = xInWork + 3
+      Next ' speed...
+      xInWork = 0
+      yInWork = yInWork + 1
+   Next
+
+   ' Clear the temporary array descriptors:
+   CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bMask), 0&amp;, 4
+   
+End Sub
+Public Sub DoPaint( _
+      ByRef cDibPic As cDIBSection, _
+      ByRef cDibDisp As cDIBSection, _
+      ByRef cDibMask As cDIBSection, _
+      ByVal lX As Long, ByVal lY As Long, _
+      ByVal lColour As Long, _
+      ByVal lAmount As Long _
+   )
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim tSAMask As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim bMask() As Byte
+Dim x As Long, y As Long
+Dim xInWork As Long, yInWork As Long, xInWorkStart As Long
+Dim xStart As Long, xEnd As Long, yStart As Long, yEnd As Long
+Dim lR As Long, lG As Long, lB As Long
+Dim lOR As Long, lOG As Long, lOB As Long
+Dim lOffR As Long, lOffG As Long, lOffB As Long
+Dim lThisAmount As Long
+    
+   ' Get the bits in the from DIB section:
+   With tSAPic
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibPic.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+       .pvData = cDibPic.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+   With tSADisp
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibDisp.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+       .pvData = cDibDisp.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+   With tSAMask
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibMask.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibMask.BytesPerScanLine()
+       .pvData = cDibMask.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bMask()), VarPtr(tSAMask), 4
+
+   xStart = lX * 3
+   xEnd = xStart + (cDibDisp.Width - 1) * 3
+   xInWork = 0
+   If (xStart &lt; 0) Then
+      xInWork = -xStart
+      xInWorkStart = xInWork
+      xStart = 0
+   End If
+   If (xEnd &gt; (cDibPic.Width - 1) * 3) Then
+      xEnd = (cDibPic.Width - 1) * 3
+   End If
+   yStart = cDibPic.Height - lY - cDibDisp.Height
+   yEnd = yStart + cDibDisp.Height - 1
+   yInWork = 0
+   If (yStart &lt; 0) Then
+      yInWork = -yStart
+      yStart = 0
+   End If
+   If (yEnd &gt; cDibPic.Height - 1) Then
+      yEnd = cDibPic.Height - 1
+   End If
+   lOR = (lColour And &amp;HFF&amp;)
+   lOG = (lColour And &amp;HFF00&amp;) \ &amp;H100&amp;
+   lOB = (lColour And &amp;HFF0000) \ &amp;H10000
+   
+   For y = yStart To yEnd
+      For x = xStart To xEnd Step 3
+         
+         lB = bPic(x, y)
+         lG = bPic(x + 1, y)
+         lR = bPic(x + 2, y)
+         
+         If m_bChannel(1) Then
+            lOffB = lOB - lB
+            lB = lB + lAmount * ((lOffB * bMask(xInWork, yInWork)) \ 255) \ 255
+         End If
+         If m_bChannel(2) Then
+            lOffG = lOG - lG
+            lG = lG + lAmount * ((lOffG * bMask(xInWork, yInWork)) \ 255) \ 255
+         End If
+         If m_bChannel(3) Then
+            lOffR = lOB - lR
+            lR = lR + lAmount * ((lOffR * bMask(xInWork, yInWork)) \ 255) \ 255
+         End If
+         
+         bDisp(xInWork, yInWork) = Abs(lB)
+         bDisp(xInWork + 1, yInWork) = Abs(lG)
+         bDisp(xInWork + 2, yInWork) = Abs(lR)
+         
+         xInWork = xInWork + 3
+      Next ' speed...
+      xInWork = xInWorkStart
+      yInWork = yInWork + 1
+   Next
+
+   ' Clear the temporary array descriptors:
+   CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bMask), 0&amp;, 4
+   
+End Sub
+
+Public Function DoRankFilter( _
+      ByRef cDibPic As cDIBSection, _
+      ByRef cDibDisp As cDIBSection, _
+      ByRef cDibMask As cDIBSection, _
+      ByVal lX As Long, ByVal lY As Long, _
+      ByVal eType As EFilterConstants, _
+      ByVal iShiftX As Integer, ByVal iShiftY As Integer _
+   ) As Boolean
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim tSAMask As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim bMask() As Byte
+Dim x As Long, y As Long
+Dim xInWork As Long, yInWork As Long, xInWorkStart As Long
+Dim xThisInWork As Long, yThisInWork As Long
+Dim xStart As Long, xEnd As Long, xMid As Long, yStart As Long, yEnd As Long,
+ yMid As Long
+Dim rgbOffset As Long, xOffset As Long
+Dim r As Long, g As Long, b As Long
+Dim lR As Long, lG As Long, lB As Long
+Dim lOffR As Long, lOffG As Long, lOffB As Long
+Dim i As Long, j As Long, yMax As Long, xMax As Long
+Dim lTIme As Long
+Dim rR As Long, rB As Long, rG As Long
+Dim iOffset As Long, iWeight As Long
+       
+   ' Get the bits in the from DIB section:
+   With tSAPic
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibPic.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+       .pvData = cDibPic.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+   With tSADisp
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibDisp.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+       .pvData = cDibDisp.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+   With tSAMask
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibMask.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibMask.BytesPerScanLine()
+       .pvData = cDibMask.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bMask()), VarPtr(tSAMask), 4
+
+   iOffset = 1
+   iWeight = 9
+   rgbOffset = iOffset * 3
+
+   xStart = lX * 3 + rgbOffset
+   xEnd = xStart + (cDibDisp.Width - 1) * 3 - rgbOffset
+   xInWork = rgbOffset
+   xInWorkStart = xInWork
+   If (xStart &lt; rgbOffset) Then
+      xInWork = -xStart + rgbOffset
+      xInWorkStart = xInWork
+      xStart = rgbOffset
+   End If
+   If (xEnd &gt; (cDibPic.Width - 1) * 3 - rgbOffset) Then
+      xEnd = (cDibPic.Width - 1) * 3 - rgbOffset
+   End If
+   yStart = cDibPic.Height - lY - cDibDisp.Height + iOffset
+   yEnd = yStart + cDibDisp.Height - 1 - iOffset
+   yInWork = iOffset
+   If (yStart &lt; iOffset) Then
+      yInWork = -yStart + iOffset + iShiftY
+      yStart = iOffset
+   End If
+   If (yEnd &gt; cDibPic.Height - 1 - iOffset) Then
+      yEnd = cDibPic.Height - 1 - iOffset
+   End If
+   xMid = xStart + (xEnd - xStart) \ 2
+   yMid = yStart + (yEnd - yStart) \ 2
+    
+    ' Do filter on pict into pict2
+   cDibPic.PaintPicture cDibDisp.hDC, 0, 0, cDibDisp.Width, cDibDisp.Height,
+    lX, lY
+   
+   For y = yStart To yEnd
+      For x = xStart To xEnd Step 3
+            
+         lB = bPic(x, y)
+         lG = bPic(x + 1, y)
+         lR = bPic(x + 2, y)
+         
+         If eType = eRFMinimum Then
+             rR = 255: rG = 255: rB = 255
+         Else
+             rR = 0: rG = 0: rB = 0
+         End If
+         
+         For i = -iOffset To iOffset
+             xOffset = i * 3
+             For j = -iOffset To iOffset
+                 Select Case eType
+                 Case eRFMinimum
+                     If bPic(x + xOffset, y + j) &lt; rB Then
+                         rB = bPic(x + xOffset, y + j)
+                     End If
+                     If bPic(x + 1 + xOffset, y + j) &lt; rG Then
+                         rG = bPic(x + 1 + xOffset, y + j)
+                     End If
+                     If bPic(x + 2 + xOffset, y + j) &lt; rR Then
+                         rR = bPic(x + 2 + xOffset, y + j)
+                     End If
+                 Case eRFMedian
+                     rB = rB + bPic(x + xOffset, y + j)
+                     rG = rG + bPic(x + 1 + xOffset, y + j)
+                     rR = rR + bPic(x + 2 + xOffset, y + j)
+                 Case eRFMaximum
+                     If bPic(x + xOffset, y + j) &gt; rB Then
+                         rB = bPic(x + xOffset, y + j)
+                     End If
+                     If bPic(x + 1 + xOffset, y + j) &gt; rG Then
+                         rG = bPic(x + 1 + xOffset, y + j)
+                     End If
+                     If bPic(x + 2 + xOffset, y + j) &gt; rR Then
+                         rR = bPic(x + 2 + xOffset, y + j)
+                     End If
+                 End Select
+             Next j
+         Next i
+         If (eType = eRFMedian) Then
+             rR = rR \ iWeight: rG = rG \ iWeight: rB = rB \ iWeight
+         End If
+         
+         If (rR &lt; 0) Then rR = 0
+         If (rG &lt; 0) Then rG = 0
+         If (rB &lt; 0) Then rB = 0
+         If (rR &gt; 255) Then rR = 255
+         If (rG &gt; 255) Then rG = 255
+         If (rB &gt; 255) Then rB = 255
+         
+         If m_bChannel(1) Then
+            lOffB = rB - lB
+            lB = lB + ((lOffB * bMask(xInWork, yInWork)) \ 255)
+         End If
+         If m_bChannel(2) Then
+            lOffG = rG - lG
+            lG = lG + ((lOffG * bMask(xInWork, yInWork)) \ 255)
+         End If
+         If m_bChannel(3) Then
+            lOffR = rR - lR
+            lR = lR + ((lOffR * bMask(xInWork, yInWork)) \ 255)
+         End If
+         
+         If bMask(xInWork, yInWork) &gt; 8 Then
+            xThisInWork = xInWork + iShiftX * 3
+            yThisInWork = yInWork + iShiftY
+         Else
+            xThisInWork = xInWork
+            yThisInWork = yInWork
+         End If
+         
+         
+         bDisp(xThisInWork, yThisInWork) = lB
+         bDisp(xThisInWork + 1, yThisInWork) = lG
+         bDisp(xThisInWork + 2, yThisInWork) = lR
+            
+         xInWork = xInWork + 3
+      Next ' speed...
+            
+      xInWork = xInWorkStart
+      yInWork = yInWork + 1
+   Next
+      
+         
+   ' clear the temporary array descriptor
+   ' without destroying the local temporary array
+   CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bMask), 0&amp;, 4
+               
+   
+   DoRankFilter = True
+        
+End Function
+Public Function DoStandardFilter( _
+      ByRef cDibPic As cDIBSection, _
+      ByRef cDibDisp As cDIBSection, _
+      ByRef cDibMask As cDIBSection, _
+      ByVal lX As Long, ByVal lY As Long, _
+      ByVal eType As EFilterStandardTypes, _
+      ByVal iShiftX As Integer, ByVal iShiftY As Integer _
+   ) As Boolean
+Dim tSAPic As SAFEARRAY2D
+Dim tSADisp As SAFEARRAY2D
+Dim tSAMask As SAFEARRAY2D
+Dim bPic() As Byte
+Dim bDisp() As Byte
+Dim bMask() As Byte
+Dim x As Long, y As Long
+Dim xInWork As Long, yInWork As Long, xInWorkStart As Long
+Dim xThisInWork As Long, yThisInWork As Long
+Dim xStart As Long, xEnd As Long, xMid As Long, yStart As Long, yEnd As Long,
+ yMid As Long
+Dim rgbOffset As Long, xOffset As Long
+Dim r As Long, g As Long, b As Long
+Dim lR As Long, lG As Long, lB As Long
+Dim lOffR As Long, lOffG As Long, lOffB As Long
+Dim i As Long, j As Long, yMax As Long, xMax As Long
+Dim lTIme As Long
+Dim rR As Long, rB As Long, rG As Long
+Dim iOffset As Long, iWeight As Long
+Static eLastFilter As EFilterStandardTypes
+       
+   If (eLastFilter &lt;&gt; eType) Then
+      FilterType = eType
+      eLastFilter = eType
+   End If
+       
+   ' Get the bits in the from DIB section:
+   With tSAPic
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibPic.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibPic.BytesPerScanLine()
+       .pvData = cDibPic.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bPic()), VarPtr(tSAPic), 4
+
+   With tSADisp
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibDisp.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibDisp.BytesPerScanLine()
+       .pvData = cDibDisp.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bDisp()), VarPtr(tSADisp), 4
+
+   With tSAMask
+       .cbElements = 1
+       .cDims = 2
+       .Bounds(0).lLbound = 0
+       .Bounds(0).cElements = cDibMask.Height
+       .Bounds(1).lLbound = 0
+       .Bounds(1).cElements = cDibMask.BytesPerScanLine()
+       .pvData = cDibMask.DIBSectionBitsPtr
+   End With
+   CopyMemory ByVal VarPtrArray(bMask()), VarPtr(tSAMask), 4
+
+   iOffset = 1
+   iWeight = 9
+   rgbOffset = iOffset * 3
+
+   xStart = lX * 3 + rgbOffset * m_iOffset
+   xEnd = xStart + (cDibDisp.Width - 1) * 3 - rgbOffset
+   xInWork = rgbOffset
+   xInWorkStart = xInWork
+   If (xStart &lt; rgbOffset * m_iOffset) Then
+      xInWork = -xStart + rgbOffset * m_iOffset
+      xInWorkStart = xInWork
+      xStart = rgbOffset * 2
+   End If
+   If (xEnd &gt; (cDibPic.Width - 1) * 3 - rgbOffset * m_iOffset) Then
+      xEnd = (cDibPic.Width - 1) * 3 - rgbOffset * m_iOffset
+   End If
+   yStart = cDibPic.Height - lY - cDibDisp.Height + m_iOffset
+   yEnd = yStart + cDibDisp.Height - 1 - m_iOffset
+   yInWork = m_iOffset
+   If (yStart &lt; m_iOffset) Then
+      yInWork = -yStart + m_iOffset + iShiftY
+      yStart = m_iOffset
+   End If
+   If (yEnd &gt; cDibPic.Height - 1 - m_iOffset) Then
+      yEnd = cDibPic.Height - 1 - m_iOffset
+   End If
+   xMid = xStart + (xEnd - xStart) \ 2
+   yMid = yStart + (yEnd - yStart) \ 2
+    
+    ' Do filter on pict into pict2
+   cDibPic.PaintPicture cDibDisp.hDC, 0, 0, cDibDisp.Width, cDibDisp.Height,
+    lX, lY
+   
+   For y = yStart To yEnd
+      For x = xStart To xEnd Step 3
+            
+         lB = bPic(x, y)
+         lG = bPic(x + 1, y)
+         lR = bPic(x + 2, y)
+                 
+         rR = bMask(xInWork, yInWork) * lR \ 255: rB = bMask(xInWork, yInWork)
+          * lB \ 255: rG = bMask(xInWork, yInWork) * lG \ 255
+         For i = -m_iOffset To m_iOffset
+             xOffset = i * 3
+             For j = -m_iOffset To m_iOffset
+                 rR = rR + m_iFilt(i, j) * bPic(x + xOffset + 2, y + j)
+                 rG = rG + m_iFilt(i, j) * bPic(x + 1 + xOffset, y + j)
+                 rB = rB + m_iFilt(i, j) * bPic(x + xOffset, y + j)
+             Next j
+         Next i
+         rR = rR \ m_iWeight: rG = rG \ m_iWeight: rB = rB \ m_iWeight
+         If (rR &lt; 0) Then rR = 0
+         If (rG &lt; 0) Then rG = 0
+         If (rB &lt; 0) Then rB = 0
+         If (rR &gt; 255) Then rR = 255
+         If (rG &gt; 255) Then rG = 255
+         If (rB &gt; 255) Then rB = 255
+         
+                  
+         If m_bChannel(1) Then
+            lOffB = rB - lB
+            lB = lB + ((lOffB * bMask(xInWork, yInWork)) \ 255)
+         End If
+         If m_bChannel(2) Then
+            lOffG = rG - lG
+            lG = lG + ((lOffG * bMask(xInWork, yInWork)) \ 255)
+         End If
+         If m_bChannel(3) Then
+            lOffR = rR - lR
+            lR = lR + ((lOffR * bMask(xInWork, yInWork)) \ 255)
+         End If
+         
+         If bMask(xInWork, yInWork) &gt; 8 Then
+            xThisInWork = xInWork + iShiftX * 3
+            yThisInWork = yInWork + iShiftY
+         Else
+            xThisInWork = xInWork
+            yThisInWork = yInWork
+         End If
+         
+         
+         bDisp(xThisInWork, yThisInWork) = lB
+         bDisp(xThisInWork + 1, yThisInWork) = lG
+         bDisp(xThisInWork + 2, yThisInWork) = lR
+            
+         xInWork = xInWork + 3
+      Next ' speed...
+            
+      xInWork = xInWorkStart
+      yInWork = yInWork + 1
+   Next
+      
+         
+   ' clear the temporary array descriptor
+   ' without destroying the local temporary array
+   CopyMemory ByVal VarPtrArray(bPic), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bDisp), 0&amp;, 4
+   CopyMemory ByVal VarPtrArray(bMask), 0&amp;, 4
+               
+   
+   DoStandardFilter = True
+        
+End Function
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) ScreenMess - Realtime Drawing with DIB Sections</a>&#160;.&#160;<a href="screenmess.html">ScreenMess</a>&#160;.&#160;mDIBSection.bas</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

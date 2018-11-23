@@ -1,0 +1,428 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalEdit Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalEdit (vbAccelerator Rich Edit Control)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\RichEdit\\Release\\vbalEdit.ocx
+\par GUID:\tab \{47A8A3FA-3772-11D2-8014-00C04FA4EE99\}
+\par Version:\tab 9.1
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalEdit.
+\par 
+\par Public Enum ERECControlVersion
+\par \tab eRICHED32=0
+\par \tab eRICHED20=1
+\par End Enum
+\par Public Enum ERECFileTypes
+\par \tab SF_TEXT=1
+\par \tab SF_RTF=2
+\par End Enum
+\par Public Enum ERECFindTypeOptions
+\par \tab FR_DEFAULT=0
+\par \tab FR_DOWN=1
+\par \tab FR_WHOLEWORD=2
+\par \tab FR_MATCHCASE=4
+\par End Enum
+\par Public Enum ERECInbuiltShortcutConstants
+\par \tab _First=1
+\par \tab ercCut_CtrlX=1
+\par \tab ercCopy_CtrlC=2
+\par \tab ercPaste_CtrlV=3
+\par \tab ercUndo_CtrlZ=4
+\par \tab ercSelectAll_CtrlA=5
+\par \tab ercBold_CtrlB=6
+\par \tab ercItalic_CtrlI=7
+\par \tab ercUnderline_CtrlU=8
+\par \tab ercPrint_CtrlP=9
+\par \tab ercRedo_CtrlY=10
+\par \tab ercSuperscript_CtrlPlus=11
+\par \tab ercSubscript_CtrlMinus=12
+\par \tab ercNew_CtrlN=13
+\par \tab _Last=13
+\par End Enum
+\par Public Enum ERECLinkEventTypeCOnstants
+\par \tab ercLButtonDblClick=515
+\par \tab ercLButtonDown=513
+\par \tab ercLButtonUp=514
+\par \tab ercMouseMove=512
+\par \tab ercRButtonDblClick=518
+\par \tab ercRButtonDown=516
+\par \tab ercRBUttonUp=517
+\par \tab ercSetCursor=32
+\par End Enum
+\par Public Enum ERECOptionTypeConstants
+\par \tab ECO_AUTOWORDSELECTION=1
+\par \tab ECO_AUTOVSCROLL=64
+\par \tab ECO_AUTOHSCROLL=128
+\par \tab ECO_NOHIDESEL=256
+\par \tab ECO_READONLY=2048
+\par \tab ECO_WANTRETURN=4096
+\par \tab ECO_SAVESEL=32768
+\par \tab ECO_SELECTIONBAR=16777216
+\par \tab ECO_VERTICAL=4194304
+\par End Enum
+\par Public Enum ERECParagraphAlignmentConstants
+\par \tab ercParaLeft=1
+\par \tab ercParaCentre=3
+\par \tab ercParaRight=2
+\par \tab ercParaJustify=4
+\par End Enum
+\par Public Enum ERECParagraphLineSpacingConstants
+\par \tab ercLineSpacingSingle=0
+\par \tab ercLineSpacingOneAndAHalf=1
+\par \tab ercLineSpacingDouble=2
+\par \tab ercLineSpacingTwips=3
+\par \tab ercLineSpacingTwipsAnyMinimum=4
+\par \tab ercLineSpacingTwentiethLine=5
+\par End Enum
+\par Public Enum ERECParagraphNumberingConstants
+\par \tab ercParaNone=0
+\par \tab ercParaBullet=1
+\par \tab ercParaArabicNumbers_NS=2
+\par \tab ercParaLowerCaseLetters_NS=3
+\par \tab ercParaUpperCaseLetters_NS=4
+\par \tab ercParaLowerCaseRoman_NS=5
+\par \tab ercParaUpperCaseRoman_NS=6
+\par \tab ercParaCustomNumber_NS=7
+\par End Enum
+\par Public Enum ERECProgressTypeConstants
+\par \tab ercNone=0
+\par \tab ercLoad=1
+\par \tab ercSave=2
+\par \tab ercPrint=3
+\par End Enum
+\par Public Enum ERECSelectionTypeConstants
+\par \tab SEL_EMPTY=0
+\par \tab SEL_TEXT=1
+\par \tab SEL_OBJECT=2
+\par \tab SEL_MULTICHAR=4
+\par \tab SEL_MULTIOBJECT=8
+\par End Enum
+\par Public Enum ERECSetFormatRange
+\par \tab ercSetFormatAll=4
+\par \tab ercSetFormatSelection=1
+\par \tab ercSetFormatWord=3
+\par End Enum
+\par Public Enum ERECTabAlignmentConstants
+\par \tab ercTabOrdinary=0
+\par \tab ercTabCentre_NS=1
+\par \tab ercTabRight_NS=2
+\par \tab ercTabDecimal_NS=3
+\par \tab ercTabWordBarTab_NS=4
+\par End Enum
+\par Public Enum ERECTabLeaderConstants
+\par \tab ercTabNoLeader=0
+\par \tab ercTabDottedLeader_NS=1
+\par \tab ercTabDashedLeader_NS=2
+\par \tab ercTabUnderlinedLeader_NS=3
+\par \tab ercTabThickLineLeader_NS=4
+\par \tab ercTabDoubleLineLeader_NS=5
+\par End Enum
+\par Public Enum ERECTextTypes
+\par \tab ercTextNormal=0
+\par \tab ercTextSuperscript=1
+\par \tab ercTextSubscript=2
+\par End Enum
+\par Public Enum ERECUndoTypeConstants
+\par \tab ercUID_UNKNOWN=0
+\par \tab ercUID_TYPING=1
+\par \tab ercUID_DELETE=2
+\par \tab ercUID_DRAGDROP=3
+\par \tab ercUID_CUT=4
+\par \tab ercUID_PASTE=5
+\par End Enum
+\par Public Enum ERECViewModes
+\par \tab ercDefault=0
+\par \tab ercWordWrap=1
+\par \tab ercWYSIWYG=2
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalEdit.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b vbalRichEdit \{1DA7CB53-90C1-11D3-8E24-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Set Picture() As IPicture
+\par \plain\f3\fs20 Gets/sets the background picture tiled behind the control when Transparent is set to True.\plain\f3\fs20\b 
+\par Property Get Picture() As IPicture
+\par \plain\f3\fs20 Gets/sets the background picture tiled behind the control when Transparent is set to True.\plain\f3\fs20\b 
+\par Property Get Transparent() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control is transparent and displays the Picture or not.\plain\f3\fs20\b 
+\par Property Let Transparent(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control is transparent and displays the Picture or not.\plain\f3\fs20\b 
+\par Property Get TrapTab() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control traps the tab key or not.\plain\f3\fs20\b 
+\par Property Let TrapTab(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control traps the tab key or not.\plain\f3\fs20\b 
+\par Property Get TextLimit() As Long
+\par \plain\f3\fs20 Same as MaxLength (!)\plain\f3\fs20\b 
+\par Property Let TextLimit(RHS  As Long)
+\par \plain\f3\fs20 Same as MaxLength (!)\plain\f3\fs20\b 
+\par Property Get MaxLength() As Long
+\par \plain\f3\fs20 Gets/sets the maximum length of text or RTF loaded into the control.\plain\f3\fs20\b 
+\par Property Let MaxLength(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the maximum length of text or RTF loaded into the control.\plain\f3\fs20\b 
+\par Property Get Border() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control has a 3D border.\plain\f3\fs20\b 
+\par Property Let Border(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control has a 3D border.\plain\f3\fs20\b 
+\par Property Get ProgressType() As ERECProgressTypeConstants
+\par 
+\par Function FindText(ByVal sText As String, Optional ByVal eOptions As ERECFindTypeOptions=0, Optional ByVal bFindNext As Boolean=True, Optional ByVal bFIndInSelection As Boolean=False, ByVal lMin As Long, ByVal lMax As Long) As Long
+\par \plain\f3\fs20 Finds the specified text in the control.\plain\f3\fs20\b 
+\par Property Get LastFindText() As String
+\par 
+\par Property Get LastFindMode() As ERECFindTypeOptions
+\par 
+\par Property Get LastFindNext() As Boolean
+\par 
+\par Property Get Font() As Font
+\par \plain\f3\fs20 Gets/sets the font of the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Set Font() As Font
+\par \plain\f3\fs20 Gets/sets the font of the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get BackColor() As ULong
+\par \plain\f3\fs20 Gets/sets the background colour of the control.\plain\f3\fs20\b 
+\par Property Let BackColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the background colour of the control.\plain\f3\fs20\b 
+\par Property Get ForeColor() As ULong
+\par \plain\f3\fs20 Gets/sets the forecolour of the control.\plain\f3\fs20\b 
+\par Property Let ForeColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the forecolour of the control.\plain\f3\fs20\b 
+\par Property Get Text() As String
+\par \plain\f3\fs20 Gets the text contained in the control.\plain\f3\fs20\b 
+\par Property Let Text(RHS  As String)
+\par \plain\f3\fs20 Gets the text contained in the control.\plain\f3\fs20\b 
+\par Property Get Modified() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the contents of the control have been modified.\plain\f3\fs20\b 
+\par Property Let Modified(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the contents of the control have been modified.\plain\f3\fs20\b 
+\par Property Get TextOnly() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control acts as a text-only control or not.\plain\f3\fs20\b 
+\par Property Let TextOnly(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control acts as a text-only control or not.\plain\f3\fs20\b 
+\par Property Get RichEditOption(ByVal eOption As ERECOptionTypeConstants) As Boolean
+\par \plain\f3\fs20 Gets/sets various options affecting the operation of the RichEdit control.\plain\f3\fs20\b 
+\par Property Let RichEditOption(ByVal eOption As ERECOptionTypeConstants, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets various options affecting the operation of the RichEdit control.\plain\f3\fs20\b 
+\par Property Get LineForCharacterIndex(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Same as LineForCharacter (!)\plain\f3\fs20\b 
+\par Property Get SelectedText() As String
+\par \plain\f3\fs20 Gets the selected text from the control.\plain\f3\fs20\b 
+\par Property Get SelectedContents(ByVal eType As ERECFileTypes) As String
+\par \plain\f3\fs20 Gets the text or RichText in the current selection in the control.\plain\f3\fs20\b 
+\par Property Get TextInRange(ByVal lStart As Long, ByVal lEnd As Long) As Variant
+\par \plain\f3\fs20 Gets the text in a specified range without changing the selection.\plain\f3\fs20\b 
+\par Property Let AutoURLDetect(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control will automatically detect hyperlinks prefixed by certain URL identifiers (e.g. http:)\plain\f3\fs20\b 
+\par Property Get AutoURLDetect() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control will automatically detect hyperlinks prefixed by certain URL identifiers (e.g. http:)\plain\f3\fs20\b 
+\par Property Let ReadOnly(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control is read-only.\plain\f3\fs20\b 
+\par Property Get ReadOnly() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control is read-only.\plain\f3\fs20\b 
+\par Property Get LineCount() As Long
+\par \plain\f3\fs20 Returns the number of lines in the control.\plain\f3\fs20\b 
+\par Property Get FirstVisibleLine() As Long
+\par \plain\f3\fs20 Gets the 0 based index of the first visible line within the control.\plain\f3\fs20\b 
+\par Property Get CurrentLine() As Long
+\par \plain\f3\fs20 Gets the 0 based index of the line containing the cursor.\plain\f3\fs20\b 
+\par Property Get LineForCharacter(ByVal lCharacter As Long) As Variant
+\par \plain\f3\fs20 Gets the line containing the specified 0 based character index.\plain\f3\fs20\b 
+\par Property Get CharFromPos(ByVal xPixels As Long, ByVal yPixels As Long) As Variant
+\par \plain\f3\fs20 Gets the 0 based index of the character at the specified position in pixels.\plain\f3\fs20\b 
+\par Sub GetPosFromChar(ByVal lIndex As Long, ByVal xPixels As Long, ByVal yPixels As Long)
+\par \plain\f3\fs20 Returns the position in pixels for a given 0 based character index.\plain\f3\fs20\b 
+\par Sub GetSelection(ByVal lStart As Long, ByVal lEnd As Long)
+\par \plain\f3\fs20 Gets the start and end of the current position.\plain\f3\fs20\b 
+\par Sub SetSelection(ByVal lStart As Long, ByVal lEnd As Long)
+\par \plain\f3\fs20 Sets the current selection.\plain\f3\fs20\b 
+\par Sub SelectAll
+\par \plain\f3\fs20 Selects the contents of the control.\plain\f3\fs20\b 
+\par Sub SelectNone
+\par \plain\f3\fs20 Clears any selection in the control.\plain\f3\fs20\b 
+\par Property Get CanPaste() As Boolean
+\par \plain\f3\fs20 Returns whether Pasting is possible.\plain\f3\fs20\b 
+\par Property Get CanCopy() As Boolean
+\par \plain\f3\fs20 Returns whether the copying is possible.\plain\f3\fs20\b 
+\par Property Get CanUndo() As Boolean
+\par \plain\f3\fs20 Returns whether an Undo operation is possible.\plain\f3\fs20\b 
+\par Property Get CanRedo() As Boolean
+\par \plain\f3\fs20 Returns whether a Redo operation is possible.\plain\f3\fs20\b 
+\par Property Get UndoType() As ERECUndoTypeConstants
+\par \plain\f3\fs20 Gets the type of action which will be undone.\plain\f3\fs20\b 
+\par Property Get RedoType() As ERECUndoTypeConstants
+\par \plain\f3\fs20 Gets the type of action which will be redone.\plain\f3\fs20\b 
+\par Sub Cut
+\par \plain\f3\fs20 Performs the control's copy operation.  Check CanCut to see if it is possible to cut.\plain\f3\fs20\b 
+\par Sub Copy
+\par \plain\f3\fs20 Performs the control's copy operation.  Check CanCopy to see if it is possible to copy.\plain\f3\fs20\b 
+\par Sub Paste
+\par \plain\f3\fs20 Performs the control's Paste action.  Use CanPaste to determine if the Paste action can be performed.\plain\f3\fs20\b 
+\par Sub PasteSpecial
+\par \plain\f3\fs20 <For future development>\plain\f3\fs20\b 
+\par Sub Undo
+\par \plain\f3\fs20 Performs the control's Undo action.  Check the CanUndo property to see if the Undo action can be performed.\plain\f3\fs20\b 
+\par Sub Redo
+\par \plain\f3\fs20 Performs the control's Redo action.  Check the CanRedo property to see if this action is available.\plain\f3\fs20\b 
+\par Sub Delete
+\par \plain\f3\fs20 Performs the control's delete operation.  Check CanCut to see if it is possible to delete.\plain\f3\fs20\b 
+\par Sub InsertContents(ByVal eType As ERECFileTypes, ByVal sText As String)
+\par \plain\f3\fs20 Inserts a text or RTF string into the control.\plain\f3\fs20\b 
+\par Property Get ViewMode() As ERECViewModes
+\par \plain\f3\fs20 Gets/sets who the control lays out the text on screen.\plain\f3\fs20\b 
+\par Property Let ViewMode(RHS  As ERECViewModes)
+\par \plain\f3\fs20 Gets/sets who the control lays out the text on screen.\plain\f3\fs20\b 
+\par Property Get CharFormatRange() As ERECSetFormatRange
+\par \plain\f3\fs20 Gets/sets the range to which font formatting will apply.\plain\f3\fs20\b 
+\par Property Let CharFormatRange(RHS  As ERECSetFormatRange)
+\par \plain\f3\fs20 Gets/sets the range to which font formatting will apply.\plain\f3\fs20\b 
+\par Property Get CharacterCount() As Long
+\par \plain\f3\fs20 Returns the number of characters of text in the control.\plain\f3\fs20\b 
+\par Property Get FontBold() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the font is bold for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontBold(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the font is bold for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontItalic() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the font is italic for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontItalic(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the font is italic for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontUnderline() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the font is underlined for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontUnderline(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the font is underlined for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontStrikeOut() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the font is struck out for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontStrikeOut(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the font is struck out for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontColour() As ULong
+\par \plain\f3\fs20 Gets/sets the colour of the font for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontColour(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the colour of the font for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontBackColour() As ULong
+\par \plain\f3\fs20 Gets/sets the background colour of the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontBackColour(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the background colour of the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontLink() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the selection acts as a hyperlink.  Set CharFormatRange to selection.\plain\f3\fs20\b 
+\par Property Let FontLink(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the selection acts as a hyperlink.  Set CharFormatRange to selection.\plain\f3\fs20\b 
+\par Property Get FontProtected() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the selection is protected (raises the ModifyRequest event).  Set CharFormatRange to selection.\plain\f3\fs20\b 
+\par Property Let FontProtected(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the selection is protected (raises the ModifyRequest event).  Set CharFormatRange to selection.\plain\f3\fs20\b 
+\par Property Get FontSuperScript() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the font is superscripted for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Get FontSubScript() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the font is subscripted for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontSuperScript(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the font is superscripted for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Property Let FontSubScript(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the font is subscripted for the control or selection, depending on the setting of CharFormatRange.\plain\f3\fs20\b 
+\par Sub SetFont(ByVal fntThis As Font, Optional ByVal oColor As ULong=-2147483640, Optional ByVal eType As ERECTextTypes=0, Optional ByVal bHyperLink As Boolean=False, Optional ByVal eRange As ERECSetFormatRange=1)
+\par 
+\par Function GetFont(Optional ByVal bForSelection As Boolean=False, ByVal oColor As ULong, ByVal bHyperLink As Boolean, Optional ByVal eType As ERECTextTypes=0) As Font
+\par 
+\par Property Get ParagraphNumbering() As ERECParagraphNumberingConstants
+\par \plain\f3\fs20 Gets/sets whether the selected paragraph has bullets or not.\plain\f3\fs20\b 
+\par Property Let ParagraphNumbering(RHS  As ERECParagraphNumberingConstants)
+\par \plain\f3\fs20 Gets/sets whether the selected paragraph has bullets or not.\plain\f3\fs20\b 
+\par Sub GetParagraphOffsets(ByVal lStartIndent As Long, ByVal lLeftOffset As Long, ByVal lRightOffset As Long)
+\par \plain\f3\fs20 Gets the paragraph offsets (left, right and initial line).\plain\f3\fs20\b 
+\par Sub SetParagraphOffsets(ByVal lStartIndent As Long, ByVal lLeftOffset As Long, ByVal lRightOffset As Long)
+\par \plain\f3\fs20 Sets the offsets (left, right and initial line) for the current paragraph.\plain\f3\fs20\b 
+\par Property Get ParagraphAlignment() As ERECParagraphAlignmentConstants
+\par \plain\f3\fs20 Gets/Sets the alignment of the selected paragraph.\plain\f3\fs20\b 
+\par Property Let ParagraphAlignment(RHS  As ERECParagraphAlignmentConstants)
+\par \plain\f3\fs20 Gets/Sets the alignment of the selected paragraph.\plain\f3\fs20\b 
+\par Sub GetParagraphTabs(ByVal iCount As Integer, ByVal lTabSize() As Long, Optional ByVal eTabAlignment As Variant, Optional ByVal eTabLeader As Variant)
+\par \plain\f3\fs20 Gets the tab stops for the current paragraph.\plain\f3\fs20\b 
+\par Sub SetParagraphTabs(ByVal iCount As Integer, ByVal lTabSize() As Long, Optional ByVal eTabAlignment As Variant, Optional ByVal eTabLeader As Variant)
+\par \plain\f3\fs20 Sets tab stops for the current paragraph.\plain\f3\fs20\b 
+\par Sub GetParagraphLineSpacing(ByVal eLineSpacingStyle As ERECParagraphLineSpacingConstants, ByVal ySpacing As Long)
+\par \plain\f3\fs20 Gets the line spacing for the current paragraph.\plain\f3\fs20\b 
+\par Sub SetParagraphLineSpacing(ByVal eLineSpacingStyle As ERECParagraphLineSpacingConstants, ByVal ySpacing As Long)
+\par \plain\f3\fs20 Sets the line spacing for the current paragraph.\plain\f3\fs20\b 
+\par Sub GetParagraphSpacing(ByVal lSpaceAfter As Long, ByVal lSpaceBefore As Long)
+\par \plain\f3\fs20 Gets the spacing between paragraphs for the current paragraph.\plain\f3\fs20\b 
+\par Sub SetParagraphSpacing(ByVal lSpaceAfter As Long, ByVal lSpaceBefore As Long)
+\par \plain\f3\fs20 Sets the spacing between paragraphs for the current paragraph.\plain\f3\fs20\b 
+\par Property Let UseVersion(RHS  As ERECControlVersion)
+\par \plain\f3\fs20 Gets/sets which version of the RichEdit DLL to use: version 2/3 (RichEd20.DLL) or version 1 (RichEd32.DLL)\plain\f3\fs20\b 
+\par Property Get UseVersion() As ERECControlVersion
+\par \plain\f3\fs20 Gets/sets which version of the RichEdit DLL to use: version 2/3 (RichEd20.DLL) or version 1 (RichEd32.DLL)\plain\f3\fs20\b 
+\par Property Get IsRtf(ByVal sFileText As String) As Boolean
+\par \plain\f3\fs20 Returns whether the specified string contains RTF.\plain\f3\fs20\b 
+\par Property Get Redraw() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control will redraw or not.\plain\f3\fs20\b 
+\par Property Let Redraw(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control will redraw or not.\plain\f3\fs20\b 
+\par Property Let Contents(ByVal eType As ERECFileTypes, RHS As String)
+\par \plain\f3\fs20 Gets/sets the control's contents from a string in RichText or Text format.\plain\f3\fs20\b 
+\par Property Get Contents(ByVal eType As ERECFileTypes) As String
+\par \plain\f3\fs20 Gets/sets the control's contents from a string in RichText or Text format.\plain\f3\fs20\b 
+\par Function LoadFromFile(ByVal sFile As String, ByVal eType As ERECFileTypes) As Boolean
+\par \plain\f3\fs20 Loads a text or RTF file into the control.\plain\f3\fs20\b 
+\par Function SaveToFile(ByVal sFile As String, ByVal eType As ERECFileTypes) As Boolean
+\par \plain\f3\fs20 Saves the contents of the control to a text or RichText file.\plain\f3\fs20\b 
+\par Sub RaiseLoadStatus(ByVal lAmount As Long, ByVal lTotalAmount As Long)
+\par 
+\par Sub PrintDocDC(ByVal lPrinterHDC As Long, ByVal sDocTitle As String, ByVal nStartPage As Long, ByVal nEndPage As Long)
+\par \plain\f3\fs20 Prints the current document to a specified DC.\plain\f3\fs20\b 
+\par Sub PrintDoc(ByVal sDocTitle As String)
+\par \plain\f3\fs20 Prints the document after showing a Print Dialog.\plain\f3\fs20\b 
+\par Property Get hwnd() As Long
+\par \plain\f3\fs20 Gets the Window handle of the control. If you want the handle of the RichEdit control itself, use RichEdithWnd instead.\plain\f3\fs20\b 
+\par Property Get RichEdithWnd() As Long
+\par \plain\f3\fs20 Gets the Window Handle of the RichEdit control.\plain\f3\fs20\b 
+\par Sub SetFocus
+\par \plain\f3\fs20 Sets focus to the control.\plain\f3\fs20\b 
+\par Property Get AllowShortCut(ByVal eShortCut As ERECInbuiltShortcutConstants) As Boolean
+\par \plain\f3\fs20 Gets/sets whether the control will respond automatically to a keyboard accelerator.\plain\f3\fs20\b 
+\par Property Let AllowShortCut(ByVal eShortCut As ERECInbuiltShortcutConstants, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the control will respond automatically to a keyboard accelerator.\plain\f3\fs20\b 
+\par Sub GetPageMargins(ByVal lLeftMargin As Long, ByVal lTopMargin As Long, ByVal lRightMargin As Long, ByVal lBottomMargin As Long)
+\par \plain\f3\fs20 Gets the margins of the page when it is printed, in twips.\plain\f3\fs20\b 
+\par Sub SetPageMargins(Optional ByVal lLeftMargin As Long=1800, Optional ByVal lTopMargin As Long=1800, Optional ByVal lRightMargin As Long=1440, Optional ByVal lBottomMargin As Long=1440)
+\par \plain\f3\fs20 Sets the margins for the printed page.\plain\f3\fs20\b 
+\par Property Let ControlRightMargin(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the margin from the right hand edge of the control to the RichEdit control.\plain\f3\fs20\b 
+\par Property Get ControlRightMargin() As Long
+\par \plain\f3\fs20 Gets/sets the margin from the right hand edge of the control to the RichEdit control.\plain\f3\fs20\b 
+\par Property Let ControlLeftMargin(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the margin from the left hand edge of the control to the RichEdit control.\plain\f3\fs20\b 
+\par Property Get ControlLeftMargin() As Long
+\par \plain\f3\fs20 Gets/sets the margin from the left hand edge of the control to the RichEdit control.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event SelectionChange(ByVal lMin As Long, ByVal lMax As Long, ByVal eSelType As ERECSelectionTypeConstants)
+\par \plain\f3\fs20 Raised when the current selection changes.\plain\f3\fs20\b 
+\par Public Event LinkOver(ByVal iType As ERECLinkEventTypeCOnstants, ByVal lMin As Long, ByVal lMax As Long)
+\par \plain\f3\fs20 Raised when the user moves the mouse over a hyperlink.\plain\f3\fs20\b 
+\par Public Event KeyDown(ByVal KeyCode As Integer, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when the user depresses a key on the control.\plain\f3\fs20\b 
+\par Public Event KeyPress(ByVal KeyAscii As Integer)
+\par \plain\f3\fs20 Raised when the user depresses a character key on the control and the key has been converted into an Ascii code.\plain\f3\fs20\b 
+\par Public Event KeyUp(ByVal KeyCode As Integer, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when the user releases a key on the control.\plain\f3\fs20\b 
+\par Public Event DblClick(ByVal x As Single, ByVal y As Single)
+\par \plain\f3\fs20 Raised when the control is double clicked.\plain\f3\fs20\b 
+\par Public Event MouseDown(ByVal x As Single, ByVal y As Single, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when the user depresses a mouse button over the control.\plain\f3\fs20\b 
+\par Public Event MouseMove(ByVal x As Single, ByVal y As Single, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when the user moves the mouse over the control.\plain\f3\fs20\b 
+\par Public Event MouseUp(ByVal x As Single, ByVal y As Single, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when the user releases a mouse button over the control.\plain\f3\fs20\b 
+\par Public Event ProgressStatus(ByVal lAmount As Long, ByVal lTotal As Long)
+\par 
+\par Public Event ModifyProtected(ByVal bDoIt As Boolean, ByVal lMin As Long, ByVal lMax As Long)
+\par \plain\f3\fs20 Raised when the user attempts to modify text marked as protected.  Set bDoIt to True to accept the modification.\plain\f3\fs20\b 
+\par Public Event VScroll
+\par \plain\f3\fs20 Raised when the control is scrolled vertically.\plain\f3\fs20\b 
+\par Public Event HScroll
+\par \plain\f3\fs20 Raised when the control is scrolled horizontally.\plain\f4\fs20 
+\par 
+\par }
+ 

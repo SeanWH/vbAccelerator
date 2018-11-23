@@ -1,0 +1,442 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: AniCursor\frmTestAnimatedCursor.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: AniCursor\frmTestAnimatedCursor.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Graphics</a>&#160;.&#160;<a href="..\article.html">Using Animated Cursors in .NET</a>&#160;.&#160;<a href="..\anicursor_code.html">AniCursor Code</a>&#160;.&#160;AniCursor</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="anicursor_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />AniCursor Code</a> (26K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4592</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4592&type=zip&title=frmtestanimatedcursor.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />31 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\..\resources\graphics_library\animated_cursors\article.html">Animated Cursors</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: AniCursor\frmTestAnimatedCursor.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using System.IO;
+
+using Microsoft.MSDNMag.AsyncUtils;
+using vbAccelerator.Components.Win32;
+
+namespace AniCursorTester
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmTestAnimatedCursor : System.Windows.Forms.Form
+   {
+      private AniCursor aniCursor = null;
+      private ThreadedAniCursor threadCursor = null;
+      private System.Windows.Forms.CheckBox chkSetCursor;
+      private System.Windows.Forms.CheckBox chkDrawThreaded;
+      private System.Windows.Forms.Button btnBlock;
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      public frmTestAnimatedCursor()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         // AniCursor class:
+         string file = Path.Combine(System.Environment.CurrentDirectory,
+          "globe.ani");
+         aniCursor = new AniCursor(file);
+         this.Paint += new PaintEventHandler(frmTestAnimatedCursor_Paint);     
+             
+
+         // ThreadedAniCursor class:
+         threadCursor = new ThreadedAniCursor(this);
+         threadCursor.AniCursor = aniCursor;
+         threadCursor.Location = new Point(32, 148);
+         threadCursor.Size = new Size(32, 32);
+
+         // events;
+         this.Closing += new CancelEventHandler(frmTestAnimatedCursor_Closing);
+         
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmTestAnimatedCursor));
+         this.chkSetCursor = new System.Windows.Forms.CheckBox();
+         this.chkDrawThreaded = new System.Windows.Forms.CheckBox();
+         this.btnBlock = new System.Windows.Forms.Button();
+         this.SuspendLayout();
+         // 
+         // chkSetCursor
+         // 
+         this.chkSetCursor.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkSetCursor.Location = new System.Drawing.Point(24, 12);
+         this.chkSetCursor.Name = "chkSetCursor";
+         this.chkSetCursor.Size = new System.Drawing.Size(208, 20);
+         this.chkSetCursor.TabIndex = 0;
+         this.chkSetCursor.Text = "&amp;Set Cursor";
+         this.chkSetCursor.CheckedChanged += new
+          System.EventHandler(this.chkSetCursor_CheckedChanged);
+         // 
+         // chkDrawThreaded
+         // 
+         this.chkDrawThreaded.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkDrawThreaded.Location = new System.Drawing.Point(24, 36);
+         this.chkDrawThreaded.Name = "chkDrawThreaded";
+         this.chkDrawThreaded.Size = new System.Drawing.Size(208, 20);
+         this.chkDrawThreaded.TabIndex = 1;
+         this.chkDrawThreaded.Text = "&amp;Draw on Background Thread";
+         this.chkDrawThreaded.CheckedChanged += new
+          System.EventHandler(this.chkDrawThreaded_CheckedChanged);
+         // 
+         // btnBlock
+         // 
+         this.btnBlock.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnBlock.Location = new System.Drawing.Point(56, 64);
+         this.btnBlock.Name = "btnBlock";
+         this.btnBlock.Size = new System.Drawing.Size(120, 32);
+         this.btnBlock.TabIndex = 2;
+         this.btnBlock.Text = "&amp;Blocking Operation";
+         this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
+         // 
+         // frmTestAnimatedCursor
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(292, 266);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.btnBlock,
+                                                        this.chkDrawThreaded,
+                                                        this.chkSetCursor});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmTestAnimatedCursor";
+         this.Text = "Animated Cursor Sample";
+         this.Load += new System.EventHandler(this.frmTestAnimatedCursor_Load);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmTestAnimatedCursor());
+      }
+
+
+      private void frmTestAnimatedCursor_Load(object sender, System.EventArgs e)
+      {
+         threadCursor.Handle = this.Handle;
+      }
+      private void frmTestAnimatedCursor_Closing(object sender, CancelEventArgs
+       e)
+      {
+         if (!threadCursor.IsDone)
+         {
+            threadCursor.CancelAndWait();
+         }
+      }
+
+      private void frmTestAnimatedCursor_Paint(object sender, PaintEventArgs p)
+      {
+         p.Graphics.FillRectangle(SystemBrushes.Control, 32, 148, 32, 32);
+         aniCursor.Draw(p.Graphics, 32, 148);
+      }
+
+      private void chkSetCursor_CheckedChanged(object sender, System.EventArgs
+       e)
+      {
+         if (chkSetCursor.Checked)
+         {
+            this.Cursor = aniCursor.Cursor;
+         }
+         else
+         {
+            this.Cursor = null;
+         }   
+      }
+
+      private void btnBlock_Click(object sender, System.EventArgs e)
+      {   
+         if (!chkSetCursor.Checked)
+         {
+            this.Cursor = aniCursor.Cursor;
+         }
+
+         // Emulate a long blocking operation by sending 
+         // the UI thread to sleep:
+         System.Threading.Thread.Sleep(5000);
+
+         if (!chkSetCursor.Checked)
+         {
+            this.Cursor = null;
+         }
+      }
+
+      private void chkDrawThreaded_CheckedChanged(object sender,
+       System.EventArgs e)
+      {
+         if (chkDrawThreaded.Checked)
+         {
+            threadCursor.Start();
+         }
+         else
+         {
+            threadCursor.Cancel();
+         }
+      }
+
+   }   
+
+   public class ThreadedAniCursor : AsyncOperation
+   {
+      private IntPtr handle = IntPtr.Zero;
+      private AniCursor aniCursor;
+      private System.Drawing.Size size = new Size(32, 32);
+      private System.Drawing.Point pos = new Point(0, 0);
+      private int interval = 100;
+
+      protected override void DoWork()
+      {
+         if (this.handle == IntPtr.Zero)
+         {
+            throw new InvalidOperationException("Handle property must be
+             assigned");
+         }
+         if (this.aniCursor == null)
+         {
+            throw new InvalidOperationException("AniCursor object must be
+             assigned");
+         }
+         runCursor();
+         if (CancelRequested)
+         {
+            AcknowledgeCancel();
+         }
+      }
+
+      private void runCursor()
+      {
+         while (!CancelRequested)
+         {
+            OnCursor();
+            System.Threading.Thread.Sleep(this.interval);
+         }
+      }
+
+      protected virtual void OnCursor()
+      {
+         lock(this)
+         {
+            Graphics gfx = Graphics.FromHwnd(this.handle);
+            aniCursor.Draw(gfx, pos.X, pos.Y, size.Width, size.Height, false);
+            gfx.Dispose();
+            aniCursor.Step();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the interval between frames of the cursor.
+      /// &lt;/summary&gt;
+      public int Interval
+      {
+         get
+         {
+            lock(this)
+            {
+               return this.interval;
+            }
+         }
+         set
+         {
+            lock(this)
+            {
+               this.interval = value;
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the size to draw the cursor.
+      /// &lt;/summary&gt;
+      public System.Drawing.Size Size
+      {         
+         get
+         {
+            lock(this)
+            {
+               return this.size;
+            }
+         }
+         set
+         {
+            lock(this)
+            {
+               this.size = value;
+            }
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets the location in the window to draw
+      /// the cursor
+      /// &lt;/summary&gt;
+      public System.Drawing.Point Location
+      {
+         get
+         {
+            lock(this)
+            {
+               return this.pos;
+            }
+         }
+         set
+         {
+            lock(this)
+            {
+               this.pos = value;
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the window handle to draw onto
+      /// &lt;/summary&gt;
+      public IntPtr Handle
+      {
+         get
+         {
+            lock(this)
+            {
+               return this.handle;
+            }
+         }
+         set
+         {
+            lock(this)
+            {
+               this.handle = value;
+            }
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Assigns the animated cursor
+      /// &lt;/summary&gt;
+      public vbAccelerator.Components.Win32.AniCursor AniCursor
+      {
+         get
+         {
+            lock(this)
+            {
+               return this.aniCursor;   
+            }
+         }
+         set
+         {
+            lock(this)
+            {
+               this.aniCursor = value;
+            }
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Creates a new instance of the Threaded AniCursor class
+      /// &lt;/summary&gt;
+      /// &lt;param name="isi"&gt;The object to receive notifications.
+      /// Note that only the Cancelled and Failed events will
+      /// be fired - this object never completes.&lt;/param&gt;
+      /// &lt;remarks&gt;Start the cursor running with Start and 
+      /// stop it running using Cancel or CancelAndWait.
+      /// CancelAndWait ensures that the class has completed
+      /// before it returns&lt;/remarks&gt;
+      public ThreadedAniCursor(
+         ISynchronizeInvoke isi         
+         ) : base(isi)
+      {         
+      }
+   }
+
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Graphics</a>&#160;.&#160;<a href="..\article.html">Using Animated Cursors in .NET</a>&#160;.&#160;<a href="..\anicursor_code.html">AniCursor Code</a>&#160;.&#160;AniCursor</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

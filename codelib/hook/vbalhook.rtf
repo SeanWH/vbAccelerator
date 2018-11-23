@@ -1,0 +1,202 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalWinHook Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalWinHook (vbAccelerator Windows Hook Helper DLL)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\Hooks\\Release\\vbalHook.dll
+\par GUID:\tab \{33DAE281-DF91-11D2-8E21-44C10AC10000\}
+\par Version:\tab 5.0
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalWinHook.
+\par 
+\par Public Enum EHTHookErrorConstants
+\par \tab eehHookBase=-2147220456
+\par End Enum
+\par Public Enum EHTHookTypeConstants
+\par \tab _WH_MIN=-1
+\par \tab WH_CALLWNDPROC=4
+\par \tab WH_CBT=5
+\par \tab WH_DEBUG=9
+\par \tab WH_FOREGROUNDIDLE=11
+\par \tab WH_GETMESSAGE=3
+\par \tab WH_JOURNALRECORD=0
+\par \tab WH_JOURNALPLAYBACK=1
+\par \tab WH_KEYBOARD=2
+\par \tab WH_MOUSE=7
+\par \tab WH_MSGFILTER=-1
+\par \tab WH_SHELL=10
+\par \tab WH_SYSMSGFILTER=6
+\par \tab WH_CALLWNDPROCRET=12
+\par \tab _WH_MAX=14
+\par End Enum
+\par Public Enum EHTMousewParamValues
+\par \tab WM_MOUSEMOVE=512
+\par \tab WM_LBUTTONDBLCLK=515
+\par \tab WM_LBUTTONDOWN=513
+\par \tab WM_LBUTTONUP=514
+\par \tab WM_MBUTTONDBLCLK=521
+\par \tab WM_MBUTTONDOWN=519
+\par \tab WM_MBUTTONUP=520
+\par \tab WM_RBUTTONDBLCLK=518
+\par \tab WM_RBUTTONUP=517
+\par \tab WM_RBUTTONDOWN=516
+\par \tab WM_NCLBUTTONDBLCLK=163
+\par \tab WM_NCLBUTTONDOWN=161
+\par \tab WM_NCLBUTTONUP=162
+\par \tab WM_NCMBUTTONDBLCLK=169
+\par \tab WM_NCMBUTTONDOWN=167
+\par \tab WM_NCMBUTTONUP=168
+\par \tab WM_NCMOUSEMOVE=160
+\par \tab WM_NCRBUTTONDBLCLK=166
+\par \tab WM_NCRBUTTONDOWN=164
+\par \tab WM_NCRBUTTONUP=165
+\par End Enum
+\par Public Enum EHTMsgFilterCodes
+\par \tab MSGF_DDEMGR=-32767
+\par \tab MSGF_DIALOGBOX=0
+\par \tab MSGF_MAINLOOP=8
+\par \tab MSGF_MAX=8
+\par \tab MSGF_MENU=2
+\par \tab MSGF_MESSAGEBOX=1
+\par \tab MSGF_MOVE=3
+\par \tab MSGF_NEXTWINDOW=6
+\par \tab MSGF_SCROLLBAR=5
+\par \tab MSGF_SIZE=4
+\par \tab MSGF_USER=4096
+\par End Enum
+\par Public Enum EHTShellCodes
+\par \tab HSHELL_ACTIVATESHELLWINDOW=3
+\par \tab HSHELL_WINDOWCREATED=1
+\par \tab HSHELL_WINDOWDESTROYED=2
+\par \tab HSHELL_WINDOWACTIVATED=4
+\par \tab HSHELL_GETMINRECT=5
+\par \tab HSHELL_REDRAW=6
+\par \tab HSHELL_TASKMAN=7
+\par \tab HSHELL_LANGUAGE=8
+\par \tab HSHELL_ACCESSIBILITYSTATE=11
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalWinHook.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cCallWndProclParam \{7E198155-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Gets the window handle that this message is being sent to.\plain\f3\fs20\b 
+\par Property Get lParam() As Long
+\par \plain\f3\fs20 Gets the lParam for this message.\plain\f3\fs20\b 
+\par Property Get wParam() As Long
+\par \plain\f3\fs20 Gets the wParam for this message.\plain\f3\fs20\b 
+\par Property Get Message() As Long
+\par \plain\f3\fs20 Gets the message.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cCallWndProcRetlParam \{7E198157-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Gets the window handle that this message was sent to.\plain\f3\fs20\b 
+\par Property Get lParam() As Long
+\par \plain\f3\fs20 Gets the lParam of the message.\plain\f3\fs20\b 
+\par Property Get wParam() As Long
+\par \plain\f3\fs20 Gets the wParam of the message.\plain\f3\fs20\b 
+\par Property Get Message() As Long
+\par \plain\f3\fs20 Gets the message.\plain\f3\fs20\b 
+\par Property Get lResult() As Long
+\par \plain\f3\fs20 Gets the return value from the window this message was sent to.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cGetMsglParam \{7E198153-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Gets/Sets the window handle this message is being retrieved by.\plain\f3\fs20\b 
+\par Property Let hWnd(RHS  As Long)
+\par \plain\f3\fs20 Gets/Sets the window handle this message is being retrieved by.\plain\f3\fs20\b 
+\par Property Get lParam() As Long
+\par \plain\f3\fs20 Gets/Sets the lParam member of the message.\plain\f3\fs20\b 
+\par Property Let lParam(RHS  As Long)
+\par \plain\f3\fs20 Gets/Sets the lParam member of the message.\plain\f3\fs20\b 
+\par Property Get wParam() As Long
+\par \plain\f3\fs20 Gets/sets the wParam value for this message.\plain\f3\fs20\b 
+\par Property Let wParam(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the wParam value for this message.\plain\f3\fs20\b 
+\par Property Get Message() As Long
+\par \plain\f3\fs20 Gets/sets the message.\plain\f3\fs20\b 
+\par Property Let Message(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the message.\plain\f3\fs20\b 
+\par Property Get X() As Long
+\par \plain\f3\fs20 Gets the x mouse position relative to the screen in pixels at the point when this message was posted.\plain\f3\fs20\b 
+\par Property Get Y() As Long
+\par \plain\f3\fs20 Gets the y mouse position relative to the screen in pixels at the point when this message was posted.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cKeyboardlParam \{7E198146-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get KeyUp() As Boolean
+\par \plain\f3\fs20 Whether the Key is up for this keyboard message.\plain\f3\fs20\b 
+\par Property Get KeyDown() As Boolean
+\par \plain\f3\fs20 Whether the Key is down for this keyboard message.\plain\f3\fs20\b 
+\par Property Get Alt() As Boolean
+\par \plain\f3\fs20 Whether the Alt key is pressed for this keyboard message.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cMouselParam \{7E198151-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get X() As Long
+\par \plain\f3\fs20 X position of the mouse relative to the screen, in pixels.\plain\f3\fs20\b 
+\par Property Get Y() As Long
+\par \plain\f3\fs20 Y position of the mouse relative to the screen, in pixels.\plain\f3\fs20\b 
+\par Property Get ClientX(ByVal lhWNd As Long) As Long
+\par \plain\f3\fs20 X position of the mouse relative to the client window, in pixels.\plain\f3\fs20\b 
+\par Property Get ClientY(ByVal lhWNd As Long) As Long
+\par \plain\f3\fs20 Y position of the mouse relative to the client window, in pixels.\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Window handle the mouse message will be sent to.\plain\f3\fs20\b 
+\par Property Get wHitTestCode() As Long
+\par \plain\f3\fs20 Windows Hit Test Code for the mouse message.\plain\f3\fs20\b 
+\par Property Get dwExtraInfo() As Long
+\par \plain\f3\fs20 Extra information associated with the mouse message.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b GHook \{7E198149-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Function InstallHook(ByVal IHook As _IWindowsHook, ByVal eType As EHTHookTypeConstants) As Boolean
+\par \plain\f3\fs20 Installs a Hook of the specified type.\plain\f3\fs20\b 
+\par Sub RemoveHook(ByVal IHook As _IWindowsHook, ByVal eType As EHTHookTypeConstants)
+\par \plain\f3\fs20 Removes a previously installed Hook.\plain\f3\fs20\b 
+\par Property Get MouselParam(ByVal lParam As Long) As cMouselParam
+\par \plain\f3\fs20 Converts the lParam member of a WH_MOUSE hook notification into the consituent members.\plain\f3\fs20\b 
+\par Property Get KeyboardlParam(ByVal lParam As Long) As cKeyboardlParam
+\par \plain\f3\fs20 Converts the lParam member of a WH_KEYBOARD hook notification into the consituent members.\plain\f3\fs20\b 
+\par Property Get GetMsglParam(ByVal lParam As Long) As cGetMsglParam
+\par \plain\f3\fs20 Converts the lParam member of a WH_GETMSG hook notification into the consituent members.\plain\f3\fs20\b 
+\par Property Get CallWndProclParam(ByVal lParam As Long) As cCallWndProclParam
+\par \plain\f3\fs20 Converts the lParam member of a WH_CALLWNDPROC hook notification into the consituent members.\plain\f3\fs20\b 
+\par Property Get CallWndProcRetlParam(ByVal lParam As Long) As cCallWndProcRetlParam
+\par \plain\f3\fs20 Converts the lParam member of a WH_CALLWNDPROCRET hook notification into the consituent members.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b IWindowsHook \{7E198150-5425-11D3-8E23-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Function HookProc(ByVal eType As EHTHookTypeConstants, ByVal nCode As Long, ByVal wParam As Long, ByVal lParam As Long, ByVal bConsume As Boolean) As Long
+\par \plain\f3\fs20 Fired whenever a Hook receives a notification.  Set bConsume to True if you wish to stop the notification from reaching your app.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par 
+\par }
+ 

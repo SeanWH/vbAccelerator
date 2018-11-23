@@ -1,0 +1,119 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Associating Applications with Any File or Folder</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+Applications such as WinZip add new items to 
+Explorer's File and context menus for all files and folders on the system.  Although
+WinZip uses Shell Extensions to achieve this, it is much easier to do using verbs.
+This article demonstrates how to use the .NET Registry classes to add new shortcut
+verbs for all files and/or all folders.  You may find the Touch utility provided in
+the demonstration is quite useful too!
+" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\index.html">Associations</a>&#160;.&#160;Associating Applications with Any File or Folder</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="touch_demonstration.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Touch Demonstration</a> (11K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:5247</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=5247&type=article&title=associating_20applications_20with_20any_20file_20or_20folder.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 0</a></p><p class="nav">Updated:2 August 2003</p>
+<br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />5 Apr 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Associating Applications with Any File or Folder</h1><p class="splash">Demonstrates how to add global commands to shortcut for files and/or folders</p><img src="touch.png" width="304" height="210" alt="Touch Utility" /><p /><p>
+Applications such as <a href="javascript:window.alert(&quot;http://www.winzip.com/\nThis link was not retrieved.&quot;)">WinZip</a> add new items to 
+Explorer's File and context menus for all files and folders on the system.  Although
+WinZip uses Shell Extensions to achieve this, it is much easier to do using verbs.
+This article demonstrates how to use the .NET Registry classes to add new shortcut
+verbs for all files and/or all folders.  You may find the Touch utility provided in
+the demonstration is quite useful too!
+</p><h2>Adding Verbs for All Files and Folders</h2><p>
+As well as the standard context menus for files with particular extensions,
+Windows also provides a method to apply items to context menus for
+whole classes of objects, such as all files, all folders, all file folders
+and so on.  These global objects are described in the Platform SDK 
+documentation under the article "Creating Shell Extension Handlers", 
+section "Predefined Shell Objects".
+</p><p>
+There are fourteen different predefined objects in the Shell, of which two
+can only be extended using a Shell Handler.  The remaining twelve are
+as follows:
+</p><table class="article"><tr class="header"><td>Name</td><td>Description</td></tr><tr class="body"><td>*</td><td>All files</td></tr><tr class="body"><td>AllFileSystemObjects</td><td>All files and file folders</td></tr><tr class="body"><td>Folder</td><td>All folders (whether file system or extended)</td></tr><tr class="body"><td>Directory</td><td>All file folders</td></tr><tr class="body"><td>Network</td><td>The Entire Network item under My Network Places</td></tr><tr class="body"><td>Network\Type\#</td><td>All network objects of type #, where # is one of the network
+types given in the <i>Winnetwk.h</i> header file (WNNC_NET_* values)
+in the Platform SDK</td></tr><tr class="body"><td>NetShare</td><td>All Network Shares</td></tr><tr class="body"><td>NetServer</td><td>All Network Servers</td></tr><tr class="body"><td><i>network_provider_name</i></td><td>All objects provided by network provided <i>network_provider_name</i></td></tr><tr class="body"><td>AudioCD</td><td>An Audio CD in CD Drive</td></tr><tr class="body"><td>DVDFile, DVD</td><td>A DVD Drive.  <i>DVDFile</i> is used under Windows 98/ME, <i>DVD</i> is used for
+Windows 2000 and above.
+</td></tr></table><p>
+To add a verb to any of these items, you add an item to the registry under the key
+</p><p class="indent"><strong>HKEY_CLASSES_ROOT\<i>[item]</i>\Shell</strong></p><p>
+Where <i>[item]</i> is one of the pre-defined names given above.  For example, if
+you wanted to add a new menu item for all files which allows them to be directly
+opened with Notepad, with a context menu entry "&amp;View Text" then you would add 
+these entries:
+</p><pre><img src="folder.png" width="16" height="16" /><strong>HKEY_CLASSES_ROOT</strong><img src="folder.png" width="16" height="16" /><strong>*</strong><img src="folder.png" width="16" height="16" /><strong>shell</strong><img src="ofolder.png" width="16" height="16" /><strong>Notepad</strong><img src="regvalue.png" width="16" height="16" /> (Default)   REG_SZ   &amp;View Text
+            <img src="ofolder.png" width="16" height="16" /><strong>Command</strong><img src="regvalue.png" width="16" height="16" /> (Default)   REG_SZ   Notepad.exe "%1"
+</pre><p>
+You can easily change the Command default value so it points to your favourite
+text editor rather than Notepad.  It's certainly made me extremely happy (I'm easy to
+please) that I don't need to go through the tedious "Open With..." dialog for
+every file I want a quick peek at.  And no, I don't want to Use the Web service to find
+the appropriate program.
+</p><p>
+You easily apply this from .NET to create applications which work directly on multiple
+files.  The demonstration download provides a Touch utility which integrates into
+the context menu. (In case you haven't used U*IX, the touch command simply 
+updates the last modified date of a file to the current date and time.  It's very
+useful if you run batch processes against modified files and want to force a 
+modification).  The actual Touch portion of the code consists of, ahem, one line, 
+which hopefully means it doesn't have too many bugs.  The
+rest of the code just uses the <i>Microsoft.Win32</i> registry classes to install 
+the context menu command for all files.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\index.html">Associations</a>&#160;.&#160;Associating Applications with Any File or Folder</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 11 April 2003</p></td><td></td></tr></table>
+</body></html>

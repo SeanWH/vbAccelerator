@@ -1,0 +1,241 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IconHighlight_HighlightedIconPaint.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IconHighlight_HighlightedIconPaint.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ImageList</a>&#160;.&#160;<a href="article.html">Highlighting and Shadowing Image List Images</a>&#160;.&#160;<a href="iconhighlight.html">IconHighlight</a>&#160;.&#160;IconHighlight_HighlightedIconPaint.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="iconhighlight.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IconHighlight</a> (84K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12693</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=12693&type=zip&title=iconhighlight_2ezip_5ficonhighlight_5fhighlightediconpaint.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />6 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\shell_projects\sysimagelist\article.html">System Image List</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IconHighlight_HighlightedIconPaint.vb</h1><pre>Public Class HighlightedIconPaint
+
+    ' Shared? not a good keyword choice. Surely "shared" implies 
+    ' access/synchronisation, not that the method is static. 
+    ' VB strikes again/I have no right/to take my place/in the human race...
+
+
+
+    ' &lt;summary&gt;Draws a highlighted icon with the default highlight colour
+    ' and blend amount.&lt;/summary&gt;
+    ' &lt;param name="graphics"&gt;Graphics object to draw onto.&lt;/param&gt;
+    ' &lt;param name="iconImageList"&gt;ImageList to source icon from.&lt;/param&gt;
+    ' &lt;param name="iconIndex"&gt;0-based index of icon within the ImageList&lt;/param&gt;
+    ' &lt;param name="destRect"&gt;Rectangle to draw the icon into.&lt;/param&gt;
+    Public Shared Sub DrawHighlightedIcon( _
+        ByVal graphics As Graphics, _
+        ByVal iconImageList As ImageList, _
+        ByVal iconIndex As Integer, _
+        ByVal destRect As Rectangle _
+        )
+        HighlightedIconPaint.DrawHighlightedIcon(graphics, iconImageList,
+         iconIndex, destRect, _
+            Color.FromKnownColor(KnownColor.Highlight), 128, 1.0)
+    End Sub
+
+    ' &lt;summary&gt;Draws a highlighted icon using gamma to lighten or darken
+    ' it.&lt;/summary&gt;
+    ' &lt;param name="graphics"&gt;Graphics object to draw onto.&lt;/param&gt;
+    ' &lt;param name="iconImageList"&gt;ImageList to source icon from.&lt;/param&gt;
+    ' &lt;param name="iconIndex"&gt;0-based index of icon within the ImageList&lt;/param&gt;
+    ' &lt;param name="destRect"&gt;Rectangle to draw the icon into.&lt;/param&gt;
+    ' &lt;param name="gamma"&gt;The amount of gamma to apply.  Valid values range
+    ' between 0.1 (very light) and 5.0 (very dark).&lt;/param&gt;
+    Public Shared Sub DrawHighlightedIcon( _
+        ByVal graphics As Graphics, _
+        ByVal iconImageList As ImageList, _
+        ByVal iconIndex As Integer, _
+        ByVal destRect As Rectangle, _
+        ByVal gamma As Single _
+        )
+
+        ' Now set up the gamma:
+        Dim imageAttr As System.Drawing.Imaging.ImageAttributes = _
+            New System.Drawing.Imaging.ImageAttributes()
+        imageAttr.SetGamma(gamma)
+
+        ' Draw the image with the gamma applied:
+        Dim img As Image = iconImageList.Images(iconIndex)
+        graphics.DrawImage( _
+            img, _
+            destRect, _
+            1, 1, iconImageList.ImageSize.Width,
+             iconImageList.ImageSize.Height, _
+            GraphicsUnit.Pixel, imageAttr)
+        ' Done.
+        imageAttr.Dispose()
+
+    End Sub
+
+
+    ' &lt;summary&gt;Draws a highlighted icon with a customised highlight colour
+    ' and a default blend amount.&lt;/summary&gt;
+    ' &lt;param name="graphics"&gt;Graphics object to draw onto.&lt;/param&gt;
+    ' &lt;param name="iconImageList"&gt;ImageList to source icon from.&lt;/param&gt;
+    ' &lt;param name="iconIndex"&gt;0-based index of icon within the ImageList&lt;/param&gt;
+    ' &lt;param name="destRect"&gt;Rectangle to draw the icon into.&lt;/param&gt;
+    ' &lt;param name="highlightColor"&gt;&lt;code&gt;Color&lt;/code&gt; to use for highlighting
+     the 
+    ' icon.&lt;/param&gt;
+    Public Shared Sub DrawHighlightedIcon( _
+        ByVal graphics As Graphics, _
+        ByVal iconImageList As ImageList, _
+        ByVal iconIndex As Integer, _
+        ByVal destRect As Rectangle, _
+        ByVal highlightColor As Color _
+        )
+        HighlightedIconPaint.DrawHighlightedIcon(graphics, iconImageList,
+         iconIndex, destRect, _
+            highlightColor, 128, 1.0)
+    End Sub
+
+    ' &lt;summary&gt;Draws a highlighted icon with a customised highlight colour
+    ' and blend amount.&lt;/summary&gt;
+    ' &lt;param name="graphics"&gt;Graphics object to draw onto.&lt;/param&gt;
+    ' &lt;param name="iconImageList"&gt;ImageList to source icon from.&lt;/param&gt;
+    ' &lt;param name="iconIndex"&gt;0-based index of icon within the ImageList&lt;/param&gt;
+    ' &lt;param name="destRect"&gt;Rectangle to draw the icon into.&lt;/param&gt;
+    ' &lt;param name="highlightColor"&gt;&lt;code&gt;Color&lt;/code&gt; to use for highlighting
+     the 
+    ' icon.&lt;/param&gt;
+    ' &lt;param name="highlightAmount"&gt;Alpha amount to use when blending the
+     highlight
+    ' colour with the icon.&lt;/param&gt;
+    Public Shared Sub DrawHighlightedIcon( _
+        ByVal graphics As Graphics, _
+        ByVal iconImageList As ImageList, _
+        ByVal iconIndex As Integer, _
+        ByVal destRect As Rectangle, _
+        ByVal highlightColor As Color, _
+        ByVal highlightAmount As Integer _
+        )
+        DrawHighlightedIcon(graphics, iconImageList, iconIndex, destRect, _
+            highlightColor, highlightAmount, 1.0)
+    End Sub
+
+    ' &lt;summary&gt;Draws a highlighted icon with a customised highlight colour
+    ' and blend amount.&lt;/summary&gt;
+    ' &lt;param name="graphics"&gt;Graphics object to draw onto.&lt;/param&gt;
+    ' &lt;param name="iconImageList"&gt;ImageList to source icon from.&lt;/param&gt;
+    ' &lt;param name="iconIndex"&gt;0-based index of icon within the ImageList&lt;/param&gt;
+    ' &lt;param name="destRect"&gt;Rectangle to draw the icon into.&lt;/param&gt;
+    ' &lt;param name="highlightColor"&gt;&lt;code&gt;Color&lt;/code&gt; to use for highlighting
+     the 
+    ' icon.&lt;/param&gt;
+    ' &lt;param name="highlightAmount"&gt;Alpha amount to use when blending the
+     highlight
+    ' colour with the icon.&lt;/param&gt;
+    ' &lt;param name="gamma"&gt;The amount of gamma to apply.  Valid values range
+    ' between 0.1 (very light) and 5.0 (very dark).  A value of 1.0 results
+    ' in no gamma being applied.&lt;/param&gt;
+    Public Shared Sub DrawHighlightedIcon( _
+        ByVal graphics As Graphics, _
+        ByVal iconImageList As ImageList, _
+        ByVal iconIndex As Integer, _
+        ByVal destRect As Rectangle, _
+        ByVal highlightColor As Color, _
+        ByVal highlightAmount As Integer, _
+        ByVal gamma As Single _
+        )
+
+        ' Create an offscreen bitmap for working on.  This is one bigger than
+        ' the icon so we know for sure that the top row of pixels will be
+        ' transparent
+        Dim bm As Bitmap = New Bitmap( _
+            iconImageList.ImageSize.Width, iconImageList.ImageSize.Height + 1 _
+            )
+        Dim gfx As Graphics = graphics.FromImage(bm)
+        ' Set the background colour to a colour that "won't" appear in the icon:
+        Dim br As Brush = New SolidBrush(Color.FromArgb(254, 253, 254))
+        gfx.FillRectangle(br, 0, 0, bm.Width, bm.Height)
+        br.Dispose()
+        ' Draw the icon starting at the second row in the bitmap:
+        iconImageList.Draw(gfx, 0, 1, iconIndex)
+        ' Overdraw with the highlight colour:
+        br = New SolidBrush(Color.FromArgb(highlightAmount, highlightColor))
+        gfx.FillRectangle(br, 0, 0, bm.Width, bm.Height)
+        br.Dispose()
+        gfx.Dispose()
+
+        ' Now set up a colour mapping from the colour of the pixel
+        ' at 0,0 to transparent:
+        Dim imageAttr As System.Drawing.Imaging.ImageAttributes = _
+            New System.Drawing.Imaging.ImageAttributes()
+        Dim map(0) As System.Drawing.Imaging.ColorMap
+        map(0) = New System.Drawing.Imaging.ColorMap()
+        map(0).OldColor = bm.GetPixel(0, 0)
+        map(0).NewColor = Color.FromArgb(0, 0, 0, 0)
+        imageAttr.SetRemapTable(map)
+        If (gamma &lt;&gt; 1.0) Then
+            imageAttr.SetGamma(1.0)
+        End If
+        ' Draw the image with the colour mapping, so that only the 
+        ' portion of the image with the new colour over the top 
+        ' gets mapped:
+        graphics.DrawImage(bm, destRect, 1, 1, iconImageList.ImageSize.Width,
+         iconImageList.ImageSize.Height, GraphicsUnit.Pixel, imageAttr)
+        ' Done.
+        imageAttr.Dispose()
+        bm.Dispose()
+
+    End Sub
+
+    ' Private constructor, contains only static methods
+    Private Sub New()
+        ' Intentionally blank
+    End Sub
+
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ImageList</a>&#160;.&#160;<a href="article.html">Highlighting and Shadowing Image List Images</a>&#160;.&#160;<a href="iconhighlight.html">IconHighlight</a>&#160;.&#160;IconHighlight_HighlightedIconPaint.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 8 September 2003</p></td><td></td></tr></table>
+</body></html>

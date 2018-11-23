@@ -1,0 +1,316 @@
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>vbAccelerator RichEdit Control</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Coding With The vbAccelerator RichEdit Control</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Coding Tips and Techniques for working with the vbAccelerator RichEdit control </p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<table border="0" cellspacing="2" cellpadding="2" width="100%">
+<tr>
+	<td>&nbsp;&nbsp;</td>
+	<td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	This sample is here to give some general hints and tips for working with the vbAccelerator RichEdit
+	control. Tips are divided into five sections:
+	<ol>
+	<li><a href="#seccontents">RichEdit Contents: Loading/Saving with Files and Strings</a>
+	<li><a href="#secaccel">Using Accelerator/Shortcut Keys</a>
+	<li><a href="#seceditor">Common Editor Operations</a>
+	<li><a href="#secformat">Formatting</a>
+	<li><a href="#seclinks">Automatic Hyperlink Detection and Adding Hyperlinks</a>
+	<li><a href="#sectrans">Transparency and Background Pictures</a>
+	</ol>
+
+<b>Contents: Loading/Saving with Files and Strings</b><br>
+There are five methods and properties which affect the contents of the RichEdit control:
+<ul>
+<li><i>Contents</i><br>
+Gets or sets the entire contents of the control to a string, in either RTF or Text format.
+<li><i>InsertContents</i><br>
+Inserts RTF or Text from a string to replace the current selection.
+<li><i>SelectedContents</i><br>
+Gets the currently selected content to a string in RTF or Text format.
+</br>
+<li><i>LoadFromFile</i><br>
+Loads a file into the RichEdit control, in either RTF or Text format.
+<li><i>SaveToFile</i><br>
+Saves the contents of the RichEdit control to a file, in either RTF or Text format.
+</ul>
+Note that the maximum length of a document by default is 32k. Loading a document longer than
+this will result in truncation.  If you need a longer document, you
+can set it to any length you like (up to &H7FFFFFFF, which is 2Gb) using the <i>MaxLength</i> property.  
+<br><br>
+
+<a name="secaccel"></a>
+<b>Accelerator/Shortcut Keys</b><br>
+By default the control will automatically respond to shortcut keys such as <i>Ctrl+C</i> for Copy.
+If you are creating an application with a menu, you might want to override this behaviour and
+take control of the shortcut keys yourself.  Each shortcut can be enabled or disabled using
+the <i>AllowShortCut</i> method.
+<br><br>
+You can also control whether the key accepts the tab key or not, regardless of the TabStop
+properties of other controls on the form using the <i>TrapTab</i> property.  Note that
+Shift+Tab always tabs out of the control.
+<br><br>
+
+<a name="seceditor"></a>
+<b>Common Editor Operations</b><br>
+The control has all the common editor operations and properties built in.  These commands and properties
+relate to common editing actions:
+<ul>
+<li><i>Undo</i> method, <i>CanUndo</i> property, <i>UndoType</i> property. Default shortcut Ctrl+Z
+<li><i>Redo</i> method, <i>CanRedo</i> property, <i>RedoType</i> property. Default shortcut Ctrl+Y
+<li><i>Cut</i> method, <i>CanCut</i> property. Default shortcut Ctrl+X
+<li><i>Copy</i> method, <i>CanCopy</i> property. Default shortcut Ctrl+C
+<li><i>Paste</i> method, <i>CanPaste</i> property. Default shortcut Ctrl+V
+<li><i>SelectAll</i> method. Default shortcut Ctrl+A
+</ul>
+And these properties relate to standard editor status displays:
+<ul>
+<li><i>CurrentLine</i>
+<li><i>CharacterCount</i>
+<li><i>LineCount</i>
+</ul>
+
+<br><br>
+
+<a name="secformat"></a>
+<b>Formatting</b><br>
+The control provides control for numerous formatting properties:
+<ul>
+<li><b>Font Face and Style</b>
+<ul>
+<li><i>Font</i>
+<li><i>FontBold</i>
+<li><i>FontItalic</i>
+<li><i>FontUnderline</i>
+<li><i>FontStrikeOut</i>
+<li><i>FontSuperScript</i>
+<li><i>FontSubScript</i>
+</ul>
+<li><b>Colours</b>
+<ul>
+<li><i>FontBackColour</i> (RichEdit 2.0 or higher only)
+<li><i>FontColour</i>
+</ul>
+<li><b>Other Selection Properties</b>
+<ul>
+<li><i>FontLink</i> (RichEdit 2.0 or higher only) - determines whether the selection acts as a hyperlink
+<li><i>FontProtected</i> (RichEdit 2.0 or higher only) - sets whether the control raises a <i>ModifyProtected</i> event when the user attempts to modify the text.  By default the control will
+stop the user modifying the text, but if you set the <i>bDoIt</i> parameter to <i>True</i> then the
+text can be modified.
+</ul>
+</ul>
+Unlike the VB RichText control, which provides separate methods for setting formatting generally
+and for a selection, the vbAccelerator RichEdit control has a property which determines what
+scope the format will apply to.
+<br><br>
+The <i>CharFormatRange</i> property can be set to format everything, the current selection or the
+current word.  The default setting is the current selection.  To set the font going forward from
+the current position, use code like this:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Dim lS As Long, lE As Long<br>
+<br>
+With redMain<br>
+&nbsp;&nbsp;&nbsp;.GetSelection lS, lE<br>
+&nbsp;&nbsp;&nbsp;.SetSelection lS, lS<br>
+&nbsp;&nbsp;&nbsp;.FontBold = True<br>
+End With<br>
+<br>
+<br>
+
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+<a name="seclinks"></a>
+<b>Automatic Hyperlink Detection and Adding Hyperlinks</b><br>
+The automatic hyperlink detection feature, provided with RichEdit version 2.0, is a built-in
+feature from Microsoft.  It is important to note that this does not provide the quite the same 
+functionality as their newer products (for example Outlook Express 5.0).  Basically, the code
+detects hyperlinks on the basis of one these signatures:
+<ul>
+     <li>http: 
+     <li>file: 
+     <li>mailto: 
+     <li>ftp: 
+     <li>https: 
+     <li>gopher: 
+     <li>nntp: 
+     <li>prospero: 
+     <li>telnet: 
+     <li>news: 
+     <li>wais: 
+</ul>
+Therefore you cannot just type in (for example) www.vbaccelerator.com and get it to underline;
+the prefix needs to be included as well.  A future vbAccelerator sample will demonstrate how
+to detect these types of addresses too.
+<br><br>
+To enable automatic hyperlink detection in the control, use the <i>AutoURLDetect</i> property.
+<br><br>
+You can create your own hyperlinks regardless of the automatic detection provided by the control.
+Simply set the <i>CharFormatRange</i> property to selection, select the word or words you want
+to form a hyperlink and then set the <i>FontLink</i> property.  Note that when the user clicks
+the word, the RichEdit control will only pass the position of the clicked word to you, so you
+may need to internally store more information about the link yourself.
+<br><br>
+The VB/VBA Object Browser uses a RichEdit control in this way:
+<br><br>
+<img src="..\..\images\reduse1.gif" width="321" height="220" alt="RichEdit 2.0 Control Used in VB's Object Browser">
+<br><br>
+
+<br><br>
+<a name="sectrans"></a>
+<b>Transparency and Background Pictures</b><br>
+The vbAccelerator RichEdit control supports transparency, however due to limitations in the way
+VB draws controls the transparency only goes as far as the control itself.  There is a built-in 
+method to tile a picture onto the background of the control.  To use this, set both the
+<i>Transparent</i> and the <i>Picture</i> property.
+<br><br>
+If you want more sophisticated background pictures, take the source code and modify the 
+<i>pDrawBackground</i> sub in the <i>vbalRichEdit</i> code (and don't forget to <a href="..\..\mission.htm">change
+the filename and ProgId</a> when you recompile it!)
+
+</p>
+</font>
+
+	</td>
+	<td>&nbsp;&nbsp;</td>
+	</tr>
+
+	<tr>
+	<td></td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="richedit.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="richedit.htm">RichEdit Control</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a></p>
+	</font>
+	</td>
+	<td></td>
+	</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

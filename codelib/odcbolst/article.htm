@@ -1,0 +1,793 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Owner Draw Combo and List Boxes</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\combo_and_list_boxes\owner_draw_combo_and_list_box\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr >
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Owner Draw Combo and List Boxes Version 2.1</b><br>
+	<p><img src="..\..\images\odclcdd.gif" alt="Owner Draw Combo List Control Demonstration" width="392" height="215"></p>
+	<p><img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b><br>
+	<i>30 May 1999</i>: The control has now been updated to version 2.1 <a href="odclupd.htm">Read about
+	the updates to this control</a>.
+	</p>
+	<p><a href="odcbolst.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the control (54kb)</a><br>
+	<a href="odcldp.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the demonstration project source code (requires the control first) (33kb)</a><br>
+	<a href="odclod.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the client draw demonstration (requires the control first) (43kb)</a><br>
+	<a href="odclcd.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the entire source code for the control and demonstrations (224kb)</a><br>
+	</font>
+
+	<p> 
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		These projects require the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying any project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\..\typelib.htm#OleGuids">Ole Guids and Interface Definitions type library (OleGuids.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	<p><a href="odcbolst.rtf"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Download/View the ODCboLst interface documentation (22kb)</a></p>
+	<p>
+	</p>
+	<p><b>Overview</b><br>
+	Owner draw combo and list boxes are an excellent way to improve the look and feel of your application. However, there is precious little support for them in Visual Basic.  The only owner-draw combo box supplied
+	is the Checked list box style, but this is a preset list box style with no possibility for customisation.
+Here I provide a new control, completely written in Visual Basic 5, which does all the hard work of setting up an owner draw combo or list box. It also provides some great looking preset implementations: 
+	<ul>
+	<li>Choosing colours 
+	<li>Choosing system colours 
+	<li>Choosing fonts 
+	<li>Drawing combo or list boxes with icons, indentations and different font and fore/back colours for each item 
+	<li>Selecting paragraph styles, similar to the paragraph picker in Word 97
+	</ul>
+	</P>
+	<p><b>Owner Draw Combo Boxes and List Boxes in the Win32 API</b><br>
+	Creating owner drawn combo boxes or list boxes is relatively straightforward, 
+	but leads to rather a lot of non-Basic style coding. When the control is created, 
+	the application should add CBS_OWNERDRAWVARIABLE (for combo boxes) or LBS_OWNERDRAWVARIABLE 
+	(for list boxes) to the Windows Style bit.<br><br>
+	Having done this, Windows no longer draws the control. Instead it sends a WM_DRAWITEM 
+	message whenever a portion of the control needs to be repainted. This passes a 
+	pointer to a DRAWITEMSTRUCT structure filled out with what needs to be drawn and where:
+	</p>
+	</font>
+	<font face="Lucida Console,courier new" size="1">
+	<p>
+Type DRAWITEMSTRUCT<br>
+&nbsp &nbsp CtlType As Long &nbsp &nbsp  ' -Not needed<br>
+&nbsp &nbsp CtlID As Long &nbsp &nbsp  ' -The ID of the control when created<br>
+&nbsp &nbsp ItemId As Long &nbsp &nbsp  ' -The ListIndex of the item to draw<br>
+&nbsp &nbsp ItemAction As Long &nbsp &nbsp ' -What action is causing the draw call<br>
+&nbsp &nbsp ItemState As Long &nbsp &nbsp  ' -The state of the item to be drawn<br>
+&nbsp &nbsp hwndItem As Long &nbsp &nbsp  ' -The hWnd of the window to draw in<br>
+&nbsp &nbsp hDC As Long &nbsp &nbsp  ' -The DC of the window to draw in<br>
+&nbsp &nbsp rcItem As RECT &nbsp &nbsp  ' -The bounding rectangle of the item to be drawn<br>
+&nbsp &nbsp itemData As Long &nbsp &nbsp  ' -The item data of the item to be drawn<br>
+End Type
+</p>
+</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+You then respond to this message by drawing the item into the DC as required.<br><br>
+
+In addition, whenever an item is added to the list box, Windows sends a WM_MEASUREITEM message. 
+This contains a pointer to a MEASUREITEMSTRUCT structure that the application can fill in with 
+the size of the item.
+<br><br>
+<b>Owner Draw Combo and List Boxes in Visual Basic</b><br>
+That is the overview. In practice, doing this in Visual Basic is not simple. Firstly, you cannot take an 
+existing Combo Box or List Box and then add the required owner-draw style bit - this has no effect 
+in Win32, and at best will cause the control not to operate correctly.<br><br> 
+So instead you have to create a new window by calling CreateWindowEx. This means there is a lot of
+hard work required to make the control respond like a normal VB control.
+The worst problem is with focus.  Normally you do not need to worry about Focus because VB implements
+all the methods required to set focus to and from other OCX controls.  However, if you create a
+non-OCX window using CreateWindowEx, VB's default methods have no idea whatsoever how to handle it. 
+Focus continues to work in VB as if the window you created did not exist, except when you click on
+the window with the mouse, in which case VB fails to understand that any change in focus has occurred.
+<br><br>
+Focus setting for OCX controls is done properly by implementing the OLE 
+<i>IOLEInPlaceActiveObject</i> interface.  However, this interface is resolutely hard-coded into
+VB UserControl's so it is very hard to get at.  The first 
+release of this control attempted to hack around this problem by subclassing the WM_SETFOCUS message
+and responding in such a way that VB no longer had any control.  There were many problems with this,
+such as the control failing to operate on MDI forms, <i>GotFocus</i> and <i>LostFocus</i> events not firing 
+and VB getting confused about which the <i>ActiveControl</i> was.
+<br><br>
+Version 2 of the control fixes all the focus problems by implementing the <i>IOLEInPlaceActiveObject</i> 
+interface. It does this using some seriously hardcore code developed by Mike Gainer, Matt Curland 
+and Bill Storage.  This replaces the UserControl's standard OLE vtable during the 
+UserControl_Initialise event, allowing the <i>IOLEInPlaceActiveObject</i> interface to be 
+overridden by local VB versions of these functions.  Using this in combination with responding 
+to all WM_SETFOCUS and WM_MOUSEACTIVATE messages allows the correct response to focus to be coded in.
+If you are attempting to create a VB control which uses CreateWindowEx, and your control has to 
+get focus, you <i>need</i> to download and check out this code!
+</p>
+<p>
+To get the rest of the features working is fairly straightforward (if not a little un-basic
+like - a lot of copying memory to and from pointers is required), and essentially consists of 
+intercepting WM_COMMAND, WM_MEASUREITEM and WM_DRAWITEM notification events and translating 
+VB's methods (List, ListIndex etc) into the equivalent SendMessage calls.
+	</p>
+<p><b>Using the ODCboLst Control</b><br>
+When you place a new instance of ODCboLst onto a form, the primary items relating to owner draw operation are the ClientDraw and Style properties.<br><br>
+
+The Style property allows you to choose what type of control you get. This is similar to the Style property of a normal combo box or list box, except that both are provided in the same control, and also simple list boxes are not supported (does anyone ever use these?) The settings are fairly self-explanatory:
+<ul>
+<li>ecsDropDownCombo = 0 
+<li>ecsDropDownList = 2 
+<li>ecsListBox = 4 
+<li>ecsListBoxMultiSelect = 5 
+<li>ecsListBoxChecked = 6
+</ul>
+The ClientDraw property determines how the control is rendered, and what options you will have to draw into the control. The settings for this are:
+<ul>
+<li>ecdNoClientDraw = 0 
+<li>ecdDefaultDrawThenClient = 1 
+<li>ecdClientDrawOnly = 2 
+<li>ecdColourPickerWithNames = 3 
+<li>ecdColourPickerNoNames = 4 
+<li>ecdSysColourPicker = 5 
+<li>ecdParagraphStyles = 6 
+<li>ecdFontPicker = 7
+</ul>
+These styles will be covered in turn.
+</p>
+<p><b>ecdNoClientDraw</b><br>
+
+In this style, you are not allowed to do any drawing yourself. All drawing is done internally in the control using the default drawing method. The default drawing method supports the following properties for each item in the control:<br><br>
+</p>
+
+	</font>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	ItemForeColor(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Sets/gets the colour text will be drawn in for the item. If set to -1, the control's text colour will be used.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">   
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemBackColor(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Sets/gets the back colour for the item. If set to -1, the control's back colour will be used.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemFont(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Sets/gets the font for the item. If this is not specified, or set to nothing, the control's font will be used.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemIcon(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Sets/gets the zero-based index of an image within an ImageList to be drawn for the item. In order for this to work, the control's ImageList property must be initialised. Set the property either to a Visual Basic ImageList control, or to a valid ImageList handle.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemIndent(n)
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Sets/gets the indentation, in pixels, from the left margin which will be left before the item is drawn.
+<font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top"> 
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemHeight(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The height of the item in pixels. If not specified, the default of 20 pixels will be used.
+<font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemXAlign(n)
+</font>	
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Sets/gets the horizontal alignment of the item's text within its boundary. The default is left aligned (eixLeft).
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemYAlign(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Sets/gets the vertical alignment of the item's text within its boundary. The default is top aligned (eixTop). If you set the vertical alignment to centred or vertical, only one line of text will be shown.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemUnderline(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Whether a ruling will be drawn underneath the item (spans the whole control width regardless of indentation).
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td  valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemOverline(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Whether a ruling will be drawn over the item (spans the whole control width regardless of indentation).
+</font>	
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+<FONT FACE="Verdana" SIZE=2><P><br><br>Here is a sample of the control in this mode:</p>
+<B><IMG SRC="..\..\images\odcbo-s2.gif" WIDTH="197" HEIGHT="211">
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<P >ODCboLst Default Draw Sample<br><br></P>	
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p><b>ecdDefaultDrawThenClient</b><br>
+This mode performs the same as ecdNoClient except that once it has finished painting it raises a DrawItem event which allows you to perform extra drawing on the list items. This event is described in ecdClientDrawOnly next. 
+</p>
+<p><b>ecdClientDrawOnly</b><br>
+In this mode, the control makes no attempt at drawing, except that it selects the font appropriate to the item into the control's drawing DC. It raises a DrawItem event to the owner form, which should draw the item itself. The parameters for the DrawItem event are as follows:<br><br>
+</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Index As Long
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The ListIndex of the item to draw.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2"> 
+hDC As Long
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The hDC to draw the item into.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+bSelected As Boolean
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Whether the item is selected or not.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+bEnabled As Boolean 
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ Whether the item is enabled or not.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+LeftPixels As Long
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The left-hand corner of the area occupied by the item in pixels.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+TopPixels As Long 
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The top corner of the area occupied by the item in pixels.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+RightPixels As Long
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The right-hand corner of the area occupied by the item in pixels.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+BottomPixels As Long
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ The bottom corner of the area occupied by the item in pixels.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+ 
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+hFntOld As Long
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ This is the handle to the font in the control before ODCboLst.OCX selected the appropriate font.
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>Check the 
+<a href="odclod.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">client draw sample source</a>
+	for examples of how to use this.  This sample uses GDI methods to the drawing, however you could
+	equally use VB drawing methods to draw into a picture box with AutoRedraw set to true and then use
+	one call to BitBlt to transfer the item to the DrawItem DC if you are more comfortable with
+	VB's drawing methods. <br><br></p>
+<p><b>ecdColourPickerWithNames</b><br>
+
+This style causes ODCboLst to draw a colour picker box. All drawing is done internally in the control using the default drawing method. The drawing method supports the following properties for each item in the control:<br><br>
+</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+ItemBackColor(n)
+</font>
+	</td>
+	<td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Sets/gets the colour that will appear in the colour sample box next to each item in the combo box.
+</font>	
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+<FONT FACE="Verdana" SIZE=2><P><br><br>Here is a sample of the control in this mode:</p>
+<IMG SRC="..\..\images\odcbo-s3.gif" WIDTH="143" HEIGHT="197">
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<P>Colour Picker with Names Sample<br><br></P>	
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p><b>ecdColourPickerNoNames</b><br>
+This style is the same as ecdColourPickerWithNames except that it shows colour sample boxes only:</p>
+<IMG SRC="..\..\images\odcbo-s4.gif" WIDTH="141" HEIGHT="194">
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<P>Colour Picker Without Names Sample<br><br></P>	
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p><b>ecdSysColourPicker</b><br>
+This style is the same as ecdColourPicker, except that it preinitialises the colours to the system colours:
+</p>
+<IMG SRC="..\..\images\odcbo-s6.gif" WIDTH="199" HEIGHT="135">
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<P>System Colour Picker<br><br></P>	
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p><b>ecdParagraphStyles</b><br>
+This mode performs the same as ecdNoClient except that once it has finished the default paint it additionally paints a box on the right hand side showing the text centring and font sizes. This style is aimed at setting up a paragraph style selector:</p>
+<IMG SRC="..\..\images\odcbo-s5.gif" WIDTH="220" HEIGHT="154">
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<P>Paragraph Styles Mode<br><br></P>	
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p><b>ecdFontPicker</b><br>
+This mode performs the same as ecdNoClient except the combo/list box is initialised with all the screen and printer fonts on the system and it draws a TT/printer icon next to the font:<br><br>
+<IMG SRC="..\..\images\odcbo-s7.gif" WIDTH="201" HEIGHT="155">
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="1">
+<P>Font Picker Mode<br><br></P>	
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	</td>
+	<td>&nbsp</td>
+
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p><b>Other Additional Properties and Methods</b><br>
+In addition to the owner-draw related properties and methods, the following are also provided:<br><br>
+
+<b>Sub AddItemAndData(sItem As String, [lIconIndex As Long = -1], [lIndent As Long], [lForeColour As OLE_COLOR = -1], [lBackColour As OLE_COLOR = -1], [lItemData As Long], [lExtraData As Long], [lHeight As Long = -1], [eTextXAlign As EItemXAlign = eixLeft], [eTextYAlign As EItemYAlign = eixTop], [fntThis As StdFont])</b><br>
+This method allows you to add an item but also set the extended properties of each list item at the same time. If you have a lot of items to add, and you are setting one or more extended properties, it will be considerably quicker to use this method than the AddItem method followed by the individual extended properties.<br><br>
+
+<b>Sub InsertItem(sItem As String, lIndex As Long)</b><br>
+This method is the same as AddItem except it inserts after the index lIndex.<br><br>
+
+<b>Sub InsertItemAndData(sItem As String, lIndex As Long, [lIconIndex As Long = -1], [lIndent As Long], [lForeColour As OLE_COLOR = -1], [lBackColour As OLE_COLOR = -1], [lItemData As Long], [lExtraData As Long], [lHeight As Long], [eTextXAlign As EItemXAlign = eixLeft], [eTextYAlign As EItemYAlign = eixTop], [fntThis As StdFont])</b><br>
+This method is the same as AddItemAndData except it inserts after the index lIndex.<br><br>
+
+<b>Property ImageList As Variant</b><br>
+Assigns a VB ImageList control or valid handle to an ImageList to the control. This provides a source for icons under the default drawing scheme.<br><br>
+
+<b>Property DropDownWidth As Long (combo box styles only)</b><br>
+Allows the drop down size to be changed. Set to > 0 to set the width of the drop down portion of the combo box in pixels, or to <=0 to use the default.<br><br>
+
+<b>Property ExtendedUI As Boolean (ecsDropDownList Style only)</b><br>
+Set to True if you wish the combo box to drop down in response to the Down Arrow rather than the F4 key.<br><br>
+
+<b>Function FindItemIndex(sToFind As String, [bExactMatch As Boolean = False]) As Long</b><br>
+Attempts to find the item matching sToFind in the control. If bExactMatch is True, the control will search for an exact match, otherwise it will match the characters in sToFind against the first characters in the list items. Returns the ListIndex of the item if found, -1 otherwise.<br><br>
+
+<b>Property MaxLength as Long (ecsDropDownCombo Style only)</b><br>
+Sets the maximum number of characters which can be typed into the edit box section of the combo box.<br><br>
+
+<b>Sub SelectRange(IndexStart As Long, IndexEnd As Long, bState As Boolean) (ecsListBoxMultiSelect and ecsListBoxChecked only)</b><br>
+Sets the selection state for the items from IndexStart to IndexEnd to bState.<br><br>
+
+<b>Sub ShowDropDown(bState As Boolean) (Combo boxes only)</b><br>
+Drops down a combo when bState is true, closes it when bState is false.<br><br>
+
+<b>Sub ShowDropDownAtPosition(XPixels As Long, YPixels As Long, [WidthPixels As Long], [HeightPixels As Long]) (Combo boxes only)</b><br>
+Same as ShowDropDown except it only allows the drop down to be shown and additionally allows the drop down to be positioned. Use this to draw the drop down portion of a combo box in response to e.g. clicked a command button.<br><br>
+
+<b>Additional Events</b><br><br>
+<b>DropDown (Combo Boxes only)</b><br>
+Raised when the combo is dropped down.<br><br>
+
+<b>CloseUp (Combo Boxes only)</b><br>
+Raised when the combo is closed.<br><br>
+
+<b>DrawItem</b><br>
+See description above.<br><br>
+
+<b>MeasureItem</b><br>
+See description above.<br><br>
+</p>
+</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\combo_and_list_boxes\owner_draw_combo_and_list_box\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

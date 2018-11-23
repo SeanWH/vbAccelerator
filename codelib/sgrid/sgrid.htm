@@ -1,0 +1,644 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>vbAccelerator S-Grid Control</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+ name="sectop"></a>	
+
+<!-- SECTION:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	&nbsp;Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>vbAccelerator S-Grid Control</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>A lightweight all VB Grid: Smooth Displays and Outlook Style Features!</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\s_grid\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td width="8">&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\sgrid.gif" alt="S-Grid, Outlook Style Demonstration Showing Grouping" width="458" height="279">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="0" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="5" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="sgridctl.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="sgridctl.zip">VB5 Control Binary (104kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="100%" hspace="0"></td>
+	<td valign="top"><a href="sgridctl6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="sgridctl6.zip">VB6 Control Binary (104kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="sgriddem.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="sgriddem.zip">VB5 Demonstration Project (68kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="100%" hspace="0"></td>
+	<td valign="top"><a href="sgriddem6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="sgriddem6.zip">VB6 Demonstration Project (70kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top"><a href="sgridall.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="sgridall.zip">VB5 Full Source Code (233kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="100%" hspace="0"></td>
+	<td valign="top"><a href="sgridall6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="sgridall6.zip">VB6 Full Source Code (267kb)</a></font></td>
+	</tr>
+
+	<tr>
+	<td colspan="2"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr.dll">vbAccelerator SSubTmr.DLL for VB5</a>
+		<li><a href="..\..\index\projidx.htm#vbaliml.ocx">vbAccelerator VB5 ImageList control</a>
+	</td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="100%" hspace="0"></td>
+	<td colspan="2"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr6.dll">vbAccelerator SSubTmr6.DLL for VB6</a>
+		<li><a href="..\..\index\projidx.htm#vbaliml6.ocx">vbAccelerator VB6 ImageList control</a>
+	</td>
+	</tr>
+
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>1 November 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		A new VB6 binary of the control is available, courtesy of Glenn Halbedl.  Thanks!  Plus a new
+		VB5 compile including 13 minor bug fixes and changes to the control.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>21 March 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		A few display and code bugs crept into the released version of the control.  These 
+		are now fixed in the download code.  Please note that you need version 1.2 (or higher) 
+		of the	<a href="..\comctl\imglist.htm">vbAccelerator ImageList Control</a> to run the
+		demonstration project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Sorting a grid with two rows caused a GPF.		
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Focus rectangle did not draw with dots unless system highlight colour was black.  Focus rectangle
+		also drew when the grid was out of focus (hmmm...) (thanks
+		to Sven Wiese Solty).
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Grid did not reorder when the column before an invisible column was dragged by one
+		place (thanks to Sven Wiese Solty).
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Only standard character set fonts were supported.  Now all font types and DBCS characters
+		should work correctly. (thanks to Lance Franklin).
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Row following a group row drew in system highlight colour (thanks to Dion Wiggins)
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td width="8">&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<br>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+	<td>&nbsp</td>
+	<td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The SGrid control is an all-VB grid which can emulate the Outlook messages list, including 
+	grouping of messages and message preview. The highly optimised display code makes this grid
+	draw faster than FlexGrid and other VB grids even while it allows more sophisticated
+	displays to be set up.  It is also a good replacement for a ListView in report mode.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>What S-Grid Can Do</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<ul>
+	<li><i>Row Features</i>
+	<ol>
+	<li>Add, Insert or Remove rows
+	<li>Rows can be visible or invisible
+	<li>Row height can be set independently for each row, or automatically calculated based on the
+	contents of the cells.
+	<li>Rows can be set to be "Group Rows".  When this is set, the row extends across all of the
+	cells and displays only the information in the last column of the grid (which doesn't 
+	appear in the grid's header)
+	<li>Sort rows automatically using the grid's inbuilt <i>Sort</i> object, which allows the grid
+	to be sorted by up to 8 columns simultaneously based on many sorting criteria (icon, selection, indentation,
+	text, date, number).
+	<li>SGrid can theoretically accommodate up to 2 billion rows. Practically, performance becomes
+	unacceptable for grids containing more than about 10,000 rows.<br>
+	</ol>
+	<li><i>Column Features</i>
+	<ol>
+	<li>Add, Insert or Remove columns
+	<li>Columns can be visible or invisible.
+	<li>Column headers can be clickable or flat.
+	<li>Set column width independently for each column, or have it automatically calculated based
+	on the contents of the cells.
+	<li>Column headers can have text and/or icons, and the icon position can be set to the left
+	or right of the text in the header.
+	<li>Text in column headers can be aligned Left, Right or Centred.
+	<li>Get/set the order of the columns in code.  Columns can optionally be set so the user can
+	drag them to change the order.
+	<li>SGrid can theoretically accommodate up to 2 billion columns. A practically maximum is
+	somewhere around 1,000 columns.<br>
+	</ol>
+	<li><i>Cells</i>	
+	<ol>
+	<li>Set Background and Foreground colours on a cell by cell basis.	
+	<li>Each cell can have its own font.
+	<li>Up to two icons per cell, drawn from an image list.  <i>CellExtraIcon</i> specifies the
+	first icon to be drawn and <i>CellIcon</i> the second.  Icons can optionally be 
+	highlighted when selected.
+	<li>Cells can be indented so selection and drawing starts at a specified offset.
+	<li>Cells can have up to 8,192 characters of text.
+	<li>Cell text can be aligned horizontally or vertically left, right or centred; it can appear
+	on a single line or multiple lines; text can appear with a trailing ellipsis (...) or it can
+	be broken on words.
+	<li>Cells can be included or excluded from the selection box for a row.
+	<li>The last cell in the grid can be set as the "RowTextColumn".  Data in this cell is either
+	drawn directly underneath the standard cells (like the message preview in Outlook) or if the
+	Group Row property is set then only this column is drawn.  You can either specify the column
+	that this row starts drawing at or allow the grid to work this out automatically (when it
+	starts drawing at the first cell which is included in the selection box).
+	</ol>
+	<li><i>Other Features</i>
+	<ol>
+	<li>RowMode<br>S-Grid works either as a standard grid, where you can individually highlight each cell,
+	or as a row-based grid, where you can highlight whole rows.
+	<li>Selections<br>You can have Multiple or Single selections, and this property can be set either
+	at run-time or design-time.
+	<li>Background Bitmap<br>S-Grid will tile a standard VB Picture object behind the grid.
+	<li>Virtual Mode<br>In Virtual mode, S-Grid will request new rows whenever they need to be
+	displayed.  This allows you to add rows as they are required.
+	<li>Editable Setting<br>By setting this property, S-Grid will raise a RequestEdit event whenever
+	the user clicks twice on a cell, or hits the return or space keys on a cell.  You can use this
+	to show a child control such as text box or combo box over the grid cell (positioning it 
+	to the position retrieved using the CellBoundary method).
+	<li>Show/hide gridlines at run-time or design-time.
+	</ol>
+	</ul>
+	<br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>... And What S-Grid Doesn't do</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<ul>
+	<li>S-Grid has no data-binding features whatsoever.  To load records from a database you must write the
+	code yourself!
+	<li>Each row must have the same number of columns.
+	<li>You cannot group cells together, although you can have one cell in each row which spans 
+	multiple columns.
+	<li>S-Grid does not have an IDE designer so the grid's layout cannot be set at design time; it
+	must be set up in code.
+	</ul>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>S-Grid Performance</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The following performance tests will give you an idea of how S-Grid performs.  The speeds
+	are given for adding a number of rows to a 10 column grid, adding the text Row[y]Col[x] 
+	to each cell.  For
+	comparison the same grid has also been set up in a ListView in report mode and a 
+	standard VB5 FlexGrid.
+	All
+	measurements are given in seconds and were performed on Win95 using VB5 on a PII 266MHz with
+	32Mb memory and an 8Mb AGP ATI XPert@Work graphics card.		
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<p>
+	<menu>
+
+	<table cellspacing="0" cellpadding="0" border="0">
+	<tr>
+	<td colspan="9"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+	</tr>
+	<tr bgcolor="#FFFFCC">
+	<td>&nbsp;</td>
+	<td width="1" bgcolor="#CCCC99"></td>
+	<td colspan="7" align="center"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Rows</b></font></td>
+	</tr>
+	<tr bgcolor="#FFFFCC">
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>Control</b>&nbsp;</font></td>
+	<td width="1" bgcolor="#CCCC99"></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>512</b>&nbsp;</font></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>1024</b>&nbsp;</font></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>2048</b>&nbsp;</font></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>4096</b>&nbsp;</font></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>8192</b>&nbsp;</font></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>16384</b>&nbsp;</font></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;<b>32767</b>&nbsp;</font></td>	
+	</tr>
+	<tr>
+	<td colspan="9"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+	</tr>
+	<tr>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;ListView&nbsp;</font></td>	
+	<td width="1" bgcolor="#CCCCCC"></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;0.18&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;0.36&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;0.74&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;1.49&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;2.78&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;6.23&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;11.0&nbsp;</font></td>	
+	</tr>
+	<tr>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;FlexGrid&nbsp;</font></td>	
+	<td width="1" bgcolor="#CCCCCC"></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;1.46&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;3.74&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;11.2&nbsp;</font></td>	
+	<td><font color="#CC0000" face="verdana,arial,helvetica" size="1">&nbsp;35.6&nbsp;</font></td>	
+	<td><font color="#CC0000" face="verdana,arial,helvetica" size="1">&nbsp;121&nbsp;</font></td>	
+	<td><font color="#CC0000" face="verdana,arial,helvetica" size="1">&nbsp;Aborted&nbsp;</font></td>	
+	<td><font color="#CC0000" face="verdana,arial,helvetica" size="1">&nbsp;Aborted&nbsp;</font></td>	
+	</tr>
+	<tr bgcolor="#EEEEEE">
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;S-Grid&nbsp;</font></td>	
+	<td width="1" bgcolor="#CCCCCC"></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;0.31&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;0.64&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;1.24&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;3.50&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;7.31&nbsp;</font></td>	
+	<td><font color="#000000" face="verdana,arial,helvetica" size="1">&nbsp;13.6&nbsp;</font></td>	
+	<td><font color="#CC0000" face="verdana,arial,helvetica" size="1">&nbsp;77&nbsp;</font></td>	
+	</tr>
+	<tr>
+	<td colspan="9"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+	</tr>
+	</table>
+	<br>
+	<font color="#666666" face="verdana,arial,helvetica" size="1">
+	Note: FlexGrid took more than 5 minutes to complete some tests and was stopped
+	</font>
+	<br>
+	</menu>
+	</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<b>Performance Test Results</b>
+		<br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><a href="perftest.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code">Download the SGrid Performance Test project (10kb)</a></p>
+	<p><b>Coding With S-Grid</b><br>	
+	The demonstration project shows how to use all S-Grid's features.  The demonstration contains
+	five different forms demonstrating different aspects of S-Grid's use and showing some ideas
+	of how you can use S-Grid in your project.  Get stuck into this code!<br><br>
+	Documentation for S-Grid's properties, methods and classes is available as an RTF.  This documentation was
+	created with the <a href="..\actvxdoc\article.htm">Active X Documenter</a>.<br><br>
+	<a href="sgrid.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Click here to download/view the S-Grid method and event documentation</a>			
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Hints and Tips</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The main thing to remember with S-Grid is to ensure you set the <i>Redraw</i> property to False
+	whenever you are changing a large number of cells.  This particularly applies when adding or
+	inserting rows and changing the visibility of multiple rows.
+	<br><br>
+	To get your grid to work, make sure you set up the columns before attempting to add any rows.
+	Remember that all rows in the grid have to have the same number of columns.  
+	<br><br>
+	If you want a row to span all columns, make sure the last column in the grid is an invisible 
+	column with the <i>bRowTextColumn</i> parameter of the <i>AddColumn</i> method set to True.  
+	When you add the row, set the <i>RowIsGroup</i> property for that row to True (or set the <i>bGroupRow</i>
+	parameter of the <i>AddRow</i> method to True).
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td width="32">&nbsp;</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\s_grid\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="3">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="8">&nbsp;</td>
+	<td width="52" valign="top"><img src="..\..\images\vbal2000.gif" width="51" height="28" alt="vbAccelerator" border="0"></td>
+        <td valign="top">
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000
+	<br><br>
+	</p>
+        </font>
+        </td>
+	</tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

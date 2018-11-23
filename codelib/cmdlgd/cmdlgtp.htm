@@ -1,0 +1,285 @@
+<html>
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Common Dialog Templates - Create a WinZip Style File Add Dialog</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	&nbsp;<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3&nbsp;</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Common Dialog Templates - Create a WinZip Style File Add Dialog</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	<p>Using Hooks to Create Fully-Featured File Dialogs</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\common_dialogs\using_templates_with_common_dialogs\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<img src="..\..\images\cdlgtemp.gif" alt="Demonstration of A File-Open Template" width="213" height="221">
+	<br>
+	<p><a href="cdlgtemp.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Common Dialog Template Sample (43kb)</a></p>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<table>
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                This project requires the <a href="cmdlgd.htm">CommonDialog/Direct component</a>.  Make sure you have loaded and registered this before trying the project.
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+	</font>
+        </p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Overview</b><br>
+	This sample, from Cayce Cochran (<a href="mailto:cayce@fastlane.net">cayce@fastlane.net</a>), demonstrates
+	how to use a dialog template with a File Open or Save CommonDialog.  It takes advantage of the
+	<a href="cmdlgd.htm">CommonDialog/Direct DLL component</a> which now (versions dated 1 November 1999 and
+	higher) includes the relevant support for templates.
+	<br><br>
+	<b>About Dialog Templates</b><br>
+	A dialog template is a concept popular in C and C++ coding.  Basically it works like a really rubbish
+	version of VB: you lay out the components of the resource in some sort of WYSIWYG environment, which is
+	then written to a resource.  When you come to show the dialog box in the C program, you pass in the
+	dialog template resource and the appropriate functions are invoked to create the specified controls
+	on your dialog for you.
+	<br><br>
+	Templates can be created quite easily if you have a Resource Editor tool (such as the ones provided
+	with VC++, which will even import a VB form for you and spit out the equivalent dialog template).  If
+	you're feeling particularly in the mood for this sort of functionality then you should see it isn't
+	particularly difficult to create your own by hand.  Look at the files <i>WAdlgres.rc</i> and 
+	<i>Resource.h</i> in the download for hints on the format of a template.
+	<br><br>
+	<b>Resources And VB</b><br>
+	The first problem is the fact that the Common Dialog template function requires the template to
+	be included in a resource in the executable.  However, resources in VB apps are hidden from the 
+	API functions whilst you are debugging the app in IDE (you can only read VB resources in the IDE 
+	using the standard VB resource functions <i>LoadResPicture</i>, <i>LoadResData</i> and 
+	<i>LoadResString</i>).
+	<menu>
+	<small>Incidentally, now you can debug VC++ projects with version 6, can we expect to do the same
+	in VB soon?  Resources aren't the only example of VB messing around with stuff behind the scenes.
+	More annoying is what happens to your COM object's CLSIDs in the IDE...</small>
+	</menu>
+	Anyway, this problem is easy to work around by compiling the resource into a DLL and then using 
+	that when working in the IDE.  The easiest way to do this is to 
+	create a VB ActiveX DLL project, add the .RES file to it and compile that (you may want to add a dummy
+	method to the default Class1 just to give VB something to do when creating it).
+	<br><br>
+	Determining whether you are in the IDE or not is achieved using the classic <i>Debug.Assert</i> check:
+	<br><br>
+	</font>
+	<font face="lucida console,courier new" size="1" color="#000000">
+	&nbsp;&nbsp;&nbsp;Private m_bInIDE As Boolean<br>
+	<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;Public Property Get InIDE() As Boolean<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debug.Assert (IsInIDE)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InIDE = m_bInIDE<br>
+	&nbsp;&nbsp;&nbsp;End Property<br>
+	<br>
+	&nbsp;&nbsp;&nbsp;Private Property Get IsInIDE() As Boolean<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_bInIDE = True<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IsInIDE = True<br>
+	&nbsp;&nbsp;&nbsp;End Property<br>
+	<br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	Because <i>Debug.Assert</i> code is only run when you are in the IDE, when the code is compiled the 
+	<i>IsInIDE</i> property is never called, and therefore the <i>m_bInIDE</i> property is never set to
+	True.
+	<br><br>
+	<b>CommonDialog/Direct and Dialog Templates</b><br>
+	Telling the CommonDialog/Direct library to use a dialog template when it is shown
+	is achieved by setting two properties:
+	<ol>
+	<li>The <i>TemplateName</i> property (which accepts a the resource ID as a Long value).  
+	<li>A parameter indicating where the resource can be found. If you are running in compiled code with
+	the resource compiled into the executable, then set the <i>hInstance</i> property to the 
+	<i>App.hInstance</i> value.<br>
+	Otherwise, use <i>cdLoadLibrary</i> to specify to CommonDialog/Direct
+	the filename of a DLL or EXE including the dialog as a resource.  You must remember to call 
+	<i>cdFreeLibrary</i> to free up the resources associated with loading the file.
+	</ol>
+	Because you probably need to know the value of any additional controls in your template, you should
+	set the CommonDialog/Direct <i>HookDialog</i> flag to True.  Having done this the class will
+	raise <i>InitDialog</i> and <i>WMCommand</i> events, which you can use to populate controls and
+	respond to changes in their values.
+
+	<br><br><br>
+
+	</font>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	<p><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overlib.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overlib.htm" target="vbamain">Code Libraries</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm" target="vbamain">Source Code Overview</a>
+	</p>
+
+	</font>
+
+
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

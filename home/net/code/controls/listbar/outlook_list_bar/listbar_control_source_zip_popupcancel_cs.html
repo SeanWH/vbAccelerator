@@ -1,0 +1,928 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: PopupCancel.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: PopupCancel.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">.NET Outlook Style ListBar Control</a>&#160;.&#160;<a href="listbar_control_source.html">ListBar Control Source</a>&#160;.&#160;PopupCancel.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="listbar_control_binary.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Binary</a> (48K)</p><p class="nav"><a href="listbar_control_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Demonstration</a> (84K)</p><p class="nav"><a href="listbar_control_documentation.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Documentation</a> (168K)</p><p class="nav"><a href="listbar_control_source.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Source</a> (94K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12934</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=12934&type=zip&title=listbar_20control_20source_2ezip_5fpopupcancel.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 1</a></p><p class="nav">Updated:22 November 2003</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />7 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\controls\listbar\outlook_listbar\article.html">vbAccelerator ListBar Control</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\graphics\hls_to_rgb\article.html">Hue, Luminance and Saturation in .NET</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: PopupCancel.cs</h1><pre>using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.ListBarControl
+{
+   /// &lt;summary&gt;
+   /// Represents the method that handles the &lt;see
+    cref="PopupCancelNotifier.PopupCancel"/&gt; event
+   /// raised by this class.
+   /// &lt;/summary&gt;
+   internal delegate void PopupCancelEventHandler(object sender, EventArgs e);
+
+   #region PopupCancelNotifier
+   /// &lt;summary&gt;
+   /// 
+   /// A class which provides the functionality required to 
+   /// cancel a popup window.  This class wraps two pieces of 
+   /// functionality:
+   /// 
+   /// &lt;list type="number"&gt;Firstly, it checks whether the form (or the form
+    owner
+   /// for the control) receives a &lt;c&gt;WM_ACTIVATE&lt;/c&gt; message with
+   /// wParam = 0.  This indicates the window has gone out
+   /// of focus because the user has clicked on another one.&lt;/list&gt;
+   /// &lt;list type="number"&gt;Secondly, it installs a Win32 Mouse Hook and checks
+   /// for mouse presses anywhere else in the application.
+   /// This is the same technique that's used in the Framework
+   /// Class Library to implement drop-down designer windows.&lt;/list&gt;
+   /// 
+   /// However, this functionality may cause a problem because 
+   /// the CLR will mark this code as non-type safe owing to 
+   /// the unmanaged code in the Hook.  If you don't need in-place 
+   /// editing of items, then you can remove this code and any 
+   /// reference to it from the &lt;c&gt;ListBar&lt;/c&gt; control and recompile 
+   /// for a 100% managed type-safe version of the control.
+   /// 
+   /// &lt;remarks&gt;
+   /// Copyright &amp;#169; 2003 Steve McMahon for vbAccelerator.com.
+   /// vbAccelerator is a Trade Mark of vbAccelerator Ltd.  All Rights
+   /// Reserved.  Please visit http://vbaccelerator.com/ for more
+   /// on this and other VB and .NET Framework code.
+   /// &lt;/remarks&gt;
+   /// 
+   /// &lt;/summary&gt;
+   internal class PopupCancelNotifier : NativeWindow, IDisposable
+   {
+
+      /// &lt;summary&gt;
+      /// The PopupCancel event is raised whenever the popup should be
+      /// cancelled.
+      /// &lt;/summary&gt;
+      public event PopupCancelEventHandler PopupCancel;
+      
+      private MouseHook mouseHook = new MouseHook();
+
+      /// &lt;summary&gt;
+      /// Message sent to a window when activation state
+      /// changes
+      /// &lt;/summary&gt;
+      private const int WM_ACTIVATE = 0x6;
+      /// &lt;summary&gt;
+      /// Window handle to track for popup cancellation
+      /// &lt;/summary&gt;
+      private IntPtr trackHandle = IntPtr.Zero;
+      /// &lt;summary&gt;
+      /// Whether this object has been disposed or not
+      /// &lt;/summary&gt;
+      private bool disposed = false;
+
+      /// &lt;summary&gt;
+      /// Start tracking for a popup cancellation.
+      /// &lt;/summary&gt;
+      /// &lt;param name="ctl"&gt;The &lt;c&gt;Control&lt;/c&gt; or &lt;c&gt;Form&lt;/c&gt;
+      /// to use when tracking Window inactivation messages. This can
+      /// either be a control or a Form.&lt;/param&gt;
+      public void StartTracking(Control ctl)
+      {
+         IntPtr handle = IntPtr.Zero;
+
+         Control ctlOwnerForm = ctl;
+         Control ctlTest = null;
+         while (!typeof(Form).IsAssignableFrom(ctlOwnerForm.GetType()))
+         {
+            ctlTest = ctlOwnerForm.Parent;
+            if (ctlTest == null)
+            {
+               break;
+            }
+            else
+            {
+               ctlOwnerForm = ctlTest;
+            }
+         }
+                  
+         this.trackHandle = ctlOwnerForm.Handle;
+         this.AssignHandle(trackHandle);
+         this.mouseHook.Install();
+         this.mouseHook.MouseHookEvent += new
+          MouseHookEventHandler(mouseHook_MouseHookEvent);
+      }
+
+      private void mouseHook_MouseHookEvent(object sender, ref
+       MouseHookEventArgs e)
+      {
+         if (e.Button != MouseButtons.None)
+         {
+            OnPopupCancel(new EventArgs());
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Check for the WM_ACTIVATE message and stop
+      /// tracking if the window is inactivated.
+      /// &lt;/summary&gt;
+      /// &lt;param name="msg"&gt;Message details for this window procedure
+      /// event.&lt;/param&gt;
+      protected override void WndProc(ref Message msg)
+      {
+         base.WndProc(ref msg);
+         if (msg.Msg == WM_ACTIVATE)
+         {
+            if (((int)msg.WParam) == 0)
+            {
+               OnPopupCancel(new EventArgs());
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Stop tracking. Called automatically if this class determines
+      /// the popup should be cancelled.
+      /// &lt;/summary&gt;
+      public void StopTracking()
+      {
+         if (!this.trackHandle.Equals(IntPtr.Zero))
+         {
+            this.ReleaseHandle();
+            this.trackHandle = IntPtr.Zero;
+            this.mouseHook.MouseHookEvent -= new
+             MouseHookEventHandler(mouseHook_MouseHookEvent);
+            this.mouseHook.Uninstall();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notify when the popup should be cancelled,
+      /// and uninstall tracking.
+      /// &lt;/summary&gt;
+      protected virtual void OnPopupCancel(EventArgs e)
+      {
+         if (PopupCancel != null)
+         {
+            PopupCancel(this, e);
+         }
+         StopTracking();
+      }
+
+      /// &lt;summary&gt;
+      /// Create a new instance of the PopupCancel class
+      /// &lt;/summary&gt;
+      public PopupCancelNotifier()
+      {
+         // intentionally blank
+      }
+      
+      /// &lt;summary&gt;
+      /// Finalises the class and clears up resources if the
+      /// Dispose() method has not been called.
+      /// &lt;/summary&gt;
+      ~PopupCancelNotifier()
+      {
+         if (!disposed)
+         {
+            StopTracking();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Ensures any resources associated with this object are
+      /// cleared up.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         StopTracking();
+         disposed = true;
+         GC.SuppressFinalize(this);
+      }
+
+   }
+   #endregion
+
+   #region LocalWindowsHook
+   //
+   // The LocalWindowsHook code is based mainly on 
+   // Dino Esposito's Cutting Edge column in the MSDN October 
+   // 2002 issue, "Cutting Edge: Windows Hooks in the .NET Framework".
+   // Changes:
+   // 1) Change the hook event handling to an override-based hook 
+   //    mechanism rather than an event-based one.
+   // 2) The event information needs to be by ref so we can modify the
+   //    details returned to Windows.
+   // 3) Some half-hearted documentation and  field renaming.
+   //
+
+   #region Class HookEventArgs
+   /// &lt;summary&gt;
+   /// Arguments for the Hook event
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;This code is based on code published by Dino Esposito
+   /// in the article "Cutting Edge: Windows Hooks in the .NET Framework"
+   /// published in the October 2002 edition of MSDN and available online
+   /// at http://msdn.microsoft.com/
+   /// &lt;/remarks&gt;
+   internal class HookEventArgs : EventArgs
+   {
+      /// &lt;summary&gt;
+      /// Hook code
+      /// &lt;/summary&gt;
+      public int HookCode;   
+      /// &lt;summary&gt;
+      /// WPARAM argument
+      /// &lt;/summary&gt;
+      public IntPtr wParam;   
+      /// &lt;summary&gt;
+      /// LPARAM argument
+      /// &lt;/summary&gt;
+      public IntPtr lParam;   
+   }
+   #endregion
+
+   #region Enum HookType
+   /// &lt;summary&gt;
+   /// Hook Types available under Windows. TODO: documentation
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;This code is based on code published by Dino Esposito
+   /// in the article "Cutting Edge: Windows Hooks in the .NET Framework"
+   /// published in the October 2002 edition of MSDN and available online
+   /// at http://msdn.microsoft.com/
+   /// &lt;/remarks&gt;
+   internal enum HookType : int
+   {
+      WH_JOURNALRECORD = 0,
+      WH_JOURNALPLAYBACK = 1,
+      WH_KEYBOARD = 2,
+      WH_GETMESSAGE = 3,
+      WH_CALLWNDPROC = 4,
+      WH_CBT = 5,
+      WH_SYSMSGFILTER = 6,
+      WH_MOUSE = 7,
+      WH_HARDWARE = 8,
+      WH_DEBUG = 9,
+      WH_SHELL = 10,
+      WH_FOREGROUNDIDLE = 11,
+      WH_CALLWNDPROCRET = 12,      
+      WH_KEYBOARD_LL = 13,
+      WH_MOUSE_LL = 14
+   }
+   #endregion
+
+   /// &lt;summary&gt;
+   /// This class defines the core functionality to implement
+   /// a Windows Hook.  Specific implementations can subclass this
+   /// class and override &lt;see cref="OnHookInvoked"/&gt;, or respond to the
+   /// &lt;see cref="HookInvoked"/&gt; event.
+   /// &lt;/summary&gt;   
+   /// &lt;remarks&gt;This code is based on code published by Dino Esposito
+   /// in the article "Cutting Edge: Windows Hooks in the .NET Framework"
+   /// published in the October 2002 edition of MSDN and available online.  
+   /// It has been changed as follows:
+   /// &lt;list type="number"&gt;Change the hook event handling to an override-based
+    hook 
+   ///  mechanism rather than an event-based one.&lt;/list&gt;
+   /// &lt;list type="number"&gt;The event information needs to be by ref so we can
+    modify the
+   /// details returned to Windows.&lt;/list&gt;
+   /// &lt;list type="number"&gt;Added some documentation and renamed some
+    fields.&lt;/list&gt;
+   /// &lt;/remarks&gt;
+   internal abstract class LocalWindowsHook : IDisposable
+   {
+      #region Unmanaged code
+      [DllImport("user32.dll")]
+      public static extern IntPtr SetWindowsHookEx(
+         HookType code, 
+         HookProc func,
+         IntPtr hInstance,
+         int threadID);
+      [DllImport("user32.dll")]
+      public static extern int UnhookWindowsHookEx(IntPtr hhook);
+      [DllImport("user32.dll")]
+      protected static extern int CallNextHookEx(IntPtr hhook, 
+         int code, IntPtr wParam, IntPtr lParam);
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Filter function delegate
+      /// &lt;/summary&gt;
+      public delegate int HookProc(int code, IntPtr wParam, IntPtr lParam);
+
+      #region Properties
+      /// &lt;summary&gt;
+      /// The handle to the Windows hook.
+      /// &lt;/summary&gt;
+      protected IntPtr HookHandle = IntPtr.Zero;
+      /// &lt;summary&gt;
+      /// The hook filter function.
+      /// &lt;/summary&gt;
+      protected HookProc FilterFunc = null;
+      /// &lt;summary&gt;
+      /// The type of hook installed.
+      /// &lt;/summary&gt;
+      protected HookType HookType;
+      #endregion
+      private bool disposed = false;
+
+      /// &lt;summary&gt;
+      /// Represents the method that handles the HookInvoked event
+      /// raised by this class.
+      /// &lt;/summary&gt;
+      public delegate void HookInvokedEventHandler(object sender, ref
+       HookEventArgs e);
+
+      /// &lt;summary&gt;
+      /// The HookInvoked event is raised whenever the hook fires.
+      /// &lt;/summary&gt;
+      public event HookInvokedEventHandler HookInvoked;
+      
+      /// &lt;summary&gt;
+      /// Raises the HookInvoked event. This method can be overriden
+      /// for particular implementations of a hook, or an implementation
+      /// can respond to the HookInvoked event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;The HookEventArgs for this hook
+      /// event.&lt;/param&gt;
+      protected virtual void OnHookInvoked(ref HookEventArgs e)
+      {
+         if (HookInvoked != null)
+         {
+            HookInvoked(this, ref e);
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class with
+      /// the specified Hook Type.
+      /// &lt;/summary&gt;
+      /// &lt;param name="hookType"&gt;Hook type to create&lt;/param&gt;
+      public LocalWindowsHook(HookType hookType)
+      {
+         this.HookType = hookType;
+         this.FilterFunc = new HookProc(this.CoreHookProc); 
+      }
+      
+      /// &lt;summary&gt;
+      /// Default filter function.
+      /// &lt;/summary&gt;
+      /// &lt;param name="code"&gt;Hook code&lt;/param&gt;
+      /// &lt;param name="wParam"&gt;Hook wParam&lt;/param&gt;
+      /// &lt;param name="lParam"&gt;Hook lParam&lt;/param&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      private int CoreHookProc(int code, IntPtr wParam, IntPtr lParam)
+      {
+         // According to MSDN docs, if code &lt; 0 then you must call
+         // the next hook in the chain:
+         if (code &lt; 0)
+         {
+            return CallNextHookEx(this.HookHandle, code, wParam, lParam);
+         }
+         else
+         {
+            // Call the event:
+            HookEventArgs e = new HookEventArgs();
+            e.HookCode = code;
+            e.wParam = wParam;
+            e.lParam = lParam;            
+            OnHookInvoked(ref e);
+
+            // Yield to the next hook in the chain:
+            return CallNextHookEx(this.HookHandle, e.HookCode, e.wParam,
+             e.lParam);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Install the hook.
+      /// &lt;/summary&gt;
+      public void Install()
+      {
+         this.HookHandle = SetWindowsHookEx(
+            this.HookType, 
+            this.FilterFunc, 
+            IntPtr.Zero, 
+            (int) AppDomain.GetCurrentThreadId());
+         Trace.Assert((!this.HookHandle.Equals(IntPtr.Zero)), "Failed to
+          install hook!");
+      }
+
+      /// &lt;summary&gt;
+      /// Uninstall the hook.
+      /// &lt;/summary&gt;
+      public void Uninstall()
+      {
+         if (this.HookHandle != IntPtr.Zero)
+         {
+            UnhookWindowsHookEx(this.HookHandle); 
+         }
+         this.HookHandle = IntPtr.Zero;
+      }
+
+      /// &lt;summary&gt;
+      /// Clear up any resources associated with the hook if 
+      /// Dispose() has not been called.
+      /// &lt;/summary&gt;
+      ~LocalWindowsHook()
+      {
+         if (!this.disposed)
+         {
+            Uninstall();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Clear up any resources associated with this hook.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         if (!this.disposed)
+         {
+            Uninstall();
+            this.disposed = true;
+            GC.SuppressFinalize(this);
+         }
+      }
+
+   }
+   #endregion
+
+   #region Mouse Hook Implementation
+
+   #region MOUSEHOOKSTRUCT for interop with the Windows Mouse Hook
+   /// &lt;summary&gt;
+   /// The Windows API &lt;c&gt;MOUSEHOOKSTRUCT&lt;/c&gt; which is passed in the 
+   /// &lt;c&gt;lParam&lt;/c&gt; of a Mouse Hook event.
+   /// &lt;/summary&gt;
+   [StructLayoutAttribute(LayoutKind.Sequential)]
+   internal struct MOUSEHOOKSTRUCT 
+   {
+      /// &lt;summary&gt;
+      /// Mouse X Position
+      /// &lt;/summary&gt;
+      public int x;
+      /// &lt;summary&gt;
+      /// Mouse Y Position
+      /// &lt;/summary&gt;
+      public int y;
+      /// &lt;summary&gt;
+      /// Handle of window mouse is over
+      /// &lt;/summary&gt;
+      public IntPtr handle;
+      /// &lt;summary&gt;
+      /// Hit test code returned
+      /// &lt;/summary&gt;
+      public int wHitTestCode;
+      /// &lt;summary&gt;
+      /// Other information about the mouse event
+      /// &lt;/summary&gt;
+      public int dwExtraInfo;
+      
+      // note that under Windows2000 and XP there is 
+      // also an additional mouseData DWORD which supplies
+      // the mouse wheel information
+
+      /// &lt;summary&gt;
+      /// Provides a human-readable string displaying the contents of
+      /// this structure.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;A string containing details of the contents of
+      /// this structure.&lt;/returns&gt;
+      public override string ToString()
+      {
+         return String.Format("{0}
+          x={1},y={2},hWnd={3},wHitTestCode={4},dwExtraInfo={5}",
+            typeof(MOUSEHOOKSTRUCT).FullName,
+            this.x,
+            this.y,
+            this.handle,
+            this.wHitTestCode,
+            this.dwExtraInfo 
+            );
+      }
+   }
+   #endregion
+
+   #region Enumerations associated with the Mouse Hook class
+
+   /// &lt;summary&gt;
+   /// Types of MouseHook events which are recorded:
+   /// &lt;/summary&gt;
+   internal enum MouseHookEventType : int
+   {
+      /// &lt;summary&gt;
+      /// The mouse has moved
+      /// &lt;/summary&gt;
+      MouseMove,
+      /// &lt;summary&gt;
+      /// A mouse button has been depressed
+      /// &lt;/summary&gt;
+      MouseDown,
+      /// &lt;summary&gt;
+      /// A mouse button has been released
+      /// &lt;/summary&gt;
+      MouseUp,
+      /// &lt;summary&gt;
+      /// A mouse wheel action has occurred
+      /// &lt;/summary&gt;
+      MouseWheel,
+      /// &lt;summary&gt;
+      /// A mouse button has been double-clicked
+      /// &lt;/summary&gt;
+      DblClick
+   }
+
+   /// &lt;summary&gt;
+   /// The location of the mouse when a mouse hook event is recorded.
+   /// &lt;/summary&gt;
+   internal enum MouseHookEventLocation : int
+   {
+      /// &lt;summary&gt;
+      /// The mouse event occurred in the client area.
+      /// &lt;/summary&gt;
+      Client,
+      /// &lt;summary&gt;
+      /// The mouse event occurred in a non-client area.
+      /// &lt;/summary&gt;
+      NonClient
+   }
+   #endregion
+
+
+   #region MouseHookEventArgs class
+   /// &lt;summary&gt;
+   /// Information about a Mouse Hook event
+   /// which has occured.
+   /// TODO: X buttons
+   /// &lt;/summary&gt;
+   internal class MouseHookEventArgs : EventArgs
+   {
+      private MouseHookEventType eventType;
+      private MouseHookEventLocation eventLocation;
+      private MouseButtons button;
+      private int x;
+      private int y;
+      private IntPtr handle;
+      private int hitTestCode;
+      private int extraData;
+
+      private const int  WM_MOUSEMOVE                    = 0x0200;
+      private const int  WM_LBUTTONDOWN                  = 0x0201;
+      private const int  WM_LBUTTONUP                    = 0x0202;
+      private const int  WM_LBUTTONDBLCLK                = 0x0203;
+      private const int  WM_RBUTTONDOWN                  = 0x0204;
+      private const int  WM_RBUTTONUP                    = 0x0205;
+      private const int  WM_RBUTTONDBLCLK                = 0x0206;
+      private const int  WM_MBUTTONDOWN                  = 0x0207;
+      private const int  WM_MBUTTONUP                    = 0x0208;
+      private const int  WM_MBUTTONDBLCLK                = 0x0209;
+      private const int  WM_MOUSEWHEEL                   = 0x020A;
+      private const int  WM_XBUTTONDOWN                  = 0x020B;
+      private const int  WM_XBUTTONUP                    = 0x020C;
+      private const int  WM_XBUTTONDBLCLK                = 0x020D;
+      private const int  WM_NCLBUTTONDOWN                = 0x00A1;
+      private const int  WM_NCLBUTTONUP                  = 0x00A2;
+      private const int  WM_NCLBUTTONDBLCLK              = 0x00A3;
+      private const int  WM_NCRBUTTONDOWN                = 0x00A4;
+      private const int  WM_NCRBUTTONUP                  = 0x00A5;
+      private const int  WM_NCRBUTTONDBLCLK              = 0x00A6;
+      private const int  WM_NCMBUTTONDOWN                = 0x00A7;
+      private const int  WM_NCMBUTTONUP                  = 0x00A8;
+      private const int  WM_NCMBUTTONDBLCLK              = 0x00A9;
+      private const int  WM_NCXBUTTONDOWN                = 0x00AB;
+      private const int  WM_NCXBUTTONUP                  = 0x00AC;
+      private const int  WM_NCXBUTTONDBLCLK              = 0x00AD;
+
+      /// &lt;summary&gt;
+      /// Gets the type of mouse event.
+      /// &lt;/summary&gt;
+      public MouseHookEventType EventType
+      {
+         get
+         {
+            return this.eventType;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the location in which the mouse event
+      /// occurred.
+      /// &lt;/summary&gt;
+      public MouseHookEventLocation EventLocation
+      {
+         get
+         {
+            return this.eventLocation;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the button which is involved in the action
+      /// (or MouseButtons.None if no button is used).
+      /// &lt;/summary&gt;
+      public MouseButtons Button
+      {
+         get
+         {
+            return this.button;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the X location of the mouse when the event
+      /// occurred.
+      /// &lt;/summary&gt;
+      public int X
+      {
+         get
+         {
+            return this.x;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the Y location of the mouse when the event
+      /// occurred.
+      /// &lt;/summary&gt;
+      public int Y
+      {
+         get
+         {
+            return this.Y;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the window handle of the object the mouse
+      /// was over.
+      /// &lt;/summary&gt;
+      public IntPtr Handle
+      {
+         get
+         {
+            return this.handle;
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new MouseHookEvent
+      /// &lt;/summary&gt;
+      /// &lt;param name="wParam"&gt;The &lt;c&gt;wParam&lt;/c&gt; (Message code) for the
+      /// Mouse Hook event&lt;/param&gt;
+      /// &lt;param name="mhs"&gt;The &lt;c&gt;MOUSEHOOKEVENT&lt;/c&gt; structure
+      /// for the hook event.&lt;/param&gt;
+      public MouseHookEventArgs(
+         IntPtr wParam,
+         MOUSEHOOKSTRUCT mhs
+         )
+      {
+         switch ((int)wParam)
+         {
+            case WM_MOUSEMOVE:
+               this.eventType = MouseHookEventType.MouseMove;
+               // we could check if we're over a non-client
+               // area here etc
+               this.button = MouseButtons.None;
+               break;
+
+            case WM_LBUTTONDOWN:
+               this.eventType = MouseHookEventType.MouseDown;
+               this.button = MouseButtons.Left;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_LBUTTONUP:
+               this.eventType = MouseHookEventType.MouseUp;
+               this.button = MouseButtons.Left;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_LBUTTONDBLCLK:
+               this.eventType = MouseHookEventType.DblClick;
+               this.button = MouseButtons.Left;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_MBUTTONDOWN:
+               this.eventType = MouseHookEventType.MouseDown;
+               this.button = MouseButtons.Middle;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_MBUTTONUP:
+               this.eventType = MouseHookEventType.MouseUp;
+               this.button = MouseButtons.Middle;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_MBUTTONDBLCLK:
+               this.eventType = MouseHookEventType.DblClick;
+               this.button = MouseButtons.Middle;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_RBUTTONDOWN:
+               this.eventType = MouseHookEventType.MouseDown;
+               this.button = MouseButtons.Right;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_RBUTTONUP:
+               this.eventType = MouseHookEventType.MouseUp;
+               this.button = MouseButtons.Right;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_RBUTTONDBLCLK:
+               this.eventType = MouseHookEventType.DblClick;
+               this.button = MouseButtons.Right;
+               this.eventLocation = MouseHookEventLocation.Client;
+               break;
+
+            case WM_NCLBUTTONDOWN:
+               this.eventType = MouseHookEventType.MouseDown;
+               this.button = MouseButtons.Left;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCLBUTTONUP:
+               this.eventType = MouseHookEventType.MouseUp;
+               this.button = MouseButtons.Left;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCLBUTTONDBLCLK:
+               this.eventType = MouseHookEventType.DblClick;
+               this.button = MouseButtons.Left;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCMBUTTONDOWN:
+               this.eventType = MouseHookEventType.MouseDown;
+               this.button = MouseButtons.Middle;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCMBUTTONUP:
+               this.eventType = MouseHookEventType.MouseUp;
+               this.button = MouseButtons.Middle;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCMBUTTONDBLCLK:
+               this.eventType = MouseHookEventType.DblClick;
+               this.button = MouseButtons.Middle;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCRBUTTONDOWN:
+               this.eventType = MouseHookEventType.MouseDown;
+               this.button = MouseButtons.Right;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCRBUTTONUP:
+               this.eventType = MouseHookEventType.MouseUp;
+               this.button = MouseButtons.Right;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+
+            case WM_NCRBUTTONDBLCLK:
+               this.eventType = MouseHookEventType.DblClick;
+               this.button = MouseButtons.Right;
+               this.eventLocation = MouseHookEventLocation.NonClient;
+               break;
+         }
+
+         this.x = mhs.x;
+         this.y = mhs.y;
+
+         this.handle = mhs.handle;
+         
+         this.hitTestCode = mhs.wHitTestCode;
+         this.extraData = mhs.dwExtraInfo;
+      }
+   }
+   #endregion
+
+
+   #region MouseHook class delegates
+   /// &lt;summary&gt;
+   /// Represents the method that handles the HookInvoked event
+   /// raised by this class.
+   /// &lt;/summary&gt;
+   internal delegate void MouseHookEventHandler(object sender, ref
+    MouseHookEventArgs e);
+   #endregion
+
+   #region MouseHook Class
+   internal class MouseHook : LocalWindowsHook
+   {
+
+      /// &lt;summary&gt;
+      /// The HookInvoked event is raised whenever the hook fires.
+      /// &lt;/summary&gt;
+      public event MouseHookEventHandler MouseHookEvent;
+
+
+      /// &lt;summary&gt;
+      /// Override for the generic hook's invoked event to
+      /// convert to a strongly typed MouseHookEvent:
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Generic Hook event argument details&lt;/param&gt;
+      protected override void OnHookInvoked(ref HookEventArgs e)
+      {
+         // Convert into mouse details:
+         MOUSEHOOKSTRUCT mhs = (MOUSEHOOKSTRUCT)Marshal.PtrToStructure(
+            e.lParam, typeof(MOUSEHOOKSTRUCT));
+
+         MouseHookEventArgs mhe = new MouseHookEventArgs(
+            e.wParam, mhs);
+         OnMouseHookEvent(ref mhe);
+
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the MouseHookEvent event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;The MouseHook event details associated
+      /// with this mouse hook event.&lt;/param&gt;
+      protected virtual void OnMouseHookEvent(ref MouseHookEventArgs e)
+      {
+         if (MouseHookEvent != null)
+         {
+            MouseHookEvent(this, ref e);
+         }
+
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a MouseHook.
+      /// &lt;/summary&gt;
+      public MouseHook() : base(HookType.WH_MOUSE)
+      {
+         // intentionally blank
+      }
+
+   }
+   #endregion
+
+   #endregion
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">.NET Outlook Style ListBar Control</a>&#160;.&#160;<a href="listbar_control_source.html">ListBar Control Source</a>&#160;.&#160;PopupCancel.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

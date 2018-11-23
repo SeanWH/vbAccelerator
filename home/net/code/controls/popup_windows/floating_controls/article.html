@@ -1,0 +1,271 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Floating Controls, Tooltip-style</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+This article started when I was implementing the VS.NET ListBar
+control.  If you move the mouse over an item whose text is partially obscured in the VS.NET
+ListBar, a popup appears to show more of the text.  The same technique is also implemented in the ListView and TreeView controls using a ToolTip.  Whilst the tooltip control provided in the .NET
+Framework is easy to use, it isn't customisable to perform these sort of effects.  Hence, the
+control provided in this article, which derives from a standard .NET Framework Control and allows the control to be shown floating anywhere on the screen.  In addition
+to that, it behaves as if it were transparent to any mouse events, so events over the control
+are transmitted directly to any underlying control. VB.NET and C# versions of the code are
+provided.
+" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;Floating Controls, Tooltip-style</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="floating_control_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Floating Control Code and Demonstration</a> (138K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:13337</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13337&type=article&title=floating_20controls_2c_20tooltip_2dstyle.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />1 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\listbar\vsnet_style_list_bar\article.html">VS.NET ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Floating Controls, Tooltip-style</h1><p class="splash">Create custom information tips with this extension to the standard Framework control.</p><img src="floatcontrol.png" width="358" height="287" alt="Floating Control Demonstration Project" /><p /><p>
+This article started when I was implementing the <a href="..\..\listbar\vsnet_style_list_bar\article.html">VS.NET ListBar
+control</a>.  If you move the mouse over an item whose text is partially obscured in the VS.NET
+ListBar, a popup appears to show more of the text.  The same technique is also implemented in the ListView and TreeView controls using a ToolTip.  Whilst the tooltip control provided in the .NET
+Framework is easy to use, it isn't customisable to perform these sort of effects.  Hence, the
+control provided in this article, which derives from a standard .NET Framework <span class="code">Control</span> and allows the control to be shown floating anywhere on the screen.  In addition
+to that, it behaves as if it were transparent to any mouse events, so events over the control
+are transmitted directly to any underlying control. VB.NET and C# versions of the code are
+provided.
+</p><h2>About Floating Control</h2><p>
+Normally a control has a parent window associated with it.  This tells Windows that
+when the control is drawn, it should be clipped by the parent window that contains it.
+However, it is possible to set a control so it doesn't have a parent, in which case
+its parent is the Windows Desktop.  If you do this, however, you have to be careful
+since the .NET Framework, and to some extent Windows itself, expects certain types of
+Windows to have particular behaviours.  Once a control has been floated, it probably
+won't be able to do much with key events, and it can interfere with determining which
+Window should be active not to mention 
+mouse processing such as the <span class="code">MouseEnter</span> and <span class="code">MouseLeave</span>
+events.   This limits what you can use a floating control for, but it leaves the way
+open for floating tooltip and informative popups.
+</p><h2>Creating a Floating Control</h2><p>
+There are two main things that you need to do to convert a standard control
+into a floating one:
+</p><ol><li>Ensure that the control is owned by the desktop, rather than a particular form
+or control, and set the styles of the control's window so that Windows sees it as
+a valid floating window.</li><li>Make the control transparent to the mouse, so mouse events over the floating control
+are forwarded to their rightful owner.  As noted before, if you don't do this then you will
+start seeing spurious activation and mouse event-related problems.</li></ol><p>
+These techniques require a dash of unmanaged code, but are easy to do.
+</p><h3>1. Setting Parent and Styles.</h3><p>
+Windows provides API calls which allow you to modify
+the style of a Window (the <span class="code">GetWindowLong</span> and
+<span class="code">SetWindowLong</span> functions), but the best way to ensure
+the correct style is set is to set it when a control is created, as sometimes the
+changed styles don't take if you set them later.  The .NET
+Framework allows you to modify the style of a window as it is created by 
+overriding the <span class="code">CreateParams</span> property.  This allows
+you to do two things: firstly, to suggest to Windows that the control should
+not have a parent window and secondly to set the styles that are used.  For a floating
+control, we want the styles <span class="code">WS_EX_NOACTIVATE</span> (so the mouse
+doesn't activate the window), <span class="code">WS_EX_TOOLWINDOW</span> (so it doesn't 
+appear in the task list) and <span class="code">WS_EX_TOPMOST</span> (so it floats above
+all other Windows).  The code to achieve this is as follows:
+</p><pre>
+      private const int WS_EX_TOOLWINDOW        = 0x00000080;
+      private const int WS_EX_NOACTIVATE        = 0x08000000;
+      private const int WS_EX_TOPMOST           = 0x00000008;      
+
+      /// &lt;summary&gt;
+      /// Get the &lt;see cref="System.Windows.Forms.CreateParams"/&gt;
+      /// used to create the control.  This override adds the
+      /// &lt;code&gt;WS_EX_NOACTIVATE&lt;/code&gt;, &lt;code&gt;WS_EX_TOOLWINDOW&lt;/code&gt;
+      /// and &lt;code&gt;WS_EX_TOPMOST&lt;/code&gt; extended styles to make
+      /// the Window float on top.
+      /// &lt;/summary&gt;
+      protected override CreateParams CreateParams
+      {
+         get
+         {
+            CreateParams p = base.CreateParams;
+            p.ExStyle |= (WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST);
+            p.Parent = IntPtr.Zero;
+            return p;
+         }
+      }
+</pre><p>
+Once this has been done, we need a method to show the form in its
+floating state without the Framework attempting to route input focus or
+attempting to associate the control with a parent. This 
+is done using a the <span class="code">ShowWindow</span> API call:
+</p><pre>
+      [DllImport("user32")]
+      private static extern int SetParent(
+         IntPtr hWndChild,
+         IntPtr hWndNewParent);
+      [DllImport("user32")]
+      private static extern int ShowWindow(
+         IntPtr hWnd,
+         int nCmdShow);
+
+      /// &lt;summary&gt;
+      /// Shows the control as a floating Window child 
+      /// of the desktop.  To hide the control again,
+      /// use the &lt;see cref="Visible"/&gt; property.
+      /// &lt;/summary&gt;
+      public void ShowFloating()
+      {
+         if (this.Handle == IntPtr.Zero)
+         {
+            base.CreateControl();
+         }
+         SetParent(base.Handle, IntPtr.Zero);
+         ShowWindow(base.Handle, 1);
+      }
+</pre><p>
+The additional <span class="code">SetParent</span> call is needed even though we
+specified the desktop during the <span class="code">CreateParams</span> override
+since all .NET Framework controls are by default associated with a hidden
+"WindowsFormsParkingWindow" which you can investigate using Windows Spy
+if the mood takes you.
+</p><h3>2. Making a Control Transparent to the Mouse</h3><p>
+Whenever the mouse moves over the surface of a control, Windows sends the 
+<span class="code">WM_NCHITTEST</span> message to ask the object what part
+of the UI it is over.  The response to this message then tells Windows
+what type of mouse cursor should be shown and how the mouse will respond
+if it is clicked.  The list of codes you can return is as follows:
+</p><ul><li><span class="code"> HTERROR             (-2)</span></li><li><span class="code"> HTTRANSPARENT       (-1)</span></li><li><span class="code"> HTNOWHERE           0</span></li><li><span class="code"> HTCLIENT            1</span></li><li><span class="code"> HTCAPTION           2</span></li><li><span class="code"> HTSYSMENU           3</span></li><li><span class="code"> HTGROWBOX           4</span></li><li><span class="code"> HTMENU              5</span></li><li><span class="code"> HTHSCROLL           6</span></li><li><span class="code"> HTVSCROLL           7</span></li><li><span class="code"> HTMINBUTTON         8</span></li><li><span class="code"> HTMAXBUTTON         9</span></li><li><span class="code"> HTLEFT              10</span></li><li><span class="code"> HTRIGHT             11</span></li><li><span class="code"> HTTOP               12</span></li><li><span class="code"> HTTOPLEFT           13</span></li><li><span class="code"> HTTOPRIGHT          14</span></li><li><span class="code"> HTBOTTOM            15</span></li><li><span class="code"> HTBOTTOMLEFT        16</span></li><li><span class="code"> HTBOTTOMRIGHT       17</span></li><li><span class="code"> HTBORDER            18</span></li><li><span class="code"> HTOBJECT            19</span></li><li><span class="code"> HTCLOSE             20</span></li><li><span class="code"> HTHELP              21</span></li></ul><p>
+You can have some fun playing with these; for example by 
+returning <span class="code">HTCAPTION</span> you can make any area of a
+form or control act as if it were a title bar, and when you click on the 
+area the object will start to move just like clicking on a real title bar.
+But in this case the aim is to make the control look as if it wasn't there,
+which is achieved by returning <span class="code">HTTRANSPARENT</span>.
+</p><p>
+To do this in a control, all we need do is override the standard <span class="code">WndProc</span>
+with one which performs specific processing for <span class="code">WM_NCHITTEST</span>:
+</p><pre>
+      private const int WM_NCHITTEST             = 0x0084;
+      private const int HTTRANSPARENT            = (-1);
+
+      /// &lt;summary&gt;
+      /// Overrides the standard Window Procedure to ensure the
+      /// window is transparent to all mouse events.
+      /// &lt;/summary&gt;
+      /// &lt;param name="m"&gt;Windows message to process.&lt;/param&gt;
+      protected override void WndProc(ref Message m)
+      {
+         if (m.Msg == WM_NCHITTEST)
+         {
+            m.Result = (IntPtr) HTTRANSPARENT;
+         }
+         else
+         {
+            base.WndProc(ref m);
+         }
+      }
+</pre><h2>Using <span class="code">FloatControl</span></h2><p>
+The demonstration application shows two ways you might want to use this code
+in a real-world application.  The first is to provide floating tips for a ListBox
+control whenever an item is truncated, and the second is to display a custom info-tip
+which shows a graphic when the user hovers over a button.
+</p><p>
+To set up the control for use, do not use the Windows Forms Designer to create
+an instance of the control.  If you do this, the control will be associated with
+a particular form and may not pop-up correctly.  Instead, you write the code
+that Windows Form Designer does yourself to create the control.  In the 
+demonstration, this code is included in the constructor for the form following
+the designer's own <span class="code">InitializeComponent</span> call.  In VB.NET,
+the code looks like this:
+</p><pre>
+        Me.sponsorMessage = New vbAccelerator.Components.Controls.FloatControl()
+        Me.sponsorMessage.BackgroundImage = picRes.Image
+        Me.sponsorMessage.Name = "sponsorMessage"
+        Me.sponsorMessage.TabStop = False
+        Me.sponsorMessage.Visible = False
+        Me.sponsorMessage.Size = picRes.Image.Size
+</pre><p>
+In this case I've used the image from a PictureBox on the form for the image on
+the control, but it could equally be loaded from a resource associated with the
+assembly.
+</p><p>
+Once that's done you simply need to decide when to show and hide the floating
+Window.  For the floating tip displayed over the button, the control is shown
+in response to the <span class="code">MouseHover</span> event (which fires shortly
+after the mouse first enters the control) and is hidden again during the
+<span class="code">MouseLeave</span> event.
+</p><pre>
+    Private Sub btnHover_MouseHover( _
+        ByVal sender As Object, ByVal e As System.EventArgs _
+    ) Handles btnHover.MouseHover
+        If Not (sponsorMessage.Visible) Then
+            Dim pt As Point = btnHover.Location
+            pt.Offset(0, btnHover.Height / 2)
+            pt = Me.PointToScreen(pt)
+            sponsorMessage.Location = pt
+            sponsorMessage.ShowFloating()
+        End If
+    End Sub
+
+    Private Sub btnHover_MouseLeave( _
+        ByVal sender As Object, ByVal e As System.EventArgs _
+    ) Handles btnHover.MouseLeave
+        If (sponsorMessage.Visible) Then
+            sponsorMessage.Hide()
+        End If
+    End Sub
+</pre><p>
+The ListBox sample is a little more sophisticated as it needs to detect the size
+of the ListItem that the mouse is floating over, but fundamentally it uses the
+same technique.  One thing to note is that the current implementation does not
+suppress the popup window after a mouse click on an item.  This could easily be
+fixed by creating an interlock so that the window is not shown again until the
+mouse has moved at least a small distance away from the mouse down point.
+</p><h2>Conclusion</h2><p>
+This article provides a simple control you can use to create customised information
+pop-ups in .NET Windows Forms applications.  Judicious use of popup controls can let
+you cram more onto the screen without compromising usability of an application.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">Popup Windows</a>&#160;.&#160;Floating Controls, Tooltip-style</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 4 November 2003</p></td><td></td></tr></table>
+</body></html>

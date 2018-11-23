@@ -1,0 +1,511 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Customising Clipboard Use</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Customising Clipboard Use</b>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td>
+	<font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	&nbsp;Receive clipboard change notifications and get full control over reading, writing and adding formats
+	</font>
+	</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\clipboard\customising_clipboard_use\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><img src="..\..\images\cclip.gif" width="357" height="260" alt="Simple, Notification Driven Clipboard Viewer" border="0"></p>
+        <p><a href="cclip2.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the Custom Clipboard classes and sample (11kb)</a><br>
+	<a href="rtfclip.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the RTF Format Clipboard Copy and Paste sample (26kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying the project.
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <p>
+        <b>Introduction</b><br>
+        The VB Clipboard object gives you quick and easy access to simple clipboard functions.  But
+        the Win32 API clipboard object offers a lot more flexibility and functionality. Notable omissions
+        from the VB Clipboard object are:
+        <ul>
+        <li>It cannot hook into the Clipboard Viewer notification system, so you can't get events
+        when the clipboard changes.  Clipboard change events are very useful in an application particularly
+        when you are trying to code a Paste toolbar button.
+        <li>Strict limitation on formats which can be retrieved.  You are limited to Text, Pictures and Metafiles.
+        However, there are lots of other formats, and some are extremely useful.  For example:
+                <ul>
+                <li> The file copy/paste format used in Explorer (<i>FileList</i> and <i>FileName</i> formats).  
+                Allow your app to share files with Explorer easily!
+                <li> The <i>HTML Format</i> pasted by IE4 and above.  When you copy a section from a web page
+                in IE, IE puts the data on the clipboard in text, RTF and HTML formats (and some other
+                private or OLE binary formats).  The HTML format gives you a frament of HTML code for
+                the selected item, which is great if you're writing web pages.
+                <li> <i>Rich Text Format</i>.  It would be nice to be able to choose whether to paste RTF or Text in
+                a RichTextBox control.  But you can't do it in VB.
+                <li> <i>OwnerLink</i> format.  This tells you what program pasted the object onto the
+                clipboard.  If you can read it, you can make intelligent decisions about what to paste
+                from the clipboard.  For example, Excel will often paste a bitmap and a metafile of an
+                object.  The metafile is tiny in size compared with the bitmap and it would be much
+                better to use this if storage is at a premium.
+                </ul>
+        <li>You can't define your own private formats, even if you only want to include text in them.  
+        Private formats are extremely useful in applications which can paste data in multiple formats.
+        Normally your application will understand more about the data than other applications on the
+        system.  But you still want to put information on the clipboard in standard formats such as 
+        Text so users can easily paste into Word, Excel etc.  (Of course, you really want to paste in
+        RTF as well...)  This normally leads to a compromise where cut/copy/paste in your own application 
+        can't maintain all its data because it has to provide a friendly format for data sharing.
+        </ul>
+        This project provides two new clipboard classes which break all of these limitations.  With
+        these classes you can hook into clipboard change notifications and have complete access to
+        all clipboard formats, both read (paste) and write (cut/copy).
+        <br><br>
+        <a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+        <br><br>
+        <b>The Clipboard Change Notification Class (cClipboardViewer)</b><br>
+        An application can be notified of changes in the data stored in the clipboard by registering
+        itself as a Win32 <i>Clipboard Viewer</i>.  Having done this, the application is then notified
+        of changes in the clipboard by the WM_DRAWCLIPBOARD message.  Your application becomes part of
+        a chain of applications on the system which respond to this message, and is responsible for
+        forwarding the message after reading it to the next application along.  To do this, your
+        application must store the next window along in the chain to forward messages to and also respond 
+        to the WM_CHANGECBCHAIN message which is sent whenever any other clipboard viewer on the system 
+        is added or removed to ensure the next window along is valid.<br><br>
+        This functionality is provided in the download code by the cClipboardViewer class.  This uses
+        the <a href="..\ssubtmr\ssubtmr.htm">Subclassing and Timer DLL</a> to intercept WM_DRAWCLIPBOARD
+        and WM_CHANGECBCHAIN messages and to provide the required message passing and chain fixing 
+        functions.<br><br>
+        To use this class you only need to make two calls:
+        <ul>
+        <li><i>InitClipboardChangeNotification</i><br>
+        To attach your application to the clipboard viewer notification chain
+        <li><i>StopClipboardChangeNotification</i><br>
+        To remove your application.  Note this is called automatically when the class terminates.
+        </ul>
+        When notification is on, the class raises the <i>ClipboardChanged</i> event whenever the
+        clipboard changes.  Your application can then query the clipboard contents using the next
+        class to work out what to do.
+        <br><br>
+        <a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+        <br><br>
+        <b>The Custom Clipboard read/write class (cCustomClipboard)</b><br>
+	This class encapsulates the Win32 API Clipboard functions.  The following table details the
+	methods and properties of the class:
+        </p>
+        </font>
+	<p>
+	<table>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td bgcolor="#CCCCCC"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Method</b></font></td>
+		<td bgcolor="#CCCCCC"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Description</b></font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		AddFormat		
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Adds a custom clipboard format and returns its ID if successful, otherwise returns 0.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		ClearClipboard		
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Clears the contents of the clipboard.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		ClipboardClose
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Closes the clipboard if the class has it open.  Always call this after a call
+		to ClipboardOpen.  Whilst the class has the clipboard open, other applications
+		cannot write to the clipboard.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		ClipboardOpen
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Opens the clipboard for read/write access.  You must call this before attempting
+		to access or put data into the clipboard.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		FormatCount
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the number of formats currently available on the clipboard.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		FormatIDForName		
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the Clipboard ID for a specified Clipboard format name.  This does the
+		opposite of the <i>FormatName</i> property.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		FormatName
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the Clipboard format name for a given ID.  This does the opposite of the
+		<i>FormatIDForName</i> property.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetBinaryData		
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns a byte array containing the clipboard contents for a specified format
+		ID.  You must have called <i>ClipboardOpen</i> before calling this function.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetClipboardMemoryHandle
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns a Win32 API global memory handle to the data in the clipboard for a specified format
+		ID.  You must have called <i>ClipboardOpen</i> before calling this function.		
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetCurrentFormatID		
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		After calling the <i>GetCurrentFormats</i> method, you can use this to retrieve
+		the format ID for the Indexed entry in the format list.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetCurrentFormatName
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Similar to GetCurrentFormatID, but returns the Name of the format for the Indexed
+		entry in the format list.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetCurrentFormats
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Enumerates all the names and IDs of items currently on the clipboard, and returns the number of items.
+		You can subsequently retrieve the names and IDs using the <i>GetCurrentFormatName</i>
+		and <i>GetCurrentFormatID</i> properties.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetFileList		
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		If the clipboard contains the file format <i>CF_HDROP</i> (i.e. files cut or copied from
+		explorer) then this function will return the list of files associated with the format.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		GetTextData
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Similar to <i>GetBinaryData</i> except it returns a string containing the clipboard
+		data rather than a byte array.  Use when you know the clipboard format can be read
+		in text format.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		HasCurrentFormat
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Following a call to <i>GetCurrentFormats</i>, this property returns whether a
+		specified clipboard format ID is in the list of formats.  See also <i>IsDataAvailableForFormat</i>.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		IsDataAvailableForFormat
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns whether a specified clipboard format ID is available by querying the clipboard
+		itself.  The clipboard must have been opened with the <i>ClipboardOpen</i> method
+		before this is called.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		IsDataAvailableForFormatName
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		Similar to the IsDataAvailableForFormat method except works on a specified clipboard
+		format name rather than an ID.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		SetBinaryData
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		The write equivalent of <i>GetBinaryData</i>.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		SetClipboardMemoryHandle
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		The write equivalent of <i>GetClipboardMemoryHandle</i>.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		SetFileList	
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		The write equivalent of <i>GetFileList</i>.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="8">&nbsp</td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		SetTextData
+		</font></td>
+		<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+		The write equivalent of <i>GetTextData</i>.
+		</font></td>
+		<td width="8">&nbsp</td>
+	</tr>
+	
+	</table>
+	</p>
+
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	To see how to use these methods to implement clipboard copy and paste for non-standard formats, 
+	download the RTF Clipboard Copy and Paste sample. This demonstrates how to add 
+	complete custom clipboard format in about 10 or so lines of code.	
+	
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+
+        </font>
+
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 23 November 1998</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

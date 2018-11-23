@@ -1,0 +1,1227 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: VSNetListBar.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: VSNetListBar.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">VS.NET ListBar Control</a>&#160;.&#160;<a href="vsnet_listbar_source.html">VSNet ListBar Source</a>&#160;.&#160;VSNetListBar.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="vsnet_listbar_binary.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />VSNet ListBar Binary</a> (14K)</p><p class="nav"><a href="vsnet_listbar_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />VSNet ListBar Demonstration</a> (41K)</p><p class="nav"><a href="vsnet_listbar_source.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />VSNet ListBar Source</a> (37K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12974</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=12974&type=zip&title=vsnet_20listbar_20source_2ezip_5fvsnetlistbar.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 2 / 2</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 0</a></p><p class="nav">Updated:30 January 2004</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />7 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\outlook_list_bar\article.html">.NET Outlook Style ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: VSNetListBar.cs</h1><pre>using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+using vbAccelerator.Components.Drawing;
+
+namespace vbAccelerator.Components.ListBarControl
+{
+   /// &lt;summary&gt;
+   /// A class which subclasses the vbAccelerator .NET &lt;see cref="ListBar"/&gt;
+    control 
+   /// so it renders like the VS.NET ListBar control.
+   /// The primary changes are:
+   /// &lt;list type="bullet"&gt;To remove the control's border.&lt;/list&gt;
+   /// &lt;list type="bullet"&gt;To place the scroll buttons adjacent to the bar
+   /// selection buttons.&lt;/list&gt;
+   /// &lt;list type="bullet"&gt;To provide a method to prevent an item from
+   /// begin dragged.&lt;/list&gt;
+   /// &lt;list type="bullet"&gt;To render a popup window showing additional
+   /// detail of an item if it is too wide to display (TODO).&lt;/list&gt;
+   /// &lt;/summary&gt;
+   public class VSNetListBar : ListBar
+   {
+
+      /// &lt;summary&gt;
+      /// Creates a new instance of a &lt;see cref="ListBarScrollButton"/&gt; used by 
+      /// this control to draw the scroll buttons.  Fired during control
+       initialisation
+      /// &lt;/summary&gt;
+      /// &lt;param name="buttonType"&gt;The type of scroll button (Up or Down)
+      /// to create&lt;/param&gt;
+      /// &lt;returns&gt;A new &lt;see cref="ListBarScrollButton"/&gt; which is drawn when
+       a 
+      /// &lt;see cref="ListBarGroup"/&gt; contains more items than can be 
+      /// displayed.&lt;/returns&gt;
+      protected override ListBarScrollButton CreateListBarScrollButton(
+         ListBarScrollButton.ListBarScrollButtonType buttonType)
+      {
+         return new VSNetListBarScrollButton(this, buttonType);
+      }
+
+      /// &lt;summary&gt;
+      /// Returns a new instance of the object to hold a collection
+      /// of groups.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;The new &lt;see cref="VSNetListBarGroupCollection"/&gt;&lt;/returns&gt;
+      protected override ListBarGroupCollection CreateListBarGroupCollection()
+      {
+         return new VSNetListBarGroupCollection(this);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the collection of &lt;see cref="VSNetListBarGroup"/&gt; objects
+      /// associated with the control.
+      /// &lt;/summary&gt;      
+      public new VSNetListBarGroupCollection Groups
+      {
+         get
+         {
+            return (VSNetListBarGroupCollection)base.Groups;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Returns the currently selected &lt;see cref="VSNetListBarGroup"/&gt;
+      /// object in the control.
+      /// &lt;/summary&gt;
+      public new VSNetListBarGroup SelectedGroup
+      {
+         get
+         {
+            return (VSNetListBarGroup)base.SelectedGroup;
+         }
+      }      
+
+      /// &lt;summary&gt;
+      /// Called by the control's internal sizing mechanism.
+      /// Returns the width of a &lt;see cref="ListBarGroup" /&gt; button
+      /// rectangle.
+      /// &lt;/summary&gt;
+      /// &lt;param name="group"&gt;The &lt;see cref="ListBarGroup"/&gt; to get the size of
+       the 
+      /// button for.&lt;/param&gt;
+      /// &lt;returns&gt;The width of the button.&lt;/returns&gt;
+      protected override int GetGroupButtonWidth(ListBarGroup group)
+      {
+
+         int ret = base.GetGroupButtonWidth(group);
+         ListBarGroup selectedGroup = base.SelectedGroup;
+         if (group.Equals(selectedGroup))
+         {
+            ret -= (group.ButtonHeight + 2);
+         }
+         else
+         {
+            ListBarGroup nextGroup = GetNextGroup(selectedGroup);
+            if (nextGroup != null)
+            {
+               if (group.Equals(nextGroup))
+               {
+                  ret -= (group.ButtonHeight + 2);
+               }
+            }
+         }
+         return ret;
+      }
+
+      /// &lt;summary&gt;
+      /// Called by the control's internal sizing mechanism.
+      /// Returns the rectangle for a scroll button.  
+      /// &lt;/summary&gt;
+      /// &lt;param name="buttonType"&gt;The scroll button to
+      /// get the rectangle for.&lt;/param&gt;
+      /// &lt;param name="selectedGroup"&gt;The Selected Group in the control.&lt;/param&gt;
+      /// &lt;param name="internalGroupHeight"&gt;The internal height of the
+      /// selected group&lt;/param&gt;
+      /// &lt;returns&gt;The Rectangle for the scroll button.&lt;/returns&gt;
+      protected override Rectangle GetScrollButtonRectangle(
+         ListBarScrollButton.ListBarScrollButtonType buttonType,
+         ListBarGroup selectedGroup,
+         int internalGroupHeight
+         )      
+      {
+         Point location;
+         Size size = new Size(
+            selectedGroup.ButtonHeight, 
+            selectedGroup.ButtonHeight);
+         bool rightToLeft = (base.RightToLeft == RightToLeft.Yes);         
+         int left = (rightToLeft ? 
+            selectedGroup.ButtonLocation.X - size.Width - 2 :
+            selectedGroup.ButtonLocation.X + selectedGroup.ButtonWidth + 2
+            );
+         
+         if (buttonType == ListBarScrollButton.ListBarScrollButtonType.Up)
+         {   
+            location = new Point(
+               left,
+               selectedGroup.ButtonLocation.Y);
+         }
+         else
+         {
+            // is selectedGroup the last visible item in the control?          
+              
+            ListBarGroup nextGroup = GetNextGroup(selectedGroup);
+
+            location = new Point(
+               left,
+               (nextGroup == null ? 
+                  selectedGroup.ButtonLocation.Y + selectedGroup.ButtonHeight +
+                   internalGroupHeight - size.Height :
+                  nextGroup.ButtonLocation.Y));               
+         }
+
+         return new Rectangle(location, size);
+      }
+
+      private ListBarGroup GetNextGroup(ListBarGroup group)
+      {
+         ListBarGroup nextGroup = null;
+         for (int i = base.Groups.IndexOf(group) + 1; i &lt; base.Groups.Count;
+          i++)
+         {
+            if (base.Groups[i].Visible)
+            {
+               nextGroup = base.Groups[i];
+               break;
+            }
+         }
+         return nextGroup;
+      }
+
+      /// &lt;summary&gt;
+      /// Called by the control's internal sizing mechanism.
+      /// Returns the client size excluding the border of the
+      /// control.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;A &lt;c&gt;Rectangle&lt;/c&gt; providing the area to 
+      /// draw the control into.&lt;/returns&gt;
+      protected override Rectangle GetClientRectangleExcludingBorder()
+      {
+         return base.ClientRectangle;
+      }
+
+      /// &lt;summary&gt;
+      /// Draw a border around the control.  The default
+      /// implementation draws a 1 pixel inset border.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;The graphics object to drawn onto.&lt;/param&gt;
+      protected override void RenderControlBorder(
+         Graphics gfx)
+      {
+         // intentionally left blank.  This control has no border
+      }
+
+      /// &lt;summary&gt;
+      /// Creates a new instance of the VSNetListBar control.
+      /// &lt;/summary&gt;
+      public VSNetListBar() : base()
+      {
+         this.SelectOnMouseDown = true;
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// Maintains the collection of groups within the VS.NET ListBar
+   /// control.
+   /// &lt;/summary&gt;
+   public class VSNetListBarGroupCollection : ListBarGroupCollection
+   {
+      /// &lt;summary&gt;
+      /// Adds a new group to the control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="group"&gt;The &lt;see cref="VSNetListBarGroup"/&gt; to
+       add.&lt;/param&gt;
+      /// &lt;returns&gt;The 0-based index of the added group.&lt;/returns&gt;
+      public virtual int Add(VSNetListBarGroup group)
+      {
+         return base.Add((ListBarGroup)group);
+      }
+
+      /// &lt;summary&gt;
+      /// Adds a new group with the specified caption and returns a reference
+      /// to it.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;The caption for the group to create.&lt;/param&gt;
+      /// &lt;returns&gt;The newly created &lt;see cref="VSNetListBarGroup"/&gt;&lt;/returns&gt;
+      public virtual new VSNetListBarGroup Add(string caption)
+      {
+         VSNetListBarGroup newGroup = new VSNetListBarGroup(caption);
+         Add(newGroup);
+         return newGroup;
+      }
+      
+      /// &lt;summary&gt;
+      /// Adds a range of groups to the collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="values"&gt;An array of &lt;see cref="VSNetListBarGroup"/&gt;
+       objects.&lt;/param&gt;
+      public virtual void AddRange(VSNetListBarGroup[] values)
+      {
+         base.AddRange((ListBarGroup[])values);
+      }
+
+      /// &lt;summary&gt;
+      /// Adds a range of new groups with the specified captions to the
+       collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="captions"&gt;Array of captions for the new groups to
+       create.&lt;/param&gt;
+      public override void AddRange(string[] captions)
+      {
+         foreach (string caption in captions)
+         {
+            VSNetListBarGroup newGroup = new VSNetListBarGroup(caption);
+            Add(newGroup);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;see cref="VSNetListBarGroup" /&gt; at the specified 0-based
+       index.
+      /// &lt;/summary&gt;
+      public new VSNetListBarGroup this[int index]
+      {
+         get
+         {
+            return (VSNetListBarGroup)base[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;see cref="VSNetListBarGroup" /&gt; with the specified key.
+      /// &lt;/summary&gt;
+      public new VSNetListBarGroup this[string key]
+      {
+         get
+         {
+            return (VSNetListBarGroup)base[key];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Determines whether a &lt;see cref="ListBarGroup"/&gt; element is contained
+       within 
+      /// the control's collection of groups.
+      /// &lt;/summary&gt;
+      /// &lt;param name="group"&gt;The ListBarGroup to check if present.&lt;/param&gt;
+      /// &lt;returns&gt;True if the ListBarGroup is contained within the control's
+      /// collection, False otherwise.&lt;/returns&gt;
+      public virtual bool Contains ( VSNetListBarGroup group )
+      {
+         return base.Contains(group);
+      }
+
+
+      /// &lt;summary&gt;
+      /// Gets the 0-based index of the specified &lt;see cref="ListBarGroup"/&gt;
+       within this
+      /// collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="group"&gt;The group to find the index for.&lt;/param&gt;
+      /// &lt;returns&gt;The 0-based index of the group, if found, otherwise -
+       1.&lt;/returns&gt;
+      [Description("Gets the 0-based index of the specified ListBarGroup within
+       this collection.")]
+      public virtual int IndexOf ( VSNetListBarGroup group )
+      {
+         return base.IndexOf(group);
+      }
+
+      /// &lt;summary&gt;
+      /// Inserts a group at the specified 0-based index in the collection
+      /// of groups.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;The 0-based index to insert the group at.&lt;/param&gt;
+      /// &lt;param name="group"&gt;The ListBarGroup to add.&lt;/param&gt;
+      [Description("(Inserts a group at the specified 0-based index in the
+       collection of groups.")]
+      public virtual void Insert ( int index , VSNetListBarGroup group )
+      {
+         base.Insert(index, group);
+      }
+      /// &lt;summary&gt;
+      /// Inserts a group immediately before the specified &lt;see
+       cref="VSNetListBarGroup"/&gt;.
+      /// &lt;/summary&gt;
+      /// &lt;param name="groupBefore"&gt;&lt;see cref="VSNetListBarGroup"/&gt; to insert
+       before.&lt;/param&gt;
+      /// &lt;param name="group"&gt;Group to insert.&lt;/param&gt;
+      [Description("(Inserts a group immediately before the specified
+       VSNetListBarGroup object.")]
+      public virtual void InsertBefore( VSNetListBarGroup groupBefore,
+       VSNetListBarGroup group)
+      {
+         base.InsertBefore(groupBefore, group);
+      }
+
+      /// &lt;summary&gt;
+      /// Inserts a &lt;see cref="VSNetListBarGroup"/&gt; immediately after the
+       specified VSNetListBarGroup.
+      /// &lt;/summary&gt;
+      /// &lt;param name="groupAfter"&gt;VSNetListBarGroup to insert after.&lt;/param&gt;
+      /// &lt;param name="group"&gt;Group to insert.&lt;/param&gt;
+      [Description("(Inserts a group immediately after the specified
+       VSNetListBarGroup object.")]
+      public virtual void InsertAfter( VSNetListBarGroup groupAfter,
+       VSNetListBarGroup group)
+      {
+         base.InsertAfter(groupAfter, group);
+      }
+
+
+      /// &lt;summary&gt;
+      /// Removes the specified &lt;see cref="ListBarGroup"/&gt;.
+      /// &lt;/summary&gt;
+      /// &lt;param name="group"&gt;The group to remove.&lt;/param&gt;
+      [Description("(Removes the specified VSNetListBarGroup object.")]
+      public virtual void Remove ( VSNetListBarGroup group )
+      {
+         this.InnerList.Remove(group);
+         NotifyOwner(group, true);
+      }
+
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="listBar"&gt;The owning &lt;see cref="VSNetListBar"/&gt;
+       control.&lt;/param&gt;
+      public VSNetListBarGroupCollection(VSNetListBar listBar) : base(listBar)
+      {
+         // intentionally blank
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// An extended ListBarGroup which renders with the VS.NET
+   /// ListBar appearance
+   /// &lt;/summary&gt;
+   public class VSNetListBarGroup : ListBarGroup
+   {
+
+      /// &lt;summary&gt;
+      /// Draws the items within this group bar onto the control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;The graphics object to draw onto.&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;The bounding rectangle within which
+      /// to draw the items.&lt;/param&gt;
+      /// &lt;param name="ils"&gt;The ImageList object to use to draw
+      /// the bar.&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;The default font to draw the item
+       with.&lt;/param&gt;
+      /// &lt;param name="style"&gt;The style to draw the ListBar in.&lt;/param&gt;
+      /// &lt;param name="controlEnabled"&gt;Whether the control is enabled or
+       not.&lt;/param&gt;
+      public override void DrawBar(
+         Graphics gfx,
+         Rectangle bounds,
+         ImageList ils,
+         Font defaultFont,
+         ListBarDrawStyle style,
+         bool controlEnabled
+         )
+      {   
+         if (this.ChildControl != null)
+         {
+            base.DrawBar(
+               gfx, bounds, ils, defaultFont,
+               style, controlEnabled);
+         }
+         else
+         {
+            this.Items.Draw(
+               gfx, bounds, ils, defaultFont,
+               style, this.View, controlEnabled,
+               this.ScrollOffset + 2 + this.rectangle.Bottom);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the button for this group bar onto the control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;The graphics object to draw onto.&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;The default font to use to draw the
+       control.&lt;/param&gt;
+      /// &lt;param name="controlEnabled"&gt;Whether the control is enabled or
+       not.&lt;/param&gt;
+      public override void DrawButton(
+         Graphics gfx,
+         Font defaultFont,
+         bool controlEnabled
+         )
+      {   
+         bool rightToLeft = false;
+         Font drawFont = this.Font;
+         if (this.Owner != null)
+         {
+            rightToLeft = (this.Owner.RightToLeft == RightToLeft.Yes);
+         }
+         if (drawFont == null)
+         {
+            drawFont = defaultFont;
+         }
+
+         // Fill background:
+         Brush br = new SolidBrush(this.BackColor);
+         gfx.FillRectangle(br, this.rectangle);
+         br.Dispose();
+         
+         // Draw the border:
+         CustomBorderColor.DrawBorder(
+            gfx, this.rectangle, this.BackColor, false, (this.MouseDown &amp;&amp;
+             this.MouseOver));
+
+         // Draw the text:
+         RectangleF textRect = new RectangleF(
+            this.rectangle.Left + 2F, this.rectangle.Top + 1F,
+            this.rectangle.Width - 4F, this.rectangle.Height - 2F);
+         StringFormat fmt = new StringFormat(StringFormatFlags.LineLimit |
+            (rightToLeft ? StringFormatFlags.DirectionRightToLeft : 0));
+         fmt.Alignment = StringAlignment.Near;
+         fmt.LineAlignment = StringAlignment.Center;
+         fmt.Trimming = StringTrimming.EllipsisWord;
+         if (controlEnabled)
+         {
+            br = new SolidBrush(this.ForeColor);
+            gfx.DrawString(this.Caption, drawFont, br, textRect, fmt);
+            br.Dispose();
+         }
+         else
+         {
+            textRect.Offset(1F, 1F);
+            gfx.DrawString(this.Caption, drawFont,
+             SystemBrushes.ControlLightLight, textRect, fmt);
+            textRect.Offset(-1F, -1F);
+            gfx.DrawString(this.Caption, drawFont, SystemBrushes.ControlDark,
+             textRect, fmt);
+         }
+         fmt.Dispose();
+
+      }
+
+      /// &lt;summary&gt;
+      /// Sets the height of the button for this group.
+      /// &lt;/summary&gt;
+      /// &lt;param name="defaultFont"&gt;The default &lt;see
+       cref="System.Drawing.Font"/&gt;
+      /// to use if this item doesn't already have a font set.&lt;/param&gt;
+      public override void SetButtonHeight(
+         Font defaultFont
+         )
+      {
+         base.SetButtonHeight(defaultFont);
+         this.rectangle.Height -= 3;
+      }
+
+      private void newDefaults()
+      {
+         this.rectangle.Height = 17;
+         this.View = ListBarGroupView.SmallIcons;
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new, blank instance of a ListBarGroup.
+      /// &lt;/summary&gt;
+      public VSNetListBarGroup() : base()
+      {         
+         newDefaults();
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a ListBarGroup with the specified
+      /// caption.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;Caption for the group's control button.&lt;/param&gt;
+      public VSNetListBarGroup(
+         string caption
+         ) : base(caption)
+      {
+         newDefaults();
+      }
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a ListBarGroup with the specified
+      /// caption and items.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;Caption for the group's control button.&lt;/param&gt;
+      /// &lt;param name="subItems"&gt;The array of items to add to the group's
+      /// collection of items.&lt;/param&gt;
+      public VSNetListBarGroup(
+         string caption,
+         ListBarItem[] subItems
+         ) : base(caption, subItems)
+      {
+         newDefaults();
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a ListBarGroup with the specified
+      /// caption and tooltip text.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;Caption for the group's control button.&lt;/param&gt;
+      /// &lt;param name="toolTipText"&gt;ToolTip text to show when hovering over
+      /// the group.&lt;/param&gt;
+      public VSNetListBarGroup(
+         string caption, 
+         string toolTipText
+         ) : base(caption, toolTipText)
+      {
+         newDefaults();
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a ListBarGroup with the specified
+      /// caption, tooltip text and user-defined data.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;Caption for the group's control button.&lt;/param&gt;
+      /// &lt;param name="toolTipText"&gt;ToolTip text to show when hovering over
+      /// the group.&lt;/param&gt;
+      /// &lt;param name="tag"&gt;User-defined object data which is associated with
+      /// the group.&lt;/param&gt;
+      public VSNetListBarGroup(
+         string caption, 
+         string toolTipText,
+         object tag
+         ) : base(caption, toolTipText, tag)
+      {
+         newDefaults();
+      }
+
+
+   }
+
+   /// &lt;summary&gt;
+   /// An extended ListBarItem which renders with an alpha-blended shadow
+   /// appearance.
+   /// &lt;/summary&gt;
+   public class VSNetListBarItem : ListBarItem
+   {
+
+      /// &lt;summary&gt;
+      /// Sets the location and width of this item.  This method
+      /// is called by internally by the &lt;see cref="ListBar"/&gt; or
+      /// the &lt;see cref="ListBarGroup"/&gt; which owns this item.
+      /// &lt;/summary&gt;
+      /// &lt;remarks&gt;
+      /// This member is not intended to be called from client code.
+      /// If you do use it, it is likely that a subsequent operation
+      /// on the control or group will replace the values.  If you
+      /// need more control over placement, override this class
+      /// and build the logic into the override for this method
+      /// instead.
+      /// &lt;/remarks&gt;
+      /// &lt;param name="location"&gt;The new location for the item.&lt;/param&gt;
+      /// &lt;param name="width"&gt;The new width of the item.&lt;/param&gt;
+      public override void SetLocationAndWidth(Point location, int width)
+      {
+         if (this.Owner != null)
+         {
+            //width = this.Owner.Width;
+         }
+         base.SetLocationAndWidth(location, width);
+      }
+
+      /// &lt;summary&gt;
+      /// Draws this item into the specified graphics object.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;The graphics object to draw onto.&lt;/param&gt;
+      /// &lt;param name="ils"&gt;The ImageList to source icons from.&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;The default font to use to draw the
+       button.&lt;/param&gt;
+      /// &lt;param name="style"&gt;The style (Outlook version) to draw using.&lt;/param&gt;
+      /// &lt;param name="view"&gt;The view (large or small icons) to draw
+       using.&lt;/param&gt;
+      /// &lt;param name="scrollOffset"&gt;The offset of the first item from the 
+      /// (0,0) point in the graphics object.&lt;/param&gt;
+      /// &lt;param name="skipDrawText"&gt;Whether to skip drawing text or not
+      /// (the item is being edited)&lt;/param&gt;
+      /// &lt;param name="controlEnabled"&gt;Whether the control is enabled or
+       not.&lt;/param&gt;
+      public override void DrawButton(
+         Graphics gfx, 
+         ImageList ils,
+         Font defaultFont,
+         ListBarDrawStyle style, 
+         ListBarGroupView view,
+         int scrollOffset,
+         bool controlEnabled,
+         bool skipDrawText
+         )
+      {
+         bool rightToLeft = false;
+         Font drawFont = this.Font;
+         if (drawFont == null)
+         {
+            drawFont = defaultFont;
+         }
+         Color backColor = Color.FromKnownColor(KnownColor.Control);
+         if (this.Owner != null)
+         {
+            if (this.Owner.RightToLeft == RightToLeft.Yes)
+            {
+               rightToLeft = true;
+            }
+            backColor = this.Owner.BackColor;
+         }
+
+         Rectangle drawRect = new Rectangle(this.Location,
+            new Size(this.Width, this.Height));
+         drawRect.Offset(0, scrollOffset);
+         if (((this.Selected) &amp;&amp; (!this.MouseOver)) || (this.MouseOver &amp;&amp;
+          this.MouseDown))
+         {
+            // Draw the background:
+            VSNetListBarUtility.DrawSelectedItemBackground(gfx, drawRect);
+         }
+
+         Rectangle itemRect = drawRect;
+         itemRect.Inflate(-1, -1);
+
+         if ((this.Selected) || (this.MouseDown &amp;&amp; this.MouseOver))
+         {
+            itemRect.Offset(1,1);
+         }
+
+         RectangleF textRect;
+         // Draw the icon:
+         if (rightToLeft)
+         {
+            this.iconRectangle = new Rectangle(
+               itemRect.Right - ils.ImageSize.Width - 4, 
+               itemRect.Top + (itemRect.Height - ils.ImageSize.Height) / 2,
+               ils.ImageSize.Width, ils.ImageSize.Height);               
+            textRect = new RectangleF(
+               itemRect.Left, itemRect.Top, 
+               itemRect.Width - (ils.ImageSize.Width - 6),
+               itemRect.Height);
+         }
+         else
+         {
+            this.iconRectangle = new Rectangle(
+               itemRect.Left + 4, 
+               itemRect.Top + (itemRect.Height - ils.ImageSize.Height) / 2,
+               ils.ImageSize.Width, ils.ImageSize.Height);
+            textRect = new RectangleF(
+               itemRect.Left + ils.ImageSize.Height + 6, itemRect.Top, 
+               itemRect.Width - (ils.ImageSize.Width - 6),
+               itemRect.Height);
+         }
+         if (this.IconIndex &lt;= ils.Images.Count)
+         {
+            if (this.Enabled &amp;&amp; controlEnabled)
+            {
+               ils.Draw(gfx, this.iconRectangle.Left, this.iconRectangle.Top, 
+                  this.IconIndex);
+            }
+            else
+            {
+               ControlPaint.DrawImageDisabled(gfx, ils.Images[this.IconIndex], 
+                  this.iconRectangle.Left, this.iconRectangle.Top, backColor);
+            }
+         }
+
+         if ((view == ListBarGroupView.SmallIconsOnly) || (view ==
+          ListBarGroupView.LargeIconsOnly))
+         {
+            textRectangle = new Rectangle(0,0,0,0);
+            skipDrawText = true;
+         }
+
+         if (!skipDrawText)
+         {
+
+            // Draw the text:
+            StringFormat format = new StringFormat(StringFormatFlags.LineLimit |
+               (rightToLeft ? StringFormatFlags.DirectionRightToLeft : 0));
+            format.Alignment = StringAlignment.Near;
+            format.LineAlignment = StringAlignment.Center;
+            format.Trimming = StringTrimming.EllipsisWord;
+            if (this.Enabled &amp;&amp; controlEnabled)
+            {
+               Brush br = new SolidBrush(this.ForeColor);
+               gfx.DrawString(this.Caption, drawFont, br, textRect, format);
+               br.Dispose();
+            }
+            else
+            {
+               Brush br = new
+                SolidBrush(CustomBorderColor.ColorLightLight(backColor));
+               textRect.Offset(1F, 1F);
+               gfx.DrawString(this.Caption, drawFont, br, textRect, format);
+               br.Dispose();
+               textRect.Offset(-1F, -1F);
+               br = new SolidBrush(CustomBorderColor.ColorDark(backColor));
+               gfx.DrawString(this.Caption, drawFont, br, textRect, format);
+               br.Dispose();
+            }
+            format.Dispose();
+
+            this.textRectangle = new Rectangle((int)textRect.Left,
+             (int)textRect.Top,
+               (int)textRect.Width, (int)textRect.Height);
+            
+            // TODO: If mouse over and text too wide show the popup.
+            // Currently a problem with my popup code in that it 
+            // foils the Framework's WM_NCACTIVATE processing which 
+            // results in spurious focus/mouse over events...
+
+         }
+
+
+         // Draw the border:
+         if (((this.MouseOver) || (this.Selected)) &amp;&amp; (this.Enabled))
+         {
+            CustomBorderColor.DrawBorder(gfx, drawRect,
+               backColor, true,
+               ((this.MouseDown &amp;&amp; this.MouseOver) || (this.Selected)));
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called to set the height of the item by the owning control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="view"&gt;The &lt;see cref="ListBarGroupView"/&gt; in which this
+      /// item is being shown.&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;The default &lt;see
+       cref="System.Drawing.Font"/&gt;
+      /// to use when this item does not have a specific font set.&lt;/param&gt;
+      /// &lt;param name="imageSize"&gt;The size of the images in the ImageList
+      /// used to render this view.&lt;/param&gt;      
+      [Description("Called to set the height of an item by the owning
+       control.")]
+      public override void SetSize ( 
+         ListBarGroupView view , 
+         Font defaultFont , 
+         Size imageSize )
+      {
+         base.SetSize(view, defaultFont, imageSize);
+         this.rectangle.Height -= 3;
+      }
+
+      /// &lt;summary&gt;
+      /// Incomplete method.  To be used to render an item in the 
+      /// popup view.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics object to draw onto&lt;/param&gt;
+      public virtual void PopupDraw(Graphics gfx)
+      {
+         if (this.Owner != null)
+         {
+            //this.Owner.PopupDraw(gfx, this);
+         }
+
+      }
+
+      private void newDefaults()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new, empty instance of a ListBarItem.
+      /// &lt;/summary&gt;
+      public VSNetListBarItem() : base()
+      {         
+         newDefaults();
+      }
+      /// &lt;summary&gt;
+      ///  Constructs a new instance of a ListBarItem, specifying
+      ///  the caption to display.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;The caption for this item.&lt;/param&gt;
+      public VSNetListBarItem(string caption) : base(caption)
+      {
+         newDefaults();
+      }
+      /// &lt;summary&gt;
+      ///  Constructs a new instance of a ListBarItem, specifying
+      ///  the caption and the index of the icon to display.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;The caption for this item.&lt;/param&gt;
+      /// &lt;param name="iconIndex"&gt;The 0-based index of the icon
+      /// to display&lt;/param&gt;
+      public VSNetListBarItem(
+         string caption, 
+         int iconIndex
+         ) : base(caption, iconIndex)
+      {
+         newDefaults();
+      }
+
+      /// &lt;summary&gt;
+      ///  Constructs a new instance of a ListBarItem, specifying
+      ///  the caption, the index of the icon and the 
+      ///  tooltip text.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;The caption for this item.&lt;/param&gt;
+      /// &lt;param name="iconIndex"&gt;The 0-based index of the icon
+      /// to display&lt;/param&gt;
+      /// &lt;param name="toolTipText"&gt;The tooltip text to show
+      /// when the mouse hovers over this item.&lt;/param&gt;
+      public VSNetListBarItem(
+         string caption,
+         int iconIndex,
+         string toolTipText
+         ) : base(caption, iconIndex, toolTipText)
+      {
+         newDefaults();
+      }
+      /// &lt;summary&gt;
+      ///  Constructs a new instance of a ListBarItem, specifying
+      ///  the caption, the index of the icon, the 
+      ///  tooltip text and the tag.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;The caption for this item.&lt;/param&gt;
+      /// &lt;param name="iconIndex"&gt;The 0-based index of the icon
+      /// to display&lt;/param&gt;
+      /// &lt;param name="toolTipText"&gt;The tooltip text to show
+      /// when the mouse hovers over this item.&lt;/param&gt;
+      /// &lt;param name="tag"&gt;An object which can be used to 
+      /// associate user-defined data with the item.&lt;/param&gt;
+      public VSNetListBarItem(
+         string caption,
+         int iconIndex,
+         string toolTipText,
+         object tag
+         ) : base (caption, iconIndex, toolTipText, tag)
+      {
+         newDefaults();
+      }
+      /// &lt;summary&gt;
+      ///  Constructs a new instance of a ListBarItem, specifying
+      ///  the caption, the index of the icon, the 
+      ///  tooltip text, the tag and the key.
+      /// &lt;/summary&gt;
+      /// &lt;param name="caption"&gt;The caption for this item.&lt;/param&gt;
+      /// &lt;param name="iconIndex"&gt;The 0-based index of the icon
+      /// to display&lt;/param&gt;
+      /// &lt;param name="toolTipText"&gt;The tooltip text to show
+      /// when the mouse hovers over this item.&lt;/param&gt;
+      /// &lt;param name="tag"&gt;An object which can be used to 
+      /// associate user-defined data with the item.&lt;/param&gt;
+      /// &lt;param name="key"&gt;A user-defined string which is 
+      /// associated with the item.&lt;/param&gt;
+      public VSNetListBarItem(
+         string caption,
+         int iconIndex,
+         string toolTipText,
+         object tag,
+         string key
+         ) : base(caption, iconIndex, toolTipText, tag, key)
+      {
+         newDefaults();
+      }
+
+
+   }
+
+   /// &lt;summary&gt;
+   /// A subclassed ListBarScrollButton which renders in the style
+   /// of the VS.NET scroll buttons in the ListBar.
+   /// &lt;/summary&gt;
+   public class VSNetListBarScrollButton : ListBarScrollButton
+   {
+      /// &lt;summary&gt;
+      /// The owner control for this scroll button
+      /// &lt;/summary&gt;
+      protected VSNetListBar owner = null;
+
+      /// &lt;summary&gt;
+      /// Draws the button onto the specified Graphics object.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;The graphics object to draw on.&lt;/param&gt;
+      /// &lt;param name="defaultBackColor"&gt;The default background
+      /// colour to use when drawing the button.&lt;/param&gt;
+      /// &lt;param name="controlEnabled"&gt;Whether the control is enabled or
+       not.&lt;/param&gt;
+      public override void DrawItem(
+         Graphics gfx,
+         Color defaultBackColor,
+         bool controlEnabled
+         )
+      {
+         Color backColor = defaultBackColor;
+         if (owner != null)
+         {
+            VSNetListBarGroup selGroup = this.owner.SelectedGroup;
+            if (selGroup != null)
+            {
+               if (this.ButtonType ==
+                ListBarScrollButton.ListBarScrollButtonType.Up)
+               {
+                  backColor = selGroup.BackColor;
+               }
+               else
+               {
+                  VSNetListBarGroup nextGroup = null;
+                  for (int i = this.owner.Groups.IndexOf(selGroup) + 1; i &lt;
+                   this.owner.Groups.Count; i++)
+                  {   
+                     if (this.owner.Groups[i].Visible)
+                     {
+                        nextGroup = this.owner.Groups[i];
+                        break;
+                     }
+                  }
+                  if (nextGroup != null)
+                  {
+                     backColor = nextGroup.BackColor;
+                  }
+               }
+            }
+         }
+         Brush br = new SolidBrush(backColor);
+         gfx.FillRectangle(br, this.Rectangle);
+         br.Dispose();
+         // in VS.NET bar the item is always drawn.  When
+         // it's not "Visible" then it is drawn disabled:
+         VSNetListBarUtility.DrawScrollButton(
+            gfx, this.Rectangle, backColor,
+            (this.MouseDown &amp;&amp; this.MouseOver),
+            (base.Visible &amp;&amp; controlEnabled), 
+            (this.ButtonType == ListBarScrollButtonType.Up ? false : true));
+
+      }
+      
+      /// &lt;summary&gt;
+      /// Creates a new instance of this class with the specified
+      /// button type (Up or Down)
+      /// &lt;/summary&gt;
+      /// &lt;param name="owner"&gt;The owning control.&lt;/param&gt;
+      /// &lt;param name="buttonType"&gt;The scroll button type to create.&lt;/param&gt;
+      public VSNetListBarScrollButton(
+         VSNetListBar owner,
+         ListBarScrollButtonType buttonType
+         ) : base(buttonType)
+      {
+         this.owner = owner;
+      }
+
+   }
+
+   /// &lt;summary&gt;
+   /// Utility methods for drawing the &lt;see cref="VSNetListBar"/&gt;
+   /// control.
+   /// &lt;/summary&gt;
+   internal class VSNetListBarUtility
+   {
+
+      public static void DrawSelectedItemBackground(
+         Graphics gfx,
+         Rectangle rect
+         )
+      {
+         Brush br = new SolidBrush(Color.FromArgb(128, Color.White));
+         gfx.FillRectangle(br, rect);
+         br.Dispose();
+      }
+
+
+      /// &lt;summary&gt;
+      /// Draws a scroll button for the &lt;see cref="VSNetListBar"/&gt; control.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;&lt;see cref="Graphics"/&gt; object to draw onto.&lt;/param&gt;
+      /// &lt;param name="rect"&gt;&lt;see cref="System.Drawing.Rectangle"/&gt; to draw
+       button in.&lt;/param&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; of the
+       background for the button.&lt;/param&gt;
+      /// &lt;param name="pressed"&gt;Whether the button is pressed or not.&lt;/param&gt;
+      /// &lt;param name="enabled"&gt;Whether the button is enabled or not.&lt;/param&gt;
+      /// &lt;param name="down"&gt;If &lt;c&gt;True&lt;/c&gt;, the button is a scroll down button,
+      /// otherwise it is a scroll up button.&lt;/param&gt;
+      public static void DrawScrollButton(
+         Graphics gfx,
+         Rectangle rect,
+         Color color,
+         bool pressed,
+         bool enabled,
+         bool down
+         )
+      {
+         if (!enabled)
+         {
+            Brush br = new SolidBrush(CustomBorderColor.ColorLightLight(color));
+            DrawScrollButtonTriangle(gfx, rect, 
+               br, 1, down);
+            br.Dispose();
+            br = new SolidBrush(CustomBorderColor.ColorDark(color));
+            DrawScrollButtonTriangle(gfx, rect, 
+               br, 0, down);
+            br.Dispose();
+         }
+         else
+         {
+            DrawScrollButtonTriangle(gfx, rect, 
+               SystemBrushes.WindowText, (pressed ? 1 : 0), down);
+         }
+         CustomBorderColor.DrawBorder(
+            gfx, rect, color, true, pressed);
+         
+      }
+
+      private static void DrawScrollButtonTriangle(
+         Graphics gfx,
+         Rectangle rect,
+         Brush brush,
+         int offset,
+         bool down
+         )
+      {
+         // where to put a 9 x 5 triangle in rect:
+         PointF location = new PointF(
+            (rect.Width - 2F - 9F) / 2F + rect.Left + 1F,
+            (rect.Height - 2F - 5F) / 2F + rect.Top + 1F);
+         location.X += offset;
+         location.Y += offset;
+         RectangleF triangleRect = new RectangleF(location, 
+            new SizeF(10F, 6F));
+
+         // draw the triangle:
+         GraphicsPath glyph = new GraphicsPath();
+         if (down)
+         {
+            glyph.AddLine(triangleRect.Left, triangleRect.Top, 
+               triangleRect.Right - 1 , triangleRect.Top);
+            glyph.AddLine(triangleRect.Right - 1, triangleRect.Top, 
+               triangleRect.Left + 4, triangleRect.Bottom -1 );
+            glyph.CloseFigure();
+         }
+         else
+         {
+            glyph.AddLine(triangleRect.Left, triangleRect.Bottom - 1, 
+               triangleRect.Right - 1 , triangleRect.Bottom - 1);
+            glyph.AddLine(triangleRect.Right - 1, triangleRect.Bottom - 1, 
+               triangleRect.Left + 4, triangleRect.Top);
+            glyph.CloseFigure();
+         }
+         
+         gfx.FillPath(brush, glyph);
+         glyph.Dispose();
+
+      }
+
+      /// &lt;summary&gt;
+      /// Private constructor, all methods static
+      /// &lt;/summary&gt;
+      private VSNetListBarUtility()
+      {
+         // intentionally blank
+      }
+
+   }
+
+   internal class VSNetListItemPopup : Control
+   {
+      #region Unmanaged Code
+      [DllImport("user32")]
+      private static extern int SetParent(
+         IntPtr hWndChild,
+         IntPtr hWndNewParent);
+      [DllImport("user32")]
+      private static extern int ShowWindow(
+         IntPtr hWnd,
+         int nCmdShow);
+      
+      private const int WS_EX_TOOLWINDOW        = 0x00000080;
+      private const int WS_EX_NOACTIVATE        = 0x08000000;
+      private const int WS_EX_TOPMOST           = 0x00000008;      
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The ListBar which owns this popup
+      /// &lt;/summary&gt;
+      private VSNetListBarItem owner = null;
+
+      /// &lt;summary&gt;
+      /// Shows the control as a floating Window child 
+      /// of the desktop.  To hide the control again,
+      /// use the &lt;see cref="System.Windows.Forms.Control.Visible"/&gt; property.
+      /// &lt;/summary&gt;
+      public void ShowFloating(VSNetListBarItem owner)
+      {
+         this.owner = owner;
+         if (this.Handle == IntPtr.Zero)
+         {
+            base.CreateControl();
+         }
+         SetParent(base.Handle, IntPtr.Zero);
+         ShowWindow(base.Handle, 1);
+      }
+
+      /// &lt;summary&gt;
+      /// Get the &lt;see cref="System.Windows.Forms.CreateParams"/&gt;
+      /// used to create the control.  This override adds the
+      /// &lt;code&gt;WS_EX_NOACTIVATE&lt;/code&gt;, &lt;code&gt;WS_EX_TOOLWINDOW&lt;/code&gt;
+      /// and &lt;code&gt;WS_EX_TOPMOST&lt;/code&gt; extended styles to make
+      /// the Window float on top.
+      /// &lt;/summary&gt;
+      protected override CreateParams CreateParams
+      {
+         get
+         {
+            CreateParams p = base.CreateParams;
+            p.ExStyle |= (WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST);
+            return p;
+         }
+      }
+      
+      protected override void OnPaint(PaintEventArgs e)
+      {
+         this.owner.PopupDraw(e.Graphics);
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this control.
+      /// &lt;/summary&gt;
+      public VSNetListItemPopup()
+      {
+      }
+   }
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">VS.NET ListBar Control</a>&#160;.&#160;<a href="vsnet_listbar_source.html">VSNet ListBar Source</a>&#160;.&#160;VSNetListBar.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,118 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}}{\colortbl;\red0\green0\blue0;
+\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;
+\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\widctlpar\adjustright \fs20\lang2057\cgrid \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\info{\author Steve McMahon}
+{\operator Steve McMahon}{\creatim\yr1998\mo6\dy20\hr21\min59}{\revtim\yr1998\mo6\dy20\hr22}{\version2}{\edmins1}{\nofpages3}{\nofwords712}{\nofchars4059}{\*\company aaa}{\nofcharsws4984}{\vern89}}\widowctrl\ftnbj\aenddoc\hyphcaps0\viewkind1\viewscale100 
+\fet0\sectd \linex0\headery709\footery709\colsx709\sectdefaultcl {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}
+{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang
+{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \nowidctlpar\adjustright \fs20\lang2057\cgrid {\b\f1\fs24\cgrid0 
+ccrpBrowseDlg Interface Definition 
+\par 
+\par }{\b\f1\cgrid0 General Information
+\par }\pard \nowidctlpar\tx993\adjustright {\f1\cgrid0 Library:\tab ccrpBrowseDlg (CCRP BrowseDialog Control)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\CCRP\\Browse\\ccrpbd.ocx
+\par GUID:\tab \{19E5F8CD-4D71-11D1-9C63-0040054629E1\}
+\par Version:\tab 1.0
+\par }\pard \nowidctlpar\adjustright {\cgrid0 
+\par }{\b\f1\cgrid0 Enumerations
+\par }{\f1\cgrid0 This section lists enumerations exposed by ccrpBrowseDlg.
+\par 
+\par Public Enum BrowseModeConstants
+\par \tab bdUserDefined=-1
+\par \tab bdEverything=0
+\par \tab bdFoldersOnly=1
+\par \tab bdComputersOnly=4096
+\par \tab bdNetPrintersOnly=8192
+\par End Enum
+\par Public Enum FolderStringConstants
+\par \tab bdDesktop=0
+\par \tab bdPrograms=2
+\par \tab bdControlPanel=3
+\par \tab bdPrinters=4
+\par \tab bdDocuments=5
+\par \tab bdFavorites=6
+\par \tab bdStartup=7
+\par \tab bdRecent=8
+\par \tab bdSendTo=9
+\par \tab bdRecycled=10
+\par \tab bdStartMenu=11
+\par \tab bdDesktopDir=16
+\par \tab bdMyComputer=17
+\par \tab bdNetwork=18
+\par \tab bdNetHood=19
+\par \tab bdFonts=20
+\par \tab bdShellNew=21
+\par \tab bdCommonStartMenu=22
+\par \tab bdCommonPrograms=23
+\par \tab bdCommonStartup=24
+\par \tab bdCommonDesktopDir=25
+\par \tab bdAppData=26
+\par \tab bdPrintHood=27
+\par End Enum}{\cgrid0 
+\par 
+\par }{\b\f1\cgrid0 Interfaces
+\par }{\f1\cgrid0 This section lists the Classes exposed by ccrpBrowseDlg.  For each class, the methods and events are listed.
+\par }{\cgrid0 
+\par }{\b\f1\cgrid0 BrowseDialog \{19E5F8C3-4D71-11D1-9C63-0040054629E1\}
+\par }{\cgrid0 
+\par }{\f1\ul\cgrid0 Methods}{\b\f1\cgrid0 
+\par Property Get BrowseMode() As BrowseModeConstants
+\par }{\f1\cgrid0 Returns/sets what can be selected in the dialog box. The dialog's OK button is enabled only when the specified object type is selected. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Let BrowseMode(RHS  As BrowseModeConstants)
+\par }{\f1\cgrid0 Returns/sets what can be selected in the dialog box. The dialog's OK button is enabled only when the specified object type is selected. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Get Prompt1() As String
+\par }{\f1\cgrid0 Returns/sets the text that is displayed as the first (upper) dialog prompt. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Let Prompt1(RHS  As String)
+\par }{\f1\cgrid0 Returns/sets the text that is displayed as the first (upper) dialog prompt. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Get Prompt2() As String
+\par }{\f1\cgrid0 Returns/sets the text that is displayed as the second (lower) dialog prompt. ShowPrompt2 must be set to True to display this prompt. Can be set in the SelectionChanged event while the dialog is shown.}{\b\f1\cgrid0 
+\par Property Let Prompt2(RHS  As String)
+\par }{\f1\cgrid0 Returns/sets the text that is displayed as the second (lower) dialog prompt. ShowPrompt2 must be set to True to display this prompt. Can be set in the SelectionChanged event while the dialog is shown.}{\b\f1\cgrid0 
+\par Property Get RootFolder() As String
+\par }{\f1\cgrid0 Returns/sets the root folder in the dialog box. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Let RootFolder(RHS  As String)
+\par }{\f1\cgrid0 Returns/sets the root folder in the dialog box. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Get SelectedFolder() As String
+\par }{\f1\cgrid0 Returns/sets the initially selected folder in the dialog box. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Let SelectedFolder(RHS  As String)
+\par }{\f1\cgrid0 Returns/sets the initially selected folder in the dialog box. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Get ShowPrompt2() As Boolean
+\par }{\f1\cgrid0 Returns/sets a value that determines whether the second (lower) dialog propmt is visible. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Property Let ShowPrompt2(RHS  As Boolean)
+\par }{\f1\cgrid0 Returns/sets a value that determines whether the second (lower) dialog propmt is visible. This property setting is only evaluated before the dialog opens.}{\b\f1\cgrid0 
+\par Sub AboutBox
+\par 
+\par Function Browse() As Boolean
+\par }{\f1\cgrid0 Displays the Browse for Folder dialog box. Returns True if a folder selection was made and the OK button was clicked, returns False if the Cancel button was clicked.}{\b\f1\cgrid0 
+\par Function FolderString(ByVal dwFolderID As FolderStringConstants) As String
+\par }{\f1\cgrid0 Returns the display name or path of a special shell folder specified by a FolderStringConstants value. Can be assigned directly to the RootFolder and SelectedFolder properties.}{\b\f1\cgrid0 
+\par Property Get DisplayName() As String
+\par }{\f1\cgrid0 Returns the folder's display name selected by the user (as it is displayed in Explorer). This property is set after the dialog is closed by an OK button click.}{\b\f1\cgrid0 
+\par Property Get Path() As String
+\par }{\f1\cgrid0 Returns the folder's fully qualified path selected by the user (if one exists).  This property is set after the dialog is closed by an OK button click.}{\b\f1\cgrid0 
+\par Property Get LargeIcon() As Picture
+\par }{\f1\cgrid0 Returns the folder's large icon selected by the user. This property is set after the dialog is closed by an OK button click.}{\b\f1\cgrid0 
+\par Property Get SmallIcon() As Picture
+\par }{\f1\cgrid0 Returns the folder's small icon selected by the user. This property is set after the dialog is closed by an OK button click.
+\par }{\f1\ul\cgrid0 Events
+\par }{\b\f1\cgrid0 
+\par Public Event SelectionChanged(ByVal Path As String, ByVal DisplayName As String)
+\par }{\f1\cgrid0 Occurs when a folders selection has changed in the dialog box. Allows setting of the AllowSelection and Prompt2 properties.
+\par }{\cgrid0 
+\par }{\b\f1\cgrid0 ppgRootFolder \{19E5F8C8-4D71-11D1-9C63-0040054629E1\}
+\par }{\cgrid0 
+\par }{\f1\ul\cgrid0 Methods
+\par }{\f1\cgrid0 None 
+\par 
+\par }{\f1\ul\cgrid0 Events
+\par }{\f1\cgrid0 None 
+\par }{\cgrid0 
+\par }{\b\f1\cgrid0 ppgSelectedFolder \{19E5F8CA-4D71-11D1-9C63-0040054629E1\}
+\par }{\cgrid0 
+\par }{\f1\ul\cgrid0 Methods
+\par }{\f1\cgrid0 None 
+\par 
+\par }{\f1\ul\cgrid0 Events
+\par }{\f1\cgrid0 None 
+\par }{\cgrid0 
+\par 
+\par }}

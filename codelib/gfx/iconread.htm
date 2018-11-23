@@ -1,0 +1,510 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Reading and Saving .ICO files and resources in VB</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\graphics_and_gdi\reading_and_saving_ico_files_in_vb\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><b>Reading and Saving .ICO files and resources in VB</b><br></p>
+        <p><img src="..\..\images\fileicon.gif" width="135" height="113" alt="cFileIcon Class Graphic" border="0"></p>
+        <p><a href="cfileico.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cFileIcon class and demonstration project (37kb)</a></p>
+        </font>
+        <p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <b>Introduction</b><br>
+	VB allows you to load an save .ICO files through the <i>LoadPicture</i> and <i>SavePicture</i>
+	methods, which are implemented in the <i>StdPicture</i> object.  Unfortunately, this object
+	was really written for 16 bit Windows and doesn't understand Win32 icons at all.  A .ICO resource
+	can contain many different images, at different colour depths.<br><br>
+	<img src="..\..\images\ie5icon.gif" width="207" height="151" alt="IE5 icon"><br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="1">
+	<b>The Internet Explorer 5 main icon</b><br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	Windows uses the different sizes and colours as required in the system.  There is no need to
+	stick to the standard sizes and colour depths as shown in the image either.  Icons can be defined
+	at any size (up to a maximum of 128x128 pixels) and at any colour depth.
+	<br><br>
+	When you load an icon using the StdPicture object, you only ever get one size: 32x32.  It doesn't
+	matter whether there isn't actually a 32x32 image in the .ICO resource, it stretches it as
+	required (usually with horrible consequences).  The loaded colour depth is also the always the
+	default system icon colour depth.
+	<br><br>
+	There are workarounds for the StdPicture object problem - see my tip <a href="..\..\tips\vba0024.htm">
+	Create a VB Picture from an API Icon Handle</a> and the article <a href="..\shell\shelicon.htm">Get Icons for any File
+	Type</a> for examples.  However, all API methods for loading icons are restricted to only loading
+	icon resources at the system default icon colour depth.  On a system with "Show Icons Using All
+	Available Colours" set, you can never load a 16 colour icon if a higher colour depth is available using the API methods.
+	<br><br>
+	You can do this if you load the icon natively, though.  This article briefly describes the 
+	.ICO file format and provides a class which reads icons from .ICO files and Executables and 
+	also writes to standard	.ICO files.  This class is also used in the 
+	<a href="iconex.htm">Icon Explorer</a> project.
+	<br><br>
+	<b>The .ICO File Format</b><br>
+	ICON files have a defined file format which is described for C programmers in 
+	an <a href="..\..\linx.htm#secmsdn">MSDN</a> article by John Hornick. (Download <a href="iconpro.ico">this icon</a>
+	- there is a picture of him, or at least someone, stored in it at the 118x128 version!).<br><br>
+	A .ICO file contains the following information:
+	<ol>
+	<li>A header indicating the type of resource and the number of icons within it.
+	<li>A series of directory entries providing information about the size and colour depth of
+	the icon, and a pointer to where the icon data starts below it within the file.
+	<li>A series of icon data structures, containing a BITMAPINFOHEADER structure defining the
+	DIB section used for the icon's image, the palette table (if one is required for the image) 
+	and then two byte arrays.  The first contains the raw icon image bits in the appropriate DIB 
+	format and the	second contains the image bits for the mask as a monochrome DIB.
+	</ol>
+	If you are interested in why there are two images in an icon, check out the <a href="sprites.htm">
+	Transparent Sprite Library</a> article code, which describes the theory of using a mask and an 
+	image to implement graphics with transparent areas.
+	<br><br>
+	In more detail, the structures to implement the above look like this:<br>
+	<ol>
+	<li>The icon header:<br><br></font>
+	<font color="#000000" face="Lucida Console,Courier New" size="2">
+Private Type ICONDIR<br>
+&nbsp;&nbsp;&nbsp;idReserved As Integer   <font color="#999999" face="Lucida Console,Courier New" size="2">'// Reserved</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;idType As Integer       <font color="#999999" face="Lucida Console,Courier New" size="2">'// resource type ( = IMAGE_ICON = 1 for icons)</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;idCount As Integer      <font color="#999999" face="Lucida Console,Courier New" size="2">'// how many images?</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="2">' idEntries() as ICONDIRENTRY array follows.</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="2">' After that, the icon bits.</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+End Type</font><br><br>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li>The icon directory entry:<br>
+<font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+Private Type ICONDIRENTRY<br>
+&nbsp;&nbsp;&nbsp;bWidth As Byte               <font color="#999999" face="Lucida Console,Courier New" size="2">'// Width of the image</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;bHeight As Byte              <font color="#999999" face="Lucida Console,Courier New" size="2">'// Height of the image (times 2)</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;bColorCount As Byte          <font color="#999999" face="Lucida Console,Courier New" size="2">'// Number of colors in image (0 if &gt;=8bpp)</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;bReserved As Byte            <font color="#999999" face="Lucida Console,Courier New" size="2">'// Reserved</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;wPlanes As Integer           <font color="#999999" face="Lucida Console,Courier New" size="2">'// Color Planes</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;wBitCount As Integer         <font color="#999999" face="Lucida Console,Courier New" size="2">'// Bits per pixel</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;dwBytesInRes As Long         <font color="#999999" face="Lucida Console,Courier New" size="2">'// how many bytes in this resource?</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;dwImageOffset As Long        <font color="#999999" face="Lucida Console,Courier New" size="2">'// where in the file is this image</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+End Type</font><br><br>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li>The icon data structures.  These cannot be represented as a straightforward type in VB 
+	because the members of the type depend on how many colours are in the image and the size
+	of the icon bitmaps.  If you were to write this as a real VB structure, you would
+	have to create at least four different types to accomodate the different
+	number of colour entries.  I have worked around this in my icon class by storing this type
+	as a raw byte array and interpreting it as required.  However, in pseudo-VB code, the type looks
+	like this:<br><br>
+<font color="#000000" face="Lucida Console,Courier New" size="2">
+Private Type ICONIMAGE<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="2">' The DIB Header:</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;icHeader As BITMAPINFOHEADER<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="2">' The Colour Table If Required:</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;If (NumberOfColours&lt;=256 Colours) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icColors(1 to NumberOfColours) as RGBQUAD<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="2">' The Image Bytes:</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;icXOR(0 to (Width * Bits Per Pixel,aligned to a Long Boundary) * Height) As Byte<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="2">' The Mask Bytes</font><font color="#000000" face="Lucida Console,Courier New" size="2"><br>
+&nbsp;&nbsp;&nbsp;icAND(0 to (Width/8 aligned to a Long Boundary) * Height) As Byte<br>
+<br>
+End Type</font></pre><font color="#000000" face="verdana,arial,helvetica" size="2"><br>
+	</ol>
+	</font>
+	</p>
+	<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Icons In Executable Files</b><br>
+	In an executable file, icons are stored in a similar structure, but there are two differences.
+	Firstly, the structures are packed on 2 byte boundaries rather than the normal 4 bytes, and
+	secondly the <i>dwImageOffset</i> member of the <i>ICONDIRENTRY</i> type is replaced with
+	an integer icon ID number.  Because the icons are packed on 2 bytes, you cannot write a VB
+	structure which can be directly used to read the format, because VB automatically aligns all its 
+	structures on 4 byte boundaries.  Instead you have to read all the data in bytes and then
+	copy it into the appropriate structure.
+	<br><br>
+	
+	<b>Translating it to VB</b><br>
+	To say this wasn't particular easy to translate to VB would be understating the case a bit.
+	I'd describe it here, but it would go on for ever!  Instead, download the demonstration
+	project and pick through that.  If you'd like to know more about the DIB bitmap format 
+	used to store the images, there are two resources here:
+	<ul>
+	<li><a href="dibsect.htm">Using DIB Sections and the cDIBSection wrapper</a>.  This describes
+	a type of DIB where the bitmap bits are stored in user memory and can be modified by a Win32
+	application, but otherwise it is applicable.
+	<li><a href="..\comctl\imglist.htm">vbAccelerator Image List Control and Class</a>.  This
+	class uses DIBSections to save and load icons.
+	</ul>
+	The result is a <i>cFileIcon</i> class.  The interface to this class is as follows:
+	</font>
+	</p>
+	<p>
+	<table width="100%" cellspacing="4" cellpadding="0" border="0">
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Function AddImage(ByVal nWidth As Long, ByVal nHeight As Long, ByVal nColourCount As Long) As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Adds a icon to the class with specified width,height and number of colours and returns
+		the index of the new icon.  The newly added icon is initialised to be completely black.
+		To modify the icon, you need to add something to the class to set the DIB bits of the
+		XOR (Image) and AND (Mask) DIBs.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Sub CloneTo(ByRef cThis As cFileIcon)
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Makes a copy of one cFileIcon class to another.  The cloned class (cThis) is
+		a completely independent copy.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Sub DrawIconImage( _<br>
+&nbsp &nbsp      ByVal lHDC As Long, _<br>
+&nbsp &nbsp            ByVal nIndex As Long, _<br>
+&nbsp &nbsp            Optional ByVal eType As ECFIImageConstants = ecfiImage, _<br>
+&nbsp &nbsp            Optional ByVal X As Long = 0, Optional ByVal Y As Long = 0, _<br>
+&nbsp &nbsp            Optional ByVal lWidth As Long = 0, Optional ByVal lHeight As Long = 0, _<br>
+&nbsp &nbsp            Optional ByVal eRasterOp As RasterOpConstants = vbSrcCopy _<br>
+   )		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Draws either the Image or the Mask portion of the image to the specified DC, optionally
+		at a specified X,Y position, stretching to a given width and height and drawn using
+		one of the RasterOpConstants.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get Filename() As String
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the filename of the .ICO file or the Executable from which the icon was loaded.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get ImageColourCount(ByVal nIndex As Long) As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the number of colours in the icon at 1 based index nIndex.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get ImageCount() As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the number of icon resources within the currently loaded icon.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get ImageHeight(ByVal nIndex As Long) As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the height in pixels of the icon at the 1 based index nIndex.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get ImageSize(ByVal nIndex As Long) As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the number of bytes of the icon at the 1 based index nIndex.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get ImageWidth(ByVal nIndex As Long) As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the width in pixels of the icon at the 1 based index nIndex.
+		</font>
+		</td>
+	</tr>	
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Function LoadIcon(ByVal sFile As String) As Boolean
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Loads an icon from a .ICO file.  Returns True if it succeeded, or False otherwise.
+		An error will be raised if there is a problem loading the icon.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Function LoadIconFromEXE( _<br>
+&nbsp;&nbsp;      ByVal sFile As String, _<br>
+&nbsp;&nbsp;            Optional ByVal lpID As Long = 0, _<br>
+&nbsp;&nbsp;            Optional ByVal lpName As String = "" _<br>
+   ) As Boolean
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Loads an icon from an executable file (e.g. EXE, OCX, DLL).  Specify lpID
+		if the resource has an integer ID, otherwise specify lpName.
+		Returns True if it succeeded, or False otherwise.
+		An error will be raised if there is a problem loading the icon.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Function RemoveImage(ByVal nIndex As Long) As Long
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Removes the icon resource ID at the 1 based index nIndex.
+		a file.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Property Get ResourceID() As Variant
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Returns the resource ID that the current icon was extracted from, or Empty if the icon was loaded from
+		a file.
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#CCCCCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Public Function SaveIcon(Optional ByVal sFileName As String = "") As Boolean
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Saves the current icon resources to a .ICO file.  If sFileName is not specified, the
+		file that the icon was loaded from will be used.  Returns True if successful, or False
+		otherwise.  An error will be raised if there is any problem saving the icon.
+		</font>
+		</td>
+	</tr>
+
+	</table>
+	</p>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>		
+
+        <br><br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+        <p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+
+        </font>
+
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 8 March 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

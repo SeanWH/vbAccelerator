@@ -1,0 +1,326 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Reading Data from Local or External Library Resources</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        <font color="#660000" face="verdana,arial,helvetica" size="2">
+        </font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Reading Data from Local or External Library Resources</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Techniques for managing static data associated with your application</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\resources\reading_data_from_local_or_external_library_resources\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><img src="..\..\images\resimg.gif" alt="Somehow I never seem to have enough storage space for all my files." width="196" height="157"></p>
+	<p><a href="extres.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the external resource file sample project files (53kb)</a><br>
+	<a href="tempres.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the JPG resource file sample project files (44kb)</a>
+	</p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br>
+	<b>Introduction</b><br>
+	Often your application will have associated data, such as pictures, sounds, static data and so forth
+	you need to ship with it.  If you are localizing your application then you also need to be able to
+	provide alternative text strings for menus, messages, labels on so forth.  Resources are a great	
+	way to package up all of this extra data into a single file and read it efficiently at run time.
+	Not just that, but by putting the data into a resource file you significantly reduce the chances
+	of someone tampering with your files and replacing them with their own "humourous" versions.
+	<br><br>
+	VB has reasonable resource support with the <i>LoadResData</i> function, however, it lacks some
+	features:
+	<ol>
+	<li>You can only load data from the local module, i.e. you cannot put your resources in an external DLL
+	and load them from there.
+	<li>You cannot determine the resource contents of a file.
+	<li>It is not obvious how you can use the function to load an arbitrary resource type, such as JPEG file.
+	</ol>
+	This article covers the code and tools you can use to overcome these limitations in a 
+	Visual Basic application.
+	<br><br><br>
+	<b>Step Up to Resources</b><br>	
+	There are two ways of getting resources into a VB application.  
+	<ol>
+	<li><font color="#333399">The Resource Compiler<font color="#000000"><br>
+	The traditional method is to create a <i>Resource Compiler</i> (.RC) file and compile it into a 
+	<i>Resource</i> .RES file using the Microsoft Resource Compiler (RC.EXE).
+	<li><font color="#333399">IDE Support for Resource Files</font><br>
+	VB 6 has a visual resource compiler built into the IDE.  For VB5 you can download 
+	a resource compiler add-in from the <a href="..\..\linxref.htm#secvbowner">Visual Basic area at MSDN</a>.
+	</ol>
+	<small>Note: if you don't have RC.EXE then this is also included in the VB5 resource compiler add-in
+	download.</small>
+	<br><Br>
+	The second method is a lot easier to manage, as there is an IDE to add and remove the files.
+	Unfortunately, in my experience, it does not always seem to create resources which can be read by other
+	tools, or even straight API calls.  I don't know if this is always true, but if you're trying to add a document icon 
+	(say to support <a href="..\ssubtmr\startup.htm">Document File Associations</a>) which can be read 
+	by Windows then I always needed to use RC.EXE.
+	<br><br>
+	The important thing to note is it is really simple to use RC.EXE.  Simply place RC.EXE and RCDLL.DLL into
+	your system's path, or set the path to point to the directory these files live in, write your .RC file and
+	then compile it with this command line:
+	<br><br>
+	&nbsp;&nbsp;&nbsp;RC /r /fo [Output File] [Input File]<br>
+	<br>
+	For more details, read the article <a href="..\article\usingrc.htm">Using RC.EXE</a>.
+
+	<br><br><br>
+
+	<b>Loading Resources From an External Module</b><br>
+	Unlike Visual Basic, The Windows API does not differentiate between loading resources from the local
+	application or from an external module.  The only thing it requires is a handle to the module where
+	it will find the resource.  For the local module, this is the value returned from <i>App.hInstance</i>.
+	For an external binary, you need to load the file using the API <i>LoadLibrary</i> function in order
+	to get a handle to the data.  Paste the code below into a class module, then you have a simple means
+	of loading an external EXE, OCX or DLL as a library, accessing the <i>hModule</i> handle and ensuring 
+	the resource is unloaded when you have finished with it:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<br>
+Private Declare Function LoadLibraryEx Lib &quot;kernel32&quot; Alias &quot;LoadLibraryExA&quot; (ByVal lpLibFileName As String, ByVal hFile As Long, ByVal dwFlags As Long) As Long<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Missing from VB API declarations:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Const DONT_RESOLVE_DLL_REFERENCES = &H1&<br>
+Private Const LOAD_LIBRARY_AS_DATAFILE = &H2&<br>
+Private Const LOAD_WITH_ALTERED_SEARCH_PATH = &H8&<br>
+Private Declare Function LoadLibrary Lib &quot;kernel32&quot; Alias &quot;LoadLibraryA&quot; (ByVal lpLibFileName As String) As Long<br>
+<br>
+Private Declare Function FreeLibrary Lib &quot;kernel32&quot; (ByVal hLibModule As Long) As Long<br>
+<br>
+Private m_sFileName As String<br>
+Private m_hMod As Long<br>
+<br>
+Public Property Get Filename() As String<br>
+&nbsp;&nbsp;&nbsp;Filename = m_sFileName<br>
+End Property<br>
+<br>
+Public Property Let Filename(ByVal sFileName As String)<br>
+&nbsp;&nbsp;&nbsp;ClearUp<br>
+&nbsp;&nbsp;&nbsp;m_sFileName = sFileName<br>
+&nbsp;&nbsp;&nbsp;If m_sFileName &lt;&gt; &quot;&quot; Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_hMod = LoadLibraryEx(m_sFileName, 0, 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If (m_hMod = 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Err.Raise vbObjectError + 1048 + 1, App.EXEName & &quot;.cLibrary&quot;, WinError(Err.LastDllError)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Property<br>
+<br>
+Public Property Get hModule() As Long<br>
+&nbsp;&nbsp;&nbsp;hModule = m_hMod<br>
+End Property<br>
+<br>
+Private Sub ClearUp()<br>
+&nbsp;&nbsp;&nbsp;If (m_hMod &lt;&gt; 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FreeLibrary m_hMod<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;m_hMod = 0<br>
+&nbsp;&nbsp;&nbsp;m_sFileName = &quot;&quot;<br>
+End Sub<br>
+<br>
+<br>
+Private Sub Class_Terminate()<br>
+&nbsp;&nbsp;&nbsp;ClearUp<br>
+End Sub<br>
+<br>
+
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Putting your resources in a external module is then simple: simply create a VB ActiveX DLL project,
+	add your .RES file to it, compile it and that's it!  Ready to use.
+	<br><br><br>
+	<b>Determing The Resource Contents Of a File</b><br>
+	To do this you need to able to call the Win32 API functions <i>EnumResourceTypes</i> to get the different
+	types of resources and <i>EnumResourceNames</i> to get the names of the resources.  The code to do
+	this is fundamentally simple but a bit of a pain to get working correctly (read: ensuring the <i>ByVal</i>
+	and <i>ByRefs</i> are in the right place!). The finished product is demonstrated in the 
+	<i>cResources</i> class of the demonstrations.  The biggest problem with the code is that the API has 
+	a strange way of reusing String parameters as Long values and vice-versa, which certainly doesn't look nice
+	to anyone who has had the luxury of the variant before.  I'm sure it saves, ooh, at least twenty-five bytes
+	on disk for the typical project though.  
+	<br><br>
+	<img src="..\..\images\119.bmp"><br>
+	<img src="..\..\images\120.bmp"><br>
+	<small><b>Do It Yourself: I was hoping for an animated cursor, but this is how they did it: Bitmap Resources 119 and 120 from WinHlp32.EXE...</b></small>
+	<br><br>
+	The source code also demonstrates helper functions to read bitmaps, icons, cursors and binary data as
+	well as to save them to disk in the <i>mResource</i> module.
+	<br><br><br>
+	<b>Loading Arbitary Resources</b><br>
+	Whilst VB provides you with a method to read a bitmap from a resource file, that can (literally) add
+	Megabytes to the size of your application.  What you want to do is to store the picture in a smaller
+	format, such as JPG (or <a href="javascript:window.alert(&quot;http://burnallgifs.org/\nThis link was not retrieved.&quot;)">GIF</a>, if you really have to).  The problem
+	is that VB doesn't allow you to read in these formats with the <i>LoadResPicture</i> function.	
+	<br><br>
+	There are two solutions to this problem: one is simple, and the other is much harder. For both you
+	add the picture data in JPG or GIF format as a binary resource format.  In the simple method, you
+	read the binary data using either <i>LoadResPicture</i> for local data or the techniques in the 
+	<i>mResource</i> module of the ExtRes demonstration project for external data, and then you write it to
+	a temporary file.  It is simple to use the <i>LoadPicture</i> function on the temporary file from there
+	and clear up the file.  The TempRes demonstration project demonstrates this technique.
+	<br><br>
+	The harder technique would be to implement the <i>IPersistStream</i> function to allow a StdPicture
+	object to deserialise itself directly from a byte array.  I haven't figured out how to do it yet, but
+	if anyone has any tips on doing this, I'd love to hear!
+	</p>	
+	<br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 1 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

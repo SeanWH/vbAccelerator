@@ -1,0 +1,567 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: Globals.bas</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: Globals.bas" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;Globals.bas</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="dockcontrol.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />DockControl</a> (190K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12483</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12483&type=zip&title=dockcontrol_2ezip_5fglobals.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Mark Grimes</a></p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing Without The Crashes</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: Globals.bas</h1><pre>Attribute VB_Name = "Globals"
+Option Private Module
+Option Explicit
+
+Type AlignWidths
+    LeftWidth      As Long
+    TopHeight      As Long
+    RightWidth     As Long
+    BottomHeight   As Long
+End Type
+
+Type RECT
+    Left As Long
+    Top As Long
+    Right As Long
+    Bottom As Long
+End Type
+
+Type POINTAPI
+    X As Long
+    Y As Long
+End Type
+
+Type Size
+ cx As Long
+ cy As Long
+End Type
+
+
+Type MINMAXINFO
+ ptReserved As POINTAPI
+ ptMaxSize As POINTAPI
+ ptMaxPosition As POINTAPI
+ ptMinTrackSize As POINTAPI
+ ptMaxTrackSize As POINTAPI
+End Type
+
+Type msg
+ hwnd As Long
+ message As Long
+ wParam As Long
+ lParam As Long
+ Time As Long
+ pt As POINTAPI
+End Type
+
+Public Const ERROR_INSUFFICIENT_BUFFER = 122
+Public Const eeErrorBase = 26720
+
+Public Type FILETIME
+   dwLowDateTime As Long
+   dwHighDateTime As Long
+End Type
+
+Public Type INTERNET_CACHE_ENTRY_INFO
+   dwStructSize As Long
+   lpszSourceUrlName As String
+   lpszLocalFileName As String
+   CacheEntryType As String
+   dwUseCount As Long
+   dwHitRate As Long
+   dwSizeLow As Long
+   dwSizeHigh As Long
+   LastModifiedTime As FILETIME
+   ExpireTIme As FILETIME
+   LastAccessTime As FILETIME
+   LastSyncTime As FILETIME
+   lpHeaderInfo As Long
+   dwHeaderInfoSize As Long
+   lpszFileExtension As String
+   dwReserved As Long
+End Type
+
+Public Declare Function GetUrlCacheEntryInfo Lib "wininet.dll" Alias
+ "GetUrlCacheEntryInfoA" _
+   (ByVal sUrlName As String, _
+   lpCacheEntryInfo As Any, _
+   lpdwCacheEntryInfoBufferSize As Long _
+   ) As Long
+
+' To Report API errors:
+Public Const FORMAT_MESSAGE_ALLOCATE_BUFFER = &amp;H100
+Public Const FORMAT_MESSAGE_ARGUMENT_ARRAY = &amp;H2000
+Public Const FORMAT_MESSAGE_FROM_HMODULE = &amp;H800
+Public Const FORMAT_MESSAGE_FROM_STRING = &amp;H400
+Public Const FORMAT_MESSAGE_FROM_SYSTEM = &amp;H1000
+Public Const FORMAT_MESSAGE_IGNORE_INSERTS = &amp;H200
+Public Const FORMAT_MESSAGE_MAX_WIDTH_MASK = &amp;HFF
+Public Declare Function FormatMessage Lib "kernel32" Alias "FormatMessageA" _
+   (ByVal dwFlags As Long, lpSource As Any, ByVal dwMessageId As Long, _
+   ByVal dwLanguageId As Long, ByVal lpBuffer As String, ByVal nSize As Long,
+    Arguments As Long _
+   ) As Long
+   
+Public Const SW_ERASE = &amp;H4
+Public Const SW_INVALIDATE = &amp;H2
+Public Const SW_SCROLLCHILDREN = &amp;H1
+
+
+Declare Function GetWindowText Lib "user32" Alias "GetWindowTextA" (ByVal hwnd
+ As Long, ByVal lpString As String, ByVal cch As Long) As Long
+Declare Function GetClassName Lib "user32" Alias "GetClassNameA" (ByVal hwnd As
+ Long, ByVal lpClassName As String, ByVal nMaxCount As Long) As Long
+Declare Function InternetAttemptConnect Lib "wininet" (dwReserved As Long) As
+ Long
+Declare Function InternetCheckConnection Lib "wininet" Alias
+ "InternetCheckConnectionA" (ByVal lpszUrl As String, ByVal dwFlags As Long,
+ ByVal dwReserved As Long) As Long
+Declare Function IsChild Lib "user32" (ByVal hWndParent As Long, ByVal hwnd As
+ Long) As Long
+
+Declare Function ScrollWindowEx Lib "user32" (ByVal hwnd As Long, ByVal dx As
+ Long, ByVal dy As Long, lprcScroll As RECT, lprcClip As RECT, ByVal hrgnUpdate
+ As Long, lprcUpdate As RECT, ByVal fuScroll As Long) As Long
+Declare Function GetActiveWindow Lib "user32" () As Long
+
+
+Declare Function GetForegroundWindow Lib "user32" () As Long
+Declare Function SetForegroundWindow Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function DrawEdge Lib "user32" (ByVal hDC As Long, qrc As RECT, ByVal
+ edge As Long, ByVal grfFlags As Long) As Long
+
+Declare Function GetSysColor Lib "user32" (ByVal nIndex As Long) As Long
+Declare Function GetSystemMetrics Lib "user32" (ByVal nIndex As Long) As Long
+Declare Function GetDC Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function ReleaseDC Lib "user32" (ByVal hwnd As Long, ByVal hDC As Long)
+ As Long
+Declare Function SetCapture Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function ReleaseCapture Lib "user32" () As Long
+
+Declare Function IsCharAlpha Lib "user32" Alias "IsCharAlphaA" (ByVal cChar As
+ Byte) As Long
+Declare Function IsCharAlphaNumeric Lib "user32" Alias "IsCharAlphaNumericA"
+ (ByVal cChar As Byte) As Long
+Declare Function IsWindowEnabled Lib "user32" (ByVal hwnd As Long) As Long
+
+Declare Function ScrollWindow Lib "user32" (ByVal hwnd As Long, ByVal XAmount
+ As Long, ByVal YAmount As Long, lpRect As RECT, lpClipRect As RECT) As Long
+Declare Function GetTextExtentPoint32 Lib "gdi32" Alias "GetTextExtentPoint32A"
+ (ByVal hDC As Long, ByVal lpsz As String, ByVal cbString As Long, lpSize As
+ Size) As Long
+Declare Function FillRect Lib "user32" (ByVal hDC As Long, lpRect As RECT,
+ ByVal hBrush As Long) As Long
+Declare Function Rectangle Lib "gdi32" (ByVal hDC As Long, ByVal X1 As Long,
+ ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long
+
+Declare Function GetCursorPos Lib "user32" (lpPoint As POINTAPI) As Long
+Declare Function GetCaretPos Lib "user32" (lpPoint As POINTAPI) As Long
+Declare Function ShowCaret Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function HideCaret Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function SetCaretPos Lib "user32" (ByVal X As Long, ByVal Y As Long) As
+ Long
+Declare Function CreateCaret Lib "user32" (ByVal hwnd As Long, ByVal hBitmap As
+ Long, ByVal nWidth As Long, ByVal nHeight As Long) As Long
+Declare Function DestroyCaret Lib "user32" () As Long
+
+'For Trapping Tab Key on Dialog Box
+Declare Function CallNextHookEx Lib "user32" (ByVal hHook As Long, ByVal nCode
+ As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+Declare Function UnhookWindowsHookEx Lib "user32" (ByVal hHook As Long) As Long
+Declare Function SetWindowsHookEx Lib "user32" Alias "SetWindowsHookExA" (ByVal
+ idHook As Long, ByVal lpfn As Long, ByVal hmod As Long, ByVal dwThreadId As
+ Long) As Long
+Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As
+ Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+
+Declare Function GetParent Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal
+ hWndNewParent As Long) As Long
+Declare Function GetClientRect Lib "user32" (ByVal hwnd As Long, lpRect As
+ RECT) As Long
+Declare Function GetWindowRect Lib "user32" (ByVal hwnd As Long, lpRect As
+ RECT) As Long
+Declare Function ClientToScreen Lib "user32" (ByVal hwnd As Long, lpPoint As
+ POINTAPI) As Long
+
+Declare Function EnableWindow Lib "user32" (ByVal hwnd As Long, ByVal fEnable
+ As Long) As Long
+Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal
+ hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cx As Long,
+ ByVal cy As Long, ByVal wFlags As Long) As Long
+Declare Function GetKeyState Lib "user32" (ByVal nVirtKey As Long) As Integer
+Declare Function GetFocus Lib "user32" () As Long
+Declare Function SetFocus Lib "user32" (ByVal hwnd As Long) As Long
+Declare Function GetDlgItem Lib "user32" (ByVal hDlg As Long, ByVal nIDDlgItem
+ As Long) As Long
+Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As
+ Long, ByVal wMsg As Long, ByVal wParam As Integer, ByVal lParam As Any) As Long
+
+Declare Function SetDlgItemText&amp; Lib "user32" Alias "SetDlgItemTextA" (ByVal
+ hDlg As Long, ByVal nIDDlgItem As Long, ByVal lpString As String)
+Declare Function GetDlgItemText&amp; Lib "user32" Alias "GetDlgItemTextA" (ByVal
+ hDlg As Long, ByVal nIDDlgItem As Long, ByVal lpString As String, ByVal
+ nMaxCount As Long)
+Declare Function SetDlgItemInt&amp; Lib "user32" (ByVal hDlg As Long, ByVal
+ nIDDlgItem As Long, ByVal wValue As Long, ByVal bSigned As Long)
+
+Declare Function DrawText Lib "user32" Alias "DrawTextA" (ByVal hDC As Long,
+ ByVal lpStr As String, ByVal nCount As Long, lpRect As RECT, ByVal wFormat As
+ Long) As Long
+Declare Function DrawFocusRect Lib "user32" (ByVal hDC As Long, lpRect As RECT)
+ As Long
+
+Declare Function SendMessageArray Lib "user32" Alias "SendMessageA" (ByVal hwnd
+ As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Declare Function SendMessageStr Lib "user32" Alias "SendMessageA" (ByVal hwnd
+ As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As String) As
+ Long
+Declare Function GetClipBox Lib "gdi32" (ByVal hDC As Long, lpRect As RECT) As
+ Long
+
+Declare Function CallWindowProc Lib "user32" Alias "CallWindowProcA" (ByVal
+ lpPrevWndFunc As Long, ByVal hwnd As Long, ByVal msg As Long, ByVal wParam As
+ Long, ByVal lParam As Long) As Long
+Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd
+ As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
+Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hwnd
+ As Long, ByVal nIndex As Long) As Long
+
+Declare Function SendMessageLong Lib "user32" Alias "SendMessageA" (ByVal hwnd
+ As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As
+ Long
+Declare Function FindWindowEx Lib "user32" Alias "FindWindowExA" (ByVal hWnd1
+ As Long, ByVal hWnd2 As Long, ByVal lpsz1 As String, ByVal lpsz2 As String) As
+ Long
+Declare Function GetNextWindow Lib "user32" Alias "GetWindow" (ByVal hwnd As
+ Long, ByVal wFlag As Long) As Long
+
+Declare Function GetDCEx Lib "user32" (ByVal hwnd As Long, ByVal hrgnclip As
+ Long, ByVal fdwOptions As Long) As Long
+Declare Function ScreenToClient Lib "user32" (ByVal hwnd As Long, lpPoint As
+ POINTAPI) As Long
+Declare Function ShowWindow Lib "user32" (ByVal hwnd As Long, ByVal nCmdShow As
+ Long) As Long
+Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (pDest As Any, pSrc
+ As Any, ByVal ByteLen As Long)
+Declare Function MoveWindow Lib "user32" (ByVal hwnd As Long, ByVal X As Long,
+ ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal bRepaint
+ As Long) As Long
+Declare Sub ClipCursor Lib "user32" (lpRect As Any)
+Declare Sub OffsetRect Lib "user32" (lpRect As RECT, ByVal X As Long, ByVal Y
+ As Long)
+
+
+Public Const Vb_One = 1
+
+'Dialog Internal Controls
+Public Const fdlgChxReadOnly = &amp;H410
+Public Const fdlgcmbSaveAsType = &amp;H470
+Public Const fdlgCmbSaveInFindIn = &amp;H471
+Public Const fdlgEdtFileName = &amp;H480
+Public Const fdlgIDCANCEL = 2
+Public Const fdlgIDOK = 1
+Public Const fdlgLBLstFiles = &amp;H460
+Public Const fdlgLVLstFiles = &amp;H461
+Public Const fdlgPshHelp = &amp;H40E
+Public Const fdlgStcFileName = &amp;H442
+Public Const fdlgStcSaveAsType = &amp;H441
+Public Const fdlgStcSaveInFindIn = &amp;H443
+
+Public Const BDR_RAISEDOUTER = &amp;H1
+Public Const BDR_SUNKENOUTER = &amp;H2
+Public Const BDR_RAISEDINNER = &amp;H4
+Public Const BDR_SUNKENINNER = &amp;H8
+
+Public Const BDR_OUTER = &amp;H3
+Public Const BDR_INNER = &amp;HC
+Public Const BDR_RAISED = &amp;H5
+Public Const BDR_SUNKEN = &amp;HA
+
+Public Const EDGE_RAISED = (BDR_RAISEDOUTER Or BDR_RAISEDINNER)
+Public Const EDGE_SUNKEN = (BDR_SUNKENOUTER Or BDR_SUNKENINNER)
+Public Const EDGE_ETCHED = (BDR_SUNKENOUTER Or BDR_RAISEDINNER)
+Public Const EDGE_BUMP = (BDR_RAISEDOUTER Or BDR_SUNKENINNER)
+ 
+Public Const BF_LEFT = &amp;H1
+Public Const BF_TOP = &amp;H2
+Public Const BF_RIGHT = &amp;H4
+Public Const BF_BOTTOM = &amp;H8
+
+Public Const BF_TOPLEFT = (BF_TOP Or BF_LEFT)
+Public Const BF_TOPRIGHT = (BF_TOP Or BF_RIGHT)
+Public Const BF_BOTTOMLEFT = (BF_BOTTOM Or BF_LEFT)
+Public Const BF_BOTTOMRIGHT = (BF_BOTTOM Or BF_RIGHT)
+Public Const BF_RECT = (BF_LEFT Or BF_TOP Or BF_RIGHT Or BF_BOTTOM)
+Public Const BF_DIAGONAL = &amp;H10
+
+' For diagonal lines, the BF_RECT flags specify the end point of the
+' vector bounded by the rectangle parameter.
+Public Const BF_DIAGONAL_ENDTOPRIGHT = (BF_DIAGONAL Or BF_TOP Or BF_RIGHT)
+Public Const BF_DIAGONAL_ENDTOPLEFT = (BF_DIAGONAL Or BF_TOP Or BF_LEFT)
+Public Const BF_DIAGONAL_ENDBOTTOMLEFT = (BF_DIAGONAL Or BF_BOTTOM Or BF_LEFT)
+Public Const BF_DIAGONAL_ENDBOTTOMRIGHT = (BF_DIAGONAL Or BF_BOTTOM Or BF_RIGHT)
+
+Public Const BF_MIDDLE = &amp;H800   ' Fill in the middle
+Public Const BF_SOFT = &amp;H1000    ' For softer buttons
+Public Const BF_ADJUST = &amp;H2000  ' Calculate the space left over
+Public Const BF_FLAT = &amp;H4000    ' For flat rather than 3D borders
+Public Const BF_MONO = &amp;H8000    ' For monochrome borders
+
+Public Const DCX_CACHE = &amp;H2&amp;
+Public Const DCX_CLIPCHILDREN = &amp;H8&amp;
+Public Const DCX_CLIPSIBLINGS = &amp;H10&amp;
+Public Const DCX_EXCLUDERGN = &amp;H40&amp;
+Public Const DCX_EXCLUDEUPDATE = &amp;H100&amp;
+Public Const DCX_INTERSECTRGN = &amp;H80&amp;
+Public Const DCX_INTERSECTUPDATE = &amp;H200&amp;
+Public Const DCX_LOCKWINDOWUPDATE = &amp;H400&amp;
+Public Const DCX_NORECOMPUTE = &amp;H100000
+Public Const DCX_NORESETATTRS = &amp;H4&amp;
+Public Const DCX_PARENTCLIP = &amp;H20&amp;
+Public Const DCX_VALIDATE = &amp;H200000
+Public Const DCX_WINDOW = &amp;H1&amp;
+
+Public Const COLOR_ACTIVECAPTION = 2
+Public Const COLOR_CAPTIONTEXT = 9
+Public Const COLOR_WINDOWFRAME = 6
+
+Public Const SM_CYCAPTION = 4
+Public Const SM_CXDLGFRAME = 7
+Public Const SM_CYDLGFRAME = 8
+
+Public Const GW_HWNDFIRST = 0
+Public Const GW_HWNDLAST = 1
+Public Const GW_HWNDNEXT = 2
+Public Const GW_HWNDPREV = 3
+Public Const GW_OWNER = 4
+Public Const GW_MAX = 5
+Public Const GW_CHILD = 5
+
+Public Const VK_TAB = &amp;H9
+Public Const VK_SHIFT = &amp;H10
+Public Const VK_CONTROL = &amp;H11
+Public Const SPI_GETWORKAREA&amp; = 48
+Public Const WH_KEYBOARD = 2
+Public Const WH_MOUSE = 7
+
+Public Const WM_MDICASCADE = &amp;H227
+
+Public Const WM_MDINEXT = &amp;H224
+Public Const WM_COMMAND = &amp;H111
+Public Const WM_ENABLE = &amp;HA
+Public Const WM_SETCURSOR = &amp;H20
+Public Const WM_SETREDRAW = &amp;HB
+Public Const WM_USER = &amp;H400
+Public Const WM_MOVE = &amp;H3
+Public Const WM_SHOWWINDOW = &amp;H18
+Public Const WM_SETFOCUS = &amp;H7
+Public Const WM_KILLFOCUS = &amp;H8
+Public Const WM_LBUTTONDOWN = &amp;H201
+Public Const WM_LBUTTONUP = &amp;H202
+Public Const WM_MOUSEACTIVATE = &amp;H21
+Public Const WM_MOUSEFIRST = &amp;H200
+Public Const WM_MOUSELAST = &amp;H209
+Public Const WM_MOUSEMOVE = &amp;H200
+Public Const WM_LBUTTONDBLCLK = &amp;H203
+Public Const WM_ACTIVATE = &amp;H6
+Public Const WM_SIZE = &amp;H5
+Public Const WM_SYSCOMMAND = &amp;H112
+Public Const WM_GETMINMAXINFO = &amp;H24
+Public Const WM_EXITSIZEMOVE = &amp;H232
+Public Const WM_NCHITTEST = &amp;H84
+Public Const WM_WINDOWPOSCHANGING = &amp;H46
+Public Const WM_PAINT = &amp;HF
+Public Const WM_NCPAINT = &amp;H85
+Public Const WM_NCACTIVATE = &amp;H86
+Public Const WM_GETDLGCODE = &amp;H87
+Public Const WM_NCMOUSEMOVE = &amp;HA0
+Public Const WM_NCLBUTTONDOWN = &amp;HA1
+Public Const WM_NCLBUTTONUP = &amp;HA2
+Public Const WM_NCLBUTTONDBLCLK = &amp;HA3
+Public Const WM_NCRBUTTONDOWN = &amp;HA4
+Public Const WM_NCRBUTTONUP = &amp;HA5
+Public Const WM_NCRBUTTONDBLCLK = &amp;HA6
+Public Const WM_NCMBUTTONDOWN = &amp;HA7
+Public Const WM_NCMBUTTONUP = &amp;HA8
+Public Const WM_NCMBUTTONDBLCLK = &amp;HA9
+Public Const WM_NOTIFY = &amp;H4E
+Public Const WM_RBUTTONDOWN = &amp;H204
+Public Const WM_RBUTTONUP = &amp;H205
+Public Const WM_MBUTTONDOWN = &amp;H207
+Public Const WM_MBUTTONUP = &amp;H208
+Public Const WM_CLOSE = &amp;H10&amp;
+Public Const WM_MDIACTIVATE = &amp;H222
+
+Public Const SC_MOVE = &amp;HF012
+Public Const SW_HIDE = 0
+Public Const SW_SHOWNORMAL = 1
+Public Const SW_SHOW = 5
+
+'Traps Alter Key
+Public Const KBH_MASK = &amp;H20000000
+
+
+Public Const SWP_NOSIZE = &amp;H1
+Public Const SWP_NOMOVE = &amp;H2
+Public Const SWP_NOZORDER = &amp;H4
+Public Const SWP_NOREDRAW = &amp;H8
+Public Const SWP_NOACTIVATE = &amp;H10
+Public Const SWP_FRAMECHANGED = &amp;H20
+Public Const SWP_SHOWWINDOW = &amp;H40
+Public Const SWP_HIDEWINDOW = &amp;H80
+Public Const SWP_NOCOPYBITS = &amp;H100
+Public Const SWP_NOOWNERZORDER = &amp;H200
+Public Const SWP_DRAWFRAME = SWP_FRAMECHANGED
+Public Const SWP_NOREPOSITION = SWP_NOOWNERZORDER
+Public Const SWP_MOVEHIDE = SWP_NOSIZE Or SWP_HIDEWINDOW
+
+Public Const HWND_TOPMOST = -1
+Public Const HWND_NOTOPMOST = -2
+Public Const TOPMOST_FLAGS = SWP_NOMOVE Or SWP_NOSIZE
+
+Public Const OFN_ALLOWMULTISELECT = &amp;H200
+Public Const OFN_CREATEPROMPT = &amp;H2000
+Public Const OFN_ENABLEHOOK = &amp;H20
+Public Const OFN_ENABLETEMPLATE = &amp;H40
+Public Const OFN_ENABLETEMPLATEHANDLE = &amp;H80
+Public Const OFN_EXPLORER = &amp;H80000
+Public Const OFN_EXTENSIONDIFFERENT = &amp;H400
+Public Const OFN_FILEMUSTEXIST = &amp;H1000
+Public Const OFN_HIDEREADONLY = &amp;H4
+Public Const OFN_LONGNAMES = &amp;H200000
+Public Const OFN_NOCHANGEDIR = &amp;H8
+Public Const OFN_NODEREFERENCELINKS = &amp;H100000
+Public Const OFN_NOLONGNAMES = &amp;H40000
+Public Const OFN_NONETWORKBUTTON = &amp;H20000
+Public Const OFN_NOREADONLYRETURN = &amp;H8000
+Public Const OFN_NOTESTFILECREATE = &amp;H10000
+Public Const OFN_NOVALIDATE = &amp;H100
+Public Const OFN_OVERWRITEPROMPT = &amp;H2
+Public Const OFN_PATHMUSTEXIST = &amp;H800
+Public Const OFN_READONLY = &amp;H1
+Public Const OFN_SHAREAWARE = &amp;H4000
+Public Const OFN_SHAREFALLTHROUGH = 2
+Public Const OFN_SHARENOWARN = 1
+Public Const OFN_SHAREWARN = 0
+Public Const OFN_SHOWHELP = &amp;H10
+Public Const OFS_MAXPATHNAME = 128
+
+
+'//   Commands to pass WinHelp()
+Public Const HELP_CONTEXT = &amp;H1     '//  Display topic identified by number in
+ Data
+Public Const HELP_QUIT = &amp;H2        '//  Terminate help
+Public Const HELP_INDEX = &amp;H3       '//  Display index
+Public Const HELP_HELPONHELP = &amp;H4  '//  Display help on using help
+Public Const HELP_SETINDEX = &amp;H5    '//  Set an alternate Index for help file
+ with more than one index
+Public Const HELP_KEY = &amp;H101       '//  Display topic for keyword in Data
+Public Const HELP_MULTIKEY = &amp;H201  '//  Lookup keyword in alternate table and
+ display topic
+
+Public Const DT_WORDBREAK = &amp;H10
+Public Const DT_NOCLIP = &amp;H100
+Public Const DT_WORD_ELLIPSIS = &amp;H40000
+Public Const DT_PATH_ELLIPSIS = &amp;H4000
+Public Const DT_END_ELLIPSIS = &amp;H8000
+Public Const DT_SINGLELINE = &amp;H20
+Public Const DT_CENTER = &amp;H1
+Public Const DT_VCENTER = &amp;H4
+Public Const DT_RIGHT = &amp;H2
+Public Const DT_LEFT = &amp;H0
+Public Const DT_FLAGS = DT_SINGLELINE Or DT_LEFT Or DT_END_ELLIPSIS
+
+Public Const LB_SETTABSTOPS = &amp;H192
+Public Const LB_FINDSTRING = &amp;H18F
+Public Const LB_FINDSTRINGEXACT = &amp;H1A2
+Public Const LB_INSERTSTRING = &amp;H181
+Public Const LB_RESETCONTENT = &amp;H184
+Public Const LB_GETCOUNT = &amp;H18B
+Public Const LB_DELETESTRING = &amp;H182
+Public Const LB_SETITEMDATA = &amp;H19A
+Public Const LB_SETCOUNT = &amp;H1A7
+Public Const LB_INITSTORAGE = &amp;H1A8
+
+Public Const WS_EX_TOPMOST = &amp;H8
+Public Const WS_EX_TRANSPARENT = &amp;H20
+Public Const WS_EX_TOOLWINDOW = &amp;H80
+Public Const WS_EX_WINDOWEDGE = &amp;H100
+Public Const WS_EX_CONTROLPARENT = &amp;H10000
+Public Const WS_EX_NOPARENTNOTIFY = &amp;H4&amp;
+Public Const WS_DLGFRAME = &amp;H400000
+Public Const WS_BORDER = &amp;H800000
+Public Const WS_OVERLAPPED = &amp;H0&amp;
+Public Const WS_CAPTION = &amp;HC00000
+Public Const WS_MAXIMIZEBOX = &amp;H10000
+Public Const WS_MINIMIZEBOX = &amp;H20000
+Public Const WS_SYSMENU = &amp;H80000
+Public Const WS_THICKFRAME = &amp;H40000
+Public Const WS_VISIBLE = &amp;H10000000
+Public Const WS_OVERLAPPEDWINDOW = (WS_OVERLAPPED Or WS_CAPTION Or WS_SYSMENU
+ Or WS_THICKFRAME)
+Public Const WS_OVERLAPPEDMAX = (WS_OVERLAPPED Or WS_CAPTION Or WS_SYSMENU Or
+ WS_THICKFRAME Or WS_MINIMIZEBOX Or WS_MAXIMIZEBOX)
+Public Const WS_CLIPCHILDREN = &amp;H2000000
+Public Const WS_CLIPSIBLINGS = &amp;H4000000
+Public Const WS_VSCROLL = &amp;H200000
+Public Const WS_EX_PALETTEWINDOW = (WS_EX_TOOLWINDOW Or WS_EX_TOPMOST)
+
+Public Const GWL_HWNDPARENT = (-8)
+Public Const GWL_WNDPROC = -4
+Public Const GWL_STYLE = (-16)
+Public Const GWL_EXSTYLE = (-20)
+
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="javascript:window.alert(&quot;http://vbaccelerator.com/home/include/adredir.asp?url=http://oneandone.co.uk/xml/init?k_id=5791003&image=http://oneandone.co.uk/xml/banner?size=1&number=3\nThis link was not retrieved.&quot;)" ><IMG SRC="..\..\..\..\..\oneandone_co_uk\xml\banner\size=1&number=3.html" ALT="1&1 Web Hosting" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) Docking Forms In VB</a>&#160;.&#160;<a href="dockcontrol.html">DockControl</a>&#160;.&#160;Globals.bas</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

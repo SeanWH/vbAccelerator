@@ -1,0 +1,289 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>How to Trap the TabKey in a UserControl - Part 1</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\techniques\trapping_the_tab_key_in_a_usercontrol_with_ioleinplaceactiveobject\article.asp\index.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+<b>How to Trap the Tab Key in a UserControl with <i>IOLEInPlaceActiveObject</i></b>
+</font></td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><img src="..\..\images\tabcatch.gif" width="331" height="258" alt="Demonstration Project - hard to show in a picture but here it is eating the Tab Key" border="0"></p>
+        <p><a href="tabcatch.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the TabCatch sample code (23kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                The source code project requires the <a href="..\..\typelib.htm#OleGuids">Ole GUID and interface definitions Type Library (OLEGUIDS.tlb)</a>.  Make sure you have loaded 
+		and <a href="..\tlb\vbregtlb.htm">registered</a> this before trying the project.
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	<b>Overview</b><br>
+	Right.  You are trying to create a control in VB, and your control has to catch the Tab key.
+	It might be a grid, where you would expect tab to move between cells, or it might be an editor
+	control (such as my forthcoming RichEdit control).  This is not an unreasonable request of any
+	programming language which lets you create a control.  Or is it?  Want to go mad?  You will if
+	you try to intercept Tabs properly in VB unless someone tells you the answer...
+	<br><br>
+	This article is here to show you a brilliant technique but also may
+	help you interpret <a href="..\..\headline.htm#traitor">Bruce McKinney's</a>
+	assertion that "VB makes the easy things easy, but...".
+	<br><br>
+	The code provided here is based on code and a Type Library put together by Matt Curland,
+	Bill Storage and Mike Gainer.
+	<br><br>
+	<b>Tabs And Stuff</b><br>
+	There are two ways to look at the tab key problem.  Firstly, if you're working in VB you 
+	can set TabStop to False for all controls on the form.  Then, <i>theoretically</i> all controls
+	intercept the Tab key. I personally find the TabStop property to work somewhere between
+	dubious and ineffective. No matter.  Having set TabStop to false, you're then on your own 
+	about Tab processing.  If a control intercepts the tab key, its really up to you what you do.  
+	People have been acclaimed as masters of Visual Basic for coding large forms which are in 
+	control of tabs without using the TabStop property.  However, there is a fundamental encapsulation
+	problem here.  When you want to intercept the Tab key on one control, you have the large scale
+	issue of coding Tab handling for all other controls on the form. You can't just write the code
+	into the only control which requires the Tab.
+	<br><br>
+	<b>Don't Even Go There</b><br>
+	That's just trying to code a VB only control which intercepts tabs.  A much more difficult
+	problem occurs if you're trying to do something out of the ordinary, such as intercept keys
+	in a window you have created using the Windows API.  This was my problem for over a year on
+	the <a href="..\odcbolst\article.htm">Owner-Draw Combo and List Box Control</a>.  VB firmly 
+	refuses to acknowledge an API
+	window as something which can partake in the tab order unless you can somehow tell it that's
+	what you want to do.  (You can check out some more examples of this occuring if you 
+	download any of the controls at <a href="..\..\linx.htm#secrgns">Ramon's VB5 Net Stop</a>.)
+	Forms appear to have control windows integrated but as soon as you press Tab, nothing happens.
+	<br><br>	
+	<b>Toughest Kid in the Infants</b><br>
+	The issue of trapping tabs in controls is one that is is designed into the
+	ActiveX control specification.  The problem you have in VB with this is that there is no
+	obvious way of getting at this functionality.  All ActiveX controls must implement the
+	<i>IOleInPlaceActiveObject</i> interface which covers a variety of interfacing issues 
+	between the control and its parent, including control activation, context sensitive help,
+	drawing resize borders and responding to accelerator keys (including the Tab key).  The
+	implementation of this interface is preset and buried within a VB control.  You can
+	override the preset implementation, however.
+	<br><br>
+	The first thing you need to do this is a Type Library (TLB) which interfaces VB to the
+	COM interface.  This TLB is only required when working in the VB IDE, and tells VB where
+	the calls to be made are located within the OLE DLLs.  When you compile a sample using this
+	Type Library, VB compiles in the references to the calls and you no longer require the
+	TLB file.  The Type Library is available from the <a href="..\..\typelib.htm">Type Library Resource
+	Page</a>, and is called OleGuids.Tlb.  Unzip this file
+	to a suitable directory and register it either using VB, by choosing Project-References then
+	clicking Browse and picking the file, or by downloading the <a href="..\tlb\vbregtlb.htm">VB TLB registration utility</a>
+	and using that.
+	<br><br>
+	Once this library is in place, you need to be able to intercept VB's existing implementation
+	of IOLEInPlaceActiveObject and replace it with a customised one.  As we are only interested
+	here in intercepting Tabs at run-time, the only time you need to modify the interface is when
+	the control gets focus.  To do this, the code subclasses the
+	<i>WM_SETFOCUS</i> message for the control, allowing VB to process it first.  Once VB is
+	done with it, the code then uses various arcane hacks to modify the vtable of the 
+	UserControl object, replacing
+	the existing IOLEInPlaceActiveObject interface pointers with a new set pointing to VB
+	functions implemented in a module, <b>mIOLEInPlaceActiveObject.Bas</b>.  As a consequence, 
+	TranslateAccelerator calls are routed to the version
+	in your code.  It is then a simple matter to return the COM code <i>S_OK</i> after getting
+	the Tab key, thus informing the ActiveX interface that the key is wanted in the control.
+	The mIOLEInPlaceActiveObject module has to communicate TranslateAccelerator events 
+	with the control.  To achieve this without setting up a circular reference between the control
+	and the module (which would prevent the control from ever terminating), un-referenced object
+	pointers are used.  These are set up during the <i>UserControl_Initialize</i> event and
+	cleared at <i>UserControl_Terminate</i>. Check out <a href="..\ssubtmr\ssubtmr.htm">Subclassing
+	without the crashes</a> for more information about using object pointers to prevent circular
+	references.
+	<br><br>
+	The code to implement this is mad. If you want to do it, you'll just want to copy
+	code from another project into your own (you're not going to remember how to do it every time!).
+	For this reason the download TabCatch project provides a bare-bones template for implementing 
+	Tab interception in controls.
+	<br><br>
+	<b>J'Accuse</b><br>
+	This doesn't seem reasonable. I've been visiting MSDN over the last month to look at
+	the OLE interfaces which have to be implemented between ActiveX controls and their container 
+	(such as VB, IE, Word etc).  The more I read about it the more I think that VB's designers 
+	left out too many interfaces.  VB's job is to make things easier, but how difficult
+	would it have been to add a TranslateAccelerator implementation?  Does it have to impossible to
+	access the other OLE interfaces such as the one which controls run-time size of your control, the
+	one which controls whether you can negotiate space in the non-client area of the parent and so
+	on?  These are COM interfaces after all, so why are we <u>stuck</u> with a narrow 
+	preset implementation unless you make hacks like described here?
+	 <br><br>
+	<b>Deal With It</b><br>
+	This article is headed "Part 1" because it is vbAccelerator's aim to give you a DLL which fixes
+	the lack of OLE interface support in VB without making the code like pulling out your toenails.
+	Stay tuned for more!
+	</font>
+	</p>
+
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+
+
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+        <p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+
+        </font>
+
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 20 February 1999</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

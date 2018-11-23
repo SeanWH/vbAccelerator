@@ -1,0 +1,295 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>TextBoxEx Control</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>TextBoxEx Control</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="1">
+	<p>Implement an extended version of the TextBox control by using the API directly</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\txboxex.gif" alt="TextBox Control As An Editor With Line Numbers" width="299" height="188">
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="txtboxex.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="txtboxex.zip">Download the complete TextBoxEx source code (91kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you
+		have downloaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This project requires the <a href="..\..\typelib.htm#OleGuids">Ole Guids and Interface Definitions type library (OleGuids.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	The TextBoxEx control is a new version of the TextBox control showing some of the things
+	that the VB TextBox should be capable of by default.  It is another excellent project
+	from Mike Gainer, although I should point out that I have modified some of the code so if
+	it doesn't work correctly then you should probably contact me!
+		<br><br>
+		<b>How to Build a TextBox</b><br>
+	The limitations of the VB TextBox control are quite surprising, and most of them have
+	survived from the original release of Visual Basic to the current version.  The VB TextBox
+	control seems to ignore all interface enhancements that were added with Windows 95.  Similarly,
+	the design hasn't grown to allow you the flexibility to change parameters at design time
+	rather than run-time. 	
+		<br><br>
+	The TextBoxEx control is a building block component demonstrating how easy it would be for
+	VB's coders to add extra features to the TextBox but how difficult it can be from Visual Basic 
+	to create and host a control created directly from the base Win32 API.  The additional design
+	features and options provided in this control are:
+
+	<ul>
+<b>Design Time or Run Time style changes.</b>
+Rather than accepting limitations on when control styles can be changed this control provides complete flexibility and all styles can be changed,
+including which ScrollBars are visible and whether the control is MultiLine or SingleLine, at any time.
+<br><br>
+<b>Supporting All the TextBox's features.</b>
+The standard VB TextBox control can't fail but disappoint by
+leaving out obvious and often required features such as support for Cut, Copy, Paste, Delete,Undo, Left and Right Margins, determining the Current Line, Current Column, First Visible Line, raising events when the text is scrolled, allowing text to be scrolled into view and so forth. 
+<br><br>
+<b>Customising the TextBox for Your App.</b>
+And then there is customisation. This TextBox can accept TabStops and vary the number of spaces per tab. You can control the response to the Tab and Shift-Tab key combinations to allow multi-line indent and outdent just 
+like VB. The Context Menu can be disabled. You can stop the control raising Change events for maximum speed.
+	</ul>
+
+		<b>Tough Code</b><br>
+	Whilst this is a seriously flexible TextBox, it is primarily a great project for picking apart
+	if you want to learn about coding controls from first principles using the API in VB.  
+	The code is the source for the <a href="..\scontrol\tabtrap2.htm">Simpler UserControl Tab Trapping</a>
+	DLL ,which provides a generic
+	mechanism to make a Window created using the CreateWindowEx API call 
+	appear part of the TabStop Order in an ActiveX control host 
+	(i.e. VB, IE, Word etc). 
+		<br><br>
+	Other useful tips include using the <i>IFont</i> object to manage VB and API fonts at the same
+	time and intercepting the <i>WM_CONTEXTMENU</i> call to allow either a default or customised
+	right-click menu to be shown. 		
+	<br><br>
+	<b>About The Sample Code</b><br>
+	The demonstration sample is a half-assed effort to complete a useful replacement for Notepad. 
+	I don't know about you, but basically the program I want is the same program as Notepad, 
+	except it also has these features:
+	<ol>
+	<li>VB style Find/Replace
+	<li>New Window
+	<li>Block Indent/Outdent with Tab
+	<li>Readable Print-Out, with headers, page numbers and user definable font.
+	<li>Auto-Complete.
+	</ol>
+	Oh alright then, I'm only kidding about the Auto-Complete!  The sample project provided with the 
+	control is an attempt at moving towards my goal, in that it goes some way to achieve items 2 and 3,
+	but the implementation of the other items is either not present or rubbish.
+	<br><br>
+	It does provide a nice line-numbering side bar, though, based on an original implementation for a RichEdit 
+	control by David Miles (thanks!).
+	<br><br>	
+	Who wants to take on the challenge of the other two?  And what about more features for simple,
+	quick, 64k TextEditor?	We're obviously not going to take on CodeWright here, but the result could
+	be seriously speedy and intently focused.  Send your ideas and code in to me 
+	(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>) and we'll see what we can
+	do to build an Editor like its, erm, 1997!
+	<br>
+	
+	<br><br>
+
+
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

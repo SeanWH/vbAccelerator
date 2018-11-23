@@ -1,0 +1,298 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Using ShellExecute from VB</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td width="100%">
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td valign="top"><font color="#000000" face="verdana,arial,helvetica" size="2">
+	&nbsp;<b>Using ShellEx from Visual Basic - Start any document from its filename only </b>
+	</font></td>
+</tr>
+</table>
+
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\tips\start_a_document_based_on_its_filename\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><a href="shellex.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the ShellEx project files (29kb)</a></p>	
+	<p>
+	The ShellExecute API function is a much better way of starting applications that VB's own Shell.
+	It allows you to specify file names or internet resources as the file to shell, and will automatically
+	find the associated executable and start it for you.  Essentially its the same function as called by the
+	Start->Run box.
+	<p><img src="..\..\images\shellex.gif" alt="[Shell Test Application Picture]" width="347" height="163"></p>
+	<br><br>
+	The source below provides a simple wrapper function for use of ShellExecute called ShellEx.  The sample
+	code in the download also includes a simple Browse For Folder implementation and uses some of the code
+	from the <a href="..\cmdlgd\cmdlgd.htm">Common Dialog/Direct</a> project to implement a File
+	Open dialog through API code.
+	<br>
+	</p>
+<font face="Lucida Console,courier new" size="1">
+<p>
+Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" _<br>
+&nbsp;&nbsp;(ByVal hWnd As Long, ByVal lpOperation As String, _<br>
+&nbsp;&nbsp;ByVal lpFile As String, ByVal lpParameters As String, _<br>
+&nbsp;&nbsp;ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long <br>
+<br>
+Private Declare Function ShellExecuteForExplore Lib "shell32.dll" Alias "ShellExecuteA" _<br>
+&nbsp;&nbsp;(ByVal hWnd As Long, ByVal lpOperation As String, _
+&nbsp;&nbsp;ByVal lpFile As String, lpParameters As Any, _<br>
+&nbsp;&nbsp;lpDirectory As Any, ByVal nShowCmd As Long) As Long <br>
+<br>
+Public Enum EShellShowConstants <br>
+&nbsp &nbsp  essSW_HIDE = 0 <br>
+&nbsp &nbsp  essSW_MAXIMIZE = 3 <br>
+&nbsp &nbsp  essSW_MINIMIZE = 6 <br>
+&nbsp &nbsp  essSW_SHOWMAXIMIZED = 3 <br>
+&nbsp &nbsp  essSW_SHOWMINIMIZED = 2 <br>
+&nbsp &nbsp  essSW_SHOWNORMAL = 1 <br>
+&nbsp &nbsp  essSW_SHOWNOACTIVATE = 4 <br>
+&nbsp &nbsp  essSW_SHOWNA = 8 <br>
+&nbsp &nbsp  essSW_SHOWMINNOACTIVE = 7 <br>
+&nbsp &nbsp  essSW_SHOWDEFAULT = 10 <br>
+&nbsp &nbsp  essSW_RESTORE = 9 <br>
+&nbsp &nbsp  essSW_SHOW = 5 <br>
+End Enum <br>
+<br>
+Private Const ERROR_FILE_NOT_FOUND = 2& <br>
+Private Const ERROR_PATH_NOT_FOUND = 3& <br>
+Private Const ERROR_BAD_FORMAT = 11& <br>
+Private Const SE_ERR_ACCESSDENIED = 5&nbsp &nbsp &nbsp &nbsp '  access denied <br>
+Private Const SE_ERR_ASSOCINCOMPLETE = 27 <br>
+Private Const SE_ERR_DDEBUSY = 30 <br>
+Private Const SE_ERR_DDEFAIL = 29 <br>
+Private Const SE_ERR_DDETIMEOUT = 28 <br>
+Private Const SE_ERR_DLLNOTFOUND = 32 <br>
+Private Const SE_ERR_FNF = 2&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  '  file not found <br>
+Private Const SE_ERR_NOASSOC = 31 <br>
+Private Const SE_ERR_PNF = 3&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  '  path not found <br>
+Private Const SE_ERR_OOM = 8&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  '  out of memory <br>
+Private Const SE_ERR_SHARE = 26 <br>
+<br>
+<br>
+Public Function ShellEx( _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal sFIle As String, _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional ByVal eShowCmd As EShellShowConstants = essSW_SHOWDEFAULT, _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional ByVal sParameters As String = "", _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional ByVal sDefaultDir As String = "", _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional sOperation As String = "open", _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional Owner As Long = 0 _ <br>
+&nbsp &nbsp ) As Boolean <br>
+Dim lR As Long <br>
+Dim lErr As Long, sErr As Long <br>
+&nbsp &nbsp If (InStr(UCase$(sFIle), ".EXE") <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp eShowCmd = 0 <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp On Error Resume Next <br>
+&nbsp &nbsp If (sParameters = "") And (sDefaultDir = "") Then <br>
+&nbsp &nbsp &nbsp &nbsp lR = ShellExecuteForExplore(Owner, sOperation, sFIle, 0, 0, essSW_SHOWNORMAL) <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp lR = ShellExecute(Owner, sOperation, sFIle, sParameters, sDefaultDir, eShowCmd) <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp If (lR < 0) Or (lR > 32) Then <br>
+&nbsp &nbsp &nbsp &nbsp ShellEx = True <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp ' raise an appropriate error: <br>
+&nbsp &nbsp &nbsp &nbsp lErr = vbObjectError + 1048 + lR <br>
+&nbsp &nbsp &nbsp &nbsp Select Case lR <br>
+&nbsp &nbsp &nbsp &nbsp Case 0 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 7: sErr = "Out of memory" <br>
+&nbsp &nbsp &nbsp &nbsp Case ERROR_FILE_NOT_FOUND <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 53: sErr = "File not found" <br>
+&nbsp &nbsp &nbsp &nbsp Case ERROR_PATH_NOT_FOUND <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 76: sErr = "Path not found" <br>
+&nbsp &nbsp &nbsp &nbsp Case ERROR_BAD_FORMAT <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp sErr = "The executable file is invalid or corrupt" <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_ACCESSDENIED <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 75: sErr = "Path/file access error" <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_ASSOCINCOMPLETE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp sErr = "This file type does not have a valid file association." <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_DDEBUSY <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 285: sErr = "The file could not be opened because the target application is busy.  Please try again in a moment." <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_DDEFAIL <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 285: sErr = "The file could not be opened because the DDE transaction failed.  Please try again in a moment." <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_DDETIMEOUT <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 286: sErr = "The file could not be opened due to time out.  Please try again in a moment." <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_DLLNOTFOUND <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 48: sErr = "The specified dynamic-link library was not found." <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_FNF <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 53: sErr = "File not found" <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_NOASSOC <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp sErr = "No application is associated with this file type." <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_OOM <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 7: sErr = "Out of memory" <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_PNF <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 76: sErr = "Path not found" <br>
+&nbsp &nbsp &nbsp &nbsp Case SE_ERR_SHARE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lErr = 75: sErr = "A sharing violation occurred." <br>
+&nbsp &nbsp &nbsp &nbsp Case Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp sErr = "An error occurred occurred whilst trying to open or print the selected file." <br>
+&nbsp &nbsp &nbsp &nbsp End Select <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp Err.Raise lErr, , App.EXEName & ".GShell", sErr <br>
+&nbsp &nbsp &nbsp &nbsp ShellEx = False <br>
+&nbsp &nbsp End If<br>
+<br>
+End Function
+ <br>
+</font>
+</p>
+<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	Here are a few samples of using the ShellEx function:
+	<br><br>
+	<b>To open a the user's browser at a particular internet site</b><br>
+	</font><font face="Lucida Console,courier new" size="1">
+&nbsp &nbsp    ShellEx "http://www.dogma.demon.co.uk", , , , , Me.hWnd<br><br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>To print a document</b><br>
+	</font><font face="Lucida Console,courier new" size="1">
+&nbsp &nbsp	ShellEx "C:\My Documents\Music\Brown Paper Bag.doc", , , , "print", Me.hWnd<br><br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>To explore from a folder</b><br>
+	</font><font face="Lucida Console,courier new" size="1">
+&nbsp &nbsp	ShellEx "C:\My Documents\Music", , , , "explore", Me.hWnd<br><br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Start VB, minimised, load a project and run it</b><br>
+	</font><font face="Lucida Console,courier new" size="1">
+&nbsp &nbsp	ShellEx _<br>&nbsp &nbsp &nbsp &nbsp"C:\Program Files\DevStudio\Vb\vb5.exe",_<br>&nbsp &nbsp &nbsp &nbsp essSW_SHOWMINNOACTIVE, _<br>&nbsp &nbsp &nbsp &nbsp "/run C:\Stevemac\VB\Develop\BmpTile\gBmpTile.vbg", _<br>&nbsp &nbsp &nbsp &nbsp,Me.hWnd<br>
+	</font><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+
+	</font>
+
+
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

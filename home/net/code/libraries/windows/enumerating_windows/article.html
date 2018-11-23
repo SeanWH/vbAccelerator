@@ -1,0 +1,209 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Enumerating Windows</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="This sample provides a class wrapper around the EnumWindows and EnumChildWindows
+API calls for use in .NET." /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows</a>&#160;.&#160;Enumerating Windows</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="enumwindows_code.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />EnumWindows Code</a> (37K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:4305</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=4305&type=article&title=enumerating_20windows.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />4 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Enumerating Windows</h1><p class="splash">Find all Windows and their details using the EnumWindows calls</p><img src="enumeration.png" width="457" height="325" alt="Windows Enumeration Sample" /><p /><p>This sample provides a class wrapper around the <i>EnumWindows</i> and <i>EnumChildWindows</i>
+API calls for use in .NET.</p><h2>Enumerating Windows</h2><p>The Platform SDK provides two methods to find details about which Windows are present on
+the system:</p><ol><li>The <i>GetWindow</i> API.</li><li>The <i>EnumWindows</i> and <i>EnumChildWindows</i> APIs.</li></ol><p>Whilst the <i>GetWindow</i> call provides more options for enumerating through the Window
+List (allowing you to find First, Next, Previous, Last, Parent and Child windows from
+any given Window), it can lead to problems if Windows are created or altered whilst the
+its being called.  For example, you could get into an infinite loop or referencing a
+window that has been subsequently destroyed.  The <i>EnumWindows</i>
+and <i>EnumChildWindows</i> APIs are much more reliable in this respect and have particular
+features to prevent issues associated with moving and repositioning, creating and destroying
+windows.</p><h2>Using the EnumWindows calls</h2><p>Both EnumWindows calls use a callback procedure to inform the caller of the Windows
+list.  This callback procedure provides the window handle in question and allows the
+enumeration to be stopped before all windows have been enumerated.</p><p>Calling the functions is a matter of declaring the import to the call and
+setting up a Delegate for the procedure to call back to.  This code is
+shown below.</p><pre>
+    #region EnumWindows
+    /// <summary>
+    /// EnumWindows wrapper for .NET
+    /// </summary>
+    public class EnumWindows
+    {
+        #region Delegates
+        private delegate int EnumWindowsProc(IntPtr hwnd, int lParam);
+        #endregion
+
+        #region UnManagedMethods
+        private class UnManagedMethods
+        {
+            [DllImport("user32")]
+            public extern static int EnumWindows (
+                EnumWindowsProc lpEnumFunc, 
+                int lParam);
+            [DllImport("user32")]
+            public extern static int EnumChildWindows (
+                IntPtr hWndParent,
+                EnumWindowsProc lpEnumFunc, 
+                int lParam);
+        }
+        #endregion
+
+        #region Member Variables
+        private EnumWindowsCollection items = null;
+        #endregion
+
+        /// <summary>
+        /// Returns the collection of windows returned by
+        /// GetWindows
+        /// </summary>
+        public EnumWindowsCollection Items
+        {
+            get
+            {
+                return this.items;
+            }
+        }
+
+        /// <summary>
+        /// Gets all top level windows on the system.
+        /// </summary>
+        public void GetWindows()
+        {
+            this.items = new EnumWindowsCollection();
+            UnManagedMethods.EnumWindows(
+                new EnumWindowsProc(this.WindowEnum),
+                0);
+        }
+
+        /// <summary>
+        /// Gets all child windows of the specified window
+        /// </summary>
+        /// <param name="hWndParent">Window Handle to get children for</param>
+        public void GetWindows(
+            IntPtr hWndParent)
+        {
+            this.items = new EnumWindowsCollection();
+            UnManagedMethods.EnumChildWindows(
+                hWndParent,
+                new EnumWindowsProc(this.WindowEnum),
+                0);
+        }
+
+        #region EnumWindows callback
+        /// <summary>
+        /// The enum Windows callback.
+        /// </summary>
+        /// <param name="hWnd">Window Handle</param>
+        /// <param name="lParam">Application defined value</param>
+        /// <returns>1 to continue enumeration, 0 to stop</returns>
+        private int WindowEnum(
+            IntPtr hWnd,
+            int lParam)
+        {
+            if (this.OnWindowEnum(hWnd))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// Called whenever a new window is about to be added
+        /// by the Window enumeration called from GetWindows.
+        /// If overriding this function, return true to continue
+        /// enumeration or false to stop.  If you do not call
+        /// the base implementation the Items collection will
+        /// be empty.
+        /// </summary>
+        /// <param name="hWnd">Window handle to add</param>
+        /// <returns>True to continue enumeration, False to stop</returns>
+        protected virtual bool OnWindowEnum(
+            IntPtr hWnd)
+        {
+            items.Add(hWnd);
+            return true;
+        }
+
+        #region Constructor, Dispose
+        public EnumWindows()
+        {
+            // nothing to do
+        }
+        #endregion
+    }    
+    #endregion EnumWindows
+</pre><p>The download code also includes the implementation of the 
+<i>EnumWindowsCollection</i> and <i>EnumWindowsItem</i> classes. The
+collection class provides a type-safe ArrayList-based collection of
+Windows that have been added, and the <i>EnumWindowsItem</i> provides
+a number of helper methods to allow you to get the Window's title,
+class name, styles, Window Position and whether the window is
+visible, minimised or maximised.</p><h2>Using the Classes</h2><p>There are two ways to use the code as provided.  You can either
+use it as is and interrogate the <i>EnumWindowsCollection</i> or
+you can extend the <i>EnumWindows</i> class and provide a custom
+<i>OnWindowEnum</i> override.  The latter method is great if you
+just want to find a window and don't need the overhead of storing
+all the Window handles.  Since the <i>EnumWindowsItem</i> object
+is public and has public constructor, you can also use this to
+simplify getting the window title or class name.</p><p>The sample application provided in the demonstration shows
+how to perform both methods.  The first method is used to 
+populate the TreeView of windows in the sample, whilst the
+second method is used to find a window on the system by
+handle, class name or title.</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows</a>&#160;.&#160;Enumerating Windows</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 4 March 2003</p></td><td></td></tr></table>
+</body></html>

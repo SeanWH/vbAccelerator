@@ -1,0 +1,447 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbAcceleratorGrid Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbAcceleratorGrid (vbAccelerator Grid Control)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\S-Grid4\\Release\\vbalGrid.ocx
+\par GUID:\tab \{017E002E-D7CC-11D2-8E21-44B10AC10000\}
+\par Version:\tab 15.0
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbAcceleratorGrid.
+\par 
+\par Public Enum cShellSortOrderCOnstants
+\par \tab CCLOrderNone=0
+\par \tab CCLOrderAscending=1
+\par \tab CCLOrderDescending=2
+\par End Enum
+\par Public Enum cShellSortTypeConstants
+\par \tab CCLSortNumeric=100
+\par \tab CCLSortString=102
+\par \tab CCLSortDate=200
+\par \tab CCLSortDateYearAccuracy=250
+\par \tab CCLSortDateMonthAccuracy=251
+\par \tab CCLSortDateDayAccuracy=252
+\par \tab CCLSortDateHourAccuracy=253
+\par \tab CCLSortDateMinuteAccuracy=254
+\par \tab CCLSortIcon=300
+\par \tab CCLSortExtraIcon=301
+\par \tab CCLSortForeColor=400
+\par \tab CCLSortBackColor=401
+\par \tab CCLSortFontIndex=500
+\par \tab CCLSortSelected=600
+\par \tab CCLSortIndentation=700
+\par End Enum
+\par Public Enum ECGBorderStyle
+\par \tab ecgBorderStyleNone=0
+\par \tab ecgBorderStyle3d=1
+\par \tab ecgBorderStyle3dThin=2
+\par End Enum
+\par Public Enum ECGHdrTextAlignFlags
+\par \tab ecgHdrTextALignLeft=0
+\par \tab ecgHdrTextALignCentre=2
+\par \tab ecgHdrTextALignRight=1
+\par End Enum
+\par Public Enum ECGScrollBarStyles
+\par \tab ecgSbrRegular=0
+\par \tab ecgSbrEncarta=1
+\par \tab ecgSbrFlat=2
+\par End Enum
+\par Public Enum ECGSerialiseTypes
+\par \tab ecgSerialiseSGRID=0
+\par \tab ecgSerialiseSGRIDLayout=1
+\par \tab ecgSerialiseTextTabNewLine=2
+\par \tab ecgSerialiseCSV=3
+\par End Enum
+\par Public Enum ECGTextAlignFlags
+\par \tab DT_TOP=0
+\par \tab DT_LEFT=0
+\par \tab DT_CENTER=1
+\par \tab DT_RIGHT=2
+\par \tab DT_VCENTER=4
+\par \tab DT_BOTTOM=8
+\par \tab DT_WORDBREAK=16
+\par \tab DT_SINGLELINE=32
+\par \tab DT_EXPANDTABS=64
+\par \tab DT_TABSTOP=128
+\par \tab DT_NOCLIP=256
+\par \tab DT_EXTERNALLEADING=512
+\par \tab DT_CALCRECT=1024
+\par \tab DT_NOPREFIX=2048
+\par \tab DT_INTERNAL=4096
+\par \tab DT_EDITCONTROL=8192
+\par \tab DT_PATH_ELLIPSIS=16384
+\par \tab DT_END_ELLIPSIS=32768
+\par \tab DT_MODIFYSTRING=65536
+\par \tab DT_RTLREADING=131072
+\par \tab DT_WORD_ELLIPSIS=262144
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbAcceleratorGrid.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cGridCell \{C47CB531-DA3E-11D2-8E21-44C10AC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get ItemData() As Long
+\par 
+\par Property Let ItemData(RHS  As Long)
+\par 
+\par Property Get TextAlign() As ECGTextAlignFlags
+\par 
+\par Property Let TextAlign(RHS  As ECGTextAlignFlags)
+\par 
+\par Property Get Text() As Variant
+\par 
+\par Property Let Text(RHS  As Variant)
+\par 
+\par Property Get Font() As Font
+\par 
+\par Property Set Font() As Font
+\par 
+\par Property Get IconIndex() As Long
+\par 
+\par Property Let IconIndex(RHS  As Long)
+\par 
+\par Property Get ExtraIconIndex() As Long
+\par 
+\par Property Let ExtraIconIndex(RHS  As Long)
+\par 
+\par Property Get Indent() As Long
+\par 
+\par Property Let Indent(RHS  As Long)
+\par 
+\par Property Get BackColor() As ULong
+\par 
+\par Property Let BackColor(RHS  As ULong)
+\par 
+\par Sub DefaultBackColor
+\par 
+\par Property Get ForeColor() As ULong
+\par 
+\par Property Let ForeColor(RHS  As ULong)
+\par 
+\par Sub DefaultForeColor
+\par \plain\f3\fs20 
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cShellSortTGridCells \{C47CB525-DA3E-11D2-8E21-44C10AC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Sub Clear
+\par \plain\f3\fs20 Clears all sort settings.\plain\f3\fs20\b 
+\par Property Get LastSortIndex() As Integer
+\par 
+\par Property Let LastSortIndex(RHS  As Integer)
+\par 
+\par Property Let SortColumn(ByVal iSortIndex As Integer, RHS As Integer)
+\par \plain\f3\fs20 Gets/sets the grid column to sort by.  Up to three grid columns can be specified for a sort.\plain\f3\fs20\b 
+\par Property Get SortColumn(ByVal iSortIndex As Integer) As Integer
+\par \plain\f3\fs20 Gets/sets the grid column to sort by.  Up to three grid columns can be specified for a sort.\plain\f3\fs20\b 
+\par Property Let SortOrder(ByVal iSortIndex As Integer, RHS As cShellSortOrderCOnstants)
+\par \plain\f3\fs20 Gets/sets the order to sort in for a specified sort column.  Up to three columns can be specified for a sort.\plain\f3\fs20\b 
+\par Property Get SortOrder(ByVal iSortIndex As Integer) As cShellSortOrderCOnstants
+\par \plain\f3\fs20 Gets/sets the order to sort in for a specified sort column.  Up to three columns can be specified for a sort.\plain\f3\fs20\b 
+\par Property Get SortType(ByVal iSortIndex As Integer) As cShellSortTypeConstants
+\par \plain\f3\fs20 Gets/sets the type of sorting to use for a specified sort column.  Up to three columns can be specified for a sort.\plain\f3\fs20\b 
+\par Property Let SortType(ByVal iSortIndex As Integer, RHS As cShellSortTypeConstants)
+\par \plain\f3\fs20 Gets/sets the type of sorting to use for a specified sort column.  Up to three columns can be specified for a sort.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b vbalGrid \{C47CB52A-DA3E-11D2-8E21-44C10AC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get HighlightSelectedIcons() As Boolean
+\par \plain\f3\fs20 Gets/sets whether icons in selected cells will be highlighted using the selection colour.\plain\f3\fs20\b 
+\par Property Let HighlightSelectedIcons(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether icons in selected cells will be highlighted using the selection colour.\plain\f3\fs20\b 
+\par Property Get DrawFocusRectangle() As Boolean
+\par \plain\f3\fs20 Gets/sets whether a focus rectangle (dotted line around the selection) will be shown.\plain\f3\fs20\b 
+\par Property Let DrawFocusRectangle(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a focus rectangle (dotted line around the selection) will be shown.\plain\f3\fs20\b 
+\par Property Get Enabled() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid is enabled or not.  Note the grid can still be read when it is disabled, but cannot be selected or edited.\plain\f3\fs20\b 
+\par Property Let Enabled(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid is enabled or not.  Note the grid can still be read when it is disabled, but cannot be selected or edited.\plain\f3\fs20\b 
+\par Property Get DisableIcons() As Boolean
+\par \plain\f3\fs20 Gets/sets whether icons are drawn disabled when the control is disabled.\plain\f3\fs20\b 
+\par Property Let DisableIcons(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether icons are drawn disabled when the control is disabled.\plain\f3\fs20\b 
+\par Property Get Editable() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid will be editable (i.e. raise RequestEdit events).\plain\f3\fs20\b 
+\par Property Let Editable(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid will be editable (i.e. raise RequestEdit events).\plain\f3\fs20\b 
+\par Property Get SortObject() As cShellSortTGridCells
+\par \plain\f3\fs20 Returns a reference to the sort object where grid sorting options can be specified.\plain\f3\fs20\b 
+\par Sub Sort
+\par \plain\f3\fs20 Sorts the grid data according to the options set up in the SortObject.\plain\f3\fs20\b 
+\par Property Get EvaluateTextHeight(ByVal lRow As Long, ByVal lCol As Long) As Long
+\par \plain\f3\fs20 Determines the ideal height required to display all the cell's text in a cell.  This property is only of any use if the Cell's CellTextAlign property allows multiple lines.\plain\f3\fs20\b 
+\par Property Get EvaluateTextWidth(ByVal lRow As Long, ByVal lCol As Long, Optional ByVal bForceNoModify As Boolean=True) As Long
+\par \plain\f3\fs20 Determines the ideal width required to fully display text in a cell.\plain\f3\fs20\b 
+\par Property Let DefaultRowHeight(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the height which will be used as a default for rows in the grid.\plain\f3\fs20\b 
+\par Property Get DefaultRowHeight() As Long
+\par \plain\f3\fs20 Gets/sets the height which will be used as a default for rows in the grid.\plain\f3\fs20\b 
+\par Property Get Redraw() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid is redrawn in response to changes.  Set to False whilst setting many properties to increase speed.  Setting to True after it has been False forces a re-draw of the control.\plain\f3\fs20\b 
+\par Property Let Redraw(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid is redrawn in response to changes.  Set to False whilst setting many properties to increase speed.  Setting to True after it has been False forces a re-draw of the control.\plain\f3\fs20\b 
+\par Property Let ScrollBarStyle(RHS  As ECGScrollBarStyles)
+\par \plain\f3\fs20 Gets/sets the style in which scroll bars are drawn.  Flat or Encarta style scroll bars are only supported in systems with COMCTL32.DLL version 4.72 or higher.\plain\f3\fs20\b 
+\par Property Get ScrollBarStyle() As ECGScrollBarStyles
+\par \plain\f3\fs20 Gets/sets the style in which scroll bars are drawn.  Flat or Encarta style scroll bars are only supported in systems with COMCTL32.DLL version 4.72 or higher.\plain\f3\fs20\b 
+\par Property Get CellFormattedText(ByVal lRow As Long, ByVal lCol As Long) As String
+\par \plain\f3\fs20 Gets the text of a cell with any formatting string applicable to the cell's column applied.\plain\f3\fs20\b 
+\par Property Get CellText(ByVal lRow As Long, ByVal lCol As Long) As Variant
+\par \plain\f3\fs20 Gets/sets the text associated with a cell.  This property is a variant allowing you to store Numbers and Dates as well.  In columns which are not visible, it could also be used to store objects. \plain\f3\fs20\b 
+\par Property Let CellText(ByVal lRow As Long, ByVal lCol As Long, RHS As Variant)
+\par \plain\f3\fs20 Gets/sets the text associated with a cell.  This property is a variant allowing you to store Numbers and Dates as well.  In columns which are not visible, it could also be used to store objects. \plain\f3\fs20\b 
+\par Property Get CellTextAlign(ByVal lRow As Long, ByVal lCol As Long) As ECGTextAlignFlags
+\par \plain\f3\fs20 Gets/sets the alignment and formatting properties used to draw cell text.\plain\f3\fs20\b 
+\par Property Let CellTextAlign(ByVal lRow As Long, ByVal lCol As Long, RHS As ECGTextAlignFlags)
+\par \plain\f3\fs20 Gets/sets the alignment and formatting properties used to draw cell text.\plain\f3\fs20\b 
+\par Property Get CellIndent(ByVal lRow As Long, ByVal lCol As Long) As Long
+\par \plain\f3\fs20 Gets/sets the horizontal indentation of a cell from the cell's border.\plain\f3\fs20\b 
+\par Property Let CellIndent(ByVal lRow As Long, ByVal lCol As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the horizontal indentation of a cell from the cell's border.\plain\f3\fs20\b 
+\par Property Get CellExtraIcon(ByVal lRow As Long, ByVal lCol As Long) As Long
+\par \plain\f3\fs20 Gets/sets the extra icon for a cell.  This icon will always appear in the leftmost position for the cell.  Set CellExtraIcon to -1 to remove an icon.  CellExtraIcons represent ImageList icon indexes and run from 0 to Count-1.\plain\f3\fs20\b 
+\par Property Let CellExtraIcon(ByVal lRow As Long, ByVal lCol As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the extra icon for a cell.  This icon will always appear in the leftmost position for the cell.  Set CellExtraIcon to -1 to remove an icon.  CellExtraIcons represent ImageList icon indexes and run from 0 to Count-1.\plain\f3\fs20\b 
+\par Property Get CellItemData(ByVal lRow As Long, ByVal lCol As Long) As Long
+\par \plain\f3\fs20 Gets/sets a long value associated with the cell.\plain\f3\fs20\b 
+\par Property Let CellItemData(ByVal lRow As Long, ByVal lCol As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets a long value associated with the cell.\plain\f3\fs20\b 
+\par Property Get CellSelected(ByVal lRow As Long, ByVal lCol As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a cell is selected or not.\plain\f3\fs20\b 
+\par Property Let CellSelected(ByVal lRow As Long, ByVal lCol As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a cell is selected or not.\plain\f3\fs20\b 
+\par Property Get CellIcon(ByVal lRow As Long, ByVal lCol As Long) As Long
+\par \plain\f3\fs20 Gets/sets the icon for a cell.  If the cell has an icon set via the CellExtraIcon property, this icon will appear after it.  Set CellIcon to -1 to remove an icon.  CellIcons represent ImageList icon indexes and run from 0 to Count-1.\plain\f3\fs20\b 
+\par Property Let CellIcon(ByVal lRow As Long, ByVal lCol As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the icon for a cell.  If the cell has an icon set via the CellExtraIcon property, this icon will appear after it.  Set CellIcon to -1 to remove an icon.  CellIcons represent ImageList icon indexes and run from 0 to Count-1.\plain\f3\fs20\b 
+\par Property Get CellBackColor(ByVal lRow As Long, ByVal lCol As Long) As ULong
+\par \plain\f3\fs20 Gets/sets the background colour for a cell.  Set to -1 to make the cell transparent.\plain\f3\fs20\b 
+\par Property Let CellBackColor(ByVal lRow As Long, ByVal lCol As Long, RHS As ULong)
+\par \plain\f3\fs20 Gets/sets the background colour for a cell.  Set to -1 to make the cell transparent.\plain\f3\fs20\b 
+\par Property Get CellForeColor(ByVal lRow As Long, ByVal lCol As Long) As ULong
+\par \plain\f3\fs20 Gets/sets the foreground colour to draw a cell in.  Set to -1 to use the default foreground colour.\plain\f3\fs20\b 
+\par Property Let CellForeColor(ByVal lRow As Long, ByVal lCol As Long, RHS As ULong)
+\par \plain\f3\fs20 Gets/sets the foreground colour to draw a cell in.  Set to -1 to use the default foreground colour.\plain\f3\fs20\b 
+\par Sub CellDefaultForeColor(ByVal lRow As Long, ByVal lCol As Long)
+\par \plain\f3\fs20 Sets a cell to use the default foreground colour (the fore colour of the control).\plain\f3\fs20\b 
+\par Sub CellDefaultBackColor(ByVal lRow As Long, ByVal lCol As Long)
+\par \plain\f3\fs20 Sets a cell to use the default background colour (transparent).\plain\f3\fs20\b 
+\par Property Get CellFont(ByVal lRow As Long, ByVal lCol As Long) As Font
+\par \plain\f3\fs20 Gets/sets the font to use to draw a cell.\plain\f3\fs20\b 
+\par Property Let CellFont(ByVal lRow As Long, ByVal lCol As Long, RHS As Font)
+\par \plain\f3\fs20 Gets/sets the font to use to draw a cell.\plain\f3\fs20\b 
+\par Sub CellDefaultFont(ByVal lRow As Long, ByVal lCol As Long)
+\par \plain\f3\fs20 Sets a cell to use the default font.\plain\f3\fs20\b 
+\par Property Get MultiSelect() As Boolean
+\par \plain\f3\fs20 Gets/sets whether multiple grid cells or rows can be selected or not.\plain\f3\fs20\b 
+\par Property Let MultiSelect(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether multiple grid cells or rows can be selected or not.\plain\f3\fs20\b 
+\par Property Get RowMode() As Boolean
+\par \plain\f3\fs20 Gets/sets whether cells can be selected in the grid (False) or rows (True).\plain\f3\fs20\b 
+\par Property Let RowMode(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether cells can be selected in the grid (False) or rows (True).\plain\f3\fs20\b 
+\par Property Get RowIsGroup(ByVal lRow As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a row should be regarded as a group row.\plain\f3\fs20\b 
+\par Property Let RowIsGroup(ByVal lRow As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a row should be regarded as a group row.\plain\f3\fs20\b 
+\par Property Get RowGroupStartColumn(ByVal lRow As Long) As Long
+\par 
+\par Property Let RowGroupStartColumn(ByVal lRow As Long, RHS As Long)
+\par 
+\par Property Get GridLines() As Boolean
+\par \plain\f3\fs20 Gets/sets whether grid-lines are drawn or not.\plain\f3\fs20\b 
+\par Property Let GridLines(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether grid-lines are drawn or not.\plain\f3\fs20\b 
+\par Property Let ImageList(RHS  As Variant)
+\par \plain\f3\fs20 Sets an ImageList as the source of icons for the control.  The ImageList can be either a VB ImageList, a vbAccelerator ImageList or an API hIml handle.  If it is a VB Image List, the Image List must have had at least one icon in it before using this prop\plain\f3\fs20\b 
+\par Property Set BackgroundPicture() As Picture
+\par \plain\f3\fs20 Gets/sets a picture to be used as the grid's background.\plain\f3\fs20\b 
+\par Property Get BackgroundPicture() As Picture
+\par \plain\f3\fs20 Gets/sets a picture to be used as the grid's background.\plain\f3\fs20\b 
+\par Property Get BackColor() As ULong
+\par \plain\f3\fs20 Gets/sets the background color of the grid.\plain\f3\fs20\b 
+\par Property Let BackColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the background color of the grid.\plain\f3\fs20\b 
+\par Property Get ForeColor() As ULong
+\par \plain\f3\fs20 Gets/sets the foreground color used to draw the control.\plain\f3\fs20\b 
+\par Property Let ForeColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the foreground color used to draw the control.\plain\f3\fs20\b 
+\par Property Get GridLineColor() As ULong
+\par \plain\f3\fs20 Gets/sets the colour used to draw grid lines.\plain\f3\fs20\b 
+\par Property Let GridLineColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the colour used to draw grid lines.\plain\f3\fs20\b 
+\par Property Get Font() As Font
+\par \plain\f3\fs20 Gets/sets the font used by the control.\plain\f3\fs20\b 
+\par Property Set Font() As Font
+\par \plain\f3\fs20 Gets/sets the font used by the control.\plain\f3\fs20\b 
+\par Property Get Virtual() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid is in Virtual Mode (i.e. rows are added as required via the RequestRow and RequestRowData events).\plain\f3\fs20\b 
+\par Property Let Virtual(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid is in Virtual Mode (i.e. rows are added as required via the RequestRow and RequestRowData events).\plain\f3\fs20\b 
+\par Sub Draw
+\par \plain\f3\fs20 Draws the control.\plain\f3\fs20\b 
+\par Sub CellFromPoint(ByVal xPixels As Long, ByVal yPixels As Long, ByVal lRow As Long, ByVal lCol As Long)
+\par \plain\f3\fs20 Gets the cell which contains the given X,Y coordinates (relative to the grid) in pixels.\plain\f3\fs20\b 
+\par Sub CellBoundary(ByVal lRow As Long, ByVal lCol As Long, ByVal lLeft As Long, ByVal lTop As Long, ByVal lWidth As Long, ByVal lHeight As Long)
+\par \plain\f3\fs20 Gets the co-ordinates of the bounding rectangle for a cell in the grid, in twips.\plain\f3\fs20\b 
+\par Function AddColumn(ByVal vKey As String, ByVal sHeader As String, ByVal eAlign As ECGHdrTextAlignFlags, Optional ByVal iIconIndex As Long=-1, Optional ByVal lColumnWidth As Long=-1, Optional ByVal bVisible As Boolean=True, Optional ByVal bFixed As Boolean=False, ByVal vKeyBefore As Variant, Optional ByVal bIncludeInSelect As Boolean=True, ByVal sFmtString As String, Optional ByVal bRowTextColumn As Boolean=False, Optional ByVal eSortType As cShellSortTypeConstants=102) As Long
+\par \plain\f3\fs20 Adds or inserts a column to the grid.\plain\f3\fs20\b 
+\par Sub RemoveColumn(ByVal vKey As Variant)
+\par \plain\f3\fs20 Permanently removes a column from the grid.  If all columns are removed, the grid will be cleared.  If you want to temporarily remove a column, use the ColumnVisible property.\plain\f3\fs20\b 
+\par Sub SetHeaders
+\par \plain\f3\fs20 Populates the headers in the control based on the columns in the grid.  Called automatically by the control when Headers is set to True.\plain\f3\fs20\b 
+\par Property Get ColumnIndex(ByVal vKey As Variant) As Variant
+\par \plain\f3\fs20 Gets the index of a column with the specified key.\plain\f3\fs20\b 
+\par Property Get ColumnImage(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the image index to show in a column's header. Image indexes are 0 based indexes of the images in an  ImageList.\plain\f3\fs20\b 
+\par Property Let ColumnImage(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the image index to show in a column's header. Image indexes are 0 based indexes of the images in an  ImageList.\plain\f3\fs20\b 
+\par Property Get ColumnImageOnRight(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether images (if any) will be shown on the right or not in a column header.\plain\f3\fs20\b 
+\par Property Let ColumnImageOnRight(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether images (if any) will be shown on the right or not in a column header.\plain\f3\fs20\b 
+\par Property Get ColumnAlign(ByVal vKey As Variant) As ECGHdrTextAlignFlags
+\par \plain\f3\fs20 Gets/sets the alignment used to draw the column header for a column.\plain\f3\fs20\b 
+\par Property Let ColumnAlign(ByVal vKey As Variant, RHS As ECGHdrTextAlignFlags)
+\par \plain\f3\fs20 Gets/sets the alignment used to draw the column header for a column.\plain\f3\fs20\b 
+\par Property Get ColumnKey(ByVal lCol As Long) As String
+\par \plain\f3\fs20 Gets/sets the key for column.\plain\f3\fs20\b 
+\par Property Let ColumnKey(ByVal lCol As Long, RHS As String)
+\par \plain\f3\fs20 Gets/sets the key for column.\plain\f3\fs20\b 
+\par Property Get ColumnTag(ByVal lCol As Long) As String
+\par \plain\f3\fs20 Gets/sets a tag string associated with a column in the grid.\plain\f3\fs20\b 
+\par Property Let ColumnTag(ByVal lCol As Long, RHS As String)
+\par \plain\f3\fs20 Gets/sets a tag string associated with a column in the grid.\plain\f3\fs20\b 
+\par Property Get Header() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid has a header or not.\plain\f3\fs20\b 
+\par Property Let Header(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid has a header or not.\plain\f3\fs20\b 
+\par Property Get HeaderDragReOrderColumns() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid's header columns can be dragged around to reorder them.\plain\f3\fs20\b 
+\par Property Let HeaderDragReOrderColumns(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid's header columns can be dragged around to reorder them.\plain\f3\fs20\b 
+\par Property Get HeaderButtons() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid's header has clickable buttons or not.\plain\f3\fs20\b 
+\par Property Let HeaderButtons(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid's header has clickable buttons or not.\plain\f3\fs20\b 
+\par Property Get HeaderHotTrack() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the grid's header tracks mouse movements and highlights the header column the mouse is over or not.\plain\f3\fs20\b 
+\par Property Let HeaderHotTrack(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the grid's header tracks mouse movements and highlights the header column the mouse is over or not.\plain\f3\fs20\b 
+\par Sub CellDetails(ByVal lRow As Long, ByVal lCol As Long, ByVal sText As Variant, Optional ByVal eTextAlign As ECGTextAlignFlags=262176, Optional ByVal lIconIndex As Long=-1, Optional ByVal oBackColor As ULong=-1, Optional ByVal oForeColor As ULong=-1, Optional ByVal oFont As Font=Nothing, Optional ByVal lIndent As Long=0, Optional ByVal lExtraIconIndex As Long=-1, Optional ByVal lItemData As Long=0)
+\par \plain\f3\fs20 Sets multiple format details for a cell at the same time. Quicker than calling the properties individually.\plain\f3\fs20\b 
+\par Property Get Cell(ByVal lRow As Long, ByVal lCol As Long) As cGridCell
+\par 
+\par Property Let Cell(ByVal lRow As Long, ByVal lCol As Long, RHS As cGridCell)
+\par 
+\par Property Get NewCellFormatObject() As cGridCell
+\par 
+\par Property Get RowHeight(ByVal lRow As Long) As Long
+\par \plain\f3\fs20 Gets/sets the height of a row in the grid.\plain\f3\fs20\b 
+\par Property Let RowHeight(ByVal lRow As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the height of a row in the grid.\plain\f3\fs20\b 
+\par Property Get ColumnOrder(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the order of a column in the control.\plain\f3\fs20\b 
+\par Property Let ColumnOrder(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the order of a column in the control.\plain\f3\fs20\b 
+\par Property Get ColumnSortType(ByVal vKey As Variant) As cShellSortTypeConstants
+\par \plain\f3\fs20 Gets/sets a variable which you can use to store the current column sort type.\plain\f3\fs20\b 
+\par Property Let ColumnSortType(ByVal vKey As Variant, RHS As cShellSortTypeConstants)
+\par \plain\f3\fs20 Gets/sets a variable which you can use to store the current column sort type.\plain\f3\fs20\b 
+\par Property Get ColumnSortOrder(ByVal vKey As Variant) As cShellSortOrderCOnstants
+\par \plain\f3\fs20 Gets/sets a variable which you can use to store the current column sort order.\plain\f3\fs20\b 
+\par Property Let ColumnSortOrder(ByVal vKey As Variant, RHS As cShellSortOrderCOnstants)
+\par \plain\f3\fs20 Gets/sets a variable which you can use to store the current column sort order.\plain\f3\fs20\b 
+\par Property Get ColumnWidth(ByVal vKey As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the width of a column in the grid.\plain\f3\fs20\b 
+\par Property Let ColumnWidth(ByVal vKey As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the width of a column in the grid.\plain\f3\fs20\b 
+\par Property Get ColumnHeader(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets the text to appear in a column header.\plain\f3\fs20\b 
+\par Property Let ColumnHeader(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets the text to appear in a column header.\plain\f3\fs20\b 
+\par Property Get ColumnFormatString(ByVal vKey As Variant) As String
+\par \plain\f3\fs20 Gets/sets a format string used to format all text in the column.  Format strings are the same as those used in the VB Format$ function.\plain\f3\fs20\b 
+\par Property Let ColumnFormatString(ByVal vKey As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets a format string used to format all text in the column.  Format strings are the same as those used in the VB Format$ function.\plain\f3\fs20\b 
+\par Property Get ColumnVisible(ByVal vKey As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a column will be visible or not in the grid.\plain\f3\fs20\b 
+\par Property Let ColumnVisible(ByVal vKey As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a column will be visible or not in the grid.\plain\f3\fs20\b 
+\par Property Get Columns() As Long
+\par \plain\f3\fs20 Gets the number of columns in the grid, including hidden and RowText columns.\plain\f3\fs20\b 
+\par Property Get Rows() As Long
+\par \plain\f3\fs20 Gets/sets the number of rows in the grid.\plain\f3\fs20\b 
+\par Property Let Rows(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the number of rows in the grid.\plain\f3\fs20\b 
+\par Sub AddRow(Optional ByVal lRowBefore As Long=-1, ByVal sKey As String, Optional ByVal bVisible As Boolean=True, Optional ByVal lHeight As Long=-1, Optional ByVal bGroupRow As Boolean=False, Optional ByVal lGroupColStartIndex As Long=0)
+\par \plain\f3\fs20 Adds or inserts a row to the grid.\plain\f3\fs20\b 
+\par Sub RemoveRow(ByVal lRow As Long)
+\par \plain\f3\fs20 Deletes a row from the grid.\plain\f3\fs20\b 
+\par Property Get RowVisible(ByVal lRow As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a row is visible in the grid or not.\plain\f3\fs20\b 
+\par Property Let RowVisible(ByVal lRow As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a row is visible in the grid or not.\plain\f3\fs20\b 
+\par Sub Clear(Optional ByVal bRemoveCols As Boolean=False)
+\par \plain\f3\fs20 Clears the rows from the grid, optionally removing the columns too.\plain\f3\fs20\b 
+\par Property Get BorderStyle() As ECGBorderStyle
+\par \plain\f3\fs20 Gets/sets the border style for the control.\plain\f3\fs20\b 
+\par Property Let BorderStyle(RHS  As ECGBorderStyle)
+\par \plain\f3\fs20 Gets/sets the border style for the control.\plain\f3\fs20\b 
+\par Function FindSearchMatchRow(ByVal sSearchString As String, Optional ByVal bLoop As Boolean=True, Optional ByVal bVisibleRowsOnly As Boolean=True) As Long
+\par \plain\f3\fs20 Finds the first matching row for a given search string.\plain\f3\fs20\b 
+\par Sub CancelEdit
+\par \plain\f3\fs20 Call to cancel an edit request when the control you are using to edit a cell looses focus.\plain\f3\fs20\b 
+\par Sub AutoWidthColumn(ByVal vKey As Variant)
+\par \plain\f3\fs20 Automatically resizes a column to accommodate the largest item.\plain\f3\fs20\b 
+\par Sub AutoHeightRow(ByVal lRow As Long, Optional ByVal lMinimumHeight As Long=-1)
+\par \plain\f3\fs20 Automatically sets the height of a row based on the contents of the cells.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event ColumnClick(ByVal lCol As Long)
+\par \plain\f3\fs20 Raised when the user clicks a column.\plain\f3\fs20\b 
+\par Public Event ColumnWidthStartChange(ByVal lCol As Long, ByVal lWidth As Long, ByVal bCancel As Boolean)
+\par \plain\f3\fs20 Raised when the user is about to start changing the width of a column.\plain\f3\fs20\b 
+\par Public Event ColumnWidthChanging(ByVal lCol As Long, ByVal lWidth As Long, ByVal bCancel As Boolean)
+\par \plain\f3\fs20 Raised whilst a column's width is being changed.\plain\f3\fs20\b 
+\par Public Event HeaderRightClick(ByVal x As Single, ByVal y As Single)
+\par \plain\f3\fs20 Raised when the user right clicks on the grid's header.\plain\f3\fs20\b 
+\par Public Event SelectionChange(ByVal lRow As Long, ByVal lCol As Long)
+\par \plain\f3\fs20 Raised when the user changes the selected cell.\plain\f3\fs20\b 
+\par Public Event RequestEdit(ByVal lRow As Long, ByVal lCol As Long, ByVal iKeyAscii As Integer, ByVal bCancel As Boolean)
+\par \plain\f3\fs20 Raised when the grid has the Editable property set to True and the user's actions request editing of the current cell.\plain\f3\fs20\b 
+\par Public Event CancelEdit
+\par 
+\par Public Event KeyDown(ByVal KeyCode As Integer, ByVal Shift As Integer, ByVal bDoDefault As Boolean)
+\par \plain\f3\fs20 Raised when a key is pressed in the control.\plain\f3\fs20\b 
+\par Public Event KeyPress(ByVal KeyAscii As Integer)
+\par \plain\f3\fs20 Raised after the KeyDown event when the key press has been converted to an ASCII code.\plain\f3\fs20\b 
+\par Public Event KeyUp(ByVal KeyCode As Integer, ByVal Shift As Integer)
+\par \plain\f3\fs20 Raised when a key is released on the grid.\plain\f3\fs20\b 
+\par Public Event MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal y As Single, ByVal bDoDefault As Boolean)
+\par \plain\f3\fs20 Raised when the a mouse button is pressed over the control.\plain\f3\fs20\b 
+\par Public Event MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal y As Single)
+\par \plain\f3\fs20 Raised when the mouse moves over the control, or when the mouse moves anywhere and a mouse button has been pressed over the control.\plain\f3\fs20\b 
+\par Public Event MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal x As Single, ByVal y As Single)
+\par \plain\f3\fs20 Raised when a mouse button is released after having been pressed over the control.\plain\f3\fs20\b 
+\par Public Event DblClick(ByVal lRow As Long, ByVal lCol As Long)
+\par \plain\f3\fs20 Raised when the user double clicks on the grid.\plain\f3\fs20\b 
+\par Public Event RequestRow(ByVal lRow As Long, ByVal sKey As String, ByVal bVisible As Boolean, ByVal lHeight As Long, ByVal bGroupRow As Boolean, ByVal bNoMoreRows As Boolean)
+\par \plain\f3\fs20 Raised when the grid is in Virtual mode and the grid has been scrolled to expose a new row.  Set bNoMoreRows to True to indicate all rows have been added.\plain\f3\fs20\b 
+\par Public Event RequestRowData(ByVal lRow As Long)
+\par \plain\f3\fs20 Raised in virtual mode when a new row has been added in response to RequestRow. Respond by filling in the cells for that row.\plain\f3\fs20\b 
+\par Public Event ColumnOrderChanged
+\par \plain\f4\fs20 
+\par 
+\par }
+ 

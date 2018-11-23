@@ -1,0 +1,337 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Painting in the MDI Client Area</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="Although the .NET Framework Form allows you to set a background bitmap or color for the 
+MDI Client area, there's no direct way to draw onto the area to customise it.  This sample
+demonstrates how to create an object which derives from NativeWindow to intercept the 
+messages from the MDI Client area and draw onto it using standard System.Drawing calls." /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows</a>&#160;.&#160;Painting in the MDI Client Area</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="mdiclient_paint_code.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />MDIClient Paint Code</a> (34K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:4306</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=4306&type=article&title=painting_20in_20the_20mdi_20client_20area.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />4 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows_messages\subclassing_in__net\article.html">Subclassing In .NET</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Painting in the MDI Client Area</h1><p class="splash">Find and respond to messages sent to the MDIClient area in .NET Forms.</p><img src="mdiclientpaint.png" width="313" height="363" alt="MDI Client Paint Demonstration" /><p /><p>Although the .NET Framework Form allows you to set a background bitmap or color for the 
+MDI Client area, there's no direct way to draw onto the area to customise it.  This sample
+demonstrates how to create an object which derives from NativeWindow to intercept the 
+messages from the MDI Client area and draw onto it using standard System.Drawing calls.</p><h2>Finding the MDI Client</h2><p>An MDI form is actually built using two Windows: the main MDI Window itself and
+a child window which contains the MDI child forms.  This window is termed the
+"MDIClient" and can be seen if you point a tool like Spy++ at the MDI 
+window:</p><img src="mdiclient.png" width="426" height="433" alt="Spy++ Reveals the MDI Client Window" /><p><small><strong>Spy++ Reveals the MDI Client Window</strong></small></p><p>The class name of the form is given as "WindowsForms10.MDICLIENT.app5f", although
+I assume that this might change depending on the version of the .NET Framework you're using.
+By default in the .NET Framework there is no object which provides you access to this Window:
+the Framework rightly or wrongly assumes that you don't need to do anything with it.  However,
+if you can find the handle to the Window then you create a <span class="code">System.Windows.Forms.NativeWindow</span>
+object from it, and start responding to its message stream.</p><h2>Finding The MDI Client</h2><p>The MDI Client window is a child of the main MDI form, but that means it is at the same
+level as any other controls (such as Toolbars or Statusbars) which are present on the MDI
+form's surface.  So to find the client we enumerate the child windows of the MDI form
+and look for one which has a class name containing the word "MDICLIENT" (ignoring
+case). The code to do this is as follows:
+</p><pre>
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
+
+private delegate int EnumWindowsProc(IntPtr hwnd, int lParam);
+
+[DllImport("user32")]
+private extern static int EnumChildWindows (
+    IntPtr hWndParent,
+    EnumWindowsProc lpEnumFunc, 
+    int lParam);
+
+[DllImport("user32", CharSet = CharSet.Auto)]
+private extern static int GetClassName (
+    IntPtr hWnd, 
+    StringBuilder lpClassName, 
+    int nMaxCount);
+
+private void GetWindows(
+	IntPtr hWndParent)
+{
+    EnumChildWindows(
+        hWndParent,
+        new EnumWindowsProc(this.WindowEnum),
+        0);
+}
+
+/// <summary>
+/// The enum Windows callback.
+/// </summary>
+/// <param name="hWnd">Window Handle</param>
+/// <param name="lParam">Application defined value</param>
+/// <returns>1 to continue enumeration, 0 to stop</returns>
+private int WindowEnum(
+    IntPtr hWnd,
+    int lParam)
+{
+    StringBuilder className = new StringBuilder(260, 260);
+    GetClassName(hWnd, className, className.Capacity);
+    if (className.ToString().ToUpper().IndexOf("MDICLIENT") &gt; 0)
+    {
+        // stop
+        hWndMdiClient = hWnd;
+        return 0;
+    }
+    else
+    {
+    	// continue
+        return 1;
+    }
+}
+</pre><p>A more detailed look at finding windows is provided in the article
+<a href="..\enumerating_windows\article.html">Enumerating Windows</a>.</p><h2>Getting at Messages From a Window</h2><p>Normally, the .NET Framework makes it easy to access the message stream for anything
+that's based on a Windows window: the base Control class includes a virtual <span class="code">WndProc</span>
+method that provides access to the message stream.  However, you can get at this functionality 
+for any arbitrary Window handle (provided the window has been created within the application's 
+process) using the <span class="code">NativeWindow</span> class provided as part of the System.Windows.Form namespace.
+Once the <span class="code">NativeWindow</span> class has been assigned to a window handle (using the 
+<span class="code">AssignHandle</span>
+method) then it also provides a virtual <span class="code">WndProc</span> method.</p><p>Using this class allows us to easily provide a class which connects to an MDI client and 
+allows the caller to respond to messages passed to the MDI client.</p><h2>Wrapping it Up: The MDIClientWindow Code</h2><p>The MDIClientWindow code provided in the download provides reusablable code you can use
+to mess around with MDI Client messages.  There are two components in the code:</p><ul><li><strong>The MDIClientWindow class</strong><br />
+This class extends <span class="code">NativeWindow</span> in order to override the <span class="code">WndProc</span> method.
+Whenever it calls, the class notifies the owner of the class through the IMDIClientNotify
+interface of the message.  The client can then choose to process or ignore the message.</li><li><strong>The IMDIClientNotify Interface</strong><br />
+This interface contains a single <span class="code">WndProc</span> message interface.  Using an interface to
+call the client allows for better performance than using events, and provides flexibility
+as to which class responds to the messages.</li></ul><p>To hook up the object to an MDI form, first you implement the IMDIClientNotify interface
+and then instantiate an instance of the MDIClientWindow class:</p><pre>
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+
+using vbAccelerator.Components.Win32;
+
+namespace YourAppNamespace
+{
+
+    public class YourMDIForm : 
+		System.Windows.Forms.Form, 
+		IMDIClientNotify
+    {
+        /// <summary>
+        /// Class to hold the MDI Client
+        /// </summary>
+        private MDIClientWindow mdiClient = null;
+
+        public YourMDIForm
+	{
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+
+            // Add a form Load event handler (if one hasn't
+            // been added in the designer already) so we
+            // can hook up the MDIClient notifications
+            //
+            this.Load += new EventHandler(this.frm_Load);
+        }
+
+        // InitializeComponent, Dispose omitted for clarity
+
+        private void frm_Load(object sender, EventArgs e)
+        {
+            mdiClient = new MDIClientWindow(
+                 this,        // Object implementing IMDIClientNotify
+                 this.Handle  // MDI form handle
+                 );
+        }
+
+        public void WndProc(ref Message m, ref bool doDefault)
+	{
+            // process message here.  Set doDefault = false
+            // to prevent the base window procedure from being
+            // called.
+        }
+    }
+
+}
+</pre><h2>Using MDIClientWindow to Paint In the MDI Client</h2><p>In order to paint in the MDI Client area, you need to handle at
+two or three Windows messages.  The basic messages involved in painting
+are <span class="code">WM_PAINT</span> and <span class="code">WM_ERASEBKGND</span>.  However, note that the
+default painting setup for the MDI Client area is only to paint newly
+exposed areas.  If your background consists of a tile, or a solid colour,
+then that is fine, and you can do all the processing in these messages.
+However, if existing areas need to be redrawn when the size changes then
+you also need to respond to <span class="code">WM_SIZE</span> in order to refresh the 
+background.</p><ul><li><strong>Responding to <span class="code">WM_ERASEBKGND</span></strong><p>The <span class="code">WM_ERASEBKGND</span> message is sent whenever an area of the MDI Client
+needs to be erased.  The <span class="code">WParam</span> member of the message contains the
+device context to draw to, and you should return 1 if you process the
+message and erase the background.</p><p>In this sample, the background is filled with a gradient at a 45 degree angle.
+Therefore this is applied during this method:</p><pre>
+public void WndProc(ref Message m, ref bool doDefault)
+{
+
+    ...
+
+    if (m.Msg == UnManagedMethods.WM_ERASEBKGND)
+    {
+        //
+        // Fill the background:
+        //
+
+        RECT rc = new RECT();
+        UnManagedMethods.GetClientRect(m.HWnd, ref rc);
+
+        // Convert to managed code world
+        Graphics gfx = Graphics.FromHdc(m.WParam);
+        Rectangle rcClient = new Rectangle(
+	    rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+
+        int angle = 45;
+        LinearGradientBrush linGrBrush = new LinearGradientBrush(
+            rcClient,
+            Color.FromArgb(255, 230, 242, 255),// pale blue
+            Color.FromArgb(255, 0, 72, 160),   // deep blue
+            angle);  
+
+        gfx.FillRectangle(linGrBrush, rcClient);
+
+        linGrBrush.Dispose();
+        gfx.Dispose();
+
+        // Tell Windows we've filled the background:
+        m.Result = (IntPtr)1;
+
+        // Don't call the default procedure:
+        doDefault = false;
+    }
+}
+</pre></li><li><strong>Responding to <span class="code">WM_PAINT</span></strong><p>The <span class="code">WM_PAINT</span> message is called after <span class="code">WM_ERASEBKGND</span> and is
+used to paint anything over the newly erased background.  Note that you
+can do all of the painting in this message if you prefer.</p><p>In the sample, the text "vbAccelerator.com" is drawn 
+vertically at the bottom-edge of the client area:</p><pre>
+public void WndProc(ref Message m, ref bool doDefault)
+{
+
+    ...
+
+    if (m.Msg == UnManagedMethods.WM_PAINT)
+    {
+        //
+        // Here we draw a logo on the "right" hand side 
+        // of the form (depends on RTL)
+        //
+        PAINTSTRUCT ps = new PAINTSTRUCT();
+
+        // Get the paint parameters from Windows:
+        UnManagedMethods.BeginPaint(m.HWnd, ref ps);
+        RECT rc = new RECT();
+        UnManagedMethods.GetClientRect(m.HWnd, ref rc);
+
+        // Convert to managed code world				
+        Graphics gfx = Graphics.FromHdc(ps.hdc);
+        RectangleF rcClient = new RectangleF(
+            rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top);
+	Rectangle rcPaint = new Rectangle(
+            ps.rcPaint.left, 
+            ps.rcPaint.top,
+            ps.rcPaint.right - ps.rcPaint.left,
+            ps.rcPaint.bottom - ps.rcPaint.top);
+
+        // Draw the logo bottom right:
+        SolidBrush brText = new SolidBrush(Color.White);
+        
+        StringFormat strFormat = new StringFormat();
+        strFormat.Alignment = StringAlignment.Far;
+        strFormat.FormatFlags = StringFormatFlags.DirectionVertical |
+            StringFormatFlags.NoWrap;
+        strFormat.LineAlignment = StringAlignment.Far;					
+			
+        Font logoFont = new Font(this.Font.FontFamily, 20, FontStyle.Bold);
+
+        gfx.DrawString("vbAccelerator.com", logoFont, brText, rcClient, strFormat);
+        
+        logoFont.Dispose();
+        strFormat.Dispose();
+        brText.Dispose();
+
+        gfx.Dispose();
+
+        // Tell Windows the painting is completed:
+        UnManagedMethods.EndPaint(m.HWnd, ref ps);
+    }
+}
+</pre></li><li><strong>Redrawing the Entire Area on <span class="code">WM_SIZE</span></strong><p>The <span class="code">WM_SIZE</span> message provides the new size of the Window in
+the <span class="code">LParam</span> of the message: the Loword is the width and the
+HiWord is the height.  Then Windows' <span class="code">InvalidateRect</span> API call
+can be used to redraw the window (which is the equivalent of the 
+Invalidate.. calls in the .NET Framework):</p><pre>
+public void WndProc(ref Message m, ref bool doDefault)
+{
+
+    ...
+
+    if (m.Msg == UnManagedMethods.WM_SIZE)
+    {
+        // If your background is a tiled image then
+        // you don't need to do this.  This is only required
+        // when the entire background needs to be updated 
+        // in response to the size of the object changing.
+        RECT rect = new RECT();
+        rect.left = 0;
+        rect.top = 0;
+        rect.right = ((int)m.LParam) &amp; 0xFFFF;
+        rect.bottom = (int)(((uint)(m.LParam) &amp; 0xFFFF0000) &gt;&gt; 16);
+        UnManagedMethods.InvalidateRect(m.HWnd, ref rect, 1);
+     }
+}
+</pre></li></ul><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows</a>&#160;.&#160;Painting in the MDI Client Area</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 8 September 2003</p></td><td></td></tr></table>
+</body></html>

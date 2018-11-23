@@ -1,0 +1,427 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: CRC32VB_Form1.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: CRC32VB_Form1.vb" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Libraries</a>&#160;.&#160;<a href="article.html">Calculating CRC32 (and MDA5 and SHA-1) From .NET</a>&#160;.&#160;<a href="crc32.html">Crc32</a>&#160;.&#160;CRC32VB_Form1.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="crc32.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Crc32</a> (30K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:932</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=932&type=zip&title=crc32_2ezip_5fcrc32vb_5fform1.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Oct 2003<br /><p class="update">Upped the <span class="code">FileStream</span> buffer size
+to 8192 bytes, which improves performance.</p><p class="update">Added <span class="i">SHA-1</span> and <span class="i">MD5</span>
+calculations using the Framework <span class="code">Cryptography</span> classes.
+These algorithms generate longer hash values but perform similarly to CRC32 and 
+are more secure and resistant.
+</p></p><p class="update"><a href="updates.html">Update History &gt;</a></p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: CRC32VB_Form1.vb</h1><pre>Imports System.IO
+Imports System.Security.Cryptography
+Imports System.Text
+
+Public Class Form1
+    Inherits System.Windows.Forms.Form
+
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents btnPick As System.Windows.Forms.Button
+    Friend WithEvents lblFilename As System.Windows.Forms.Label
+    Friend WithEvents txtFileName As System.Windows.Forms.TextBox
+    Friend WithEvents gbxResults As System.Windows.Forms.GroupBox
+    Friend WithEvents txtSize As System.Windows.Forms.TextBox
+    Friend WithEvents lblSize As System.Windows.Forms.Label
+    Friend WithEvents txtTime As System.Windows.Forms.TextBox
+    Friend WithEvents lblTime As System.Windows.Forms.Label
+    Friend WithEvents txtCrc32 As System.Windows.Forms.TextBox
+    Friend WithEvents lblCrc32 As System.Windows.Forms.Label
+    Friend WithEvents btnCrc As System.Windows.Forms.Button
+    Friend WithEvents txtSHA1Time As System.Windows.Forms.TextBox
+    Friend WithEvents lblSHA1Time As System.Windows.Forms.Label
+    Friend WithEvents txtMD5Time As System.Windows.Forms.TextBox
+    Friend WithEvents lblMD5Time As System.Windows.Forms.Label
+    Friend WithEvents txtSHA1 As System.Windows.Forms.TextBox
+    Friend WithEvents lblSHA1 As System.Windows.Forms.Label
+    Friend WithEvents txtMD5 As System.Windows.Forms.TextBox
+    Friend WithEvents lblMD5 As System.Windows.Forms.Label
+    &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub InitializeComponent()
+        Me.btnPick = New System.Windows.Forms.Button()
+        Me.lblFilename = New System.Windows.Forms.Label()
+        Me.btnCrc = New System.Windows.Forms.Button()
+        Me.txtFileName = New System.Windows.Forms.TextBox()
+        Me.gbxResults = New System.Windows.Forms.GroupBox()
+        Me.txtSize = New System.Windows.Forms.TextBox()
+        Me.lblSize = New System.Windows.Forms.Label()
+        Me.txtTime = New System.Windows.Forms.TextBox()
+        Me.lblTime = New System.Windows.Forms.Label()
+        Me.txtCrc32 = New System.Windows.Forms.TextBox()
+        Me.lblCrc32 = New System.Windows.Forms.Label()
+        Me.txtSHA1Time = New System.Windows.Forms.TextBox()
+        Me.lblSHA1Time = New System.Windows.Forms.Label()
+        Me.txtMD5Time = New System.Windows.Forms.TextBox()
+        Me.lblMD5Time = New System.Windows.Forms.Label()
+        Me.txtSHA1 = New System.Windows.Forms.TextBox()
+        Me.lblSHA1 = New System.Windows.Forms.Label()
+        Me.txtMD5 = New System.Windows.Forms.TextBox()
+        Me.lblMD5 = New System.Windows.Forms.Label()
+        Me.gbxResults.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'btnPick
+        '
+        Me.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnPick.Location = New System.Drawing.Point(264, 27)
+        Me.btnPick.Name = "btnPick"
+        Me.btnPick.Size = New System.Drawing.Size(20, 20)
+        Me.btnPick.TabIndex = 8
+        Me.btnPick.Text = "..."
+        '
+        'lblFilename
+        '
+        Me.lblFilename.Location = New System.Drawing.Point(4, 7)
+        Me.lblFilename.Name = "lblFilename"
+        Me.lblFilename.Size = New System.Drawing.Size(232, 16)
+        Me.lblFilename.TabIndex = 7
+        Me.lblFilename.Text = "File name:"
+        '
+        'btnCrc
+        '
+        Me.btnCrc.Enabled = False
+        Me.btnCrc.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnCrc.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.btnCrc.Location = New System.Drawing.Point(4, 59)
+        Me.btnCrc.Name = "btnCrc"
+        Me.btnCrc.Size = New System.Drawing.Size(96, 28)
+        Me.btnCrc.TabIndex = 5
+        Me.btnCrc.Text = "&amp;Hash"
+        '
+        'txtFileName
+        '
+        Me.txtFileName.Location = New System.Drawing.Point(4, 27)
+        Me.txtFileName.Name = "txtFileName"
+        Me.txtFileName.Size = New System.Drawing.Size(260, 21)
+        Me.txtFileName.TabIndex = 6
+        Me.txtFileName.Text = ""
+        '
+        'gbxResults
+        '
+        Me.gbxResults.Controls.AddRange(New System.Windows.Forms.Control()
+         {Me.txtSHA1Time, Me.lblSHA1Time, Me.txtMD5Time, Me.lblMD5Time,
+         Me.txtSHA1, Me.lblSHA1, Me.txtMD5, Me.lblMD5, Me.txtSize, Me.lblSize,
+         Me.txtTime, Me.lblTime, Me.txtCrc32, Me.lblCrc32})
+        Me.gbxResults.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.gbxResults.Location = New System.Drawing.Point(4, 103)
+        Me.gbxResults.Name = "gbxResults"
+        Me.gbxResults.Size = New System.Drawing.Size(284, 237)
+        Me.gbxResults.TabIndex = 9
+        Me.gbxResults.TabStop = False
+        Me.gbxResults.Text = "Results:"
+        '
+        'txtSize
+        '
+        Me.txtSize.Location = New System.Drawing.Point(76, 24)
+        Me.txtSize.Name = "txtSize"
+        Me.txtSize.ReadOnly = True
+        Me.txtSize.Size = New System.Drawing.Size(200, 21)
+        Me.txtSize.TabIndex = 5
+        Me.txtSize.Text = ""
+        '
+        'lblSize
+        '
+        Me.lblSize.Location = New System.Drawing.Point(12, 24)
+        Me.lblSize.Name = "lblSize"
+        Me.lblSize.Size = New System.Drawing.Size(64, 20)
+        Me.lblSize.TabIndex = 4
+        Me.lblSize.Text = "File Size:"
+        '
+        'txtTime
+        '
+        Me.txtTime.Location = New System.Drawing.Point(76, 76)
+        Me.txtTime.Name = "txtTime"
+        Me.txtTime.ReadOnly = True
+        Me.txtTime.Size = New System.Drawing.Size(200, 21)
+        Me.txtTime.TabIndex = 3
+        Me.txtTime.Text = ""
+        '
+        'lblTime
+        '
+        Me.lblTime.Location = New System.Drawing.Point(10, 76)
+        Me.lblTime.Name = "lblTime"
+        Me.lblTime.Size = New System.Drawing.Size(64, 20)
+        Me.lblTime.TabIndex = 2
+        Me.lblTime.Text = "Time:"
+        '
+        'txtCrc32
+        '
+        Me.txtCrc32.Location = New System.Drawing.Point(76, 48)
+        Me.txtCrc32.Name = "txtCrc32"
+        Me.txtCrc32.ReadOnly = True
+        Me.txtCrc32.Size = New System.Drawing.Size(200, 21)
+        Me.txtCrc32.TabIndex = 1
+        Me.txtCrc32.Text = ""
+        '
+        'lblCrc32
+        '
+        Me.lblCrc32.Location = New System.Drawing.Point(12, 48)
+        Me.lblCrc32.Name = "lblCrc32"
+        Me.lblCrc32.Size = New System.Drawing.Size(64, 20)
+        Me.lblCrc32.TabIndex = 0
+        Me.lblCrc32.Text = "CRC 32:"
+        '
+        'txtSHA1Time
+        '
+        Me.txtSHA1Time.Location = New System.Drawing.Point(76, 200)
+        Me.txtSHA1Time.Name = "txtSHA1Time"
+        Me.txtSHA1Time.ReadOnly = True
+        Me.txtSHA1Time.Size = New System.Drawing.Size(200, 21)
+        Me.txtSHA1Time.TabIndex = 21
+        Me.txtSHA1Time.Text = ""
+        '
+        'lblSHA1Time
+        '
+        Me.lblSHA1Time.Location = New System.Drawing.Point(12, 200)
+        Me.lblSHA1Time.Name = "lblSHA1Time"
+        Me.lblSHA1Time.Size = New System.Drawing.Size(64, 20)
+        Me.lblSHA1Time.TabIndex = 20
+        Me.lblSHA1Time.Text = "Time:"
+        '
+        'txtMD5Time
+        '
+        Me.txtMD5Time.Location = New System.Drawing.Point(76, 140)
+        Me.txtMD5Time.Name = "txtMD5Time"
+        Me.txtMD5Time.ReadOnly = True
+        Me.txtMD5Time.Size = New System.Drawing.Size(200, 21)
+        Me.txtMD5Time.TabIndex = 19
+        Me.txtMD5Time.Text = ""
+        '
+        'lblMD5Time
+        '
+        Me.lblMD5Time.Location = New System.Drawing.Point(12, 140)
+        Me.lblMD5Time.Name = "lblMD5Time"
+        Me.lblMD5Time.Size = New System.Drawing.Size(64, 20)
+        Me.lblMD5Time.TabIndex = 18
+        Me.lblMD5Time.Text = "Time:"
+        '
+        'txtSHA1
+        '
+        Me.txtSHA1.Location = New System.Drawing.Point(76, 176)
+        Me.txtSHA1.Name = "txtSHA1"
+        Me.txtSHA1.ReadOnly = True
+        Me.txtSHA1.Size = New System.Drawing.Size(200, 21)
+        Me.txtSHA1.TabIndex = 17
+        Me.txtSHA1.Text = ""
+        '
+        'lblSHA1
+        '
+        Me.lblSHA1.Location = New System.Drawing.Point(12, 176)
+        Me.lblSHA1.Name = "lblSHA1"
+        Me.lblSHA1.Size = New System.Drawing.Size(64, 20)
+        Me.lblSHA1.TabIndex = 16
+        Me.lblSHA1.Text = "SHA-1:"
+        '
+        'txtMD5
+        '
+        Me.txtMD5.Location = New System.Drawing.Point(76, 116)
+        Me.txtMD5.Name = "txtMD5"
+        Me.txtMD5.ReadOnly = True
+        Me.txtMD5.Size = New System.Drawing.Size(200, 21)
+        Me.txtMD5.TabIndex = 15
+        Me.txtMD5.Text = ""
+        '
+        'lblMD5
+        '
+        Me.lblMD5.Location = New System.Drawing.Point(12, 116)
+        Me.lblMD5.Name = "lblMD5"
+        Me.lblMD5.Size = New System.Drawing.Size(64, 20)
+        Me.lblMD5.TabIndex = 14
+        Me.lblMD5.Text = "MD5:"
+        '
+        'Form1
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
+        Me.ClientSize = New System.Drawing.Size(292, 350)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.btnPick,
+         Me.lblFilename, Me.btnCrc, Me.txtFileName, Me.gbxResults})
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.Name = "Form1"
+        Me.Text = "CRC 32 Tester - VB"
+        Me.gbxResults.ResumeLayout(False)
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs)
+        Dim h As New HiResTimer()
+
+        Console.WriteLine("{0} {1}", h.HasHiResCounter, h.Frequency)
+        h.StartTimer()
+        System.Threading.Thread.Sleep(1000)
+        h.StopTimer()
+
+        Console.WriteLine("{0}", h.ElapsedTime)
+
+    End Sub
+
+    Private Sub btnPick_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles btnPick.Click
+        Dim o As OpenFileDialog = New OpenFileDialog()
+        o.Filter = "All Files (*.*)|*.*"
+        If (o.ShowDialog() = DialogResult.OK) Then
+            txtFileName.Text = o.FileName
+        End If
+
+    End Sub
+
+    Private Sub btnCrc_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles btnCrc.Click
+        Dim c As New CRC32()
+        Dim crc As Integer = 0
+
+        Dim h As HiResTimer = New HiResTimer()
+        Console.WriteLine("{0} {1}", h.HasHiResCounter, h.Frequency)
+
+        ' CRC32 Hash:
+        h.StartTimer()
+        Dim f As FileStream = New FileStream(txtFileName.Text, FileMode.Open,
+         FileAccess.Read, FileShare.Read, 8192)
+        crc = c.GetCrc32(f)
+        f.Close()
+        h.StopTimer()
+
+        ' File size:
+        f = New FileStream(txtFileName.Text, FileMode.Open, FileAccess.Read,
+         FileShare.Read, 8192)
+        txtSize.Text = String.Format("{0}", f.Length)
+        f.Close()
+        txtCrc32.Text = String.Format("{0:X8}", crc)
+        txtTime.Text = String.Format("{0}", h.ElapsedTime)
+
+        ' Run MD5 Hash
+        h = New HiResTimer()
+        h.StartTimer()
+        f = New FileStream(txtFileName.Text, FileMode.Open, FileAccess.Read,
+         FileShare.Read, 8192)
+        Dim md5 As MD5CryptoServiceProvider = New MD5CryptoServiceProvider()
+        md5.ComputeHash(f)
+        f.Close()
+        h.StopTimer()
+
+        Dim hash As Byte() = md5.Hash
+        Dim buff As StringBuilder = New StringBuilder()
+        Dim hashByte As Byte
+        For Each hashByte In hash
+            buff.Append(String.Format("{0:X1}", hashByte))
+        Next
+        txtMD5.Text = buff.ToString()
+        txtMD5Time.Text = String.Format("{0}", h.ElapsedTime)
+
+        ' Run SHA-1 Hash
+        h = New HiResTimer()
+        h.StartTimer()
+        f = New FileStream(txtFileName.Text, FileMode.Open, FileAccess.Read,
+         FileShare.Read, 8192)
+        Dim sha1 As SHA1CryptoServiceProvider = New SHA1CryptoServiceProvider()
+        sha1.ComputeHash(f)
+        f.Close()
+        h.StopTimer()
+
+        hash = sha1.Hash
+        buff = New StringBuilder()
+        For Each hashByte In hash
+            buff.Append(String.Format("{0:X1}", hashByte))
+        Next
+        txtSHA1.Text = buff.ToString()
+        txtSHA1Time.Text = String.Format("{0}", h.ElapsedTime)
+
+    End Sub
+
+    Private Sub txtFileName_TextChanged(ByVal sender As System.Object, ByVal e
+     As System.EventArgs) Handles txtFileName.TextChanged
+        Dim testPath As String = txtFileName.Text
+        btnCrc.Enabled = File.Exists(testPath)
+    End Sub
+
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\index.html" ><IMG SRC="..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Libraries</a>&#160;.&#160;<a href="article.html">Calculating CRC32 (and MDA5 and SHA-1) From .NET</a>&#160;.&#160;<a href="crc32.html">Crc32</a>&#160;.&#160;CRC32VB_Form1.vb</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 November 2003</p></td><td></td></tr></table>
+</body></html>

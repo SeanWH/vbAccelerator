@@ -1,0 +1,242 @@
+<HTML>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Link Spoof</title>
+</head>
+
+<body background="..\..\images\legacy.html" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+<a name="sectop"></a>	
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#CCCC33">
+	<td valign="center" height="25" width="100%">
+	<p><font color="#FFFFCC" face="verdana,arial,helvetica" size="4"><strong> Articles</strong></font></p>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+<tr bgcolor="#EEEEEE">
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Link Spoof</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td width="100%">
+	<font color="#666666" face="verdana,arial,helvetica" size="1">
+	Subvert VB's Compile Process to Inject Your Own Material Into an Executable
+	</font>
+	</td>
+	<td width="10"></td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\techniques\link_spoof\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<br>
+	<img src="..\..\images\squelch.gif" alt="Modifications" width="218" height="112">
+
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+	<td><a href="linkspoof.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="linkspoof.zip">Download the LinkSpoof code and sample (46kb)</a></font></td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<p>
+	LinkSpoof is a sample from Robert Heinig (<a href="mailto:rheinig@gmx.net">rheinig@gmx.net</a>) 
+	demonstrating one technique to take over the VB6 compile process in order to compile your own
+	code into the finished executable.
+		<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>How To Get Going</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		First download the LinkSpoof sample above. This contains two VB projects: firstly
+	the LinkSpoof source code and the compiled version LINK.EXE, and a test project.
+		<br><br>		
+	Locate your VB installation directory. It should contain VB6.EXE and
+	LINK.EXE. Rename LINK.EXE to LINK0.EXE and copy LINK.EXE (the LinkSpoof 
+	tool) from this archive into the directory.  (<i>Editor's note</i>: I think it would be a good idea
+	to create a folder to back-up the original LINK.EXE before doing anything else).
+	Installation is now complete, operation should be 100% transparent 
+	unless you create a file named LinkSpoof.inf in any directory that 
+	contains object or library files during a VB build.
+		<br><br>
+	In case you're worried, compile one of your existing projects to verify
+	its build is not affected.
+		<br><br>
+	Now unpack the Test project and look at the source. Notice that it has
+	two boring functions in Helpers.bas. Run it from the IDE - nothing 
+	special. Now take a look at LinkSpoof.inf: It specifies that an EXE build
+	should ignore the output from Helpers.bas and use HelpersC.obj instead.
+		<br><br>
+	If you own VC++6, you can open the provided EXE, open frmMain.frm, open
+	HelpersC.cpp, set breakpoints and actually see that the inline code from
+	HelpersC is used. Switch to disassembly view to get that hardcode hacker
+	feeling. You can recompile this project, a linker log and a map file are
+	generated for your late-night reading pleasure. With C++, you can recompile
+	HelpersC as well, just do not use the Build Project functions, do only a
+	single-file compile. HelpersC.obj is all you want. Take another look at
+	LinkSpoof.inf to see why the map file is generated and why the Linker log
+	is verbose. Lastly, read LinkSpoofSample.inf for an explanation of the
+	supported features of the control file. Set ShowCmd to 1 and recompile the
+	test project. While the message box shows the command line VB usually
+	passes to the linker, make a dumpbin of Helpers.OBJ to learn how to
+	find out the names you need to give your replacement functions. Be
+	creative...
+		<br><br>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Disclaimer etc</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	This software modifies VB in ways not intended by the designers.  Please ensure you
+	have read and understood the disclaimer provided with the package before trying any of the projects.
+
+
+		<br><br>
+		</p>
+		</font>
+	</tr>
+
+
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\howto.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\howto.htm">Articles</a>
+		</p>	
+		</font>
+		</td>
+	</tr>
+	</table>
+	</p>
+	</tr>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

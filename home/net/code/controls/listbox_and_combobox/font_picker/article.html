@@ -1,0 +1,333 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Font ComboBox</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="
+This control adds a thin wrapper around the Icon ComboBox
+to convert it into an Office-style font picker control. Features include a most-recently used
+font section, initialisation on a background thread, auto-complete and built-in detection 
+of non-character fonts like Wingdings (VB.NET and C# code provided).
+" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;Font ComboBox</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="font_combobox_code_and_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Font ComboBox Code and Demonstration</a> (75K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:13335</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13335&type=article&title=font_20combobox.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />2 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\icon_combobox\article.html">vbAccelerator IconComboBox Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Font ComboBox</h1><p class="splash">Microsoft Office style font-picking for .NET Windows Forms applications</p><img src="fontpicker.png" width="266" height="190" alt="Font ComboBox Demonstration Application" /><p /><p>
+This control adds a thin wrapper around the <a href="..\icon_combobox\article.html">Icon ComboBox</a>
+to convert it into an Office-style font picker control. Features include a most-recently used
+font section, initialisation on a background thread, auto-complete and built-in detection 
+of non-character fonts like Wingdings (VB.NET and C# code provided).
+</p><h2>Building a Font Combo Box</h2><p>
+This sample reuses the functionality in the <a href="..\icon_combobox\article.html">Icon ComboBox</a>
+control, so before trying it you will need to download the binary for the control there
+and either add it to the demo application's output folder, or register it into the GAC.
+</p><p>
+The Icon ComboBox control includes most of the functionality needed to draw this type of
+control, including the ability to render items with different fonts and auto-completion
+facilities.  What's needed is to populate the list of fonts and provide a mechanism to
+maintain the list of Most-Recently Used (MRU) fonts at the top of the combo box.
+</p><h2>Adding Those Fonts</h2><p>
+Finding the fonts to show isn't too tricky, as the .NET Framework includes the 
+<span class="code">InstalledFontCollection</span> object which contains an 
+<span class="code">IEnumerable</span> collection of all the <span class="code">FontFamily</span>
+names on the system. (Actually, there
+appear to be some obscure non-true type fonts missing.  But in practice I don't think
+this should prove to be an issue).  Enumerating through the collection can be slow though, 
+and if the control performs the task synchronously it can significantly slow down the
+start-up of an application.
+</p><p>
+For this reason, the population of the font list is performed asynchronously.  As 
+noted in the Framework documentation, Windows Forms use the single-threaded apartment
+(STA) model.  This requires that any method which wants to call a control from
+a thread outside the one that created the control must ensure the call is marshalled
+to the the control's own thread.  Handling this problem isn't too tricky, though,
+as the control provides the <span class="code">BeginInvoke</span> method which 
+handles the complexity of doing this.  In order to use <span class="code">BeginInvoke</span> 
+you just need to call the method you want to run asynchronously using a <span class="code">Delegate</span>.  The outline of the code to do this is shown below:
+</p><pre>
+  public void LoadFonts()
+  {
+      // prepare
+
+      // run font population on a background thread
+      PopulateFontComboHandler populator = 
+          new PopulateFontComboHandler(PopulateFontCombo);
+      populator.BeginInvoke(null, null);
+   }
+ 
+
+      private delegate void PopulateFontComboHandler();
+
+      private void PopulateFontCombo()
+      {
+         // Get the collection of installed fonts:
+         InstalledFontCollection fonts = new InstalledFontCollection();
+
+         // For each item:
+         foreach (FontFamily family in fonts.Families)
+         {
+            // add to control
+         }
+
+         PopulateFontComboCompleteHandler complete = 
+             new PopulateFontComboCompleteHandler(PopulateFontComboComplete);
+         complete.BeginInvoke(null, null);
+      }
+
+
+      private delegate void PopulateFontComboCompleteHandler();
+
+      private void PopulateFontComboComplete()
+      {
+         // raises Populated event
+      }
+</pre><h2>Detecting if a Font is a Symbol Font</h2><p>
+Whilst the <span class="code">Font</span> object provides a good number of properties
+about a font, there are a few that aren't included.  The <span class="i">Panose</span>
+number of the font is one of them.  This property, part of the True Type font definition,
+can be used for font matching purposes and is also useful for determing information
+about the type of a particular font (provided the font's author has included the information).
+The possible values for the Panose number are as follows:
+</p><pre>
+      /// &lt;summary&gt;
+      /// Enumeration of Panose Font Family Types.  These can be used for
+      /// determining the similarity of two fonts or for detecting non-character
+      /// fonts like WingDings.
+      /// &lt;/summary&gt;
+      public enum PanoseFontFamilyTypes : int
+      {
+         /// &lt;summary&gt;
+         ///  Any
+         /// &lt;/summary&gt;
+         PAN_ANY = 0,
+         /// &lt;summary&gt;
+         /// No Fit
+         /// &lt;/summary&gt;
+         PAN_NO_FIT = 1,
+         /// &lt;summary&gt;
+         /// Text and Display
+         /// &lt;/summary&gt;
+         PAN_FAMILY_TEXT_DISPLAY = 2,
+         /// &lt;summary&gt;
+         /// Script
+         /// &lt;/summary&gt;
+         PAN_FAMILY_SCRIPT = 3,
+         /// &lt;summary&gt;
+         /// Decorative
+         /// &lt;/summary&gt;
+         PAN_FAMILY_DECORATIVE = 4,
+         /// &lt;summary&gt;
+         /// Pictorial                      
+         /// &lt;/summary&gt;
+         PAN_FAMILY_PICTORIAL = 5
+      }
+</pre><p>
+The only function which returns this information is the GDI API call
+<span class="code">GetOutlineTextMetrics</span>, which returns pretty much anything you
+would ever want to know about a font and much more.  This function returns a difficult
+C structure which you could adapt using the <span class="code">InteropServices</span>
+functions but is easier to read simply as a block of memory.  Here's the method I 
+used to get the value.  The first call to <span class="code">GetOutlineTextMetrics</span>
+gets the size of the buffer needed to accomodate the entire structure; then the block
+is allocated and the second call actually gets the values.  Once the block has been
+populated it is then a matter of locating the byte which contains the Panose member,
+in the case of an ANSI call this is at offset 61 from the start of the structure:
+</p><pre>
+
+      [DllImport("gdi32", CharSet = CharSet.Ansi)]
+      private static extern int GetOutlineTextMetrics(
+         IntPtr hdc,            // handle to DC
+         int cbData,            // size in bytes for text metrics
+         IntPtr lpOtm         // pointer to buffer to receive outline text metrics structure
+         );
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;see cref="PanoseFontFamilyTypes"/&gt; for the specified font.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;A graphics object to use when detecting the Panose
+      /// family.&lt;/param&gt;
+      /// &lt;param name="font"&gt;The font to check.&lt;/param&gt;
+      /// &lt;returns&gt;The Panose font family type.&lt;/returns&gt;
+      public static PanoseFontFamilyTypes PanoseFontFamilyType(
+          Graphics graphics, Font font)
+      {
+         byte bFamilyType = 0;
+
+         IntPtr hdc = graphics.GetHdc();
+         IntPtr hFontOld = SelectObject(hdc, font.ToHfont());
+
+         int bufSize = GetOutlineTextMetrics(hdc, 0, IntPtr.Zero);
+         IntPtr lpOtm = Marshal.AllocCoTaskMem(bufSize);
+         Marshal.WriteInt32(lpOtm, bufSize);         
+         int success = GetOutlineTextMetrics(hdc, bufSize, lpOtm);
+         if (success != 0)
+         {
+            int offset = 61;
+            bFamilyType = Marshal.ReadByte(lpOtm, offset); 
+         }
+
+         Marshal.FreeCoTaskMem(lpOtm);
+
+         SelectObject(hdc, hFontOld);
+         graphics.ReleaseHdc(hdc);
+            
+         return (PanoseFontFamilyTypes) bFamilyType;
+         
+      }
+</pre><h2>About The Demonstration Application</h2><p>
+The demonstration hooks up the FontComboBox control so it can be used to display and
+set the font in a <span class="code">RichTextBox</span> control.  The .NET Framework
+RichTextBox control is a thin wrapper over the Windows API <span class="code">RichEdit</span>
+ control and as such inherits many of the idiosyncrasities and quirks of the underlying
+control which make it, frankly, a bitch to use.  The main problem with the control is
+that the only way to get or set the formatting of a character within the control is by 
+selecting it.  This may be fine for some purposes but most people find it an implausible
+limitation, for two reasons:
+</p><ol><li>Let's say, for example, you selected more than one character in the control.  It could happen,
+you never know, perhaps it already has.  If you did, you have no way of finding out
+about the formatting of the selected characters without selecting each one inside
+the selection in turn.  Oh, and did I mention that you might want to put the original
+selection back again when you've finished?</li><li>Let's say, for example, you wanted to format characters in the control behind the 
+scenes. It could happen, you never know, perhaps it already has.  If you did, the only 
+way to format the characters is by selecting them.  If you don't want to disturb the 
+current selection in the control then you almost certainly have an insoluble problem.</li></ol><p>
+In any case, I'm sure the code review for this control was a real blast (if there
+ever was one...)
+    </p><p>
+Given the above, I've made an attempt at emulating the type of font picking you get in
+Word in the demonstration.  It isn't quite perfect but its a good start: the two
+issues that are outstanding are:
+</p><ol><li>The size box doesn't accommodate sizes that aren't in the drop-down list properly.
+This could be fixed with a bit more work.</li><li>If a range is selected which contains items that have the same font, but different
+sizes, the control incorrectly reports that the selection contains a font with size
+13.  I'm not certain this can be fixed.  The problem is shown in the figures below:</li></ol><img src="richedit1.png" width="316" height="297" alt="Single selection in the RichTextBox - font reported correctly." /><p class="caption">Single selection in the RichTextBox - font reported correctly.</p><img src="richedit2.png" width="316" height="297" alt="Multiple fonts selected - SelectionFont returns null." /><p class="caption">Multiple fonts selected</p><p>In this case the <span class="code">SelectionFont</span> property returns <span class="code">null</span>, which is ok, although you have to enumerate through the characters in the selection to change them.</p><img src="richedit3.png" width="316" height="297" alt="Multiple sizes of the same font selected - SelectionFont returns a size of 13..." /><p class="caption">Multiple sizes of the same font selected</p><p>In this case the <span class="code">SelectionFont</span> property returns the correct font name,
+ but there's no easy way to determine that multiple sizes are selected because the size is set to 13.  Perhaps it's always 13 in this case, perhaps not, I don't know.</p><p>
+The code to process a new font selection when multiple fonts are selected is worth taking a
+quick look at as it contains a few old-school tricks for working with the RichEdit selection.
+In this case you have to select each character in the original selection in turn to determine the 
+size and style of the font before setting the new style.  Normally if you do this its very
+slow, and you will see the selection point moving on the screen and converting each character - 
+not very good!
+</p><p>
+To resolve this issue, you can instruct the RichEdit control to stop repainting and also you 
+can stop it sending any events to the underlying RichTextBox framework code.  This allows you
+to perform an update much more quickly. Here's the how you do it (in VB.NET -
+refer to the download for the C# versions)
+</p><pre>
+    Private Const WM_SETREDRAW As Integer = &amp;HB
+    Private Const WM_USER As Integer = &amp;H400
+    Private Const EM_GETEVENTMASK As Integer = (WM_USER + 59)
+    Private Const EM_SETEVENTMASK As Integer = (WM_USER + 69)
+
+    Private Declare Auto Function SendMessage Lib "user32.dll" ( _
+        ByVal hWnd As IntPtr, _
+        ByVal msg As Integer, _
+        ByVal wParam As Integer, _
+        ByVal lParam As IntPtr) As IntPtr
+
+    
+    ' We want to suspend redrawing because we need to select each 
+    ' character in turn to determine its fonts. However, RichTextBox
+    ' appears to be missing some properties to do this, so use API:
+
+    ' Stops RichText redrawing:
+    richTextBox1.SuspendLayout()
+    SendMessage(richTextBox1.Handle, WM_SETREDRAW, 0, IntPtr.Zero)
+
+    ' Stops RichText sending any events:
+    Dim eventMask As IntPtr = SendMessage( _
+       richTextBox1.Handle, EM_GETEVENTMASK, 0, IntPtr.Zero)
+
+    ' Get the selection extent:
+    Dim selStart = richTextBox1.SelectionStart
+    Dim selEnd = richTextBox1.SelectionStart + richTextBox1.SelectionLength
+
+
+    ... perform processing here ...
+
+
+
+     ' Turn events back on again:
+     SendMessage(richTextBox1.Handle, EM_SETEVENTMASK, 0, eventMask)
+     
+     ' Select the correct range (we must do this with events on otherwise
+     ' the scroll state is inconsistent):
+     richTextBox1.Select(selStart, selSize)
+                
+     ' Turn redraw back on again:
+     SendMessage(richTextBox1.Handle, WM_SETREDRAW, 1, IntPtr.Zero)
+     richTextBox1.ResumeLayout()
+     
+     ' Show changes
+     richTextBox1.Invalidate()
+
+</pre><p>
+Using this technique you can process through quite large ranges in the RichTextBox
+without flickering.  These sort of techniques can be used to create highlighting
+type applications using a RichTextBox control (although it would be better to
+start with something more useful and actually works, like the cool <a href="..\..\..\..\..\resources\links\net\sharpdevelop\article.html">SharpDevelop code editor control</a>.)
+</p><p>The remainder of the demonstration is easier.  The code hooks up the
+<span class="code">CloseUp</span> and <span class="code">SelectedIndexChanged</span>
+from the <span class="code">FontComboBox</span>.  Whenever a drop-down is closed up,
+the font is changed to the current selection in the control.  When the selected index
+changes, the code checks if the combo box is dropped using the base <span class="code">DroppedDown</span> property, and if it it's not down, changes the font.
+</p><h2>Conclusion</h2><p>
+This article provides a Font Picker control which has the features you need to emulate
+the Office font picking applications.   You can use this control either to pick a
+particular font, or, with some more effort around dealing with the RichEdit control,
+as part of a functionally-rich content editing application.
+</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBox and ComboBox</a>&#160;.&#160;Font ComboBox</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 15 November 2003</p></td><td></td></tr></table>
+</body></html>

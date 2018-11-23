@@ -1,0 +1,1650 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: vbalCommandBar.ctl</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: vbalCommandBar.ctl" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Office 2003 CommandBars</a>&#160;.&#160;<a href="vbalcommandbar.html">vbalCommandBar</a>&#160;.&#160;vbalCommandBar.ctl</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="vbalcommandbar.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />vbalCommandBar</a> (45K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13403</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=13403&type=zip&title=vbalcommandbar_2ezip_5fvbalcommandbar.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />5 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\menus_from_first_principles\article.html">(Incomplete) Menus From First Principles</a></p><p class="nav"><img src="..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\vb\code\controls\toolbar\vbaccelerator_office_docking_bar\article.html">vbAccelerator Office Docking Bar Control</a></p><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: vbalCommandBar.ctl</h1><pre>VERSION 5.00
+Begin VB.UserControl vbalCommandBar 
+   ClientHeight    =   3600
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   4800
+   ControlContainer=   -1  'True
+   ScaleHeight     =   240
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   320
+   Begin VB.Timer tmrLostMouse 
+      Enabled         =   0   'False
+      Interval        =   50
+      Left            =   480
+      Top             =   1680
+   End
+End
+Attribute VB_Name = "vbalCommandBar"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+Public Enum EButtonStyle
+   
+   ' A normal push button
+   eNormal
+   
+   ' A group separator
+   eSeparator
+   
+   ' A button which is split and should have a drop down
+   eSplit
+   
+   ' A panel which holds a control. When the toolbar is shown
+   ' in a vertical orientation, the panel is either hidden or,
+   ' if the object has a valid icon index, it is displayed
+   ' as a push button.
+   ePanel
+      
+   ' A checkable button.
+   eCheck
+   
+   ' A checkable button that toggles off any other buttons in
+   ' the group when checked. In a radio group at least one
+   ' button must be checked.
+   eRadio
+   
+   ' A checkable button that toggles off any other button
+   ' in the group when checked.  In a nullable radio group
+   ' a checked radio button can be unchecked.
+   eRadioNullable
+End Enum
+
+Public Enum ECommandBarOrientation
+   eTop
+   eLeft
+   eRight
+   eBottom
+End Enum
+
+Private m_hWnd As Long
+Private m_bDesignTime As Boolean
+
+Private m_bEnabled As Boolean
+Private m_bVisible As Boolean
+Private m_bRedraw As Boolean
+
+Private m_bPopup As Boolean
+Private m_bPopupVisibleChecks As Boolean
+Private m_bWrappable As Boolean
+Private m_bTopLevelMenuStyle As Boolean
+
+Private m_eOrientation As ECommandBarOrientation
+Private m_sToolBarKey As String
+Private m_lIconWidth As Long
+Private m_lIconHeight As Long
+Private m_hIml As Long
+Private m_ptrVB6Iml As Long
+Private m_bInDragMode As Boolean
+
+Private m_item() As cDisplayButtonInfo
+Private m_sLastToolTip As String
+
+Private m_fntCache As New cFontCache
+
+Public Event ButtonDropDown(btn As cButton, cancel As Boolean)
+Public Event ButtonClick(btn As cButton)
+Public Event RequestNewInstance(ctl As Object)
+
+
+Friend Function NewInstance() As vbalCommandBar
+   '
+   Dim ctl As vbalCommandBar
+   RaiseEvent RequestNewInstance(ctl)
+   Set NewInstance = ctl
+   '
+End Function
+
+Public Sub TestMenu()
+   m_bPopup = True
+   m_eOrientation = eTop
+End Sub
+
+Public Property Let ImageList( _
+        ByRef vImageList As Variant _
+    )
+    m_hIml = 0
+    m_ptrVB6Iml = 0
+    If (VarType(vImageList) = vbLong) Then
+        ' Assume a handle to an image list:
+        m_hIml = vImageList
+    ElseIf (VarType(vImageList) = vbObject) Then
+        ' Assume a VB image list:
+        On Error Resume Next
+        ' Get the image list initialised..
+        vImageList.ListImages(1).Draw 0, 0, 0, 1
+        m_hIml = vImageList.hImageList
+        If (Err.Number = 0) Then
+            ' Check for VB6 image list:
+            If (TypeName(vImageList) = "ImageList") Then
+               Dim o As Object
+               Set o = vImageList
+               m_ptrVB6Iml = ObjPtr(o)
+            End If
+        Else
+            Debug.Print "Failed to Get Image list Handle", "cVGrid.ImageList"
+        End If
+        On Error GoTo 0
+    End If
+    If (m_hIml &lt;&gt; 0) Then
+        If (m_ptrVB6Iml &lt;&gt; 0) Then
+            m_lIconWidth = vImageList.ImageWidth
+            m_lIconHeight = vImageList.ImageHeight
+        Else
+            Dim rc As RECT
+            ImageList_GetImageRect m_hIml, 0, rc
+            m_lIconWidth = rc.right - rc.left
+            m_lIconHeight = rc.bottom - rc.top
+        End If
+    End If
+End Property
+Public Property Get Redraw() As Boolean
+   Redraw = m_bRedraw
+End Property
+Public Property Let Redraw(ByVal bState As Boolean)
+   If Not (m_bRedraw = bState) Then
+      m_bRedraw = bState
+      If (m_bRedraw) Then
+         UserControl.Refresh
+      End If
+      PropertyChanged "Redraw"
+   End If
+End Property
+Public Property Get Font() As IFont
+   Set Font = UserControl.Font
+End Property
+Public Property Let Font(ifnt As IFont)
+   Set UserControl.Font = ifnt
+   PropertyChanged "Font"
+End Property
+Public Property Set Font(ifnt As IFont)
+   Set UserControl.Font = ifnt
+   PropertyChanged "Font"
+End Property
+Public Property Get Enabled() As Boolean
+   Enabled = m_bEnabled
+End Property
+Public Property Let Enabled(ByVal bEnabled As Boolean)
+   m_bEnabled = bEnabled
+   PropertyChanged "Enabled"
+End Property
+Public Property Get HideInfrequentlyUsed() As Boolean
+   HideInfrequentlyUsed = mCommandBars.HideInfrequentlyUsed
+End Property
+Public Property Let HideInfrequentlyUsed(ByVal bState As Boolean)
+   mCommandBars.HideInfrequentlyUsed = bState
+   PropertyChanged "HideInfrequentlyUsed"
+End Property
+
+Public Sub Dump()
+   
+   Dim barInt As cCommandBarInt
+   Dim btnInt As cButtonInt
+   Dim i As Long
+   Dim j As Long
+   
+   For i = 1 To mCommandBars.BarCount
+      Set barInt = mCommandBars.BarItem(i)
+      barInt.Dump 1
+   Next i
+      
+End Sub
+
+Public Property Get IdealSize() As Long
+   '
+   '
+End Property
+
+Public Property Get Toolbar() As cCommandBar
+   If Len(m_sToolBarKey) &gt; 0 Then
+      Dim c As New cCommandBar
+      c.fInit m_hWnd, m_sToolBarKey
+      Set Toolbar = c
+   End If
+End Property
+Public Property Let Toolbar(Bar As cCommandBar)
+   pSetToolbar Bar
+End Property
+Public Property Set Toolbar(Bar As cCommandBar)
+   pSetToolbar Bar
+End Property
+Private Sub pSetToolbar(Bar As cCommandBar)
+      
+   Dim barInt As cCommandBarInt
+   If Len(m_sToolBarKey) &gt; 0 Then
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      If Not barInt Is Nothing Then
+         barInt.ReleaseRef m_hWnd
+      End If
+   End If
+
+   If (Bar Is Nothing) Then
+      m_sToolBarKey = ""
+      fResize
+      fPaint
+   Else
+      m_sToolBarKey = Bar.Key
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      barInt.AddRefhWnd m_hWnd
+      Dim i As Long
+      Dim ctl As Object
+      For i = 1 To barInt.Count
+         Set ctl = barInt.Item(i).PanelControl
+         If Not ctl Is Nothing Then
+            On Error Resume Next
+            Set ctl.Container = UserControl.Extender
+            On Error GoTo 0
+         End If
+      Next i
+      fResize
+      fPaint
+   End If
+End Sub
+
+Public Property Get CommandBars() As cCommandBars
+   Dim c As New cCommandBars
+   c.fInit m_hWnd
+   Set CommandBars = c
+End Property
+Public Property Get Buttons() As cButtons
+   Dim c As New cButtons
+   c.fInit m_hWnd
+   Set Buttons = c
+End Property
+
+
+Friend Property Get Popup() As Boolean
+   Popup = m_bPopup
+End Property
+
+Friend Function BarCount() As Long
+   If Not (m_hWnd = 0) Then
+      BarCount = mCommandBars.BarCount
+   End If
+End Function
+Friend Function BarItem(ByVal index As Variant) As cCommandBar
+   If Not (m_hWnd = 0) Then
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(index)
+      If Not (barInt Is Nothing) Then
+         Dim c As New cCommandBar
+         c.fInit m_hWnd, barInt.Key
+         Set BarItem = c
+      End If
+   End If
+End Function
+Friend Property Get BarTitle(ByVal sKey As String) As String
+   If Not (m_hWnd = 0) Then
+      Dim intBar As cCommandBarInt
+      Set intBar = mCommandBars.BarItem(sKey)
+      If Not (intBar Is Nothing) Then
+         BarTitle = intBar.Title
+      End If
+   End If
+End Property
+Friend Property Let BarTitle(ByVal sKey As String, ByVal sTitle As String)
+   If Not (m_hWnd = 0) Then
+      Dim intBar As cCommandBarInt
+      Set intBar = mCommandBars.BarItem(sKey)
+      If Not (intBar Is Nothing) Then
+         intBar.Title = sTitle
+      End If
+   End If
+End Property
+Friend Sub BarRemove(ByVal sKey As String)
+   If Not (m_hWnd = 0) Then
+      mCommandBars.BarRemove sKey
+   End If
+End Sub
+Friend Function BarAdd(ByVal sKey As String, ByVal sTitle As String) As
+ cCommandBar
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarAdd(sKey)
+   If Not (barInt Is Nothing) Then
+      If Len(sTitle) &gt; 0 Then
+         barInt.Title = sTitle
+      End If
+      Dim c As New cCommandBar
+      c.fInit m_hWnd, sKey
+      Set BarAdd = c
+   End If
+End Function
+
+Friend Property Get BarButtonCount(ByVal sKey As String) As Long
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sKey)
+   If Not (barInt Is Nothing) Then
+      BarButtonCount = barInt.Count
+   End If
+End Property
+Friend Sub BarButtonClear(ByVal sKey As String)
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sKey)
+   If Not (barInt Is Nothing) Then
+      barInt.Clear
+   End If
+End Sub
+Friend Function BarButtonCollection(ByVal sKey As String) As cCommandBarButtons
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sKey)
+   If Not (barInt Is Nothing) Then
+      Dim c As New cCommandBarButtons
+      c.fInit m_hWnd, sKey
+      Set BarButtonCollection = c
+   End If
+End Function
+Friend Sub BarButtonRemove(ByVal sBarKey As String, ByVal sButtonKey As String)
+Dim barInt As cCommandBarInt
+Dim btnInt As cButtonInt
+   Set barInt = mCommandBars.BarItem(sBarKey)
+   If Not (barInt Is Nothing) Then
+      Set btnInt = mCommandBars.ButtonItem(sButtonKey)
+      barInt.Remove btnInt
+   End If
+End Sub
+Friend Sub BarButtonAdd(ByVal sBarKey As String, btn As cButton)
+Dim btnInt As cButtonInt
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sBarKey)
+   If Not (barInt Is Nothing) Then
+      Set btnInt = mCommandBars.ButtonItem(btn.Key)
+      If Not (btnInt Is Nothing) Then
+         barInt.Add btnInt
+      End If
+   End If
+End Sub
+Friend Sub BarButtonInsertAfter(ByVal sBarKey As String, btn As cButton,
+ btnAfter As cButton)
+Dim btnInt As cButtonInt
+Dim btnAfterInt As cButtonInt
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sBarKey)
+   If Not (barInt Is Nothing) Then
+      Set btnInt = mCommandBars.ButtonItem(btn.Key)
+      If Not (btnInt Is Nothing) Then
+         Set btnAfterInt = mCommandBars.ButtonItem(btnAfter.Key)
+         If Not (btnAfterInt Is Nothing) Then
+            barInt.InsertAfter btnInt, btnAfterInt
+         End If
+      End If
+   End If
+End Sub
+Friend Sub BarButtonInsertBefore(ByVal sBarKey As String, btn As cButton,
+ btnBefore As cButton)
+Dim btnInt As cButtonInt
+Dim btnBeforeInt As cButtonInt
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sBarKey)
+   If Not (barInt Is Nothing) Then
+      Set btnInt = mCommandBars.ButtonItem(btn.Key)
+      If Not (btnInt Is Nothing) Then
+         Set btnBeforeInt = mCommandBars.ButtonItem(btnBefore.Key)
+         If Not (btnBeforeInt Is Nothing) Then
+            barInt.InsertBefore btnInt, btnBeforeInt
+         End If
+      End If
+   End If
+End Sub
+Friend Property Get BarButton(ByVal sBarKey As String, ByVal index As Variant)
+ As cButton
+Dim btnInt As cButtonInt
+Dim barInt As cCommandBarInt
+   Set barInt = mCommandBars.BarItem(sBarKey)
+   If Not (barInt Is Nothing) Then
+      Set btnInt = barInt.Item(index)
+      If Not (btnInt Is Nothing) Then
+         Dim c As New cButton
+         c.fInit m_hWnd, btnInt.Key
+         Set BarButton = c
+      End If
+   End If
+End Property
+
+Friend Function ButtonCount() As Long
+   If Not (m_hWnd = 0) Then
+      ButtonCount = mCommandBars.ButtonCount
+   End If
+End Function
+Friend Function ButtonItem(ByVal index As Variant) As cButton
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(index)
+      If Not (btnInt Is Nothing) Then
+         Dim c As New cButton
+         c.fInit m_hWnd, btnInt.Key
+         Set ButtonItem = c
+      End If
+   End If
+End Function
+Friend Sub ButtonRemove(ByVal sKey As String)
+   If Not (m_hWnd = 0) Then
+      mCommandBars.ButtonRemove sKey
+   End If
+End Sub
+Friend Function ButtonAdd( _
+      ByVal sKey As String, _
+      Optional ByVal iIcon As Long = -1, _
+      Optional ByVal sCaption As String = "", _
+      Optional ByVal eStyle As EButtonStyle = eNormal, _
+      Optional ByVal sToolTip As String = "", _
+      Optional ByVal sShortcutKey As String = "", _
+      Optional ByVal eShortcutModifier As ShiftConstants = vbCtrlMask _
+   ) As cButton
+Dim btnInt As cButtonInt
+   Set btnInt = mCommandBars.ButtonAdd(sKey)
+   If Not (btnInt Is Nothing) Then
+      If (iIcon &lt;&gt; -1) Then
+         btnInt.iconIndex = iIcon
+      End If
+      If Len(sCaption) &gt; 0 Then
+         btnInt.Caption = sCaption
+      End If
+      If (eStyle &lt;&gt; eNormal) Then
+         btnInt.Style = eStyle
+      End If
+      btnInt.ShortcutKey = sShortcutKey
+      btnInt.ShortcutModifiers = eShortcutModifier
+      btnInt.ToolTip = sToolTip
+      Dim c As New cButton
+      c.fInit m_hWnd, sKey
+      Set ButtonAdd = c
+   End If
+End Function
+Friend Property Get ButtonCaption(ByVal sKey As String) As String
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonCaption = btnInt.Caption
+      End If
+   End If
+End Property
+Friend Property Let ButtonCaption(ByVal sKey As String, ByVal sCaption As
+ String)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.Caption = sCaption
+      End If
+   End If
+End Property
+Friend Property Get ButtonShortcutKey(ByVal sKey As String) As String
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonShortcutKey = btnInt.ShortcutKey
+      End If
+   End If
+End Property
+Friend Property Let ButtonShortcutKey(ByVal sKey As String, ByVal sShortcutKey
+ As String)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.ShortcutKey = sShortcutKey
+      End If
+   End If
+End Property
+Friend Property Get ButtonShortcutModifiers(ByVal sKey As String) As
+ ShiftConstants
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonShortcutModifiers = btnInt.ShortcutModifiers
+      End If
+   End If
+End Property
+Friend Property Let ButtonShortcutModifiers(ByVal sKey As String, ByVal
+ eShortcutModifiers As ShiftConstants)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.ShortcutModifiers = eShortcutModifiers
+      End If
+   End If
+End Property
+Friend Property Get ButtonToolTip(ByVal sKey As String) As String
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonToolTip = btnInt.ToolTip
+      End If
+   End If
+End Property
+Friend Property Let ButtonToolTip(ByVal sKey As String, ByVal sToolTip As
+ String)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.ToolTip = sToolTip
+      End If
+   End If
+End Property
+Friend Property Get ButtonIconIndex(ByVal sKey As String) As Long
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonIconIndex = btnInt.iconIndex
+      End If
+   End If
+End Property
+Friend Property Let ButtonIconIndex(ByVal sKey As String, ByVal lIconIndex As
+ Long)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.iconIndex = lIconIndex
+      End If
+   End If
+End Property
+Friend Property Get ButtonPanelWidth(ByVal sKey As String) As Long
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonPanelWidth = btnInt.PanelWidth
+      End If
+   End If
+End Property
+Friend Property Let ButtonPanelWidth(ByVal sKey As String, ByVal lPanelWidth As
+ Long)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.PanelWidth = lPanelWidth
+      End If
+   End If
+End Property
+Friend Property Get ButtonPanelControl(ByVal sKey As String) As Object
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         Set ButtonPanelControl = btnInt.PanelControl
+      End If
+   End If
+End Property
+Friend Property Let ButtonPanelControl(ByVal sKey As String, ctl As Object)
+   pSetButtonPanelControl sKey, ctl
+End Property
+Friend Property Set ButtonPanelControl(ByVal sKey As String, ctl As Object)
+   pSetButtonPanelControl sKey, ctl
+End Property
+Private Sub pSetButtonPanelControl(ByVal sKey As String, ctl As Object)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         Dim ctlPrev As Object
+         Set ctlPrev = btnInt.PanelControl
+         If Not (ctlPrev Is Nothing) Then
+            On Error Resume Next
+            ctlPrev.Visible = False
+            On Error GoTo 0
+         End If
+         If (ctl Is Nothing) Then
+            Set btnInt.PanelControl = Nothing
+         Else
+            On Error Resume Next
+            Set ctl.Container = UserControl.Extender
+            ctl.Visible = False
+            On Error GoTo 0
+            Set btnInt.PanelControl = ctl
+         End If
+      End If
+   End If
+
+End Sub
+Friend Property Get ButtonEnabled(ByVal sKey As String) As Boolean
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonEnabled = btnInt.Enabled
+      End If
+   End If
+End Property
+Friend Property Let ButtonEnabled(ByVal sKey As String, ByVal bEnabled As
+ Boolean)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.Enabled = bEnabled
+      End If
+   End If
+End Property
+Friend Property Get ButtonVisible(ByVal sKey As String) As Boolean
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonVisible = btnInt.Visible
+      End If
+   End If
+End Property
+Friend Property Let ButtonVisible(ByVal sKey As String, ByVal bVisible As
+ Boolean)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.Visible = bVisible
+      End If
+   End If
+End Property
+Friend Property Get ButtonChecked(ByVal sKey As String) As Boolean
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonChecked = btnInt.Checked
+      End If
+   End If
+End Property
+Friend Property Let ButtonChecked(ByVal sKey As String, ByVal bChecked As
+ Boolean)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.Checked = bChecked
+      End If
+   End If
+End Property
+Friend Property Get ButtonShowCaptionInToolbar(ByVal sKey As String) As Boolean
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonShowCaptionInToolbar = btnInt.ShowCaptionInToolbar
+      End If
+   End If
+End Property
+Friend Property Let ButtonShowCaptionInToolbar(ByVal sKey As String, ByVal
+ bShowCaptionInToolbar As Boolean)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.ShowCaptionInToolbar = bShowCaptionInToolbar
+      End If
+   End If
+End Property
+Friend Property Get ButtonShowDropDownInToolbar(ByVal sKey As String) As Boolean
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonShowDropDownInToolbar = btnInt.ShowDropDownInToolbar
+      End If
+   End If
+End Property
+Friend Property Let ButtonShowDropDownInToolbar(ByVal sKey As String, ByVal
+ bShowDropDownInToolbar As Boolean)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.ShowDropDownInToolbar = bShowDropDownInToolbar
+      End If
+   End If
+End Property
+Friend Property Get ButtonStyle(ByVal sKey As String) As EButtonStyle
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         ButtonStyle = btnInt.Style
+      End If
+   End If
+End Property
+Friend Property Let ButtonStyle(ByVal sKey As String, ByVal eStyle As
+ EButtonStyle)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         btnInt.Style = eStyle
+      End If
+   End If
+End Property
+Friend Property Get ButtonBar(ByVal sKey As String) As cCommandBar
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         Dim barInt As cCommandBarInt
+         Set barInt = btnInt.Bar
+         If Not (barInt Is Nothing) Then
+            Dim c As New cCommandBar
+            c.fInit m_hWnd, barInt.Key
+            Set ButtonBar = c
+         End If
+      End If
+   End If
+End Property
+Friend Sub ButtonSetBar(ByVal sKey As String, cmdBar As cCommandBar)
+   If Not (m_hWnd = 0) Then
+      Dim btnInt As cButtonInt
+      Dim barInt As cCommandBarInt
+      Set btnInt = mCommandBars.ButtonItem(sKey)
+      If Not (btnInt Is Nothing) Then
+         Set barInt = mCommandBars.BarItem(cmdBar.Key)
+         If Not (barInt Is Nothing) Then
+            btnInt.SetBar barInt
+         End If
+      End If
+   End If
+End Sub
+
+Friend Sub ChangeNotification(Bar As cCommandBarInt, ByVal eventType As Long,
+ itm As cButtonInt)
+   '
+   If StrComp(Bar.Key, m_sToolBarKey) = 0 Then
+      If (eventType = CHANGENOTIFICATIONBARCONTENTCHANGE) Or _
+         (eventType = CHANGENOTIFICATIONBUTTONSIZECHANGE) Then
+         fResize
+      End If
+      If Not (itm Is Nothing) And _
+         (eventType = CHANGENOTIFICATIONBUTTONREDRAW) Or _
+         (eventType = CHANGENOTIFICATIONBUTTONCHECKCHANGE) Then
+         fPaintOneButton Bar.IndexOf(itm.Key)
+      Else
+         fPaint
+      End If
+   End If
+   '
+End Sub
+
+Private Sub prepareDisplayItemArray(barInt As cCommandBarInt)
+   If (barInt.Count &gt; 0) Then
+      Dim i As Long
+      ReDim Preserve m_item(1 To barInt.Count) As cDisplayButtonInfo
+      For i = 1 To barInt.Count
+         Set m_item(i) = New cDisplayButtonInfo
+      Next i
+   End If
+End Sub
+
+Friend Sub fResize()
+   '
+   
+   Erase m_item
+   
+   If Len(m_sToolBarKey) &gt; 0 Then
+      
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      
+      If Not (barInt Is Nothing) Then
+         
+         prepareDisplayItemArray barInt
+         
+         Dim tR As RECT
+         GetClientRect m_hWnd, tR
+   
+         Dim cMP As New cMeasureButtonParams
+         With cMP
+            .FontFace = Me.Font.Name
+            .FontSize = Me.Font.Size
+            .hDC = UserControl.hDC
+            .Height = tR.bottom - tR.top
+            .hFont = plGetHFont()
+            .hWnd = m_hWnd
+            .IconHeight = m_lIconHeight
+            .IconWidth = m_lIconWidth
+            .RightToLeft = pbRightToLeft()
+            .Size = tR.right - tR.left
+         End With
+   
+         If (m_bPopup) Then
+            '
+            cMP.Orientation = eTop
+            If m_bPopupVisibleChecks Then
+               cMP.SizeStyle = COMMANDBARSIZESTYLEMENUVISIBLECHECK
+            Else
+               cMP.SizeStyle = COMMANDBARSIZESTYLEMENU
+            End If            '
+            cMP.Size = cMP.Size - 4
+            
+            ' we need to calculate the required width &amp; height
+            ' of the control:
+            Dim menuWidth As Long
+            Dim menuHeight As Long
+            If (barInt.Count &gt; 0) Then
+               barInt.CalculateMenuSize cMP, menuWidth, menuHeight, m_item
+               
+               UserControl.Extender.width = menuWidth
+               UserControl.Extender.Height = menuHeight + 2
+            End If
+            
+            '
+         Else
+            '
+            Dim toolbarWidth As Long
+            Dim toolbarHeight As Long
+            
+            toolbarWidth = tR.right - tR.left
+            toolbarHeight = tR.bottom - tR.top
+            cMP.Orientation = m_eOrientation
+            
+            ' the calculation result depends on whether we're wrappable or not
+            If (m_bWrappable) Or (m_bTopLevelMenuStyle) Then
+               '
+               
+               If (m_bTopLevelMenuStyle) Then
+                  cMP.SizeStyle = COMMANDBARSIZESTYLETOOLBARMENU
+               Else
+                  cMP.SizeStyle = COMMANDBARSIZESTYLETOOLBARWRAPPABLE
+               End If
+               
+               ' Given the current width, what height do we need
+               ' to be?
+            
+            Else
+               '
+               cMP.SizeStyle = COMMANDBARSIZESTYLETOOLBAR
+               
+               ' The current width is preset, we need to decide
+               ' which items to make invisible
+               If (barInt.Count &gt; 0) Then
+                  prepareDisplayItemArray barInt
+                  barInt.CalculateToolbarSize cMP, toolbarWidth, toolbarHeight,
+                   m_item
+                                    
+                  If (m_eOrientation = eLeft) Or (m_eOrientation = eRight) Then
+                     UserControl.Extender.width = toolbarHeight
+                  Else
+                     UserControl.Extender.Height = toolbarHeight
+                  End If
+               End If
+            
+            End If
+            
+            '
+         End If
+         
+      End If
+   End If
+   '
+End Sub
+
+Friend Sub fPaint()
+   '
+   If (m_bRedraw And m_bVisible) Then
+   
+      Dim lhDC As Long
+      Dim tR As RECT
+      
+      lhDC = UserControl.hDC
+      GetClientRect m_hWnd, tR
+      
+      If (m_bPopup) Then
+      
+         pPaintMenuBackground lhDC, tR.left, tR.top, tR.right, tR.bottom, False
+         
+      Else
+         ' paint the background to the bar:
+         UtilDrawBackground lhDC, _
+            GradientColorStart, GradientColorEnd, _
+            tR.left, tR.top, tR.right - tR.left, tR.bottom - tR.top, _
+            ((m_eOrientation = eRight) Or (m_eOrientation = eLeft))
+      End If
+            
+      ' ask the bar to render itself, if any:
+      If Len(m_sToolBarKey) &gt; 0 Then
+         
+         Dim barInt As cCommandBarInt
+         Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+         If Not (barInt Is Nothing) Then
+            
+            Dim cDP As New cDrawButtonParams
+            
+            cDP.hWnd = m_hWnd
+            cDP.hDC = lhDC
+            cDP.hIml = m_hIml
+            cDP.ptrVB6Iml = m_ptrVB6Iml
+            cDP.FontFace = UserControl.Font.Name
+            cDP.FontSize = UserControl.Font.Size
+            cDP.hFont = plGetHFont()
+            cDP.IconWidth = m_lIconWidth
+            cDP.IconHeight = m_lIconHeight
+            cDP.Enabled = m_bEnabled
+            cDP.RightToLeft = pbRightToLeft()
+            
+            If (m_bPopup) Then
+               cDP.Orientation = eTop
+               If (m_bPopupVisibleChecks) Then
+                  cDP.SizeStyle = COMMANDBARSIZESTYLEMENUVISIBLECHECK
+               Else
+                  cDP.SizeStyle = COMMANDBARSIZESTYLEMENU
+               End If
+            Else
+               cDP.Orientation = m_eOrientation
+               If (cDP.Orientation = eLeft) Or (cDP.Orientation = eRight) Then
+                  cDP.ToolbarSize = tR.right - tR.left
+               Else
+                  cDP.ToolbarSize = tR.bottom - tR.top
+               End If
+               If (m_bWrappable) Then
+                  cDP.SizeStyle = COMMANDBARSIZESTYLETOOLBARWRAPPABLE
+               Else
+                  cDP.SizeStyle = COMMANDBARSIZESTYLETOOLBAR
+               End If
+            End If
+            barInt.Draw cDP, m_item
+            
+         End If
+      End If
+   
+   End If
+   '
+End Sub
+
+Private Sub pPaintMenuBackground( _
+      ByVal lhDC As Long, _
+      ByVal lLeft As Long, ByVal lTop As Long, _
+      ByVal lRight As Long, ByVal lBottom As Long, _
+      ByVal bForOneItem As Boolean _
+   )
+   
+   Dim lSideBarWidth As Long
+   lSideBarWidth = m_lIconWidth + 8
+   
+   If (m_bPopupVisibleChecks) Then
+      ' Add the extra side bar width
+      lSideBarWidth = lSideBarWidth + m_lIconWidth + 2
+   End If
+   
+   UtilDrawBackground lhDC, _
+      MenuBackgroundColorStart, MenuBackgroundColorEnd, _
+      lLeft, lTop, lRight - lLeft, lBottom - lTop
+      
+   Dim tR As RECT
+   GetClientRect m_hWnd, tR
+   UtilDrawBorderRectangle lhDC, _
+      tR.left, tR.top, tR.right - tR.left, tR.bottom - tR.top
+   
+   lLeft = lLeft + 1
+   lRight = lRight - 2
+   If Not (bForOneItem) Then
+      lTop = lTop + 2
+      lBottom = lBottom - 2
+   ElseIf lTop = 1 Then
+      lTop = lTop + 1
+   End If
+      
+   ' paint the side bar:
+   If (pbRightToLeft()) Then
+      UtilDrawBackground lhDC, _
+         GradientColorStart, GradientColorEnd, _
+         lRight - lSideBarWidth, lTop, lSideBarWidth, lBottom - lTop, _
+         True
+   Else
+      UtilDrawBackground lhDC, _
+         GradientColorStart, GradientColorEnd, _
+         lLeft, lTop, lSideBarWidth, lBottom - lTop, _
+         True
+   End If
+
+End Sub
+
+Friend Sub fPaintOneButton(ByVal lIndex As Long)
+   '
+   If (m_bRedraw And m_bVisible) Then
+         
+      ' the bar:
+      If Len(m_sToolBarKey) &gt; 0 Then
+         Dim barInt As cCommandBarInt
+         Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+         If Not (barInt Is Nothing) Then
+      
+            Dim lhDC As Long
+            lhDC = UserControl.hDC
+                     
+            ' Set up to draw the button:
+            Dim cDP As New cDrawButtonParams
+               
+            cDP.hWnd = m_hWnd
+            cDP.hDC = lhDC
+            cDP.hIml = m_hIml
+            cDP.ptrVB6Iml = m_ptrVB6Iml
+            cDP.FontFace = UserControl.Font.Name
+            cDP.FontSize = UserControl.Font.Size
+            cDP.hFont = plGetHFont()
+            cDP.IconWidth = m_lIconWidth
+            cDP.IconHeight = m_lIconHeight
+            cDP.Enabled = m_bEnabled
+            cDP.RightToLeft = pbRightToLeft()
+            If (m_bPopup) Then
+               cDP.Orientation = eTop
+               If (m_bPopupVisibleChecks) Then
+                  cDP.SizeStyle = COMMANDBARSIZESTYLEMENUVISIBLECHECK
+               Else
+                  cDP.SizeStyle = COMMANDBARSIZESTYLEMENU
+               End If
+            Else
+               cDP.Orientation = m_eOrientation
+               If (m_bWrappable) Then
+                  cDP.SizeStyle = COMMANDBARSIZESTYLETOOLBARWRAPPABLE
+               Else
+                  cDP.SizeStyle = COMMANDBARSIZESTYLETOOLBAR
+               End If
+            End If
+            cDP.left = m_item(lIndex).left
+            cDP.top = m_item(lIndex).top
+            cDP.Size = m_item(lIndex).right - m_item(lIndex).left
+            cDP.Height = m_item(lIndex).bottom - m_item(lIndex).top
+            cDP.MouseDownButton = m_item(lIndex).mouseDown
+            cDP.MouseOverButton = m_item(lIndex).mouseOver
+            cDP.mouseDownSplit = m_item(lIndex).mouseDownSplit
+            cDP.mouseOverSplit = m_item(lIndex).mouseOverSplit
+   
+            ' paint the background to the item:
+            If (cDP.SizeStyle = COMMANDBARSIZESTYLETOOLBARWRAPPABLE) Or _
+               (cDP.SizeStyle = COMMANDBARSIZESTYLETOOLBAR) Then
+               Dim lBackWidth As Long
+               Dim lBackHeight As Long
+               Dim lBackLeft As Long
+               Dim lBackTop As Long
+               Dim tR As RECT
+               lBackWidth = m_item(lIndex).right - m_item(lIndex).left
+               lBackHeight = m_item(lIndex).bottom - m_item(lIndex).top
+               lBackLeft = m_item(lIndex).left
+               lBackTop = m_item(lIndex).top
+               GetClientRect m_hWnd, tR
+               If (m_eOrientation = eLeft) Or (m_eOrientation = eRight) Then
+                  lBackLeft = 0
+                  lBackWidth = tR.right - tR.left
+               Else
+                  lBackHeight = tR.bottom - tR.top
+               End If
+               UtilDrawBackground lhDC, GradientColorStart, GradientColorEnd, _
+                  lBackLeft, lBackTop, _
+                  lBackWidth, lBackHeight, _
+                  ((m_eOrientation = eLeft) Or (m_eOrientation = eRight))
+            Else
+               Dim lTop As Long
+               lTop = m_item(lIndex).top
+               If (lIndex = 1) Then lTop = lTop + 1 ' comment-on-dit 'hax0r'?
+               pPaintMenuBackground lhDC, _
+                  m_item(lIndex).left, lTop, _
+                  m_item(lIndex).right, m_item(lIndex).bottom, _
+                  True
+            End If
+   
+            barInt.DrawOneButton cDP, lIndex
+      
+         End If
+         
+      End If
+   
+   End If
+   '
+
+End Sub
+
+Friend Function fHitTest(ByVal x As Long, ByVal y As Long) As Long
+Dim i As Long
+   If Len(m_sToolBarKey) &gt; 0 Then
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      If Not (barInt Is Nothing) Then
+         For i = 1 To barInt.Count
+            If (x &gt;= m_item(i).left) And (x &lt;= m_item(i).right) Then
+               If (y &gt;= m_item(i).top And y &lt;= m_item(i).bottom) Then
+                  fHitTest = i
+                  Exit For
+               End If
+            End If
+         Next i
+      End If
+   End If
+End Function
+
+Friend Function fTrack(ByVal button As MouseButtonConstants, ByVal iIndex As
+ Long, Optional ByVal mouseDown As Boolean) As Long
+   
+   Dim sToolTip As String
+   
+   If Len(m_sToolBarKey) &gt; 0 Then
+   
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      
+      If Not (barInt Is Nothing) Then
+         
+         Dim i As Long
+         Dim j As Long
+         Dim changeCount As Long
+         Dim changeIndex() As Long
+         Dim track As Boolean
+         Dim found As Long
+         Dim tP As POINTAPI
+         Dim xOffset As Long
+         Dim yOffset As Long
+         Dim addChange As Boolean
+
+         For i = 1 To barInt.Count
+            addChange = False
+            
+            If (i = iIndex) Then
+               
+               sToolTip = barInt.Item(i).TooltipText(True)
+               
+               If (barInt.Item(i).CanAction(m_eOrientation)) Then
+                                    
+                  If (barInt.Item(i).Style = eSplit) Then
+                     ' check if we're over split or not:
+                     GetCursorPos tP
+                     ScreenToClient m_hWnd, tP
+                     xOffset = tP.x - m_item(i).left
+                     yOffset = tP.y - m_item(i).top
+                     Dim OverSplit As Boolean
+                     OverSplit = barInt.Item(i).OverSplit( _
+                        xOffset, yOffset, _
+                        m_item(i).right - m_item(i).left, m_item(i).bottom -
+                         m_item(i).top, _
+                        pbRightToLeft(), m_eOrientation)
+                     If (OverSplit) Then
+                        If Not (m_item(i).mouseOverSplit) Then
+                           If (button = vbLeftButton) Then
+                              m_item(i).mouseOverSplit =
+                               m_item(i).mouseDownSplit
+                           Else
+                              m_item(i).mouseOverSplit = True
+                           End If
+                           m_item(i).mouseOver = False
+                           addChange = True
+                        End If
+                     Else
+                        If Not (m_item(i).mouseOver) Then
+                           If (button = vbLeftButton) Then
+                              m_item(i).mouseOver = m_item(i).mouseDown
+                           Else
+                              m_item(i).mouseOver = True
+                           End If
+                           m_item(i).mouseOverSplit = False
+                           addChange = True
+                        End If
+                     End If
+                  Else
+                     If Not (m_item(i).mouseOver) Then
+                        If (button = vbLeftButton) Then
+                           m_item(i).mouseOver = m_item(i).mouseDown
+                        Else
+                           m_item(i).mouseOver = True
+                        End If
+                        addChange = True
+                     End If
+                  End If
+                  
+                  If (addChange) Then
+                     track = True
+                  End If
+                                 
+                  If mouseDown Then
+                     track = False
+                     If (barInt.Item(i).Style = eSplit) Then
+                        If (OverSplit) Then
+                           If Not (m_item(i).mouseDownSplit) Then
+                              m_item(i).mouseDownSplit = True
+                              m_item(i).mouseDown = False
+                              m_item(i).mouseOverSplit = True
+                              m_item(i).mouseOver = False
+                              addChange = True
+                           End If
+                        Else
+                           If Not (m_item(i).mouseDown) Then
+                              m_item(i).mouseDown = True
+                              m_item(i).mouseDownSplit = False
+                              m_item(i).mouseOver = True
+                              m_item(i).mouseOverSplit = False
+                              addChange = True
+                           End If
+                        End If
+                     Else
+                        If Not (m_item(i).mouseDown) Then
+                           m_item(i).mouseDown = True
+                           addChange = True
+                        End If
+                     End If
+                  End If
+               
+                  If (addChange) Then
+                     changeCount = changeCount + 1
+                     ReDim Preserve changeIndex(1 To changeCount) As Long
+                     changeIndex(changeCount) = iIndex
+                  End If
+                  
+               End If
+            
+            Else
+            
+               If (m_item(i).mouseOver) Or (m_item(i).mouseOverSplit) Then
+                  m_item(i).mouseOver = False
+                  m_item(i).mouseOverSplit = False
+                  changeCount = changeCount + 1
+                  ReDim Preserve changeIndex(1 To changeCount) As Long
+                  changeIndex(changeCount) = i
+               End If
+               
+            End If
+            
+         Next i
+         
+         If (changeCount &gt; 0) Then
+            For i = 1 To changeCount
+               fPaintOneButton changeIndex(i)
+            Next i
+         End If
+         
+         If (track) Then
+            tmrLostMouse.Enabled = True
+         End If
+      End If
+            
+   End If
+   
+   If StrComp(sToolTip, m_sLastToolTip) &lt;&gt; 0 Then
+      On Error Resume Next
+      UserControl.Extender.TooltipText = sToolTip
+      m_sLastToolTip = sToolTip
+   End If
+   
+End Function
+Friend Sub fClickButton(ByVal index As Long)
+   If Len(m_sToolBarKey) &gt; 0 Then
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      If Not (barInt Is Nothing) Then
+         barInt.ClickButton index
+         Dim c As New cButton
+         c.fInit m_hWnd, barInt.Item(index).Key
+         RaiseEvent ButtonClick(c)
+      End If
+   End If
+End Sub
+Friend Sub fDropDownButton(ByVal index As Long)
+   If Len(m_sToolBarKey) &gt; 0 Then
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      If Not (barInt Is Nothing) Then
+         If Not (barInt.Item(index).Bar Is Nothing) Then
+            Dim c As New cButton
+            c.fInit m_hWnd, barInt.Item(index).Key
+            
+            Dim bCancel As Boolean
+            RaiseEvent ButtonDropDown(c, bCancel)
+            If Not (bCancel) Then
+            '
+               ' Time to show a drop-down:
+               pShowDropDown index
+               '
+            End If
+         End If
+      End If
+   End If
+End Sub
+
+Private Sub pShowDropDown(ByVal index As Long)
+   If Len(m_sToolBarKey) &gt; 0 Then
+      Dim barInt As cCommandBarInt
+      Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+      If Not (barInt Is Nothing) Then
+         Dim barDropDownInt As cCommandBarInt
+         Set barDropDownInt = barInt.Item(index).Bar
+   
+         If Not (barDropDownInt Is Nothing) Then
+            ' Part1: get a new instance:
+            Dim ctl As vbalCommandBar
+            Set ctl = mCommandBars.NewInstance()
+            ' set the key:
+            Dim barDropDown As cCommandBar
+            Set barDropDown = New cCommandBar
+            barDropDown.fInit m_hWnd, barDropDownInt.Key
+            Set ctl.Toolbar = barDropDown
+            ' turn it into a menu:
+            ctl.TestMenu
+     
+            ' Now show it at the appropriate position:
+            
+         End If
+         
+      End If
+   End If
+   
+End Sub
+
+Private Sub pMouseMove(ByVal button As MouseButtonConstants, ByVal Shift As
+ ShiftConstants)
+   
+   '
+   Dim tP As POINTAPI
+   Dim iIndex As Long
+   
+   GetCursorPos tP
+   ScreenToClient m_hWnd, tP
+   iIndex = fHitTest(tP.x, tP.y)
+   fTrack button, iIndex
+   
+End Sub
+Private Sub pMouseDown(ByVal button As MouseButtonConstants, ByVal Shift As
+ ShiftConstants)
+   '
+   Dim tP As POINTAPI
+   Dim iIndex As Long
+   
+   GetCursorPos tP
+   ScreenToClient m_hWnd, tP
+   iIndex = fHitTest(tP.x, tP.y)
+   If (button = vbLeftButton) Then
+      fTrack button, iIndex, True
+      If (iIndex &gt; 0) Then
+         fDropDownButton iIndex
+      End If
+   Else
+      fTrack button, iIndex, False
+   End If
+   
+   '
+End Sub
+Private Sub pMouseUp(ByVal button As MouseButtonConstants, ByVal Shift As
+ ShiftConstants)
+   '
+   Dim tP As POINTAPI
+   Dim iIndex As Long
+   Dim i As Long
+   
+   GetCursorPos tP
+   ScreenToClient m_hWnd, tP
+   iIndex = fHitTest(tP.x, tP.y)
+   
+   If (button = vbLeftButton) Then
+      If Len(m_sToolBarKey) &gt; 0 Then
+         Dim barInt As cCommandBarInt
+         Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+         If Not (barInt Is Nothing) Then
+            If (iIndex &gt; 0) Then
+               If (barInt.Item(iIndex).CanAction(m_eOrientation)) Then
+                  If (m_item(iIndex).mouseOver) And (m_item(iIndex).mouseDown)
+                   Then
+                     fClickButton iIndex
+                  End If
+               End If
+            End If
+            For i = 1 To barInt.Count
+               If (m_item(i).mouseDown) Or (m_item(i).mouseDownSplit) Then
+                  m_item(i).mouseDown = False
+                  m_item(i).mouseDownSplit = False
+                  fPaintOneButton i
+               End If
+            Next i
+         End If
+      End If
+      fTrack 0, iIndex
+      If (iIndex &gt; 0) Then
+         fPaintOneButton iIndex
+      End If
+      
+   Else
+      fTrack 0, iIndex
+   End If
+   
+   '
+End Sub
+
+Private Function pbRightToLeft() As Boolean
+   pbRightToLeft = UserControl.RightToLeft
+End Function
+Private Function plGetHFont() As Long
+Dim lhDC As Long
+Dim f As StdFont
+   Set f = UserControl.Font
+   lhDC = UserControl.hDC
+   If (m_eOrientation = eTop) Or (m_eOrientation = eBottom) Then
+      plGetHFont = m_fntCache.hFont(f, 0, lhDC)
+   Else
+      plGetHFont = m_fntCache.hFont(f, 2700, lhDC)
+   End If
+End Function
+
+Private Sub pInitialise()
+
+   m_bDesignTime = Not (UserControl.Ambient.UserMode)
+   If Not (m_bDesignTime) Then
+      m_hWnd = UserControl.hWnd
+      mCommandBars.AddRef hWnd, Me
+   End If
+   
+End Sub
+
+Private Sub pTerminate()
+
+   If Not (m_hWnd = 0) Then
+
+      Dim barInt As cCommandBarInt
+      If Len(m_sToolBarKey) &gt; 0 Then
+         Set barInt = mCommandBars.BarItem(m_sToolBarKey)
+         If Not barInt Is Nothing Then
+            barInt.ReleaseRef m_hWnd
+         End If
+      End If
+   
+      mCommandBars.ReleaseRef hWnd
+   End If
+   m_hWnd = 0
+   
+End Sub
+
+Private Sub tmrLostMouse_Timer()
+   '
+   Dim tP As POINTAPI
+   Dim tR As RECT
+   GetCursorPos tP
+   GetWindowRect m_hWnd, tR
+   If (PtInRect(tR, tP.x, tP.y) = 0) Then
+      fTrack 0, 0
+      tmrLostMouse.Enabled = False
+   End If
+   '
+End Sub
+
+Private Sub UserControl_Initialize()
+   '
+   Debug.Print "&gt;&gt; PREPARE FOR WAVE " + UserControl.Name
+   m_bEnabled = True
+   m_bVisible = True
+   m_bRedraw = True
+   '
+End Sub
+
+Private Sub UserControl_InitProperties()
+   '
+   pInitialise
+   '
+End Sub
+
+Private Sub UserControl_MouseDown(button As Integer, Shift As Integer, x As
+ Single, y As Single)
+   '
+   If m_bInDragMode Then
+      ' TODO
+   Else
+      pMouseDown button, Shift
+   End If
+   '
+End Sub
+
+Private Sub UserControl_MouseMove(button As Integer, Shift As Integer, x As
+ Single, y As Single)
+   '
+   If m_bInDragMode Then
+      ' TODO
+   Else
+      pMouseMove button, Shift
+   End If
+   '
+End Sub
+
+Private Sub UserControl_MouseUp(button As Integer, Shift As Integer, x As
+ Single, y As Single)
+   '
+   If m_bInDragMode Then
+      ' TODO
+   Else
+      pMouseUp button, Shift
+   End If
+   '
+End Sub
+
+Private Sub UserControl_Paint()
+   '
+   fPaint
+   '
+End Sub
+
+Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
+   '
+   pInitialise
+   
+   Dim defFont As New StdFont
+   defFont.Name = "Tahoma"
+   defFont.Size = 8.25
+   Set Font = PropBag.ReadProperty("Font", defFont)
+   m_bEnabled = PropBag.ReadProperty("Enabled", True)
+   
+   '
+End Sub
+
+Private Sub UserControl_Resize()
+   '
+   If Not (m_bPopup) Then
+      ' need to be careful here to prevent recursion
+      
+   End If
+   '
+End Sub
+
+Private Sub UserControl_Terminate()
+   '
+   pTerminate
+   
+   Debug.Print "&gt;&gt; WAVE DEFEATED " + UserControl.Name
+   '
+End Sub
+
+Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
+   '
+   PropBag.WriteProperty "Font", Font
+   PropBag.WriteProperty "Enabled", m_bEnabled, True
+   '
+End Sub
+
+
+'
+'
+' Noisy Playlist:
+'
+'  The Rapture - The Coming of Spring
+'  Audio Bullys - I Go To Your House
+'  Free Form Five - Perspex Sex (Ewan Pearson Mix)
+'  Dead Prez - Hip Hop
+'  Yeah Yeah Yeahs - Rich
+'  Akufen - New Process
+'  Dizzee Rascal - I Luv U
+'  Dr Octagon - Bear Witness
+'  New Flesh featuring Robotic EBU - Stick &amp; Move
+'  The Bug vs The Rootsman ft He-Man - Killer
+'  Grandmaster Flash and The Furious Five - Scorpio (Plaid Remix)
+'
+'
+' Fun Playlist:
+'
+'  Kid Koala - Drunk Trumpet
+'  Barry Adamson - Something Wicked This Way Comes
+'  Prince - Baby I'm A Star
+'  Skee Lo - I Wish
+'  Stevie Wonder - Sir Duke
+'  The Jackson 5 - It's Great to be Here
+'  Gladys Knight and the Pips - Bourgie Bourgie
+'  The Chi-Lites - My First Mistake
+'  Wade Marcus - Spinning Wheel
+'
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\index.html" ><IMG SRC="..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) VB Office 2003 CommandBars</a>&#160;.&#160;<a href="vbalcommandbar.html">vbalCommandBar</a>&#160;.&#160;vbalCommandBar.ctl</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 8 November 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,396 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IMAPIWrapper\IStreamOnStream.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IMAPIWrapper\IStreamOnStream.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./IMAPI_Wrapper.asp" /><link rel="meta" type="application/rdf+xml" href="./IMAPI Wrapper.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper.html">IMAPI Wrapper</a>&#160;.&#160;IMAPIWrapper</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="acclimapiwrapper_binary.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />acclImapiWrapper Binary</a> (21K)</p><p /><p class="nav"><a href="imapi_wrapper_demonstration.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Demonstration</a> (84K)</p><p class="nav"><a href="imapi_wrapper_documentation.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Documentation</a> (85K)</p><p class="nav"><a href="imapi_wrapper.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper</a> (89K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15430</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15430&type=zip&title=istreamonstream.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IMAPIWrapper\IStreamOnStream.cs</h1><p>This file is part of the download <a href="imapi_wrapper.html">IMAPI Wrapper</a>, which is described in the article <a href="article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>.</p><pre>using System;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
+
+namespace vbAccelerator.Components.ImapiWrapper
+{
+   /// &lt;summary&gt;
+   /// Wrapper around a managed &lt;c&gt;Stream&lt;/c&gt; to convert it to an
+    &lt;c&gt;IStream&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [ComVisible(true)]
+   internal class IStreamOnStream : IStream, IDisposable
+   {
+      /// &lt;summary&gt;
+      /// The underlying stream passed in to the constructor
+      /// &lt;/summary&gt;
+      protected Stream stream;
+
+      private string streamName;
+      private PinnedByteBuffer buffer;
+      private bool disposed = false;
+
+      /// &lt;summary&gt;
+      /// Constructs a new wrapper for the specified stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="stream"&gt;&lt;/param&gt;
+      /// &lt;param name="streamName"&gt;&lt;/param&gt;
+      public IStreamOnStream(Stream stream, string streamName)
+      {
+         this.stream = stream;
+         this.streamName = streamName;
+      }
+
+      /// &lt;summary&gt;
+      /// Disposes any resources associated with this stream
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         Dispose(true);
+         GC.SuppressFinalize(this);
+      }
+
+      /// &lt;summary&gt;
+      /// Disposes any resources associated with this stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="disposing"&gt;&lt;c&gt;true&lt;/c&gt; if called from the &lt;c&gt;Dispose&lt;/c&gt;
+      /// method, &lt;c&gt;false&lt;/c&gt; otherwise.&lt;/param&gt;
+      protected virtual void Dispose(bool disposing)
+      {
+         if (!disposed)
+         {
+            if (disposing)
+            {
+               if (buffer != null)
+               {
+                  buffer.Dispose();
+                  buffer = null;
+               }
+            }
+            disposed = true;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the stream's name
+      /// &lt;/summary&gt;
+      public string StreamName
+      {
+         get
+         {
+            return streamName;
+         }
+         set
+         {
+            streamName = value;
+         }
+      }
+
+      private void EnsureBuffer(int size)
+      {
+         if (buffer == null)
+         {
+            buffer = new PinnedByteBuffer(size);
+         }
+         else
+         {
+            buffer.Size = size;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Reads from the stream.
+      /// &lt;/summary&gt;
+      /// &lt;param name="pv"&gt;Pointer to buffer to put the results into&lt;/param&gt;
+      /// &lt;param name="cb"&gt;Number of bytes to read&lt;/param&gt;
+      /// &lt;param name="pcbRead"&gt;Number of bytes actually read&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Read(
+         IntPtr pv,
+         int cb,
+         ref int pcbRead)
+      {
+         Debug.WriteLine(String.Format("Reading {0} bytes from stream", cb));
+         uint hRes = (uint) GENERIC_ERROR_CODES.S_OK;
+         if (pv != IntPtr.Zero)
+         {
+            EnsureBuffer(cb);
+            try
+            {
+               pcbRead = stream.Read(buffer.Bytes, 0, cb);
+               Marshal.Copy(buffer.Bytes, 0, pv, pcbRead);
+            }
+            catch (Exception)
+            {
+               hRes = (uint) GENERIC_ERROR_CODES.S_FALSE;
+            }
+         }
+         else
+         {
+            hRes = (uint) STG_ERROR_CONSTANTS.STG_E_INVALIDPOINTER;
+         }
+         return hRes;
+      }
+
+      /// &lt;summary&gt;
+      /// Write to the stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="pv"&gt;Pointer to buffer to read from&lt;/param&gt;
+      /// &lt;param name="cb"&gt;Number of bytes to write&lt;/param&gt;
+      /// &lt;param name="pcbWritten"&gt;Number of bytes actually written&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Write(
+         IntPtr pv,
+         int cb,
+         ref int pcbWritten)
+      {
+         uint hRes = (uint) GENERIC_ERROR_CODES.S_OK;
+         if (pv != IntPtr.Zero)
+         {
+            EnsureBuffer(cb);
+            try
+            {
+               Marshal.Copy(pv, buffer.Bytes, 0, cb);
+               stream.Write(buffer.Bytes, 0, cb);
+               pcbWritten = cb;
+            }
+            catch (Exception)
+            {
+               hRes = (uint) GENERIC_ERROR_CODES.S_FALSE;
+            }
+         }
+         else
+         {
+            hRes = (uint) STG_ERROR_CONSTANTS.STG_E_INVALIDPOINTER;
+         }
+         return hRes;
+      }
+
+      /// &lt;summary&gt;
+      /// Seek to the specified point in the stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="dlibMove"&gt;Position to move to&lt;/param&gt;
+      /// &lt;param name="dwOrigin"&gt;Seek origin&lt;/param&gt;
+      /// &lt;param name="plibNewPosition"&gt;New position set&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Seek(
+         long dlibMove,
+         STREAM_SEEK dwOrigin,
+         ref long plibNewPosition)
+      {
+         uint hRes;
+         SeekOrigin seekOrigin = SeekOrigin.Current;
+         switch (dwOrigin)
+         {
+            case STREAM_SEEK.STREAM_SEEK_SET:
+               seekOrigin = SeekOrigin.Begin;
+               break;
+            case STREAM_SEEK.STREAM_SEEK_END:
+               seekOrigin = SeekOrigin.End;
+               break;
+         }
+         try
+         {
+            plibNewPosition = stream.Seek(dlibMove, seekOrigin);
+            hRes = (uint) GENERIC_ERROR_CODES.S_OK;
+         }
+         catch (Exception)
+         {
+            hRes = (uint) GENERIC_ERROR_CODES.S_FALSE;
+         }
+         return hRes;
+      }
+
+      /// &lt;summary&gt;
+      /// Set the size of the stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="libNewSize"&gt;New size&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint SetSize(
+         long libNewSize)
+      {
+         uint hRes;
+         try
+         {
+            stream.SetLength(libNewSize);
+            if (stream.Length == libNewSize)
+            {
+               hRes = (uint) GENERIC_ERROR_CODES.S_OK;
+            }
+            else
+            {
+               hRes = (uint) GENERIC_ERROR_CODES.E_FAIL;
+            }
+         }
+         catch (Exception)
+         {
+            hRes = (uint) GENERIC_ERROR_CODES.E_FAIL;
+         }
+         return hRes;
+      }
+
+      public virtual uint CopyTo(
+         [In()]
+         ref IStream pstm,
+         long cb,
+         ref long pcbRead,
+         ref long pcbWritten)
+      {
+         return (uint) GENERIC_ERROR_CODES.E_NOTIMPL;
+      }
+
+      /// &lt;summary&gt;
+      /// Commit changes.
+      /// &lt;/summary&gt;
+      /// &lt;param name="grfCommitFlags"&gt;Flags describing change to commit&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Commit(
+         ref STGC grfCommitFlags)
+      {
+         return (uint) GENERIC_ERROR_CODES.S_OK;
+      }
+
+      /// &lt;summary&gt;
+      /// Revert any changes.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Revert()
+      {
+         return (uint) GENERIC_ERROR_CODES.S_OK;
+      }
+
+      /// &lt;summary&gt;
+      /// Lock a region of the stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="libOffset"&gt;Start point to lock from&lt;/param&gt;
+      /// &lt;param name="cb"&gt;Number of bytes to lock&lt;/param&gt;
+      /// &lt;param name="dwLockType"&gt;Type of lock&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint LockRegion(
+         long libOffset,
+         long cb,
+         int dwLockType)
+      {
+         return (uint) STG_ERROR_CONSTANTS.STG_E_INVALIDFUNCTION;
+      }
+
+      /// &lt;summary&gt;
+      /// Unlock a region 
+      /// &lt;/summary&gt;
+      /// &lt;param name="libOffset"&gt;Start point to unlock&lt;/param&gt;
+      /// &lt;param name="cb"&gt;Number of bytes to unlock&lt;/param&gt;
+      /// &lt;param name="dwLockType"&gt;Type of lock to unlock&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint UnlockRegion(
+         long libOffset,
+         long cb,
+         int dwLockType)
+      {
+         return (uint) STG_ERROR_CONSTANTS.STG_E_INVALIDFUNCTION;
+      }
+
+      /// &lt;summary&gt;
+      /// Retrieves statistical information about this stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="pstatstg"&gt;Structure containing statisical
+       information&lt;/param&gt;
+      /// &lt;param name="grfStatFlag"&gt;Flags&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Stat(
+         ref STATSTG pstatstg,
+         STATFLAG grfStatFlag)
+      {
+         uint hRes = (uint) GENERIC_ERROR_CODES.S_OK;
+         try
+         {
+            if ((grfStatFlag == STATFLAG.STATFLAG_DEFAULT) ||
+               (grfStatFlag == STATFLAG.STATFLAG_NONAME))
+            {
+               pstatstg.type = STGTY.STGTY_STREAM;
+               pstatstg.cbSize = stream.Length;
+               pstatstg.mtime = DateTime.Now.ToFileTime();
+               pstatstg.ctime = DateTime.Now.ToFileTime();
+               pstatstg.atime = DateTime.Now.ToFileTime();
+               if (grfStatFlag != STATFLAG.STATFLAG_NONAME)
+               {
+                  pstatstg.pwcsName = Marshal.StringToCoTaskMemUni(streamName);
+               }
+            }         
+         }
+         catch (Exception)
+         {
+            hRes = (uint) GENERIC_ERROR_CODES.E_UNEXPECTED;
+         }
+         return hRes;
+      }
+
+      /// &lt;summary&gt;
+      /// Clone this stream
+      /// &lt;/summary&gt;
+      /// &lt;param name="ppstm"&gt;Cloned stream&lt;/param&gt;
+      /// &lt;returns&gt;COM hResult&lt;/returns&gt;
+      public virtual uint Clone(
+         out IStream ppstm)
+      {
+         ppstm = null;
+         return (uint) GENERIC_ERROR_CODES.E_NOTIMPL;
+      }
+
+   }
+   
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper.html">IMAPI Wrapper</a>&#160;.&#160;IMAPIWrapper</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

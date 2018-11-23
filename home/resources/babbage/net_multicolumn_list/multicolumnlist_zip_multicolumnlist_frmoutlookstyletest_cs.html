@@ -1,0 +1,571 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: MultiColumnList_frmOutlookStyleTest.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: MultiColumnList_frmOutlookStyleTest.cs" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) .NET MultiColumn ListBox</a>&#160;.&#160;<a href="multicolumnlist.html">MultiColumnList</a>&#160;.&#160;MultiColumnList_frmOutlookStyleTest.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="multicolumnlist.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />MultiColumnList</a> (246K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12437</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12437&type=zip&title=multicolumnlist_2ezip_5fmulticolumnlist_5ffrmoutlookstyletest.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: MultiColumnList_frmOutlookStyleTest.cs</h1><pre>using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
+
+using vbAccelerator.Components.ListBox;
+
+namespace MultiColumnList
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmOutlookStyleTest : System.Windows.Forms.Form
+   {
+      private string genericPageUrl;
+
+      private System.Windows.Forms.ImageList ilsIcons;
+      private System.Windows.Forms.CheckBox chkShowMessagePreview;
+      private System.Windows.Forms.Panel pnlProps;
+      private System.Windows.Forms.Label lblColumn;
+      private System.Windows.Forms.ComboBox cboColumns;
+      private System.Windows.Forms.PropertyGrid pgrdColumn;
+      private vbAccelerator.Components.ListBox.SListBox lstOutlookStyleTest;
+      private System.Windows.Forms.Panel pnlTools;
+      private System.Windows.Forms.Splitter spltColumnProps;
+      private System.Windows.Forms.Panel pnlIE;
+      private AxSHDocVw.AxWebBrowser webMessage;
+      private System.Windows.Forms.Splitter splitter1;
+      private System.Windows.Forms.CheckBox chkPreviewPane;
+      private System.Windows.Forms.CheckBox chkGroupingRows;
+      private System.ComponentModel.IContainer components;
+
+      public frmOutlookStyleTest()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         this.genericPageUrl = Path.Combine(
+            System.Environment.CurrentDirectory,
+            "genericPage.html");
+         this.lstOutlookStyleTest.DoubleClick += new
+          EventHandler(lstOutlookStyleTest_DoubleClick);
+         this.lstOutlookStyleTest.SelectedIndexChanged += new
+          EventHandler(lstOutlookStyleTest_SelectedIndexChanged);
+         this.cboColumns.SelectedIndexChanged += new
+          EventHandler(cboColumns_SelectedIndexChanged);
+         this.pnlProps.SizeChanged += new EventHandler(pnlProps_SizeChanged);
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmOutlookStyleTest));
+         this.ilsIcons = new System.Windows.Forms.ImageList(this.components);
+         this.pnlTools = new System.Windows.Forms.Panel();
+         this.chkShowMessagePreview = new System.Windows.Forms.CheckBox();
+         this.pnlProps = new System.Windows.Forms.Panel();
+         this.lblColumn = new System.Windows.Forms.Label();
+         this.cboColumns = new System.Windows.Forms.ComboBox();
+         this.pgrdColumn = new System.Windows.Forms.PropertyGrid();
+         this.spltColumnProps = new System.Windows.Forms.Splitter();
+         this.lstOutlookStyleTest = new
+          vbAccelerator.Components.ListBox.SListBox();
+         this.pnlIE = new System.Windows.Forms.Panel();
+         this.webMessage = new AxSHDocVw.AxWebBrowser();
+         this.splitter1 = new System.Windows.Forms.Splitter();
+         this.chkPreviewPane = new System.Windows.Forms.CheckBox();
+         this.chkGroupingRows = new System.Windows.Forms.CheckBox();
+         this.pnlTools.SuspendLayout();
+         this.pnlProps.SuspendLayout();
+         this.pnlIE.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.webMessage)).BeginInit
+         ();
+         this.SuspendLayout();
+         // 
+         // ilsIcons
+         // 
+         this.ilsIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+         this.ilsIcons.ImageSize = new System.Drawing.Size(16, 16);
+         this.ilsIcons.ImageStream =
+          ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsIcon
+         s.ImageStream")));
+         this.ilsIcons.TransparentColor = System.Drawing.Color.Transparent;
+         // 
+         // pnlTools
+         // 
+         this.pnlTools.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                              
+                                         this.chkGroupingRows,
+                                                              
+                                         this.chkPreviewPane,
+                                                              
+                                         this.chkShowMessagePreview});
+         this.pnlTools.Dock = System.Windows.Forms.DockStyle.Top;
+         this.pnlTools.Name = "pnlTools";
+         this.pnlTools.Size = new System.Drawing.Size(412, 32);
+         this.pnlTools.TabIndex = 7;
+         this.pnlTools.Paint += new
+          System.Windows.Forms.PaintEventHandler(this.pnlTools_Paint);
+         // 
+         // chkShowMessagePreview
+         // 
+         this.chkShowMessagePreview.Checked = true;
+         this.chkShowMessagePreview.CheckState =
+          System.Windows.Forms.CheckState.Checked;
+         this.chkShowMessagePreview.FlatStyle =
+          System.Windows.Forms.FlatStyle.System;
+         this.chkShowMessagePreview.Location = new System.Drawing.Point(4, 4);
+         this.chkShowMessagePreview.Name = "chkShowMessagePreview";
+         this.chkShowMessagePreview.Size = new System.Drawing.Size(92, 24);
+         this.chkShowMessagePreview.TabIndex = 0;
+         this.chkShowMessagePreview.Text = "&amp;Auto Preview";
+         this.chkShowMessagePreview.CheckedChanged += new
+          System.EventHandler(this.chkShowMessagePreview_CheckedChanged);
+         // 
+         // pnlProps
+         // 
+         this.pnlProps.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                               this.lblColumn,
+                                                               this.cboColumns,
+                                                              
+                                         this.pgrdColumn});
+         this.pnlProps.Dock = System.Windows.Forms.DockStyle.Right;
+         this.pnlProps.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.pnlProps.Location = new System.Drawing.Point(268, 32);
+         this.pnlProps.Name = "pnlProps";
+         this.pnlProps.Size = new System.Drawing.Size(144, 290);
+         this.pnlProps.TabIndex = 11;
+         // 
+         // lblColumn
+         // 
+         this.lblColumn.BackColor = System.Drawing.SystemColors.ScrollBar;
+         this.lblColumn.Font = new System.Drawing.Font("Microsoft Sans Serif",
+          8.25F, System.Drawing.FontStyle.Regular,
+          System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+         this.lblColumn.Location = new System.Drawing.Point(2, 0);
+         this.lblColumn.Name = "lblColumn";
+         this.lblColumn.Size = new System.Drawing.Size(140, 16);
+         this.lblColumn.TabIndex = 2;
+         this.lblColumn.Text = "Column:";
+         // 
+         // cboColumns
+         // 
+         this.cboColumns.DropDownStyle =
+          System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboColumns.Font = new System.Drawing.Font("Microsoft Sans Serif",
+          8.25F, System.Drawing.FontStyle.Regular,
+          System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+         this.cboColumns.Location = new System.Drawing.Point(2, 20);
+         this.cboColumns.Name = "cboColumns";
+         this.cboColumns.Size = new System.Drawing.Size(144, 21);
+         this.cboColumns.TabIndex = 1;
+         // 
+         // pgrdColumn
+         // 
+         this.pgrdColumn.CommandsVisibleIfAvailable = true;
+         this.pgrdColumn.Font = new System.Drawing.Font("Microsoft Sans Serif",
+          8.25F, System.Drawing.FontStyle.Regular,
+          System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+         this.pgrdColumn.LargeButtons = false;
+         this.pgrdColumn.LineColor = System.Drawing.SystemColors.ScrollBar;
+         this.pgrdColumn.Location = new System.Drawing.Point(2, 50);
+         this.pgrdColumn.Name = "pgrdColumn";
+         this.pgrdColumn.Size = new System.Drawing.Size(144, 268);
+         this.pgrdColumn.TabIndex = 0;
+         this.pgrdColumn.Text = "PropertyGrid";
+         this.pgrdColumn.ViewBackColor = System.Drawing.SystemColors.Window;
+         this.pgrdColumn.ViewForeColor = System.Drawing.SystemColors.WindowText;
+         // 
+         // spltColumnProps
+         // 
+         this.spltColumnProps.Dock = System.Windows.Forms.DockStyle.Right;
+         this.spltColumnProps.Location = new System.Drawing.Point(264, 32);
+         this.spltColumnProps.Name = "spltColumnProps";
+         this.spltColumnProps.Size = new System.Drawing.Size(4, 290);
+         this.spltColumnProps.TabIndex = 13;
+         this.spltColumnProps.TabStop = false;
+         // 
+         // lstOutlookStyleTest
+         // 
+         this.lstOutlookStyleTest.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.lstOutlookStyleTest.DrawMode =
+          System.Windows.Forms.DrawMode.OwnerDrawVariable;
+         this.lstOutlookStyleTest.Font = new System.Drawing.Font("Tahoma",
+          8.25F, System.Drawing.FontStyle.Regular,
+          System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+         this.lstOutlookStyleTest.ImageList = null;
+         this.lstOutlookStyleTest.Location = new System.Drawing.Point(0, 32);
+         this.lstOutlookStyleTest.Name = "lstOutlookStyleTest";
+         this.lstOutlookStyleTest.RightToLeft =
+          System.Windows.Forms.RightToLeft.No;
+         this.lstOutlookStyleTest.ShowGroupingRows = false;
+         this.lstOutlookStyleTest.Size = new System.Drawing.Size(264, 290);
+         this.lstOutlookStyleTest.TabIndex = 14;
+         // 
+         // pnlIE
+         // 
+         this.pnlIE.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                            this.webMessage,
+                                                            this.splitter1});
+         this.pnlIE.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.pnlIE.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.pnlIE.Location = new System.Drawing.Point(0, 322);
+         this.pnlIE.Name = "pnlIE";
+         this.pnlIE.Size = new System.Drawing.Size(412, 132);
+         this.pnlIE.TabIndex = 4;
+         // 
+         // webMessage
+         // 
+         this.webMessage.ContainingControl = this;
+         this.webMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.webMessage.Enabled = true;
+         this.webMessage.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.webMessage.OcxState =
+          ((System.Windows.Forms.AxHost.State)(resources.GetObject("webMessage.O
+         cxState")));
+         this.webMessage.Size = new System.Drawing.Size(412, 128);
+         this.webMessage.TabIndex = 4;
+         // 
+         // splitter1
+         // 
+         this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.splitter1.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.splitter1.Location = new System.Drawing.Point(0, 128);
+         this.splitter1.Name = "splitter1";
+         this.splitter1.Size = new System.Drawing.Size(412, 4);
+         this.splitter1.TabIndex = 3;
+         this.splitter1.TabStop = false;
+         // 
+         // chkPreviewPane
+         // 
+         this.chkPreviewPane.Checked = true;
+         this.chkPreviewPane.CheckState =
+          System.Windows.Forms.CheckState.Checked;
+         this.chkPreviewPane.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkPreviewPane.Location = new System.Drawing.Point(100, 4);
+         this.chkPreviewPane.Name = "chkPreviewPane";
+         this.chkPreviewPane.Size = new System.Drawing.Size(92, 24);
+         this.chkPreviewPane.TabIndex = 1;
+         this.chkPreviewPane.Text = "&amp;Preview Pane";
+         this.chkPreviewPane.CheckedChanged += new
+          System.EventHandler(this.chkPreviewPane_CheckedChanged);
+         // 
+         // chkGroupingRows
+         // 
+         this.chkGroupingRows.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.chkGroupingRows.Location = new System.Drawing.Point(200, 4);
+         this.chkGroupingRows.Name = "chkGroupingRows";
+         this.chkGroupingRows.Size = new System.Drawing.Size(144, 24);
+         this.chkGroupingRows.TabIndex = 2;
+         this.chkGroupingRows.Text = "Show &amp;Grouping Rows";
+         this.chkGroupingRows.CheckedChanged += new
+          System.EventHandler(this.chkGroupingRows_CheckedChanged);
+         // 
+         // frmOutlookStyleTest
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(412, 454);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                       
+                                         this.lstOutlookStyleTest,
+                                                        this.spltColumnProps,
+                                                        this.pnlProps,
+                                                        this.pnlTools,
+                                                        this.pnlIE});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Name = "frmOutlookStyleTest";
+         this.Text = "Outlook Style Demo";
+         this.Load += new System.EventHandler(this.Form1_Load);
+         this.pnlTools.ResumeLayout(false);
+         this.pnlProps.ResumeLayout(false);
+         this.pnlIE.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.webMessage)).EndInit()
+         ;
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmOutlookStyleTest());
+      }
+
+      private void Form1_Load(object sender, System.EventArgs e)
+      {   
+         // load generic page that we can insert our HTML into:
+         object o = null;
+         webMessage.Navigate(genericPageUrl, ref o, ref o, ref o, ref o);
+
+         // Set up the Listbox
+         lstOutlookStyleTest.ImageList = ilsIcons;
+
+         // Add the columns:
+         SListColumn col = new SListColumn();         
+         col.Width = 20;
+         lstOutlookStyleTest.Columns.Add(col);
+
+         col = new SListColumn();
+         col.Text = "From";
+         col.Width = 160;
+         lstOutlookStyleTest.Columns.Add(col);
+
+         col = new SListColumn();
+         col.Text = "Subject";
+         col.Width = 300;
+         lstOutlookStyleTest.Columns.Add(col);
+
+         col = new SListColumn();
+         col.Text = "Date Received";
+         col.Width = 72;
+         lstOutlookStyleTest.Columns.Add(col);
+
+         // Set up property list editing of column information:
+         foreach (SListColumn colItem in lstOutlookStyleTest.Columns)
+         {
+            cboColumns.Items.Add(colItem);
+         }
+         cboColumns.SelectedIndex = 0;
+
+         // Add some data:
+         populateListBox();
+
+      }
+
+      private void populateListBox()
+      {
+
+         // Set up a custom format for the preview text of a cell:
+         StringFormat previewFormat = new StringFormat();
+         previewFormat.Alignment = StringAlignment.Near;
+         previewFormat.LineAlignment = StringAlignment.Near;
+         previewFormat.FormatFlags = StringFormatFlags.LineLimit;
+         previewFormat.Trimming = StringTrimming.EllipsisCharacter;
+
+         // Load the xml data containing the messages:
+         string file = Path.Combine(System.Environment.CurrentDirectory,
+          "messages.xml");
+         XmlDocument doc = new XmlDocument();
+         doc.Load(file);
+
+         foreach (XmlNode node in doc.SelectNodes("messages/message"))
+         {
+            string from = node.SelectSingleNode("from").FirstChild.Value;
+            string dateReceivedStr =
+             node.SelectSingleNode("dateReceived").FirstChild.Value;
+            DateTime dateReceived = DateTime.Parse(dateReceivedStr);
+            string subject = node.SelectSingleNode("subject").InnerText;
+            XmlNode content = node.SelectSingleNode("content");
+            string contentText = content.InnerText;
+            /*
+            if (contentText.Length &gt; 255)
+            {
+               contentText = contentText.Substring(0, 255);
+            }
+            */
+            string contentHtml = content.InnerXml;
+
+            SListColumnItem dateColumn = new SListColumnItem(dateReceived);
+            dateColumn.TextFormat = "{0:d}";
+            SListColumnItem[] sCols = new SListColumnItem[4]
+               {
+                  new SListColumnItem("",0),
+                  new SListColumnItem(from),
+                  new SListColumnItem(subject),
+                  dateColumn
+               };
+            SListItem item = new SListItem(
+               sCols,
+               contentText);
+            item.ForeColor = Color.DarkBlue;
+            item.StringFormat = previewFormat;
+            item.Height = 34;
+            item.Tag = contentHtml;
+            item.Indentation = 32;
+
+            this.lstOutlookStyleTest.Items.Add(item);
+         }
+
+      }
+
+      private void lstOutlookStyleTest_DoubleClick(object sender,
+       System.EventArgs e)
+      {
+         SListItem s =
+          lstOutlookStyleTest.Items[lstOutlookStyleTest.SelectedIndex];
+         if (!s.ShowColumns)
+         {
+            if (s.Expanded)
+            {
+               s.Collapse();
+            }
+            else
+            {
+               s.Expand();
+            }
+         }
+      }
+      private void cboColumns_SelectedIndexChanged(object sender,
+       System.EventArgs e)
+      {
+         int index = cboColumns.SelectedIndex;
+         if (index &gt; -1)
+         {
+            pgrdColumn.SelectedObject = cboColumns.SelectedItem;
+         }
+      }
+
+      private void lstOutlookStyleTest_SelectedIndexChanged(object sender,
+       System.EventArgs e)
+      {
+         int index = lstOutlookStyleTest.SelectedIndex;
+         if ((index &gt; -1) &amp;&amp; (chkPreviewPane.Checked))
+         {
+            // Show the text
+            string html = (string)lstOutlookStyleTest.Items[index].Tag;
+            mshtml.HTMLDocument doc = (mshtml.HTMLDocument)webMessage.Document;
+            doc.body.innerHTML = html;
+            
+         }         
+      }
+
+      private void chkShowMessagePreview_CheckedChanged(object sender,
+       System.EventArgs e)
+      {
+         bool state = chkShowMessagePreview.Checked;
+         // can't use a for-each enumerator when changing height
+         // because items have to be removed from the Listbox
+         // to change their heights...
+         for (int i = 0; i &lt; lstOutlookStyleTest.Items.Count; i++)
+         {
+            lstOutlookStyleTest.Items[i].ShowText = state;
+         }
+      }
+
+      private void pnlProps_SizeChanged(object sender, System.EventArgs e)
+      {
+         int width = pnlProps.Width - lblColumn.Left * 2;
+         width = Math.Max(width, 4);
+         lblColumn.Width = width;
+         cboColumns.Width = width;
+         int height = pnlProps.Height - pgrdColumn.Top;
+         height = Math.Max(height, 4);
+         pgrdColumn.Width = width;
+         pgrdColumn.Height = height;
+      }
+
+      private void chkPreviewPane_CheckedChanged(object sender,
+       System.EventArgs e)
+      {
+         pnlIE.Visible = chkPreviewPane.Checked;
+      }
+
+      private void pnlTools_Paint(object sender,
+       System.Windows.Forms.PaintEventArgs e)
+      {
+      
+      }
+
+      private void chkGroupingRows_CheckedChanged(object sender,
+       System.EventArgs e)
+      {
+         lstOutlookStyleTest.ShowGroupingRows = (chkGroupingRows.Checked);
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="javascript:window.alert(&quot;http://vbaccelerator.com/home/include/adredir.asp?url=http://oneandone.co.uk/xml/init?k_id=5791003&image=http://oneandone.co.uk/xml/banner?size=1&number=1\nThis link was not retrieved.&quot;)" ><IMG SRC="..\..\..\..\..\oneandone_co_uk\xml\banner\size=1&number=1.html" ALT="1&1 Web Hosting" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) .NET MultiColumn ListBox</a>&#160;.&#160;<a href="multicolumnlist.html">MultiColumnList</a>&#160;.&#160;MultiColumnList_frmOutlookStyleTest.cs</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,309 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SysImageListTester\frmSysImageListTester.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SysImageListTester\frmSysImageListTester.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">System Image List</a>&#160;.&#160;<a href="..\sysimagelist_code.html">SysImageList Code</a>&#160;.&#160;SysImageListTester</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="sysimagelist_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />SysImageList Code</a> (48K)</p><p /><p class="nav"><a href="using_sysimagelist_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Using SysImageList Code</a> (25K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4385</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4385&type=zip&title=frmsysimagelisttester.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />4 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\getting_file_icons_using_the_shell\article.html">Getting File Icons Using The Shell</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SysImageListTester\frmSysImageListTester.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+using vbAccelerator.Components.ImageList;
+using vbAccelerator.Controls.TextBox;
+using vbAccelerator.Components.Shell;
+
+namespace SysImageListTester
+{
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmSysImageListTester : System.Windows.Forms.Form
+   {
+      private SysImageList sysImageListSmall;
+      private SysImageList sysImageListLarge;
+      private SysImageList sysImageListExtraLarge;
+      private string fileName = "";
+      private System.Windows.Forms.Label lblFileName;
+      private AutoCompleteTextBox txtFileName;
+      private System.Windows.Forms.Button btnPick;
+      private System.Windows.Forms.Label lblIcons;
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      public frmSysImageListTester()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         // Create the SysImageLists:
+         sysImageListExtraLarge = new
+          SysImageList(SysImageListSize.extraLargeIcons);                     
+         sysImageListLarge = new SysImageList(SysImageListSize.largeIcons);
+         sysImageListSmall = new SysImageList(SysImageListSize.smallIcons);
+
+         // Set up txtFile for AutoComplete:
+         txtFileName.AutoCompleteFlags = SHAutoCompleteFlags.SHACF_FILESYS_ONLY;
+         txtFileName.KeyDown += new KeyEventHandler(txtFileName_KeyDown);
+
+         this.Paint += new PaintEventHandler(frmSysImageListTester_Paint);     
+             
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         System.Resources.ResourceManager resources = new
+          System.Resources.ResourceManager(typeof(frmSysImageListTester));
+         this.lblFileName = new System.Windows.Forms.Label();
+         this.txtFileName = new
+          vbAccelerator.Controls.TextBox.AutoCompleteTextBox();
+         this.btnPick = new System.Windows.Forms.Button();
+         this.lblIcons = new System.Windows.Forms.Label();
+         this.SuspendLayout();
+         // 
+         // lblFileName
+         // 
+         this.lblFileName.Location = new System.Drawing.Point(8, 8);
+         this.lblFileName.Name = "lblFileName";
+         this.lblFileName.Size = new System.Drawing.Size(36, 23);
+         this.lblFileName.TabIndex = 1;
+         this.lblFileName.Text = "File:";
+         // 
+         // txtFileName
+         // 
+         this.txtFileName.AutoCompleteFlags =
+          vbAccelerator.Controls.TextBox.SHAutoCompleteFlags.SHACF_FILESYS_ONLY;
+         this.txtFileName.Location = new System.Drawing.Point(44, 8);
+         this.txtFileName.Name = "txtFileName";
+         this.txtFileName.Size = new System.Drawing.Size(432, 21);
+         this.txtFileName.TabIndex = 5;
+         this.txtFileName.Text = "";
+         // 
+         // btnPick
+         // 
+         this.btnPick.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnPick.Location = new System.Drawing.Point(480, 4);
+         this.btnPick.Name = "btnPick";
+         this.btnPick.Size = new System.Drawing.Size(24, 23);
+         this.btnPick.TabIndex = 4;
+         this.btnPick.Text = "...";
+         this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
+         // 
+         // lblIcons
+         // 
+         this.lblIcons.Location = new System.Drawing.Point(8, 80);
+         this.lblIcons.Name = "lblIcons";
+         this.lblIcons.Size = new System.Drawing.Size(36, 23);
+         this.lblIcons.TabIndex = 6;
+         this.lblIcons.Text = "Icons:";
+         // 
+         // frmSysImageListTester
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(512, 266);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.lblIcons,
+                                                        this.txtFileName,
+                                                        this.btnPick,
+                                                        this.lblFileName});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Name = "frmSysImageListTester";
+         this.Text = "System Image List Tester";
+         this.Load += new System.EventHandler(this.frmSysImageListTester_Load);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmSysImageListTester());
+      }
+
+      private void frmSysImageListTester_Paint(object sender, PaintEventArgs e)
+      {
+         e.Graphics.FillRectangle(
+            SystemBrushes.Control,
+            e.ClipRectangle);
+         
+         if (fileName.Length &gt; 0)
+         {
+            int x = lblIcons.Left + lblIcons.Width + 16;
+            int y = lblIcons.Top;
+
+            IntPtr hdc = e.Graphics.GetHdc();
+
+            sysImageListExtraLarge.DrawImage(
+               hdc, 
+               sysImageListExtraLarge.IconIndex(fileName, true),
+               x, y);
+            
+            sysImageListLarge.DrawImage(
+               hdc, 
+               sysImageListLarge.IconIndex(fileName, true),
+               x + 64, y);
+            
+            sysImageListSmall.DrawImage(
+               hdc, 
+               sysImageListSmall.IconIndex(fileName, true),
+               x + 128, y);
+
+            e.Graphics.ReleaseHdc(hdc);
+         }
+      }
+
+      private void frmSysImageListTester_Load(object sender, System.EventArgs e)
+      {
+      
+      }
+
+      private void btnPick_Click(object sender, System.EventArgs e)
+      {         
+         using (FolderBrowser f = new FolderBrowser())
+         {
+            f.Title = "Select a folder or file to thumbnail.";
+            f.FileSystemAncestorsOnly = true;
+            f.NewDialogStyle = true;
+            f.NoNewFolderButton = true;
+            f.ShowEditBox = true;
+            f.ValidateEditBox = true;
+            f.IncludeFiles = true;
+            f.InitialPath = System.Environment.GetFolderPath(
+               System.Environment.SpecialFolder.Personal);
+
+            ValidationFailedEventHandler valFailed = new
+             ValidationFailedEventHandler(
+               folderBrowser_ValidationFailed);
+            f.ValidationFailed += valFailed;
+
+            if (f.ShowDialog(this) == DialogResult.OK)
+            {
+               fileName = f.SelectedPath;
+               txtFileName.Text = fileName;
+               this.Invalidate();
+            }      
+            f.ValidationFailed -= valFailed;
+         }
+      }
+
+      private void folderBrowser_ValidationFailed(object sender,
+       ValidationFailedEventArgs e)
+      {
+         if (MessageBox.Show(
+            this,
+            String.Format("The folder or file '{0}' could not be found.  Choose
+             Retry to pick another folder or Cancel to cancel.", e.Message), 
+            this.Text, 
+            MessageBoxButtons.RetryCancel,
+            MessageBoxIcon.Warning) == DialogResult.Cancel)
+         {
+            e.Cancel = true;
+         }
+         else
+         {
+            e.Cancel = false;
+         }
+      }
+
+      private void txtFileName_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Return)
+         {
+            fileName = txtFileName.Text;
+            this.Invalidate();
+         }
+      }
+
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Shell Projects</a>&#160;.&#160;<a href="..\article.html">System Image List</a>&#160;.&#160;<a href="..\sysimagelist_code.html">SysImageList Code</a>&#160;.&#160;SysImageListTester</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

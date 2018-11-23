@@ -1,0 +1,339 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: frmMutilate.frm</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: frmMutilate.frm" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) ScreenMess - Realtime Drawing with DIB Sections</a>&#160;.&#160;<a href="screenmess.html">ScreenMess</a>&#160;.&#160;frmMutilate.frm</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="screenmess.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ScreenMess</a> (45K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12474</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12474&type=zip&title=screenmess_2ezip_5ffrmmutilate.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;VB5</p><p class="nav">&#160;&#160;VB6</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: frmMutilate.frm</h1><pre>VERSION 5.00
+Begin VB.Form frmMutilate 
+   Caption         =   "Form1"
+   ClientHeight    =   6135
+   ClientLeft      =   3270
+   ClientTop       =   2295
+   ClientWidth     =   6795
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   409
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   453
+   Begin VB.CommandButton Command1 
+      Caption         =   "Command1"
+      Height          =   315
+      Left            =   120
+      TabIndex        =   0
+      Top             =   60
+      Width           =   1215
+   End
+End
+Attribute VB_Name = "frmMutilate"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+
+Private Type RECT
+   left As Long
+   top As Long
+   right As Long
+   bottom As Long
+End Type
+Private Declare Function CreateDCAsNull Lib "gdi32" Alias "CreateDCA" ( _
+   ByVal lpDriverName As String, lpDeviceName As Any, lpOutput As Any,
+    lpInitData As Any) As Long
+Private Declare Function DeleteDC Lib "gdi32" (ByVal hDC As Long) As Long
+Private Declare Function FillRect Lib "user32" (ByVal hDC As Long, lpRect As
+ RECT, ByVal hBrush As Long) As Long
+Private Declare Function CreateSolidBrush Lib "gdi32" (ByVal crColor As Long)
+ As Long
+Private Declare Function SelectObject Lib "gdi32" (ByVal hDC As Long, ByVal
+ hObject As Long) As Long
+Private Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As
+ Long
+Private Declare Function Ellipse Lib "gdi32" (ByVal hDC As Long, ByVal X1 As
+ Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long
+Private Declare Function BeginPath Lib "gdi32" (ByVal hDC As Long) As Long
+Private Declare Function EndPath Lib "gdi32" (ByVal hDC As Long) As Long
+Private Declare Function StrokeAndFillPath Lib "gdi32" (ByVal hDC As Long) As
+ Long
+Private Declare Function InflateRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Private Declare Function OffsetRect Lib "user32" (lpRect As RECT, ByVal x As
+ Long, ByVal y As Long) As Long
+Private Declare Function CreatePen Lib "gdi32" (ByVal nPenStyle As Long, ByVal
+ nWidth As Long, ByVal crColor As Long) As Long
+
+
+Private m_cDib As cDIBSection
+Private m_cDibBrush As cDIBSection
+Private m_cDibWork As cDIBSection
+
+Private Enum EBrushType
+   eBrushSquare
+   eBrushRound
+End Enum
+Private Enum EEffectType
+   eEffectPaint
+   eEffectRank1
+   eEffectRank2
+   eEffectBlur
+   eEffectSharpen
+   eEffectRandomise
+   eEffectStatic
+End Enum
+
+Private m_bNoPaint As Boolean
+Private m_eType As EEffectType
+
+Private Sub ApplyBrush(ByVal x As Long, ByVal y As Long)
+   If Not m_cDibBrush Is Nothing Then
+      x = x - m_cDibBrush.Height \ 2
+      y = y - m_cDibBrush.Width \ 2
+      Select Case m_eType
+      Case eEffectPaint
+         DoPaint m_cDib, m_cDibWork, m_cDibBrush, x, y, &amp;HCC6633, 200
+      Case eEffectStatic
+         DoStatic m_cDib, m_cDibWork, m_cDibBrush, x, y, 128
+      Case eEffectRank1
+         DoRankFilter m_cDib, m_cDibWork, m_cDibBrush, x, y, eRFMedian, -1, 0
+      Case eEffectRank2
+         DoRankFilter m_cDib, m_cDibWork, m_cDibBrush, x, y, eRFMaximum, 1, 0
+      Case eEffectBlur
+         DoStandardFilter m_cDib, m_cDibWork, m_cDibBrush, x, y, eRFBlur, 1, 0
+      Case eEffectSharpen
+         DoStandardFilter m_cDib, m_cDibWork, m_cDibBrush, x, y, eRFSharpen, 1,
+          0
+      Case eEffectRandomise
+         DoStatic2 m_cDib, m_cDibWork, m_cDibBrush, x, y, 2
+      End Select
+      m_cDibWork.PaintPicture m_cDib.hDC, x, y
+      m_cDib.PaintPicture Me.hDC, x, y, m_cDibBrush.Width, m_cDibBrush.Height,
+       x, y
+   End If
+End Sub
+
+Private Sub Reset()
+Dim lHDC As Long
+   lHDC = CreateDCAsNull("DISPLAY", ByVal 0&amp;, ByVal 0&amp;, ByVal 0&amp;)
+   If lHDC &lt;&gt; 0 Then
+      m_cDib.LoadPictureBlt lHDC
+      DeleteDC lHDC
+   Else
+      ThrowError 3
+   End If
+End Sub
+
+Private Sub CreateBrush( _
+      ByVal eType As EBrushType, _
+      ByVal lWidth As Long, _
+      ByVal lHeight As Long _
+   )
+Dim tR As RECT, tER As RECT
+Dim hBr As Long, hBrOld As Long
+Dim hPen As Long, hPenOld As Long
+Dim bFail As Boolean
+Dim i As Long
+Dim lCOl As Long
+         
+   If (lWidth &lt;&gt; m_cDibBrush.Width) Or (lHeight &lt;&gt; m_cDibWork.Height) Then
+      If Not m_cDibBrush.Create(lWidth, lHeight) Then
+         ThrowError eeFailCreateBrush
+         bFail = True
+      ElseIf Not m_cDibWork.Create(lWidth, lHeight) Then
+         ThrowError eeFailCreateBrush
+         bFail = True
+      End If
+      If bFail Then
+         Set m_cDibBrush = Nothing
+         Set m_cDibWork = Nothing
+         Exit Sub
+      End If
+   End If
+         
+   ' Set up for brush type:
+   tR.right = lWidth
+   tR.bottom = lHeight
+   Select Case eType
+   Case eBrushRound
+      hBr = CreateSolidBrush(&amp;H0&amp;)
+      FillRect m_cDibBrush.hDC, tR, hBr
+      DeleteObject hBr
+      LSet tER = tR
+      For i = tR.bottom - tR.top \ 2 To 1 Step -2
+         lCOl = 255 - ((i * 255) \ (tR.bottom - tR.top))
+         hBr = CreateSolidBrush(RGB(lCOl, lCOl, lCOl))
+         hBrOld = SelectObject(m_cDibBrush.hDC, hBr)
+         hPen = CreatePen(0&amp;, 1, RGB(lCOl, lCOl, lCOl))
+         hPenOld = SelectObject(m_cDibBrush.hDC, hPen)
+         Ellipse m_cDibBrush.hDC, tER.left, tER.top, tER.right, tER.bottom
+         SelectObject m_cDibBrush.hDC, hPenOld
+         DeleteObject hPen
+         SelectObject m_cDibBrush.hDC, hBrOld
+         DeleteObject hBr
+         InflateRect tER, -1, -1
+      Next i
+      
+   Case eBrushSquare
+      hBr = CreateSolidBrush(&amp;HFFFFFF)
+      FillRect m_cDibBrush.hDC, tR, hBr
+      DeleteObject hBr
+      
+   End Select
+   
+End Sub
+
+Private Sub Command1_Click()
+Static x As Long
+Static y As Long
+Static xDir As Long
+Static yDir As Long
+Static iStep As Long
+   
+   Randomize Timer
+   xDir = 0: yDir = 0: iStep = 0
+   m_eType = eEffectPaint
+   If Command1.Caption &lt;&gt; "&amp;Stop" Then
+      Command1.Caption = "&amp;Stop"
+   Else
+      Command1.Caption = "&amp;Start"
+   End If
+   x = Rnd * m_cDib.Width
+   y = Rnd * m_cDib.Height
+   Do While Abs(xDir) &lt; 4
+      xDir = (Rnd * 6 - 3) * 2
+   Loop
+   Do While Abs(yDir) &lt; 4
+      yDir = (Rnd * 6 - 3) * 2
+   Loop
+   
+   Do While Command1.Caption = "&amp;Stop"
+      ApplyBrush x, y
+      x = x + xDir * Rnd
+      y = y + yDir * Rnd
+      If x &gt; m_cDib.Width Or x &lt; 0 Then
+         xDir = -1 * xDir
+      End If
+      If y &gt; m_cDib.Height Or y &lt; 0 Then
+         yDir = -1 * yDir
+      End If
+      iStep = iStep + 1
+      If (iStep Mod 40) = 0 Then
+         xDir = 0: yDir = 0
+         Do While Abs(xDir) &lt; 4
+            xDir = (Rnd * 6 - 3) * 2
+         Loop
+         Do While Abs(yDir) &lt; 4
+            yDir = (Rnd * 6 - 3) * 2
+         Loop
+      End If
+      If (iStep Mod 70) = 0 Then
+         m_eType = m_eType + 1
+         If (m_eType &gt; eEffectRandomise) Then
+            m_eType = eEffectPaint
+         End If
+      End If
+      DoEvents
+   Loop
+   
+End Sub
+
+Private Sub Form_Load()
+
+   'm_eType = eEffectBlur
+   m_eType = eEffectPaint
+   DoChannel(eBlue) = True
+   DoChannel(eRed) = True
+   DoChannel(eGreen) = True
+   
+   Set m_cDib = New cDIBSection
+   Set m_cDibBrush = New cDIBSection
+   Set m_cDibWork = New cDIBSection
+
+   If m_cDib.Create(Screen.Width \ Screen.TwipsPerPixelX, Screen.Height \
+    Screen.TwipsPerPixelY) Then
+      Reset
+      CreateBrush eBrushRound, 96, 96
+   Else
+      Set m_cDib = Nothing
+      Set m_cDibBrush = Nothing
+      Set m_cDibWork = Nothing
+      ThrowError 1
+   End If
+   
+End Sub
+
+Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y
+ As Single)
+   If Button = vbLeftButton Then
+      ApplyBrush x, y
+   End If
+End Sub
+
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y
+ As Single)
+   If Button = vbLeftButton Then
+      ApplyBrush x, y
+   End If
+End Sub
+
+Private Sub Form_Paint()
+   If Not m_cDib Is Nothing Then
+      m_cDib.PaintPicture Me.hDC, 0, 0
+   End If
+End Sub
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) ScreenMess - Realtime Drawing with DIB Sections</a>&#160;.&#160;<a href="screenmess.html">ScreenMess</a>&#160;.&#160;frmMutilate.frm</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,306 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Hierarchy Selector Control</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	&nbsp;<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1&nbsp;</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>ActiveX Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE"><td>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<b>&nbsp;Hierarchy Selector Control</b>
+</font>
+</td></tr>
+<tr><td>
+<font color="#660000" face="verdana,arial,helvetica" size="1">
+&nbsp;Easily Build Option Trees Like the IE's Advanced Options and Explorer's Folder Options
+</font>
+</td></tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\treeview\hierarchy_selector_control\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\to_mpic.gif" alt="The Control as an Option Selector" width="183" height="157"></p>
+	<p><a href="treeset.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the source code and binaries for the Hierachy Tree Selector control (110kb)</a><br>
+	<a href="tvback.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the TreeView Background Bitmap Class code (15kb)</a></p>
+	</font>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>25 August 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Version 2.0 of the control adds the following:
+		<li>Tile a picture into the TreeView background.  This code is based on Ben Baird's TreeView
+		background image sample.  Visit his great website, <a href="javascript:window.alert(&quot;http://www.vbthunder.com/\nThis link was not retrieved.&quot;)" target="_top">VB Thunder</a>.
+		<li>Get/set item states using the new <i>Value</i> property
+		<li>New <i>Clear</i> method to reset the content
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		If you want to use background images, then the code requires the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  
+		Make sure you have downloaded and registered this before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</font>
+
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Overview</b><br>
+	The Hierarchy Selector control is an enhanced COMCTL32.OCX TreeView control which allows
+	you to easily create option dialogs like the Win98 Folder Options dialog and the Internet
+	Explorer Advanced option dialog.  In addition to this, it also provides methods which
+	allow you display a hierarchy of options to the user and allow them to easily select the
+	items of interest.
+	<br><br>
+	The control also demonstrates how to do a number of other things with the TreeView control
+	which aren't available in the standard version:
+	<ul>
+	<li>Make a Node Bold
+	<li>Apply selection tracking (where a node highlights as the user moves the mouse over)
+	<li>Get Full-Row selection in the treeview control
+	<li>Make a Node look like it has been cut (dithered icon)
+	<li>Change the background and foreground colours of the TreeView
+	<li>Expand TreeView Nodes with a single click
+	<li>Tile a bitmap into the background of the TreeView.
+	</ul>
+	</p>
+	<p><b>Hierarchical Options</b><br>
+	Often there is a hierachy or drill-down in the data your user must choose from.  For example,
+	an application which allows users to choose from geographical regions could show a hierarchy
+	like this:<br><br>
+	&nbsp Continents &gt; Countries &gt; Counties/States &gt; Cities
+	<br><br>
+	The idea of the hierarchical selector is to allow the user to select information at any
+	level of drill-down from the top.  So for the hierarchy above, if the user wanted to 
+	concentrate only on Liverpool in the UK, the User can eliminate a large number of
+	unwanted cities at the continent level.
+	<br><br>
+	To see this in pictures, the following sequence shows a selector for an imaginary banking
+	application where data is categorised against a hierarchy of sectors.
+	<br><br>
+	<img src="..\..\images\to_exf.gif" border="0" width="164" height="152" alt="All Items Included"><br>
+	All Items Included
+	<br><br>
+	<img src="..\..\images\to_exn.gif" border="0" width="164" height="152" alt="Clicking one item affects the children"><br>
+	By clicking on the All Sectors item at the head of the list, the control automatically 
+	toggles all the children in the hierarchy.  Likewise, if you were to click on the <i>Banking</i> sector,
+	it would toggle all the state of all the children of the <i>Banking</i> sector.
+	<br><br>
+	<img src="..\..\images\to_exp.gif" border="0" width="164" height="152" alt="Demonstrating Partial Selections"><br>
+	Clearly it is possible for certain children to be included and others to be excluded. When
+	this occurs, the control correctly responds by indicating a partial selection in all the 
+	parents (in this case the <i>Autos and Auto Parts</i> and <i>All Sectors</i> items).
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Enjoy!</b><br>
+	This control has proved useful in my projects. Hope it is some use to you!
+	</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td colspan="2">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overctl.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overctl.htm">ActiveX Control Source Code</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\treeview\hierarchy_selector_control\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

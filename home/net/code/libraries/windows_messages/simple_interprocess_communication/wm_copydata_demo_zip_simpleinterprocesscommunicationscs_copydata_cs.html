@@ -1,0 +1,658 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_CopyData.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_CopyData.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsCS_CopyData.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="wm_copydata_demo.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />WM_COPYDATA Demo</a> (62K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:13465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=13465&type=zip&title=wm_5fcopydata_20demo_2ezip_5fsimpleinterprocesscommunicationscs_5fcopydata.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />10 Nov 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\windows\enumerating_windows\article.html">Enumerating Windows</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: SimpleInterprocessCommunicationsCS_CopyData.cs</h1><pre>using System;
+using System.Collections;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.Win32
+{
+   public delegate void DataReceivedEventHandler(object sender,
+    DataReceivedEventArgs e);
+
+   /// &lt;summary&gt;
+   /// A class which wraps using Windows native WM_COPYDATA
+   /// message to send interprocess data between applications.
+   /// This is a simple technique for interprocess data sends
+   /// using Windows.  The alternative to this is to use
+   /// Remoting, which requires a network card and a way
+   /// to register the Remoting name of an object so it
+   /// can be read by other applications.
+   /// &lt;/summary&gt;
+   public class CopyData : NativeWindow, IDisposable
+   {   
+      /// &lt;summary&gt;
+      /// Event raised when data is received on any of the channels 
+      /// this class is subscribed to.
+      /// &lt;/summary&gt;
+      public event DataReceivedEventHandler DataReceived;
+
+      [StructLayout(LayoutKind.Sequential)]
+         private struct COPYDATASTRUCT
+      {
+         public IntPtr dwData;
+         public int cbData;
+         public IntPtr lpData;
+      }
+      
+      private const int WM_COPYDATA = 0x4A;
+      private const int WM_DESTROY = 0x2;
+
+      #region Member Variables
+      private CopyDataChannels channels = null;
+      private bool disposed = false;
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Override for a form's Window Procedure to handle WM_COPYDATA
+      /// messages sent by other instances of this class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="m"&gt;The Windows Message information.&lt;/param&gt;
+      protected override void WndProc (ref System.Windows.Forms.Message m )
+      {
+         if (m.Msg == WM_COPYDATA)
+         {
+            COPYDATASTRUCT cds = new COPYDATASTRUCT();
+            cds = (COPYDATASTRUCT) Marshal.PtrToStructure(m.LParam,
+             typeof(COPYDATASTRUCT));
+            if (cds.cbData &gt; 0)
+            {
+               byte[] data = new byte[cds.cbData];            
+               Marshal.Copy(cds.lpData, data, 0, cds.cbData);
+               MemoryStream stream = new MemoryStream(data);
+               BinaryFormatter b = new BinaryFormatter();
+               CopyDataObjectData cdo = (CopyDataObjectData)
+                b.Deserialize(stream);
+               
+               if (channels.Contains(cdo.Channel))
+               {
+                  DataReceivedEventArgs d = new
+                   DataReceivedEventArgs(cdo.Channel, cdo.Data, cdo.Sent);
+                  OnDataReceived(d);
+                  m.Result = (IntPtr) 1;
+               }            
+            }
+         }
+         else if (m.Msg == WM_DESTROY)
+         {
+            // WM_DESTROY fires before OnHandleChanged and is
+            // a better place to ensure that we've cleared 
+            // everything up.
+            channels.OnHandleChange();
+            base.OnHandleChange();
+         }
+         base.WndProc(ref m);
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the DataReceived event from this class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;The data which has been received.&lt;/param&gt;
+      protected void OnDataReceived(DataReceivedEventArgs e)
+      {
+         DataReceived(this, e);
+      }
+
+      /// &lt;summary&gt;
+      /// If the form's handle changes, the properties associated
+      /// with the window need to be cleared up. This override ensures
+      /// that it is done.  Note that the CopyData class will then
+      /// stop responding to events and it should be recreated once
+      /// the new handle has been assigned.
+      /// &lt;/summary&gt;
+      protected override void OnHandleChange ()
+      {
+         // need to clear up everything we had set.
+         channels.OnHandleChange();
+         base.OnHandleChange();
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the collection of channels.
+      /// &lt;/summary&gt;
+      public CopyDataChannels Channels
+      {
+         get
+         {
+            return this.channels;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Clears up any resources associated with this object.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         if (!disposed)
+         {
+            channels.Clear();
+            channels = null;
+            disposed = true;
+            GC.SuppressFinalize(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the CopyData class
+      /// &lt;/summary&gt;
+      public CopyData()
+      {
+         channels = new CopyDataChannels(this);
+      }
+
+      /// &lt;summary&gt;
+      /// Finalises a CopyData class which has not been disposed.
+      /// There may be a minor resource leak if this class is finalised
+      /// after the form it is associated with.
+      /// &lt;/summary&gt;
+      ~CopyData()
+      {
+         Dispose();
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// Contains data and other information associated with data
+   /// which has been sent from another application.
+   /// &lt;/summary&gt;
+   public class DataReceivedEventArgs
+   {
+      private string channelName = "";
+      private object data = null;
+      private DateTime sent;
+      private DateTime received;
+
+      /// &lt;summary&gt;
+      /// Gets the channel name that this data was sent on.
+      /// &lt;/summary&gt;
+      public string ChannelName
+      {
+         get
+         {
+            return this.channelName;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets the data object which was sent.
+      /// &lt;/summary&gt;
+      public Object Data
+      {
+         get
+         {
+            return this.data;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets the date and time which at the data was sent
+      /// by the sending application.
+      /// &lt;/summary&gt;
+      public DateTime Sent
+      {
+         get
+         {
+            return this.sent;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets the date and time which this data item as
+      /// received.
+      /// &lt;/summary&gt;
+      public DateTime Received
+      {
+         get
+         {
+            return this.received;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Constructs an instance of this class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="channelName"&gt;The channel that the data was received
+       from&lt;/param&gt;
+      /// &lt;param name="data"&gt;The data which was sent&lt;/param&gt;
+      /// &lt;param name="sent"&gt;The date and time the data was sent&lt;/param&gt;
+      internal DataReceivedEventArgs(string channelName, object data, DateTime
+       sent)
+      {
+         this.channelName = channelName;
+         this.data = data;
+         this.sent = sent;
+         this.received = DateTime.Now;
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// A strongly-typed collection of channels associated with the CopyData
+   /// class.
+   /// &lt;/summary&gt;
+   public class CopyDataChannels : DictionaryBase
+   {
+      private NativeWindow owner = null;
+
+      /// &lt;summary&gt;
+      /// Returns an enumerator for each of the CopyDataChannel objects
+      /// within this collection.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;An enumerator for each of the CopyDataChannel objects
+      /// within this collection.&lt;/returns&gt;
+      public new System.Collections.IEnumerator GetEnumerator (  )
+      {
+         return this.Dictionary.Values.GetEnumerator();
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the CopyDataChannel at the specified 0-based index.
+      /// &lt;/summary&gt;
+      public CopyDataChannel this[int index]
+      {
+         get 
+         {
+            CopyDataChannel ret = null;
+            int i = 0;
+            foreach (CopyDataChannel cdc in this.Dictionary.Values)
+            {
+               i++;
+               if (i == index)
+               {
+                  ret = cdc;
+                  break;
+               }
+            }
+            return ret;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Returns the CopyDataChannel for the specified channelName
+      /// &lt;/summary&gt;
+      public CopyDataChannel this[string channelName]
+      {
+         get
+         {
+            return (CopyDataChannel) this.Dictionary[channelName];
+         }
+      }
+      /// &lt;summary&gt;
+      /// Adds a new channel on which this application can send and
+      /// receive messages.
+      /// &lt;/summary&gt;
+      public void Add(string channelName)
+      {
+         CopyDataChannel cdc = new CopyDataChannel(owner, channelName);
+         this.Dictionary.Add(channelName , cdc);
+      }
+      /// &lt;summary&gt;
+      /// Removes an existing channel.
+      /// &lt;/summary&gt;
+      /// &lt;param name="channelName"&gt;The channel to remove&lt;/param&gt;
+      public void Remove(string channelName)
+      {
+         this.Dictionary.Remove(channelName);
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets whether this channel contains a CopyDataChannel
+      /// for the specified channelName.
+      /// &lt;/summary&gt;
+      public bool Contains(string channelName)
+      {
+         return this.Dictionary.Contains(channelName);
+      }
+
+      /// &lt;summary&gt;
+      /// Ensures the resources associated with a CopyDataChannel
+      /// object collected by this class are cleared up.
+      /// &lt;/summary&gt;
+      protected override void OnClear()
+      {
+         foreach (CopyDataChannel cdc in this.Dictionary.Values)
+         {
+            cdc.Dispose();
+         }
+         base.OnClear();
+      }
+
+      /// &lt;summary&gt;
+      /// Ensures any resoures associated with the CopyDataChannel object
+      /// which has been removed are cleared up.
+      /// &lt;/summary&gt;
+      /// &lt;param name="key"&gt;The channelName&lt;/param&gt;
+      /// &lt;param name="data"&gt;The CopyDataChannel object which has
+      /// just been removed&lt;/param&gt;
+      protected override void OnRemoveComplete ( Object key , System.Object
+       data )
+      {
+         ( (CopyDataChannel) data).Dispose();
+         base.OnRemove(key, data);
+      }
+
+      /// &lt;summary&gt;
+      /// If the form's handle changes, the properties associated
+      /// with the window need to be cleared up. This override ensures
+      /// that it is done.  Note that the CopyData class will then
+      /// stop responding to events and it should be recreated once
+      /// the new handle has been assigned.
+      /// &lt;/summary&gt;
+      public void OnHandleChange()
+      {
+         foreach (CopyDataChannel cdc in this.Dictionary.Values)
+         {
+            cdc.OnHandleChange();
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the CopyDataChannels collection.
+      /// Automatically managed by the CopyData class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="owner"&gt;The NativeWindow this collection
+      /// will be associated with&lt;/param&gt;
+      internal CopyDataChannels(NativeWindow owner)
+      {
+         this.owner = owner;
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// A channel on which messages can be sent.
+   /// &lt;/summary&gt;
+   public class CopyDataChannel : IDisposable
+   {
+      #region Unmanaged Code
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static int GetProp(
+         IntPtr hwnd , 
+         string lpString);
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static int SetProp(
+         IntPtr hwnd , 
+         string lpString, 
+         int hData);
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static int RemoveProp(
+         IntPtr hwnd, 
+         string lpString);
+      
+      [DllImport("user32", CharSet=CharSet.Auto)]
+      private extern static int SendMessage(
+         IntPtr hwnd, 
+         int wMsg, 
+         int wParam,             
+         ref COPYDATASTRUCT lParam
+         );
+
+      [StructLayout(LayoutKind.Sequential)]
+      private struct COPYDATASTRUCT
+      {
+         public IntPtr dwData;
+         public int cbData;
+         public IntPtr lpData;
+      }
+      
+      private const int WM_COPYDATA = 0x4A;
+      #endregion
+
+      #region Member Variables
+      private string channelName = "";
+      private bool disposed = false;
+      private NativeWindow owner = null;
+      private bool recreateChannel = false;
+      #endregion
+
+      /// &lt;summary&gt;
+      /// Gets the name associated with this channel.
+      /// &lt;/summary&gt;
+      public string ChannelName
+      {
+         get
+         {
+            return this.channelName;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Sends the specified object on this channel to any other
+      /// applications which are listening.  The object must have the
+      /// SerializableAttribute set, or must implement ISerializable.
+      /// &lt;/summary&gt;
+      /// &lt;param name="obj"&gt;The object to send&lt;/param&gt;
+      /// &lt;returns&gt;The number of recipients&lt;/returns&gt;
+      public int Send(object obj)
+      {
+         int recipients = 0;
+
+         if (disposed)
+         {
+            throw new InvalidOperationException("Object has been disposed");
+         }
+
+         if (recreateChannel) // handle has changed
+         {
+            addChannel();
+         }
+
+         CopyDataObjectData cdo = new CopyDataObjectData(obj, channelName);    
+              
+
+         // Try to do a binary serialization on obj.
+         // This will throw and exception if the object to
+         // be passed isn't serializable.
+         BinaryFormatter b = new BinaryFormatter();
+         MemoryStream stream = new MemoryStream();
+         b.Serialize(stream, cdo);
+         stream.Flush();         
+
+         // Now move the data into a pointer so we can send
+         // it using WM_COPYDATA:
+         // Get the length of the data:
+         int dataSize = (int)stream.Length;
+         if (dataSize &gt; 0)
+         {
+            // This isn't very efficient if your data is very large.
+            // First we copy to a byte array, then copy to a CoTask 
+            // Mem object... And when we use WM_COPYDATA windows will
+            // make yet another copy!  But if you're talking about 4K
+            // or less of data then it doesn't really matter.
+            byte[] data = new byte[dataSize];
+            stream.Seek(0, SeekOrigin.Begin);
+            stream.Read(data, 0, dataSize);
+            IntPtr ptrData = Marshal.AllocCoTaskMem(dataSize);
+            Marshal.Copy(data, 0, ptrData, dataSize);
+
+            // Enumerate all windows which have the
+            // channel name, send the data to each one
+            EnumWindows ew = new EnumWindows();
+            ew.GetWindows();
+
+            // Send the data to each window identified on
+            // the channel:
+            foreach(EnumWindowsItem window in ew.Items)
+            {
+               if (!window.Handle.Equals(this.owner.Handle))
+               {
+                  if (GetProp(window.Handle, this.channelName) != 0)
+                  {
+                     COPYDATASTRUCT cds = new COPYDATASTRUCT();
+                     cds.cbData = dataSize;
+                     cds.dwData = IntPtr.Zero;
+                     cds.lpData = ptrData;
+                     int res = SendMessage(window.Handle, WM_COPYDATA,
+                      (int)owner.Handle, ref cds);
+                     recipients += (Marshal.GetLastWin32Error() == 0 ? 1 : 0);
+                  }
+               }
+            }
+
+            // Clear up the data:
+            Marshal.FreeCoTaskMem(ptrData);
+         }
+         stream.Close();
+
+         return recipients;
+      }
+
+      private void addChannel()
+      {
+         // Tag this window with property "channelName"
+         SetProp(owner.Handle, this.channelName, (int)owner.Handle);
+
+      }
+      private void removeChannel()
+      {
+         // Remove the "channelName" property from this window
+         RemoveProp(owner.Handle, this.channelName);
+      }
+
+      /// &lt;summary&gt;
+      /// If the form's handle changes, the properties associated
+      /// with the window need to be cleared up. This method ensures
+      /// that it is done.  Note that the CopyData class will then
+      /// stop responding to events and it should be recreated once
+      /// the new handle has been assigned.
+      /// &lt;/summary&gt;
+      public void OnHandleChange()
+      {
+         removeChannel();
+         recreateChannel = true;
+      }
+
+      /// &lt;summary&gt;
+      /// Clears up any resources associated with this channel.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         if (!disposed)
+         {
+            if (channelName.Length &gt; 0)
+            {
+               removeChannel();
+            }
+            channelName = "";
+            disposed = true;
+            GC.SuppressFinalize(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of a CopyData channel.  Called
+      /// automatically by the CopyDataChannels collection.
+      /// &lt;/summary&gt;
+      /// &lt;param name="owner"&gt;The owning native window&lt;/param&gt;
+      /// &lt;param name="channelName"&gt;The name of the channel to
+      /// send messages on&lt;/param&gt;
+      internal CopyDataChannel(NativeWindow owner, string channelName)
+      {
+         this.owner = owner;
+         this.channelName = channelName;
+         addChannel();
+      }
+
+      ~CopyDataChannel()
+      {
+         Dispose();
+      }
+   }
+
+   /// &lt;summary&gt;
+   /// A class which wraps the data being copied, used
+   /// internally within the CopyData class objects.
+   /// &lt;/summary&gt;
+   [Serializable()]
+   internal class CopyDataObjectData
+   {
+      /// &lt;summary&gt;
+      /// The Object to copy.  Must be Serializable.
+      /// &lt;/summary&gt;
+      public object Data;
+      /// &lt;summary&gt;
+      /// The date and time this object was sent.
+      /// &lt;/summary&gt;
+      public DateTime Sent;
+      /// &lt;summary&gt;
+      /// The name of the channel this object is being sent on
+      /// &lt;/summary&gt;
+      public string Channel;
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this object
+      /// &lt;/summary&gt;
+      /// &lt;param name="data"&gt;The data to copy&lt;/param&gt;
+      /// &lt;param name="channel"&gt;The channel name to send on&lt;/param&gt;
+      /// &lt;exception cref="ArgumentException"&gt;If data is not
+       serializable.&lt;/exception&gt;
+      public CopyDataObjectData(object data, string channel)
+      {
+         Data = data;
+         if (!data.GetType().IsSerializable)
+         {
+            throw new ArgumentException("Data object must be serializable.",
+             "data");
+         }
+         Channel = channel;
+         Sent = DateTime.Now;
+      }
+   }
+
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;<a href="article.html">Simple Interprocess Communications using WM_COPYDATA</a>&#160;.&#160;<a href="wm_copydata_demo.html">WM_COPYDATA Demo</a>&#160;.&#160;SimpleInterprocessCommunicationsCS_CopyData.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 15 November 2003</p></td><td></td></tr></table>
+</body></html>

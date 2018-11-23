@@ -1,0 +1,584 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: IMAPIWrapper\DiscMaster.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: IMAPIWrapper\DiscMaster.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./IMAPI_Wrapper.asp" /><link rel="meta" type="application/rdf+xml" href="./IMAPI Wrapper.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper.html">IMAPI Wrapper</a>&#160;.&#160;IMAPIWrapper</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="acclimapiwrapper_binary.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />acclImapiWrapper Binary</a> (21K)</p><p /><p class="nav"><a href="imapi_wrapper_demonstration.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Demonstration</a> (84K)</p><p class="nav"><a href="imapi_wrapper_documentation.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper Documentation</a> (85K)</p><p class="nav"><a href="imapi_wrapper.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />IMAPI Wrapper</a> (89K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15430</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15430&type=zip&title=discmaster.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: IMAPIWrapper\DiscMaster.cs</h1><p>This file is part of the download <a href="imapi_wrapper.html">IMAPI Wrapper</a>, which is described in the article <a href="article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>.</p><pre>using System;
+using System.Runtime.InteropServices;
+
+namespace vbAccelerator.Components.ImapiWrapper
+{   
+
+   /// &lt;summary&gt;
+   /// Represents the handler for a QueryCancel event.
+   /// &lt;/summary&gt;
+   public delegate void QueryCancelEventHandler(object sender,
+    QueryCancelEventArgs args);
+
+   /// &lt;summary&gt;
+   /// Represents the handler for a Progress event.
+   /// &lt;/summary&gt;
+   public delegate void ProgressEventHandler(object sender, ProgressEventArgs
+    args);
+
+   /// &lt;summary&gt;
+   /// Represents the handler for an Estimated Time operation event.
+   /// &lt;/summary&gt;
+   public delegate void EstimatedTimeOperationEventHandler(object sender,
+    EstimatedTimeOperationEventArgs args);
+
+   /// &lt;summary&gt;
+   /// Represents the handler for a Completion Status event.
+   /// &lt;/summary&gt;
+   public delegate void CompletionStatusEventHandler(object sender,
+    CompletionStatusEventArgs args);
+
+   /// &lt;summary&gt;
+   /// Summary description for DiscMaster.
+   /// &lt;/summary&gt;
+   public class DiscMaster : IDisposable
+   {
+      private const string IID_IRedbookDiscMaster =
+       "E3BC42CD-4E5C-11D3-9144-00104BA11C5E";
+      private const string IID_IJolietDiscMaster =
+       "E3BC42CE-4E5C-11D3-9144-00104BA11C5E";
+
+      private bool disposed = false;
+      private SimpleDiscRecorder simpleRecorder = null;
+      private IDiscMaster discMaster = null;
+      private DiscMasterProgressEvents progressEvents = null;
+      private DiscRecorders discRecorders = null;
+      private bool jolietAddDataCancel = false;
+
+      /// &lt;summary&gt;
+      /// Raised to request whether to cancel staging an image or
+      /// burning a CD.
+      /// &lt;/summary&gt;
+      public event QueryCancelEventHandler QueryCancel;
+      
+      /// &lt;summary&gt;
+      /// Raised when a Plug'n'Play event occurs on this system that changes
+      /// the list of available drives.
+      /// &lt;/summary&gt;
+      public event EventHandler PnPActivity;
+
+      /// &lt;summary&gt;
+      /// Raised during staging of the disc as data is added to the staging
+      /// area.
+      /// &lt;/summary&gt;
+      public event ProgressEventHandler AddProgress;
+
+      /// &lt;summary&gt;
+      /// Raised during writing of a disc as blocks are added to the disc.
+      /// &lt;/summary&gt;
+      public event ProgressEventHandler BlockProgress;
+
+      /// &lt;summary&gt;
+      /// Raised during writing of an audio disc as tracks are added to the
+      /// disc.
+      /// &lt;/summary&gt;
+      public event ProgressEventHandler TrackProgress;
+
+      /// &lt;summary&gt;
+      /// Raised when disc is about to be prepared for burning.
+      /// &lt;/summary&gt;
+      public event EstimatedTimeOperationEventHandler PreparingBurn;
+
+      /// &lt;summary&gt;
+      /// Raised when the disc is about to be finalised.
+      /// &lt;/summary&gt;
+      public event EstimatedTimeOperationEventHandler ClosingDisc;
+
+      /// &lt;summary&gt;
+      /// Raised when a burn operation has completed.
+      /// &lt;/summary&gt;
+      public event CompletionStatusEventHandler BurnComplete;
+
+      /// &lt;summary&gt;
+      /// Raised when an erase operation has completed.
+      /// &lt;/summary&gt;
+      public event CompletionStatusEventHandler EraseComplete;
+
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of this class.
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="COMException"&gt;if the System's &lt;c&gt;ICDBurn&lt;/c&gt; or
+      /// &lt;c&gt;IMAPI&lt;/c&gt; implementations cannot be instantiated&lt;/exception&gt;
+      public DiscMaster()
+      {
+         InitialiseCDBurn();
+         InitialiseIMAPI();
+      }
+
+      /// &lt;summary&gt;
+      /// Destructor for class.
+      /// &lt;/summary&gt;
+      ~DiscMaster()
+      {
+         Dispose(false);
+      }
+
+      /// &lt;summary&gt;
+      /// Disposes any resources associated with this class.  Note that
+      /// closing an IMAPI session may take a while as the image area
+      /// is cleared. It is highly recommended you call this method
+      /// before your application is closed.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         Dispose(true);
+         GC.SuppressFinalize(this);
+      }
+
+      /// &lt;summary&gt;
+      /// Disposes any resources associated with this class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="disposing"&gt;&lt;c&gt;true&lt;/c&gt; if the method is being
+      /// called from the &lt;c&gt;Dispose&lt;/c&gt; method, otherwise &lt;c&gt;false&lt;/c&gt;.&lt;/param&gt;
+      protected virtual void Dispose(bool disposing)
+      {
+         if (!disposed)
+         {
+            if (disposing)
+            {
+               if (simpleRecorder != null)
+               {
+                  simpleRecorder.Dispose();
+               }
+               simpleRecorder = null;
+               if (discMaster != null)
+               {
+                  if (progressEvents != null)
+                  {
+                     discMaster.ProgressUnadvise(progressEvents.Cookie);
+                     progressEvents.Dispose();
+                     progressEvents = null;
+                  }
+                  discMaster.Close();
+                  Marshal.ReleaseComObject(discMaster);
+                  discMaster = null;
+               }
+            }
+         }
+         this.disposed = true;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;c&gt;SimpleDiscRecorder&lt;/c&gt; associated with this
+      /// system.
+      /// &lt;/summary&gt;
+      public SimpleDiscRecorder SimpleDiscRecorder
+      {
+         get
+         {
+            return simpleRecorder;
+         }
+      }
+   
+      /// &lt;summary&gt;
+      /// Gets the collection of disc recorders on this system.
+      /// &lt;/summary&gt;
+      public DiscRecorders DiscRecorders
+      {
+         get
+         {
+            return discRecorders;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the Redbook (audio) disc mastering object for this
+      /// system.  Getting this may change the list of available
+      /// recorders on the system as some recorders may not support
+      /// audio CDs.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;Redbook disc mastering object.&lt;/returns&gt;
+      public RedbookDiscMaster RedbookDiscMaster()
+      {
+         object objRedbook = null;
+         Guid iidRedbook = new Guid(IID_IRedbookDiscMaster);      
+         discMaster.SetActiveDiscMasterFormat(ref iidRedbook, out objRedbook);
+         discRecorders.Refresh();
+         RedbookDiscMaster redbookDiscMaster = new RedbookDiscMaster(this,
+          (IRedbookDiscMaster) objRedbook);
+         return redbookDiscMaster;      
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the Joliet (data) disc mastering object for this
+      /// system.  Getting this may change the list of available
+      /// recorders on the system.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;Joliet disc mastering object.&lt;/returns&gt;
+      public JolietDiscMaster JolietDiscMaster()
+      {
+         object objJoliet = null;
+         Guid iidJoliet = new Guid(IID_IJolietDiscMaster);
+         discMaster.SetActiveDiscMasterFormat(ref iidJoliet, out objJoliet);
+         discRecorders.Refresh();
+         JolietDiscMaster jolietDiscMaster = new JolietDiscMaster(this,
+          (IJolietDiscMaster) objJoliet);
+         return jolietDiscMaster;
+      }
+
+      /// &lt;summary&gt;
+      /// Records the image in the staging area built up with the Joliet
+      /// or Redbook disc master classes onto the disc.
+      /// &lt;/summary&gt;
+      /// &lt;param name="simulate"&gt;Whether to simulate the burn without actually
+      /// recording any data to the disc.&lt;/param&gt;
+      /// &lt;param name="ejectWhenComplete"&gt;Whether to eject the drive tray once
+      /// the burn or simulated burn has completed.&lt;/param&gt;
+      public void RecordDisc(bool simulate, bool ejectWhenComplete)
+      {
+         if (!jolietAddDataCancel)
+         {
+            try
+            {
+               discMaster.RecordDisc((simulate ? 1 : 0), (ejectWhenComplete ? 1
+                : 0));
+            }
+            catch (COMException ex)
+            {
+               if ((uint) ex.ErrorCode == (uint)
+                IMAPI_ERROR_CODES.IMAPI_E_USERABORT)
+               {
+                  // fine
+               }
+               else
+               {
+                  // rethrow
+                  throw ex;
+               }
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Clears any content placed into the staging area by the Joliet or
+       Redbook
+      /// disc master classes.
+      /// &lt;/summary&gt;
+      public void ClearFormatContent()
+      {
+         jolietAddDataCancel = false;
+         discMaster.ClearFormatContent();
+      }
+
+
+      /// &lt;summary&gt;
+      /// Instantiate the &lt;c&gt;ICDBurn&lt;/c&gt; implementation and create
+      /// the &lt;c&gt;SimpleDiscRecorder&lt;/c&gt; around it.
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="COMException"&gt;if the &lt;c&gt;ICDBurn&lt;/c&gt; implementation
+      /// cannot be instantiated&lt;/exception&gt;
+      private void InitialiseCDBurn()
+      {
+         ICDBurn cdBurnImpl = IMAPIObjectFactory.CreateCDBurn();
+         simpleRecorder = new SimpleDiscRecorder(cdBurnImpl);
+      }
+
+      /// &lt;summary&gt;
+      /// Instantiate the &lt;c&gt;MsDiscMasterObj&lt;/c&gt; implementation, open
+      /// it, create progress events and the recorder collection.
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="COMException"&gt;if the &lt;c&gt;MsDiscMasterObj&lt;/c&gt;
+       implementation
+      /// cannot be instantiated&lt;/exception&gt;
+      private void InitialiseIMAPI()
+      {
+         discMaster = IMAPIObjectFactory.CreateDiscMaster();
+         discMaster.Open();
+         
+         // Set up progress events
+         progressEvents = new DiscMasterProgressEvents(this);
+         IntPtr cookie = IntPtr.Zero;
+         IDiscMasterProgressEvents iprgEvents = (IDiscMasterProgressEvents)
+          progressEvents;
+         discMaster.ProgressAdvise(iprgEvents, out cookie);
+         progressEvents.Cookie = cookie;
+
+         // Recorders collection
+         discRecorders = new DiscRecorders(discMaster);
+      }
+
+      /// &lt;summary&gt;
+      /// Called to request whether the burn event should be cancelled
+      /// &lt;/summary&gt;
+      /// &lt;param name="cancel"&gt;Set to &lt;c&gt;1&lt;/c&gt; to cancel, otherwise
+      /// set to &lt;c&gt;0&lt;/c&gt;.&lt;/param&gt;
+      internal void QueryCancelRequest(out int cancel)
+      {
+         if (jolietAddDataCancel)
+         {
+            cancel = 1;
+         }
+         else
+         {
+            QueryCancelEventArgs queryCancelArgs = new QueryCancelEventArgs();
+            OnQueryCancel(queryCancelArgs);
+            cancel = (queryCancelArgs.Cancel ? 1 : 0);
+            if (cancel == 1)
+            {
+               jolietAddDataCancel = true;
+            }
+         }
+      }
+
+      internal void ResetJolietAddDataCancel()
+      {
+         jolietAddDataCancel = false;
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="QueryCancel"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Query cancel event arguments&lt;/param&gt;
+      protected virtual void OnQueryCancel(QueryCancelEventArgs args)
+      {
+         if (QueryCancel != null)
+         {
+            QueryCancel(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies that a Plug and Play activity has occurred that has changed
+       the list of recorders.
+      /// &lt;/summary&gt;
+      internal void NotifyPnPActivity()
+      {
+         OnPnPActivity(new EventArgs());
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="PnPActivity"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Not used.&lt;/param&gt;
+      protected virtual void OnPnPActivity(EventArgs args)
+      {
+         if (PnPActivity != null)
+         {
+            PnPActivity(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies addition of data to the CD image in the stash.
+      /// &lt;/summary&gt;
+      internal void NotifyAddProgress(
+         int completed,
+         int total)
+      {
+         OnAddProgress(new ProgressEventArgs(completed, total));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="AddProgress"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Details of the add progress so far.&lt;/param&gt;
+      protected virtual void OnAddProgress(ProgressEventArgs args)
+      {
+         if (AddProgress != null)
+         {
+            AddProgress(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies an application of block progress whilst burning a disc.
+      /// &lt;/summary&gt;
+      internal void NotifyBlockProgress(
+         int currentBlock,
+         int totalBlocks)
+      {
+         OnBlockProgress(new ProgressEventArgs(currentBlock, totalBlocks));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="BlockProgress"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Details of the progress so far.&lt;/param&gt;
+      protected virtual void OnBlockProgress(ProgressEventArgs args)
+      {
+         if (BlockProgress != null)
+         {
+            BlockProgress(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies an application of track progress whilst burning an audio
+       disc.
+      /// &lt;/summary&gt;
+      internal void NotifyTrackProgress(
+         int currentTrack,
+         int totalTracks)
+      {
+         OnTrackProgress(new ProgressEventArgs(currentTrack, totalTracks));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="TrackProgress"/&gt; event (if creating
+      /// an audio CD).
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Details of progress so far&lt;/param&gt;
+      protected virtual void OnTrackProgress(ProgressEventArgs args)
+      {
+         if (TrackProgress != null)
+         {
+            TrackProgress(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI is preparing to burn a disc.
+      /// &lt;/summary&gt;
+      internal void NotifyPreparingBurn(
+         int estimatedSeconds)
+      {
+         OnPreparingBurn(new EstimatedTimeOperationEventArgs(estimatedSeconds));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="PreparingBurn"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Details of the estimated time for the
+       preparaion.&lt;/param&gt;
+      protected virtual void OnPreparingBurn(EstimatedTimeOperationEventArgs
+       args)
+      {
+         if (PreparingBurn != null)
+         {
+            PreparingBurn(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI is closing a disc.
+      /// &lt;/summary&gt;
+      internal void NotifyClosingDisc(
+         int estimatedSeconds)
+      {
+         OnClosingDisc(new EstimatedTimeOperationEventArgs(estimatedSeconds));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="ClosingDisc"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Details of the estimated time to close the
+       disc.&lt;/param&gt;
+      protected virtual void OnClosingDisc(EstimatedTimeOperationEventArgs args)
+      {
+         if (ClosingDisc != null)
+         {
+            ClosingDisc(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI has completed burning a disc.
+      /// &lt;/summary&gt;
+      internal void NotifyBurnComplete(
+         int status)
+      {
+         OnBurnComplete(new CompletionStatusEventArgs(status));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="BurnComplete"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Status of the burn.&lt;/param&gt;
+      protected virtual void OnBurnComplete(CompletionStatusEventArgs args)
+      {
+         if (BurnComplete != null)
+         {
+            BurnComplete(this, args);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Notifies an application that IMAPI has completed erasing a disc.
+      /// &lt;/summary&gt;
+      internal void NotifyEraseComplete(
+         int status)
+      {
+         OnEraseComplete(new CompletionStatusEventArgs(status));
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the &lt;see cref="EraseComplete"/&gt; event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="args"&gt;Status of the erase.&lt;/param&gt;
+      protected virtual void OnEraseComplete(CompletionStatusEventArgs args)
+      {
+         if (EraseComplete != null)
+         {
+            EraseComplete(this, args);
+         }
+      }
+
+      
+
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a>&#160;.&#160;<a href="..\imapi_wrapper.html">IMAPI Wrapper</a>&#160;.&#160;IMAPIWrapper</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

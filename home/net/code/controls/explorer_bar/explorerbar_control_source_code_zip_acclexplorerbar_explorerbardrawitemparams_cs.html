@@ -1,0 +1,329 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarDrawItemParams.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarDrawItemParams.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ExplorerBarDrawItemParams.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="explorerbar_control_binary.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Binary</a> (40K)</p><p class="nav"><a href="explorerbar_control_demonstration.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Demonstration</a> (47K)</p><p class="nav"><a href="explorerbar_control_documentation.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Documentation</a> (265K)</p><p class="nav"><a href="explorerbar_control_source_code.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Source Code</a> (201K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:14471</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=14471&type=zip&title=explorerbar_20control_20source_20code_2ezip_5facclexplorerbar_5fexplorerbard.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />17 Apr 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\vb\code\controls\explorer_bar_control\article.html">vbAccelerator Explorer Bar Control</a></p><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\libraries\graphics\reading_exif_tags_from_jpg_files\article.html">Reading EXIF Tags From JPEG Files</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: acclExplorerBar_ExplorerBarDrawItemParams.cs</h1><pre>using System;
+using System.Drawing;
+
+namespace vbAccelerator.Components.Controls.ExplorerBarFramework
+{
+   /// &lt;summary&gt;
+   /// Provides references to parameters needed to draw a bar or item
+   /// on the surface of the ExplorerBar control.
+   /// &lt;/summary&gt;
+   public class ExplorerBarDrawItemParams
+   {
+      private System.Drawing.Graphics graphics;
+      private System.Windows.Forms.ImageList titleImageList;
+      private System.Windows.Forms.ImageList imageList;
+      private System.Drawing.Font defaultFont;
+      private int widthWithoutScroll;
+      private int widthWithScroll;
+      private bool scrollShowing;
+      private ExplorerBarDrawingStyle style;
+      private ExplorerBarMode mode;
+      private bool rightToLeft;
+      private int top;
+      private Bitmap animationBitmap;
+      private bool showFocusCues;
+      private bool showKeyboardCues;
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;see cref="Graphics"/&gt; object to draw onto.
+      /// &lt;/summary&gt;
+      public System.Drawing.Graphics Graphics
+      {
+         get
+         {
+            return graphics;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the &lt;see cref="ImageList"/&gt; to use for the Title of
+      /// the bars.
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ImageList TitleImageList
+      {
+         get
+         {
+            return titleImageList;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the ImageList to use for items in the bar.
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ImageList ImageList
+      {
+         get
+         {
+            return imageList;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the default font to draw items with.
+      /// &lt;/summary&gt;
+      public System.Drawing.Font DefaultFont
+      {
+         get
+         {
+            return defaultFont;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the client width of the control when the scroll bar is not
+       showing.
+      /// &lt;/summary&gt;
+      public int WidthWithoutScroll
+      {
+         get
+         {
+            return widthWithoutScroll;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the client width of the control when the scroll bar is showing.
+      /// &lt;/summary&gt;
+      public int WidthWithScroll
+      {
+         get
+         {
+            return widthWithScroll;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the drawing style currently in effect for the control.
+      /// &lt;/summary&gt;
+      public ExplorerBarDrawingStyle Style
+      {
+         get
+         {
+            return style;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the drawing mode currently in effect for the control.
+      /// &lt;/summary&gt;
+      public ExplorerBarMode Mode
+      {
+         get
+         {
+            return mode;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether the control's contents should be rendered Right - Left.
+      /// &lt;/summary&gt;
+      public bool RightToLeft
+      {
+         get
+         {
+            return rightToLeft;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether the scroll bar is showing in the control.
+      /// &lt;/summary&gt;
+      public bool ScrollShowing
+      {
+         get
+         {
+            return scrollShowing;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether focus cues should be shown
+      /// &lt;/summary&gt;
+      public bool ShowFocusCues
+      {
+         get
+         {
+            return showFocusCues;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether keyboard cues should be shown
+      /// &lt;/summary&gt;
+      public bool ShowKeyboardCues
+      {
+         get
+         {
+            return showKeyboardCues;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the current top position for drawing.
+      /// &lt;/summary&gt;
+      public int Top
+      {
+         get
+         {
+            return top;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the offscreen bitmap used to render animations which is later
+      /// composited onto the control using an alpha amount.
+      /// &lt;/summary&gt;
+      public Bitmap AnimationBitmap
+      {
+         get
+         {
+            return animationBitmap;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Sets the top position.
+      /// &lt;/summary&gt;
+      /// &lt;param name="top"&gt;New top position&lt;/param&gt;
+      public void SetTop(int top)
+      {
+         this.top = top;
+      }
+      
+      /// &lt;summary&gt;
+      /// Changes the graphics object to render to.  Classes calling this
+      /// method should maintain a reference to the original graphics object
+      /// associated with this class and reset it once drawing is complete.
+      /// The intention of this method is to allow a bar to redirect drawing
+      /// onto an offscreen graphics object used to composite to the animation
+      /// bitmap.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;New Graphics object.&lt;/param&gt;
+      public void SetGraphics(Graphics graphics)
+      {
+         this.graphics = graphics;
+      }
+
+      /// &lt;summary&gt;
+      /// Constructs a new instance of the class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to render to&lt;/param&gt;
+      /// &lt;param name="titleImageList"&gt;Image list to use for bar titles.&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Image list to use for items.&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Default Font to use.&lt;/param&gt;
+      /// &lt;param name="widthWithoutScroll"&gt;Client width of the control when the 
+      /// scroll bar is not showing.&lt;/param&gt;
+      /// &lt;param name="widthWithScroll"&gt;Client width of the control when the
+       scroll
+      /// bar is showing.&lt;/param&gt;
+      /// &lt;param name="scrollShowing"&gt;Whether the control is currently showing
+       the
+      /// scroll bar or not.&lt;/param&gt;
+      /// &lt;param name="style"&gt;Drawing style in effect for the control.&lt;/param&gt;
+      /// &lt;param name="mode"&gt;Drawing mode in effect for the control.&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether the control should be drawn Right
+       to Left&lt;/param&gt;
+      /// &lt;param name="top"&gt;Current top position in the Graphics object to
+       render to&lt;/param&gt;
+      /// &lt;param name="animationBitmap"&gt;Offscreen bitmap to render bars for
+       animation
+      /// to.&lt;/param&gt;
+      /// &lt;param name="showFocusCues"&gt;Whether to show focus cues&lt;/param&gt;
+      /// &lt;param name="showKeyboardCues"&gt;Whether to show keyboard cues&lt;/param&gt;
+      internal ExplorerBarDrawItemParams(
+         System.Drawing.Graphics graphics,
+         System.Windows.Forms.ImageList titleImageList,         
+         System.Windows.Forms.ImageList imageList,         
+         System.Drawing.Font defaultFont,
+         int widthWithoutScroll,
+         int widthWithScroll,
+         bool scrollShowing,
+         ExplorerBarDrawingStyle style,
+         ExplorerBarMode mode,
+         bool rightToLeft,
+         int top,
+         Bitmap animationBitmap,
+         bool showFocusCues,
+         bool showKeyboardCues
+         )
+      {
+         this.graphics = graphics;
+         this.titleImageList = titleImageList;
+         this.imageList = imageList;
+         this.defaultFont = defaultFont;
+         this.widthWithoutScroll = widthWithoutScroll;
+         this.widthWithScroll = widthWithScroll;
+         this.style = style;
+         this.mode = mode;
+         this.rightToLeft = rightToLeft;
+         this.scrollShowing = scrollShowing;
+         this.top = top;
+         this.animationBitmap = animationBitmap;
+         this.showFocusCues = showFocusCues;
+         this.showKeyboardCues = showKeyboardCues;
+      }
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_ExplorerBarDrawItemParams.cs</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 18 April 2004</p></td><td></td></tr></table>
+</body></html>

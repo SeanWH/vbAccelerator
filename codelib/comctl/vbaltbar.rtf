@@ -1,0 +1,373 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalTBar Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalTBar (vbAccelerator Form Toolbar and Rebar)
+\par File:\tab C:\\Stevemac\\VB\\Controls\\vbalTbar\\Release\\vbalTbar.ocx
+\par GUID:\tab \{54F463F3-0135-11D2-8D52-00C04FA4EE99\}
+\par Version:\tab 7.2
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalTBar.
+\par 
+\par Public Enum ECRBImageSourceTypes
+\par \tab CRBResourceBitmap=0
+\par \tab CRBLoadFromFile=1
+\par \tab CRBPicture=2
+\par End Enum
+\par Public Enum ECTBHotItemChangeReasonConstants
+\par \tab HICF_OTHER=0
+\par \tab HICF_MOUSE=1
+\par \tab HICF_ARROWKEYS=2
+\par \tab HICF_ACCELERATOR=4
+\par \tab HICF_DUPACCEL=8
+\par \tab HICF_ENTERING=10
+\par \tab HICF_LEAVING=20
+\par \tab HICF_RESELECT=40
+\par End Enum
+\par Public Enum ECTBImageListTypes
+\par \tab CTBImageListNormal=1072
+\par \tab CTBImageListHot=1076
+\par \tab CTBImageListDisabled=1078
+\par End Enum
+\par Public Enum ECTBImageSourceTypes
+\par \tab CTBResourceBitmap=0
+\par \tab CTBLoadFromFile=1
+\par \tab CTBExternalImageList=2
+\par \tab CTBPicture=3
+\par \tab CTBStandardImageSources=4
+\par End Enum
+\par Public Enum ECTBStandardImageIndexConstants
+\par \tab CTBHistAddToFavourites=3
+\par \tab CTBHistBack=0
+\par \tab CTBHistFavourites=2
+\par \tab CTBHistForward=1
+\par \tab CTBHistViewTree=4
+\par \tab CTBStdCopy=1
+\par \tab CTBStdCut=0
+\par \tab CTBStdDelete=5
+\par \tab CTBStdFileNew=6
+\par \tab CTBStdFileOpen=7
+\par \tab CTBStdFIleSave=8
+\par \tab CTBStdFind=12
+\par \tab CTBStdHelp=11
+\par \tab CTBStdPaste=2
+\par \tab CTBStdPrint=14
+\par \tab CTBStdPrintPreview=9
+\par \tab CTBStdProperties=10
+\par \tab CTBStdRedo=4
+\par \tab CTBStdReplace=13
+\par \tab CTBStdUndo=3
+\par \tab CTBViewDetails=3
+\par \tab CTBViewLargeIcons=0
+\par \tab CTBViewList=2
+\par \tab CTBViewNetConnect=9
+\par \tab CTBViewNetDisconnect=10
+\par \tab CTBViewNewFolder=11
+\par \tab CTBViewParentFolder=8
+\par \tab CTBViewSmallIcons=1
+\par \tab CTBViewSortDate=6
+\par \tab CTBViewSortName=4
+\par \tab CTBViewSortSize=5
+\par \tab CTBViewSortType=7
+\par End Enum
+\par Public Enum ECTBStandardImageSourceTypes
+\par \tab CTBHistoryLargeColor=9
+\par \tab CTBHistorySmallColor=8
+\par \tab CTBStandardLargeColor=1
+\par \tab CTBStandardSmallColor=0
+\par \tab CTBViewLargeColor=5
+\par \tab CTBViewSmallColor=4
+\par End Enum
+\par Public Enum ECTBToolbarStyle
+\par \tab CTBFlat=2048
+\par \tab CTBList=4096
+\par \tab CTBTransparent=-1
+\par End Enum
+\par Public Enum ECTBToolButtonSyle
+\par \tab CTBNormal=0
+\par \tab CTBSeparator=1
+\par \tab CTBCheck=2
+\par \tab CTBCheckGroup=6
+\par \tab CTBDropDown=8
+\par \tab CTBAutoSize=16
+\par \tab CTBDropDownArrow=128
+\par End Enum
+\par Public Enum ERBPositionConstants
+\par \tab erbPositionTop=0
+\par \tab erbPositionLeft=1
+\par \tab erbPositionRight=2
+\par \tab erbPositionBottom=3
+\par End Enum
+\par Public Enum ETBHBorderStyleConstants
+\par \tab etbhBorderStyleNone=0
+\par \tab etbhBorderStyleSingle=1
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalTBar.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cReBar \{E3D3F68F-5C94-11D2-8E21-20B404C10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Sub Autosize
+\par \plain\f3\fs20 Attempts to automatically move the Rebar bands so they best fit the specified rectangle (in pixels relative to the rebar's container).   Not available for COMCTL32.DLL version below 4.71.\plain\f3\fs20\b 
+\par Property Get BandVisible(ByVal lBand As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a rebar band is visible or not.  Not available for COMCTL32.DLL version below 4.71.\plain\f3\fs20\b 
+\par Property Let BandVisible(ByVal lBand As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a rebar band is visible or not.  Not available for COMCTL32.DLL version below 4.71.\plain\f3\fs20\b 
+\par Property Get BandChildEdge(ByVal lBand As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a band draws a narrow  internal border around the child control.\plain\f3\fs20\b 
+\par Property Let BandChildEdge(ByVal lBand As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a band draws a narrow  internal border around the child control.\plain\f3\fs20\b 
+\par Property Get BandGripper(ByVal lBand As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a rebar band has a gripper or not.  (COMCTL32.DLL v5 or higher only)\plain\f3\fs20\b 
+\par Property Let BandGripper(ByVal lBand As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a rebar band has a gripper or not.  (COMCTL32.DLL v5 or higher only)\plain\f3\fs20\b 
+\par Property Get BandChevron(ByVal lBand As Long) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a band will show  a chevron if it is sized too small for the contents to fit. (COMCTL32.DLL v5 or higher only)\plain\f3\fs20\b 
+\par Property Let BandChevron(ByVal lBand As Long, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a band will show  a chevron if it is sized too small for the contents to fit. (COMCTL32.DLL v5 or higher only)\plain\f3\fs20\b 
+\par Property Get BandChildMinHeight(ByVal lBand As Long) As Long
+\par \plain\f3\fs20 Gets/sets the minimum height of a rebar band.\plain\f3\fs20\b 
+\par Property Let BandChildMinHeight(ByVal lBand As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the minimum height of a rebar band.\plain\f3\fs20\b 
+\par Property Get BandChildMaxHeight(ByVal lBand As Long) As Long
+\par \plain\f3\fs20 Gets/sets the maximum height a band can size to (COMCTL32.DLL v5 or higher only)\plain\f3\fs20\b 
+\par Property Let BandChildMaxHeight(ByVal lBand As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the maximum height a band can size to (COMCTL32.DLL v5 or higher only)\plain\f3\fs20\b 
+\par Property Get BandChildMinWidth(ByVal lBand As Long) As Long
+\par \plain\f3\fs20 Gets/sets the minimum width of rebar band.\plain\f3\fs20\b 
+\par Property Let BandChildMinWidth(ByVal lBand As Long, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the minimum width of rebar band.\plain\f3\fs20\b 
+\par Sub BandChildResized(ByVal lBand As Long, ByVal lWidth As Long, ByVal lHeight As Long)
+\par 
+\par Sub BandMove(ByVal lBand As Long, ByVal lIndexTo As Long)
+\par \plain\f3\fs20 Moves a band from one position to another.  All bands in lower positions are moved up.   Not available for COMCTL32.DLL version below 4.71.\plain\f3\fs20\b 
+\par Sub BandMinimise(ByVal lBand As Long)
+\par \plain\f3\fs20 Minimises a rebar band in the current layout.\plain\f3\fs20\b 
+\par Sub BandMaximise(ByVal lBand As Long)
+\par \plain\f3\fs20 Maximises a rebar band in the current layout.\plain\f3\fs20\b 
+\par Sub GetBandRectangle(ByVal lBand As Long, ByVal lLeft As Long, ByVal lTop As Long, ByVal lRight As Long, ByVal lBottom As Long)
+\par \plain\f3\fs20 Returns the internal bounding rectangle for a rebar band. Not available for COMCTL32.DLL version below 4.71.\plain\f3\fs20\b 
+\par Property Get BandCount() As Long
+\par \plain\f3\fs20 Returns the number of bands in the rebar.\plain\f3\fs20\b 
+\par Property Get HasBitmap() As Boolean
+\par \plain\f3\fs20 Returns whether a background bitmap is loaded into the rebar or not.\plain\f3\fs20\b 
+\par Property Let ImageSource(RHS  As ECRBImageSourceTypes)
+\par \plain\f3\fs20 Specifies which type of bitmap source (file, picture or resource) should be used as the source of the rebar's background bitmap.\plain\f3\fs20\b 
+\par Property Let ImageResourceID(RHS  As Long)
+\par \plain\f3\fs20 Sets a resource id to be used  to be used as the source of the rebar's background bitmap.\plain\f3\fs20\b 
+\par Property Let ImageResourcehInstance(RHS  As Long)
+\par \plain\f3\fs20 Specifies the hInstance from which to load the resource set by the ImageResourceID property.\plain\f3\fs20\b 
+\par Property Let ImageFile(RHS  As String)
+\par \plain\f3\fs20 Sets a bitmap file to be used as the source of the rebar's background bitmap.\plain\f3\fs20\b 
+\par Property Let ImagePicture(RHS  As Picture)
+\par \plain\f3\fs20 ets a picture object to be used as the source of the rebar's background bitmap.\plain\f3\fs20\b 
+\par Property Get BackgroundBitmap() As String
+\par \plain\f3\fs20 Gets/sets the background bitmap file.  Has no effect unless it is called before the rebar is created.  Note: you can't recreate a rebar at run-time if you have COMCTL32.DLL version lower than 4.71.\plain\f3\fs20\b 
+\par Property Let BackgroundBitmap(RHS  As String)
+\par \plain\f3\fs20 Gets/sets the background bitmap file.  Has no effect unless it is called before the rebar is created.  Note: you can't recreate a rebar at run-time if you have COMCTL32.DLL version lower than 4.71.\plain\f3\fs20\b 
+\par Function AddBandByHwnd(ByVal hWnd As Long, Optional ByVal sBandText As String=, Optional ByVal bBreakLine As Boolean=True, Optional ByVal bFixedSize As Boolean=False, Optional ByVal vData As Variant) As Long
+\par \plain\f3\fs20 Adds a band to the rebar given the hWnd of the control to place in the band.  The minimum width of the band will be set to the control's size.\plain\f3\fs20\b 
+\par Property Get BandIndexForId(ByVal wID As Long) As Long
+\par \plain\f3\fs20 Returns the internal index of a band given the band's id.\plain\f3\fs20\b 
+\par Property Get BandIDForIndex(ByVal lIndex As Long) As Long
+\par \plain\f3\fs20 Gets the ID of band given its 0-based index in the rebar.\plain\f3\fs20\b 
+\par Property Get BandData(ByVal wID As Long) As Variant
+\par \plain\f3\fs20 Gets/sets a variant value associated with a band in the rebar.\plain\f3\fs20\b 
+\par Property Get BandIndexForData(ByVal vData As Variant) As Long
+\par \plain\f3\fs20 Returns the index of a band given the band's key.\plain\f3\fs20\b 
+\par Sub RebarSize
+\par \plain\f3\fs20 Sizes the rebar to the parent object.\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Returns the window handle of the control.  Use RebarhWnd to get the handle of the Rebar itself.\plain\f3\fs20\b 
+\par Property Get RebarHwnd() As Long
+\par \plain\f3\fs20 Returns the windows handle of the Rebar window.\plain\f3\fs20\b 
+\par Property Get RebarHeight() As Long
+\par \plain\f3\fs20 Gets the current height of the rebar.\plain\f3\fs20\b 
+\par Property Get RebarWidth() As Long
+\par 
+\par Function CreateRebar(ByVal hWndParent As Long) As Boolean
+\par \plain\f3\fs20 Initialises a rebar for use and allows you to specify the host window for the rebar.  For a standard form, this should be the form.  For an MDI form, this should be a PictureBox aligned to the top of the MDI form.\plain\f3\fs20\b 
+\par Function AddResizeObject(ByVal hWndParent As Long, ByVal hWnd As Long, ByVal ePosition As ERBPositionConstants) As Variant
+\par \plain\f3\fs20 Adds a control to the list of objects to be considered when resizing a rebar on screen.  Other rebars are automatically taken into account.\plain\f3\fs20\b 
+\par Sub DestroyRebar
+\par \plain\f3\fs20 Removes all bands from a rebar and clears all resources associated with it.\plain\f3\fs20\b 
+\par Sub RemoveAllRebarBands
+\par \plain\f3\fs20 Removes all bands from the rebar.  To prevent controls not terminating when a form unloads because they are contained by a different parent, call this method.\plain\f3\fs20\b 
+\par Sub RemoveBand(ByVal lBand As Long)
+\par \plain\f3\fs20 Removes a specified band from the rebar control.\plain\f3\fs20\b 
+\par Property Get Visible() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the entire rebar will be visible or not.\plain\f3\fs20\b 
+\par Property Let Visible(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the entire rebar will be visible or not.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event HeightChanged(ByVal lNewHeight As Long)
+\par \plain\f3\fs20 Raised whenever the height of the rebar changes, for example when the user moves the bands around. \plain\f3\fs20\b 
+\par Public Event BeginBandDrag(ByVal wID As Long, ByVal bCancel As Boolean)
+\par \plain\f3\fs20 Raised when the user is about to start dragging a band.\plain\f3\fs20\b 
+\par Public Event EndBandDrag(ByVal wID As Long)
+\par \plain\f3\fs20 Raised when the user has completed dragging a band within the rebar.\plain\f3\fs20\b 
+\par Public Event BandChildResize(ByVal wID As Long, ByVal lBandLeft As Long, ByVal lBandTop As Long, ByVal lBandRight As Long, ByVal lBandBottom As Long, ByVal lChildLeft As Long, ByVal lChildTop As Long, ByVal lChildRight As Long, ByVal lChildBottom As Long)
+\par \plain\f3\fs20 Raised whenever a child is resized because of a change in size of a band.\plain\f3\fs20\b 
+\par Public Event LayoutChanged
+\par \plain\f3\fs20 Raised whenever the layout of the rebar bands changes, due to either the rebar being resized or the user dragging the bands.\plain\f3\fs20\b 
+\par Public Event ChevronPushed(ByVal wID As Long, ByVal lLeft As Long, ByVal lTop As Long, ByVal lRight As Long, ByVal lBottom As Long)
+\par \plain\f3\fs20 Raised when a band chevron is pressed.\plain\f4\fs20 
+\par \plain\f3\fs20\b cToolbar \{E3D3F695-5C94-11D2-8E21-20B404C10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get AutosizeButtonPadding() As Long
+\par \plain\f3\fs20 Gets/sets the number of pixels by which to pad out buttons with the CTBAutosize property set.\plain\f3\fs20\b 
+\par Property Let AutosizeButtonPadding(RHS  As Long)
+\par \plain\f3\fs20 Gets/sets the number of pixels by which to pad out buttons with the CTBAutosize property set.\plain\f3\fs20\b 
+\par Sub GetComCtrlVersionInfo(ByVal lMajor As Long, ByVal lMinor As Long, ByVal lBuild As Long)
+\par \plain\f3\fs20 Returns the system's COMCTL32.DLL version.\plain\f3\fs20\b 
+\par Property Get ButtonCount() As Long
+\par \plain\f3\fs20 Returns the number of buttons in a toolbar.\plain\f3\fs20\b 
+\par Property Get ButtonToolTip(ByVal vButton As Variant) As String
+\par \plain\f3\fs20 Gets/sets the tool tip shown for a button.\plain\f3\fs20\b 
+\par Property Let ButtonToolTip(ByVal vButton As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets the tool tip shown for a button.\plain\f3\fs20\b 
+\par Property Get ButtonImage(ByVal vButton As Variant) As Long
+\par \plain\f3\fs20 Gets/sets the zero based index of a button's image.\plain\f3\fs20\b 
+\par Property Let ButtonImage(ByVal vButton As Variant, RHS As Long)
+\par \plain\f3\fs20 Gets/sets the zero based index of a button's image.\plain\f3\fs20\b 
+\par Property Get ButtonCaption(ByVal vButton As Variant) As String
+\par \plain\f3\fs20 Gets/sets the caption of a button.\plain\f3\fs20\b 
+\par Property Let ButtonCaption(ByVal vButton As Variant, RHS As String)
+\par \plain\f3\fs20 Gets/sets the caption of a button.\plain\f3\fs20\b 
+\par Property Get ButtonTextVisible(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether the caption for a button is visible or not.\plain\f3\fs20\b 
+\par Property Let ButtonTextVisible(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the caption for a button is visible or not.\plain\f3\fs20\b 
+\par Property Get ButtonIndex(ByVal vButton As Variant) As Integer
+\par \plain\f3\fs20 Returns the zero based index of a button given its key or position.\plain\f3\fs20\b 
+\par Property Get ButtonKey(ByVal iButton As Long) As String
+\par \plain\f3\fs20 Returns the key of a button given its position.\plain\f3\fs20\b 
+\par Property Get ButtonEnabled(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a button is enabled.\plain\f3\fs20\b 
+\par Property Let ButtonEnabled(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a button is enabled.\plain\f3\fs20\b 
+\par Property Get ButtonVisible(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a button is visible in the toolbar.\plain\f3\fs20\b 
+\par Property Let ButtonVisible(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a button is visible in the toolbar.\plain\f3\fs20\b 
+\par Property Get ButtonWidth(ByVal vButton As Variant) As Variant
+\par 
+\par Property Get ButtonHeight(ByVal vButton As Variant) As Long
+\par 
+\par Property Get ButtonHot(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a button in a flat toolbar appears in the "hot" state (i.e. looks like the mouse is over it)\plain\f3\fs20\b 
+\par Property Let ButtonHot(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a button in a flat toolbar appears in the "hot" state (i.e. looks like the mouse is over it)\plain\f3\fs20\b 
+\par Property Get MaxButtonWidth() As Long
+\par \plain\f3\fs20 Gets/sets the maximum allowable button width.\plain\f3\fs20\b 
+\par Property Get MaxButtonHeight() As Long
+\par \plain\f3\fs20 Gets/sets the maximum allowable button height.\plain\f3\fs20\b 
+\par Property Get ButtonChecked(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a button is checked or not (if the button has the checked or check group style)\plain\f3\fs20\b 
+\par Property Let ButtonChecked(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a button is checked or not (if the button has the checked or check group style)\plain\f3\fs20\b 
+\par Property Get ButtonPressed(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether a button is pressed.\plain\f3\fs20\b 
+\par Property Let ButtonPressed(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether a button is pressed.\plain\f3\fs20\b 
+\par Property Get ButtonTextWrap(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether button text will wrap onto a newline if it is too long.\plain\f3\fs20\b 
+\par Property Let ButtonTextWrap(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether button text will wrap onto a newline if it is too long.\plain\f3\fs20\b 
+\par Property Get ButtonTextEllipses(ByVal vButton As Variant) As Boolean
+\par \plain\f3\fs20 Gets/sets whether button text will be truncated if the button text is too long.\plain\f3\fs20\b 
+\par Property Let ButtonTextEllipses(ByVal vButton As Variant, RHS As Boolean)
+\par \plain\f3\fs20 Gets/sets whether button text will be truncated if the button text is too long.\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Returns the window handle of the control.\plain\f3\fs20\b 
+\par Sub DestroyToolBar
+\par \plain\f3\fs20 Destroys the toolbar and all resources associated with it.\plain\f3\fs20\b 
+\par Sub CreateFromMenu(ByVal cMenu As Object)
+\par \plain\f3\fs20 Sets up a toolbar based on a cPopupMenu object so the toolbar can act as the form's menu.\plain\f3\fs20\b 
+\par Sub CreateToolbar(Optional ByVal ButtonSize As Integer=16, ByVal StyleList As Boolean, ByVal WithText As Boolean, ByVal Wrappable As Boolean, ByVal PicSize As Integer)
+\par \plain\f3\fs20 Initialises a toolbar for use.\plain\f3\fs20\b 
+\par Property Get ListStyle() As Boolean
+\par 
+\par Property Let ListStyle(RHS  As Boolean)
+\par 
+\par Property Get Wrappable() As Boolean
+\par 
+\par Property Let Wrappable(RHS  As Boolean)
+\par 
+\par Property Let ImageSource(RHS  As ECTBImageSourceTypes)
+\par \plain\f3\fs20 Sets the type of image (file, picture, resource, image list or standard image list) to be used as the source of the button's images.\plain\f3\fs20\b 
+\par Property Let ImageResourceID(RHS  As Long)
+\par \plain\f3\fs20 Sets a resource id to be used as the source of the button's images.\plain\f3\fs20\b 
+\par Property Let ImageResourcehInstance(RHS  As Long)
+\par \plain\f3\fs20 Sets the hInstance of the binary containing the resource specified in ImageResourceID.\plain\f3\fs20\b 
+\par Property Let ImageFile(RHS  As String)
+\par \plain\f3\fs20 Sets a bitmap file to be used as the source of the buttons images.\plain\f3\fs20\b 
+\par Sub SetImageList(ByVal vThis As Variant, Optional ByVal eType As ECTBImageListTypes=1072)
+\par \plain\f3\fs20 Sets the image list to be used for standard, hot or disabled button images.\plain\f3\fs20\b 
+\par Property Let ImagePicture(RHS  As Picture)
+\par \plain\f3\fs20 Sets a picture object to be used as the source of the button's images.\plain\f3\fs20\b 
+\par Property Let ImageStandardBitmapType(RHS  As ECTBStandardImageSourceTypes)
+\par \plain\f3\fs20 Sets the standard image list bitmap to be used to generate the button images.\plain\f3\fs20\b 
+\par Sub RemoveButton(ByVal vButton As Variant)
+\par \plain\f3\fs20 Removes a button from the toolbar.\plain\f3\fs20\b 
+\par Sub AddButton(Optional ByVal sTip As String=, Optional ByVal iImage As Integer=-1, ByVal vButtonBefore As Variant, Optional ByVal xLarge As Integer=0, ByVal sButtonText As String, ByVal eButtonStyle As ECTBToolButtonSyle, Optional ByVal sKey As String=)
+\par \plain\f3\fs20 Adds or inserts a button to the toolbar.\plain\f3\fs20\b 
+\par Sub ResizeToolbar
+\par \plain\f3\fs20 Resizes the toolbar.\plain\f3\fs20\b 
+\par Property Get ToolbarWidth() As Long
+\par \plain\f3\fs20 Gets the width of the toolbar.\plain\f3\fs20\b 
+\par Property Get ToolbarHeight() As Long
+\par \plain\f3\fs20 Gets the height of the toolbar.\plain\f3\fs20\b 
+\par Sub ButtonSize(ByVal xWidth As Integer, ByVal xHeight As Integer)
+\par \plain\f3\fs20 Gets the rectangle of a button.\plain\f3\fs20\b 
+\par Sub GetDropDownPosition(ByVal ID As Integer, ByVal x As Long, ByVal y As Long)
+\par \plain\f3\fs20 Returns the position to show a drop-down menu for a button in response to the DropDownPress event.\plain\f3\fs20\b 
+\par Function RaiseButtonClick(ByVal iIDButton As Long) As Variant
+\par \plain\f3\fs20 Causes a button click to occur.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event ButtonClick(ByVal lButton As Long)
+\par \plain\f3\fs20 Raised when a toolbar button is clicked.\plain\f3\fs20\b 
+\par Public Event DropDownPress(ByVal lButton As Long)
+\par \plain\f3\fs20 Raised when a drop-down arrow on a drop-down button is pressed (Note: COMCTL32.DLL versions below 4.71 do not display drop-down buttons)\plain\f3\fs20\b 
+\par Public Event HotItemChange(ByVal iNew As Long, ByVal iOld As Long, ByVal eReason As ECTBHotItemChangeReasonConstants)
+\par \plain\f3\fs20 Raised whenever the hot button changes in a flat toolbar.\plain\f4\fs20 
+\par \plain\f3\fs20\b cToolbarHost \{4A98D360-178E-11D3-8E21-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Sub Refresh
+\par \plain\f3\fs20 Refreshes and resizes the contents of the control.\plain\f3\fs20\b 
+\par Property Get MDIToolbar() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the toolbar host control should act as an MDI Toolbar in a CoolMenu style application.\plain\f3\fs20\b 
+\par Property Let MDIToolbar(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the toolbar host control should act as an MDI Toolbar in a CoolMenu style application.\plain\f3\fs20\b 
+\par Property Get hWnd() As Long
+\par \plain\f3\fs20 Gets the hWnd of the control.\plain\f3\fs20\b 
+\par Property Get BorderStyle() As ETBHBorderStyleConstants
+\par \plain\f3\fs20 Gets/sets the border style of the control.\plain\f3\fs20\b 
+\par Property Let BorderStyle(RHS  As ETBHBorderStyleConstants)
+\par \plain\f3\fs20 Gets/sets the border style of the control.\plain\f3\fs20\b 
+\par Property Get RequiredHeight() As Long
+\par \plain\f3\fs20 Returns the height the height required to display the items in the control at the current width.\plain\f3\fs20\b 
+\par Sub Autosize
+\par \plain\f3\fs20 Attempts to size the toolbar host control to best fit the contained controls.\plain\f3\fs20\b 
+\par Property Get BackColor() As ULong
+\par \plain\f3\fs20 Gets/sets the background colour of the toolbar host control.\plain\f3\fs20\b 
+\par Property Let BackColor(RHS  As ULong)
+\par \plain\f3\fs20 Gets/sets the background colour of the toolbar host control.\plain\f3\fs20\b 
+\par Sub Capture(ByVal ctlThis As Object)
+\par \plain\f3\fs20 Adds a control to the list of contained controls within the toolbar host.\plain\f3\fs20\b 
+\par Sub ReleaseCaptures
+\par \plain\f3\fs20 Frees any contained controls.  Called automatically before the control terminates.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par 
+\par }
+ 

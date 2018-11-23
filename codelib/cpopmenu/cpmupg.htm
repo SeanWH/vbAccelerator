@@ -1,0 +1,202 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>cPopMenu Control Revision History</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td>
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>cPopMenu Control Revision History</b><br>
+	<br>
+	<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b><br>
+	<i>10 January 1999</i>: A major update to the control:
+	<li>The control now works in MDI projects where there are multiple child form menus.  
+	Check the demonstration	project <a href="cpmmdi.htm">Using the Icon Menu control in MDI projects
+	with multiple child form menus</a> to see how to do it.
+	<li>Added <i>InsertItem</i> and <i>RemoveItem</i> methods.  Now it is much easier to create
+	new menu items.
+	<li>Added <i>ReplaceItem</i> method to allow multiple properties of a menu item to be updated
+	in a single call.
+	<li>Added support for MDI forms with multiple child window menus.
+	<li>Added the <i>MenuDefault</i> property.  Setting this property for a menu item causes the
+	text to be drawn in a bold font, like the default menu items on popup-menus.
+	<li>Added the <i>CheckForNewMenuItems</i> method. This allows you to work around (in a 
+	somewhat limited way) the lack of support for VB's <i>Load</i>, <i>Unload</i> and <i>Visible</i>
+	methods.  See the main cPopMenu article for a description.
+	<li>Added the <i>MenuItemsPerScreen</i> property.  This returns the number of menu items which
+	can be shown vertically and can be used in combination with the new <i>Caption</i> special
+	characters to break menus:
+	<li>The <i>Caption</i> property now supports two more special characters in addition to 
+	"-" (menu separator bar):
+	<ol>
+	<li>If you prefix your caption with "|" (pipe) then a vertical break will be added and
+	the menu will be shown in a new column.
+	<li>Prefixing the caption with "^" means the new menu will be added to a new column but there
+	will be no vertical break between the columns.
+	</ol>
+	<li>Added the <i>BackgroundBitmap</i> property - this allows you to set a picture which will
+	be tiled behind the menu items.
+	<li>Fixed bug in the <i>Caption</i> property - when you changed a menu's caption, and the new
+	caption was a different length to the previous one, the menu did not resize to accommodate the
+	new item.  This could lead to menus which were too wide, or truncation of the caption text.
+	<li>Fixed bug in the <i>MenuKey</i> property - this was never saved for new items added to the
+	menu. (Doh!)  Now it works correctly for all menu items.
+	<li>Cleaned up the sample demonstration code to exercise all the new features, and added
+	more comments.
+	</ul>
+	
+	Thanks to everyone who wrote in	with bug reports and feature requests!<br>
+	<br>
+	<b>Previous Control Changes</b><br>
+	<i>22 November 1998</i>: The MenuExit event was not fired for the first menu in the control.  Thanks to Aaron Abdis for pointing this out.<br>
+	<br>
+	<i>10 October 1998</i>: Fixed a bug where a VB status bar sometimes failed to refresh when a form
+	was loaded.  Also, occasionally the control would interrupt processing of WM_COMMAND messages.<br>
+	<br>
+	<i>29 July 1998</i>: various improvements have been incorporated into the drawing routine
+	so disabled and checked items draw more clearly.  Thanks to Kim Pedersen for his input.<br>
+	<br>
+	<i>16 August 1998</i>: The control now checks the size of the bitmaps/icons being used
+	and makes the menu icons as small as possible.  Also, a bug which was causing the control to draw menu items
+	into the panels of a Status Bar has been fixed.  Thanks to Gary Smith and Kim Pedersen.<br>
+
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="#sectop"><img src="..\..\images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back"></a>Back to <a href="article.htm">cPopMenu Control</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 10 January 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+ellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 10 January 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

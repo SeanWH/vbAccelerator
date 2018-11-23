@@ -1,0 +1,152 @@
+{\rtf1\ansi\ansicpg1252\deff0\deftab720{\fonttbl{\f0\fswiss MS Sans Serif;}{\f1\froman\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fswiss\fprq2 Arial;}{\f4\froman\fprq2 Times New Roman;}}
+{\colortbl\red0\green0\blue0;}
+\deflang2057\pard\plain\f3\fs24\b vbalFolderBrowse Interface Definition 
+\par 
+\par \plain\f3\fs20\b General Information
+\par \pard\tx993\plain\f3\fs20 Library:\tab vbalFolderBrowse (vbAccelerator Folder Browse Library)
+\par File:\tab C:\\Stevemac\\VB\\Develop\\ComDlg\\FdrBrws\\vbalFlBr.dll
+\par GUID:\tab \{8B6047BC-3332-11D3-8E22-44910FC10000\}
+\par Version:\tab 3.0
+\par \pard\plain\f4\fs20 
+\par \plain\f3\fs20\b Enumerations
+\par \plain\f3\fs20 This section lists enumerations exposed by vbalFolderBrowse.
+\par 
+\par Public Enum efbrCSIDLConstants
+\par \tab CSIDL_DESKTOP=0
+\par \tab CSIDL_INTERNET=1
+\par \tab CSIDL_PROGRAMS=2
+\par \tab CSIDL_CONTROLS=3
+\par \tab CSIDL_PRINTERS=4
+\par \tab CSIDL_PERSONAL=5
+\par \tab CSIDL_FAVORITES=6
+\par \tab CSIDL_STARTUP=7
+\par \tab CSIDL_RECENT=8
+\par \tab CSIDL_SENDTO=9
+\par \tab CSIDL_BITBUCKET=10
+\par \tab CSIDL_STARTMENU=11
+\par \tab CSIDL_DESKTOPDIRECTORY=16
+\par \tab CSIDL_DRIVES=17
+\par \tab CSIDL_NETWORK=18
+\par \tab CSIDL_NETHOOD=19
+\par \tab CSIDL_FONTS=20
+\par \tab CSIDL_TEMPLATES=21
+\par \tab CSIDL_COMMON_STARTMENU=22
+\par \tab CSIDL_COMMON_PROGRAMS=23
+\par \tab CSIDL_COMMON_STARTUP=24
+\par \tab CSIDL_COMMON_DESKTOPDIRECTORY=25
+\par \tab CSIDL_APPDATA=26
+\par \tab CSIDL_PRINTHOOD=27
+\par \tab CSIDL_LOCAL_APPDATA=28
+\par \tab CSIDL_ALTSTARTUP=29
+\par \tab CSIDL_COMMON_ALTSTARTUP=30
+\par \tab CSIDL_COMMON_FAVORITES=31
+\par \tab CSIDL_INTERNET_CACHE=32
+\par \tab CSIDL_COOKIES=33
+\par \tab CSIDL_HISTORY=34
+\par \tab CSIDL_COMMON_APPDATA=35
+\par \tab CSIDL_WINDOWS=36
+\par \tab CSIDL_SYSTEM=37
+\par \tab CSIDL_PROGRAM_FILES=38
+\par \tab CSIDL_MYPICTURES=39
+\par \tab CSIDL_PROFILE=40
+\par \tab CSIDL_PROGRAM_FILES_COMMON=43
+\par \tab CSIDL_COMMON_TEMPLATES=45
+\par \tab CSIDL_COMMON_DOCUMENTS=46
+\par \tab CSIDL_COMMON_ADMINTOOLS=47
+\par \tab CSIDL_ADMINTOOLS=48
+\par \tab CSIDL_FLAG_CREATE=-32768
+\par \tab CSIDL_FLAG_DONT_VERIFY=16384
+\par \tab CSIDL_FLAG_MASK=-256
+\par End Enum\plain\f4\fs20 
+\par 
+\par \plain\f3\fs20\b Interfaces
+\par \plain\f3\fs20 This section lists the Classes exposed by vbalFolderBrowse.  For each class, the methods and events are listed.
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b cBrowseForFolder \{7C6B5BFD-34D7-11D3-8E22-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get SpecialFolderLocation(ByVal eFolder As efbrCSIDLConstants) As String
+\par \plain\f3\fs20 Gets the location of a special folder.  Note that some special folders can only be retrieved for systems with IE4 or higher.\plain\f3\fs20\b 
+\par Property Get EditBox() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the browse for folder dialog will show an edit box (only supported for IE4.0 and above)\plain\f3\fs20\b 
+\par Property Let EditBox(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the browse for folder dialog will show an edit box (only supported for IE4.0 and above)\plain\f3\fs20\b 
+\par Property Get StatusText() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the dialog box will have a line for status text.\plain\f3\fs20\b 
+\par Property Let StatusText(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the dialog box will have a line for status text.\plain\f3\fs20\b 
+\par Property Get FileSystemOnly() As Boolean
+\par \plain\f3\fs20 Gets/sets whether only file system objects can be picked in the dialog box.\plain\f3\fs20\b 
+\par Property Let FileSystemOnly(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether only file system objects can be picked in the dialog box.\plain\f3\fs20\b 
+\par Property Get ValidateEditBox() As Boolean
+\par \plain\f3\fs20 Gets/sets whether dialogs with an edit box allow the user to choose OK even when the edit box includes an invalid folder.  IE4 or higher required.\plain\f3\fs20\b 
+\par Property Let ValidateEditBox(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether dialogs with an edit box allow the user to choose OK even when the edit box includes an invalid folder.  IE4 or higher required.\plain\f3\fs20\b 
+\par Property Get UseNewUI() As Boolean
+\par \plain\f3\fs20 Gets/sets whether the folder dialog box appears in the New style (larger, resizable, drag/drop support).  Only supported for Win2000.\plain\f3\fs20\b 
+\par Property Let UseNewUI(RHS  As Boolean)
+\par \plain\f3\fs20 Gets/sets whether the folder dialog box appears in the New style (larger, resizable, drag/drop support).  Only supported for Win2000.\plain\f3\fs20\b 
+\par Property Get Title() As String
+\par \plain\f3\fs20 Gets/sets the browse for folder dialog title.\plain\f3\fs20\b 
+\par Property Let Title(RHS  As String)
+\par \plain\f3\fs20 Gets/sets the browse for folder dialog title.\plain\f3\fs20\b 
+\par Property Get hwndOwner() As Long
+\par \plain\f3\fs20 Sets the window which owns the dialog box.\plain\f3\fs20\b 
+\par Property Let hwndOwner(RHS  As Long)
+\par \plain\f3\fs20 Sets the window which owns the dialog box.\plain\f3\fs20\b 
+\par Property Get InitialDir() As String
+\par \plain\f3\fs20 Gets/sets the initial directory which will be navigated to when the dialog is opened.  If the directory does not exist, there will be an error on opening the dialog.\plain\f3\fs20\b 
+\par Property Let InitialDir(RHS  As String)
+\par \plain\f3\fs20 Gets/sets the initial directory which will be navigated to when the dialog is opened.  If the directory does not exist, there will be an error on opening the dialog.\plain\f3\fs20\b 
+\par Property Get RootDir() As String
+\par \plain\f3\fs20 Gets/sets the top level path for the folder browsing.  Set to a blank string for the default.\plain\f3\fs20\b 
+\par Property Let RootDir(RHS  As String)
+\par \plain\f3\fs20 Gets/sets the top level path for the folder browsing.  Set to a blank string for the default.\plain\f3\fs20\b 
+\par Function BrowseForFolder() As String
+\par \plain\f3\fs20 Shows the browse for folder dialog.\plain\f3\fs20\b 
+\par Property Get DisplayName() As Variant
+\par \plain\f3\fs20 Returns the display name of the selected item.\plain\f3\fs20\b 
+\par Sub SetFolder(ByVal sPath As String)
+\par \plain\f3\fs20 Whilst the dialog box is open, sets the folder to the specified path.\plain\f3\fs20\b 
+\par Sub SetStatus(ByVal sText As String)
+\par \plain\f3\fs20 Whilst the dialog box is open, sets the status text to the specified string (if StatusText is specified).
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20\b 
+\par Public Event Initialized
+\par 
+\par Public Event SelectionChanged(ByVal sPath As String, ByVal bAllowOk As Boolean)
+\par \plain\f3\fs20 Raised when the user changes the selection in the dialog box.\plain\f3\fs20\b 
+\par Public Event ValidationFailed(ByVal sPath As String, ByVal bKeepOpen As Boolean)
+\par \plain\f3\fs20 Raised when the dialog edit box contains invalid text and OK is chosen.  Requires IE4 or higher.\plain\f4\fs20 
+\par \plain\f3\fs20\b cCaptureBF \{7C6B5C03-34D7-11D3-8E22-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Sub Reload(ByVal sSelPath As String)
+\par \plain\f3\fs20 Closes the open Browse for Folder dialog and opens a new one.  Required if you make or delete any folder when the dialog is open.\plain\f3\fs20\b 
+\par Property Get Browse() As _cBrowseForFolder
+\par \plain\f3\fs20 Returns the cBrowseForFolder object.  Use this to set up the options, initial folder and so on.\plain\f3\fs20\b 
+\par Sub Show(ByVal iwp As ICaptureBF)
+\par \plain\f3\fs20 Shows the capture window and loads the folder browser into it.\plain\f3\fs20\b 
+\par Sub Unload
+\par \plain\f3\fs20 Raised when the browse for folder dialog is unloaded.  Call Unload Me in your form in response to this event.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\b ICaptureBF \{7C6B5C00-34D7-11D3-8E22-44910FC10000\}
+\par \plain\f4\fs20 
+\par \plain\f3\fs20\ul Methods\plain\f3\fs20\b 
+\par Property Get CapturehWnd() As Long
+\par \plain\f3\fs20 Requests the window handle of the window you will use to capture the folder browse dialog into.  You must show your form before returning the window handle.\plain\f3\fs20\b 
+\par Sub SelectionChanged(ByVal sPath As String)
+\par \plain\f3\fs20 Fires when the selection in the folder browse dialog changes.\plain\f3\fs20\b 
+\par Property Let CaptureBrowseForFolder(RHS  As Object)
+\par \plain\f3\fs20 Provides you with a reference to the browse for folder object being used in the dialog.  If you copy a reference to this object, make sure you set it to nothing as your form unloads.\plain\f3\fs20\b 
+\par Sub Unload
+\par \plain\f3\fs20 Fired when the browse for folder dialog is closed.  Unload your form at this time to ensure everything clears up.
+\par \plain\f3\fs20\ul Events
+\par \plain\f3\fs20 None 
+\par \plain\f4\fs20 
+\par 
+\par }
+ 

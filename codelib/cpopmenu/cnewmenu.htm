@@ -1,0 +1,578 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Icons In Menus 2 - Create Unlimited Popup Menus</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFCC00">
+	<td valign="bottom" width="32">
+	<font color="#666666" face="verdana,arial,helvetica" size="6"><strong>1</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#666666" face="verdana,arial,helvetica" size="4"><strong>VB 5 Custom Controls</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\menus\popup_menu_activex_dll\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Icons In Menus 2 - Create Unlimited Popup Menus</b><br>
+	<p>&nbsp;&nbsp;<img src="..\..\images\cpmgrad.gif" alt="Popup Menu DLL Demonstration" width="182" height="271"></p>
+	<p><a href="cnewmenu.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cNewMenu ActiveX DLL (55kb)</a></p>
+	<p><a href="cnewmnuc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cNewMenu demonstration project (46kb)</a></p>
+	<p><a href="cnewmnuc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the cNewMenu demonstration project and component source code (175kb)</a></p>
+	</font>
+	<p>
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>30 May 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This DLL (version 2.00.0011) now supports CoolMenu applications
+		in conjunction with the <a href="..\comctl\retbar.htm">vbAccelerator CoolMenu Toolbar and Rebar control</a>.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Accelerators now work.  When you add a menu item, if you specify an Accelerator in the caption,
+		for example, "&Home" & vbTab & "Alt+Home", then the control will intercept it and raise a <i>Click</i>
+		event.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		New eye candy - a bitmap can be tiled into the background of the menu and there is a new
+		<i>GradientHighlight</i> property (as demonstrated in the picture above).
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Check box images can now be automatically drawn using the system standard check marks rather
+		than an ImageList icons.  In addition, Options Box style check marks are now also supported.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Bug fix - now the <i>Click</i> event fires whenever a menu item is clicked.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>27 January 1999</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		A <a href="cnewmbug.htm">horrible bug</a> has been fixed.  This caused menus to get
+		corrupted when using quite a few sub-menus - sub-menus would move to new positions, items
+		would swap into the wrong menu...  Thanks to David Isham for pointing out this bug and
+		helping me with code to test it out.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Now Menu Items can be set to Owner-Draw style.  This raises an event to the client and 
+		allows the client to draw part or all of the menu item.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Menu breaks are now supported in the same way as the Icon Menu control (i.e. prefixing the
+		caption with a pipe ("|") will cause a menu break with a column divider at that menu item, prefixing it
+		with a hat ("^") will cause a menu break without a column divider.)
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		New <i>Header</i> property causes a menu item to be drawn as an ICQ-style separator with text.  The Header style can
+		also draw like a caption for a more modern effect.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		Setting the <i>Default</i> property for a menu item causes it to be drawn in bold font.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This DLL is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this DLL yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		These projects require the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying any project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	<p><b>Overview</b><br>
+	The cNewMenu ActiveX DLL is a companion to the <a href="article.htm">cPopMenu control</a>. cPopMenu
+	allow you to subclass an existing form's VB menus and add icons and Office 97 style menu
+	drawing.  cNewMenu does the same, but instead of subclassing existing menus it allows you
+	to create as many new popup menus as you want.  You can store the popup menus within the control
+	so you can swap between them at any point.  Even better than that, your popup menus can have
+	an unrestricted number of sub-popup menus (well, at least until you run out of screen space!) and
+	you can dynamically build the sub menus in just the same way as the cPopMenu control.<br><br>
+	<a href="cnewmenu.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Click here to view the cNewMenu.DLL method and event documentation</a>
+	<br><br>
+	<b>Quick Start - Using the cNewMenu DLL</b><br>
+	Here is how to get cNewMenu working in your project quickly:
+	<ul>
+	<li>Add a reference to the cNewMenu DLL to your project (it appears as "vbAccelerator Popup Menu DLL - Allows an umlimited number
+	of new pop-up menus to be created without reference to a VB menu" in the References list.)
+	 If you don't already have an ImageList, add one with the icons you want. 
+	<li>Initialise an instance of the cPopupMenu class in a form you want the popup menus to appear.
+	You can either make the instance visible to the entire form, in which case you can respond to
+	cPopupMenu events such as <i>ItemHighlight</i> and <i>InitPopupMenu</i>, or you can declare it at the point you
+	need it.
+	<ul>
+	<li>To declare the instance with event handling:<br><br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	Private WithEvents m_cPopMenu as cPopMenu<br>
+	<br>
+	Private Sub Form_Load()<br>
+	<br>
+	&nbsp &nbsp Set m_cPopMenu = New cPopupMenu<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Initialise the Image List (you can change this later):<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp m_cPopMenu.ImageList = ilsIcons16<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Initialise the hWndOwner (you must do this before showing a menu):<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp m_cPopMenu.hWndOwner = Me.hWnd<br>
+	<br>	
+	End Sub
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<li>To declare the instance when you need it:<br><br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	Private Sub txtEdit_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)<br>
+	<br>
+	&nbsp &nbsp Dim cPopMenu As New cPopupMenu<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Initialise the Image List:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp cPopMenu.ImageList = ilsIcons16<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Initialise the hWndOwner (you must do this before showing a menu):<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp cPopMenu.hWndOwner = Me.hWnd<br>
+	<br>	
+	End Sub<br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	</ul>
+	<li>Now you are in a position to create some menus.  This sample shows you how to
+	add a (vaguely familiar?) menu which looks like this:<br>
+	</p>
+	<p><pre><font face="verdana,arial,helvetica" size="1">
+  Cu<u>t</u>
+  <u>C</u>opy
+  <u>P</u>aste
+  _____________
+  <u>T</u>oggle &gt;
+      <img src="..\..\images\pixel.gif" border="0" width="16" height="1">Breakpoint
+      <img src="..\..\images\pixel.gif" border="0" width="16" height="1" >______________________
+      <img src="..\..\images\tickicon.gif" border="0" width="16" height="16" alt="tick">Break on All Errors
+      <img src="..\..\images\pixel.gif" border="0" width="16" height="1">Break in Class Module
+      <img src="..\..\images\pixel.gif" border="0" width="16" height="1">Break on Unhandled Errors
+      <img src="..\..\images\pixel.gif" border="0" width="16" height="1">______________________
+      <img src="..\..\images\pixel.gif" border="0" width="16" height="1">Bookmark
+  _____________
+  <u>O</u>bject Browser<br>
+	</font></pre></p>
+	<p>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	Dim lIndex As Long<br>
+	Dim lIconIndex As Long<br>
+	<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Here I am assuming the Image List is called ilsIcons and<br>
+	&nbsp &nbsp ' the PopMenu object is cP:<br>
+	<br>
+	&nbsp &nbsp ' Add Cut/Copy/Paste:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp lIconIndex = ilsIcons.ListImages("CUT").Index - 1<br>	
+	&nbsp &nbsp cP.AddItem "Cu&t", , , , lIconIndex, , , "Cut"<br>
+	&nbsp &nbsp lIconIndex = ilsIcons.ListImages("COPY").Index - 1<br>	
+	&nbsp &nbsp cP.AddItem "&Copy", , , , lIconIndex, , , "Copy"<br>
+	&nbsp &nbsp lIconIndex = ilsIcons.ListImages("PASTE").Index - 1<br>	
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' The Paste item is disabled here:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp cP.AddItem "&Paste", , , , lIconIndex, False, , "Paste"<br>
+	&nbsp &nbsp cP.AddItem "-"<br>
+	<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Add Toggle and Store the Index so we can add sub items to it:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp lIndex = cP.AddItem("&Toggle")<br>
+	<br>	
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp &nbsp &nbsp  ' Add the Sub Items:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp &nbsp &nbsp lIconIndex = ilsIcons.ListImages("BREAKPOINT").Index - 1<br>	
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "Breakpoint", , ,lIndex , lIconIndex, , , "Breakpoint"<br>
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "-", , ,lIndex<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp &nbsp &nbsp  ' This item is checked:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "Break on All Errors", , ,lIndex , , , True, "BreakAll"<br>
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "Break in Class Module", , ,lIndex , , , , "BreakClass"<br>
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "Break on Unhandled Errors", , ,lIndex , , , , "BreakUnhandled"<br>
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "-", , ,lIndex<br>
+	&nbsp &nbsp &nbsp &nbsp lIconIndex = ilsIcons.ListImages("BOOKMARK").Index - 1<br>	
+	&nbsp &nbsp &nbsp &nbsp cP.AddItem "Bookmark", , ,lIndex , , , , "Bookmark"<br>
+
+	<br>
+	&nbsp &nbsp cP.AddItem "-"<br>
+	&nbsp &nbsp lIconIndex = ilsIcons.ListImages("OBJECTBROWSER").Index - 1<br>		
+	&nbsp &nbsp cP.AddItem "&Object Browser", , , , lIconIndex, False, , "ObjBrowser"<br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<br>
+	<li>Having built a menu, you can now show it.  Note that if your PopMenu instance is
+	visible for the entire form, you can store this menu for later use under a string key of
+	your choice using <i>cP.Store "YourName"</i>.  To get it back again, just call <i>cP.Restore "YourName"</i>.
+	<br><br>
+	To show the menu, you need to determine the left and right positions to show it, and you
+	can optionally provide the boundaries of a rectangle in which the menu must not appear.  This
+	rectangle is useful if you are showing the menu as the result of clicking a button, when you
+	don't want the button to be obscured by the menu:<br><br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp ' Show the menu and get the index the user chooses (if any):<br>
+	&nbsp &nbsp ' For this sample, it is assumed the menu is been shown because<br>
+	&nbsp &nbsp ' the button cmdNewMenu has been clicked:<br>
+	<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp lIndex = cP.ShowPopupMenu( _<br>
+	&nbsp &nbsp 	&nbsp &nbsp       cmdNewMenu.Left, cmdNewMenu.Top + cmdNewMenu.Height, _<br>
+	&nbsp &nbsp 	&nbsp &nbsp       cmdNewMenu.Left, cmdNewMenu.Top, _<br>
+	&nbsp &nbsp 	&nbsp &nbsp       cmdNewMenu.Left + cmdNewMenu.Width, cmdNewMenu.Top + cmdNewMenu.Height _<br>
+	&nbsp &nbsp 	&nbsp &nbsp                )<br>
+	&nbsp &nbsp If (iIndex > 0) Then<br>
+	</font>
+	<font color="#999999" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp &nbsp &nbsp  ' Display the key of the chosen item:<br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp 	&nbsp &nbsp MsgBox "Selected: " & cP.ItemKey(iIndex)<br>
+	&nbsp &nbsp 	   End If<br>
+	<br>
+	</ul>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Note that the coordinates to exclude should be specified relative to the form which owns
+	the instance of the cPopupMenu class (specified through the <i>hWndOwner</i> property when
+	you initialise the class).
+	<br><br>
+	You can do more sophisticated things by responding to the <i>ItemHighlight</i>
+	and <i>MenuExit</i> events to provide status messages.  You can also respond to the 
+	<i>InitPopupMenuMenu</i> event if you want to dynamically create sub items just as they are
+	about to be shown.  Check
+	the <a href="article.htm">cPopMenu control</a> for more details on these methods.
+	<br><br>
+	<b>Text Separators</b><br>
+	The new text separator feature can be used by either setting the <i>Header</i> property to
+	true for the menu item, or by prefixing the item's caption with a minus when it is added:<br><br>
+	</font>
+	<font color="#000000" face="Lucida Console,courier new" size="1">
+	&nbsp &nbsp cP.AddItem "-Other Sites", , , , lIconIndex<br><br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	There are two styles for text separators, set using the <i>HeaderStyle</i> property:
+	<ol>
+	<li><b>ecnmHeaderCaptionBar</b><br>
+	This is the default, and renders like a small caption bar:<br>
+	<img src="..\..\images\cnmhsc.gif" alt="Caption style text separators" width="225" height="148"><br><br>
+	<li><b>ecnmHeaderSeparator</b><br>
+	In this style the separator renders in the ICQ style:<br>
+	<img src="..\..\images\cnmhsi.gif" alt="ICQ style text separators" width="225" height="148">
+	</ol>
+	Although the small caption style headers look a little like the tear off bars you get 
+	in Office, there is no way to allow a menu to be torn off like a dialog control. 
+	vbAccelerator is working on an Office 97 style tear-off drop-down control, but this will
+	be based on a VB Form rather than a Menu.
+	<br><br>
+	<b>Owner-Draw Menus</b><br>
+	Each menu item added can now be made to raise an event whenever it is about to be measured
+	or drawn by
+	setting the <i>OwnerDraw</i> property to <i>True</i> for that item.  Having done this, you
+	can then create completely customised menu items with your own style of caption.<br><br>
+	Check out the supporting samples to see how this works:
+	<ul>
+	<li><a href="icqmenu.htm">Using the cNewMenu DLL to Create Start Menu/ICQ Style Pop-up Menus</a>
+	<li><a href="odpmenu.htm">Owner-Draw Pop-up Menus</a>
+
+	</ul>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+
+<img src="..\..\images\bpixel.gif" height="1" width="100%" border="0">
+
+<!-- BODY:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\menus\popup_menu_activex_dll\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 30 May 1999
+	</font>
+	</p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,852 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: ZoomIn_ZoomIn_frmZoomin.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: ZoomIn_ZoomIn_frmZoomin.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">A .NET Implementation of the ZoomIn Utility</a>&#160;.&#160;<a href="zoomin.html">ZoomIn</a>&#160;.&#160;ZoomIn_ZoomIn_frmZoomin.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="zoomin.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ZoomIn</a> (78K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:1465</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=1465&type=zip&title=zoomin_2ezip_5fzoomin_5fzoomin_5ffrmzoomin.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Dec 2002<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: ZoomIn_ZoomIn_frmZoomin.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+using System.Runtime.InteropServices;
+using vbAccelerator.Samples.ZoomIn;
+using vbAccelerator.Components.HotKey;
+
+namespace vbAccelerator.Samples.ZoomIn
+{
+
+   #region UnmanagedMethods
+   internal class UnmanagedMethods
+   {
+      internal const UInt32 DSTINVERT = 0x0550009;
+      internal const UInt32 SRCCOPY = 0xCC0020;   
+      internal const UInt32 COLORONCOLOR = 0x3;
+
+      [DllImport("gdi32")]
+      internal static extern UInt32 SetStretchBltMode (IntPtr hdc, UInt32
+       nStretchMode );
+      [DllImport("gdi32")]
+      internal static extern UInt32 StretchBlt (IntPtr hdc, int x, int y, int
+       nWidth , int nHeight , 
+         IntPtr hSrcDC, int xSrc , int ySrc , int nSrcWidth , int nSrcHeight ,
+          UInt32 dwRop );
+      [DllImport("gdi32")]
+      internal static extern bool PatBlt(IntPtr hdc, int left, int top, int
+       width, int height, UInt32 op);
+      [DllImport("user32")]
+      internal static extern IntPtr GetDC(IntPtr hwnd);
+      [DllImport("user32")]
+      internal static extern IntPtr ReleaseDC(IntPtr hwnd, IntPtr hdc);
+   }
+   #endregion
+
+   #region frmZoomIn
+   /// &lt;summary&gt;
+   /// Summary description for Form1.
+   /// &lt;/summary&gt;
+   public class frmZoomIn : HotKeyForm
+   {
+      private System.ComponentModel.IContainer components;
+      private System.Windows.Forms.MenuItem mnuEdit;
+      private System.Windows.Forms.MenuItem mnuCopy;
+      private System.Windows.Forms.MenuItem mnuEditSep1;
+      private System.Windows.Forms.MenuItem mnuRefresh;
+      private System.Windows.Forms.MenuItem mnuFile;
+      private System.Windows.Forms.MenuItem mnuSaveAs;
+      private System.Windows.Forms.MenuItem mnuClose;
+      private System.Windows.Forms.MenuItem mnuOptions;
+      private System.Windows.Forms.MenuItem mnuAutoRefresh;
+      private System.Windows.Forms.MenuItem mnuOptionsSep1;
+      private System.Windows.Forms.MenuItem mnuAlwaysOnTop;
+      private System.Windows.Forms.MenuItem mnuShowGrid;
+      private System.Windows.Forms.MenuItem mnuAbsolute;
+      private System.Windows.Forms.MenuItem mnuHelp;
+      private System.Windows.Forms.MenuItem mnuAbout;
+      private System.Windows.Forms.MenuItem mnuStatusBar;
+      private System.Windows.Forms.StatusBar sbrMain;
+      private System.Windows.Forms.VScrollBar vscZoom;
+      private System.Windows.Forms.StatusBarPanel pnlLocation;
+      private System.Windows.Forms.StatusBarPanel pnlColor;
+      private System.Windows.Forms.StatusBarPanel pnlZoom;
+      private System.Windows.Forms.MainMenu mnuMain;
+      private System.Windows.Forms.MenuItem mnuFileSep2;
+      private System.Windows.Forms.MenuItem mnuPrint;
+      private System.Windows.Forms.MenuItem mnuFileSep1;
+      private System.Windows.Forms.Timer tmrRefresh;
+
+      #region Member Variables
+      private int m_cxZoomed = 0;
+      private int m_cyZoomed = 0;
+      private int m_cxScreenMax = 0;
+      private int m_cyScreenMax = 0;
+      private int m_nZoom = 2;
+      private bool buttonDown = false;
+      private int lastX = 0;
+      private int lastY = 0;
+      private Bitmap currentBitmap = null;
+      #endregion
+
+      #region Constructor and Destructor
+      public frmZoomIn()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         //
+         // TODO: Add any constructor code after InitializeComponent call
+         //
+         m_cxZoomed = this.ClientRectangle.Width;
+         m_cyZoomed = this.ClientRectangle.Height;
+      
+         m_cxScreenMax = 12800;
+         m_cyScreenMax = 10240;
+
+         this.Paint += new PaintEventHandler(frmZoomIn_Paint);
+         //this.Resize += new EventHandler(frmZoomIn_Resize);
+         this.MouseDown += new MouseEventHandler(frmZoomIn_MouseDown);
+         this.MouseMove += new MouseEventHandler(frmZoomIn_MouseMove);
+         this.MouseUp += new MouseEventHandler(frmZoomIn_MouseUp);
+
+         this.SetStyle(
+            ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint |
+            ControlStyles.Opaque | ControlStyles.ResizeRedraw,  true);
+         
+         pnlZoom.Text = String.Format("x{0}",m_nZoom);
+         this.TopMost = true;
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if (components != null) 
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+      #endregion
+
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.components = new System.ComponentModel.Container();
+         this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
+         this.mnuMain = new System.Windows.Forms.MainMenu();
+         this.mnuFile = new System.Windows.Forms.MenuItem();
+         this.mnuSaveAs = new System.Windows.Forms.MenuItem();
+         this.mnuFileSep2 = new System.Windows.Forms.MenuItem();
+         this.mnuClose = new System.Windows.Forms.MenuItem();
+         this.mnuEdit = new System.Windows.Forms.MenuItem();
+         this.mnuCopy = new System.Windows.Forms.MenuItem();
+         this.mnuEditSep1 = new System.Windows.Forms.MenuItem();
+         this.mnuRefresh = new System.Windows.Forms.MenuItem();
+         this.mnuOptions = new System.Windows.Forms.MenuItem();
+         this.mnuAutoRefresh = new System.Windows.Forms.MenuItem();
+         this.mnuOptionsSep1 = new System.Windows.Forms.MenuItem();
+         this.mnuAlwaysOnTop = new System.Windows.Forms.MenuItem();
+         this.mnuShowGrid = new System.Windows.Forms.MenuItem();
+         this.mnuStatusBar = new System.Windows.Forms.MenuItem();
+         this.mnuAbsolute = new System.Windows.Forms.MenuItem();
+         this.mnuHelp = new System.Windows.Forms.MenuItem();
+         this.mnuAbout = new System.Windows.Forms.MenuItem();
+         this.sbrMain = new System.Windows.Forms.StatusBar();
+         this.pnlLocation = new System.Windows.Forms.StatusBarPanel();
+         this.pnlColor = new System.Windows.Forms.StatusBarPanel();
+         this.pnlZoom = new System.Windows.Forms.StatusBarPanel();
+         this.vscZoom = new System.Windows.Forms.VScrollBar();
+         this.mnuPrint = new System.Windows.Forms.MenuItem();
+         this.mnuFileSep1 = new System.Windows.Forms.MenuItem();
+         ((System.ComponentModel.ISupportInitialize)(this.pnlLocation)).BeginIni
+         t();
+         ((System.ComponentModel.ISupportInitialize)(this.pnlColor)).BeginInit()
+         ;
+         ((System.ComponentModel.ISupportInitialize)(this.pnlZoom)).BeginInit();
+         this.SuspendLayout();
+         // 
+         // tmrRefresh
+         // 
+         this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
+         // 
+         // mnuMain
+         // 
+         this.mnuMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                               this.mnuFile,
+                                                               this.mnuEdit,
+                                                               this.mnuOptions,
+                                                               this.mnuHelp});
+         // 
+         // mnuFile
+         // 
+         this.mnuFile.Index = 0;
+         this.mnuFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                               this.mnuSaveAs,
+                                                               this.mnuFileSep1,
+                                                               this.mnuPrint,
+                                                               this.mnuFileSep2,
+                                                               this.mnuClose});
+         this.mnuFile.Text = "&amp;File";
+         // 
+         // mnuSaveAs
+         // 
+         this.mnuSaveAs.Index = 0;
+         this.mnuSaveAs.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
+         this.mnuSaveAs.Text = "Save &amp;As...";
+         this.mnuSaveAs.Click += new System.EventHandler(this.mnuSaveAs_Click);
+         // 
+         // mnuFileSep2
+         // 
+         this.mnuFileSep2.Index = 3;
+         this.mnuFileSep2.Text = "-";
+         // 
+         // mnuClose
+         // 
+         this.mnuClose.Index = 4;
+         this.mnuClose.Text = "&amp;Close";
+         this.mnuClose.Click += new System.EventHandler(this.mnuClose_Click);
+         // 
+         // mnuEdit
+         // 
+         this.mnuEdit.Index = 1;
+         this.mnuEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                               this.mnuCopy,
+                                                               this.mnuEditSep1,
+                                                              
+                                         this.mnuRefresh});
+         this.mnuEdit.Text = "&amp;Edit";
+         // 
+         // mnuCopy
+         // 
+         this.mnuCopy.Index = 0;
+         this.mnuCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+         this.mnuCopy.Text = "&amp;Copy";
+         this.mnuCopy.Click += new System.EventHandler(this.mnuCopy_Click);
+         // 
+         // mnuEditSep1
+         // 
+         this.mnuEditSep1.Index = 1;
+         this.mnuEditSep1.Text = "-";
+         // 
+         // mnuRefresh
+         // 
+         this.mnuRefresh.Index = 2;
+         this.mnuRefresh.Shortcut = System.Windows.Forms.Shortcut.F5;
+         this.mnuRefresh.Text = "&amp;Refresh";
+         this.mnuRefresh.Click += new
+          System.EventHandler(this.mnuRefresh_Click);
+         // 
+         // mnuOptions
+         // 
+         this.mnuOptions.Index = 2;
+         this.mnuOptions.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
+          {
+                                                                 
+                                         this.mnuAutoRefresh,
+                                                                 
+                                         this.mnuOptionsSep1,
+                                                                 
+                                         this.mnuAlwaysOnTop,
+                                                                 
+                                         this.mnuShowGrid,
+                                                                 
+                                         this.mnuStatusBar,
+                                                                 
+                                         this.mnuAbsolute});
+         this.mnuOptions.Text = "&amp;Options";
+         // 
+         // mnuAutoRefresh
+         // 
+         this.mnuAutoRefresh.Index = 0;
+         this.mnuAutoRefresh.Text = "&amp;Auto Refresh";
+         this.mnuAutoRefresh.Click += new
+          System.EventHandler(this.mnuAutoRefresh_Click);
+         // 
+         // mnuOptionsSep1
+         // 
+         this.mnuOptionsSep1.Index = 1;
+         this.mnuOptionsSep1.Text = "-";
+         // 
+         // mnuAlwaysOnTop
+         // 
+         this.mnuAlwaysOnTop.Checked = true;
+         this.mnuAlwaysOnTop.Index = 2;
+         this.mnuAlwaysOnTop.Text = "Always On &amp;Top";
+         this.mnuAlwaysOnTop.Click += new
+          System.EventHandler(this.mnuAlwaysOnTop_Click);
+         // 
+         // mnuShowGrid
+         // 
+         this.mnuShowGrid.Checked = true;
+         this.mnuShowGrid.Index = 3;
+         this.mnuShowGrid.Text = "Show &amp;Grid When Zoomed";
+         this.mnuShowGrid.Click += new
+          System.EventHandler(this.mnuShowGrid_Click);
+         // 
+         // mnuStatusBar
+         // 
+         this.mnuStatusBar.Index = 4;
+         this.mnuStatusBar.Text = "&amp;Status Bar";
+         this.mnuStatusBar.Click += new
+          System.EventHandler(this.mnuStatusBar_Click);
+         // 
+         // mnuAbsolute
+         // 
+         this.mnuAbsolute.Index = 5;
+         this.mnuAbsolute.Text = "Absolute &amp;Positions";
+         this.mnuAbsolute.Click += new
+          System.EventHandler(this.mnuAbsolute_Click);
+         // 
+         // mnuHelp
+         // 
+         this.mnuHelp.Index = 3;
+         this.mnuHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+                                                               this.mnuAbout});
+         this.mnuHelp.Text = "&amp;Help";
+         // 
+         // mnuAbout
+         // 
+         this.mnuAbout.Index = 0;
+         this.mnuAbout.Text = "&amp;About...";
+         this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
+         // 
+         // sbrMain
+         // 
+         this.sbrMain.Location = new System.Drawing.Point(0, 125);
+         this.sbrMain.Name = "sbrMain";
+         this.sbrMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[]
+          {
+                                                                 
+                                         this.pnlLocation,
+                                                                  this.pnlColor,
+                                                                 
+                                         this.pnlZoom});
+         this.sbrMain.ShowPanels = true;
+         this.sbrMain.Size = new System.Drawing.Size(200, 20);
+         this.sbrMain.TabIndex = 1;
+         this.sbrMain.Text = "statusBar1";
+         // 
+         // pnlLocation
+         // 
+         this.pnlLocation.AutoSize =
+          System.Windows.Forms.StatusBarPanelAutoSize.Contents;
+         this.pnlLocation.Text = "(2204,1000)";
+         this.pnlLocation.Width = 75;
+         // 
+         // pnlColor
+         // 
+         this.pnlColor.AutoSize =
+          System.Windows.Forms.StatusBarPanelAutoSize.Contents;
+         this.pnlColor.Text = "(255,255,255)";
+         this.pnlColor.Width = 85;
+         // 
+         // pnlZoom
+         // 
+         this.pnlZoom.AutoSize =
+          System.Windows.Forms.StatusBarPanelAutoSize.Spring;
+         this.pnlZoom.Text = "x4";
+         this.pnlZoom.Width = 24;
+         // 
+         // vscZoom
+         // 
+         this.vscZoom.CausesValidation = false;
+         this.vscZoom.Dock = System.Windows.Forms.DockStyle.Right;
+         this.vscZoom.LargeChange = 2;
+         this.vscZoom.Location = new System.Drawing.Point(184, 0);
+         this.vscZoom.Maximum = 32;
+         this.vscZoom.Minimum = 1;
+         this.vscZoom.Name = "vscZoom";
+         this.vscZoom.Size = new System.Drawing.Size(16, 125);
+         this.vscZoom.TabIndex = 2;
+         this.vscZoom.Value = 4;
+         this.vscZoom.Scroll += new
+          System.Windows.Forms.ScrollEventHandler(this.vscZoom_Scroll);
+         // 
+         // mnuPrint
+         // 
+         this.mnuPrint.Index = 2;
+         this.mnuPrint.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+         this.mnuPrint.Text = "&amp;Print...";
+         this.mnuPrint.Click += new System.EventHandler(this.mnuPrint_Click);
+         // 
+         // mnuFileSep1
+         // 
+         this.mnuFileSep1.Index = 1;
+         this.mnuFileSep1.Text = "-";
+         // 
+         // frmZoomIn
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+         this.ClientSize = new System.Drawing.Size(200, 145);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.vscZoom,
+                                                        this.sbrMain});
+         this.Menu = this.mnuMain;
+         this.Name = "frmZoomIn";
+         this.Text = "ZoomIn - C#";
+         this.Load += new System.EventHandler(this.frmZoomIn_Load);
+         ((System.ComponentModel.ISupportInitialize)(this.pnlLocation)).EndInit(
+         );
+         ((System.ComponentModel.ISupportInitialize)(this.pnlColor)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnlZoom)).EndInit();
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      /// &lt;summary&gt;
+      /// The main entry point for the application.
+      /// &lt;/summary&gt;
+      [STAThread]
+      static void Main() 
+      {
+         Application.Run(new frmZoomIn());
+      }
+
+      #region Form Events
+      private void frmZoomIn_Load(object sender, System.EventArgs e)
+      {
+         this.HotKeyPressed += new HotKeyPressedEventHandler(hotKey_Pressed);
+
+         HotKey hotKey = new HotKey("Copy to clipboard", Keys.C, 
+            HotKey.HotKeyModifiers.MOD_CONTROL |
+             HotKey.HotKeyModifiers.MOD_SHIFT);
+         this.HotKeys.Add(hotKey);
+      }
+
+      private void frmZoomIn_MouseDown(object sender, MouseEventArgs m)
+      {
+         if ((m.Button &amp; MouseButtons.Left) == MouseButtons.Left)
+         {
+            buttonDown = true;
+            DrawZoomRect(m.X, m.Y);
+         }
+      }
+
+      private void frmZoomIn_MouseMove(object sender, MouseEventArgs m)
+      {
+         if (buttonDown)
+         {
+            DrawZoomRect();
+            DrawZoomRect(m.X, m.Y);
+            Point pt = new Point(m.X, m.Y);
+            Point ptScreen = this.PointToScreen(pt);
+            pnlLocation.Text = String.Format("({0},{1})", ptScreen.X,
+             ptScreen.Y);
+         }
+         else
+         {
+            if (mnuAbsolute.Checked)
+            {
+               Point pt = new Point(lastX, lastY);
+               Point ptScreen = this.PointToScreen(pt);
+               ptScreen.X = Bound(ptScreen.X, m_cxZoomed / 2, m_cxScreenMax -
+                (m_cxZoomed / 2));
+               ptScreen.Y = Bound(ptScreen.Y, m_cyZoomed / 2, m_cyScreenMax -
+                (m_cyZoomed / 2));
+               int x = ptScreen.X - m_cxZoomed /2 + m.X/m_nZoom ;
+               int y = ptScreen.Y - m_cyZoomed /2 + m.Y/m_nZoom;
+               pnlLocation.Text = String.Format("({0},{1})", x, y);
+            }
+            else
+            {
+               pnlLocation.Text = String.Format("({0},{1})", m.X, m.Y);
+            }
+            if (currentBitmap != null)
+            {
+               Color pixelColor = currentBitmap.GetPixel(m.X, m.Y);
+               this.pnlColor.Text = String.Format("({0},{1},{2})",
+                pixelColor.R, pixelColor.G, pixelColor.B);
+            }
+         }
+      }
+
+      private void frmZoomIn_MouseUp(object sender, MouseEventArgs m)
+      {
+         if ((m.Button &amp; MouseButtons.Left) == MouseButtons.Left)
+         {
+            if (buttonDown)
+            {
+               DrawZoomRect(m.X, m.Y);
+               buttonDown = false;
+            }
+         }
+         
+      }
+
+      private void frmZoomIn_Paint(object sender, PaintEventArgs p)
+      {
+         CalcZoomedSize();
+
+         if (currentBitmap == null)
+         {
+            currentBitmap = new Bitmap(m_nZoom * m_cxZoomed, m_nZoom *
+             m_cyZoomed);
+         }
+         else
+         {
+            if ((currentBitmap.Width != m_nZoom * m_cxZoomed) || 
+               (currentBitmap.Height != m_nZoom * m_cyZoomed))
+            {
+               currentBitmap = new Bitmap(m_nZoom * m_cxZoomed, m_nZoom *
+                m_cyZoomed);
+            }
+         }
+         Graphics gfx = Graphics.FromImage((Image)currentBitmap);
+
+
+         Point pt = new Point(lastX, lastY);
+         Point ptScreen = this.PointToScreen(pt);
+         ptScreen.X = Bound(ptScreen.X, m_cxZoomed / 2, m_cxScreenMax -
+          (m_cxZoomed / 2));
+         ptScreen.Y = Bound(ptScreen.Y, m_cyZoomed / 2, m_cyScreenMax -
+          (m_cyZoomed / 2));
+
+         IntPtr hdcScreen = UnmanagedMethods.GetDC(IntPtr.Zero);
+
+         // Draw on form:
+         IntPtr hdc = p.Graphics.GetHdc();
+
+         UnmanagedMethods.SetStretchBltMode(hdc, UnmanagedMethods.COLORONCOLOR);
+         UnmanagedMethods.StretchBlt(hdc, 
+            0, 0, m_nZoom * m_cxZoomed, m_nZoom * m_cyZoomed,
+            hdcScreen, 
+            ptScreen.X - m_cxZoomed / 2, ptScreen.Y - m_cyZoomed /2, 
+            m_cxZoomed, m_cyZoomed, 
+            UnmanagedMethods.SRCCOPY);
+
+         p.Graphics.ReleaseHdc(hdc);
+         
+         // Draw on off-screen bitmap:
+         hdc = gfx.GetHdc();
+
+         UnmanagedMethods.SetStretchBltMode(hdc, UnmanagedMethods.COLORONCOLOR);
+         UnmanagedMethods.StretchBlt(hdc, 
+            0, 0, m_nZoom * m_cxZoomed, m_nZoom * m_cyZoomed,
+            hdcScreen, 
+            ptScreen.X - m_cxZoomed / 2, ptScreen.Y - m_cyZoomed /2, 
+            m_cxZoomed, m_cyZoomed, 
+            UnmanagedMethods.SRCCOPY);
+
+         gfx.ReleaseHdc(hdc);
+
+         UnmanagedMethods.ReleaseDC(IntPtr.Zero, hdcScreen);
+
+         DrawGrid(p.Graphics);
+      }   
+      #endregion
+      
+      #region Miscellaneous Events
+      private void hotKey_Pressed(object sender, HotKeyPressedEventArgs e)
+      {
+         Copy();
+      }
+
+      private void vscZoom_Scroll(object sender,
+       System.Windows.Forms.ScrollEventArgs e)
+      {
+         m_nZoom = vscZoom.Value;
+         pnlZoom.Text = String.Format("x{0}",m_nZoom);         
+         Invalidate();
+      }
+
+      private void tmrRefresh_Tick(object sender, System.EventArgs e)
+      {
+         Invalidate();
+      }
+      #endregion
+
+      #region Menu Events
+      
+      private void mnuAbsolute_Click(object sender, System.EventArgs e)
+      {
+         mnuAbsolute.Checked = (mnuAbsolute.Checked ? false : true);
+      }
+
+      private void mnuStatusBar_Click(object sender, System.EventArgs e)
+      {
+         mnuStatusBar.Checked = (mnuStatusBar.Checked ? false : true);
+         sbrMain.Visible = mnuStatusBar.Checked;
+         Invalidate();
+      }
+
+
+      private void mnuShowGrid_Click(object sender, System.EventArgs e)
+      {
+         mnuShowGrid.Checked = (mnuShowGrid.Checked ? false : true);
+         Invalidate();
+      }
+
+      private void mnuAlwaysOnTop_Click(object sender, System.EventArgs e)
+      {
+         mnuAlwaysOnTop.Checked = ((mnuAlwaysOnTop.Checked) ? false : true);
+         this.TopMost = mnuAlwaysOnTop.Checked;
+      }
+
+      private void mnuRefresh_Click(object sender, System.EventArgs e)
+      {
+         Invalidate();
+      }
+
+      private void mnuAutoRefresh_Click(object sender, System.EventArgs e)
+      {
+         mnuAutoRefresh.Checked = ((mnuAutoRefresh.Checked) ? false : true);
+         tmrRefresh.Enabled = mnuAutoRefresh.Checked;
+      }
+
+      private void mnuClose_Click(object sender, System.EventArgs e)
+      {
+         this.Close();
+      }
+
+      private void mnuSaveAs_Click(object sender, System.EventArgs e)
+      {
+         SaveFileDialog s = new SaveFileDialog();
+         s.Filter = "Bitmap (*.bmp)|*.bmp|JPEG (*.jpg)|*.JPG|PNG
+          (*.png)|*.PNG|GIF (*.gif)|*.GIF";
+         s.DefaultExt = "BMP";
+         s.FilterIndex = 1;
+         s.OverwritePrompt = true;
+         if (s.ShowDialog() == DialogResult.OK)
+         {
+            System.Drawing.Imaging.ImageFormat imgFormat =
+             System.Drawing.Imaging.ImageFormat.Bmp;
+            Bitmap bmp = ImageToBitmap();
+            switch (s.FilterIndex)
+            {
+               case 2:
+                  imgFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                  break;
+               case 3:
+                  imgFormat = System.Drawing.Imaging.ImageFormat.Png;
+                  break;
+               case 4:
+                  imgFormat = System.Drawing.Imaging.ImageFormat.Gif;
+                  break;
+            }
+            bmp.Save(s.FileName, imgFormat);
+         }
+
+      }
+
+      private void mnuCopy_Click(object sender, System.EventArgs e)
+      {   
+         Copy();
+      }
+      #endregion
+
+      #region Implementation
+      private void Copy()
+      {
+         Bitmap bmp = ImageToBitmap();
+               
+         System.Windows.Forms.Clipboard.SetDataObject(bmp, true);
+      }
+
+      private void DrawGrid(Graphics gfx)
+      {
+         if (mnuShowGrid.Checked)
+         {
+            if (m_nZoom &lt; 2)
+               return;
+
+            Rectangle rect = this.ClientRectangle;
+            rect.Width = rect.Width - vscZoom.Width;
+
+            Pen pen = Pens.Black;
+
+            for (int x = 0; x &lt; m_cxZoomed; x++)
+            {
+               gfx.DrawLine(pen, x * m_nZoom, rect.Top, x * m_nZoom,
+                rect.Bottom);
+            }
+
+            for (int y = 0; y &lt; m_cyZoomed; y++)
+            {
+               gfx.DrawLine(pen, rect.Left, y * m_nZoom, rect.Right, y *
+                m_nZoom);
+            }
+         }
+      }
+
+      private void CalcZoomedSize()
+      {
+         Rectangle rc = this.ClientRectangle;
+
+         m_cxZoomed = ( (rc.Right - vscZoom.Width) / m_nZoom) + 1;
+         m_cyZoomed = ( (rc.Bottom - sbrMain.Height) / m_nZoom) + 1;
+      }
+
+      private int Bound(int toBound, int minValue, int maxValue)
+      {
+         if (toBound &lt; minValue)
+            return minValue;
+         else if (toBound &gt; maxValue)
+            return maxValue;
+         else
+            return toBound;
+      }
+
+      private void DrawZoomRect()
+      {
+         DrawZoomRect(lastX, lastY);
+      }
+
+      private void mnuPrint_Click(object sender, System.EventArgs e)
+      {
+      
+      }
+
+      private void mnuAbout_Click(object sender, System.EventArgs e)
+      {
+         vbAccelerator.Samples.ZoomIn.frmAbout a = new
+          vbAccelerator.Samples.ZoomIn.frmAbout();
+         a.ShowDialog(this);         
+      }
+
+      private Bitmap ImageToBitmap()
+      {
+         Bitmap bmp = new Bitmap(m_nZoom * m_cxZoomed, m_nZoom * m_cyZoomed);
+         Graphics gfx = Graphics.FromImage((Image)bmp);
+
+         CalcZoomedSize();
+
+         Point pt = new Point(lastX, lastY);
+         Point ptScreen = this.PointToScreen(pt);
+         ptScreen.X = Bound(ptScreen.X, m_cxZoomed / 2, m_cxScreenMax -
+          (m_cxZoomed / 2));
+         ptScreen.Y = Bound(ptScreen.Y, m_cyZoomed / 2, m_cyScreenMax -
+          (m_cyZoomed / 2));
+
+         IntPtr hdcScreen = UnmanagedMethods.GetDC(IntPtr.Zero);
+         IntPtr hdc = gfx.GetHdc();
+
+         UnmanagedMethods.SetStretchBltMode(hdc, UnmanagedMethods.COLORONCOLOR);
+         UnmanagedMethods.StretchBlt(hdc, 
+            0, 0, m_nZoom * m_cxZoomed, m_nZoom * m_cyZoomed,
+            hdcScreen, 
+            ptScreen.X - m_cxZoomed / 2, ptScreen.Y - m_cyZoomed /2, 
+            m_cxZoomed, m_cyZoomed, 
+            UnmanagedMethods.SRCCOPY);
+
+         gfx.ReleaseHdc(hdc);
+         UnmanagedMethods.ReleaseDC(IntPtr.Zero, hdcScreen);
+
+         return bmp;
+      }
+
+      private void DrawZoomRect(int mouseX, int mouseY )//IntPtr lParam)
+      {
+         if (buttonDown)
+         {
+            Point pt = new Point(mouseX, mouseY);
+            Point screenPt = this.PointToScreen(pt);
+
+            screenPt.X = Bound(screenPt.X, m_cxZoomed / 2, m_cxScreenMax -
+             (m_cxZoomed / 2));
+            screenPt.Y = Bound(screenPt.Y, m_cyZoomed / 2, m_cyScreenMax -
+             (m_cyZoomed / 2));
+
+            Rectangle rc = new Rectangle(
+               screenPt.X - m_cxZoomed / 2,
+               screenPt.Y - m_cyZoomed / 2,
+               m_cxZoomed,
+               m_cyZoomed);
+
+            rc.Inflate(1,1);
+
+            IntPtr hdc = UnmanagedMethods.GetDC(IntPtr.Zero);
+
+            UnmanagedMethods.PatBlt(hdc, rc.Left,    rc.Top,    
+             rc.Right-rc.Left, 1,  UnmanagedMethods.DSTINVERT);
+            UnmanagedMethods.PatBlt(hdc, rc.Left,    rc.Bottom,  1,
+             -(rc.Bottom-rc.Top),   UnmanagedMethods.DSTINVERT);
+            UnmanagedMethods.PatBlt(hdc, rc.Right-1, rc.Top,     1,  
+             rc.Bottom-rc.Top,   UnmanagedMethods.DSTINVERT);
+            UnmanagedMethods.PatBlt(hdc, rc.Right,   rc.Bottom-1,
+             -(rc.Right-rc.Left), 1, UnmanagedMethods.DSTINVERT);
+
+            UnmanagedMethods.ReleaseDC(IntPtr.Zero, hdc);
+            
+            //lastLParam = lParam;   
+            lastX = mouseX;
+            lastY = mouseY;
+
+            this.Invalidate();
+         }
+      }
+      #endregion
+
+
+   }
+   #endregion
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Graphics</a>&#160;.&#160;<a href="article.html">A .NET Implementation of the ZoomIn Utility</a>&#160;.&#160;<a href="zoomin.html">ZoomIn</a>&#160;.&#160;ZoomIn_ZoomIn_frmZoomin.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

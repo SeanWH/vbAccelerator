@@ -1,0 +1,270 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Thumbnail Extraction Using the Shell</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="The Shell provides an IExtractImage interface which allows you to obtain thumbnail
+images for any file which has a Shell extension that supports the interface.  By default there
+are Shell extensions for images, most Office documents and folders; and other programs can
+install their own Shell extensions for other file types.  This sample provides .NET code you
+can use to easily get hold of thumbnails using this technique." /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Shell Projects</a>&#160;.&#160;Thumbnail Extraction Using the Shell</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="thumbail_tester_code.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Thumbail Tester Code</a> (45K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:4513</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=4513&type=article&title=thumbnail_20extraction_20using_20the_20shell.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />8 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\auto-file_completion_for_text_boxes_and_combo_boxes\article.html">Auto-File and URL Completion for Text Boxes and Combo Boxes</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\folder_browser\article.html">Folder Browser Dialog</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\sysimagelist\article.html">System Image List</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Thumbnail Extraction Using the Shell</h1><p class="splash">Create Thumbnail images for images, documents, folders, web pages and more!</p><img src="thumbnail.png" width="551" height="379" alt="Thumbnail Extractor Demonstration" /><p /><p>The Shell provides an <i>IExtractImage</i> interface which allows you to obtain thumbnail
+images for any file which has a Shell extension that supports the interface.  By default there
+are Shell extensions for images, most Office documents and folders; and other programs can
+install their own Shell extensions for other file types.  This sample provides .NET code you
+can use to easily get hold of thumbnails using this technique.</p><h2>Using the Code</h2><p>The code itself should be very straightforward to use.  Just add the code 
+file <i>ThumbnailCreator.cs</i> to your project and you'll find you can create
+a <i>ThumbnailCreator</i> class from the <i>vbAccelerator.Components.Shell</i>
+namespace. This object has one property and one method:</p><ul><li><strong>DesiredSize</strong><br />
+Gets/sets the size of thumbnail you'd like.  Explorer uses 100 x 100 pixels.</li><li><strong>GetThumbNail</strong><br />
+Returns a <i>System.Drawing.Bitmap</i> for the specified file with the 
+thumbnail, or throws an exception if there's a problem.</li></ul><p>Note that you should always check for exceptions when processing for 
+thumbnails.  Some objects simply don't support Thumbnails; in Explorer the
+default processing is to draw the Extra Large Icon from the 
+<a href="..\sysimagelist\article.html">System Image List</a> in the centre of the 
+Thumbnail area) and other objects only support Thumbnails under specific
+circumstances.  For example, although Word and Excel documents support
+thumbnailing, they only do so when there is an embedded metafile thumbnail -
+a specific option you have to enable on the Properties dialog of the document.
+The error message you get thrown back tends to be not particularly valuable
+either in determining what happened.</p><p>By default, you should be able to create thumbnails for all image files,
+HTML and MHT documents and file folders.  The sample code demonstrates adding
+these to an ImageList which is linked to a ListView; it is also single-threaded
+and you would probably want to improve matters by requesting the thumbnail on
+a separate thread using <i>BeginInvoke</i> in a real application.</p><h2>The Details</h2><p>The Shell's thumbnail feature is exposed through the <i>IExtractImage</i> 
+interface of a Shell object.  In order to get an <i>IExtractImage</i> interface,
+you first need to have an <i>IShellFolder</i> interface.  This is covered in 
+some depth in the <a href="..\folder_browser\article.html">Folder Browser</a>
+article, so I won't cover it in more detail here.  I'll cover the steps you
+need to go through to get at the <i>IExtractImage</i> interface now 
+in turn.</p><h3>1. Getting a Reference to The <i>IShellFolder</i> Object</h3><p>First get an <i>IShellFolder</i> instance using the returned
+<i>SHGetDesktopFolder</i> API call as described in the Folder Browser sample,
+and then call the <i>ParseDisplayName</i> to get a pidl for the containing
+folder (note error handling is not shown in these samples for clarity):</p><pre>
+   IShellFolder folder = null;
+   SHGetDesktopFolder(out folder);
+
+   IntPtr pidlMain = IntPtr.Zero;
+   int cParsed = 0;
+   int pdwAttrib = 0;
+   string directory = Path.GetDirectoryName(file);
+
+   folder.ParseDisplayName(
+      IntPtr.Zero,
+      IntPtr.Zero,
+      directory,
+      out cParsed,
+      out pidlMain,
+      out pdwAttrib);
+</pre><p>Now we can get an <i>IShellFolder</i> object for this pidl:</p><pre>
+   Guid iidShellFolder =
+      new Guid("000214E6-0000-0000-C000-000000000046");
+   IShellFolder item = null;
+   folder.BindToObject(
+      pidlMain,
+      IntPtr.Zero,
+      ref iidShellFolder,
+      ref item);
+</pre><h3>2. Finding Sub-Item pidls</h3><p>Having done that, we now want to find the pidl of the object we desire a
+thumbnail for from the owning folder.  To do this the objects within the 
+folder need to be enumerated until the correct item is found:</p><pre>
+   IEnumIDList idEnum = null;
+   item.EnumObjects(
+      IntPtr.Zero,
+      (ESHCONTF.SHCONTF_FOLDERS | ESHCONTF.SHCONTF_NONFOLDERS),
+      ref idEnum);
+
+    IntPtr pidl = IntPtr.Zero;
+    int fetched = 0;
+    bool complete = false;
+    while (!complete)
+    {
+       hRes = idEnum.Next(1, ref pidl, out fetched);
+       if (hRes != 0)
+       {
+          // end of enumeration
+          pidl = IntPtr.Zero;
+          complete = true;
+       }
+       else
+       {
+           // check if pidl is the correct item and
+           // get the thumbnail.  This function returns
+           // true as soon as it finds a match, 
+           // regardless of whether the thumbnail
+           // can be extracted:
+           if (getThumbnail(file, item, pidl)
+           {
+              complete = true;
+           }
+       }
+       if (pidl != IntPtr.Zero)
+       {
+           Allocator.Free(pidl);
+       }
+    }
+</pre><p>Finally, clear up any objects we created - the <i>Allocator</i> object
+referred to here is the <i>IMalloc</i> object described in the Folder
+Browser sample:</p><pre>
+   Marshal.ReleaseComObject(idEnum);
+   Marshal.ReleaseComObject(item);
+   Allocator.Free(pidlMain);
+   Marshal.ReleaseComObject(folder);
+</pre><h3>3. Processing An Item's Pidl</h3><p>The final stage is to check if the pidl in question is the file or
+folder we're thumbnailing, and if it is then to start the thumbnail
+extraction process:</p><pre>
+private bool getThumbnail(
+    string file,
+    IShellFolder item,
+    IntPtr pidl)
+{
+   IntPtr hBmp = IntPtr.Zero;
+   IExtractImage extractImage = null;
+   bool ret = false;
+
+   string pidlPath = PathFromPidl(pidl);
+   // pidl is a relative pidl, so only the filename
+   // portion is relevant:
+   if (Path.GetFileName(pidlPath).Equals(
+       Path.GetFileName(file))
+   {
+      // This is the right item:
+      ret = true;
+
+      // Try and get the IExtractImage interface:
+      IUnknown iunk = null;
+      int prgf = 0;
+      Guid iidExtractImage = new
+          Guid("BB2E617C-0920-11d1-9A0B-00C04FC2D6C1");
+      item.GetUIObjectOf(
+         IntPtr.Zero,
+         1,
+         ref pidl,
+         ref iidExtractImage,
+         out prgf,
+         ref iunk);
+      extractImage = (IExtractImage)iunk;
+
+      // we now have an IExtractImage object...
+   }
+
+   return ret;
+}
+</pre><p>To support the code above, you need COM Interop libraries for
+the <i>IExtractImage</i> and <i>IUnknown</i> interfaces:</p><pre>
+	[ComImport, Guid("00000000-0000-0000-C000-000000000046")]
+	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+	private interface IUnknown
+	{
+		[PreserveSig]
+		IntPtr QueryInterface(ref Guid riid, out IntPtr pVoid);
+		[PreserveSig]
+		IntPtr AddRef();
+		[PreserveSig]
+		IntPtr Release();
+	}
+
+	[ComImportAttribute()]
+	[GuidAttribute("BB2E617C-0920-11d1-9A0B-00C04FC2D6C1")]
+	[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+	//helpstring("IExtractImage"),
+	private interface IExtractImage
+	{
+		void GetLocation(
+			[Out(), MarshalAs(UnmanagedType.LPWStr)]
+            StringBuilder pszPathBuffer,
+			int cch,
+			ref int pdwPriority,
+			ref SIZE prgSize,
+			int dwRecClrDepth,
+			ref int pdwFlags);
+
+		void Extract(
+			out IntPtr phBmpThumbnail);
+	}
+</pre><p>Finally, its time to actually exercise the <i>IExtractImage</i> interface
+itself.  To get the thumbnail, first call the <i>GetLocation</i> method to
+set extraction options and desired image size, and then call <i>Extract</i>
+to receive a GDI <i>HBITMAP</i> handle to the bitmap, which can then be
+moved into the GDI+ world using the <i>Image.FromHandle</i> method:</p><pre>
+	SIZE sz = new SIZE();
+	sz.cx = desiredSize.Width;
+	sz.cy = desiredSize.Height;
+	StringBuilder location = new StringBuilder(260, 260);
+	int priority = 0;
+	int requestedColourDepth = 32;
+	EIEIFLAG flags = EIEIFLAG.IEIFLAG_ASPECT | EIEIFLAG.IEIFLAG_SCREEN;
+	int uFlags = (int)flags;
+
+	extractImage.GetLocation(
+		location,
+		location.Capacity,
+		ref priority,
+		ref sz,
+		requestedColourDepth,
+		ref uFlags);
+
+	extractImage.Extract(out hBmp);
+	if (hBmp != IntPtr.Zero)
+	{
+		// create the image object:
+		thumbNail = System.Drawing.Bitmap.FromHbitmap(hBmp);
+    }
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Shell Projects</a>&#160;.&#160;Thumbnail Extraction Using the Shell</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 11 March 2003</p></td><td></td></tr></table>
+</body></html>

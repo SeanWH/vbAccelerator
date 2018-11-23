@@ -1,0 +1,532 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: AudioCDWriterCS\WaveStreamReader.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: AudioCDWriterCS\WaveStreamReader.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /><link rel="copyright" href="/home/The_Site/Copyright/article.asp" /><link rel="contents" href="./Audio_CD_Writer.asp" /><link rel="meta" type="application/rdf+xml" href="./Audio CD Writer.rdf" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Writing Audio CDs</a>&#160;.&#160;<a href="..\audio_cd_writer.html">Audio CD Writer</a>&#160;.&#160;AudioCDWriterCS</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="audio_cd_writer.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Audio CD Writer</a> (134K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:15463</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=15463&type=zip&title=wavestreamreader.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />27 Jun 2004<br /></p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\media\audio\wavestream\article.html">WaveStreamReader and WaveStreamWriter</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\writing_data_cds\article.html">Writing Data CDs</a></p><p class="nav"><img src="..\..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\imapi\article.html">Image Mastering API (IMAPI) Wrapper for .NET</a></p><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: AudioCDWriterCS\WaveStreamReader.cs</h1><p>This file is part of the download <a href="audio_cd_writer.html">Audio CD Writer</a>, which is described in the article <a href="article.html">Writing Audio CDs</a>.</p><pre>using System;
+using System.IO;
+using System.Runtime.InteropServices;
+
+namespace vbAccelerator.Audio.WaveStream
+{
+   /// &lt;summary&gt;
+   /// A &lt;c&gt;Stream&lt;/c&gt; implementation which wraps the Windows Multi-media
+   /// IO to read a Wave file.
+   /// &lt;/summary&gt;
+   public class WaveStreamReader : Stream, IDisposable
+   {
+      private string waveFile;
+      private IntPtr hMmio = IntPtr.Zero;
+      private bool disposed = false;
+      private WinMMInterop.WAVEFORMATEX format;
+      private int dataOffset = 0;
+      private int audioLength = 0;
+
+      /// &lt;summary&gt;
+      /// Default constructor
+      /// &lt;/summary&gt;
+      public WaveStreamReader() : base()
+      {
+      }
+
+      /// &lt;summary&gt;
+      /// Constructor for a particular wave file.
+      /// &lt;/summary&gt;
+      /// &lt;param name="file"&gt;File name of the wave file to read&lt;/param&gt;
+      public WaveStreamReader(string file) : this()
+      {
+         Filename = file;
+      }
+
+      /// &lt;summary&gt;
+      /// Destructor: ensures that the wave file handle is closed.
+      /// &lt;/summary&gt;
+      ~WaveStreamReader()
+      {
+         Dispose(false);
+      }
+
+      /// &lt;summary&gt;
+      /// Clears up resources associated with this class.
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         Dispose(true);
+         GC.SuppressFinalize(this);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the Multi-media IO handle to the wave file.
+      /// &lt;/summary&gt;
+      protected virtual IntPtr Handle
+      {
+         get
+         {
+            return hMmio;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Clears up resources associated with this class.
+      /// &lt;/summary&gt;
+      /// &lt;param name="disposing"&gt;&lt;code&gt;true&lt;/code&gt; if disposing from the
+       &lt;c&gt;Dispose&lt;/c&gt;
+      /// method, otherwise &lt;c&gt;false&lt;/c&gt;.&lt;/param&gt;
+      protected virtual void Dispose(bool disposing)
+      {
+         if (!disposed)
+         {
+            if (disposing)
+            {
+               // nothing to do
+            }
+            CloseWaveFile();
+            disposed = true;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the wave file name.
+      /// &lt;/summary&gt;
+      public string Filename
+      {
+         get
+         {
+            return waveFile;
+         }
+         set
+         {
+            if (hMmio != IntPtr.Zero)
+            {
+               CloseWaveFile();
+            }
+            waveFile = value;
+            OpenWaveFile();
+         }
+      }   
+   
+      /// &lt;summary&gt;
+      /// Gets the number of audio channels in the file.
+      /// &lt;/summary&gt;
+      public short Channels
+      {
+         get
+         {
+            return format.nChannels;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the sample frequency of the file.
+      /// &lt;/summary&gt;
+      public int SamplingFrequency
+      {
+         get
+         {
+            return format.nSamplesPerSec;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the number of bits per sample in the wave file.
+      /// &lt;/summary&gt;
+      public short BitsPerSample
+      {
+         get
+         {
+            return format.wBitsPerSample;
+         }
+      }
+      
+
+      /// &lt;summary&gt;
+      /// Gets whether the stream can be read or not (true whenever a wave file
+      /// is open).
+      /// &lt;/summary&gt;
+      public override bool CanRead
+      {
+         get
+         {
+            return (hMmio != IntPtr.Zero);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets whether the stream is seekable or not (true whenever a wave file
+      /// is open)
+      /// &lt;/summary&gt;
+      public override bool CanSeek
+      {
+         get
+         {
+            return (hMmio != IntPtr.Zero);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns false; this is a read-only stream
+      /// &lt;/summary&gt;
+      public override bool CanWrite
+      {
+         get
+         {
+            return false;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Throws an exception; this is a read-only stream
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="InvalidOperationException"&gt;Thrown
+       exception&lt;/exception&gt;
+      public override void Flush()
+      {
+         throw new InvalidOperationException(
+            "This class can only read files.  Use the WaveStreamWriter class to
+             write files.");
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the length of this wave file, in bytes.
+      /// &lt;/summary&gt;
+      public override long Length
+      {
+         get
+         {
+            return audioLength;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Throws an exception; this is a read-only stream
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="InvalidOperationException"&gt;Thrown
+       exception&lt;/exception&gt;
+      public override void SetLength(long length)
+      {
+         throw new InvalidOperationException(
+            "This class can only read files.  Use the WaveStreamWriter class to
+             write files.");
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the position within the wave file.
+      /// &lt;/summary&gt;
+      public override long Position
+      {
+         get
+         {
+            return 0;
+         }
+         set
+         {
+            Seek(value, SeekOrigin.Begin);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Reads &lt;c&gt;count&lt;/c&gt; bytes into the buffer.
+      /// &lt;/summary&gt;
+      /// &lt;param name="buffer"&gt;Buffer to read into&lt;/param&gt;
+      /// &lt;param name="count"&gt;Number of bytes to read&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes read.&lt;/returns&gt;
+      public virtual int Read ( byte[] buffer, int count )
+      {
+         return Read(buffer, 0, count);
+      }
+
+      /// &lt;summary&gt;
+      /// Reads &lt;c&gt;count&lt;/c&gt; bytes into the buffer.
+      /// &lt;/summary&gt;
+      /// &lt;param name="buffer"&gt;Buffer to read into&lt;/param&gt;
+      /// &lt;param name="count"&gt;Number of bytes to read&lt;/param&gt;
+      /// &lt;param name="offset"&gt;Offset from the current file position to start
+       reading from&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes read.&lt;/returns&gt;
+      public override int Read ( byte[] buffer , int offset , int count )
+      {
+         if (hMmio == IntPtr.Zero)
+         {
+            throw new InvalidOperationException("No wave data is open");
+         }
+
+         if (offset != 0)
+         {
+            Seek((long) offset, SeekOrigin.Current);
+         }
+
+         GCHandle handle = GCHandle.Alloc(buffer, GCHandleType.Pinned);        
+             
+         IntPtr ptrBuffer = handle.AddrOfPinnedObject();
+
+         int dataRemaining = (dataOffset + audioLength - 
+            WinMMInterop.mmioSeek(hMmio, 0, WinMMInterop.SEEK_CUR));
+         int read = 0;
+         if (count &lt; dataRemaining)
+         {
+            read = WinMMInterop.mmioRead(hMmio, ptrBuffer, count);
+         }
+         else if (dataRemaining &gt; 0)
+         {
+            read = WinMMInterop.mmioRead(hMmio, ptrBuffer, dataRemaining);
+         }
+
+         if (handle.IsAllocated)
+         {
+            handle.Free();
+         }
+         return read;
+      }
+
+      /// &lt;summary&gt;
+      /// Reads &lt;c&gt;count&lt;/c&gt; shorts into the buffer.
+      /// &lt;/summary&gt;
+      /// &lt;param name="buffer"&gt;Buffer to read into&lt;/param&gt;
+      /// &lt;param name="count"&gt;Number of shorts to read&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes read.&lt;/returns&gt;
+      public virtual int Read (short[] buffer, int count)
+      {
+         return Read(buffer, 0, count);
+      }
+
+      /// &lt;summary&gt;
+      /// Reads &lt;c&gt;count&lt;/c&gt; shorts into the buffer.
+      /// &lt;/summary&gt;
+      /// &lt;param name="buffer"&gt;Buffer to read into&lt;/param&gt;
+      /// &lt;param name="count"&gt;Number of shorts to read&lt;/param&gt;
+      /// &lt;param name="offset"&gt;Offset in shorts (2 bytes) from the current file
+       position to start 
+      /// reading from&lt;/param&gt;
+      /// &lt;returns&gt;Number of bytes read.&lt;/returns&gt;
+      public virtual int Read ( short[] buffer, int offset, int count )
+      {
+         if (hMmio == IntPtr.Zero)
+         {
+            throw new InvalidOperationException("No wave data is open");
+         }
+
+         if (offset != 0)
+         {
+            Seek((long) (offset / 2), SeekOrigin.Current);
+         }
+
+         GCHandle handle = GCHandle.Alloc(buffer, GCHandleType.Pinned);        
+             
+         IntPtr ptrBuffer = handle.AddrOfPinnedObject();
+
+         int dataRemaining = (dataOffset + audioLength - 
+            WinMMInterop.mmioSeek(hMmio, 0, WinMMInterop.SEEK_CUR)) / 2;
+         int read = 0;
+         if (count &lt; dataRemaining)
+         {
+            read = WinMMInterop.mmioRead(hMmio, ptrBuffer, count * 2);
+         }
+         else if (dataRemaining &gt; 0)
+         {
+            read = WinMMInterop.mmioRead(hMmio, ptrBuffer, dataRemaining * 2);
+         }
+
+         if (handle.IsAllocated)
+         {
+            handle.Free();
+         }
+         return read / 2;
+      }
+
+      /// &lt;summary&gt;
+      /// Throws an exception; this is a read-only stream
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="InvalidOperationException"&gt;Thrown
+       exception&lt;/exception&gt;
+      public override void Write( byte[] buffer, int offset, int count)
+      {
+         throw new InvalidOperationException(
+            "This class can only read files.  Use the WaveStreamWriter class to
+             write wave files.");
+      }
+
+      /// &lt;summary&gt;
+      /// Seeks to the specified position in the stream, in bytes
+      /// &lt;/summary&gt;
+      /// &lt;param name="position"&gt;Position to seek to&lt;/param&gt;
+      /// &lt;param name="origin"&gt;Specifies the starting postion of the
+       seek&lt;/param&gt;
+      public override long Seek(long position, SeekOrigin origin)
+      {
+         if (hMmio == IntPtr.Zero)
+         {
+            throw new InvalidOperationException("No wave data is open");
+         }
+         
+         int offset = (int) position;
+         int mmOrigin = WinMMInterop.SEEK_CUR;
+         if (origin == SeekOrigin.Begin)
+         {
+            mmOrigin = WinMMInterop.SEEK_SET;
+         }
+         else if (origin == SeekOrigin.End)
+         {
+            mmOrigin = WinMMInterop.SEEK_END;
+         }
+         int result = WinMMInterop.mmioSeek(hMmio, offset, mmOrigin);
+         if (result == -1)
+         {
+            throw new WaveStreamException(
+               String.Format("Failed to seek to position {0} in file",
+                position));
+         }
+         return (long) result;
+      }
+      
+      private void OpenWaveFile()
+      {
+         CloseWaveFile();
+
+         if (!File.Exists(waveFile))
+         {
+            throw new FileNotFoundException(
+               String.Format("The file {0} does not exist", waveFile));
+         }
+
+         hMmio = WinMMInterop.mmioOpen(waveFile, IntPtr.Zero,
+          WinMMInterop.MMIO_READ);
+         if (hMmio == IntPtr.Zero)
+         {
+            throw new IOException(
+               String.Format("Could not open file {0}", waveFile));
+         }
+
+         GetWaveData();
+
+      }
+
+      private void GetWaveData()
+      {
+         int result = 0;
+         WinMMInterop.MMCKINFO mmckInfoParent = new WinMMInterop.MMCKINFO();
+
+         // Descend into the wave header:
+         mmckInfoParent.fccType = WinMMInterop.mmioStringToFOURCC("WAVE", 0);
+         result = WinMMInterop.mmioDescendParent(hMmio, ref mmckInfoParent, 0, 
+            WinMMInterop.MMIO_FINDRIFF);
+         if (result != WinMMInterop.MMSYSERR_NOERROR)
+         {
+            CloseWaveFile();
+            throw new WaveStreamException(
+               String.Format("The file {0} is not a wave file", waveFile));
+         }
+
+         // Descend into the fmt chunk:
+         WinMMInterop.MMCKINFO mmckSubChunkIn = new WinMMInterop.MMCKINFO();
+         mmckSubChunkIn.ckid = WinMMInterop.mmioStringToFOURCC("fmt", 0);
+         result = WinMMInterop.mmioDescend(hMmio, ref mmckSubChunkIn, ref
+          mmckInfoParent, 
+            WinMMInterop.MMIO_FINDCHUNK);
+         if (result != WinMMInterop.MMSYSERR_NOERROR)
+         {
+            CloseWaveFile();
+            throw new WaveStreamException(
+               String.Format("Unable to locate the format chunk in file {0}",
+                waveFile));
+         }
+
+         format = new WinMMInterop.WAVEFORMATEX();
+         result = WinMMInterop.mmioReadWaveFormat(hMmio, ref format,
+          mmckSubChunkIn.ckSize);
+         if (result == -1)
+         {
+            CloseWaveFile();
+            throw new WaveStreamException(
+               String.Format("Unable to read the wave format from file {0}",
+                waveFile));            
+         }
+
+         // Find the data subchunk
+         result = WinMMInterop.mmioAscend(hMmio, ref mmckSubChunkIn, 0);
+
+         mmckSubChunkIn.ckid = WinMMInterop.mmioStringToFOURCC("data", 0);
+         result = WinMMInterop.mmioDescend(hMmio, ref mmckSubChunkIn, ref
+          mmckInfoParent, 
+            WinMMInterop.MMIO_FINDCHUNK);
+         if (result != WinMMInterop.MMSYSERR_NOERROR)
+         {
+            CloseWaveFile();
+            throw new WaveStreamException(
+               String.Format("Unable to locate the data chunk in file {0}",
+                waveFile));
+         }
+
+         dataOffset = WinMMInterop.mmioSeek(hMmio, 0, WinMMInterop.SEEK_CUR);
+         audioLength = mmckSubChunkIn.ckSize;
+      }
+
+      private void CloseWaveFile()
+      {
+         if (hMmio != IntPtr.Zero)
+         {
+            WinMMInterop.mmioClose(hMmio, 0);
+            hMmio = IntPtr.Zero;
+            audioLength = 0;
+         }
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Writing CDs</a>&#160;.&#160;<a href="..\article.html">Writing Audio CDs</a>&#160;.&#160;<a href="..\audio_cd_writer.html">Audio CD Writer</a>&#160;.&#160;AudioCDWriterCS</p><br /><table style="font-size: 100%;"><tr><td valign="top"><a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\res\cc.png" width="88" height="31" alt="Creative Commons Licence" /></a></td></a></td><td valign="top"><p class="nav" style="padding-bottom: 4px;">All contents of this web site are licensed under a <a href="javascript:window.alert(&quot;http://creativecommons.org/licenses/by/1.0/\nThis link was not retrieved.&quot;)">Creative Commons Licence</a>, except where otherwise noted.</p><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>, vbAccelerator Ltd.<br />Last Updated: 28 June 2004</p></td></tr></table></td><td></td></tr></table>
+</body></html>

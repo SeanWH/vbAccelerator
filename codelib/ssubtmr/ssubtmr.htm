@@ -1,0 +1,607 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Subclassing Without The Crashes</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top" width="32">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	</font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Subclassing Without The Crashes</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	<p>Take advantage of stable and reliable subclassing with this all VB ActiveX DLL</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\libraries\subclassing\ssubtimer\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\ssubtmr2.gif" alt="Still a Rather Sad Subclassing Graphic" width="255" height="154"></p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<img src="..\..\images\update.gif" width="23" height="11" alt="Updated" border="0" hspace="2"><b>Updated</b><br>
+	<i>25 August 1999</i>: Added a VB6 binary (courtesy of Ed Haswell) and added a little extra description to the article.<br>
+	<i>25 November 1998</i>: Fixed a bug in the graduated title-bar sample which stopped the
+	Form_Resize event from being received.<br>
+	<i>19 October 1998</i>: Fixed a bug where the same event could occur multiple times in a form. <a href="thabug.htm">Read about it!</a>
+	The new version is completely binary compatible (it includes no new methods or classes) so you 
+	will have no installation problems if you or a user downloads the new version.  You are strongly
+	recommended to get this version! (Thanks to Jim Parzych for pointing out the bug.)
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><a href="ssubtmr.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the SSubTmr.DLL for VB5 (11kb)</a><br>
+	<a href="ssubtmr6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4">Download the SSubTmr6.DLL for VB6 (11kb)</a><br>
+	<a href="sbtmrc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the SSubTmr project code (no DLL) (9kb)</a></p>
+	<a name="secdd"></a>
+	</p>
+	</font>
+	<p> 
+	<table>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This DLL is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this DLL yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>Sample projects which demonstrate the SSubTmr DLL</p>
+	<p><a href="minsize.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Minimum Form Size Demonstration (10kb)</a><br>
+	<a href="gradtbar.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Graduated Titlebar Demonstration (35kb)</a></p>
+	<br>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor>
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Contents of this article</b>
+	<ul>
+	<li><a href="#secintro">Introduction</a>
+	<li>The <a href="#secprob">Problem</a> With Subclassing
+	<li><a href="#secfix">Fixing It</a> - Slimy Hacks and Neat Tips	
+	<li><a href ="#secimpl">Implementation</a>
+	<li><a href ="#secimpr">Differences between SSUBTMR and the Hardcore Visual Basic version</a>
+	<li><a href="#secquick">Quick Start</a> - How to Use SSUBTMR</a>
+	</ul>
+	<br>
+
+	<a name="secintro"></a><b>Introduction</b><br>
+	Prior to VB5, it was impossible to subclass a control without
+	relying on a proprietary custom control.  This greatly restricted what you could if you wanted to
+	play around with some of the neater customisation features - creating a new control was completely
+	out, finding out in detail what was going on with menus was impossible and so on.
+	<br><br>
+	The introduction of the AddressOf operator to VB5 now allows you to subclass, although it
+	is not nearly as simple as it ought to be.
+	<br><br>
+	The SSUBTMR component is a stable and consistent way of working around difficulties in subclassing.
+	You can either use it as an external DLL to provide a (more) crash-proof way of debugging subclassed
+	components, or by including one module and one interface class, you can compile it directly into your application
+	once you are happy the subclassing is working.  SSUBTMR is the basis for most of my controls.<br><br>
+	The component itself mostly uses the SubTimer.DLL component code from the 
+	<a href="..\..\linxadv.htm#sechcvb">Hardcore Visual Basic</a> book written by Bruce McKinney, however it
+	has a couple of very useful enhancements which I'll describe later.<br><br>
+	<a href="#sectop"><img src="..\..\images\top.gif" width="8" height="12" alt="Back to top" border="0" hspace="4"> Back to top</a>
+	<br><br><br>
+
+	<a name="secprob"></a><b>The Problem With Subclassing</b><br>
+	If you develop ActiveX controls and intend to subclass or hook a window, you'll very quickly 
+	discover that doing it is not at all straightforward.  A typical problem is that a control which
+	works fine when there is a single instance on a form suddenly stops working or starts GPFing when
+	you place two instances on the form.  Why is this happening?
+	<br><br>
+	The AddressOf operator requires you to place the callback routine in a module (and
+	most annoying this is too!). 
+	This module is shared between all instances of your control and therefore the variables and subroutines 
+	contained by that module are also shared.
+	<br><br>
+	To visualise the situation, consider a control which wants to know if its parent has changed size.  To do
+	this, you create a callback routine in a module to handle the <i>WndProc</i> callback.  Then, you want
+	to add this callback routine to the parent's window handle so you will be routed all the parent's messages.
+	To add the callback, you change the parent's GWL_WNDPROC Window Long to the address of your WndProc function.
+	This function returns a pointer to the previously installed WndProc function, which you must be sure
+	to forward all messages to that you aren't fully handling yourself (otherwise you quickly find your control
+	will do nothing or even worse, prevent its container from doing anything!).  When you remove an instance of 
+	your control, you need to put the old WndProc back again.
+	<br><br>
+	The following diagrams show how easy it is to end up with one control not functioning in this circumstance,
+	because of the sharing of variables in the module:<br><br>
+	<small><b>With One Instance of Your Control</b></small><br>
+	<img src="..\..\images\subclsok.gif" width="265" height="91" alt="With a Single Instance of the Control, the Module Correctly Stores the old Window Procedure location">
+	<br><br>
+	<small><b>With Two Instances</b></small><br>
+	<img src="..\..\images\subclser.gif" width="267" height="137" alt="Two Instances of the Same Control share the same Module, so the Module stores the wrong Window Procedure!">
+	<br><br>
+	You can correct this problem by storing a separate WndProc for each control instance that gets 
+	created.  However, there is now a much more difficult problem to solve - how to make sure your
+	control terminates correctly.<br><br>
+	The WndProc function in the module receives all the messages, but you need to pass this information on
+	to your UserControl for the control to do anything about the messages.  Therefore the 
+	module needs to know about the instance of the control it wants to inform about the message.  Since the module is shared between all instances of the UserControl
+	in question, it will need to know which hWnd is associated with which UserControl instance, and also needs
+	to be sure it only installs the WindowProc function for the same hWnd once.
+	<br><br>
+	You might think you can get around this by storing an array of references to UserControls in your 
+	WindowProc handler message, and when you receive a message, you then enumerate through your array and
+	inform each item in turn.  
+	Well, I tried this and there is a big downside.  If your module holds a reference to any UserControl
+	instance, it will not allow the UserControl object to be released unless it VB figures out that the
+	reference has gone out of scope or if you set the object to nothing.  However, unless you can arrange
+	for the user of the control to call a method before the UserControl is destroyed, it is impossible
+	for the reference to go out of scope!  
+	<br><br>
+	Often the user of the control will forget to call this method, or will press the Stop button in VB IDE, or call <i>End</i>, the consequences being:
+	<ul>
+	<li>The UserControl_Terminate event never fires (this only fires when there are no references to the UserControl instance)
+	<li>.. Hence the UserControl never stops running
+	<li>.... And so	you never remove the WindowProc, which suddenly stops being valid because the container no longer exists....
+	</ul>
+	This is a very quick way to get a big and nasty GPF.  Worse, this sort of thing sometimes works in design
+	mode, but then when you build the OCX version all of a sudden you are getting 'Control.OCX referenced memory
+	at 2x4500E000.  The memory could not be "read"'...
+	<br><br>
+	<a href="#sectop"><img src="..\..\images\top.gif" width="8" height="12" alt="Back to top" border="0" hspace="4"> Back to top</a>
+	<br><br><br>
+
+	<a name="secfix"></a>
+	<b>Fixing It - Slimy Hacks and Neat Tips</b><br>
+	Two things you need to fix these problems are:
+	<ul>
+	<li>Don't Store Direct References to Objects - Use a <a href="#secslimy">Slimy Hack</a> Instead!
+	<li>Use <a href="#secwindb">Window's built in database</a> to store information against hWnds
+	</ul>
+	<ul>
+	<li>
+	<a name="secslimy"></a><b>Don't Store Direct References to Objects - Use a Slimy Hack Instead!</b>
+	Whenever you store a reference to an object in VB, VB increments it's COM reference count for you.  
+	This is very good in the sense that it allows you not to worry about objects being invalid when you
+	call them.  However, its a massive pain if you know that an object is going to be valid and you want
+	to store a reference to it but still ensure it terminates.  Luckily there is a great hack to work 
+	around this.<br><br>
+	Instead you can store a long pointer to the object.  This allows you to get an object reference, but
+	prevents the object's reference count being incremented.  Obviously this will lead you into difficulties
+	if the object goes out of scope before you make a call to the object being pointed to (GPF...) but when
+	used carefully this is a great technique.  Here is how you do it:
+	<br><br>
+	</font>
+	<font face="Lucida Console,courier new" size="1">
+	<font color="#999999">	
+	&nbsp ' All credit for this code to Bruce McKinney:<br>
+	<font color="#000000">	
+	&nbsp Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _<br>
+	&nbsp 	&nbsp 	    lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long)<br>
+	<br>
+	&nbsp Private Property Get ObjectFromPtr(ByVal lPtr As Long) As Object<br>
+	&nbsp Dim oThis As Object<br>
+	<br>
+	<font color="#999999">	
+        &nbsp &nbsp ' Turn the pointer into an illegal, uncounted interface<br>
+	<font color="#000000">	
+        &nbsp &nbsp  CopyMemory oThis, lPtr, 4<br>
+	<font color="#999999">	
+        &nbsp &nbsp ' Do NOT hit the End button here! You will crash!<br>
+        &nbsp &nbsp ' Assign to legal reference<br>
+	<font color="#000000">	
+        &nbsp &nbsp Set ObjectFromPtr = oThis<br>
+	<font color="#999999">	
+        &nbsp &nbsp ' Still do NOT hit the End button here! You will still crash!<br>
+        &nbsp &nbsp ' Destroy the illegal reference<br>
+	<font color="#000000">	
+        &nbsp &nbsp CopyMemory oThis, 0&, 4<br>
+	<font color="#999999">	
+        &nbsp &nbsp ' OK, hit the End button if you must--you'll probably still crash,<br>
+        &nbsp &nbsp ' but this will be your code rather than the uncounted reference!<br>
+	<font color="#000000">	
+	<br>
+	&nbsp End Property<br>
+	<br>
+	&nbsp Private Property Get PtrFromObject(ByRef oThis As Object) As Long<br>
+	<br>
+	<font color="#999999">	
+        &nbsp &nbsp ' Return the pointer to this object:<br>
+	<font color="#000000">	
+        &nbsp &nbsp PtrFromObject = ObjPtr(oThis)<br>
+	<br>
+	&nbsp End Property<br>
+	<br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	That gives the general picture of how to do it.  You can improve matters by typing
+	the variables of type 'object' to suit your particular application.<br><br>
+	<li>
+	<a name="secwindb"></a><b>Use Window's built in database to store information against a hWnd</b>
+	<br>
+	This is an excellent feature.  Windows has functions which allow you to store as many long values
+	as you want against a named field for a given hWnd.  Here are the functions:
+	<br><br>
+	</font>
+	<font face="Lucida Console,courier new" size="1" color="#000000">	
+&nbsp Declare Function GetProp Lib "user32" Alias "GetPropA" _<br>
+        &nbsp &nbsp (ByVal hwnd As Long, ByVal lpString As String) As Long<br>
+&nbsp Declare Function SetProp Lib "user32" Alias "SetPropA" _<br>
+        &nbsp &nbsp 	(ByVal hwnd As Long, ByVal lpString As String, ByVal hData As Long) As Long<br>
+&nbsp Declare Function RemoveProp Lib "user32" Alias "RemovePropA" _<br>
+        &nbsp &nbsp (ByVal hwnd As Long, ByVal lpString As String) As Long<br>
+	<br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	You use them like this:	
+	<br><br>	
+	</font>
+	<font face="Lucida Console,courier new" size="1">
+	<font color="#999999">	
+&nbsp ' To set a property called 'NumberOfInstances' to 3 for a form:<br>
+	<font color="#000000">	
+&nbsp SetProp Me.hWnd, "NumberOfInstances", 3<br>
+<br>
+	<font color="#999999">	
+&nbsp ' To get the 'NumberOfInstances' value:<br>
+	<font color="#000000">	
+&nbsp lNumber = GetProp(Me.hWnd, "NumberOfInstances")<br>
+<br>
+	<font color="#999999">	
+&nbsp ' To delete the property when finished with it <br>
+&nbsp ' (Windows does this automatically when the application is ended):<br>
+	<font color="#000000">	
+&nbsp RemoveProp Me.hWnd, "NumberOfInstances"<br>
+	<br><br>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	You can use these functions to store as much information as you want against a given hWnd, and this
+	is a perfect place to store pointers to objects which your subclassed window proc is going to call to,
+	not to mention the old window proc value.
+	</ul>
+	<a href="#sectop"><img src="..\..\images\top.gif" width="8" height="12" alt="Back to top" border="0" hspace="4"> Back to top</a>
+	<br><br><br>
+
+	<a name="secimpl"></a>
+	<b>SSUBTMR Implementation</b><br>
+	SSUBTMR implements these techniques to produce a stable subclasser which you can use regardless of how
+	many instances you have and how many controls want to attempt to subclass the same hWnd.  The
+	implementation is very similar to the SubTimer component from Hardcore Visual Basic, but with some
+	<a href="#secimpr">improvements</a>.<br>
+	<br>
+	The subclassing consists of three parts:
+	<ul>
+	<li>A bas module (subclass.bas) which contains the logic to associate object pointers
+	with window handles, and manage the adding and removing of the subclassed proc.
+	<li>An Interface, ISubClass.bas, defining the properties and methods which an object must
+	support in order to take part in subclassing with subclass.bas.  To ensure all these
+	interfaces are present, subclass.bas will not accept any object which doesn't implement
+	this interface.
+	<li>A global class (GSubClass.Cls) which exposes functions to initiate and control
+	the subclassing procedure.
+	</ul>
+	<br>
+	For reference, here are the window properties SSUBTMR uses to manage the subclassing process:<br><br>
+<u>C[hWnd]</u><br>
+Stores the number of instances using the subclass.
+When the property is 0 and you add to the subclass, it installs the WindowProc.  Subsequent additions just
+increment the counter and use the existing WindowProc.  When items are removed, the count is decremented, until
+it gets to zero, when the WindowProc is removed again.
+<br><br>
+<u>[hWnd]#[Message]C</u><br>
+The count of how many times the message [Message] is attached to the hWnd [hWnd].  This allows you to subclass
+the same message on the same hWnd more than once.  For example, if a control wants to subclass it's parent, and
+you place two controls on the same parent, you need both controls to be able to receive that message.
+<br><br>
+<u>[hWnd]#[Message]#[Number]</u><br>
+Stores a pointer to the object which wants to receive notification for the hWnd/Message combination.<br>
+<br>
+	<a href="#sectop"><img src="..\..\images\top.gif" width="8" height="12" alt="Back to top" border="0" hspace="4"> Back to top</a>
+	<br><br>
+	<br><br>
+	<a name="secimpr"></a>
+	<b>Differences between SSUBTMR and the Hardcore Visual Basic version</b><br>
+	There are five main differences between this component and the one provided with Hardcore
+	Visual Basic:
+	<ul>
+	<li><u>Ability to subclass the same message for the same Window handle more than once</u><br>
+	This allows you to produce controls which intercept the same message on the parent window handle.
+	Note that there was a <a href="thabug.htm">problem</a> with this in the first release that
+	is now fixed.
+	<li><u>Response to messages is configurable on a message by message basis</u><br>
+	In the original SubTimer component you could specify which type of message response you wanted,
+	but if you wanted to Pre-process some messages but Post-Process others you couldn't.  This
+	occurs because when the message response property is queried you don't know what the message
+	it's querying for.  This is resolved by the addition of a new CurrentMessage property which you
+	can query in the MsgResponse property.
+	<li><u>You can change the wParam and lParam values when you return</u><br>
+	In SubTimer, wParam and lParam are passed ByVal so you can't change them.  Some window procedures
+	ask you to modify the wParam and lParam (drawing a customised title bar is one of these) when you
+	return.  This is resolved by adding a new CallOldWindowProc method.  Set the message response to
+	emrConsume to eat the message, and then use this call to send your new wParam and lParam values 
+	to the calling WindowProc.
+	<li><u>Reduction in modules</u><br>
+	To aid compiling SSubTmr directly into an EXE rather than using the DLL, the code has been moved
+	around so the declares are localised to the modules that need them.  To incorporate subclassing 
+	support into a project, just copy Subclass.bas and ISubClass.cls into your module and remove the
+	reference to the SSubTmr.DLL component. (Warning: Don't do this until you've finished debugging, otherwise
+	debugging gets to be seriously hard!)
+	<li>Sorry, there isn't a fifth one.<br>
+	</ul>
+	<a href="#sectop"><img src="..\..\images\top.gif" width="8" height="12" alt="Back to top" border="0" hspace="4"> Back to top</a>
+	<br><br>	
+	<br><br>
+	<a name="#secquick"></a><b>Quick Start - How to Use SSUBTMR</b><br>
+	To quickly get started with subclassing, here is a simple example which demonstrates how to 
+	prevent a form from being resized smaller than a certain width and height.  This is also available in the <a href="#secdd">demonstration
+	project download</a>.<br><br>
+	<u>Step 1</u><br>
+	Create a new Standard EXE project.<br>
+	<u>Step 2</u><br>
+	Add a reference to SSUBTMR.DLL.  This appears in the references list as 'Subclassing and Timer Assistant (with configurable message response, multi-control support + timer bug fix)'<br>
+	<u>Step 3</u><br>
+	Implement the Subclassing interface:<br><br>
+	In the declarations section, add the following code:<br>
+	</font>
+	<font face="Lucida Console,courier new" size="1" color="#000000">	
+	&nbsp Implements ISubClass<br>	
+	</font>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	Make sure that the required interfaces are supported under the ISubClass section:<br>
+</font>	
+<font face="Lucida Console,courier new" size="1" color="#000000">
+&nbsp Private Property Let ISubClass_MsgResponse(ByVal RHS As EMsgResponse) <br>
+<font color="#999999">
+&nbsp &nbsp ' This Property Let is not really needed! <br>
+<font color="#000000">
+&nbsp End Property <br>
+ <br>
+&nbsp Private Property Get ISubClass_MsgResponse() As EMsgResponse <br>
+<font color="#999999">
+&nbsp &nbsp   ' This will tell you which message you are responding to: <br>
+<font color="#000000">
+&nbsp &nbsp   Debug.Print CurrentMessage <br>
+<font color="#999999">
+&nbsp &nbsp   ' Tell the subclasser what to do for this message (here we do all processing):<br>
+<font color="#000000">
+&nbsp &nbsp ISubClass_MsgResponse = emrConsume <br>
+&nbsp End Property <br>
+ <br>
+&nbsp Private Function ISubClass_WindowProc( _<br>
+&nbsp &nbsp ByVal hWnd As Long, ByVal iMsg As Long, ByVal wParam As Long, ByVal lParam As Long _ <br>
+&nbsp &nbsp ) As Long <br>
+&nbsp &nbsp Debug.Print "Got Message" <br>
+&nbsp End Function<br>
+ <br>
+</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<u>Step 4</u><br>
+	Now you have a template for all subclassing projects, here is the code you need to prevent form resizing
+	smaller than a certain size:<br><br>
+	Declarations:<br><br>
+</font>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" ( _ <br>
+&nbsp &nbsp lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long) <br>
+Private Type POINTAPI <br>
+&nbsp &nbsp x As Long <br>
+&nbsp &nbsp y As Long <br>
+End Type <br>
+Private Type MINMAXINFO <br>
+&nbsp &nbsp ptReserved As POINTAPI <br>
+&nbsp &nbsp ptMaxSize As POINTAPI <br>
+&nbsp &nbsp ptMaxPosition As POINTAPI <br>
+&nbsp &nbsp ptMinTrackSize As POINTAPI <br>
+&nbsp &nbsp ptMaxTrackSize As POINTAPI<br>
+End Type<br>
+Private Const WM_GETMINMAXINFO = &H24 <br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+To start and stop subclassing:<br><br>
+<font face="Lucida Console,courier new" size="1" color="#000000">
+Private Sub Form_Load() <br>
+&nbsp &nbsp AttachMessage Me, Me.hwnd, WM_GETMINMAXINFO <br>
+End Sub <br>
+ <br>
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer) <br>
+&nbsp &nbsp DetachMessage Me, Me.hwnd, WM_GETMINMAXINFO<br>
+End Sub
+ <br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2" color="#000000">
+The code to handle the WM_GETMINMAXINFO message:<br><br>
+<font face="Lucida Console,courier new" size="1">
+Private Function ISubclass_WindowProc(ByVal hwnd As Long, ByVal iMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long <br>
+Dim mmiT As MINMAXINFO <br>
+ <br>
+	<font color="#999999">	
+&nbsp &nbsp ' Copy parameter to local variable for processing <br>
+	<font color="#000000">	
+&nbsp &nbsp CopyMemory mmiT, ByVal lParam, LenB(mmiT) <br>
+&nbsp &nbsp  <br>
+	<font color="#999999">	
+&nbsp &nbsp ' Minimium width and height for sizing <br>
+	<font color="#000000">	
+&nbsp &nbsp mmiT.ptMinTrackSize.x = 128 <br>
+&nbsp &nbsp mmiT.ptMinTrackSize.y = 128 <br>
+&nbsp &nbsp &nbsp &nbsp  <br>
+	<font color="#999999">	
+&nbsp &nbsp ' Copy modified results back to parameter <br>
+	<font color="#000000">	
+&nbsp &nbsp CopyMemory ByVal lParam, mmiT, LenB(mmiT)<br>
+<br>
+End Function<br>
+ <br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<br>
+Another sample included in the demonstration shows how to create Windows graduated title bar effects like those
+in the image below:<br><br>
+<img src="..\..\images\gradtbar.gif" alt="Graduated Title Bar Demo" width="319" height="86"
+</p>
+</font>
+</p>
+<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overvw3.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Code Libraries"></a>Back to <a href="..\..\overvw3.htm">Source Code - Code Libraries</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a><br><br></p>
+	</font>
+</p>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

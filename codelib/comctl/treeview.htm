@@ -1,0 +1,384 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>TreeView Control</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<!-- SECTION:START -->
+<!-- SECTION:CODE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	Source Code
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:CODE:END -->
+<!-- SECTION:END -->
+
+
+<!-- AREA:START -->
+<!-- AREA:COMCTL:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- AREA:COMCTL:END -->
+<!-- AREA:END -->
+
+<!-- TITLE:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>&nbsp;TreeView Control</b></P>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- TITLE:END -->
+
+<!-- SPLASH:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>A seriously flexible, all VB TreeView control with support for IE Favorites and Outlook Folder List Styles</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+<!-- SPLASH:END -->
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\treeview\treeview_control\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><br><img src="..\..\images\treeview.gif" alt="Various TreeView Styles" width="279" height="229">
+	<br><br><br>
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="5" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td> 	
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="tviewctl.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tviewctl.zip">VB5 Control Binary (36kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="tviewctl6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="50%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tviewctl6.zip">VB6 Control Binary (36kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="tviewdem.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tviewdem.zip">VB5 Demonstration Project (40kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="tviewdem6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tviewdem6.zip">VB6 Demonstration Project (40kb)</a></font></td>
+	</tr>
+	<tr>
+	<td valign="top" width="16"><a href="tviewall.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4" alt="VB5 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tviewall.zip">VB5 Full Source Code (112kb)</a></font></td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td valign="top" width="16"><a href="tviewall6.zip"><img src="..\..\images\vbdnld6.gif" width="16" height="16" border="0" hspace="4" alt="VB6 code"></a></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="tviewall6.zip">VB6 Full Source Code (113kb)</a></font></td>
+	</tr>
+
+	<tr>
+	<td colspan="2" valign="top"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr.dll">vbAccelerator SSubTmr.DLL for VB5</a>
+		<li><a href="..\..\index\projidx.htm#vbaliml.ocx">vbAccelerator VB5 ImageList control</a>
+		<li><a href="..\..\typelib.htm#OleGuids">Ole Guids and Interface Definitions type library (OleGuids.TLB)</a>
+		<li><a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+	</td>
+	<td width="3"><img src="..\..\images\grpixel.gif" width="1" height="1" hspace="0"></td>
+	<td colspan="2" valign="top"><font color="#000000" face="verdana,arial,helvetica" size="1"><b>Required Files:</b>
+		<li><a href="..\..\index\projidx.htm#ssubtmr6.dll">vbAccelerator SSubTmr6.DLL for VB6</a>
+		<li><a href="..\..\index\projidx.htm#vbaliml6.ocx">vbAccelerator VB6 ImageList control</a>
+		<li><a href="..\..\typelib.htm#OleGuids">Ole Guids and Interface Definitions type library (OleGuids.TLB)</a>
+		<li><a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>	</td>
+	</tr>
+
+	</table>
+	<br>
+	</p>
+
+	<p>
+	<table border="0">
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>21 March 2000</i>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		A great update from Dan Litwin - now the control supports drag-drop of nodes and
+		the IE Favourites style has been greatly improved.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>	
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</td>
+	<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp</td>
+	<td>
+	<p>
+	<br><br>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	The TreeView control is an exceptional piece of code courtesy of Dan Litwin 
+	(<a href="mailto:litwin@gottliebaza.org">litwin@gottliebaza.org</a> ; can also be found masquerading
+	as &quot;Dan Litwin&quot; on AOLIM).
+		<br><br>
+	Dan rose to my challenge of implementing a TreeView in VB right back in June,
+	unfortunately I then sat on it for 4 months occasionally doing a bit of debugging
+	before finally getting around to releasing it here. My
+	apologies to everyone, hope it was worth the wait!
+		<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Features</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>		
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<ul>
+		<li>Internet Explorer Favorites style view.
+		<li>Append a number to any node, allowing you to create an Outlook style folder list 
+		with message counts.
+		<li>Choose Font and Colour on an item-by-item basis, and set the control's back colour.
+		<li>Bolding of items
+		<li>InfoTip (multi-line tooltip) support with full control over InfoTip colour
+		<li>Works with Microsoft or API ImageLists.
+		<li>Item check boxes
+		<li>Full-Row select mode
+		<li>Single-Click expand mode
+		<li>Supports Two Images per item: one standard icon and a state icon.
+		<li>Disable Custom Draw for maximum speed
+		<li>Speed-optimised Clear method
+		</ul>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Coding With the TreeView Control</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	The standard VB TreeView control uses an object model structure to navigate around the elements
+	of the tree, which are described as <i>Nodes</i>.  Nodes can be identified either by
+	a Key, a 1 based Index, or by their relationship to another Node.  Identifying Nodes by their index
+	is slow because the control must enumerate through all items to find the appropriate index.
+		<br><br>
+	This Tree control provides a flat model instead, so all items can be referred to directly without
+	intermediate object stages.  Tree items can be identified either by a Key or their <i>Handle</i>,
+	which is the API <i>hItem</i> of the item within the Tree, or though their relationship with other
+	items.
+		<br><br>
+
+		<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Documentation</b>
+		</font>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	Documentation for the TreeView control's properties, methods and classes 
+	is available as an RTF.  This documentation was
+	created with the <a href="..\actvxdoc\article.htm">Active X Documenter</a>.	
+		</tr>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<a href="treeview.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Click here to download/view the TreeView control method and event documentation</a>			
+		</td>
+		</font>
+		</td>
+	</tr>
+	</table>
+	</p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1999-2000, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 21 March 2000</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

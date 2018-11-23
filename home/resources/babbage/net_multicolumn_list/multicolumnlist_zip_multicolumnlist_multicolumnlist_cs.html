@@ -1,0 +1,2550 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: MultiColumnList_MultiColumnList.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: MultiColumnList_MultiColumnList.cs" /><link rel="stylesheet" href="..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) .NET MultiColumn ListBox</a>&#160;.&#160;<a href="multicolumnlist.html">MultiColumnList</a>&#160;.&#160;MultiColumnList_MultiColumnList.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="multicolumnlist.html"><img src="..\..\..\res\get.png" width="8" height="8" alt="Download Page" />MultiColumnList</a> (246K)</p><br /><br /><img src="..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12437</p><p class="nav">&#160;&#160;<a href="..\..\..\..\linkto_asp\id=12437&type=zip&title=multicolumnlist_2ezip_5fmulticolumnlist_5fmulticolumnlist.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\res\update.png" width="8" height="8" alt="Update" />26 Jun 2003<br />First Posted</p><br /><br /><img src="..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\the_site\newsite\article.html"><img src="..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: MultiColumnList_MultiColumnList.cs</h1><pre>using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace vbAccelerator.Components.ListBox
+{
+   #region SListBoxFindDirection
+   public enum SListBoxFindDirection : int
+   {
+      up = -1,
+      down = 1
+   }
+   #endregion
+
+   #region SListBox
+   /// &lt;summary&gt;
+   /// SListBox is a flexible extended ListBox allowing for multiple columns,
+   /// hierarchical groups with expand/collapse, invisible rows,
+   /// rows which span multiple columns and icons in cells.
+   /// &lt;/summary&gt;
+   public class SListBox : System.Windows.Forms.ListBox
+   {
+      #region ObjectCollection
+      /// &lt;summary&gt;
+      /// Strongly-typed collection of objects within the SListBox
+      /// &lt;/summary&gt;
+      new public class ObjectCollection :
+       System.Windows.Forms.ListBox.ObjectCollection 
+      {
+         #region Member variables
+         private SListBox owner;
+         #endregion
+
+         new public SListItem this[int index]
+         {
+            get
+            {
+               return (SListItem)base[index];
+            }
+            set
+            {
+               base[index] = value;
+            }
+         }
+         /// &lt;summary&gt;
+         /// Adds an item to the list of items in the SListBox
+         /// &lt;/summary&gt;
+         /// &lt;param name="item"&gt;Item to add&lt;/param&gt;
+         /// &lt;returns&gt;Zero-based index of the item in the collection&lt;/returns&gt;
+         public System.Int32 Add ( SListItem item )
+         {
+            item.Owner = this.owner;
+            return base.Add(item);
+         }
+         /// &lt;summary&gt;
+         /// Adds an array of items to the list of items in the SListBox
+         /// &lt;/summary&gt;
+         /// &lt;param name="items"&gt;An array of objects to add to the list&lt;/param&gt;
+         public void AddRange ( SListItem[] items )
+         {
+            foreach (SListItem item in items)
+            {
+               item.Owner = this.owner;
+            }
+            base.AddRange(items);
+         }
+         /// &lt;summary&gt;
+         /// Adds the items of an existing SListBox.ObjectCollection to the list
+         /// of items in this SListBox
+         /// &lt;/summary&gt;
+         /// &lt;param name="value"&gt;An SlistBox.ObjectCollection to load into this
+          collection&lt;/param&gt;
+         public void AddRange ( ObjectCollection value )
+         {
+            base.AddRange(value);
+         }
+         /// &lt;summary&gt;
+         /// Determines whether the specified item is located within the
+          collection
+         /// &lt;/summary&gt;
+         /// &lt;param name="value"&gt;An SListItem containing the item to locate in
+          the collection&lt;/param&gt;
+         /// &lt;returns&gt;True if the item is located within the collection;
+          otherwise false.&lt;/returns&gt;
+         public bool Contains(SListItem value)
+         {
+            return base.Contains(value);
+         }
+         /// &lt;summary&gt;
+         /// Copies the entire collection into an existing array of objects at
+          a specified location within the array
+         /// &lt;/summary&gt;
+         /// &lt;param name="dest"&gt;The object array in which the items from the
+          collection are copied to&lt;/param&gt;
+         /// &lt;param name="arrayIndex"&gt;The location within the destination array
+          to copy the items from the collection to&lt;/param&gt;
+         public void CopyTo(SListItem[] dest , System.Int32 arrayIndex )
+         {
+            base.CopyTo(dest, arrayIndex);
+         }
+         /// &lt;summary&gt;
+         /// Returns the index within the collection of the specified item.
+         /// &lt;/summary&gt;
+         /// &lt;param name="value"&gt;The SListItem to locate in the
+          collection.&lt;/param&gt;
+         /// &lt;returns&gt;The zero-based index where the item is located within the
+          collection, otherwise -1&lt;/returns&gt;
+         public int IndexOf(SListItem value)
+         {
+            return base.IndexOf(value);
+         }
+         /// &lt;summary&gt;
+         /// Inserts an item into the list box at the specified index.
+         /// &lt;/summary&gt;
+         /// &lt;param name="index"&gt;The zero-based index location where the item
+          is inserted.&lt;/param&gt;
+         /// &lt;param name="item"&gt;The SListItem to insert.&lt;/param&gt;
+         public void Insert(int index, SListItem item)
+         {
+            item.Owner = this.owner;
+            base.Insert(index, item);
+         }
+
+         /// &lt;summary&gt;
+         /// Initializes a new instance of the ObjectCollection with an array
+          of SListItem objects
+         /// &lt;/summary&gt;
+         /// &lt;param name="owner"&gt;SListBox that owns the collection&lt;/param&gt;
+         /// &lt;param name="value"&gt;An array of SListItem objects to add to the
+          collection&lt;/param&gt;
+         public ObjectCollection ( SListBox owner , SListItem[] value ) :
+          base(owner, value)
+         {
+            foreach (SListItem item in value)
+            {
+               item.Owner = owner;
+            }
+            this.owner = owner;
+         }
+         /// &lt;summary&gt;
+         /// Initializes a new instance of the ObjectCollection based on
+          another ObjectCollection.
+         /// &lt;/summary&gt;
+         /// &lt;param name="owner"&gt;SListBox that owns the collection&lt;/param&gt;
+         /// &lt;param name="value"&gt;An ObjectCollection from which the contents
+          are copied to this collection&lt;/param&gt;
+         public ObjectCollection ( SListBox owner , ObjectCollection value ) :
+          base(owner, value)
+         {
+            this.owner = owner;
+         }
+         /// &lt;summary&gt;
+         /// Initializes a new instance of the ObjectCollection.
+         /// &lt;/summary&gt;
+         /// &lt;param name="owner"&gt;The SListBox that owns the collection&lt;/param&gt;
+         public ObjectCollection ( SListBox owner ) : base(owner)
+         {
+            this.owner = owner;
+         }
+      }
+      #endregion
+
+      #region Member Variables
+      private int lastSelectedIndex = -1;
+      private SListColumnCollection columns = null;
+      private ImageList imgList = null;
+      private int lastWidth = 0;
+      private bool showGroupingRows = false;
+      private int[] sortColumnArray = new int[0];
+      private SortOrder[] sortColumnOrder = new SortOrder[0];
+      #endregion
+      
+      /// &lt;summary&gt;
+      /// Gets/sets whether grouping rows for each grouped
+      /// column are automatically added to the control 
+      /// when the GroupOrder property of a column is
+      /// changed.
+      /// &lt;/summary&gt;
+      public bool ShowGroupingRows
+      {
+         get
+         {
+            return this.showGroupingRows;
+         }
+         set
+         {
+            this.showGroupingRows = value;
+            if (value)
+            {
+               addGroupedRows();
+            }
+            else
+            {
+               removeGroupedRows();
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the ImageList used as source of icons
+      /// &lt;/summary&gt;
+      public System.Windows.Forms.ImageList ImageList
+      {
+         get
+         {
+            return this.imgList;
+         }
+         set
+         {
+            this.imgList = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the collection of columns associated 
+      /// with the control
+      /// &lt;/summary&gt;
+      public SListColumnCollection Columns
+      {
+         get
+         {
+            return this.columns;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Determines whether the specified item is expanded or not
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to check&lt;/param&gt;
+      /// &lt;returns&gt;True if expanded, False otherwise&lt;/returns&gt;
+      public virtual bool ItemIsExpanded(
+         SListItem item)
+      {
+         bool isExpanded = true;
+         int index = this.Items.IndexOf(item);
+         if (index &gt; -1)
+         {
+            if (index &lt; this.Items.Count)
+            {
+               SListItem testItem = this.Items[index + 1];
+               if (!testItem.Visible)
+               {
+                  isExpanded = false;
+               }
+            }
+         }
+         return isExpanded;
+      }
+
+      /// &lt;summary&gt;
+      /// Expands or Collapses any child items under the specified
+      /// item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item to expand/collapse for&lt;/param&gt;
+      /// &lt;param name="expand"&gt;True if expanding, False otherwise&lt;/param&gt;
+      public virtual void ExpandCollapse(
+         SListItem item,
+         bool expand
+         )
+      {
+         int index = this.Items.IndexOf(item);
+         if (index &gt; -1)
+         {
+            for (int i = index + 1; i &lt; this.Items.Count; i++)
+            {
+               SListItem testItem = this.Items[i];
+               if (testItem.Indentation &gt; item.Indentation)
+               {
+                  if (testItem.Visible != expand)
+                  {
+                     testItem.Visible = expand;
+
+                  }
+               }
+               else
+               {
+                  break;
+               }
+            }
+         }
+      }
+
+      internal int[] SortColumnArray()
+      {
+         return this.sortColumnArray;
+      }
+      internal SortOrder[] SortColumnOrder()
+      {
+         return this.sortColumnOrder;
+      }
+
+
+      /// &lt;summary&gt;
+      /// Called when the SortOrder property of a column is changed
+      /// &lt;/summary&gt;
+      /// &lt;param name="columnIndex"&gt;Column index to sort by&lt;/param&gt;
+      public virtual void SortByColumn(
+         int columnIndex
+         )
+      {
+
+         Array sortArray;
+         Array indexArray = Array.CreateInstance(typeof(SListItem),
+          this.Items.Count);
+         int i = 0;
+         int index = 0;
+
+         if (columnIndex == 0)
+         {
+            sortArray = Array.CreateInstance(typeof(SListItem),
+             this.Items.Count);
+            foreach (SListItem item in this.Items)
+            {
+               sortArray.SetValue(item, i);
+               indexArray.SetValue(item, i);
+               i++;
+            }
+            Array.Sort(sortArray, indexArray);
+            foreach (SListItem item in indexArray)
+            {
+               this.Items[index] = item;
+               index++;
+            }            
+         }
+         else
+         {
+            // Create an array of the column items:
+            sortArray = Array.CreateInstance(typeof(SListColumnItem),
+             this.Items.Count);
+            foreach (SListItem item in this.Items)
+            {
+               sortArray.SetValue(item[columnIndex], i);
+               indexArray.SetValue(item, i);
+               i++;
+            }
+            Array.Sort(sortArray, indexArray);
+            if (this.columns[columnIndex].SortOrder == SortOrder.Descending)
+            {
+               Array.Reverse(sortArray);
+               Array.Reverse(indexArray);
+            }
+            // now modify the position of all the items in the box according 
+            // to the sort order:
+            foreach (SListItem item in indexArray)
+            {
+               this.Items[index] = item;
+               index++;
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the collection of SListItems in this ListBox
+      /// &lt;/summary&gt;
+      new public ObjectCollection Items
+      {
+         get
+         {
+            return (ObjectCollection)base.Items;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Finds the next visible item index in the control, if any.
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Zero-based index of the item to start at&lt;/param&gt;
+      /// &lt;param name="direction"&gt;Direction to search in&lt;/param&gt;
+      /// &lt;returns&gt;The index of the next visible item if found, -1
+       otherwise&lt;/returns&gt;
+      public int NextVisibleItemIndex(
+         int index,
+         SListBoxFindDirection direction
+         )
+      {
+         int nextIndex = -1;
+         SListItem item;
+
+         if (direction == SListBoxFindDirection.down)
+         {
+            int i = index;
+            bool found = false;
+            while (!found)
+            {
+               i++;
+               if (i == this.Items.Count)
+               {
+                  // no next item to select.
+                  // Select the current item if possible:
+                  if (lastSelectedIndex != -1)
+                  {
+                     nextIndex = lastSelectedIndex;
+                     found = true;
+                  }
+                  else
+                  {
+                     i = this.SelectedIndex;
+                     while (!found)
+                     {
+                        i--;
+                        if (i &lt; 0)
+                        {
+                           // nothing to select
+                           found = true;
+                        }
+                        else
+                        {
+                           item = this.Items[i];
+                           if ((item.Height &gt; 0) &amp;&amp; (item.Visible))
+                           {
+                              nextIndex  = i;
+                              found = true;
+                           }
+                        }
+                     }
+                  }
+               }
+               else
+               {
+                  item = this.Items[i];
+                  if ((item.Height &gt; 0) &amp;&amp; (item.Visible))
+                  {
+                     nextIndex  = i;
+                     found = true;
+                  }
+               }
+            }
+         }
+         else
+         {
+            // trying to select the prior item   
+            int i = index;
+            bool found = false;
+            while (!found)
+            {
+               i--;
+               if (i &lt; 0)
+               {
+                  // no prior item to select.
+                  // select the current item if possible
+                  if (lastSelectedIndex != -1)
+                  {
+                     nextIndex = lastSelectedIndex;
+                     found = true;
+                  }
+                  else
+                  {
+                     i = this.SelectedIndex;
+                     while (!found)
+                     {
+                        i++;
+                        if (i == this.Items.Count)
+                        {
+                           // nothing to select
+                           found = true;
+                        }
+                        else
+                        {
+                           item = this.Items[i];
+                           if ((item.Height &gt; 0) &amp;&amp; (item.Visible))
+                           {
+                              nextIndex  = i;
+                              found = true;
+                           }
+                        }
+                     }
+                  }
+               }
+               else
+               {
+                  item = this.Items[i];
+                  if ((item.Height &gt; 0) &amp;&amp; (item.Visible))
+                  {
+                     nextIndex  = i;
+                     found = true;
+                  }
+               }
+            }
+         }
+         return nextIndex;
+      }
+
+      private void removeGroupedRows()
+      {
+         int i = 0;
+         while (i &lt; this.Items.Count)
+         {
+            if (this.Items[i].GroupRow)
+            {
+               // it is a grouping row:
+               this.Items.RemoveAt(i);
+            }
+            else
+            {
+               i++;
+            }
+         }
+      }
+
+      private void addGroupedRows()
+      {
+         if (this.showGroupingRows)
+         {
+            if ((this.Items.Count &gt; 0) &amp;&amp; (this.sortColumnArray.Length &gt; 0))
+            {
+               // add the first item:
+               SListItem s = null;
+               int i = 0;
+               int indent = 0;
+               foreach (int col in this.sortColumnArray)
+               {
+                  s = new SListItem(
+                     this.Items[i][col].Text
+                     );
+                  s.ShowColumns = false;
+                  s.BackColor = Color.FromKnownColor(KnownColor.Control);
+                  s.Indentation = indent;
+                  s.GroupRow = true;
+                  this.Items.Insert(i, s);
+                  i++;
+                  indent += 16;
+               }
+               int itemIndent = indent + 16;
+               int lastRow = i;
+
+               bool foundFirst = false;
+               while (i &lt; this.Items.Count)
+               {
+                  //this.Items[i].Indentation += itemIndent;
+                  // check if this item matches the last one:
+                  indent = 0;
+                  foundFirst = false;
+                  foreach (int col in this.sortColumnArray)
+                  {
+                     if (
+                      (!this.Items[lastRow][col].Text.Equals(this.Items[i][col].
+                     Text)) ||
+                        foundFirst )
+                     {
+                        s = new SListItem(
+                           this.Items[i][col].Text
+                           );
+                        s.ShowColumns = false;
+                        s.BackColor = Color.FromKnownColor(KnownColor.Control);
+                        s.Indentation = indent;
+                        s.GroupRow = true;
+                        this.Items.Insert(i, s);
+                        i++;
+                        lastRow = i;
+                        foundFirst = true;
+                     }
+                     indent += 16;
+                  }                  
+                  i++;
+               }
+            }
+         }
+      }
+
+      internal void SetColumnGroupOrder(
+         SListColumn item,
+         int order
+         )
+      {
+         if (item.GroupOrder == order)
+         {
+            // nothing to do
+         }
+         else
+         {
+            this.Visible = false;
+            removeGroupedRows();
+      
+            // Check if this item is already part of a group order:
+            if (item.GroupOrder &gt; 0)
+            {
+               // it is already there.
+               int existingGroupOrder = item.GroupOrder;
+               foreach (SListColumn col in this.columns)
+               {
+                  if (col.GroupOrder &gt; 0)
+                  {
+                     if (existingGroupOrder &lt; order)
+                     {
+                        if ((col.GroupOrder &gt; existingGroupOrder) &amp;&amp;
+                         (col.GroupOrder &lt;= order))
+                        {
+                           col.SetColumnGroupOrder(col.GroupOrder - 1);
+                        }
+                     }
+                     else
+                     {
+                        if ((col.GroupOrder &gt;= order) &amp;&amp; (col.GroupOrder &lt;
+                         existingGroupOrder))
+                        {
+                           col.SetColumnGroupOrder(col.GroupOrder + 1);
+                        }
+                     }
+                  }
+               }
+               item.SetColumnGroupOrder(order);
+
+            }
+            else
+            {
+               // this is a new item.
+
+               // Determine the group order of this item:
+               int maxGroupOrder = 0;
+               foreach (SListColumn col in this.columns)
+               {
+                  if (col.GroupOrder &gt;= order)
+                  {
+                     col.SetColumnGroupOrder(col.GroupOrder + 1);
+                  }
+                  if (col.GroupOrder &gt; maxGroupOrder)
+                  {
+                     maxGroupOrder = col.GroupOrder;
+                  }
+               }
+               if (order &gt; maxGroupOrder)
+               {
+                  // we add to the end:
+                  order = maxGroupOrder + 1;
+               }
+               item.SetColumnGroupOrder(order);
+            }
+
+            ArrayList sca = new ArrayList();
+            ArrayList sco = new ArrayList();
+            int index = 0;
+            foreach (SListColumn col in this.columns)
+            {
+               if (col.GroupOrder &gt; 0)
+               {
+                  sca.Add(index);
+                  sco.Add(col.SortOrder);
+               }
+               index++;
+            }
+            sortColumnArray = (int [])sca.ToArray(index.GetType());
+            sortColumnOrder = (SortOrder
+             [])sco.ToArray(SortOrder.Ascending.GetType());
+
+            this.SortByColumn(0);
+            addGroupedRows();
+            this.Visible = true;
+
+         }
+      }
+
+      protected override void AddItemsCore ( object[] value )
+      {
+         base.AddItemsCore(value);
+      }
+      protected override void SetItemCore ( System.Int32 index , System.Object
+       value )
+      {
+         base.SetItemCore(index, value);
+      }
+      protected override void SetItemsCore ( System.Collections.IList value )
+      {
+         base.SetItemsCore(value);
+      }
+      /// &lt;summary&gt;
+      /// Responds to a non-height property change event of an item.
+      /// Forces the ListBox to redraw the item.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;&lt;/param&gt;
+      public virtual void OnItemChanged(
+         SListItem item
+         )
+      {
+         Rectangle rc = this.GetItemRectangle(this.Items.IndexOf(item));
+         this.Invalidate(rc);
+      }
+      /// &lt;summary&gt;
+      /// Responds to a height changed event of an item.
+      /// In a ListBox, the only way to change the height of an item
+      /// once it has been Measured is to remove it and then add it
+      /// again.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Item whose height has changed&lt;/param&gt;
+      public virtual void OnHeightChanged(
+         SListItem item
+         )
+      {
+         int index = this.Items.IndexOf(item);
+         this.Items.RemoveAt(index);
+         this.Items.Insert(index, item);
+      }
+      public virtual void OnColumnChanged(
+         SListColumn column
+         )
+      {
+         OnResize(null);
+      }      
+      /// &lt;summary&gt;
+      /// Creates a new instance of the SListBox.ObjectCollection.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;An SListBox.ObjectCollection that represents the new item
+       collection&lt;/returns&gt;
+      protected override System.Windows.Forms.ListBox.ObjectCollection
+       CreateItemCollection()
+      {
+         return new ObjectCollection(this);
+      }
+
+      /// &lt;summary&gt;
+      /// Raises the OnResize event and makes the Horizontal scroll bar visible
+      /// if necessary.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Event arguments&lt;/param&gt;
+      protected override void OnResize( System.EventArgs e )
+      {
+         int width = 0;
+         foreach (SListColumn col in this.columns)
+         {
+            width += col.Width;
+         }
+         if (width &gt; this.Width)
+         {
+            this.HorizontalScrollbar = true;
+            this.HorizontalExtent = width;
+         }
+         else
+         {
+            this.HorizontalScrollbar = false;
+         }
+         if (width != this.lastWidth)
+         {
+            // necessary to redraw all the items
+            this.Invalidate();
+         }
+         base.OnResize(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Calls the ListBox base OnSelectedIndexChanged unless the
+      /// item being selected has a height less than 0, in which
+      /// case the appropriate next visible item is selected.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;Event arguments&lt;/param&gt;
+      protected override void OnSelectedIndexChanged ( System.EventArgs e )
+      {
+         if ((this.SelectedIndex &gt;= 0) &amp;&amp; (this.SelectedIndex &lt;
+          this.Items.Count))
+         {
+            SListItem item = this.Items[this.SelectedIndex];
+            if ((item.Height &lt;= 0) || (!item.Visible))
+            {
+               SListBoxFindDirection direction = SListBoxFindDirection.up;
+               if (lastSelectedIndex &lt; this.SelectedIndex)
+               {
+                  // trying to select the next item
+                  direction = SListBoxFindDirection.down;
+               }
+               this.lastSelectedIndex = -1;
+               int index = NextVisibleItemIndex(this.SelectedIndex, direction);
+               if (index &gt; -1)
+               {
+                  this.SelectedIndex = index;
+               }
+            }
+            else
+            {
+               base.OnSelectedIndexChanged(e);
+               this.lastSelectedIndex = this.SelectedIndex;
+            }
+         }
+         else
+         {
+            base.OnSelectedIndexChanged(e);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the SListBox item and raises the DrawItem 
+      /// event.
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;DrawItemEventArgs for the item&lt;/param&gt;
+      protected override void OnDrawItem(DrawItemEventArgs e)
+      {
+         if ((e.Index &gt;= 0) &amp;&amp; (e.Index &lt; this.Items.Count))
+         {
+            SListItem item = this.Items[e.Index];
+            if ((item.Height &gt; 0) &amp;&amp; (item.Visible))
+            {
+               bool selected = ((e.State &amp; DrawItemState.Selected) ==
+                DrawItemState.Selected);
+               bool rightToLeft = (this.RightToLeft == RightToLeft.Yes);
+               if (selected)
+               {
+                  if (item.Indentation &gt; 0)
+                  {
+                     if (rightToLeft)
+                     {
+                        Rectangle indented = new Rectangle(
+                           e.Bounds.X, 
+                           e.Bounds.Y,
+                           e.Bounds.Width - item.Indentation,
+                           e.Bounds.Height);
+                        //e.Graphics.FillRectangle(SystemBrushes.Highlight,
+                         indented);
+                     }
+                     else
+                     {
+                        Rectangle indented = new Rectangle(
+                           e.Bounds.X + item.Indentation, 
+                           e.Bounds.Y,
+                           e.Bounds.Width - item.Indentation,
+                           e.Bounds.Height);
+                        //e.Graphics.FillRectangle(SystemBrushes.Highlight,
+                         indented);
+                     }
+                  }
+                  else
+                  {
+                     //e.Graphics.FillRectangle(SystemBrushes.Highlight,
+                      e.Bounds);
+                  }
+               }
+               else
+               {
+                  //e.Graphics.FillRectangle(SystemBrushes.Window, e.Bounds);
+               }
+               Rectangle itemRect = e.Bounds;
+               itemRect.Inflate(-1, -1);
+               item.DrawItem(e.Graphics, imgList, itemRect, this.Font,
+                selected, true, rightToLeft);
+            }
+         }
+         base.OnDrawItem(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Measures the item and raises the MeasureItem event
+      /// &lt;/summary&gt;
+      /// &lt;param name="e"&gt;MeasureItemEventArgs for the item&lt;/param&gt;
+      protected override void OnMeasureItem(MeasureItemEventArgs e)
+      {
+         if ((e.Index &gt;= 0) &amp;&amp; (e.Index &lt; this.Items.Count))
+         {
+            SListItem item = this.Items[e.Index];
+            if (item.Visible)
+            {
+               e.ItemHeight = item.RenderHeight;
+            }
+            else
+            {
+               e.ItemHeight = 0;
+            }
+            e.ItemWidth = 1024;
+         }
+         base.OnMeasureItem(e);
+      }
+
+      /// &lt;summary&gt;
+      /// Initializes a new instance of the SListBox object.
+      /// &lt;/summary&gt;
+      public SListBox()
+      {
+         this.DrawMode = DrawMode.OwnerDrawVariable;
+         this.columns = new SListColumnCollection(this);
+      }
+   }
+   #endregion
+
+   #region SListItemBase
+   /// &lt;summary&gt;
+   /// Class which SListItems derive from.  Provides base
+   /// services for item properties such as text to display,
+   /// Font, Colours, indentation etc
+   /// &lt;/summary&gt;
+   public abstract class SListItemBase : IDisposable, IComparable
+   {
+      private object text = null;
+      private string textFormat = "";
+      private int iconIndex = -1;
+      private StringFormat stringFormat = null;
+      private Font font = null;
+      private Color foreColor = Color.FromKnownColor(KnownColor.WindowText);
+      private Color backColor = Color.FromKnownColor(KnownColor.Window);
+      private int indentation = 0;
+      private int height = 20;
+      private object tag = null;
+
+      /// &lt;summary&gt;
+      /// Compares the current instance with another object of the same type.
+      /// The class attempts to use the CompareTo method of the text object
+      /// for comparision.  If this is not available, the ToString() method 
+      /// of this class is used for comparison.
+      /// &lt;/summary&gt;
+      /// &lt;param name="obj"&gt;An object to compare with this instance.&lt;/param&gt;
+      /// &lt;returns&gt;A 32-bit signed integer that indicates the relative order of
+       the comparands.  
+      /// The return value has these meanings:
+      /// Less than zero This instance is less than obj.  
+      /// Zero This instance is equal to obj.  
+      /// Greater than zero This instance is greater than obj.&lt;/returns&gt;
+      public virtual int CompareTo ( object obj )
+      {
+         int res = 0;
+         try
+         {
+            bool doDefault = false;
+            IComparable icThis = null;
+            try
+            {
+               icThis = (IComparable)this.text;
+            }
+            catch
+            {
+               doDefault = true;
+            }
+            if (doDefault)
+            {
+               res = this.ToString().CompareTo(obj.ToString());
+            }
+            else
+            {
+               res = icThis.CompareTo(((SListItemBase)obj).Text);
+            }
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine("Exception {0}", ex);
+         }
+         return res;
+      }
+         
+      /// &lt;summary&gt;
+      /// Gets/sets the text to display for this item.
+      /// Defaults to no text.  The ToString method of the
+      /// object will be used to render it unless a TextFormat
+      /// string is set, in which case the String.Format method
+      /// will be invoked.
+      /// &lt;/summary&gt;
+      public object Text
+      {
+         get
+         {
+            return this.text;
+         }
+         set
+         {
+            this.text = value;
+            OnItemChanged();
+         }
+      }
+
+      public string TextFormat
+      {
+         get
+         {
+            return this.textFormat;
+         }
+         set
+         {
+            this.textFormat = value;
+            OnItemChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the index of the icon within the ImageList
+      /// to display for this item.  Set to -1 for no icon.
+      /// Defaults to -1.
+      /// &lt;/summary&gt;
+      public int Icon
+      {
+         get
+         {
+            return this.iconIndex;
+         }
+         set
+         {
+            this.iconIndex = value;
+            OnItemChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the indentation of this item.
+      /// &lt;/summary&gt;
+      public int Indentation
+      {
+         get
+         {
+            return this.indentation;
+         }
+         set
+         {
+            this.indentation = value;
+            OnItemChanged();
+         }
+      }
+      
+      /// &lt;summary&gt;
+      /// Gets/sets a specific string format to use
+      /// when drawing this item.  Set to null to 
+      /// use default text rendering.  Defaults to 0
+      /// &lt;/summary&gt;      
+      public System.Drawing.StringFormat StringFormat
+      {
+         get
+         {
+            return this.stringFormat;
+         }
+         set
+         {
+            this.stringFormat = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets a specific font to use
+      /// when drawing this item.  When null, the 
+      /// owner ListBox font is used for drawing.
+      /// Default is null.
+      /// &lt;/summary&gt;
+      public System.Drawing.Font Font
+      {
+         get
+         {
+            return this.font;
+         }
+         set
+         {
+            this.font = value;
+            OnItemChanged();
+         }
+      }      
+      /// &lt;summary&gt;
+      /// Gets/sets a customised foreground
+      /// color for this item.  Default is
+      /// WindowText.
+      /// &lt;/summary&gt;
+      public Color ForeColor
+      {
+         get
+         {
+            return this.foreColor;
+         }
+         set
+         {
+            this.foreColor = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets a customised background
+      /// color for this item.  Default is
+      /// WindowBackground.
+      /// &lt;/summary&gt;
+      public Color BackColor
+      {
+         get
+         {
+            return this.backColor;
+         }
+         set
+         {
+            this.backColor = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets an object associated with the item.
+      /// &lt;/summary&gt;
+      public object Tag
+      {
+         get
+         {
+            return this.tag;
+         }
+         set
+         {
+            this.tag = value;
+            OnItemChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets/sets the height of this item
+      /// &lt;/summary&gt;
+      public int Height
+      {
+         get
+         {
+            return this.height;
+         }
+         set
+         {
+            this.height = value;
+            OnHeightChanged();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Called whenever a sizing property is changed
+      /// &lt;/summary&gt;
+      protected virtual void OnHeightChanged()
+      {
+      }
+      /// &lt;summary&gt;
+      /// Called whenever a non-sizing property is changed
+      /// &lt;/summary&gt;
+      protected virtual void OnItemChanged()
+      {
+      }
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="firstItem"&gt;Whether the item is the first in the list
+       box&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      public virtual void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool firstItem,
+         bool rightToLeft
+         )
+      {
+         // fill the background:
+         Rectangle fillRect = bounds;
+         if (firstItem)
+         {
+            if (rightToLeft)
+            {
+               fillRect.X = bounds.X;
+               fillRect.Y = bounds.Y;
+               fillRect.Width = bounds.Width - this.indentation;
+               fillRect.Height = bounds.Height;
+            }
+            else
+            {
+               fillRect.X = bounds.X + this.indentation;
+               fillRect.Y = bounds.Y;
+               fillRect.Width = bounds.Width - this.indentation;
+               fillRect.Height = bounds.Height;
+            }
+         }
+         if (selected)
+         {
+            graphics.FillRectangle(SystemBrushes.Highlight, fillRect);
+         }
+         else
+         {
+            Brush backBrush = new SolidBrush(this.backColor);
+            graphics.FillRectangle(backBrush, fillRect);
+            backBrush.Dispose();
+         }
+   
+         // Get the item rectangle:         
+         Rectangle itemRect;
+         int iconX;
+         if (rightToLeft)
+         {
+            itemRect = new Rectangle(
+               bounds.X,
+               bounds.Y,
+               bounds.Width - this.indentation,
+               bounds.Height);
+            iconX = bounds.X + bounds.Width - this.indentation;
+         }
+         else
+         {
+            itemRect = new Rectangle(
+               bounds.X + this.indentation,
+               bounds.Y,
+               bounds.Width - this.indentation,
+               bounds.Height);
+            iconX = bounds.X + this.indentation;
+         }
+
+         // Draw the icon
+         if (imageList != null)
+         {
+            if (iconIndex &gt; -1)
+            {
+               if (rightToLeft)
+               {
+                  iconX -= imageList.ImageSize.Width;
+               }
+               int iconY = bounds.Top + (bounds.Height -
+                imageList.ImageSize.Height) / 2;
+               if (iconY &lt; bounds.Top)
+               {
+                  imageList.Draw(
+                     graphics, 
+                     iconX,
+                     iconY,
+                     imageList.ImageSize.Width,
+                     bounds.Height, 
+                     this.iconIndex);
+               }
+               else
+               {
+                  imageList.Draw(
+                     graphics, 
+                     iconX,
+                     iconY,
+                     this.iconIndex);
+               }
+               if (!rightToLeft)
+               {
+                  iconX += imageList.ImageSize.Width;
+               }
+            }
+         }
+      
+         Font itemFont = defaultFont;
+         if (this.font != null)
+         {
+            itemFont = this.font;
+         }
+         Brush itemBrush;
+         if (selected)
+         {
+            itemBrush = new
+             SolidBrush(Color.FromKnownColor(KnownColor.HighlightText));
+         }
+         else
+         {
+            itemBrush= new SolidBrush(this.foreColor);
+         }
+         StringFormat format;
+         if (this.stringFormat != null)
+         {
+            format = this.stringFormat;
+         }
+         else
+         {
+            format = new StringFormat();
+            format.Alignment = StringAlignment.Near;
+            format.LineAlignment = StringAlignment.Center;
+            format.FormatFlags = StringFormatFlags.LineLimit;
+            format.Trimming = StringTrimming.EllipsisCharacter;
+         }
+         RectangleF textRect;
+         if (rightToLeft)
+         {
+            textRect = new RectangleF(
+               (float)bounds.X, (float)bounds.Y, (float)(iconX - bounds.X),
+                (float)bounds.Height);
+         }
+         else
+         {
+            textRect = new RectangleF(
+               (float)iconX, (float)bounds.Y, (float)itemRect.Width,
+                (float)bounds.Height);
+         }
+
+         // Draw the text:
+         graphics.DrawString(
+            this.ToString(),
+            itemFont,
+            itemBrush,
+            textRect,
+            format);
+
+         itemBrush.Dispose();
+         if (this.stringFormat == null)
+         {
+            format.Dispose();
+         }
+
+      }
+      /// &lt;summary&gt;
+      /// Returns the text of the item.
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;The text for the item&lt;/returns&gt;
+      public override string ToString()
+      {
+         if (this.textFormat.Length &gt; 0)
+         {
+            return String.Format(textFormat, this.text);
+         }
+         else
+         {
+            return this.text.ToString();
+         }
+      }
+      /// &lt;summary&gt;
+      /// Default Constructor
+      /// &lt;/summary&gt;
+      public SListItemBase()
+      {
+         this.text = (object)"";
+      }
+      public SListItemBase(
+         object text
+         ) : this()
+      {
+         this.text = text;
+      }
+      public SListItemBase(
+         object text,
+         int iconIndex
+         ) : this(text)
+      {
+         this.iconIndex = iconIndex;
+      }
+      public SListItemBase(
+         object text,
+         int iconIndex,
+         int indentation
+         ) : this (text, iconIndex)
+      {
+         this.indentation = indentation;
+      }
+      public SListItemBase(
+         object text,
+         int iconIndex,
+         int indentation,
+         Color foreColor,
+         Color backColor
+         ) : this (text, iconIndex, indentation)
+      {
+         this.foreColor = foreColor;
+         this.backColor = backColor;
+      }
+      public SListItemBase(
+         object text,
+         int iconIndex,
+         int indentation,
+         Color foreColor,
+         Color backColor,
+         Font font
+         ) : this(text, iconIndex, indentation, foreColor, backColor)
+      {
+         this.font = font;
+      }
+
+      /// &lt;summary&gt;
+      /// Disposes of any resources associated with the object
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         if (this.stringFormat != null)
+         {
+            this.stringFormat.Dispose();
+            this.stringFormat = null;
+         }
+      }
+   }
+   #endregion
+
+   #region SListColumnCollection
+   public class SListColumnCollection : ReadOnlyCollectionBase
+   {
+      private bool internalOrderSetting = false;
+      private SListBox owner = null;
+
+      public SListBox Owner
+      {
+         get
+         {
+            return this.owner;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the column at the specified index
+      /// &lt;/summary&gt;
+      public SListColumn this[int index]
+      {
+         get
+         {
+            return (SListColumn)this.InnerList[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the column at the specified order,
+      /// or null if no column.
+      /// &lt;/summary&gt;
+      /// &lt;param name="order"&gt;Order index&lt;/param&gt;
+      /// &lt;returns&gt;The SListColumn object for the column order
+      /// specified, or null if nothing at the specified order
+      /// &lt;/returns&gt;
+      public SListColumn ColumnAtOrder(int order)
+      {
+         SListColumn ret = null;
+         foreach (SListColumn col in this.InnerList)
+         {
+            if (col.Order == order)
+            {
+               ret = col;
+            }
+         }
+         return ret;
+      }
+
+      /// &lt;summary&gt;
+      /// Removes the column at the specified index
+      /// &lt;/summary&gt;
+      /// &lt;param name="index"&gt;Index of column in control&lt;/param&gt;
+      public void Remove(int index)
+      {
+         SListColumn colToRemove = (SListColumn)this.InnerList[index];
+         int order = colToRemove.Order;
+         internalOrderSetting = true;
+         foreach (SListColumn col in this.InnerList)
+         {
+            if (col.Order &gt; order)
+            {
+               col.Order = col.Order - 1;
+            }
+         }
+         internalOrderSetting = false;
+         this.InnerList.RemoveAt(index);
+      }
+
+      /// &lt;summary&gt;
+      /// Adds a column to the end of the column list
+      /// with the default properties
+      /// &lt;/summary&gt;
+      public void Add()
+      {
+         SListColumn col = new SListColumn();         
+         col.Owner = this;
+         Add(col);
+      }
+      
+      /// &lt;summary&gt;
+      /// Adds a column to the end of the column list
+      /// &lt;/summary&gt;
+      /// &lt;param name="column"&gt;Column to add&lt;/param&gt;
+      public void Add(SListColumn column)
+      {
+         column.Owner = this;
+         internalOrderSetting = true;
+         column.Order = this.InnerList.Count;
+         internalOrderSetting = false;
+         this.InnerList.Add(column);
+         owner.OnColumnChanged(column);
+      }
+
+      /// &lt;summary&gt;
+      /// Called when a column's width is changed
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;The column whose width has changed&lt;/param&gt;
+      public virtual void OnColumnResize(
+         SListColumn item
+         )
+      {
+         if (this.owner != null)
+         {
+            this.owner.OnColumnChanged(item);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Called when the SortOrder property of
+      /// a column is changed
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;Column whose sort order has been changed&lt;/param&gt;
+      public void SortByColumn(
+         SListColumn item
+         )
+      {
+         if (this.owner != null)
+         {
+            int colIndex = this.InnerList.IndexOf(item);
+            this.owner.SortByColumn(colIndex);
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Internal method for returning the X position
+      /// of a column.
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;The column to get the X position for&lt;/param&gt;
+      /// &lt;returns&gt;X position of the column&lt;/returns&gt;
+      internal int ColumnX(
+         SListColumn item
+         )
+      {
+         int x = 0;
+         int colOrder = item.Order;
+         
+         bool rightToLeft = false;         
+         if (owner != null)
+         {
+            rightToLeft = (owner.RightToLeft == RightToLeft.Yes);
+         }
+         if (rightToLeft)
+         {            
+            x = owner.HorizontalExtent;
+            if (owner.Width &gt; x)
+            {
+               x = owner.Width;
+            }
+         }
+
+         // All grouped columns are counted first against the edge:
+         int myGroupOrder = item.GroupOrder;
+         if (myGroupOrder &lt;= 0)
+         {
+            myGroupOrder = 0x7FFFFFFF;
+         }
+         foreach(SListColumn col in this.InnerList)
+         {
+            if ((col.GroupOrder &gt; 0) &amp;&amp; (col.GroupOrder &lt; myGroupOrder))
+            {
+               if (rightToLeft)
+               {
+                  x -= 16;
+               }
+               else
+               {
+                  x += 16;
+               }
+            }
+         }
+         
+         if (item.GroupOrder &lt;=0)
+         {
+            foreach(SListColumn col in this.InnerList)
+            {
+               if (col.Order &lt; colOrder)
+               {
+                  if (rightToLeft)
+                  {
+                     x -= col.Width;
+                  }
+                  else
+                  {
+                     x += col.Width;
+                  }
+               }
+            }
+         }
+         return x;
+      }
+
+      /// &lt;summary&gt;
+      /// Internal method for modifying the order
+      /// of a column.  Called when the Order property
+      /// of an SListColumn is changed
+      /// &lt;/summary&gt;
+      /// &lt;param name="item"&gt;The item to change order&lt;/param&gt;
+      /// &lt;param name="order"&gt;New order&lt;/param&gt;
+      internal int SetColumnOrder(
+         SListColumn item,
+         int order
+         )
+      {
+         if (internalOrderSetting)
+         {
+            return order;
+         }
+         else
+         {
+            if (item.Order == order)
+            {
+               return item.Order;
+            }
+            else
+            {
+               internalOrderSetting = true;
+               if (order &gt; item.Order)
+               {
+                  // anything between item.Order and order should
+                  // be reduced by 1:
+                  foreach (SListColumn otherItem in this.InnerList)
+                  {
+                     if (otherItem.Order != item.Order)
+                     {
+                        if ((otherItem.Order &gt;= item.Order) &amp;&amp; (otherItem.Order
+                         &lt;= order ))
+                        {
+                           otherItem.Order = otherItem.Order - 1;
+                        }
+                     }
+                  }
+                  // set this item:
+                  internalOrderSetting = false;
+                  return order;
+               }
+               else
+               {
+                  // anything with an order &gt;= order and &lt;= item.Order should
+                  // be increased by 1:
+                  foreach (SListColumn otherItem in this.InnerList)
+                  {
+                     if (otherItem.Order != item.Order)
+                     {
+                        if ((otherItem.Order &gt;= order) &amp;&amp; (otherItem.Order &lt;=
+                         item.Order))
+                        {
+                           otherItem.Order = otherItem.Order + 1;
+                        }
+                     }
+                  }                  
+                  internalOrderSetting = false;
+                  return order;
+               }
+            }
+         }
+      }
+
+      internal void SetColumnGroupOrder(
+         SListColumn item,
+         int order
+         )
+      {
+         owner.SetColumnGroupOrder(item ,order);
+      }
+
+      internal SListColumnCollection(
+         SListBox owner)
+      {
+         this.owner = owner;
+      }
+   }
+   #endregion
+
+   #region SListColumn
+   public class SListColumn
+   {
+      private string text = "";
+      private object tag = null;
+      private int order = 0;
+      private int groupOrder = 0;
+      private int width = 64;
+      private SListColumnCollection owner;
+      private SortOrder sortOrder;
+
+      /// &lt;summary&gt;
+      /// Gets/sets the owner collection for this column.
+      /// Set automatically when the object is added to the
+      /// SListColumCollection.
+      /// &lt;/summary&gt;
+      [Description("Gets/sets the owner collection for this column.")]
+      public SListColumnCollection Owner
+      {
+         get
+         {
+            return this.owner;
+         }
+         set
+         {
+            this.owner = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the text for this column
+      /// &lt;/summary&gt;
+      [Description("Gets/sets the text for this column.")]
+      public string Text
+      {
+         get
+         {
+            return this.text;
+         }
+         set
+         {
+            this.text = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets an object associated with this column.
+      /// &lt;/summary&gt;
+      [Description("Gets/sets an object associated with this column.")]
+      public object Tag
+      {
+         get
+         {
+            return this.tag;
+         }
+         set
+         {
+            this.tag = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the width of this column
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="NotSupportedException"&gt;If you attempt to set the
+       width whilst
+      /// the column is grouped.&lt;/exception&gt;
+      [Description("Gets/sets the width of this column.")]
+      public int Width
+      {
+         get
+         {
+            if ((this.groupOrder &gt; 0) &amp;&amp; (owner.Owner.ShowGroupingRows))
+            {
+               return 16;
+            }
+            else
+            {
+               return this.width;               
+            }
+         }
+         set
+         {
+            this.width = value;
+            if (owner != null)
+            {
+               owner.OnColumnResize(this);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the order at which this
+      /// column is displayed in the ListBox.
+      /// Only valid if the column is not grouped.
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="ArgumentOutOfRangeException"&gt;If the order is out of
+       bounds&lt;/exception&gt;
+      /// &lt;exception cref="InvalidOperationException"&gt;If the column is not part
+       of a control
+      /// or the column is grouped.&lt;/exception&gt;      
+      [Description("Gets/sets the order at which this column is displayed in
+       the ListBox.")]
+      public int Order
+      {
+         get
+         {
+            return this.order;
+         }
+         set
+         {
+            if (owner == null)
+            {
+               throw new InvalidOperationException("Order cannot be set until
+                the column is assigned to an SListBox control");
+            }
+            if ((this.order &lt; 0) || (this.order &gt; owner.Count))
+            {
+               throw new ArgumentOutOfRangeException("order", value, "Order
+                must be greater than 0 and less than the number of columns.");
+            }            
+            this.order = owner.SetColumnOrder(this, value);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the order at which this column
+      /// is grouped in.
+      /// If GroupOrder is &amp;lt; 0, then the column is 
+      /// not grouped.  If GroupOrder is &amp;gt; 0 then
+      /// the data within the column is grouped.
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="InvalidOperationException"&gt;If the column is not part
+       of a control.&lt;/exception&gt;      
+      [Description("Gets/sets the order at which this column is grouped in.  If
+       GroupOrder is &lt; 0 then the column is not grouped, otherwise it is.")]
+      public int GroupOrder
+      {
+         get
+         {
+            return this.groupOrder;
+         }
+         set
+         {
+            if (this.owner == null)
+            {
+               throw new InvalidOperationException("GroupOrder cannot be set
+                until the column is assigned to an SListBox control");
+            }
+            else
+            {
+               owner.SetColumnGroupOrder(this, value);
+            }
+         }
+      }
+
+      internal void SetColumnGroupOrder(int order)
+      {
+         this.groupOrder = order;
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the horizontal start position of this column
+      /// &lt;/summary&gt;
+      /// &lt;exception cref="InvalidOperationException"&gt;If the column is not part
+       of a control&lt;/exception&gt;
+      [Description("Gets the horizontal start position of this column.")]
+      public int X
+      {
+         get
+         {
+            if (owner == null)
+            {
+               throw new InvalidOperationException("X cannot be retrieved until
+                the column is assigned to an SListBox control");
+            }
+            return owner.ColumnX(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns a string representing this column.  If the text property is
+       set,
+      /// returns the text, otherwise returns "[Unnamed Column]"
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;String representing this column.&lt;/returns&gt;
+      public override string ToString()
+      {
+         if (this.text.Length &gt; 0)
+         {
+            return this.text;            
+         }
+         else
+         {
+            return "[Unnamed Column]";
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the sorting order of this column.
+      /// &lt;/summary&gt;
+      /// &lt;param name="sortOrder"&gt;Sort Order&lt;/param&gt;
+      public System.Windows.Forms.SortOrder SortOrder
+      {
+         get
+         {
+            return this.sortOrder;
+         }
+         set
+         {
+            this.sortOrder = value;
+            owner.SortByColumn(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Initializes a new SListColumn object
+      /// &lt;/summary&gt;
+      public SListColumn()
+      {
+      }
+   }
+   #endregion
+
+   #region SListColumnItem
+   /// &lt;summary&gt;
+   /// A single column item within the SListBox
+   /// &lt;/summary&gt;
+   public class SListColumnItem : SListItemBase
+   {
+      public int CompareTo ( object obj, SortOrder sortOrder )
+      {
+         int ret = base.CompareTo(obj);
+         if (sortOrder == SortOrder.Descending)
+         {
+            ret = -1 * ret;
+         }
+         return ret;
+         
+      }
+
+      
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      public override void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool firstItem,
+         bool rightToLeft
+         )
+      {
+         base.DrawItem(
+            graphics, 
+            imageList, 
+            bounds, 
+            defaultFont, 
+            selected,
+            firstItem,
+            rightToLeft);
+      }
+      public SListColumnItem() : base()
+      {
+         
+      }
+      public SListColumnItem(
+         object text
+         ) : base(text)
+      {
+      }
+      public SListColumnItem(
+         object text,
+         int iconIndex
+         ) : base(text, iconIndex)
+      {
+      }
+      public SListColumnItem(
+         object text,
+         int iconIndex,
+         int indentation
+         ) : base(text, iconIndex, indentation)
+      {
+      }
+      public SListColumnItem(
+         object text,
+         int iconIndex,
+         int indentation,
+         Color foreColor,
+         Color backColor
+         ) : base(text, iconIndex, indentation, foreColor, backColor)
+      {
+      }
+      public SListColumnItem(
+         object text,
+         int iconIndex,
+         int indentation,
+         Color foreColor,
+         Color backColor,
+         Font font
+         ) : base(text, iconIndex, indentation, foreColor, backColor, font)
+      {
+      }
+   }
+   #endregion
+
+   #region SListItem
+   /// &lt;summary&gt;
+   /// An item within the SListBox.  Rows themselves
+   /// can have associated text and data if desired, 
+   /// and will be displayed instead of the columns
+   /// if the ShowColumns property is set to False.
+   /// &lt;/summary&gt;
+   public class SListItem : SListItemBase, ICollection
+   {
+      private ArrayList columns = null;
+      private bool groupRow = false;
+      private bool showColumns = false;
+      private bool showText = true;
+      private bool visible = true;
+      private SListBox owner = null;
+
+      /// &lt;summary&gt;
+      /// Compares the current instance with another object of the same type.
+      /// 
+      /// The class attempts to use the CompareTo method of the text object
+      /// for comparision.  If this is not available, the ToString() method 
+      /// of this class is used for comparison.
+      /// &lt;/summary&gt;
+      /// &lt;param name="obj"&gt;An object to compare with this instance.&lt;/param&gt;
+      /// &lt;returns&gt;A 32-bit signed integer that indicates the relative order of
+       the comparands.  
+      /// The return value has these meanings:
+      /// Less than zero - This instance is less than obj.  
+      /// Zero - This instance is equal to obj.  
+      /// Greater than zero  - This instance is greater than obj.&lt;/returns&gt;
+      public override int CompareTo( object obj )
+      {
+         if (owner == null)
+         {
+            return base.CompareTo(obj);
+         }
+         else
+         {
+            int[] sortColumns = owner.SortColumnArray();
+            SortOrder[] order = owner.SortColumnOrder();
+
+            int ret = 0;
+            int index = 0;
+            foreach (int sortColumn in sortColumns)
+            {
+               ret = this[sortColumn].CompareTo(((SListItem)obj)[sortColumn],
+                order[index]);
+               if (ret != 0)
+               {
+                  break;
+               }
+               index++;
+            }
+            return ret;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws this item.
+      /// Used internally to draw the ListBox.
+      /// &lt;/summary&gt;
+      /// &lt;param name="graphics"&gt;Graphics object to draw to&lt;/param&gt;
+      /// &lt;param name="imageList"&gt;Source of images&lt;/param&gt;
+      /// &lt;param name="bounds"&gt;Bounding rectangle for the item&lt;/param&gt;
+      /// &lt;param name="defaultFont"&gt;Font to use if the item does not have a
+       font specified&lt;/param&gt;
+      /// &lt;param name="selected"&gt;Whether the item should be rendered selected
+       or not&lt;/param&gt;
+      /// &lt;param name="firstItem"&gt;Whether this item is the first item in the
+       row&lt;/param&gt;
+      /// &lt;param name="rightToLeft"&gt;Whether item should be rendered
+       right-to-left&lt;/param&gt;
+      public override void DrawItem(
+         Graphics graphics,
+         ImageList imageList,
+         Rectangle bounds,
+         Font defaultFont,
+         bool selected,
+         bool firstItem,
+         bool rightToLeft
+         )
+      {
+         Rectangle groupedArea = bounds;
+         groupedArea.Width = 0;
+         bool drawGroupArea = false;
+         Rectangle itemBounds = bounds;         
+         if (this.showColumns)
+         {
+            int height = 0;
+            if (owner != null)
+            {
+               int index = 0;
+               foreach (SListColumn col in owner.Columns)
+               {
+                  if (index &lt; this.columns.Count)
+                  {
+                     Rectangle columnBounds;
+                     if (rightToLeft)
+                     {
+                        columnBounds = new Rectangle(
+                           bounds.X + col.X  - col.Width, 
+                           bounds.Y, 
+                           col.Width, 
+                           bounds.Height);
+                     }
+                     else
+                     {
+                        columnBounds = new Rectangle(
+                           bounds.X + col.X, 
+                           bounds.Y, 
+                           col.Width, 
+                           bounds.Height);
+                     }
+                     
+                     SListColumnItem colItem = this[index];
+                     columnBounds.Height  = colItem.Height;
+                     if (columnBounds.Height &gt; height)
+                     {
+                        height = columnBounds.Height;
+                     }
+                     if ((col.GroupOrder &lt;=0) || (!owner.ShowGroupingRows))
+                     {
+                        colItem.DrawItem(
+                           graphics,
+                           imageList,
+                           columnBounds,
+                           defaultFont,
+                           selected,
+                           firstItem,
+                           rightToLeft);
+                     }
+                     else
+                     {
+                        columnBounds.Y -= 1;
+                        columnBounds.X -=1;
+                        columnBounds.Height += 1;
+                        columnBounds.Width += 1;
+                        graphics.FillRectangle(SystemBrushes.Control,
+                         columnBounds);
+                        drawGroupArea = true;
+                        if (columnBounds.X &lt; groupedArea.X)
+                        {
+                           groupedArea.X = columnBounds.X;                     
+                                 
+                        }
+                        if (columnBounds.Y &lt; groupedArea.Y)
+                        {
+                           groupedArea.Y = columnBounds.Y;
+                        }
+                        groupedArea.Width += columnBounds.Width;
+                        groupedArea.Height += columnBounds.Height;
+                     }
+                     
+                     firstItem = false;
+                  }
+                  index++;
+               }
+               itemBounds.Y += height;
+               itemBounds.Height -= height;
+            }
+         }
+         
+         if (drawGroupArea)
+         {
+            Rectangle groupBounds = itemBounds;
+            groupBounds.Height += 1;
+            if (rightToLeft)
+            {
+               groupBounds.X = itemBounds.X - groupedArea.Width;
+               groupBounds.Width = groupedArea.Width;               
+               itemBounds.X -= groupBounds.Width;
+            }
+            else
+            {
+               groupBounds.X = groupedArea.X;
+               groupBounds.Width = groupedArea.Width;
+               itemBounds.X += groupBounds.Width;
+            }
+            graphics.FillRectangle(SystemBrushes.Control, groupBounds);        
+                
+         }
+         base.DrawItem(
+            graphics,
+            imageList,
+            itemBounds,
+            defaultFont,
+            selected,
+            true,
+            rightToLeft);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the owning SListBox of this item.  Set 
+      /// automatically when the item is added to an SListBox.
+      /// The same SListItem cannot belong to two different
+      /// SListBoxes.
+      /// &lt;/summary&gt;
+      public SListBox Owner
+      {
+         get
+         {
+            return this.owner;
+         }
+         set
+         {
+            this.owner = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Determines whether this item is expanded or not.       
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public bool Expanded
+      {
+         get
+         {
+            bool expanded = true;
+            if (owner != null)
+            {
+               expanded = owner.ItemIsExpanded(this);
+            }   
+            return expanded;
+         }
+         set
+         {
+            if (owner != null)
+            {
+               owner.ExpandCollapse(this, true);
+            }
+         }
+
+      }
+
+      /// &lt;summary&gt;
+      /// Returns whether this row is a grouping row or not.       
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;&lt;/returns&gt;
+      public bool GroupRow
+      {
+         get
+         {
+            return this.groupRow;
+         }
+         set
+         {
+            this.groupRow = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Expands (shows) any child items of this item. Child items are defined
+      /// as items with a larger indentation.
+      /// &lt;/summary&gt;
+      public void Expand()
+      {
+         if (owner != null)
+         {
+            owner.ExpandCollapse(this, true);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Collapses (hides) any child items of this item. Child items are
+       defined
+      /// as items with a larger indentation.
+      /// &lt;/summary&gt;
+      public void Collapse()
+      {
+         if (owner != null)
+         {
+            owner.ExpandCollapse(this, false);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the overall rendering height of this item in the
+      /// list box
+      /// &lt;/summary&gt;
+      public int RenderHeight
+      {
+         get
+         {
+            int renderHeight = 0;
+            if (this.Visible)
+            {
+               if (this.showColumns)
+               {
+                  int maxColHeight = 0;
+                  foreach (SListColumnItem colItem in this.columns)
+                  {
+                     if (colItem.Height &gt; maxColHeight)
+                     {
+                        maxColHeight = colItem.Height;
+                     }
+                  }
+                  renderHeight += maxColHeight;
+               }
+               if (this.showText)
+               {
+                  renderHeight += this.Height;
+               }
+            }
+            return renderHeight;
+         }
+      }
+
+      public bool Visible
+      {
+         get
+         {
+            return this.visible;
+         }
+         set
+         {
+            this.visible = value;
+            OnHeightChanged();
+         }
+      }
+
+      protected override void OnHeightChanged()
+      {
+         if (owner != null)
+         {
+            owner.OnHeightChanged(this);
+         }
+      }
+
+      protected override void OnItemChanged()
+      {
+         if (owner != null)
+         {
+            owner.OnItemChanged(this);
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether columns are displayed for this
+      /// row.  If columns are not displayed, the Text, Icon
+      /// etc properties of this class will be used for the
+      /// display.  Defaults to true if the class is constructed
+      /// with a series of columns, otherwise defaults to false.
+      /// &lt;/summary&gt;
+      public bool ShowColumns
+      {
+         get
+         {
+            return this.showColumns;
+         }
+         set
+         {
+            this.showColumns = value;
+            OnHeightChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets whether the text for this row is displayed.
+      /// Defaults to True.
+      /// &lt;/summary&gt;
+      public bool ShowText
+      {
+         get
+         {
+            return this.showText;
+         }
+         set
+         {            
+            this.showText = value;
+            OnHeightChanged();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the item at the specified column index
+      /// &lt;/summary&gt;
+      public SListColumnItem this[int index]
+      {
+         get
+         {
+            return (SListColumnItem)this.columns[index];
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the number of columns associated with this row 
+      /// (if any)
+      /// &lt;/summary&gt;
+      public int Count
+      {
+         get
+         {
+            return columns.Count;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets a value indicating whether the columns collection
+      /// is synchronized (thread-safe) or not.
+      /// &lt;/summary&gt;
+      public bool IsSynchronized
+      {
+         get
+         {
+            return this.columns.IsSynchronized;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Gets an object which can be used to synchronize access
+      /// to the columns collection.
+      /// &lt;/summary&gt;
+      public object SyncRoot
+      {
+         get
+         {
+            return this.columns.SyncRoot;
+         }
+      }
+      /// &lt;summary&gt;
+      /// Returns an enumerator for the columns in the collection
+      /// &lt;/summary&gt;
+      /// &lt;returns&gt;An IEnumerator object for the columns in the item&lt;/returns&gt;
+      public System.Collections.IEnumerator GetEnumerator()
+      {
+         return this.columns.GetEnumerator();
+      }
+      /// &lt;summary&gt;
+      /// Copies a range of items from the columns collection to
+      /// a compatible one-dimensional array.
+      /// &lt;/summary&gt;
+      /// &lt;param name="array"&gt;Array to copy to&lt;/param&gt;
+      /// &lt;param name="index"&gt;Index to start at&lt;/param&gt;
+      public void CopyTo(System.Array array, int index)
+      {
+         this.columns.CopyTo(array, index);
+      }
+
+      private void init()
+      {
+         this.columns = new ArrayList();
+      }
+      private void init(
+         SListColumnItem[] columns
+         )
+      {
+         init();
+         foreach (SListColumnItem column in columns)
+         {
+            this.columns.Add(column);
+         }
+      }
+      /// &lt;summary&gt;
+      ///  Constructs a new the SListItem object
+      /// &lt;/summary&gt;
+      public SListItem() : base()
+      {
+         this.columns = new ArrayList();
+      }
+      public SListItem(
+         SListColumnItem[] columnItems
+         ) : base()
+      {
+         init(columnItems);
+         this.showColumns = true;
+      }
+      public SListItem(
+         SListColumnItem[] columnItems,
+         object text
+         ) : base(text, -1, 0)
+      {
+         init(columnItems);
+         this.showColumns = true;
+      }
+      public SListItem(
+         SListColumnItem[] columnItems,
+         object text,
+         int indentation
+         ) : base(text, -1, indentation)
+      {
+         init(columnItems);
+         this.showColumns = true;
+      }
+      public SListItem(
+         SListColumnItem[] columnItems,
+         object text,
+         int indentation,
+         int iconIndex
+         ) : base(text, iconIndex, indentation)
+      {
+         init(columnItems);
+         this.showColumns = true;
+      }
+      public SListItem(
+         object text
+         ) : base(text)
+      {
+         init();
+      }
+      public SListItem(
+         object text,
+         int iconIndex
+         ) : base(text, iconIndex)
+      {
+         init();
+      }
+      public SListItem(
+         object text,
+         int iconIndex,
+         int indentation
+         ) : base(text, iconIndex, indentation)
+      {
+         init();
+      }
+      public SListItem(
+         object text,
+         int iconIndex,
+         int indentation,
+         Color foreColor,
+         Color backColor
+         ) : base(text, iconIndex, indentation, foreColor, backColor)
+      {
+         init();
+      }
+      public SListItem(
+         object text,
+         int iconIndex,
+         int indentation,
+         Color foreColor,
+         Color backColor,
+         Font font
+         ) : base(text, iconIndex, indentation, foreColor, backColor, font)
+      {
+         init();
+      }
+   }
+   #endregion
+} 
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\vb\code\vbmedia\using_gdi_plus\index.html" ><IMG SRC="..\..\..\res\gdiplus.png" ALT="A GDI+ Library for VB - read and write PNG, JPG, TIF and GIF files, and manipulate bitmaps quickly" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\index.html"><img width="125" height="25" src="..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\index.html">Resources</a>&#160;.&#160;<a href="..\index.asp\index.html">Babbage</a>&#160;.&#160;<a href="article.html">(Incomplete) .NET MultiColumn ListBox</a>&#160;.&#160;<a href="multicolumnlist.html">MultiColumnList</a>&#160;.&#160;MultiColumnList_MultiColumnList.cs</p><br /><p class="nav"><a href="..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 1 July 2003</p></td><td></td></tr></table>
+</body></html>

@@ -1,0 +1,395 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: CustomBorderColor.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: CustomBorderColor.cs" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">.NET Outlook Style ListBar Control</a>&#160;.&#160;<a href="listbar_control_source.html">ListBar Control Source</a>&#160;.&#160;CustomBorderColor.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="listbar_control_binary.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Binary</a> (48K)</p><p class="nav"><a href="listbar_control_demonstration.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Demonstration</a> (84K)</p><p class="nav"><a href="listbar_control_documentation.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Documentation</a> (168K)</p><p class="nav"><a href="listbar_control_source.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ListBar Control Source</a> (94K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:12934</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=12934&type=zip&title=listbar_20control_20source_2ezip_5fcustombordercolor.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav"><a href="bugtrak.html">BugTrak</a></p><p class="nav"><a href="bugtrak.html#bugs"><img src="..\..\..\..\..\res\btbug.png" width="16" height="16" alt="Bug" />&#160;Bugs:</a> 1 / 1</p><p class="nav"><a href="bugtrak.html#issues"><img src="..\..\..\..\..\res\btissue.png" width="16" height="16" alt="Issue" />&#160;Issues:</a> 0 / 0</p><p class="nav"><a href="bugtrak.html#questions"><img src="..\..\..\..\..\res\btquestion.png" width="16" height="16" alt="Question" />&#160;Questions:</a> 0 / 1</a></p><p class="nav">Updated:22 November 2003</p>
+<br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />7 Sep 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\controls\listbar\outlook_listbar\article.html">vbAccelerator ListBar Control</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\libraries\graphics\hls_to_rgb\article.html">Hue, Luminance and Saturation in .NET</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: CustomBorderColor.cs</h1><pre>using System;
+using System.Drawing;
+
+namespace vbAccelerator.Components.Drawing
+{
+   /// &lt;summary&gt;
+   /// A class for deriving border colours for colours other than
+   /// the system control colour using luminance adjustment
+   /// techniques.  Requires the vbAccelerator &lt;see cref="HLSRGB"/&gt;
+   /// class.
+   /// &lt;/summary&gt;
+   internal class CustomBorderColor
+   {
+      // For black we can't create a darker colour, and for
+      // white we can't create a lighter one.  Therefore we
+      // need to play with the colours a little bit to try
+      // and achieve an equivalent effect.
+      private static Color BlackDarkDark = Color.FromArgb(32,32,32);
+      private static Color BlackDark = Color.FromArgb(48,48,48);
+      private static Color BlackLight = Color.FromArgb(128,128,128);
+      private static Color BlackLightLight = Color.FromArgb(192,192,192);
+      private static Color WhiteDarkDark = Color.FromArgb(96,96,96);
+      private static Color WhiteDark = Color.FromArgb(160,160,160);
+      private static Color WhiteLight = Color.FromArgb(230,230,230);
+      private static Color WhiteLightLight = Color.FromArgb(250,250,250);
+
+      /// &lt;summary&gt;
+      /// Private constructor - only static methods in this class.
+      /// &lt;/summary&gt;
+      private CustomBorderColor()
+      {
+         // Intentionally blank
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the grey intensity of a colour using the ITU
+      /// grey-scale standard.
+      /// &lt;/summary&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; to get
+      /// the grey scale value for.&lt;/param&gt;
+      /// &lt;returns&gt;A value between 0 and 255 holding the grey scale amount.
+      /// This can be used as the r, g and b arguments to the
+      /// &lt;c&gt;Color&lt;/c&gt; class to construct the grey scale colour.&lt;/returns&gt;
+      public static int GreyScale(
+         Color color
+         )
+      {
+         return (222 * color.R + 707 * color.G + 71 * color.B) / 1000 ;
+      }
+
+      /// &lt;summary&gt;
+      /// Draw a border on the specified &lt;see cref="System.Drawing.Graphics"/&gt;
+      /// object.
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;The &lt;see cref="System.Drawing.Graphics"/&gt; object
+      /// to draw onto.&lt;/param&gt;
+      /// &lt;param name="rect"&gt;The &lt;see cref="System.Drawing.Rectangle"/&gt; boundary
+      /// for the border.&lt;/param&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; of the 
+      /// object.  This is used to determine the border colours.&lt;/param&gt;
+      /// &lt;param name="thin"&gt;Whether to draw a thin border or not.&lt;/param&gt;
+      /// &lt;param name="pressed"&gt;Whether the border should be drawn pressed
+      /// or raised.&lt;/param&gt;
+      public static void DrawBorder(
+         Graphics gfx,
+         Rectangle rect,
+         Color color,
+         bool thin,
+         bool pressed
+         )
+      {
+         Pen darkPen = new Pen(CustomBorderColor.ColorDark(color), 1);
+         Pen lightPen = new Pen(CustomBorderColor.ColorLight(color), 1);
+         if (thin)
+         {
+            if (pressed)
+            {
+               gfx.DrawLine(darkPen, rect.Left, rect.Bottom - 2, 
+                  rect.Left, rect.Top);
+               gfx.DrawLine(darkPen, rect.Left, rect.Top, 
+                  rect.Right - 2, rect.Top);
+               gfx.DrawLine(lightPen, rect.Right - 1, rect.Top, 
+                  rect.Right - 1, rect.Bottom - 1);
+               gfx.DrawLine(lightPen, rect.Right - 1, rect.Bottom - 1,
+                  rect.Left, rect.Bottom - 1);
+            }
+            else
+            {
+               gfx.DrawLine(lightPen, rect.Left, rect.Bottom - 2,
+                  rect.Left, rect.Top);
+               gfx.DrawLine(lightPen, rect.Left, rect.Top,
+                  rect.Right - 1, rect.Top);
+               gfx.DrawLine(darkPen, rect.Right - 1, rect.Top + 1,
+                  rect.Right - 1, rect.Bottom - 1);
+               gfx.DrawLine(darkPen, rect.Right - 1, rect.Bottom - 1,
+                  rect.Left, rect.Bottom - 1);
+            }
+         }
+         else
+         {
+            Pen lightLightPen = new
+             Pen(CustomBorderColor.ColorLightLight(color), 1);
+            Pen darkDarkPen = new Pen(CustomBorderColor.ColorDarkDark(color),
+             1);
+            if (pressed)
+            {
+               gfx.DrawLine(darkDarkPen, rect.Left, rect.Bottom - 1,
+                  rect.Left, rect.Top);
+               gfx.DrawLine(darkDarkPen, rect.Left, rect.Top,
+                  rect.Right - 1, rect.Top);
+               gfx.DrawLine(lightLightPen, rect.Right - 1, rect.Top + 1,
+                  rect.Right - 1, rect.Bottom - 1);
+               gfx.DrawLine(lightLightPen, rect.Right - 1, rect.Bottom - 1,
+                  rect.Left + 1, rect.Bottom - 1);
+               gfx.DrawLine(darkPen, rect.Left + 1, rect.Bottom - 2,
+                  rect.Left + 1, rect.Top + 1);
+               gfx.DrawLine(darkPen, rect.Left + 1, rect.Top + 1,
+                  rect.Right - 2, rect.Top + 1);
+            }
+            else
+            {
+               gfx.DrawLine(lightLightPen, rect.Left, rect.Bottom - 1,
+                  rect.Left, rect.Top);
+               gfx.DrawLine(lightLightPen, rect.Left, rect.Top,
+                  rect.Right - 1, rect.Top);
+               gfx.DrawLine(darkPen, rect.Right - 1, rect.Top + 1,
+                  rect.Right - 1, rect.Bottom - 1);
+               gfx.DrawLine(darkPen, rect.Right - 1, rect.Bottom - 1,
+                  rect.Left + 1, rect.Bottom - 1);
+               gfx.DrawLine(lightPen, rect.Left + 1, rect.Bottom - 2,
+                  rect.Left + 1, rect.Top + 1);
+               gfx.DrawLine(lightPen, rect.Left + 1, rect.Top + 1,
+                  rect.Right - 2, rect.Top + 1);
+            }
+            darkDarkPen.Dispose();
+            lightLightPen.Dispose();
+         }
+         darkPen.Dispose();
+         lightPen.Dispose();
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the equivalent of the &lt;see
+       cref="System.Drawing.KnownColor.ControlDarkDark"/&gt;
+      /// colour for a specified colour.
+      /// &lt;/summary&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; to get the
+       darker
+      /// shadow shade for.&lt;/param&gt;
+      /// &lt;returns&gt;The darker shadow &lt;see cref="System.Drawing.Color"/&gt; for the
+       specified
+      /// colour.&lt;/returns&gt;
+      public static Color ColorDarkDark(Color color)
+      {
+         if (color.Equals(Color.FromKnownColor(KnownColor.Control)))
+         {
+            return Color.FromKnownColor(KnownColor.ControlDarkDark);
+         }
+         else if (color.Equals(Color.Black))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.BlackDarkDark);
+         }
+         else if (color.Equals(Color.White))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.WhiteDarkDark);
+         }
+         else
+         {
+            int grey = GreyScale(color);
+            HLSRGB hls = new HLSRGB(color.R, color.G, color.B);
+            if (grey &gt; 250)
+            {
+               hls.Luminance = (CustomBorderColor.WhiteDarkDark.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else if (grey &lt; 64)
+            {
+               hls.Luminance = (CustomBorderColor.BlackDarkDark.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else
+            {
+               hls.DarkenColor(0.5F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the equivalent of the &lt;see
+       cref="System.Drawing.KnownColor.ControlDark"/&gt;
+      /// colour for a specified colour.
+      /// &lt;/summary&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; to get the 
+      /// shadow shade for.&lt;/param&gt;
+      /// &lt;returns&gt;The shadow &lt;see cref="System.Drawing.Color"/&gt; for the
+       specified
+      /// colour.&lt;/returns&gt;
+      public static Color ColorDark(Color color)
+      {
+         if (color.Equals(Color.FromKnownColor(KnownColor.Control)))
+         {
+            return Color.FromKnownColor(KnownColor.ControlDark);
+         }
+         else if (color.Equals(Color.Black))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.BlackDark);
+         }
+         else if (color.Equals(Color.White))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.WhiteDark);
+         }
+         else
+         {
+            int grey = GreyScale(color);
+            HLSRGB hls = new HLSRGB(color.R, color.G, color.B);
+            if (grey &gt; 250)
+            {
+               hls.Luminance = (CustomBorderColor.WhiteDark.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else if (grey &lt; 64)
+            {
+               hls.Luminance = (CustomBorderColor.BlackDark.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else
+            {
+               hls.DarkenColor(0.7F);
+               return Color.FromArgb(color.A, hls.Color);               
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the equivalent of the &lt;see
+       cref="System.Drawing.KnownColor.ControlLight"/&gt;
+      /// colour for a specified colour.
+      /// &lt;/summary&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; to get the
+       highlight
+      /// shade for.&lt;/param&gt;
+      /// &lt;returns&gt;The highlight &lt;see cref="System.Drawing.Color"/&gt; for the
+       specified
+      /// colour.&lt;/returns&gt;
+      public static Color ColorLight(Color color)
+      {
+         if (color.Equals(Color.FromKnownColor(KnownColor.Control)))
+         {
+            return Color.FromKnownColor(KnownColor.ControlLight);
+         }
+         else if (color.Equals(Color.Black))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.BlackLight);
+         }
+         else if (color.Equals(Color.White))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.WhiteLight);
+         }
+         else
+         {
+            int grey = GreyScale(color);
+            HLSRGB hls = new HLSRGB(color.R, color.G, color.B);
+            if (grey &gt; 250)
+            {
+               hls.Luminance = (CustomBorderColor.WhiteLight.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else if (grey &lt; 64)
+            {
+               hls.Luminance = (CustomBorderColor.BlackLight.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else
+            {
+               hls.LightenColor(0.1F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Returns the equivalent of the &lt;see
+       cref="System.Drawing.KnownColor.ControlLightLight"/&gt;
+      /// colour for a specified colour.
+      /// &lt;/summary&gt;
+      /// &lt;param name="color"&gt;The &lt;see cref="System.Drawing.Color"/&gt; to get the
+       lightest
+      /// highlight shade for.&lt;/param&gt;
+      /// &lt;returns&gt;The lightest highlight &lt;see cref="System.Drawing.Color"/&gt;
+       for the specified
+      /// colour.&lt;/returns&gt;
+      public static Color ColorLightLight(Color color)
+      {
+         if (color.Equals(Color.FromKnownColor(KnownColor.Control)))
+         {
+            return Color.FromKnownColor(KnownColor.ControlLightLight);
+         }
+         else if (color.Equals(Color.Black))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.BlackLightLight);
+         }
+         else if (color.Equals(Color.White))
+         {
+            return Color.FromArgb(color.A, CustomBorderColor.WhiteLightLight);
+         }
+         else
+         {
+            int grey = GreyScale(color);
+            HLSRGB hls = new HLSRGB(color.R, color.G, color.B);
+            if (grey &gt; 250)
+            {
+               hls.Luminance = (CustomBorderColor.WhiteLightLight.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else if (grey &lt; 64)
+            {
+               hls.Luminance = (CustomBorderColor.BlackLightLight.R / 255F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+            else
+            {
+               hls.LightenColor(0.5F);
+               return Color.FromArgb(color.A, hls.Color);
+            }
+         }
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">.NET Outlook Style ListBar Control</a>&#160;.&#160;<a href="listbar_control_source.html">ListBar Control Source</a>&#160;.&#160;CustomBorderColor.cs</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 7 November 2003</p></td><td></td></tr></table>
+</body></html>

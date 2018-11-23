@@ -1,0 +1,378 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Using the System Image List with (and without) vbAccelerator Controls</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="..\..\images\legacy.html">
+
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop">Source Code</a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center" width="100%">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>Using the System Image List with (and without) vbAccelerator Controls</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\imagelist\system_image_list\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>Free, unlimited, high performance icons from this Shell/Common Controls component.</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><br><img src="..\..\images\sysimg.gif" alt="Owner Draw File List Box Sample" width="231" height="274">
+	<br><br><br>
+	</p>
+	</font>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td colspan="2" bgcolor="#99CCFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Download Code</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+	<td><a href="vbalsils.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalsils.zip">Download the vbAccelerator System Image List class (31kb)</a></font></td>
+	</tr>
+	<tr>
+	<td><a href="vbalsilc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4"></a></td>
+	<td width="100%"><font color="#000000" face="verdana,arial,helvetica" size="2"><a href="vbalsilc.zip">Download the Owner Draw Combo List/System Image List sample (38kb)</a></font></td>
+	</tr>
+	</table>
+	<br>
+	</p>
+	<p>
+	<table border="0">
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The Owner Draw Combo List/System Image List sample requires the <a href="..\odcbolst\article.htm">vbAccelerator 
+		Owner Draw Combo and List Box Control</a>.  Please make sure you have downloaded and registered this
+		control before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	<p>
+	<table border="0" cellspacing="2" cellpadding="2" width="100%">
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Overview</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	The System Image List is a component provided as part of the Shell, and is capable of
+	drawing all of the icons you see in Explorer.  For applications which need to show folders,
+	documents or drives this can be a great alternative to using a real Image List, and
+	using it conserves resources.
+		<br><br>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>About the System Image List</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	In use the System Image List appears to work in exactly the same way as a normal COMCTL API 
+	Image List.  However, behind the scenes it is doing something quite different.  A standard 
+	ImageList will exhaust your system's resources quite quickly if you try to display the 
+	number of different icons which Explorer has to.  In fact you can see this occuring if you try 
+	the brute force method for getting Explorer icons into your application, as demonstrated in
+	my code sample <a href="..\shell\shelicon.htm">Icons for any file type</a>.  Although this 
+	sample works fine for small directories or numbers of files, if you point it at your Windows\System 
+	directory you will soon	hang the program (NT) or crash the system entirely (Win9x)!
+		<br><br>
+	The System Image List prevents the resource limitation by implementing a transparent caching system 
+	behind the scenes which	continually modifies the contents of the System Image List so icons are made
+	available on a JIT basis.
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>The Impossible Lightness of Being</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	The ideal application of the System Image List would be to attach it directly to a VB ListView
+	or TreeView.  However, this is not as straightforward as it should be. 
+	The VB controls have been written so you pretty much must use the ImageList 
+	built into the Common Controls OCX, and there is no way to modify this ImageList so it points 
+	to a System ImageList rather than the internally maintained one.  
+		<br><br>
+	Tom Esh has shown you can <a href="msvbalil.htm">attach an external ImageList to the Microsoft
+	controls</a>, but you loose a little flexibility and you have to take care to ensure it works
+	correctly.
+		<br><br>
+	Controls which can bind to API ImageLists, however, make it easier to take advantage of the 
+	System ImageList.
+	All the vbAccelerator controls use this method, so whenever a control has an ImageList property
+	on this site you can attach a System ImageList to it.	
+		<br><br>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>Obfuscated Shell</b>
+		</font>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	Creating and using a System ImageList is straightforward, 
+	but as is often the case with the Shell, the method is not made
+	particularly clear in the documentation. There are two steps you need to accomplish:
+		<ol>
+		<li>Get the System Image List handle.
+		<li>Getting the "index" of an image you want to draw.
+		</ol>
+	<b>1) Getting the System Image List Handle</b><br>
+	This is achieved through as single call to <i>SHGetFileInfo</i>:
+	<br><br>
+		</font>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Public Property Get SystemImageListHandle(Optional ByVal bLargeIcons As Boolean=False) As Long<br>
+&nbsp;&nbsp;&nbsp;Dim dwFlags As Long<br>
+&nbsp;&nbsp;&nbsp;Dim hIml As Long<br>
+&nbsp;&nbsp;&nbsp;Dim FileInfo As SHFILEINFO<br>
+<br>
+&nbsp;&nbsp;&nbsp;dwFlags = SHGFI_USEFILEATTRIBUTES Or SHGFI_SYSICONINDEX<br>
+&nbsp;&nbsp;&nbsp;If Not (bLargeIcons) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwFlags = dwFlags Or SHGFI_SMALLICON<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">'// Load the image list - use an arbitrary file extension for the</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">'// call to SHGetFileInfo (we don't want to touch the disk, so use</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">'// FILE_ATTRIBUTE_NORMAL && SHGFI_USEFILEATTRIBUTES).</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;hIml = SHGetFileInfo(&quot;.txt&quot;, FILE_ATTRIBUTE_NORMAL, FileInfo, LenB(FileInfo), dwFlags)<br>
+<br>
+&nbsp;&nbsp;&nbsp;SystemImageListHandle = hIml<br>
+<br>
+End Property<br>
+<br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">	
+
+	<b>2) Getting the "Index" of an Image</b><br>	
+	In the System Image List, indexes do not necessarily correspond to an actual image - the indexes are more
+	like a handle which Shell uses to track whether it needs to load the specified icon into the list JIT
+	for drawing or if it is already there.  Therefore do not be surprised that image "indexes" in the 
+	system image list can be very large positive or negative numbers!<br><br>
+	The index is obtained by another call to <i>SHGetFileInfo</i> as follows:<br><br>
+</font>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Dim dwFlags As Long<br>
+<br>
+dwFlags = SHGFI_SYSICONINDEX <br>
+If bLargeIcons Then<br>
+&nbsp;&nbsp;&nbsp;dwFlags = dwFlags Or SHGFI_LARGEICON<br>
+Else<br>
+&nbsp;&nbsp;&nbsp;dwFlags = dwFlags Or SHGFI_SMALLICON<br>
+End If<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' We choose whether to access the disk or not.  If you don't<br>
+' hit the disk, you may get the wrong icon if the icon is<br>
+' not cached.  But the speed is very good!</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+If Not bForceLoadFromDisk Then<br>
+&nbsp;&nbsp;&nbsp;dwFlags = dwFlags Or SHGFI_USEFILEATTRIBUTES<br>
+End If<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' sFileSpec can be any file.  You can specify a</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' file that does not exist and still get the</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' icon, for example sFileSpec = &quot;C:\PANTS.DOC&quot;</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+lR = SHGetFileInfo( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sFileSpec, FILE_ATTRIBUTE_NORMAL, FileInfo, LenB(FileInfo), _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwFlags _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+<br>
+If (lR=0) Then<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Failed</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Else<br>
+&nbsp;&nbsp;&nbsp;lIndex = FileInfo.iIcon<br>
+End If<br>
+<br><br><br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">	
+
+	With these pieces of information you can now use all the standard ImageList API calls (except 
+	<i>ImageList_Destroy</i>, which would not be a good idea!) to use the Images.
+	The vbAccelerator System Image List class in the download wraps these calls in VB calls to make it
+	easier to draw, copy and extract icons.		
+		<br><br>
+	The sample code in the download shows you how to use the System Image List class with the 
+	<a href="..\odcbolst\article.htm">Owner Draw Combo and List Box</a> to create a new version
+	of the VB File/Directory List Box control which includes Explorer graphics. Use along with
+	the <a href="..\odcbolst\comboex.htm">Owner Draw ComboBoxEx</a> control in Drive Picker mode!
+		</font>
+		</td>
+	</tr>
+	</table>
+	</p>	
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 29 May 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

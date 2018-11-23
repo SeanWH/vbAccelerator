@@ -1,0 +1,312 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>vbAccelerator Status Bar Control and No Status Bar Class</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td width="100%" height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop">Source Code</a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#006666">
+	<td valign="top" width="32">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="6"><strong>2</strong></font>
+	</td>
+	<td valign="center">
+	<font color="#99CC33" face="verdana,arial,helvetica" size="4"><strong>Common Controls Library</strong></font>
+	<font color="#99CC33" face="verdana,arial,helvetica" size="2">
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>vbAccelerator Status Bar Control and No Status Bar Class</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#006666" face="verdana,arial,helvetica" size="1">
+	<p>A Cool New Status Bar Control and a Lightweight Class for Low-Resource Projects</p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\controls\status_bar\no_status_bar_class\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><img src="..\..\images\statctl.gif" alt="vbAccelerator Status Bar Control Demonstrator" width="339" height="197"></p>
+	<p><a href="sbarctl.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator StatusBar Control and Demonstration Project (85kb)</a><br>
+	<a href="sbarctls.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator StatusBar Control and Demonstration with full source (106kb)</a><br>
+	<a href="nosbar.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the No-Status Bar StatusBar Class and Demonstration source (34kb)</a><br>
+	</p>
+	</font>
+	<p> 
+	<table>
+	<tr>
+		<td width="20">&nbsp;</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<img src="..\..\images\update.gif" height="11" width="23" border="0" alt="Updated" hspace="2"><b>Updated!</b> <i>15 August 1999</i>
+		</font>
+		</td>
+		<td width="20">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The last release of the control (vbalSbar.OCX) only worked in the IDE, not in
+		compiled executables.  This was because	a call to <i>InitCommonControls</i> was missing 
+		from the control's initialisation code.  Now fixed.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This OCX is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this OCX yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		These projects require the <a href="..\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying any project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The demonstration project uses the <a href="imglist.htm">vbAccelerator Image List</a> as a source of images.
+		Download and register this control to fully exercise the demo, or you can substitute a VB Image List control in its place.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">	
+	<p>
+	<b>Introduction</b><br>
+	These projects cover StatusBar controls in VB.  Two different status bar 
+	methods are presented here:
+	<ol>
+	<li>The first is a true COMCTL32.DLL StatusBar
+	<li>The second is a &quot;No Status Bar&quot; Status Bar class: a faked StatusBar 
+	which provides virtually all of the functionality in a smaller package 
+	which is easy to compile directly into an application and does not depend on the installed
+	COMCTL32.DLL version.  
+	</ol>
+	The only disadvantage of the No Status Bar class version compared to the control is that if
+	you press the Stop button in the VB IDE and you are using icons in the status bar panels then
+	you will get a USER resource leak because the call to destroy the active icon handles will
+	not be made. The effect of this in Win95/98 can be rather nasty if resources grow low enough -  
+	only the ON/OFF switch on your computer will work!  (Although mine seems to work quite rather
+	better in the off direction than the other way.  An interesting choice by the PC manufacturer...)<br><br>
+	<b>Features</b><br>
+	The StatusBar control supports all the standard VB5 Status Bar features.  Plus:
+	<ul>
+	<li>Create Owner-Draw status bar sections.  When you set the panel style to Owner Draw, whenever
+	the panel needs to be drawn, the control will fire an event passing the Device Context to draw
+	into, the panel number and the bounding rectangle.  You can either draw directly into the DC using
+	GDI API methods or draw into a VB Picture Box with AutoRedraw set to True and BitBlt the Picture
+	Box's contents into the DC.  The demonstration code includes a sample owner draw panel which
+	fills the panel with the Swimming Pool texture and then draws a centred caption in an arbitrary
+	colour over the top.
+	<li>Get the rectangle of any status bar panel.  You can use this to show (for example) 
+	a <a href="progbar.htm">progress bar</a> in the status bar.<br><br>
+	<a href="sbarprog.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the StatusBar/Progress Demonstration Project (20kb)</a>
+	<br><br>
+	Note you do not need the download the vbAccelerator Progress Bar control separately to run this project - it
+	has been included as code in the project.
+	</ul>
+	
+	In addition to these methods, if you
+	have COMCTL32.DLL v4.71 or higher then the following features are also available:
+	<ul>
+	<li>Tooltip support.  The control will display tooltips if the status bar panel has an icon and
+	no text or if it has a panel with an icon and text and not all the text is visible.
+	<li>Add an icon to each status bar panel from a Image List (either a COMCTL32.OCX ImageList, a
+	<a href="imglist.htm">vbAccelerator Image List</a> or hImageList handle.
+	<li>Change the status bar background colour
+
+	<li>Change tab alignment or from tab to button style at run-time.
+	<li>Implements hot-tracking (mouse-over highlighting) of tabs.
+	<li>Make buttons appear flat, with optional flat toolbar-style separators.
+	<li>Easily add, insert and remove tabs.
+	<li>Responds to right clicks in the tab area, allowing custom menus to be shown.
+	</ul>
+	<b>How to Use the Control</b><br>
+	Documentation for the Status Bar Control is available in Rich text format.  This documentation was
+	created using the <a href="..\actvxdoc\article.htm">ActiveX Documenter</a> which is also 
+	available for download.<br><br>
+	<a href="vbalsbar.rtf"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download or View the vbAccelerator StatusBar Documentation (11kb)</a>
+	<br><br>
+	The No-Status Bar class shares all the methods of the status bar control, except:
+	<ul>
+	<li>It has no events.
+	<li>It does not support owner draw panels.
+	<li>It does not support pre-defined panels, such as NumLock, CapsLock, Date/Time and so on.  Check the source
+	code for the full Status Bar if you want a hint on building these items.
+	</ul>
+	<br>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	<br><br><br>
+	<p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a><br><br></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

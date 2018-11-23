@@ -1,0 +1,469 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: ButtonListBar_ButtonListBarTest_frmTestButtonListBar.vb</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: ButtonListBar_ButtonListBarTest_frmTestButtonListBar.vb" /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">.NET Button ListBar Control</a>&#160;.&#160;<a href="button_list_bar_net.html">Button List Bar.NET</a>&#160;.&#160;ButtonListBar_ButtonListBarTest_frmTestButtonListBar.vb</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="button_list_bar_net.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Button List Bar.NET</a> (159K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:11827</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=11827&type=zip&title=button_20list_20bar_2enet_2ezip_5fbuttonlistbar_5fbuttonlistbartest_5ffrmtes.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />23 Jan 2004<br /><p class="update">Corrected resource leak in drawing code.  The 
+<span class="code">hFont</span> being returned by the <span class="code">ToHfont</span>
+method was not being cleared up using <span class="code">DeleteObject</span>.</p></p><p class="update"><a href="updates.html">Update History &gt;</a></p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\controls\listbar\button_list_bar\article.html">Button ListBar Control</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: ButtonListBar_ButtonListBarTest_frmTestButtonListBar.vb</h1><pre>Public Class Form1
+    Inherits System.Windows.Forms.Form
+
+    Private m_toolTip As ToolTip
+
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+        m_toolTip = New ToolTip()
+        m_toolTip.SetToolTip(txtDemo, "This area of the form would hold the
+         client controls")
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Private WithEvents barMain As
+     ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBar
+    Private WithEvents ilsIcons32 As System.Windows.Forms.ImageList
+    Private WithEvents ilsIcons16 As System.Windows.Forms.ImageList
+    Friend WithEvents picBanner As ButtonListBarTest.PageBanner
+    Friend WithEvents pnlMain As System.Windows.Forms.Panel
+    Friend WithEvents txtDemo As System.Windows.Forms.TextBox
+    Private WithEvents mnuContext As System.Windows.Forms.ContextMenu
+    Friend WithEvents mnuClearAll As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuAddNew As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuInsertNew As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuRemove As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuEnableNotes As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuChangeFirstIcon As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuChangeFirstCaption As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuChangeWidth As System.Windows.Forms.MenuItem
+    &lt;System.Diagnostics.DebuggerStepThrough()&gt; Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.Resources.ResourceManager = New
+         System.Resources.ResourceManager(GetType(Form1))
+        Me.barMain = New
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBar()
+        Me.ilsIcons32 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ilsIcons16 = New System.Windows.Forms.ImageList(Me.components)
+        Me.pnlMain = New System.Windows.Forms.Panel()
+        Me.txtDemo = New System.Windows.Forms.TextBox()
+        Me.picBanner = New ButtonListBarTest.PageBanner()
+        Me.mnuContext = New System.Windows.Forms.ContextMenu()
+        Me.mnuClearAll = New System.Windows.Forms.MenuItem()
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem()
+        Me.mnuAddNew = New System.Windows.Forms.MenuItem()
+        Me.mnuInsertNew = New System.Windows.Forms.MenuItem()
+        Me.mnuRemove = New System.Windows.Forms.MenuItem()
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem()
+        Me.mnuEnableNotes = New System.Windows.Forms.MenuItem()
+        Me.mnuChangeFirstIcon = New System.Windows.Forms.MenuItem()
+        Me.mnuChangeFirstCaption = New System.Windows.Forms.MenuItem()
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem()
+        Me.mnuChangeWidth = New System.Windows.Forms.MenuItem()
+        Me.pnlMain.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'barMain
+        '
+        Me.barMain.AutoScroll = True
+        Me.barMain.BackColor = System.Drawing.SystemColors.Control
+        Me.barMain.ButtonWidth = 96
+        Me.barMain.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barMain.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.barMain.ImageList = Nothing
+        Me.barMain.Name = "barMain"
+        Me.barMain.Size = New System.Drawing.Size(96, 254)
+        Me.barMain.TabIndex = 0
+        Me.barMain.ToolTip = Nothing
+        '
+        'ilsIcons32
+        '
+        Me.ilsIcons32.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+        Me.ilsIcons32.ImageSize = New System.Drawing.Size(32, 32)
+        Me.ilsIcons32.ImageStream =
+         CType(resources.GetObject("ilsIcons32.ImageStream"),
+         System.Windows.Forms.ImageListStreamer)
+        Me.ilsIcons32.TransparentColor = System.Drawing.Color.Transparent
+        '
+        'ilsIcons16
+        '
+        Me.ilsIcons16.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+        Me.ilsIcons16.ImageSize = New System.Drawing.Size(16, 16)
+        Me.ilsIcons16.ImageStream =
+         CType(resources.GetObject("ilsIcons16.ImageStream"),
+         System.Windows.Forms.ImageListStreamer)
+        Me.ilsIcons16.TransparentColor = System.Drawing.Color.Transparent
+        '
+        'pnlMain
+        '
+        Me.pnlMain.BackColor = System.Drawing.SystemColors.Window
+        Me.pnlMain.Controls.AddRange(New System.Windows.Forms.Control()
+         {Me.txtDemo, Me.picBanner})
+        Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlMain.Location = New System.Drawing.Point(96, 0)
+        Me.pnlMain.Name = "pnlMain"
+        Me.pnlMain.Size = New System.Drawing.Size(368, 254)
+        Me.pnlMain.TabIndex = 1
+        '
+        'txtDemo
+        '
+        Me.txtDemo.Location = New System.Drawing.Point(8, 39)
+        Me.txtDemo.Multiline = True
+        Me.txtDemo.Name = "txtDemo"
+        Me.txtDemo.Size = New System.Drawing.Size(208, 176)
+        Me.txtDemo.TabIndex = 6
+        Me.txtDemo.Text = ""
+        '
+        'picBanner
+        '
+        Me.picBanner.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.picBanner.Font = New System.Drawing.Font("Tahoma", 9.75!,
+         System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.picBanner.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.picBanner.IconIndex = 0
+        Me.picBanner.ImageList = Me.ilsIcons16
+        Me.picBanner.Location = New System.Drawing.Point(8, 7)
+        Me.picBanner.Name = "picBanner"
+        Me.picBanner.Size = New System.Drawing.Size(312, 24)
+        Me.picBanner.TabIndex = 5
+        Me.picBanner.TabStop = False
+        Me.picBanner.Text = "Banner Header 22"
+        '
+        'mnuContext
+        '
+        Me.mnuContext.MenuItems.AddRange(New System.Windows.Forms.MenuItem()
+         {Me.mnuClearAll, Me.MenuItem2, Me.mnuAddNew, Me.mnuInsertNew,
+         Me.mnuRemove, Me.MenuItem1, Me.mnuEnableNotes, Me.mnuChangeFirstIcon,
+         Me.mnuChangeFirstCaption, Me.MenuItem3, Me.mnuChangeWidth})
+        '
+        'mnuClearAll
+        '
+        Me.mnuClearAll.Index = 0
+        Me.mnuClearAll.Text = "&amp;Clear All"
+        '
+        'MenuItem2
+        '
+        Me.MenuItem2.Index = 1
+        Me.MenuItem2.Text = "-"
+        '
+        'mnuAddNew
+        '
+        Me.mnuAddNew.Index = 2
+        Me.mnuAddNew.Text = "Add &amp;New..."
+        '
+        'mnuInsertNew
+        '
+        Me.mnuInsertNew.Index = 3
+        Me.mnuInsertNew.Text = "&amp;Insert New..."
+        '
+        'mnuRemove
+        '
+        Me.mnuRemove.Index = 4
+        Me.mnuRemove.Text = "&amp;Remove..."
+        '
+        'MenuItem1
+        '
+        Me.MenuItem1.Index = 5
+        Me.MenuItem1.Text = "-"
+        '
+        'mnuEnableNotes
+        '
+        Me.mnuEnableNotes.Index = 6
+        Me.mnuEnableNotes.Text = "&amp;Enable Pinboard Notes"
+        '
+        'mnuChangeFirstIcon
+        '
+        Me.mnuChangeFirstIcon.Index = 7
+        Me.mnuChangeFirstIcon.Text = "Change &amp;First Icon"
+        '
+        'mnuChangeFirstCaption
+        '
+        Me.mnuChangeFirstCaption.Index = 8
+        Me.mnuChangeFirstCaption.Text = "Change First Ca&amp;ption"
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Index = 9
+        Me.MenuItem3.Text = "-"
+        '
+        'mnuChangeWidth
+        '
+        Me.mnuChangeWidth.Index = 10
+        Me.mnuChangeWidth.Text = "Change &amp;Width"
+        '
+        'Form1
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
+        Me.ClientSize = New System.Drawing.Size(464, 254)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.pnlMain,
+         Me.barMain})
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!,
+         System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+         CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Name = "Form1"
+        Me.Text = "Test Button List Bar Control - VB.NET"
+        Me.pnlMain.ResumeLayout(False)
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles MyBase.Load
+
+        barMain.ImageList = ilsIcons32
+        barMain.ToolTip = m_toolTip
+
+        Dim item(5) As
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBarItem
+        item(0) = New
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+            "Check Your Work &amp;Calendar", 0)
+        item(1) = New
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+            "Book &amp;Timecards", 1, "Book and submit your weekly timecards, and
+             track your time.")
+        item(2) = New
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+            "Contact &amp;Notes", 2, "View meeting and lead notes")
+        item(3) = New
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+            "&amp;Pinboard Notes", 3, "", False)
+        item(4) = New
+         ButtonListBarTest.vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+            "Confi&amp;gure Options", 4, "Set up offline options and configure the
+             program")
+
+        barMain.Items.Add(item)
+
+        barMain.Items(0).Selected = True
+
+    End Sub
+
+    Private Sub barMain_ItemClick(ByVal sender As Object, ByVal eventArgs As
+     ButtonListBarTest.vbAccelerator.Controls.ListBar.ItemClickEventArgs)
+     Handles barMain.ItemClick
+        '
+        If (eventArgs.Button And MouseButtons.Right) = MouseButtons.Right Then
+            mnuContext.Show(barMain, New Point(eventArgs.X, eventArgs.Y))
+        End If
+        '
+    End Sub
+
+    Private Sub barMain_SelectionChanged(ByVal sender As Object, ByVal
+     eventArgs As
+     ButtonListBarTest.vbAccelerator.Controls.ListBar.SelectionChangedEventArgs)
+     Handles barMain.SelectionChanged
+        '
+        picBanner.Text = eventArgs.Item.Text
+        picBanner.IconIndex = eventArgs.Item.IconIndex
+        '
+    End Sub
+
+    Private Sub pnlMain_Resize(ByVal sender As Object, ByVal e As
+     System.EventArgs) Handles pnlMain.Resize
+        Try
+            picBanner.Location = New Point(4, 4)
+            picBanner.Width = pnlMain.Width - 8
+            txtDemo.Location = New Point(4, 4 + picBanner.Height + 2)
+            txtDemo.Size = New Size(picBanner.Width, pnlMain.Height -
+             picBanner.Top - picBanner.Height - 6)
+        Catch
+
+        End Try
+
+    End Sub
+
+    Private Sub pnlMain_Paint(ByVal sender As System.Object, ByVal e As
+     System.Windows.Forms.PaintEventArgs) Handles pnlMain.Paint
+
+    End Sub
+
+    Private Sub mnuAddNew_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles mnuAddNew.Click
+        '
+        Dim sI As String = InputBox("Enter the text of the item to add:")
+        If (sI.Length &gt; 0) Then
+            Dim r As New System.Random()
+            barMain.Items.Add(New
+             vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+                sI, _
+                r.NextDouble * ilsIcons32.Images.Count, _
+                "New item added at run-time"))
+        End If
+        '
+    End Sub
+
+    Private Sub mnuClearAll_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles mnuClearAll.Click
+        barMain.Items.Clear()
+    End Sub
+
+    Private Sub mnuEnableNotes_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles mnuEnableNotes.Click
+        mnuEnableNotes.Checked = Not (mnuEnableNotes.Checked)
+        barMain.Items(3).Enabled = mnuEnableNotes.Checked
+    End Sub
+
+    Private Sub mnuChangeFirstIcon_Click(ByVal sender As System.Object, ByVal e
+     As System.EventArgs) Handles mnuChangeFirstIcon.Click
+        Dim r As New System.Random()        
+        barMain.Items(0).IconIndex = r.NextDouble * ilsIcons32.Images.Count
+    End Sub
+
+    Private Sub mnuChangeFirstCaption_Click(ByVal sender As System.Object,
+     ByVal e As System.EventArgs) Handles mnuChangeFirstCaption.Click
+        If (barMain.Items(0).Text.Equals("T&amp;his is a changed caption")) Then
+            barMain.Items(0).Text = "Anot&amp;her change." &amp; vbCrLf &amp; "This is
+             longer and includes a line break."
+        Else
+            barMain.Items(0).Text = "T&amp;his is a changed caption"
+        End If
+    End Sub
+
+    Private Sub mnuChangeWidth_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles mnuChangeWidth.Click
+        Select Case barMain.ButtonWidth
+            Case 64
+                barMain.ButtonWidth = 96
+            Case 96
+                barMain.ButtonWidth = 128
+            Case 128
+                barMain.ButtonWidth = 256
+            Case 256
+                barMain.ButtonWidth = 64            
+        End Select
+    End Sub
+
+    Private Sub barMain_BarClick(ByVal sender As Object, ByVal e As
+     System.Windows.Forms.MouseEventArgs) Handles barMain.BarClick
+        If (e.Button And MouseButtons.Right) = MouseButtons.Right Then
+            mnuContext.Show(barMain, New Point(e.X, e.Y))
+        End If
+
+    End Sub
+
+    Private Sub mnuRemove_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles mnuRemove.Click
+        Dim sI As String = InputBox("Enter 0-based index of item to remove:")
+        If (sI.Length &gt; 0) Then
+            Dim index As Integer = -1
+            Try
+                index = Integer.Parse(sI)
+                barMain.Items.RemoveAt(index)
+            Catch ex As Exception
+                MsgBox(String.Format("Error:" &amp; vbCrLf &amp; "{0}", ex.Message,
+                 MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly))
+            End Try
+        End If
+    End Sub
+
+    Private Sub mnuInsertNew_Click(ByVal sender As System.Object, ByVal e As
+     System.EventArgs) Handles mnuInsertNew.Click
+        Dim sI As String = InputBox("Enter the text of the item to add:")
+        If (sI.Length &gt; 0) Then
+            Dim sI2 As String = InputBox("Enter 0-base index to insert before:")
+            If (sI2.Length &gt; 0) Then
+                Try
+                    Dim index As Integer = Integer.Parse(sI2)
+                    Dim r As New System.Random()
+                    barMain.Items.Insert(index, New
+                     vbAccelerator.Controls.ListBar.ButtonListBarItem( _
+                        sI, _
+                        r.NextDouble * ilsIcons32.Images.Count, _
+                        "New item added at run-time"))
+                Catch ex As Exception
+                    MsgBox(String.Format("Error:" &amp; vbCrLf &amp; "{0}", ex.Message,
+                     MsgBoxStyle.Exclamation Or MsgBoxStyle.OKOnly))
+                End Try
+            End If
+        End If
+
+    End Sub
+End Class
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Controls</a>&#160;.&#160;<a href="..\index.html">ListBar</a>&#160;.&#160;<a href="article.html">.NET Button ListBar Control</a>&#160;.&#160;<a href="button_list_bar_net.html">Button List Bar.NET</a>&#160;.&#160;ButtonListBar_ButtonListBarTest_frmTestButtonListBar.vb</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 4 February 2004</p></td><td></td></tr></table>
+</body></html>

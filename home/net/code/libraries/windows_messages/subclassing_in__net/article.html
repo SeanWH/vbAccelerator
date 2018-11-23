@@ -1,0 +1,336 @@
+<html lang="en" >
+<head>
+
+<title>vbAccelerator - Subclassing In .NET</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="In VB 5 and 6, subclassing was something of a pain. To do it at all you 
+needed a raft of cunning hacks and had to keep a very careful track on which 
+object was subclassing what.  All of that pain is removed in .NET with the
+System.Windows.Forms.NativeWindow class, which makes it almost trivial
+to provide an extensible, safe and robust subclass for any window you choose.
+This article demonstrates how to use it, and provides a pair of classes for
+detecting some of the events that the framework has missed: activation state
+changes and low level Sizing and Moving control." /><link rel="stylesheet" href="..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;Subclassing In .NET</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="subclassing_using_nativewindow.html"><img src="..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />Subclassing Using NativeWindow</a> (21K)</p><br /><br /><img src="..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Article:4307</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\linkto_asp\id=4307&type=article&title=subclassing_20in_20_2enet.html">Link to this page</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />9 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing Without The Crashes</a></p><p class="nav"><img src="..\..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\hot_key_form\article.html">HotKeyForm</a></p><br /><br /><img src="..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>Subclassing In .NET</h1><p class="splash">Use the System.Windows.Forms.NativeWindow class for robust and 
+    easily extensible subclassed applications.</p><img src="subclass.png" width="398" height="300" alt="Subclassing graphic" /><p /><p>In VB 5 and 6, subclassing was something of a pain. To do it at all you 
+needed a raft of cunning hacks and had to keep a very careful track on which 
+object was subclassing what.  All of that pain is removed in .NET with the
+<i>System.Windows.Forms.NativeWindow</i> class, which makes it almost trivial
+to provide an extensible, safe and robust subclass for any window you choose.
+This article demonstrates how to use it, and provides a pair of classes for
+detecting some of the events that the framework has missed: activation state
+changes and low level Sizing and Moving control.</p><h2>Getting At Windows Messages</h2><p>As you might have seen from the previous <a href="..\hot_key_form\article.html">Hot
+Key Form</a> sample, it is easy to get at most the message stream for .NET
+framework Windows and Controls by overriding the protected <i>WndProc</i>
+method.  However, there are two issues with that approach:</p><ol><li><strong>Some Windows Don't Have It</strong><br />
+Examples of windows which you can easily create using the .NET Framework that 
+you can't get access to the message loop directly are the MDI Client area of
+an MDI form and the ListBox portion of a ComboBox.</li><li><strong>Code Reuse</strong><br />
+An object can only inherit the implementation of one other object.  If you
+wrote two different extensions to a form, say one to perform Hot-Key trapping,
+and another to perform Capture-Loss processing, then you couldn't use that 
+code directly to have a form that inherits both behaviours without rewriting 
+some of the code (one of the extensions would have to inherit from the other).</li></ol><p>A solution to both of these problems is to externalise the message
+trapping from a particular classes implementation, and luckily this is easy
+to do with the <i>NativeWindow</i> object.</p><h2>Using <i>NativeWindow</i> For Subclassing</h2><p>The NativeWindow object has three methods of interest if you'd like to 
+start using this technique:</p><ol><li><i>AssignHandle(IntPtr handle)</i><br />
+Attaches an instance of the object to the specified window handle and
+attaches the subclassing instance.</li><li><i>ReleaseHandle</i><br />
+Removes the subclasser and resets the internal handle to zero.  Note
+that this is automatically called when the Window's <i>WM_NCDESTROY</i>
+message is received, which is the last thing that happens to a Window
+before it finally joins bit heaven.</li><li><i>WndProc(ref Message m)</i><br />
+A method which you can override to react to the messages passing through
+the chain.  By default, no message processing is done.</li></ol><p>Using it is then easy: just create a class which extends <i>NativeWindow</i>,
+override the <i>WndProc</i> message and you are away.  The best thing about
+the object is that it allows you to attach as many instances as you'd like
+to the same handle, and they all keep working fine.  I assume that the 
+.NET Framework uses the same subclassing technique that is now also implemented 
+in ComCtl32.DLL version 6.0 to achieve this (search for <i>SetWindowSubClass</i>
+for more information on this).</p><h2>Example: Responding to <i>WM_ACTIVATE</i> messages</h2><p>One thing that the <i>Windows.Forms.Form</i> object misses is an event
+to tell you the user has switched to another application.  This can be very
+handy to know if you are (for example) allowing the user to draw on the screen
+with the mouse, as otherwise it is possible to get into a limbo state where
+your app thinks its still drawing but in fact the user's happily typing away
+in an email that's just arrived.</p><p>Resolving this means you need to intercept a message telling you what's
+happened.  Candidates are <i>WM_CAPTURECHANGED</i> or <i>WM_ACTIVATE</i>, in
+this case I've picked <i>WM_ACTIVATE</i> as this can also be useful when 
+playing about with drop-down windows and the like.</p><p>The first step is to decide how you want to notify about activation change
+messages.  I've chosen to force the owner to implement an interface to get
+the message; however you can equally raise an Event in which case the component
+is entirely decoupled from the Window its checking on.  So the implementation
+consists of two parts: an interface for notification and a class which 
+extends <i>NativeWindow</i> to alert the user.  As the <i>WM_ACTIVATE</i> 
+message can tell you whether activation was caused by the mouse or by some
+other means, I also include a short enum for the activation reason, which
+means the code comes in three parts:</p><h3>1. Activation Reason Enum</h3><pre>
+	/// &lt;summary&gt;
+	/// Activation state change type.
+	/// &lt;/summary&gt;
+	public enum ActivationStateChangeType : int
+	{
+		/// &lt;summary&gt;
+		/// The form is inactive
+		/// &lt;/summary&gt;
+		WA_INACTIVE     = 0,
+		/// &lt;summary&gt;
+		/// The form is active
+		/// &lt;/summary&gt;
+		WA_ACTIVE       = 1,
+		/// &lt;summary&gt;
+		/// The form has been clicked to make it active
+		/// &lt;/summary&gt;
+		WA_CLICKACTIVE  = 2
+	}
+</pre><h3>2. Notification Interface</h3><pre>
+	/// &lt;summary&gt;
+	/// Interface for receiving Activation State Change
+	/// notifications
+	/// &lt;/summary&gt;
+	public interface IActivateChangeNotify
+	{
+		/// &lt;summary&gt;
+		/// Notifies of an Activation state change in the window
+		/// &lt;/summary&gt;
+		/// &lt;param name="changeType"&gt;Type of activation change
+        	/// &lt;/param&gt;
+		void ActivateChanged(
+           ActivationStateChangeType changeType);
+	}
+</pre><h3>3. Subclass Implementation</h3><pre>
+	/// &lt;summary&gt;
+	/// Class for notifying of Activation state changes
+	/// for a Window.
+	/// &lt;/summary&gt;
+	public class ActivateChangeSubclass :
+		System.Windows.Forms.NativeWindow
+	{
+		/// &lt;summary&gt;
+		/// Stores the notify interface object, if any
+		/// &lt;/summary&gt;
+		private IActivateChangeNotify notify = null;
+
+		/// &lt;summary&gt;
+		/// Message send to a window when activation state
+		/// changes
+		/// &lt;/summary&gt;
+		private const int WM_ACTIVATE = 0x6;
+
+		/// &lt;summary&gt;
+		/// Processes window messages and notifies of any activation
+		/// state changes.
+		/// &lt;/summary&gt;
+		/// &lt;param name="m"&gt;Message&lt;/param&gt;
+		protected override void WndProc(
+			ref System.Windows.Forms.Message m)
+		{
+			// always perform default:
+			base.WndProc(ref m);
+			// If message is activate and a notifier
+			// is in place then notify it:
+			if (m.Msg == WM_ACTIVATE)
+			{
+				if (notify != null)
+				{
+					notify.ActivateChanged(
+						(ActivationStateChangeType)((int)m.WParam));
+				}
+			}
+		}
+		/// &lt;summary&gt;
+		/// Creates a new instance of the ActivateChangeSubclass
+		/// object and starts checking for Activate state changes
+		/// &lt;/summary&gt;
+		/// &lt;param name="handle"&gt;Handle of window to check for
+		/// Activation State changes&lt;/param&gt;
+		/// &lt;param name="notify"&gt;Object to receive Activtion state
+		/// change notifications&lt;/param&gt;
+		public ActivateChangeSubclass(
+			IntPtr handle,
+			IActivateChangeNotify notify
+			)
+		{
+			this.AssignHandle(handle);
+			this.notify = notify;
+		}
+	}
+
+</pre><p>This code is included in the download, along with another class which
+allows you to intercept <i>WM_SIZING</i> and <i>WM_MOVING</i> events.  These
+give you fine-grained control over exactly where a window can be sized or
+moved to.</p><h2>Comparision of Using NativeWindow to SSubTmr</h2><p>If you've never tried the <a href="..\..\..\..\..\vb\code\libraries\subclassing\ssubtimer\article.html">Subclassing and
+Timer Assistant</a> from this site with VB5 or VB6 then you can skip this
+section since it won't be relevant.</p><p>If you were using the Subclassing and timer assistant to subclass
+a window, you would write code something like this:</p><pre>
+'
+Implements ISubClass
+
+Private Sub Form_Load()
+   ' Start subclassing, and request the
+   ' WM_SIZING message:
+   AttachMessage Me, Me.hWnd, WM_SIZING
+End Sub
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+   ' Stop subclassing (called automatically when
+   ' the form unloads via the WM_DESTROY message)
+   DetachMessage Me, Me.hWnd, WM_SIZING
+End Sub
+
+Private Property Get ISubClass_MsgResponse() As EMsgResponse
+   ' Tell the subclasser not to pass the message
+   ' on to the default windows procedure:
+   If (CurrentMessage = WM_SIZING) Then
+      ISubClass_MsgResponse = emrConsume
+   End If
+End Property
+
+Private Property Let ISubClass_MsgResponse( _
+      emr As EMsgResponse)
+   ' This is a legacy method and never used
+End Property
+
+Private Function ISubClass_WindowProc(
+      ByVal hWnd As Long, _
+      ByVal msg As Long, _
+      ByVal wParam As Long, _
+      ByVal lParam As Long _
+   ) As Long
+   Select Case msg
+   Case WM_SIZING
+
+      ' Process message here (lParam is a pointer to a rectangle).
+
+      ' If we wanted to call the default behaviour we could
+      ' either set ISubClass_MsgResponse to emrPreProcess or
+      ' we can call the default window procedure using
+      ' CallOldWindowProc(hWnd, msg, wParam, lParam)
+
+      ' Return true:
+      ISubClass_WindowProc = 1
+   End Select
+End Function
+</pre><p>The <i>NativeWindow</i> method is fairly similar: really the only
+differences are that firstly you now extend <i>NativeWindow</i> rather than 
+implementing an interface for the subclass and secondly that your
+subclass procedure always receives all messages, rather than a filtered
+set:</p><pre>
+
+// Rather than implementing ISubclass we extend NativeWindow:
+Public Class SizingSubClass : NativeWindow
+{
+    protected override void WndProc(
+       ref System.Windows.Forms.Message m)
+    {
+       // We have to filter our own messages:
+       switch (m.Msg)
+       {
+           case WM_SIZING:
+              // Process message here (lParam is a
+              // pointer to a rectangle).
+
+              // If we wanted to call the default behaviour
+              // we could call base.WndProc(ref m) here.
+
+              // Return true:
+              m.Result = 1;
+              break;
+
+           case default:
+               // perform default processing:
+               base.WndProc(ref m);
+               break;
+       }
+    }
+}
+
+public class Form1 : System.Windows.Form
+{
+   private SizingSubClass ss = null;
+
+   public Form1()
+   {
+      this.Load += new EventHandler(Form1_Load);
+      this.Closing += new CancelEventHandler(Form1_Closing);
+   }
+
+   private void Form1_Load(object sender, EventArgs e)
+   {
+       ss = new SizingSubClass();
+
+       // Tell the NativeWindow to start subclassing:
+       ss.AssignHandle(this.Handle);
+   }
+
+   private  void Form1_Closing(object sender, CancelEventArgs e)
+   {
+       // Tell the NativeWindow to stop subclassing
+       // (called automatically when Form1 unloads and
+       // the WM_NCDESTROY message is sent):
+       ss.ReleaseHandle();
+   }
+
+}
+</pre><h2>Also..</h2><p>If you look at the <i>NativeWindow</i> class you'll see it also allows
+you to create your own Win32 windows from first principles using the
+<i>CreateHandle</i> method.  This provides an excellent start for creating
+things like pop-up windows, particularly now in XP you can give any window
+a drop shadow by giving its class the <i>CS_DROPSHADOW</i> style.
+More to follow...</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\index.html" ><IMG SRC="..\..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\index.html">Windows Messages</a>&#160;.&#160;Subclassing In .NET</p><br /><p class="nav"><a href="..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 11 April 2003</p></td><td></td></tr></table>
+</body></html>

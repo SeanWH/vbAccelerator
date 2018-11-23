@@ -1,0 +1,289 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Simpler UserControl Tab Trapping.</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+&nbsp;<b>Simpler UserControl Tab Trapping.</b>
+</font></td>
+</tr>
+<tr >
+<td><font color="#6699CC" face="verdana,arial,helvetica" size="1">
+&nbsp;Create controls which manage the Tab key with this DLL wrapper around IOLEInPlaceActiveObject 
+</font></td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><a href="vbalipao.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbalIPAO ActiveX DLL, code and demonstration project (15kb)</a></p>
+        </font>
+        <p>
+        <table cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<td width="20">&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Source Code Note</b>
+		</font>
+		</td>
+		<td width="30">&nbsp</td>
+	</tr>
+	<tr>
+		<td width="20">&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		This DLL is a binary compatible component which works with all other samples.  
+		If you compile your own copy of this DLL yourself <b>please</b> make sure you change
+		the name.  See <a href="..\..\mission.htm" target="vbamain">disclaimer and license</a> for more details.
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The source code project requires the <a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+        <tr>
+                <td>&nbsp</td>
+                <td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+                <td valign="top">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                The source code project requires the <a href="..\..\typelib.htm#OleGuids">Ole GUID and interface definitions Type Library (OLEGUIDS.tlb)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this before trying 
+		the project.
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+        </table>
+        </p>
+	<p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Overview</b><br>
+	Implementing the <i>IOLEInPlaceActiveObject</i> interface is the only way to solve two 
+	problems in VB:
+	<ol>
+	<li>To allow your control to modify how it responds to the user pressing Tab or Shift-Tab
+	without requiring the user to set all <i>TabStop</i> properties to False and write their
+	own tabbing code.
+	<li>To allow a window created using the API to appear as part of the VB tab order.
+	</ol>
+	However, if you follow the <a href="tabtrap.htm">full code</a> required to achieve this,
+	you will see that it is awkward and highly "un-basic" like.
+	<br><br>
+	This library provides a simple interface to the IOLEInPlaceActiveObject in a small ActiveX DLL
+	(17kb), isolating the code from your project, and also is designed so you only need to 
+	move one class and one module to your UserControl to compile the support directly into your
+	control.
+	<br><br>
+	<b>Tab Trapping with vbalIPAO.Dll</b><br>
+	The vbalIPAO library has three methods and one interface which you must implement to use the
+	methods.  To use it, you first implement the <i>IPAO</i> interface.  Add the line:
+	<br><br>
+	</font>
+	<font face="lucida console, courier new, courier" color="#000000" size="1">
+	&nbsp;&nbsp;Implements IPAO<br>
+	</font>
+	<br>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	Once you have done this, you will have to fill in the <i>IPAO_TranslateAccelerator</i> method
+	with the code you want for the keys . This
+	method is fired when an Accelerator is pressed and your control is active.  Accelerator keys in
+	UserControls are defined as the arrow keys (up, down, left, right), the Tab key and the Enter key.
+	<br><br>
+	The <i>TranslateAccelerator</i> parameters are:	
+	<ul>
+	<li>hWnd, iMsg, wParam, lParam<br>
+	The <i>SendMessage</i> parameters of the message.
+	<li>iKeyCode<br>The KeyCode of the Accelerator key.
+	<li>iShiftState<br>The current shift state.
+	<li>x, y<br>The mouse position relative to the screen at the time the message was generated, specified in
+	pixels.
+	<li>time<br>A long value specifying the time the message was generated.<br><br>
+	</ul>
+	If you wish to process the key, return a value of 0, otherwise return a value of 1.
+	<br><br>
+	Once you have an <i>IPAO</i> implementation, you can then use the library.  Here are the methods:
+
+	<br><br>
+	<b>Sub AttachIPAO(ByVal ctlRef As IPAO, ByVal hWnd As Long)</b><br>
+	Connects the IOLEInPlaceActiveObject interface to a UserControl.  Since the library uses a <i>hWnd</i>
+	property to keep track of which control(s) it is attached to, you need to wait until your UserControl's
+	<i>hWnd</i> property is valid.  This occurs once either the
+	<i>UserControl_InitProperties</i> (if it is the first time you are using the control and there are no 
+	stored properties) or the <i>UserControl_ReadProperties</i> event fires.
+	
+	<br><br>	
+	<b>Sub DetachIPAO(ByVal hWnd As Long)</b>
+	Detach the IOLEInPlaceActiveObject interface from a UserControl.  Call this object when your control
+	terminates during the <i>UserControl_Terminate</i> event, otherwise a (very small) 
+	memory and resource leak will occur.
+	<br><br>
+	<b>Sub IPAOInPlaceActivate(ByVal ctlRef As IPAO, ByVal hWnd As Long)</b>
+	Set an alternative TranslateAccelerator Handler.  Call this method in response to a your main
+	control getting focus.
+	<br><br>
+	If you are creating an all VB control, you call this method whenever the UserControl's <i>SetFocus</i>
+	event occurs.  Use exactly the same values in the parameters as you passed to the <i>AttachIPAO</i>
+	method.
+	<br><br>
+	If you are creating a VB control which hosts an API created control, you need to 
+	<a href="..\ssubtmr\ssubtmr.htm">Subclass</a> the UserControl for the <i>WM_SETFOCUS</i>
+	and <i>WM_MOUSEACTIVATE</i> messages.  If either fires, call <i>SetFocusAPI</i> on the API
+	created control. Then subclass the API control for the <i>WM_SETFOCUS</i> message. When it occurs,
+	call this method.  
+	<br><br>
+	To see an example of the library code in use in an API control, check out Mike Gainer's 
+	<a href="..\submit\txtboxex.htm">TextBoxEx control</a>.
+
+	<br><br>
+	<a href="vbalipao.rtf" target="vbamain"><img src="..\..\images\dnlddoc.gif" width="20" height="16" border="0" hspace="4">Click here to view the vbalIPAO.DLL method and event documentation (3kb)</a>
+
+	</font>
+	</p>
+
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+
+
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+        <p><a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+
+        </font>
+
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

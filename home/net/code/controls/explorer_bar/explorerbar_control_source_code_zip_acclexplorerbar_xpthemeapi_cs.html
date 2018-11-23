@@ -1,0 +1,1938 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: acclExplorerBar_XpThemeAPI.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: acclExplorerBar_XpThemeAPI.cs" /><link rel="stylesheet" href="..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\res\print.css" media="PRINT" /><link rel="SHORTCUT ICON" href="/home/res/vbaccel.ico" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_XpThemeAPI.cs</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="explorerbar_control_binary.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Binary</a> (40K)</p><p class="nav"><a href="explorerbar_control_demonstration.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Demonstration</a> (47K)</p><p class="nav"><a href="explorerbar_control_documentation.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Documentation</a> (265K)</p><p class="nav"><a href="explorerbar_control_source_code.html"><img src="..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />ExplorerBar Control Source Code</a> (201K)</p><br /><br /><img src="..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:14471</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\linkto_asp\id=14471&type=zip&title=explorerbar_20control_20source_20code_2ezip_5facclexplorerbar_5fxpthemeapi.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;C#</p><p class="nav">&#160;&#160;VB.NET</p><p class="nav">&#160;&#160;.NET</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\res\update.png" width="8" height="8" alt="Update" />17 Apr 2004<br />First Posted</p><br /><br /><img src="..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\..\..\vb\code\controls\explorer_bar_control\article.html">vbAccelerator Explorer Bar Control</a></p><p class="nav"><img src="..\..\..\..\res\rel.png" width="8" height="8" alt="Related Item" /><a href="..\..\libraries\graphics\reading_exif_tags_from_jpg_files\article.html">Reading EXIF Tags From JPEG Files</a></p><br /><br /><img src="..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: acclExplorerBar_XpThemeAPI.cs</h1><pre>using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace vbAccelerator.Components.Controls.ExplorerBarUtility
+{
+   /// &lt;summary&gt;
+   /// Some managed wrappers around the unmanaged XP theme API
+   /// &lt;/summary&gt;
+   public class XpThemeAPI : IDisposable
+   {
+
+      #region Enums
+      /// &lt;summary&gt;
+      ///  "Window" (i.e., non-client) Parts
+      /// &lt;/summary&gt;
+      public enum UxThemeWindowParts : int
+      {
+         /// &lt;summary&gt;Caption&lt;/summary&gt;
+         WP_CAPTION = 1,
+         /// &lt;summary&gt;Small Caption&lt;/summary&gt;
+         WP_SMALLCAPTION = 2,
+         /// &lt;summary&gt;Minimised Caption&lt;/summary&gt;
+         WP_MINCAPTION = 3,
+         /// &lt;summary&gt;Small minimised Caption&lt;/summary&gt;
+         WP_SMALLMINCAPTION = 4,
+         /// &lt;summary&gt;Maximised Caption&lt;/summary&gt;
+         WP_MAXCAPTION = 5,
+         /// &lt;summary&gt;Small maximised Caption&lt;/summary&gt;
+         WP_SMALLMAXCAPTION = 6,
+         /// &lt;summary&gt;Frame left&lt;/summary&gt;
+         WP_FRAMELEFT = 7,
+         /// &lt;summary&gt;Frame right&lt;/summary&gt;
+         WP_FRAMERIGHT = 8,
+         /// &lt;summary&gt;Frame bottom&lt;/summary&gt;
+         WP_FRAMEBOTTOM = 9,
+         /// &lt;summary&gt;Small frame left&lt;/summary&gt;
+         WP_SMALLFRAMELEFT = 10,
+         /// &lt;summary&gt;Small frame right&lt;/summary&gt;
+         WP_SMALLFRAMERIGHT = 11,
+         /// &lt;summary&gt;Small frame bottom&lt;/summary&gt;
+         WP_SMALLFRAMEBOTTOM = 12,
+         /// &lt;summary&gt;System button&lt;/summary&gt;
+         WP_SYSBUTTON = 13,
+         /// &lt;summary&gt;MDI System button&lt;/summary&gt;
+         WP_MDISYSBUTTON = 14,
+         /// &lt;summary&gt;Min button&lt;/summary&gt;
+         WP_MINBUTTON = 15,
+         /// &lt;summary&gt;MDI Min button&lt;/summary&gt;
+         WP_MDIMINBUTTON = 16,
+         /// &lt;summary&gt;Max button&lt;/summary&gt;
+         WP_MAXBUTTON = 17,
+         /// &lt;summary&gt;Close button&lt;/summary&gt;
+         WP_CLOSEBUTTON = 18,
+         /// &lt;summary&gt;Small close button&lt;/summary&gt;
+         WP_SMALLCLOSEBUTTON = 19,
+         /// &lt;summary&gt;MDI close button&lt;/summary&gt;
+         WP_MDICLOSEBUTTON = 20,
+         /// &lt;summary&gt;Restore button&lt;/summary&gt;
+         WP_RESTOREBUTTON = 21,
+         /// &lt;summary&gt;MDI Restore button&lt;/summary&gt;
+         WP_MDIRESTOREBUTTON = 22,
+         /// &lt;summary&gt;Help button&lt;/summary&gt;
+         WP_HELPBUTTON = 23,
+         /// &lt;summary&gt;MDI Help button&lt;/summary&gt;
+         WP_MDIHELPBUTTON = 24,
+         /// &lt;summary&gt;Horizontal scroll bar&lt;/summary&gt;
+         WP_HORZSCROLL = 25,
+         /// &lt;summary&gt;Horizontal scroll thumb&lt;/summary&gt;
+         WP_HORZTHUMB = 26,
+         /// &lt;summary&gt;Vertical scroll bar&lt;/summary&gt;
+         WP_VERTSCROLL = 27,
+         /// &lt;summary&gt;Vertical scroll thumb&lt;/summary&gt;
+         WP_VERTTHUMB = 28,
+         /// &lt;summary&gt;Dialog&lt;/summary&gt;
+         WP_DIALOG = 29,
+         /// &lt;summary&gt;Caption sizing hittest template&lt;/summary&gt;
+         WP_CAPTIONSIZINGTEMPLATE = 30,
+         /// &lt;summary&gt;Small caption sizing hittest template&lt;/summary&gt;
+         WP_SMALLCAPTIONSIZINGTEMPLATE = 31,
+         /// &lt;summary&gt;Frame left sizing hittest template&lt;/summary&gt;
+         WP_FRAMELEFTSIZINGTEMPLATE = 32,
+         /// &lt;summary&gt;Small frame left sizing hittest template&lt;/summary&gt;
+         WP_SMALLFRAMELEFTSIZINGTEMPLATE = 33,
+         /// &lt;summary&gt;Frame right sizing hittest template&lt;/summary&gt;
+         WP_FRAMERIGHTSIZINGTEMPLATE = 34,
+         /// &lt;summary&gt;Small frame right sizing hittest template&lt;/summary&gt;
+         WP_SMALLFRAMERIGHTSIZINGTEMPLATE = 35,
+         /// &lt;summary&gt;Frame button sizing hittest template&lt;/summary&gt;
+         WP_FRAMEBOTTOMSIZINGTEMPLATE = 36,
+         /// &lt;summary&gt;Small frame bottom sizing hittest template&lt;/summary&gt;
+         WP_SMALLFRAMEBOTTOMSIZINGTEMPLATE = 37
+      }
+
+      /// &lt;summary&gt;
+      /// Frame states
+      /// &lt;/summary&gt;
+      public enum UxThemeFrameStates : int
+      {
+         /// &lt;summary&gt;Active frame&lt;/summary&gt;
+         FS_ACTIVE = 1,
+         /// &lt;summary&gt;Inactive frame&lt;/summary&gt;
+         FS_INACTIVE = 2
+      }
+
+      /// &lt;summary&gt;
+      /// Caption states
+      /// &lt;/summary&gt;
+      public enum UxThemeCaptionStates : int
+      {
+         /// &lt;summary&gt;Active caption&lt;/summary&gt;
+         CS_ACTIVE = 1,
+         /// &lt;summary&gt;Inactive caption&lt;/summary&gt;
+         CS_INACTIVE = 2,
+         /// &lt;summary&gt;Disabled caption&lt;/summary&gt;
+         CS_DISABLED = 3
+      }
+    
+      /// &lt;summary&gt;
+      /// Maximised caption states
+      /// &lt;/summary&gt;
+      public enum UxThemeMaxCaptionStates : int
+      {
+         /// &lt;summary&gt;Max Active caption&lt;/summary&gt;
+         MXCS_ACTIVE = 1,
+         /// &lt;summary&gt;Max inactive caption&lt;/summary&gt;
+         MXCS_INACTIVE = 2,
+         /// &lt;summary&gt;Max disabled caption&lt;/summary&gt;
+         MXCS_DISABLED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Minimised caption states
+      /// &lt;/summary&gt;
+      public enum UxThemeMinCaptionStates : int
+      {
+         /// &lt;summary&gt;Minimised active caption&lt;/summary&gt;
+         MNCS_ACTIVE = 1,
+         /// &lt;summary&gt;Minimised inactive caption&lt;/summary&gt;
+         MNCS_INACTIVE = 2,
+         /// &lt;summary&gt;Minimised disabled caption&lt;/summary&gt;
+         MNCS_DISABLED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Horizontal scroll states
+      /// &lt;/summary&gt;
+      public enum UxThemeHorzScrollStates : int
+      {         
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         HSS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         HSS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         HSS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         HSS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Horizontal thumb states
+      /// &lt;/summary&gt;
+      public enum UxThemeHorzThumbStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         HTS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         HTS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         HTS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         HTS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Vertical scroll states
+      /// &lt;/summary&gt;
+      public enum UxThemeVertScrollStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         VSS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         VSS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         VSS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         VSS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Vertical thumb states
+      /// &lt;/summary&gt;
+      public enum UxThemeVertThumbStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         VTS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         VTS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         VTS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         VTS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// System Button states
+      /// &lt;/summary&gt;
+      public enum UxThemeSysButtonStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         SBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         SBS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         SBS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         SBS_DISABLED = 4
+      }
+   
+      /// &lt;summary&gt;
+      /// Min Button states
+      /// &lt;/summary&gt;
+      public enum UxThemeMinButtonStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         MINBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         MINBS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         MINBS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         MINBS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Max Button states
+      /// &lt;/summary&gt;
+      public enum UxThemeMaxButtonStates :  int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         MAXBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         MAXBS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         MAXBS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         MAXBS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Restore button states
+      /// &lt;/summary&gt;
+      public enum UxThemeRestoreButtonStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         RBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         RBS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         RBS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         RBS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Help button states
+      /// &lt;/summary&gt;
+      public enum UxThemeHelpButtonStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         HBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         HBS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         HBS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         HBS_DISABLED = 4,
+      }
+
+      /// &lt;summary&gt;
+      /// Closed button states
+      /// &lt;/summary&gt;
+      public enum UxThemeCloseButtonStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         CBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         CBS_HOT = 2,
+         /// &lt;summary&gt;Pushed&lt;/summary&gt;
+         CBS_PUSHED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         CBS_DISABLED = 4
+      }
+
+
+      /// &lt;summary&gt;
+      ///  "Button" Parts
+      /// &lt;/summary&gt;
+      public enum UxThemeButtonParts : int
+      {
+         /// &lt;summary&gt;Push Button&lt;/summary&gt;
+         BP_PUSHBUTTON = 1,
+         /// &lt;summary&gt;Radio Button&lt;/summary&gt;
+         BP_RADIOBUTTON = 2,
+         /// &lt;summary&gt;Check box&lt;/summary&gt;
+         BP_CHECKBOX = 3,
+         /// &lt;summary&gt;Group box&lt;/summary&gt;
+         BP_GROUPBOX = 4,
+         /// &lt;summary&gt;User button&lt;/summary&gt;
+         BP_USERBUTTON = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Push Button states
+      /// &lt;/summary&gt;
+      public enum UxThemePushButtonStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         PBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         PBS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;
+         PBS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         PBS_DISABLED = 4,
+         /// &lt;summary&gt;Defaulted&lt;/summary&gt;
+         PBS_DEFAULTED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Radio button states
+      /// &lt;/summary&gt;
+      public enum UxThemeRadioButtonStates : int
+      {
+         /// &lt;summary&gt;Unchecked Normal&lt;/summary&gt;
+         RBS_UNCHECKEDNORMAL = 1,
+         /// &lt;summary&gt;Unchecked Hot&lt;/summary&gt;
+         RBS_UNCHECKEDHOT = 2,
+         /// &lt;summary&gt;Unchecked Pressed&lt;/summary&gt;
+         RBS_UNCHECKEDPRESSED = 3,
+         /// &lt;summary&gt;Unchecked Disabled&lt;/summary&gt;
+         RBS_UNCHECKEDDISABLED = 4,
+         /// &lt;summary&gt;Checked Normal&lt;/summary&gt;
+         RBS_CHECKEDNORMAL = 5,
+         /// &lt;summary&gt;Checked Hot&lt;/summary&gt;
+         RBS_CHECKEDHOT = 6,
+         /// &lt;summary&gt;Checked Pressed&lt;/summary&gt;
+         RBS_CHECKEDPRESSED = 7,
+         /// &lt;summary&gt;Checked Disabled&lt;/summary&gt;
+         RBS_CHECKEDDISABLED = 8
+      }
+
+      /// &lt;summary&gt;
+      /// Check box states
+      /// &lt;/summary&gt;
+      public enum UxThemeCheckBoxStates : int 
+      {
+         /// &lt;summary&gt;Unchecked Normal&lt;/summary&gt;
+         CBS_UNCHECKEDNORMAL = 1,
+         /// &lt;summary&gt;Unchecked Hot&lt;/summary&gt;
+         CBS_UNCHECKEDHOT = 2,
+         /// &lt;summary&gt;Unchecked Pressed&lt;/summary&gt;
+         CBS_UNCHECKEDPRESSED = 3,
+         /// &lt;summary&gt;Unchecked Disabled&lt;/summary&gt;
+         CBS_UNCHECKEDDISABLED = 4,
+         /// &lt;summary&gt;Checked Normal&lt;/summary&gt;
+         CBS_CHECKEDNORMAL = 5,
+         /// &lt;summary&gt;Checked Hot&lt;/summary&gt;
+         CBS_CHECKEDHOT = 6,
+         /// &lt;summary&gt;Checked Pressed&lt;/summary&gt;
+         CBS_CHECKEDPRESSED = 7,
+         /// &lt;summary&gt;Checked Disabled&lt;/summary&gt;
+         CBS_CHECKEDDISABLED = 8,
+         /// &lt;summary&gt;Mixed Normal&lt;/summary&gt;
+         CBS_MIXEDNORMAL = 9,
+         /// &lt;summary&gt;Mixed Hot&lt;/summary&gt;
+         CBS_MIXEDHOT = 10,
+         /// &lt;summary&gt;Mixed Pressed&lt;/summary&gt;
+         CBS_MIXEDPRESSED = 11,
+         /// &lt;summary&gt;Mixed Disabled&lt;/summary&gt;
+         CBS_MIXEDDISABLED = 12
+      }
+
+      /// &lt;summary&gt;
+      /// Group box states
+      /// &lt;/summary&gt;
+      public enum UxThemeGroupBoxStates : int 
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         GBS_NORMAL = 1,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         GBS_DISABLED = 2
+      }
+
+
+      /// &lt;summary&gt;
+      /// "Rebar" Parts
+      /// &lt;/summary&gt;
+      public enum UxThemeRebarParts : int
+      {
+         /// &lt;summary&gt;Gripper&lt;/summary&gt;
+         RP_GRIPPER = 1,
+         /// &lt;summary&gt;Vertical Gripper&lt;/summary&gt;
+         RP_GRIPPERVERT = 2,
+         /// &lt;summary&gt;Band&lt;/summary&gt;
+         RP_BAND = 3,
+         /// &lt;summary&gt;Chevron&lt;/summary&gt;
+         RP_CHEVRON = 4,
+         /// &lt;summary&gt;Vertical Chevron&lt;/summary&gt;
+         RP_CHEVRONVERT = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Chevron states
+      /// &lt;/summary&gt;
+      public enum UxThemeChevronStates : int 
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         CHEVS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         CHEVS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;
+         CHEVS_PRESSED = 3
+      }
+
+
+      /// &lt;summary&gt;
+      ///  "Toolbar" Parts
+      /// &lt;/summary&gt;
+      public enum UxThemeToolBarParts : int
+      {
+         /// &lt;summary&gt;Button&lt;/summary&gt;
+         TP_BUTTON = 1,
+         /// &lt;summary&gt;Drop-Down Button&lt;/summary&gt;
+         TP_DROPDOWNBUTTON = 2,
+         /// &lt;summary&gt;Split Button&lt;/summary&gt;
+         TP_SPLITBUTTON = 3,
+         /// &lt;summary&gt;Split drop-Down Button&lt;/summary&gt;
+         TP_SPLITBUTTONDROPDOWN = 4,
+         /// &lt;summary&gt;Separator&lt;/summary&gt;
+         TP_SEPARATOR = 5,
+         /// &lt;summary&gt;Vertical Separator&lt;/summary&gt;
+         TP_SEPARATORVERT = 6
+      }
+
+
+      /// &lt;summary&gt;
+      /// Tool bar states
+      /// &lt;/summary&gt;
+      public enum UxThemeToolBarStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         TS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         TS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;
+         TS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;
+         TS_DISABLED = 4,
+         /// &lt;summary&gt;Checked&lt;/summary&gt;
+         TS_CHECKED = 5,
+         /// &lt;summary&gt;Checked and Hot&lt;/summary&gt;
+         TS_HOTCHECKED = 6
+      }
+
+      
+      /// &lt;summary&gt; "Status" Parts &lt;/summary&gt;      
+      public enum UxThemeStatusParts : int
+      {
+         /// &lt;summary&gt;Pane&lt;/summary&gt;
+         SP_PANE = 1,
+         /// &lt;summary&gt;Gripper Pane&lt;/summary&gt;
+         SP_GRIPPERPANE = 2,
+         /// &lt;summary&gt;Gripper&lt;/summary&gt;
+         SP_GRIPPER = 3
+      }
+
+      /// &lt;summary&gt; "Menu" Parts &lt;/summary&gt;summary&gt;
+      public enum UxThemeMenuParts : int 
+      {
+         /// &lt;summary&gt;Menu Item&lt;/summary&gt;
+         MP_MENUITEM = 1,
+         /// &lt;summary&gt;Menu Drop-Down&lt;/summary&gt;
+         MP_MENUDROPDOWN = 2,
+         /// &lt;summary&gt;Menu Bar Item&lt;/summary&gt;
+         MP_MENUBARITEM = 3,
+         /// &lt;summary&gt;Menu Bar Drop-DOwn&lt;/summary&gt;
+         MP_MENUBARDROPDOWN = 4,
+         /// &lt;summary&gt;Chevron&lt;/summary&gt;
+         MP_CHEVRON = 5,
+         /// &lt;summary&gt;Separator&lt;/summary&gt;
+         MP_SEPARATOR = 6
+      }
+      /// &lt;summary&gt;Menu States&lt;/summary&gt;
+      public enum UxThemeMenuStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;
+         MS_NORMAL = 1,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;
+         MS_SELECTED = 2,
+         /// &lt;summary&gt;Demoted&lt;/summary&gt;
+         MS_DEMOTED = 3
+      }
+
+      /// &lt;summary&gt; "ListView" Parts&lt;/summary&gt;
+      public enum UxThemeLISTVIEWParts : int 
+      {
+         /// &lt;summary&gt;List item&lt;/summary&gt;
+         LVP_LISTITEM = 1,
+         /// &lt;summary&gt;List Group&lt;/summary&gt;
+         LVP_LISTGROUP = 2,
+         /// &lt;summary&gt;List Detail&lt;/summary&gt;
+         LVP_LISTDETAIL = 3,
+         /// &lt;summary&gt;List Sorted Detail&lt;/summary&gt;
+         LVP_LISTSORTEDDETAIL = 4,
+         /// &lt;summary&gt;List Empty text&lt;/summary&gt;
+         LVP_EMPTYTEXT = 5
+      }
+
+      /// &lt;summary&gt;List Item States&lt;/summary&gt;
+      public enum UxThemeLISTITEMStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         LIS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         LIS_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         LIS_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         LIS_DISABLED = 4,
+         /// &lt;summary&gt;Selected no focus&lt;/summary&gt;      
+         LIS_SELECTEDNOTFOCUS = 5
+      }
+
+      /// &lt;summary&gt; "Header" Parts&lt;/summary&gt;
+      public enum UxThemeHEADERParts : int
+      {
+         /// &lt;summary&gt;Header Item&lt;/summary&gt;
+         HP_HEADERITEM = 1,
+         /// &lt;summary&gt;Left Header Item&lt;/summary&gt;
+         HP_HEADERITEMLEFT = 2,
+         /// &lt;summary&gt;Right Header Item&lt;/summary&gt;
+         HP_HEADERITEMRIGHT = 3,
+         /// &lt;summary&gt;Sort Arrow&lt;/summary&gt;
+         HP_HEADERSORTARROW = 4
+      }
+      
+      /// &lt;summary&gt;Header Item States&lt;/summary&gt;
+      public enum UxThemeHEADERITEMStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         HIS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         HIS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         HIS_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;Left Header Item States&lt;/summary&gt;
+      public enum UxThemeHEADERITEMLEFTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         HILS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         HILS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         HILS_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;Right Header Item States&lt;/summary&gt;
+      public enum UxThemeHEADERITEMRIGHTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         HIRS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;
+         HIRS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         HIRS_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;Header Sort Arrow States&lt;/summary&gt;
+      public enum UxThemeHEADERSORTARROWStates : int
+      {
+         /// &lt;summary&gt;Up&lt;/summary&gt;
+         HSAS_SORTEDUP = 1,
+         /// &lt;summary&gt;Down&lt;/summary&gt;
+         HSAS_SORTEDDOWN = 2
+      }
+
+      /// &lt;summary&gt;
+      ///  Progress Parts
+      /// &lt;/summary&gt;
+      public enum UxThemePROGRESSParts : int
+      {
+         /// &lt;summary&gt;Bar&lt;/summary&gt;      
+         PP_BAR = 1,
+         /// &lt;summary&gt;Vertical Bar&lt;/summary&gt;      
+         PP_BARVERT = 2,
+         /// &lt;summary&gt;Chunks&lt;/summary&gt;      
+         PP_CHUNK = 3,
+         /// &lt;summary&gt;Vertical chunks&lt;/summary&gt;      
+         PP_CHUNKVERT = 4
+      }
+
+      /// &lt;summary&gt;
+      ///  Tab Parts
+      /// &lt;/summary&gt;
+      public enum UsxThemeTABParts : int
+      {
+         /// &lt;summary&gt;Tab&lt;/summary&gt;      
+         TABP_TABITEM = 1,
+         /// &lt;summary&gt;Tab left edge&lt;/summary&gt;      
+         TABP_TABITEMLEFTEDGE = 2,
+         /// &lt;summary&gt;Tab right edge&lt;/summary&gt;      
+         TABP_TABITEMRIGHTEDGE = 3,
+         /// &lt;summary&gt;Tab both edge&lt;/summary&gt;      
+         TABP_TABITEMBOTHEDGE = 4,
+         /// &lt;summary&gt;Top tab item&lt;/summary&gt;      
+         TABP_TOPTABITEM = 5,
+         /// &lt;summary&gt;Top tab item left edge&lt;/summary&gt;      
+         TABP_TOPTABITEMLEFTEDGE = 6,
+         /// &lt;summary&gt;Top tab item right edge&lt;/summary&gt;      
+         TABP_TOPTABITEMRIGHTEDGE = 7,
+         /// &lt;summary&gt;Top tab item both edge&lt;/summary&gt;      
+         TABP_TOPTABITEMBOTHEDGE = 8,
+         /// &lt;summary&gt;Tab pane&lt;/summary&gt;      
+         TABP_PANE = 9,
+         /// &lt;summary&gt;Tab body&lt;/summary&gt;      
+         TABP_BODY = 10
+      }
+
+      /// &lt;summary&gt;
+      /// Tab Item States
+      /// &lt;/summary&gt;
+      public enum UxThemeTABITEMStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TIS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TIS_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TIS_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TIS_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TIS_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Tab item left edge states
+      /// &lt;/summary&gt;
+      public enum UxThemeTABITEMLEFTEDGEStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TILES_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TILES_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TILES_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TILES_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TILES_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Tab item right edge states
+      /// &lt;/summary&gt;
+      public enum UxThemeTABITEMRIGHTEDGEStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TIRES_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TIRES_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TIRES_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TIRES_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TIRES_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Tab item both edge states
+      /// &lt;/summary&gt;
+      public enum UxThemeTABITEMBOTHEDGESStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TIBES_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TIBES_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TIBES_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TIBES_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TIBES_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Top tab item states
+      /// &lt;/summary&gt;
+      public enum UxThemeTOPTABITEMStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTIS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TTIS_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TTIS_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TTIS_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TTIS_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Top tab item left edge states
+      /// &lt;/summary&gt;
+      public enum UxThemeTOPTABITEMLEFTEDGEStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTILES_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TTILES_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TTILES_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TTILES_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TTILES_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Top tab item right edge states
+      /// &lt;/summary&gt;
+      public enum UxThemeTOPTABITEMRIGHTEDGEStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTIRES_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TTIRES_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TTIRES_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TTIRES_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TTIRES_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt;
+      /// Top tab item both edge states
+      /// &lt;/summary&gt;
+      public enum UxThemeTOPTABITEMBOTHEDGESStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTIBES_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TTIBES_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TTIBES_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TTIBES_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TTIBES_FOCUSED = 5
+      }
+
+      /// &lt;summary&gt; "Trackbar" Parts&lt;/summary&gt;
+      public enum UxThemeTRACKBARParts : int
+      {
+         /// &lt;summary&gt;Track&lt;/summary&gt;      
+         TKP_TRACK = 1,
+         /// &lt;summary&gt;Vertical Track&lt;/summary&gt;      
+         TKP_TRACKVERT = 2,
+         /// &lt;summary&gt;Thumb&lt;/summary&gt;      
+         TKP_THUMB = 3,
+         /// &lt;summary&gt;Thumb Button&lt;/summary&gt;      
+         TKP_THUMBBOTTOM = 4,
+         /// &lt;summary&gt;Thumb Top&lt;/summary&gt;      
+         TKP_THUMBTOP = 5,
+         /// &lt;summary&gt;Vertical Thumb&lt;/summary&gt;      
+         TKP_THUMBVERT = 6,
+         /// &lt;summary&gt;Thumb left&lt;/summary&gt;      
+         TKP_THUMBLEFT = 7,
+         /// &lt;summary&gt;Thumb right&lt;/summary&gt;      
+         TKP_THUMBRIGHT = 8,
+         /// &lt;summary&gt;Track tic marks&lt;/summary&gt;      
+         TKP_TICS = 9,
+         /// &lt;summary&gt;Vertical track tic marks&lt;/summary&gt;      
+         TKP_TICSVERT = 10
+      }
+
+      /// &lt;summary&gt;
+      /// Track Bar states
+      /// &lt;/summary&gt;
+      public enum UxThemeTRACKBARStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TKS_NORMAL = 1
+      }
+
+      /// &lt;summary&gt;
+      /// Track states
+      /// &lt;/summary&gt;
+      public enum UxThemeTRACKStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TRS_NORMAL = 1
+      }
+
+      /// &lt;summary&gt;
+      /// Vertical track bar states
+      /// &lt;/summary&gt;
+      public enum UxThemeTRACKVERTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TRVS_NORMAL = 1
+      }
+
+      /// &lt;summary&gt;
+      /// Thumb states
+      /// &lt;/summary&gt;
+      public enum UxThemeTHUMBStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TUS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TUS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TUS_PRESSED = 3,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TUS_FOCUSED = 4,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TUS_DISABLED = 5
+      }
+
+      /// &lt;summary&gt;Thumb Bottom states&lt;/summary&gt;
+      public enum UxThemeTHUMBBOTTOMStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TUBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TUBS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TUBS_PRESSED = 3,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TUBS_FOCUSED = 4,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TUBS_DISABLED = 5
+      }
+
+      /// &lt;summary&gt;Thumb Top states&lt;/summary&gt;
+      public enum UxThemeTHUMBTOPStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TUTS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TUTS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TUTS_PRESSED = 3,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TUTS_FOCUSED = 4,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TUTS_DISABLED = 5
+      }
+
+      /// &lt;summary&gt;Vertical thumb states&lt;/summary&gt;
+      public enum UxThemeTHUMBVERTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TUVS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TUVS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TUVS_PRESSED = 3,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TUVS_FOCUSED = 4,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TUVS_DISABLED = 5
+      }
+
+      /// &lt;summary&gt;Vertical thumb left states&lt;/summary&gt;
+      public enum UxThemeTHUMBLEFTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TUVLS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TUVLS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TUVLS_PRESSED = 3,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TUVLS_FOCUSED = 4,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TUVLS_DISABLED = 5
+      }
+
+      /// &lt;summary&gt;Vertical thumb right states&lt;/summary&gt;
+      public enum UxThemeTHUMBRIGHTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TUVRS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TUVRS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TUVRS_PRESSED = 3,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         TUVRS_FOCUSED = 4,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TUVRS_DISABLED = 5
+      }
+
+      /// &lt;summary&gt;Thumb states&lt;/summary&gt;
+      public enum UxThemeTICSStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TSS_NORMAL = 1
+      }
+
+      /// &lt;summary&gt;Vertical thumb tics states&lt;/summary&gt;
+      public enum UxThemeTICSVERTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TSVS_NORMAL = 1
+      }
+
+      /// &lt;summary&gt; "Tooltips" Parts&lt;/summary&gt;
+      public enum UxThemeTOOLTIPParts : int
+      {
+         /// &lt;summary&gt;Standard&lt;/summary&gt;      
+         TTP_STANDARD = 1,
+         /// &lt;summary&gt;Standard with title&lt;/summary&gt;      
+         TTP_STANDARDTITLE = 2,
+         /// &lt;summary&gt;Balloon&lt;/summary&gt;      
+         TTP_BALLOON = 3,
+         /// &lt;summary&gt;Balloon with title&lt;/summary&gt;      
+         TTP_BALLOONTITLE = 4,
+         /// &lt;summary&gt;Close&lt;/summary&gt;      
+         TTP_CLOSE = 5
+      }
+
+      /// &lt;summary&gt;Tool tip Close states&lt;/summary&gt;
+      public enum UxThemeCLOSEStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTCS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TTCS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         TTCS_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Standard Tool Tip states
+      /// &lt;/summary&gt;
+      public enum UxThemeSTANDARDStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTSS_NORMAL = 1,
+         /// &lt;summary&gt;Link&lt;/summary&gt;      
+         TTSS_LINK = 2
+      }
+
+      /// &lt;summary&gt;
+      /// Balloon tool tip states
+      /// &lt;/summary&gt;
+      public enum UxThemeBALLOONStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TTBS_NORMAL = 1,
+         /// &lt;summary&gt;Link&lt;/summary&gt;      
+         TTBS_LINK = 2
+      }
+
+      /// &lt;summary&gt; "TreeView" Parts&lt;/summary&gt;
+      public enum UxThemeTREEVIEWParts : int
+      {
+         /// &lt;summary&gt;Tree Item&lt;/summary&gt;      
+         TVP_TREEITEM = 1,
+         /// &lt;summary&gt;Glyph&lt;/summary&gt;      
+         TVP_GLYPH = 2,
+         /// &lt;summary&gt;Branch&lt;/summary&gt;      
+         TVP_BRANCH = 3
+      }
+
+      /// &lt;summary&gt;Tree Item States&lt;/summary&gt;      
+      public enum UxThemeTREEITEMStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         TREIS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         TREIS_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         TREIS_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         TREIS_DISABLED = 4,
+         /// &lt;summary&gt;Selected no focus&lt;/summary&gt;      
+         TREIS_SELECTEDNOTFOCUS = 5
+      }
+
+      /// &lt;summary&gt;Glyph states&lt;/summary&gt;      
+      public enum UxThemeGLYPHStates : int
+      {
+         /// &lt;summary&gt;Closed&lt;/summary&gt;      
+         GLPS_CLOSED = 1,
+         /// &lt;summary&gt;Opened&lt;/summary&gt;      
+         GLPS_OPENED = 2
+      }
+
+      /// &lt;summary&gt; "Spin" Parts&lt;/summary&gt;
+      public enum UxThemeSPINStates : int
+      {
+         /// &lt;summary&gt;Spin up&lt;/summary&gt;      
+         SPNP_UP = 1,
+         /// &lt;summary&gt;Spin down&lt;/summary&gt;      
+         SPNP_DOWN = 2,
+         /// &lt;summary&gt;Spin up horizontal&lt;/summary&gt;      
+         SPNP_UPHORZ = 3,
+         /// &lt;summary&gt;Spin down horizontal&lt;/summary&gt;      
+         SPNP_DOWNHORZ = 4
+      }
+
+      /// &lt;summary&gt;Spin up states&lt;/summary&gt;
+      public enum UxThemeUPStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         UPS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         UPS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         UPS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         UPS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;Spin down states&lt;/summary&gt;
+      public enum UxThemeDOWNStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         DNS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         DNS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         DNS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         DNS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;Horizontal spin up states&lt;/summary&gt;
+      public enum UxThemeUPHORZStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         UPHZS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         UPHZS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         UPHZS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         UPHZS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;Horizontal spin down states&lt;/summary&gt;
+      public enum UxThemeDOWNHORZStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         DNHZS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         DNHZS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         DNHZS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         DNHZS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt; "Page" Parts.Pager uses same states as Spin&lt;/summary&gt;
+      public enum UxThemePageParts : int
+      {
+         /// &lt;summary&gt;Up&lt;/summary&gt;
+         PGRP_UP = 1,
+         /// &lt;summary&gt;Down&lt;/summary&gt;
+         PGRP_DOWN = 2,
+         /// &lt;summary&gt;Horizontal Up&lt;/summary&gt;
+         PGRP_UPHORZ = 3,
+         /// &lt;summary&gt;Horizontal Down&lt;/summary&gt;
+         PGRP_DOWNHORZ = 4
+      }
+
+
+      /// &lt;summary&gt; "Scrollbar" Parts&lt;/summary&gt;
+      public enum UxThemeSCROLLBARParts : int
+      {
+         /// &lt;summary&gt;Arrow button&lt;/summary&gt;
+         SBP_ARROWBTN = 1,
+         /// &lt;summary&gt;Horizontal thumb button&lt;/summary&gt;
+         SBP_THUMBBTNHORZ = 2,
+         /// &lt;summary&gt;Verical thumb button&lt;/summary&gt;
+         SBP_THUMBBTNVERT = 3,
+         /// &lt;summary&gt;Horizontal lower track&lt;/summary&gt;
+         SBP_LOWERTRACKHORZ = 4,
+         /// &lt;summary&gt;Horizontal upper track&lt;/summary&gt;
+         SBP_UPPERTRACKHORZ = 5,
+         /// &lt;summary&gt;Vertical lower track&lt;/summary&gt;
+         SBP_LOWERTRACKVERT = 6,
+         /// &lt;summary&gt;Vertical upper track&lt;/summary&gt;
+         SBP_UPPERTRACKVERT = 7,
+         /// &lt;summary&gt;Horizontal gripper&lt;/summary&gt;
+         SBP_GRIPPERHORZ = 8,
+         /// &lt;summary&gt;Vertical gripper&lt;/summary&gt;
+         SBP_GRIPPERVERT = 9,
+         /// &lt;summary&gt;Size box&lt;/summary&gt;
+         SBP_SIZEBOX = 10
+      }
+
+
+      /// &lt;summary&gt;
+      /// Scroll Arrow Button states
+      /// &lt;/summary&gt;
+      public enum UxThemeARROWBTNStates : int
+      {
+         /// &lt;summary&gt;Up Normal&lt;/summary&gt;
+         ABS_UPNORMAL = 1,
+         /// &lt;summary&gt;Up Hot&lt;/summary&gt;
+         ABS_UPHOT = 2,
+         /// &lt;summary&gt;Up Pressed&lt;/summary&gt;
+         ABS_UPPRESSED = 3,
+         /// &lt;summary&gt;Up Disabled&lt;/summary&gt;
+         ABS_UPDISABLED = 4,
+         /// &lt;summary&gt;Down Normal&lt;/summary&gt;
+         ABS_DOWNNORMAL = 5,
+         /// &lt;summary&gt;Down Hot&lt;/summary&gt;
+         ABS_DOWNHOT = 6,
+         /// &lt;summary&gt;Down Pressed&lt;/summary&gt;
+         ABS_DOWNPRESSED = 7,
+         /// &lt;summary&gt;Down Disabled&lt;/summary&gt;
+         ABS_DOWNDISABLED = 8,
+         /// &lt;summary&gt;Left Normal&lt;/summary&gt;
+         ABS_LEFTNORMAL = 9,
+         /// &lt;summary&gt;Left Hot&lt;/summary&gt;
+         ABS_LEFTHOT = 10,
+         /// &lt;summary&gt;Left Pressed&lt;/summary&gt;
+         ABS_LEFTPRESSED = 11,
+         /// &lt;summary&gt;Left Disabled&lt;/summary&gt;
+         ABS_LEFTDISABLED = 12,
+         /// &lt;summary&gt;Right Normal&lt;/summary&gt;
+         ABS_RIGHTNORMAL = 13,
+         /// &lt;summary&gt;Right Hot&lt;/summary&gt;
+         ABS_RIGHTHOT = 14,
+         /// &lt;summary&gt;Right Pressed&lt;/summary&gt;
+         ABS_RIGHTPRESSED = 15,
+         /// &lt;summary&gt;Right Disabled&lt;/summary&gt;
+         ABS_RIGHTDISABLED = 16
+      }
+
+      /// &lt;summary&gt;
+      /// Scroll bar states
+      /// &lt;/summary&gt;
+      public enum UxThemeSCROLLBARStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         SCRBS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         SCRBS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         SCRBS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         SCRBS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt;
+      /// Size box states
+      /// &lt;/summary&gt;
+      public enum UxThemeSIZEBOXStates : int
+      {
+         /// &lt;summary&gt;Right Align&lt;/summary&gt;
+         SZB_RIGHTALIGN = 1,
+         /// &lt;summary&gt;Left Align&lt;/summary&gt;
+         SZB_LEFTALIGN = 2
+      }
+
+      /// &lt;summary&gt; "Edit" Parts&lt;/summary&gt;
+      public enum UxThemeEDITParts : int
+      {
+         /// &lt;summary&gt;Text&lt;/summary&gt;
+         EP_EDITTEXT = 1,
+         /// &lt;summary&gt;Caret&lt;/summary&gt;
+         EP_CARET = 2
+      }
+
+      /// &lt;summary&gt;
+      /// Edit states
+      /// &lt;/summary&gt;
+      public enum UxThemeEDITTEXTStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         ETS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         ETS_HOT = 2,
+         /// &lt;summary&gt;Selected&lt;/summary&gt;      
+         ETS_SELECTED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         ETS_DISABLED = 4,
+         /// &lt;summary&gt;Focused&lt;/summary&gt;      
+         ETS_FOCUSED = 5,
+         /// &lt;summary&gt;Read only&lt;/summary&gt;      
+         ETS_READONLY = 6,
+         /// &lt;summary&gt;Assist&lt;/summary&gt;      
+         ETS_ASSIST = 7
+      }
+
+      /// &lt;summary&gt; "ComboBox" Parts&lt;/summary&gt;
+      public enum UxThemeComboBoxParts : int
+      {
+         /// &lt;summary&gt;Drop-down button&lt;/summary&gt;      
+         CP_DROPDOWNBUTTON = 1
+      }
+
+      /// &lt;summary&gt;
+      /// Combo box states
+      /// &lt;/summary&gt;
+      public enum UxThemeComboBoxStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         CBXS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         CBXS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         CBXS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         CBXS_DISABLED = 4
+      }
+
+      /// &lt;summary&gt; "Taskbar Clock" Parts&lt;/summary&gt;
+      public enum UxThemeCLOCKParts : int
+      {
+         /// &lt;summary&gt;Time&lt;/summary&gt;      
+         CLP_TIME = 1
+      }
+
+      /// &lt;summary&gt;
+      /// Clock states
+      /// &lt;/summary&gt;
+      public enum UxThemeCLOCKStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         CLS_NORMAL = 1
+      }
+
+      /// &lt;summary&gt; "Tray Notify" Parts&lt;/summary&gt;
+      public enum UxThemeTRAYNOTIFYParts : int
+      {
+         /// &lt;summary&gt;Background&lt;/summary&gt;
+         TNP_BACKGROUND = 1,
+         /// &lt;summary&gt;Animation Background&lt;/summary&gt;
+         TNP_ANIMBACKGROUND = 2
+      }
+
+      /// &lt;summary&gt; "TaskBar" Parts&lt;/summary&gt;
+      public enum UxThemeTASKBARParts : int
+      {
+         /// &lt;summary&gt;Background bottom&lt;/summary&gt;
+         TBP_BACKGROUNDBOTTOM = 1,
+         /// &lt;summary&gt;Background right&lt;/summary&gt;
+         TBP_BACKGROUNDRIGHT = 2,
+         /// &lt;summary&gt;Background top&lt;/summary&gt;
+         TBP_BACKGROUNDTOP = 3,
+         /// &lt;summary&gt;Background left&lt;/summary&gt;
+         TBP_BACKGROUNDLEFT = 4,
+         /// &lt;summary&gt;Sizing bar bottom&lt;/summary&gt;         
+         TBP_SIZINGBARBOTTOM = 5,
+         /// &lt;summary&gt;Sizing bar right&lt;/summary&gt;
+         TBP_SIZINGBARRIGHT = 6,
+         /// &lt;summary&gt;Sizing bar top&lt;/summary&gt;         
+         TBP_SIZINGBARTOP = 7,
+         /// &lt;summary&gt;Sizing bar left&lt;/summary&gt;         
+         TBP_SIZINGBARLEFT = 8
+      }
+
+      /// &lt;summary&gt; "TaskBand" Parts&lt;/summary&gt;
+      public enum UxThemeTASKBANDParts : int
+      {
+         /// &lt;summary&gt;Group count&lt;/summary&gt;         
+         TDP_GROUPCOUNT = 1,
+         /// &lt;summary&gt;Flash button&lt;/summary&gt;         
+         TDP_FLASHBUTTON = 2,
+         /// &lt;summary&gt;Flash button group menu&lt;/summary&gt;         
+         TDP_FLASHBUTTONGROUPMENU = 3
+      }
+
+      /// &lt;summary&gt; "StartPanel" Parts&lt;/summary&gt;
+      public enum UxThemeSTARTPANELParts : int
+      {
+         /// &lt;summary&gt;User pane&lt;/summary&gt;         
+         SPP_USERPANE = 1,
+         /// &lt;summary&gt;More programs&lt;/summary&gt;         
+         SPP_MOREPROGRAMS = 2,
+         /// &lt;summary&gt;More programs arrow&lt;/summary&gt;         
+         SPP_MOREPROGRAMSARROW = 3,
+         /// &lt;summary&gt;Program list&lt;/summary&gt;         
+         SPP_PROGLIST = 4,
+         /// &lt;summary&gt;Program list separator&lt;/summary&gt;         
+         SPP_PROGLISTSEPARATOR = 5,
+         /// &lt;summary&gt;Places list&lt;/summary&gt;         
+         SPP_PLACESLIST = 6,
+         /// &lt;summary&gt;Places list separator&lt;/summary&gt;         
+         SPP_PLACESLISTSEPARATOR = 7,
+         /// &lt;summary&gt;Log off&lt;/summary&gt;         
+         SPP_LOGOFF = 8,
+         /// &lt;summary&gt;Log off buttons&lt;/summary&gt;         
+         SPP_LOGOFFBUTTONS = 9,
+         /// &lt;summary&gt;User picture&lt;/summary&gt;         
+         SPP_USERPICTURE = 10,
+         /// &lt;summary&gt;Preview&lt;/summary&gt;         
+         SPP_PREVIEW = 11
+      }
+
+      /// &lt;summary&gt;
+      /// More programs arrow states
+      /// &lt;/summary&gt;
+      public enum UxThemeMOREPROGRAMSARROWStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         SPS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         SPS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         SPS_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Log off button states
+      /// &lt;/summary&gt;
+      public enum UxThemeLOGOFFBUTTONSStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         SPLS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         SPLS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         SPLS_PRESSED = 3
+      }
+
+      /// &lt;summary&gt; "ExplorerBar" Parts&lt;/summary&gt;
+      public enum UxThemeEXPLORERBARParts : int
+      {
+         /// &lt;summary&gt;Header background&lt;/summary&gt;         
+         EBP_HEADERBACKGROUND = 1,
+         /// &lt;summary&gt;Header close&lt;/summary&gt;         
+         EBP_HEADERCLOSE = 2,
+         /// &lt;summary&gt;Header pin&lt;/summary&gt;         
+         EBP_HEADERPIN = 3,
+         /// &lt;summary&gt;Header IE Bar menu&lt;/summary&gt;         
+         EBP_IEBARMENU = 4,
+         /// &lt;summary&gt;Normal group background&lt;/summary&gt;         
+         EBP_NORMALGROUPBACKGROUND = 5,
+         /// &lt;summary&gt;Normal group collapse&lt;/summary&gt;         
+         EBP_NORMALGROUPCOLLAPSE = 6,
+         /// &lt;summary&gt;Normal group expand&lt;/summary&gt;         
+         EBP_NORMALGROUPEXPAND = 7,
+         /// &lt;summary&gt;Normal group head&lt;/summary&gt;         
+         EBP_NORMALGROUPHEAD = 8,
+         /// &lt;summary&gt;Special group background&lt;/summary&gt;         
+         EBP_SPECIALGROUPBACKGROUND = 9,
+         /// &lt;summary&gt;Special group collapse&lt;/summary&gt;         
+         EBP_SPECIALGROUPCOLLAPSE = 10,
+         /// &lt;summary&gt;Special group expand&lt;/summary&gt;         
+         EBP_SPECIALGROUPEXPAND = 11,
+         /// &lt;summary&gt;Special group header&lt;/summary&gt;         
+         EBP_SPECIALGROUPHEAD = 12
+      }
+
+      /// &lt;summary&gt;
+      /// Header close states
+      /// &lt;/summary&gt;
+      public enum UxThemeHEADERCLOSEStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBHC_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBHC_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBHC_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Header Pin states
+      /// &lt;/summary&gt;
+      public enum UxThemeHEADERPINStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBHP_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBHP_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBHP_PRESSED = 3,
+         /// &lt;summary&gt;Selected normal&lt;/summary&gt;      
+         EBHP_SELECTEDNORMAL = 4,
+         /// &lt;summary&gt;Selected hot&lt;/summary&gt;      
+         EBHP_SELECTEDHOT = 5,
+         /// &lt;summary&gt;Selected pressed&lt;/summary&gt;      
+         EBHP_SELECTEDPRESSED = 6
+      }
+
+      /// &lt;summary&gt;
+      /// IE Bar Menu states
+      /// &lt;/summary&gt;
+      public enum UxThemeIEBARMENUStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBM_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBM_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBM_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Normal group collapse states
+      /// &lt;/summary&gt;
+      public enum UxThemeNORMALGROUPCOLLAPSEStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBNGC_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBNGC_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBNGC_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Normal group expand states
+      /// &lt;/summary&gt;
+      public enum UxThemeNORMALGROUPEXPANDStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBNGE_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBNGE_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBNGE_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Special group collapse states
+      /// &lt;/summary&gt;
+      public enum UxThemeSPECIALGROUPCOLLAPSEStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBSGC_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBSGC_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBSGC_PRESSED = 3
+      }
+
+      /// &lt;summary&gt;
+      /// Special group expand states
+      /// &lt;/summary&gt;
+      public enum UxThemeSPECIALGROUPEXPANDStates
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         EBSGE_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         EBSGE_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         EBSGE_PRESSED = 3
+      }
+
+      /// &lt;summary&gt; "TaskBand" Parts&lt;/summary&gt;
+      public enum UxThemeMENUBANDParts : int
+      {
+         /// &lt;summary&gt;New application button&lt;/summary&gt;
+         MDP_NEWAPPBUTTON = 1,
+         /// &lt;summary&gt;Separator&lt;/summary&gt;
+         MDP_SEPARATOR = 2
+      }
+
+      /// &lt;summary&gt; "TaskBand" States&lt;/summary&gt;
+      public enum UxThemeMENUBANDStates : int
+      {
+         /// &lt;summary&gt;Normal&lt;/summary&gt;      
+         MDS_NORMAL = 1,
+         /// &lt;summary&gt;Hot&lt;/summary&gt;      
+         MDS_HOT = 2,
+         /// &lt;summary&gt;Pressed&lt;/summary&gt;      
+         MDS_PRESSED = 3,
+         /// &lt;summary&gt;Disabled&lt;/summary&gt;      
+         MDS_DISABLED = 4,
+         /// &lt;summary&gt;Checked&lt;/summary&gt;      
+         MDS_CHECKED = 5,
+         /// &lt;summary&gt;Checked and Hot&lt;/summary&gt;      
+         MDS_HOTCHECKED = 6
+      }
+
+      #endregion
+
+      #region Unmanged code
+      [StructLayout(LayoutKind.Sequential)]
+         private struct SIZE
+      {
+         public int cx;
+         public int cy;
+      }
+
+      [StructLayout(LayoutKind.Sequential)]
+         private struct RECT
+      {
+         public int left;
+         public int top;
+         public int right;
+         public int bottom;
+
+         public RECT(Rectangle rc)
+         {
+            left = rc.X;
+            top = rc.Y;
+            right = rc.Right;
+            bottom = rc.Bottom;
+         }
+
+         public RECT(int left, int top, int right, int bottom)
+         {
+            this.left = left;
+            this.top = top;
+            this.right = right;
+            this.bottom = bottom;
+         }
+      }
+
+      [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+      private static extern IntPtr OpenThemeData(
+         IntPtr hWnd,
+         string pszClassList);
+      [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+      private static extern int CloseThemeData(
+         IntPtr hTheme);
+      [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+      private static extern int DrawThemeBackground(
+         IntPtr hTheme,
+         IntPtr hdc,
+         int iPartId,
+         int iStateId,
+         ref RECT pRect,
+         ref RECT pClipRect);
+      [DllImport("uxtheme", CharSet = CharSet.Unicode, EntryPoint =
+       "GetCurrentThemeName")]
+      private static extern int GetCurrentThemeNameForFile(
+         [MarshalAs(UnmanagedType.LPWStr)]
+         StringBuilder pszThemeFileName,
+         int dwMaxNameChars,
+         IntPtr pszColorBuff,
+         int cchMaxColorChars,
+         IntPtr pszSizeBuff,
+         int cchMaxSizeChars);
+      [DllImport("uxtheme", CharSet = CharSet.Unicode, EntryPoint =
+       "GetCurrentThemeName")]
+      private static extern int GetCurrentThemeNameForColor(
+         IntPtr pszThemeFileName,
+         int dwMaxNameChars,
+         [MarshalAs(UnmanagedType.LPWStr)]
+         StringBuilder pszColorBuff,
+         int cchMaxColorChars,
+         IntPtr pszSizeBuff,
+         int cchMaxSizeChars);
+      /*
+      [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+      private static extern int GetThemeFilename(
+         IntPtr hTheme,
+         int iPartId,
+         int iStateId,
+         int iPropId,
+         string pszThemeFileName,
+         int cchMaxBuffChars);
+      */
+      [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+      private static extern int GetThemePartSize(
+         IntPtr hTheme,
+         IntPtr hdc,
+         int iPartId,
+         int iStateId,
+         ref RECT prc,
+         [MarshalAs(UnmanagedType.I4)]
+         THEMESIZE eSize,
+         ref SIZE psz);
+      [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+      private static extern int DrawThemeText(
+         IntPtr hTheme,
+         IntPtr hdc,
+         int iPartId,
+         int iStateId,
+         string pszText,
+         int iCharCount,
+         int dwTextFlags,
+         int dwTextFlags2,
+         ref RECT pRect);
+      
+      private const int MAX_PATH = 260;
+
+      [DllImport("user32")]
+      private static extern int GetSysColor(int nIndex);
+
+      private const int COLOR_GRADIENTINACTIVECAPTION = 28;
+
+      private enum THEMESIZE : int
+      {
+         TS_MIN,             // minimum size
+         TS_TRUE,            // size without stretching
+         TS_DRAW            // size that theme mgr will use to draw part
+      }
+      #endregion
+   
+      private string classList = "";
+      private IntPtr m_hTheme = IntPtr.Zero;
+      private IntPtr hWnd = IntPtr.Zero;      
+
+      /// &lt;summary&gt;
+      /// Create a new instance of the class
+      /// &lt;/summary&gt;
+      public XpThemeAPI()
+      {         
+      }
+
+      /// &lt;summary&gt;
+      /// Create an instance of the class and attempt to load
+      /// the specified theme data
+      /// &lt;/summary&gt;
+      /// &lt;param name="handle"&gt;Window handle to get the theme for&lt;/param&gt;
+      /// &lt;param name="classList"&gt;List of classes to load theme data for&lt;/param&gt;
+      public XpThemeAPI(IntPtr handle, string classList)
+      {
+         hWnd = handle;
+         this.classList = classList;
+         Load();
+      }
+
+      /// &lt;summary&gt;
+      /// Clears up any resources associated with this class
+      /// &lt;/summary&gt;
+      public void Dispose()
+      {
+         ClearUp();
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the class list used to select XP theme bitmaps.
+      /// &lt;/summary&gt;
+      public string ClassList
+      {
+         get
+         {
+            return classList;
+         }
+         set
+         {
+            classList = value;
+            Load();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the handle to the currently selected theme.
+      /// &lt;/summary&gt;
+      public IntPtr hTheme
+      {
+         get
+         {
+            return m_hTheme;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets/sets the Window handle used to evaluate the selected XP Theme
+      /// &lt;/summary&gt;
+      public IntPtr Handle
+      {
+         get
+         {
+            return hWnd;
+         }
+         set
+         {
+            hWnd = value;
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the filename of the currently selected XP Theme
+      /// &lt;/summary&gt;
+      public string ThemeFile
+      {
+         get
+         {
+            StringBuilder fileName = new StringBuilder(MAX_PATH, MAX_PATH);
+            int hRes = GetCurrentThemeNameForFile(fileName, MAX_PATH,
+             IntPtr.Zero, 0, IntPtr.Zero, 0);
+            return fileName.ToString();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the name of the current selected XP Theme.
+      /// &lt;/summary&gt;
+      public string ThemeColorName
+      {
+         get
+         {
+            StringBuilder colourName = new StringBuilder(MAX_PATH, MAX_PATH);
+            int hRes = GetCurrentThemeNameForColor(IntPtr.Zero, 0, colourName,
+             MAX_PATH, IntPtr.Zero, 0);
+            return colourName.ToString();
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Draws text for the specified theme part
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics object to draw onto &lt;/param&gt;
+      /// &lt;param name="rect"&gt;Bounding rectangle&lt;/param&gt;
+      /// &lt;param name="partId"&gt;Theme part id&lt;/param&gt;
+      /// &lt;param name="stateId"&gt;Theme state id&lt;/param&gt;
+      /// &lt;param name="text"&gt;Text to draw&lt;/param&gt;
+      /// &lt;param name="textFlags"&gt;Text flags to use&lt;/param&gt;
+      public void DrawThemeText(
+         Graphics gfx,
+         Rectangle rect,
+         int partId,
+         int stateId,
+         string text,
+         int textFlags)
+      {
+         RECT rc = new RECT(rect);
+         IntPtr hDC = gfx.GetHdc();
+         DrawThemeText(m_hTheme, hDC, partId, stateId, text, -1, textFlags, 0,
+          ref rc);
+         gfx.ReleaseHdc(hDC);
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the background for the specified theme part
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics object to draw onto&lt;/param&gt;
+      /// &lt;param name="rect"&gt;Bounding rectangle&lt;/param&gt;
+      /// &lt;param name="partId"&gt;Theme part id&lt;/param&gt;
+      /// &lt;param name="stateId"&gt;Theme state id&lt;/param&gt;
+      public void DrawThemeBackground(
+         Graphics gfx,
+         Rectangle rect,
+         int partId,
+         int stateId
+         )
+      {
+         RECT rc = new RECT(rect);
+         IntPtr hDC = gfx.GetHdc();
+         DrawThemeBackground(m_hTheme, hDC, partId, stateId, ref rc, ref rc);
+         gfx.ReleaseHdc(hDC);
+      }
+
+      /// &lt;summary&gt;
+      /// Gets the size of the specified theme part
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics object to evaluate size for&lt;/param&gt;
+      /// &lt;param name="partId"&gt;Theme part&lt;/param&gt;
+      /// &lt;param name="stateId"&gt;Theme state&lt;/param&gt;
+      /// &lt;returns&gt;Size of the specified theme part&lt;/returns&gt;
+      public Size GetThemePartSize(
+         Graphics gfx,
+         int partId,
+         int stateId
+         )
+      {
+         RECT rc = new RECT();
+         SIZE size = new SIZE();
+         IntPtr hDC = gfx.GetHdc();
+         GetThemePartSize(m_hTheme, hDC, partId, stateId, ref rc,
+          THEMESIZE.TS_TRUE, ref size);
+         gfx.ReleaseHdc(hDC);
+         return new Size(size.cx, size.cy);
+
+      }
+
+      /// &lt;summary&gt;
+      /// Draws the background to the Explorer Bar
+      /// &lt;/summary&gt;
+      /// &lt;param name="gfx"&gt;Graphics to render to&lt;/param&gt;
+      /// &lt;param name="rect"&gt;Bounding rectangle&lt;/param&gt;
+      /// &lt;param name="style"&gt;Drawing style&lt;/param&gt;
+      /// &lt;param name="backgroundStart"&gt;Custom start colour&lt;/param&gt;
+      /// &lt;param name="backgroundEnd"&gt;Custom end colour&lt;/param&gt;
+      public void DrawBackground(
+         Graphics gfx,
+         Rectangle rect,
+         ExplorerBarDrawingStyle style,
+         Color backgroundStart,
+         Color backgroundEnd
+         )
+      {
+
+         bool useXp = false;
+
+         if (!m_hTheme.Equals(IntPtr.Zero))
+         {
+            useXp = ((style == ExplorerBarDrawingStyle.XP) || 
+               (style == ExplorerBarDrawingStyle.System));
+         }
+
+
+         if (useXp)
+         {
+            // Use theme to draw the background
+            RECT rc = new RECT();
+            rc.left = rect.Left;
+            rc.top = rect.Top;
+            rc.right = rect.Right;
+            rc.bottom = rect.Bottom;
+            IntPtr hDC = gfx.GetHdc();
+            DrawThemeBackground(hTheme, hDC, 0, 0, ref rc, ref rc);
+            gfx.ReleaseHdc(hDC);
+         }
+         else
+         {
+            if ((style == ExplorerBarDrawingStyle.Classic) || (style ==
+             ExplorerBarDrawingStyle.System))
+            {
+               // Fill with WindowBackground:
+               gfx.FillRectangle(SystemBrushes.Window, rect);
+            }
+            else
+            {               
+               // Gradient fill from start to end colour:
+               if (backgroundStart == Color.Empty)
+               {
+                  int rgb = GetSysColor(COLOR_GRADIENTINACTIVECAPTION);
+                  backgroundStart = Color.FromArgb(rgb &amp; 0xFF, ((rgb &gt;&gt; 8) &amp;
+                   0xFF), ((rgb &gt;&gt; 16) &amp; 0xFF));   
+               }
+               if (backgroundEnd == Color.Empty)
+               {
+                  backgroundEnd =
+                   Color.FromKnownColor(KnownColor.InactiveCaption);
+               }
+               LinearGradientBrush br = new LinearGradientBrush(rect,
+                  backgroundStart, backgroundEnd, 90.0F);
+               gfx.FillRectangle(br, rect);
+               br.Dispose();
+            }
+         }
+      }
+
+
+      /// &lt;summary&gt;
+      /// Loads the current users XP Theme
+      /// &lt;/summary&gt;
+      private void Load()
+      {
+         ClearUp();
+         if ((ExplorerBarHelper.IsXp) &amp;&amp; (!hWnd.Equals(IntPtr.Zero)))
+         {
+            m_hTheme = OpenThemeData(hWnd, classList);            
+         }
+      }
+
+      /// &lt;summary&gt;
+      /// Cleans up the handle associated with the user's current XP theme.
+      /// &lt;/summary&gt;
+      private void ClearUp()
+      {
+         if (!m_hTheme.Equals(IntPtr.Zero))
+         {
+            CloseThemeData(m_hTheme);
+            m_hTheme = IntPtr.Zero;
+         }
+      }
+
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\index.html" ><IMG SRC="..\..\..\..\res\vbaccelad.png" ALT="vbAccelerator - Faster VB Code" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\index.html">Code</a>&#160;.&#160;<a href="..\index.html">Controls</a>&#160;.&#160;<a href="article.html">.NET ExplorerBar Control</a>&#160;.&#160;<a href="explorerbar_control_source_code.html">ExplorerBar Control Source Code</a>&#160;.&#160;acclExplorerBar_XpThemeAPI.cs</p><br /><p class="nav"><a href="..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2004 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 18 April 2004</p></td><td></td></tr></table>
+</body></html>

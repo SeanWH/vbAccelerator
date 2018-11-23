@@ -1,0 +1,455 @@
+<html lang="en" >
+<head>
+<title>vbAccelerator - Contents of code file: EnumWindows\frmFindWindow.cs</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="AUTHOR" content="Steve McMahon" /><meta name="KEYWORDS" content=".NET, .NET Framework, C#, CSharp, VB, Visual Basic, VB5, VB6, Visual Basic, Active X, Controls, Components" /><meta name="DESCRIPTION" content="vbAccelerator - Contents of code file: EnumWindows\frmFindWindow.cs" /><link rel="stylesheet" href="..\..\..\..\..\..\res\screen.css" media="SCREEN" /><link rel="stylesheet" href="..\..\..\..\..\..\res\print.css" media="PRINT" /></head><body>
+<table>
+<tr class="adbar" bgcolor="#83726a"><td colspan="3">
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+<script language=javascript><!--
+document.write('<scr'+'ipt language=javascript src="http://a.tribalfusion.com/j.ad?site=VBAcceleratorcom&adSpace=ROS&size=468x60&type=horiz&pop=0&requestID='+((new Date()).getTime() % 2147483648) + Math.random()+'"></scr'+'ipt>');
+//-->
+</script>
+<noscript>
+   <a href="javascript:window.alert(&quot;http://a.tribalfusion.com/i.click?site=VBAcceleratorcom&adSpace=ROS&size=468x60&requestID=1423477941\nThis link was not retrieved.&quot;)" target=_blank>
+   <img src="http://cdn5.tribalfusion.com/media/493786.gif" 
+                  width=468 height=60 border=0 alt="Click Here"></a>
+</noscript>
+<!-- TF 468x60 JScript HORIZ NoPop code -->
+</td></tr><tr class="navbar"><td><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Windows</a>&#160;.&#160;<a href="..\article.html">Enumerating Windows</a>&#160;.&#160;<a href="..\enumwindows_code.html">EnumWindows Code</a>&#160;.&#160;EnumWindows</p></td><td></td></tr><tr class="navbar"><td colspan="3"><hr /></td></tr><tr valign="top"><td class="sidebar"><img src="..\..\..\..\..\..\res\download.png" width="125" height="21" alt="Downloads" /><p class="nav"><a href="enumwindows_code.html"><img src="..\..\..\..\..\..\res\get.png" width="8" height="8" alt="Download Page" />EnumWindows Code</a> (37K)</p><br /><br /><img src="..\..\..\..\..\..\res\information.png" width="125" height="21" alt="Information" /><p class="nav">Zip:4431</p><p class="nav">&#160;&#160;<a href="..\..\..\..\..\..\..\linkto_asp\id=4431&type=zip&title=frmfindwindow.html">Link to code Zip</a></p><p class="nav">Applies To:</p><p class="nav">&#160;&#160;.NET</p><p class="nav">&#160;&#160;C#</p><p class="nav">Author:</p><p class="nav">&#160;&#160;<a href="mailto:steve@vbaccelerator.com">Steve McMahon</a></p><br /><br /><img src="..\..\..\..\..\..\res\bugtrak.png" width="125" height="21" alt="BugTrak System" /><p class="nav">No logged bugs.</p><br /><br /><img src="..\..\..\..\..\..\res\updates.png" width="125" height="21" alt="Updates" /><p class="nav"><img src="..\..\..\..\..\..\res\update.png" width="8" height="8" alt="Update" />4 Mar 2003<br />First Posted</p><br /><br /><img src="..\..\..\..\..\..\res\related.png" width="125" height="21" alt="Related Items" /><br /><br /><img src="..\..\..\..\..\..\res\search.png" width="125" height="21" alt="Search" />
+<!-- Search Google -->
+<form method="GET" action="http://www.google.com/custom">
+<a href="javascript:window.alert(&quot;http://www.google.com/search\nThis link was not retrieved.&quot;)"><img src="..\..\..\..\..\..\..\..\www_google_com\logos\logo_40wht.gif" alt="Google" /></A><br />
+<input type="text" name="q" size="31" maxlength="255" value="" class="search" /><br />
+<input type="submit" name="sa" value="Search Google" class="search" />
+<input type="hidden" name="cof" value="T:black;LW:330;ALC:990000;L:http://www.vbaccelerator.com/images/accl9.gif;LC:660000;LH:66;BGC:white;AH:left;VLC:999966;S:http://vbaccelerator.com/;GALT:999966;AWFID:67c7759ff27e5395;" />
+<input type="hidden" name="domains" value="vbaccelerator.com" /><br />
+<p class="nav"><input type="radio" name="sitesearch" value="" />Search WWW<br /></p>
+<p class="nav"><input type="radio" name="sitesearch" value="vbaccelerator.com" checked="true" />vbAccelerator<br /></p>
+</FORM>
+<!-- Search Google -->
+<br /><br />
+
+<a href="..\..\..\..\..\..\the_site\newsite\article.html"><img src="..\..\..\..\..\..\res\newsite.png" width="125" height="129" alt="The New Site" /></a>
+<br /><br />
+</td><td width="100%" valign="top"><h1>vbAccelerator - Contents of code file: EnumWindows\frmFindWindow.cs</h1><pre>using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using vbAccelerator.Components.Win32;
+
+namespace EnumWindowsTester
+{
+   /// &lt;summary&gt;
+   /// Summary description for frmFindWindow.
+   /// &lt;/summary&gt;
+   public class frmFindWindow : System.Windows.Forms.Form
+   {
+      private System.Windows.Forms.Label lblOr;
+      private System.Windows.Forms.ListBox lstResults;
+      private System.Windows.Forms.Button btnFind;
+      private System.Windows.Forms.Button btnOK;
+      private System.Windows.Forms.GroupBox grpExpression;
+      private System.Windows.Forms.TextBox txtClassName;
+      private System.Windows.Forms.Label lblClassName;
+      private System.Windows.Forms.TextBox txtCaption;
+      private System.Windows.Forms.Label lblCaption;
+      private System.Windows.Forms.GroupBox grpHandle;
+      private System.Windows.Forms.TextBox txtHandle;
+      private System.Windows.Forms.Label lblHandle;
+      /// &lt;summary&gt;
+      /// Required designer variable.
+      /// &lt;/summary&gt;
+      private System.ComponentModel.Container components = null;
+
+      public frmFindWindow()
+      {
+         //
+         // Required for Windows Form Designer support
+         //
+         InitializeComponent();
+
+         //
+         // TODO: Add any constructor code after InitializeComponent call
+         //
+      }
+
+      /// &lt;summary&gt;
+      /// Clean up any resources being used.
+      /// &lt;/summary&gt;
+      protected override void Dispose( bool disposing )
+      {
+         if( disposing )
+         {
+            if(components != null)
+            {
+               components.Dispose();
+            }
+         }
+         base.Dispose( disposing );
+      }
+
+      #region Windows Form Designer generated code
+      /// &lt;summary&gt;
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// &lt;/summary&gt;
+      private void InitializeComponent()
+      {
+         this.lblOr = new System.Windows.Forms.Label();
+         this.lstResults = new System.Windows.Forms.ListBox();
+         this.btnFind = new System.Windows.Forms.Button();
+         this.btnOK = new System.Windows.Forms.Button();
+         this.grpExpression = new System.Windows.Forms.GroupBox();
+         this.txtClassName = new System.Windows.Forms.TextBox();
+         this.lblClassName = new System.Windows.Forms.Label();
+         this.txtCaption = new System.Windows.Forms.TextBox();
+         this.lblCaption = new System.Windows.Forms.Label();
+         this.grpHandle = new System.Windows.Forms.GroupBox();
+         this.txtHandle = new System.Windows.Forms.TextBox();
+         this.lblHandle = new System.Windows.Forms.Label();
+         this.grpExpression.SuspendLayout();
+         this.grpHandle.SuspendLayout();
+         this.SuspendLayout();
+         // 
+         // lblOr
+         // 
+         this.lblOr.Location = new System.Drawing.Point(12, 88);
+         this.lblOr.Name = "lblOr";
+         this.lblOr.Size = new System.Drawing.Size(100, 16);
+         this.lblOr.TabIndex = 10;
+         this.lblOr.Text = "Or:";
+         // 
+         // lstResults
+         // 
+         this.lstResults.Location = new System.Drawing.Point(8, 220);
+         this.lstResults.Name = "lstResults";
+         this.lstResults.Size = new System.Drawing.Size(364, 199);
+         this.lstResults.TabIndex = 11;
+         // 
+         // btnFind
+         // 
+         this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnFind.Location = new System.Drawing.Point(92, 176);
+         this.btnFind.Name = "btnFind";
+         this.btnFind.Size = new System.Drawing.Size(88, 28);
+         this.btnFind.TabIndex = 12;
+         this.btnFind.Text = "&amp;Find Now";
+         this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+         // 
+         // btnOK
+         // 
+         this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+         this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.btnOK.Location = new System.Drawing.Point(280, 428);
+         this.btnOK.Name = "btnOK";
+         this.btnOK.Size = new System.Drawing.Size(92, 28);
+         this.btnOK.TabIndex = 13;
+         this.btnOK.Text = "OK";
+         // 
+         // grpExpression
+         // 
+         this.grpExpression.Controls.AddRange(new
+          System.Windows.Forms.Control[] {
+                                                                 
+                                         this.txtClassName,
+                                                                 
+                                         this.lblClassName,
+                                                                 
+                                         this.txtCaption,
+                                                                 
+                                         this.lblCaption});
+         this.grpExpression.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.grpExpression.Location = new System.Drawing.Point(8, 8);
+         this.grpExpression.Name = "grpExpression";
+         this.grpExpression.Size = new System.Drawing.Size(364, 76);
+         this.grpExpression.TabIndex = 14;
+         this.grpExpression.TabStop = false;
+         this.grpExpression.Text = "Search By &amp;Regular Expression";
+         // 
+         // txtClassName
+         // 
+         this.txtClassName.Location = new System.Drawing.Point(84, 44);
+         this.txtClassName.Name = "txtClassName";
+         this.txtClassName.Size = new System.Drawing.Size(272, 21);
+         this.txtClassName.TabIndex = 11;
+         this.txtClassName.Text = "";
+         // 
+         // lblClassName
+         // 
+         this.lblClassName.Location = new System.Drawing.Point(8, 48);
+         this.lblClassName.Name = "lblClassName";
+         this.lblClassName.Size = new System.Drawing.Size(72, 16);
+         this.lblClassName.TabIndex = 10;
+         this.lblClassName.Text = "&amp;Class:";
+         // 
+         // txtCaption
+         // 
+         this.txtCaption.Location = new System.Drawing.Point(84, 20);
+         this.txtCaption.Name = "txtCaption";
+         this.txtCaption.Size = new System.Drawing.Size(272, 21);
+         this.txtCaption.TabIndex = 9;
+         this.txtCaption.Text = "";
+         // 
+         // lblCaption
+         // 
+         this.lblCaption.Location = new System.Drawing.Point(8, 24);
+         this.lblCaption.Name = "lblCaption";
+         this.lblCaption.Size = new System.Drawing.Size(72, 16);
+         this.lblCaption.TabIndex = 8;
+         this.lblCaption.Text = "&amp;Caption:";
+         // 
+         // grpHandle
+         // 
+         this.grpHandle.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                               this.txtHandle,
+                                                               this.lblHandle});
+         this.grpHandle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.grpHandle.Location = new System.Drawing.Point(8, 108);
+         this.grpHandle.Name = "grpHandle";
+         this.grpHandle.Size = new System.Drawing.Size(364, 56);
+         this.grpHandle.TabIndex = 15;
+         this.grpHandle.TabStop = false;
+         this.grpHandle.Text = "Search By &amp;Handle";
+         // 
+         // txtHandle
+         // 
+         this.txtHandle.Location = new System.Drawing.Point(84, 28);
+         this.txtHandle.Name = "txtHandle";
+         this.txtHandle.Size = new System.Drawing.Size(272, 21);
+         this.txtHandle.TabIndex = 11;
+         this.txtHandle.Text = "";
+         // 
+         // lblHandle
+         // 
+         this.lblHandle.Location = new System.Drawing.Point(8, 32);
+         this.lblHandle.Name = "lblHandle";
+         this.lblHandle.Size = new System.Drawing.Size(72, 16);
+         this.lblHandle.TabIndex = 10;
+         this.lblHandle.Text = "&amp;Handle:";
+         // 
+         // frmFindWindow
+         // 
+         this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+         this.ClientSize = new System.Drawing.Size(380, 460);
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {
+                                                        this.grpHandle,
+                                                        this.grpExpression,
+                                                        this.btnOK,
+                                                        this.btnFind,
+                                                        this.lstResults,
+                                                        this.lblOr});
+         this.Font = new System.Drawing.Font("Tahoma", 8.25F,
+          System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+          ((System.Byte)(0)));
+         this.FormBorderStyle =
+          System.Windows.Forms.FormBorderStyle.FixedDialog;
+         this.MaximizeBox = false;
+         this.MinimizeBox = false;
+         this.Name = "frmFindWindow";
+         this.ShowInTaskbar = false;
+         this.StartPosition =
+          System.Windows.Forms.FormStartPosition.CenterParent;
+         this.Text = "Find Window";
+         this.Load += new System.EventHandler(this.frmFindWindow_Load);
+         this.grpExpression.ResumeLayout(false);
+         this.grpHandle.ResumeLayout(false);
+         this.ResumeLayout(false);
+
+      }
+      #endregion
+
+      private void frmFindWindow_Load(object sender, System.EventArgs e)
+      {
+      
+      }
+
+      private void txtHandle_TextChanged(object sender, System.EventArgs e)
+      {
+      }
+
+      private void btnFind_Click(object sender, System.EventArgs e)
+      {
+         Regex findTitle = null;
+         Regex findClassName = null;
+         int findHandle = 0;         
+         
+         try
+         {
+            if (txtHandle.Text.Trim().Length &gt; 0)
+            {
+               findHandle = int.Parse(txtHandle.Text.Trim());
+            }
+            else
+            {
+               if (txtCaption.Text.Trim().Length &gt; 0)
+               {
+                  findTitle = new Regex(txtCaption.Text.Trim());
+                  Console.WriteLine("Test {0}",
+                     findTitle.IsMatch("Paint Shop Pro - enumeration.png"));
+               }
+               if (txtClassName.Text.Trim().Length &gt; 0)
+               {
+                  findClassName = new Regex(txtClassName.Text.Trim());
+                  Console.WriteLine("Test {0}",
+                     findTitle.IsMatch("#32767"));
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show(this,
+               String.Format("Invalid data entered: {0}", ex.Message),
+               this.Text,
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Exclamation);
+         }
+
+
+         lstResults.Items.Clear();
+         FindWindow fw = new FindWindow(
+            IntPtr.Zero,
+            findHandle,
+            findClassName,
+            findTitle
+            );
+
+         foreach (IntPtr handle in fw.Handles)
+         {
+            EnumWindowsItem ew = new EnumWindowsItem(handle);
+            lstResults.Items.Add(
+               String.Format("{0:x8} '{1}' ({2})",
+                  (int)ew.Handle,
+                  ew.Text,
+                  ew.ClassName));
+         }
+      }
+
+      #region Customised EnumWindows for find purposes
+      // Customised EnumWindows for find purposes:
+      public class FindWindow : EnumWindows
+      {
+         private Regex findClassName = null;
+         private Regex findTitle = null;
+         private IntPtr findHandle = IntPtr.Zero;
+         private IntPtr startHandle = IntPtr.Zero;
+         private ArrayList handles = null;
+
+         public ArrayList Handles
+         {
+            get
+            {
+               return handles;
+            }
+         }
+
+         private void find()
+         {
+            this.handles = new ArrayList();
+            if (startHandle == IntPtr.Zero)
+            {
+               this.GetWindows();
+            }
+            else
+            {
+               this.GetWindows(startHandle);
+            }
+         }
+
+         protected override bool OnWindowEnum(
+            IntPtr hWnd)
+         {
+            bool ret = true;
+            if (hWnd == findHandle)
+            {
+               handles.Add(hWnd);
+               ret = false;
+            }
+            else
+            {
+               EnumWindowsItem ew = new EnumWindowsItem(hWnd);
+               if (findClassName != null)
+               {
+                  if (findClassName.IsMatch(ew.ClassName))
+                  {
+                     handles.Add(hWnd);                     
+                  }
+               }
+               if (findTitle != null)
+               {
+                  if (findTitle.IsMatch(ew.Text))
+                  {
+                     handles.Add(hWnd);                     
+                  }
+               }
+            }
+            if (ret)
+            {
+               // check all the children:
+               if (this.startHandle == IntPtr.Zero)
+               {
+                  FindWindow fw = new FindWindow(hWnd, (int)findHandle,
+                   findClassName, findTitle);
+                  foreach (IntPtr handle in fw.Handles)
+                  {
+                     this.handles.Add(handle);
+                     if (findHandle != IntPtr.Zero)
+                     {
+                        ret = false;
+                     }
+                  }
+               }
+            }
+            //Console.WriteLine("{0} {1}", hWnd, ret);
+            return ret;
+         }
+
+         public FindWindow(
+            IntPtr startHandle,
+            int findHandle,
+            Regex findClassName,
+            Regex findTitle
+            ) : base()
+         {
+            //Console.WriteLine("FindWindow: {0}", startHandle, findHandle);
+            this.findHandle = (IntPtr)findHandle;
+            this.findClassName = findClassName;
+            this.findTitle = findTitle;
+            this.startHandle = startHandle;
+            find();
+         }
+      }
+      #endregion
+   }
+}
+</pre><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p><p>&#160;</p></td><td class="rightbar" valign="top" bgcolor="#C2BEB1">
+<!-- No right bar content currently defined -->
+</td></tr><tr class="footer"><td></td>
+<td>
+<p class="center">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<A HREF="..\..\..\..\..\..\vb\code\libraries\compression\index.html" ><IMG SRC="..\..\..\..\..\..\res\compress.png" ALT="Create and read Zip files and compress your data using Zlib" WIDTH=468 HEIGHT=60 BORDER=0></A>
+</noscript>
+
+</p>
+</td>
+<td></td>
+</tr><tr><td colspan="3"><hr /></td></tr><tr class="footer"><td valign="top"><a href="..\..\..\..\..\..\index.html"><img width="125" height="25" src="..\..\..\..\..\..\res\vbaccelerator.png" alt="vbAccelerator Logo" /></a></td><td valign="bottom"><p class="nav"><a href="..\..\..\..\..\..\index.html">Home</a>&#160;.&#160;<a href="..\..\..\..\..\index.html">NET</a>&#160;.&#160;<a href="..\..\..\..\index.html">Code</a>&#160;.&#160;<a href="..\..\..\index.html">Libraries</a>&#160;.&#160;<a href="..\..\index.html">Windows</a>&#160;.&#160;<a href="..\article.html">Enumerating Windows</a>&#160;.&#160;<a href="..\enumwindows_code.html">EnumWindows Code</a>&#160;.&#160;EnumWindows</p><br /><p class="nav"><a href="..\..\..\..\..\..\the_site\copyright\article.html">Copyright</a> &#169; 2003 Steve McMahon <a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>.  All rights reserved.<br />Last Updated: 12 April 2003</p></td><td></td></tr></table>
+</body></html>

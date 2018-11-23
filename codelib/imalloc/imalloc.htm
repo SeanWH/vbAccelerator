@@ -1,0 +1,679 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>malloc in VB?</title>
+</head>
+
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="..\..\images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\..\home\index.html"><img src="..\..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+        <td width="100%" height="25">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a name="sectop"></a>Source Code
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Installation Instructions and Requirements" href="..\..\install.htm"><img src="..\..\images\install.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+        <td width="96">
+        <font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+        <a title="Back to Source Code" href="..\..\overview.htm"><img src="..\..\images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+        </strong>
+        </font>
+        </td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+        <td valign="top" width="32">
+        <font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+        </td>
+        <td>
+        <font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+        </td>
+        <td width="10">&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p><b>malloc in VB?</b></p>
+	</font>
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#6699CC" face="verdana,arial,helvetica" size="1">
+	<p>A COM object you can use in VB providing equivalent functions to C runtime's malloc, free and delete </p>
+	</font>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this code has been superceded by the <a href="..\..\home\vb\code\techniques\malloc_in_vb\article.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <br>
+        <p><img src="..\..\images\imalloc.gif" width="140" height="106" alt="IMalloc Calls" border="0"></p>
+        <p><a href="imalloc.zip"><img src="..\..\images\vbdnload.gif" width="16" height="16" border="0" hspace="4">Download the vbAccelerator IMalloc Demonstrator (9kb)</a></p>
+        </font>
+	<p>
+        <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+                <td>&nbsp</td>
+                <td colspan="2" bgcolor="#EEEEEE">
+                <font color="#000000" face="verdana,arial,helvetica" size="1">
+                <b>Before you Begin</b>
+                </font>
+                </td>
+                <td>&nbsp</td>
+        </tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="..\..\images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		The source code project requires the <a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library v1.2 (ISHF_Ex.TLB)</a>
+		when running in the IDE.  Make sure you have downloaded and <a href="..\tlb\vbregtlb.htm">registered</a> this 
+		before trying the project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+        </table>
+	</p>
+        
+	<p>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<b>Overview</b><br>
+	Of course you're not supposed to allocate your own memory in Basic.  Don't be so silly,
+	what are you thinking of?  And you should stop using that <i>CopyMemory</i> call and
+	certainly those pointers should not be there at all.
+	<br><br>
+	Just in case you're not feeling like any sort of Basic purist, this article is here
+	to show you how to create little chunks of memory completely independently of variables or
+	classes, how to access their contents, reallocate them and free them.
+	<br><br>
+	Just don't tell your boss that this is what you're doing...
+
+	<br><br><br>
+	<b>What's It Good For?</b><br>
+	This code has got three main uses:
+	<ol>
+	<li>For direct translation of C code samples using the C run-time calls <i>alloc</i> and <i>free</i>
+	<li>Building structures which will store large amounts of data and are otherwise 
+	very difficult to manage in Basic, for example Hash Tables, Skip Lists, Markov Chains and so on.
+	<li>Storing data when only a long variable (pointer) is available to refer to the data, such
+	as in API controls.
+	</ol>
+	Of course, it is also useful whenever you have to allocate memory which needs to be shared
+	with the Shell, for example with Namespace extensions (surely someone has to rise to the challenge
+	of doing this in VB sometime?)
+	<br><br><br>
+
+	<b>Getting a Malloc Object</b><br>
+	<i>IMalloc</i> is a COM interface which defines the methods and properties a COM Malloc object will
+	support.  Anyone is free to design their own implementation of this interface and share it between
+	objects.  One such implementation is provided by the Windows Shell, and you can get it using the
+	<i>ShGetMalloc</i> call.
+	<br><br>
+	The first problem is how to use this call.  The API declaration can be written like this:
+	<br><br>
+	</font>	
+<font face="Lucida Console,Courier New,Courier" size="1" color="#000000">
+&nbsp;&nbsp;&nbsp;Private Declare Function SHGetMalloc Lib "shell32" (ppMalloc As Object) As Long<br>
+</font>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	You could just pass a standard VB Object variable into the ppMalloc variable, but that means you
+	end up with an untyped object which will refer to the Shell's Malloc object through the
+	comparatively slow late-binding (Automation) method.  In addition you don't get any design-time
+	auto-complete nor do you get any compile-time syntax checking.
+	<br><br>
+	A much better way to use this object is through a Type Library.  Within a Type Library you can
+	define the IMalloc interface so you can then use IMalloc as if it were a predefined object in
+	Visual Basic.  You can then rewrite the API call to get early-binding and all the advantages
+	that go with that:
+	<br><br>
+	</font>	
+<font face="Lucida Console,Courier New,Courier" size="1" color="#000000">
+&nbsp;&nbsp;&nbsp;Private Declare Function SHGetMalloc Lib "shell32" (ppMalloc As IMalloc) As Long<br>
+</font>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	Remember that Type Libraries are only required when working in the VB IDE.  You don't have to
+	ship them with any binaries you build from VB, because VB will already have compiled in the
+	Type Library information.
+	<br><br>
+	This sample, and other samples at this site, use <a href="..\..\linxadv.htm#secbradm">Brad Martinez's</a>
+	<a href="..\..\typelib.htm#ISHF_Ex">IShellFolder Extended Type Library (v1.2)</a>, however there are
+	other type libraries available containing the IMalloc interface, notably Win.TLB and WinU.TLB shipped
+	with Bruce McKinney's Hardcore VB.  I chose this type library simply because it is smaller
+	than the Hardcore VB versions size, making it a more reasonable download!	
+	<br><br>
+	Now to get the IMalloc interface you use this code:
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Private Declare Function SHGetMalloc Lib &quot;shell32&quot; (ppMalloc As IMalloc) As Long<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Defined as an HRESULT that corresponds to S_OK.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Const NOERROR = 0<br>
+Public Declare Sub CopyMemory Lib &quot;kernel32&quot; Alias &quot;RtlMoveMemory&quot; ( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lpvDest As Any, lpvSource As Any, ByVal cbCopy As Long)<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Returns a reference to the IMalloc interface.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Public Function isMalloc() As IMalloc<br>
+&nbsp;&nbsp;&nbsp;Static im As IMalloc<br>
+&nbsp;&nbsp;&nbsp;If (im Is Nothing) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Not (SHGetMalloc(im) = NOERROR) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Fatal error</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Err.Raise 7<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;Set isMalloc = im<br>
+End Function<br>
+<br>
+
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	The <i>isMalloc</i> is made public and put in a module to encourage all code in the same project to use
+	the same instance of the object.
+	<br><br><br>
+
+	<b>Allocating and Freeing Memory</b><br>
+	Once you have a Malloc object you can then start creating and destroying memory at will!  The following
+	table summarises the available methods:
+	<br><br>
+	</font>
+	<table cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="5"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Method</b>
+		</font>
+		</td>
+		<td bgcolor="#FFFFCC">&nbsp;</td>
+		<td bgcolor="#FFFFCC"><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td bgcolor="#FFFFCC">&nbsp;</td>
+		<td bgcolor="#FFFFCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Description</b>	
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Alloc
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Allocates a block of memory of the specified number of bytes, returning a pointer to the
+		memory.<br>
+		</font><font color="#000000" face="Lucida Console,Courier New" size="1">
+		&nbsp;&nbsp;&nbsp;lPtr = isMalloc.Alloc(24) ' Allocates 24 bytes
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		DidAlloc
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Returns true if the specified pointer was created using this instance of the Malloc object.
+		<br>
+		</font><font color="#000000" face="Lucida Console,Courier New" size="1">
+		&nbsp;&nbsp;&nbsp;b = isMalloc.DidAlloc(ByVal lPtr) ' True if allocated
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		DidAlloc
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Returns true if the specified pointer was created using this instance of the Malloc object.
+		<br>
+		</font><font color="#000000" face="Lucida Console,Courier New" size="1">
+		&nbsp;&nbsp;&nbsp;b = isMalloc.DidAlloc(ByVal lPtr) ' True if allocated
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Free
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Frees a previously allocated block of memory
+		<br>
+		</font><font color="#000000" face="Lucida Console,Courier New" size="1">
+		&nbsp;&nbsp;&nbsp;isMalloc.Free ByVal lPtr ' Frees up the memory
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		HeapMinimze
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Minimizes the heap as much as possible by releasing unused memory to the operating system.
+		<br>
+		</font><font color="#000000" face="Lucida Console,Courier New" size="1">
+		&nbsp;&nbsp;&nbsp;isMalloc.Free ByVal lPtr ' Frees up the memory
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Realloc
+		</font>
+	    
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Reallocates a memory block previously allocated using <i>Alloc</i> and returns
+		the new pointer to it.
+		<br>
+		</font><font color="#000000" face="Lucida Console,Courier New" size="1">
+		&nbsp;&nbsp;&nbsp;lPtr = isMalloc.Realloc(ByVal lPtr, 36) ' Resizes the block to 36 bytes.
+		<br><br>
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<td></td>
+	</tr>
+	</table>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">		
+	<br><br><br>
+
+	<b>Examples Of Use</b><br>
+	The following examples demonstrate how to move data from Visual Basic data types to a pointer allocated
+	through the Malloc object:
+	<ul>
+	<li><font color="#6699CC">To save and restore a Byte Array<br><br>
+</font>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' To Save the array b():</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Public Function SaveToMemory(ByRef b() as Byte) As Long<br>
+&nbsp;&nbsp;&nbsp;Dim lSize As Long<br>
+&nbsp;&nbsp;&nbsp;Dim lPtr As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;On Error Resume Next <font color="#999999" face="Lucida Console,Courier New" size="1">' Error checking: UBound/LBound can fail.</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;lSize = UBound(b) - LBound(b)<br>
+&nbsp;&nbsp;&nbsp;If Err.Number=0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lSize = lSize + 1<br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' No Data:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lSize = 0<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;On Error Goto 0<br>
+&nbsp;&nbsp;&nbsp;lPtr = isMalloc.Alloc(lSize + 4)<br>
+&nbsp;&nbsp;&nbsp;If Not (lPtr=0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Store the size of the array:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory ByVal lPtr, lSize, 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If lSize &gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Store the array:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory ByVal lPtr + 4, b(0), lSize	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Return the Value of lPtr</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;SaveToMemory = lPtr<br>
+End Function<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' To Restore the array from the Pointer lPtr:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Public Sub RestoreFromMemory(ByVal lPtr As Long, ByRef b() as Byte)<br>
+&nbsp;&nbsp;&nbsp;Dim lSize As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;Erase b<br>
+&nbsp;&nbsp;&nbsp;If Not (lPtr = 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Get the size of the array:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory lSize, ByVal lPtr, 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If lSize &gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReDim b(0 To lSize-1) As Byte<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory b(0), ByVal lPtr, lSize<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If	<br>
+<br>
+End Sub	<br>
+<br>
+
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	
+
+	<br><br>
+	<li><font color="#6699CC">To save and restore a User-Defined Type<font color="#000000"><br>
+	Provided there are no variable length strings in the type, then you can save and restore a type in
+	exactly the same way as for a ByteArray.  Just replace the last argument with Len(udtThis) where
+	udtThis is your Type.
+	<br><br>
+	<li><font color="#6699CC">To save and restore a String<font color="#000000">
+	<br><br>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<font color="#999999" face="Lucida Console,Courier New" size="1">' To Save the String sThis</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Public Function SaveToMemory(ByRef sThis as String) As Long<br>
+&nbsp;&nbsp;&nbsp;Dim lSize As Long<br>
+&nbsp;&nbsp;&nbsp;Dim lPtr As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Size of sThis in Bytes:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;lSize = LenB(sThis)<br>
+<br>
+&nbsp;&nbsp;&nbsp;lPtr = isMalloc.Alloc(lSize + 4)<br>
+&nbsp;&nbsp;&nbsp;If Not (lPtr=0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Store the size of the string:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory ByVal lPtr, lSize, 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If lSize &gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Store the Unicode String:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory ByVal lPtr + 4, ByVal StrPtr(sThis), lSize	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Return the Value of lPtr</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;SaveToMemory = lPtr<br>
+End Function<br>
+<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' To Restore the array from the Pointer lPtr:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Public Function RestoreFromMemory(ByVal lPtr As Long) As String<br>
+&nbsp;&nbsp;&nbsp;Dim lSize As Long<br>
+&nbsp;&nbsp;&nbsp;Dim sThis As String<br>
+<br>
+&nbsp;&nbsp;&nbsp;If Not (lPtr = 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Get the size of the array:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory lSize, ByVal lPtr, 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If lSize &gt; 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sThis = String$(lSize\2,0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyMemory ByVal StrPtr(sThis), ByVal lPtr + 4, lSize<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;End If	<br>
+<br>
+End Sub	<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+
+	</ul>
+	Other VB types can be moved using similar techniques.
+	
+	
+	<br><br><br>
+	<b>Sample Code</b><br>
+	The sample code in the download illustrates four different ways to create a <i>Stack</i> object capable
+	of storing strings.  A Stack is a simple data structure in which there are only two operations - pushing
+	an item onto the stack and poping it back off again.  The last item to be added to the stack is the
+	first to be retrieved.
+	<br><br>
+	Whilst such a simple data structure is most easily achieved using arrays (and in fact this method
+	runs quickest for most amounts of data), allocating data using IMalloc always comes a close second
+	and in fact beats the array method for 50,000 elements:
+	<br><br>
+	Here are the results for 50,000 strings in the stack (all times given in milliseconds):
+	<menu>
+	</font>
+	<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td colspan="5"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<td><img src="..\..\images\pixel.gif" width="12" height="1"></td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Method</b>
+		</font>
+		</td>
+		<td bgcolor="#FFFFCC">&nbsp;</td>
+		<td bgcolor="#FFFFCC"><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td bgcolor="#FFFFCC">&nbsp;</td>
+		<td bgcolor="#FFFFCC">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		<b>Time</b>	
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Collection
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td halign="right">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		20,103&nbsp;
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Linked Objects
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td halign="right">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		6,190
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		Array
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td halign="right">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		3,222
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		IMalloc
+		</font>
+		</td>
+		<td>&nbsp;</td>
+		<td><img src="..\..\images\grpixel.gif" height="100%" width="1"></td>
+		<td>&nbsp;</td>
+		<td halign="right">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">	
+		2,872
+		</font>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5"><img src="..\..\images\grpixel.gif" width="100%" height="1"></td>
+		<td></td>
+	</tr>
+	</table>	
+	</menu>
+
+	</p>
+	</font>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	
+        <br><br>
+
+        <p><a href="#sectop"><img src="..\..\images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<a href="..\..\overview.htm"><img src="..\..\images\sc.gif" border="0" width="8" height="12" hspace="4" alt="Source Code - What We're About!"></a>Back to <a href="..\..\overview.htm">Source Code</a></p>
+	<br>
+        </font>
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
