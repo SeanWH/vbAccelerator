@@ -1,0 +1,201 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords" content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator/Cortex Development HTML Editor">
+<title>Algorithm Source Code Summary</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="home\index.html"><img src="home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="home\index.html"><img src="home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+<!-- SECTION:START -->
+<a name="sectop"></a>
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#660000">
+        <td width="100%">
+	&nbsp;<font color="#FFFFFF" face="verdana,arial,helvetica" size="3"><strong>Source Code</strong></font>
+        </td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Installation Instructions and Requirements" href="install.htm"><img src="images\install.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<!-- SECTION:END -->
+
+<!-- AREA:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#00CC99">
+        <td valign="top" width="32">
+        &nbsp;<font color="#99FFCC" face="verdana,arial,helvetica" size="6"><strong>6&nbsp;</strong></font>
+        </td>
+        <td valign="center" width="100%">
+        <font color="#99FFCC" face="verdana,arial,helvetica" size="4"><strong>Algorithms</strong></font>
+        </td>
+        <td>&nbsp</td>
+</tr>
+<tr bgcolor="#EEEEEE">
+	<td colspan="3"><img src="images\pixel.gif" width="100%" height="4" alt=""></td>
+</tr>
+</table>
+<!-- AREA:END -->
+
+<!-- BODY:START -->
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+        <td>&nbsp</td>
+        <td>
+        <font color="#000000" face="verdana,arial,helvetica" size="2">
+        <p>
+	<br>
+        This section is a general repositry for VB algorithms and techniques for speeding up common 
+	operations.  
+        <ul>
+	<li>Double Linked-Lists and Hashing:
+	<ul>
+	<li><a href="codelib\alg\dllist.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Double-Linked List</a>	
+	<li><a href="codelib\alg\hashlist.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">About Hashing and a Powerful Hash Generation Algorithm</a>
+	<li><a href="codelib\alg\hashlist.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Double-Linked List with Hashing</a>
+	</ul>
+	<li><a href="codelib\alg\idxarray.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Collection for access by index</a>.  Demonstrates a technique for
+	speeding up insertion/deletion from an array.
+	<li><a href="codelib\alg\skiplist.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Skip-List</a>.  A collection which automatically sorts elements as they are added and uses a probabilistic indexing scheme for rapid access to members.
+	<li><a href="codelib\alg\strsplit.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">String Splitter class</a> - splits a string according to multiple delimiters and includes native (non-collection based) For...Each enumeration support.
+	<li><a href="codelib\alg\strbuild.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Build long strings quickly</a>.  Appending many elements to a string can be very slow in VB.  If you know your about to append many elements, then pre-allocating memory and
+accessing it through <i>CopyMemory</i> works in a fraction of the time.
+	<li><a href="codelib\alg\binsrch.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Binary Search</a>
+	<li><a href="codelib\alg\shelsort.htm"><img src="images\isnew.gif" width="23" height="11" border="0" hspace="2" alt="New">Shell Sort</a>
+	</ul>	
+        </p>
+        </font>
+	<!--
+        <font color="#666666" face="verdana,arial,helvetica" size="1">  
+        Coming up:
+        <ul>
+        <li>Hash tables and an new, faster and more flexible collection object which won't increment your object's reference count
+        <li>Sorting algorithms - Shell Sort and the Postman sort - a sort whose speed varies linearly
+        (not exponentially) with sort size.
+        <li>Using <b>XML</b> to store self-describing data.  Replace old-fashioned (already???) registry 
+        storage and INI files with this new and much-hyped technology!<br>
+        </ul>
+        </p>
+        </font>
+	-->
+
+        </td>
+        <td>&nbsp</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="1" cellpadding="0">
+<tr>
+	<td>&nbsp;</td>
+        <td width="100%" bgcolor="#EEEEEE">	
+        <font face="verdana,arial,helvetica" size="2">
+        <a href="overview.htm"><img src="images\back.gif" width="8" height="12" alt="Back to Overview" border="0" hspace="4"> Overview</a>
+        </font>
+        </td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td width="100%" bgcolor="#EEEEEE">
+	<font face="verdana,arial,helvetica" size="2">
+        <a href="#top"><img src="images\top.gif" width="8" height="12" alt="Back to top" border="0" hspace="4"> Back to top</a>
+        </font>
+        </td>
+	<td>&nbsp;</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp;</td>
+        <td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999
+        </font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+
+"0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 25 August 1999
+        </font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+

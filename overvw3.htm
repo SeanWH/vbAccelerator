@@ -1,0 +1,125 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>Common Controls Source Code</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966">
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#660000">
+	<td>
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a name="sectop"></a>Overview
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#6699CC">
+	<td valign="top">
+	<font color="#660000" face="verdana,arial,helvetica" size="6"><strong>3</strong></font>
+	</td>
+	<td>
+	<font color="#660000" face="verdana,arial,helvetica" size="4"><strong>Code Libraries</strong></font>
+	<font color="#660000" face="verdana,arial,helvetica" size="2">
+	<a href="overview.htm" target="vbamain">All Source Code</a>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	Here's where everything that's not a control but is useful source code goes.
+	</p>
+	<p><b>Summary</b></p>
+	<p>
+	<ul>
+	<li><a href="#sec1">Common Dialog/Direct</a> - the only <b>full no-code change</b> replacement for COMDLG32.OCX available
+	<li><a href="#sec2">Customising Clipboard Use</a>
+	<li><a href="#sec3">Changing window shapes</a>
+	<li><a href="#sec4">INI file and Registry access</a> with Class
+	<li>Use the <a href="#sec5">Shell's FileCopy, Move and Delete to Recycle bin</a> methods
+	<li><a href="#sec6">Subclassing without the crashes</a>
+	<li>Using <a href="#sec7">Enumeration</a> API methods in VB
+	</ul>
+	</p>
+	
+	<br>
+	<p><b>The Library</b></p>
+
+	<p><b><a name="sec1"><img src="images\cdlgico.html" width="16" height="16" border="0"></a> <a href="codelib\comdlg\article.htm" target="vbamain">Common Dialog/Direct</a></b><br>
+	<p><img src="images\cdlgtmp.gif" alt="[Common Dialog With Template]" width="426" height="325"></p>
+	<p>Common Dialog/Direct is a new DLL or class library which shows how to completely replace COMDLG32.OCX through
+	Visual Basic code.  The advantages are you no longer need to put a control on a form to use common dialogs - just
+	declare an instance of the class and you have a straight replacement.
+	</p>
+	<p>But of course, you get more through my library.  All the Common Dialogs can now be made a child of your own VB
+	form - so you can have extra buttons, tabs on your Common Dialog.  Check out the VB Open Project dialog to 
+	get an idea of what this feature allows you to do.
+	<p>Back to <a href="#sectop">top</a></p>
+
+	<p>
+	<p><b><a name="sec2"></a><a href="codelib\clipbrd\article.htm" target="vbamain">Customising Clipboard Use</a></b><br>
+	Visual Basic provides you with the Clipboard object, which is good as long as you want to use the standard formats - text, picture or data.
+	</p>
+	<p>
+	But what if you want to store more information so people can cut and paste from your application with
+	full formatting data, whilst still providing a generic method to get the text into other apps?
+	Look at what Microsoft apps give you.  If you put something on the clipboard from Excel or Word, you
+	can paste it into Excel or Word with all the formatting information, or you can just paste the text.
+	</p>
+	<p>
+	The <a href="codelib\clipbrd\article.htm" target="vbamain">Custom Clipboard library</a> superclasses the existing Clipboard
+	library so you have the
+	flexibility to register new customised clipboard formats <I>in addition</I> to the standard ones.  
+	You can paste all the data you want into the custom format, so when a user Cuts/Copies/Pastes
+	in your app, they don't loose anything.  They'll like you for it!
+	</p>
+	<p>Back to <a href="#sectop">top</a></p>
+
+	<p><b><a name="sec3"><img src="images\wshpicon.gif" width="16" height="16" border="0"></a> <a href="codelib\winshape\article.htm" target="vbamain">Changing Window Shapes</a></b><br>
+	</p>
+	<p><img src="images\shpwinl.gif" alt="[Window Shape Picture]" width="125" height="125"></p>
+	<p>
+	Just for fun, now your VB window or custom control can be almost any shape
+	you want!  All you need is a few API declares and a bit of imagination and 
+	soon you can have <a href="codelib\winshape\article.htm">a window that's star-shaped, circular or tank-shaped</a> - well, its up to you.
+	</p>
+	<p>Back to <a href="#sectop">top</a></p>
+
+	</font>
+	</td>
+	<td>&nbsp</td>
+
+</tr>
+</table>
+
+<hr>
+
+<table border="0">
+    <tr>
+        <td><p align="center" style="font-size:7pt;"><font
+        size="1" face="Verdana, Arial, Helvetica">Copyright 1998,
+        Steve McMahon (</font><a
+        href="mailto:steve@vbaccelerator.com"><font size="1"
+        face="Verdana, Arial, Helvetica">steve@vbaccelerator.com</font></a><font
+        size="1" face="Verdana, Arial, Helvetica">). All Rights
+        Reserved.</font></p>
+        </td>
+    </tr>
+</table>
+<font size="3" face="Verdana, Arial, Helvetica"><!-- END:Footer --></font>
+</body>
+</html>

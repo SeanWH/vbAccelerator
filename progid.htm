@@ -1,0 +1,302 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>What is a ProgID and How Do I Change It?</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="home\index.html"><img src="home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="home\index.html"><img src="home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<a name="sectop">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FF6633">
+	<td height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="3"><strong>
+	&nbsp;Installing, Registering, COM and VB
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="overview.htm"><img src="images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>What is a ProgID and How Do I Change It?</b>	
+	</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>
+	<font color="#000099" face="verdana,arial,helvetica" size="1">
+	Information about ProgIDs, CLSIDs and a little about COM object registration
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p>
+	If you are modifying an ActiveX EXE, DLL or OCX	you have downloaded from this site and
+	want to distribute it with your project, I specify two requirements:
+	<ul>
+	<li>Change the filename
+	<li>Change the ProgID
+	</ul>
+	So, you ask, just what is a ProgID anyway, and how or why do I change it?  This article is here
+	to explain.  If you don't want to know why, just skip straight to Changing a ProgID.
+	<ul>
+	<li><a href="#secwhy">All About ProgIDs and a Little About COM Registration</a>
+	<li><a href="#sechow">How to Change a ProgID</a>
+	</ul>
+	<br>
+
+	<a name="secwhy"></a>
+	<b>All About ProgIDs and a Little About COM</b><br>
+	VB implements non-private Classes and UserControls as COM objects (I suppose I should mention
+	that UserDocuments are also done this way too, but who uses them?)  To allow access to a COM
+	object regardless of where it is located, COM implements a mechanism to identify
+	where the executable implementing a given COM object is.  This mechanism means COM is not
+	restricted to any given path for storing an object, and with the DCOM extensions the COM
+	object can actually be held on another computer on the network.
+	<br><br>
+	To do this, COM requires that every non-private object has a unique identifier.  This identifier
+	is called a <i>GUID</i> (<b>G</b>lobally <b>U</b>nique <b>Id</b>entifier).  This is a 128bit number
+	(thus potentially allowing for a maximum of 2<sup>128</sup> possible COM objects, which is an undescribably
+	large number.  Read about how GUIDs are generated <a href="javascript:window.alert(&quot;ftp://ftp.isi.edu/internet-drafts/draft-leach-uuids-guids-01.txt\nThis link was not retrieved.&quot;)">here</a>).  
+	To make it easier to write a GUID, it is normally expressed as a hexadecimal
+	number with some formatting applied. This form of a GUID is also referred to as a <i>CLSID</i>
+	when the GUID is the identification number for a COM object. 
+	An example CLSID looks like this (this is the CLSID
+	for the Microsoft Common Dialog control shipped with Service Pack 2 of VB5):<br><br>
+	&nbsp;&nbsp;{F9043C85-F6F2-101A-A3C9-08002B2F49FB}
+	<br><br>
+	The formatting shown corresponds to the COM <i>GUID</i> type:
+	</P>
+	</font>
+	<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;Type GUID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data1 As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data2 As Integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data3 As Integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data4(0 To 7) As Byte<br>
+&nbsp;&nbsp;End Type<br>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	Even with this formatting, a GUID is hardly an easy thing to remember.  In addition to this,
+	COM supports the concept of <i>Binary Compatibility</i> where two objects with different
+	GUIDs can be used interchangeably.<br><br>
+	To allow for Binary Compatible objects and to make it easier to get at COM objects, a higher
+	level of abstraction from the GUID exists.  This is the <i>ProgID</i> (<b>Prog</b>rammatic <b>ID</b>entifier).
+	The Programmatic ID is a string of the form:<br><br>
+	&nbsp;&nbsp;Project.ClassName<br><br>
+	For example, the ProgID for the Word automation object is Word.Basic.  In a Visual Basic project,
+	the ProgID is determined in a logical way: from the Project Name and the Class Name.  So for
+	example, the <a href="codelib\flatcbo\flatctrl.htm">vbAccelerator Flat Control Extender</a>
+	DLL is implemented in a project named <b>vbalFCtrl</b> and has one Public class called 
+	<b>cFlatControl</b>.  The ProgID is therefore:<br><br>
+	&nbsp;&nbsp;vbalFCtrl.cFlatControl<br><br>
+	This information is stored in the registry like this:
+	</p>
+	</font>
+	<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<img src="images\folder.gif" width="15" height="13" border="0" hspace="4">HKEY_CLASSES_ROOT<br>
+&nbsp;&nbsp;<img src="images\folder.gif" width="15" height="13" border="0" hspace="4">vbalFCtl.cFlatControl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="images\folder.gif" width="15" height="13" border="0" hspace="4">CLSID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images\regkey.gif" width="15" height="13" border="0" hspace="4">(default) = "{E16E3DC5-B228-11D2-8E21-44C10AC10000}"<br>
+<br><br>
+&nbsp;&nbsp;<img src="images\folder.gif" width="15" height="13" border="0" hspace="4">CLSID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;..<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="images\folder.gif" width="15" height="13" border="0" hspace="4">{E16E3DC5-B228-11D2-8E21-44C10AC10000}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images\folder.gif" width="15" height="13" border="0" hspace="4">InProcServer32<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images\regkey.gif" width="15" height="13" border="0" hspace="4">(default)="C:\Stevemac\VB\Develop\FlatCtrl\DLL\vbalFCtl.dll"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images\regkey.gif" width="15" height="13" border="0" hspace="4">ThreadingModel="Apartment"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;..<br>
+</font>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	When you request an instance of the cFlatControl class, COM looks up the ProgID "vbalFCtl.cFlatControl" which
+	gives it the GUID of the object.  COM can then locate the GUID and therefore the path to the object.
+	This is where the problem arises with two objects with the same ProgID.  If you create a new
+	version of the Flat Control DLL, say it either has with different methods or it is compiled
+	in VB6 instead of VB5, you will automatically generate 
+	a new GUID.  However, if you
+	don't change either the project name or the class name, you will overwrite the existing ProgID
+	with your own version.  Anyone else's code which expects to get an instance of the object
+	suddenly gets routed to the new version, and their code may then fail depending on what you've
+	done to the existing class.
+	<br><br>
+	<a href="#sectop"><img src="images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a>
+	<br><br>
+	<a name="sechow"></a>
+	<b>Changing a ProgID</b><br>
+	That's why you need to change the ProgID.  There are two options you can use to actually 
+	change one.  Firstly you can change the Project Name, and secondly you can change the Class Name.
+	The most commonly used strategy is to change the Project Name component (CCRP and Microsoft 
+	take this approach).  This means that your new version is a completely new component, and you
+	have to recompile any existing code to use it, plus you need to unreference the previous
+	version of the component and select the new one instead.<br><br> 
+	<menu>
+	<img src="images\progid.gif" width="172" height="184" border="0" alt="Changing the Project Name"><br>
+	<small><b>Changing the Project Name in Visual Basic</b></small>
+	</menu>
+	This is
+	a fairly painless operation for DLL components. Since the class name is unchanged, your previous
+	code should just work by changing the reference in the Project-References box.
+	<br><br>
+	For controls, however, this isn't so easy.  Controls can persist a great quantity of information
+	entered at design time in your form's FRX files.  Removing the control and adding the new one
+	throws away all of this information.  You can see this particularly with the ImageList control.
+	If you have an ImageList control with 90 icons in it, to migrate to a new version of the
+	component means you have to somehow get all 90 icons from the previous version to the new one.
+	Often you can make this change quite easily by 
+	adjustment of VB's Project and Form files.  Say for example you were migrating the pre-release 
+	demo of the <a href="codelib\sgrid\sgrid.htm">S-Grid</a> control
+	from a VB5 version to the VB6 version.
+	<br><br>
+	In the Project file you will have something like this:
+	</font>
+	<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Object={7800BB88-99A6-11D2-8E21-6C8804C10000}#22.0#0; vbalGrid.ocx<br>
+<br></font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+And in the form file:
+<br><br></font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Object = "{7800BB88-99A6-11D2-8E21-6C8804C10000}#22.0#0"; "vbalGrid.ocx"<br>
+<br>...<br><br>
+&nbsp;&nbsp;   Begin vbAcceleratorGrid.vbalGrid grdThis <br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Height          =   3735<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       Left            =   0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       TabIndex        =   0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       Top             =   180<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       Width           =   5175<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       _ExtentX        =   9128<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       _ExtentY        =   6588<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       BackgroundPictureHeight=   0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       BackgroundPictureWidth=   0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       GridLineColor   =   12632256<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Name            =   "Tahoma"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Size            =   8.25<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Charset         =   0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Weight          =   400<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Underline       =   0   'False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Italic          =   0   'False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          Strikethrough   =   0   'False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       EndProperty<br>
+&nbsp;&nbsp;   End<br>
+</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	You should find you can migrate from one version to another by replacing the CLSIDs in
+	both files (see	above for how to determine the new CLSID) and changing the ProgID in
+	the form file from the old version to the new one you have compiled 
+	(from vbAcceleratorGrid.vbalGrid to, say, vbAcceleratorGrid6.vbalGrid).  Of course here
+	I am assuming the the <i>StdFont</i> object used to persist the font information hasn't
+	changed its CLSID as well.  To make sure you have your CLSIDs correct, you can create a 	
+	blank project, add the new control and put some dummy design time data in. Then open
+	up the test project's .vbp and .frm files - you will be able to see the new CLSIDs and
+	ProgIDs and should be able to swap them over!
+	<br><br>
+	<b>Changing the Filename</b><br>
+	Oh, and when you do all this, don't forget to change the filename at the same time!  Although
+	you can in theory have two different ActiveX controls or DLLs files with the same name, 
+	there are two problems here:
+	<ul>
+	<li>Multiple files with the same names mean the system is pretty much unmanagable.  Which
+	file is which?
+	<li>At heart ActiveX controls or DLLs are still Win32 DLLs and
+	therefore subject to the limitations of the operating system.  Under Win9x you particularly
+	have problems because the first version to be loaded with then determine what every other
+	application on the system uses.
+	</ul>
+	<br><br><br>
+	<p><a href="#sectop"><img src="images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a></p>
+	<p><img src="images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back">Back to <a href="install.htm">Installation</a></p>
+	<p><img src="images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back">Back to <a href="home.htm">Home</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 17 February 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

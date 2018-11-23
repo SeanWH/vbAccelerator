@@ -1,0 +1,221 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>vbAccelerator How To Articles</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" background="images\legacy.html" >
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="home\index.html"><img src="home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="home\index.html"><img src="home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+ name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#CCCC33">
+	<td>&nbsp;</td>
+	<td valign="center" height="25" width="100%">
+	<font color="#FFFFCC" face="verdana,arial,helvetica" size="3"><strong>Articles</strong></font>
+	</td>
+	<td width="10">&nbsp</td>
+</tr>
+<tr bgcolor="#EEEEEE">
+	<td colspan="3"><img src="images\pixel.gif" width="100%" height="4" alt=""></tr>
+</tr>
+</table>
+
+<!-- SUPERCEEDED:START -->
+<br />
+<table border="0" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+<td width="100%" bgcolor="#EEEEEE">
+	<p>
+	<font color="#666666" face="verdana,arial,helvetica" size="5">
+	<b>&nbsp;NOTE:</b></font>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">this page has been superceded by the <a href="home\vb\code\techniques\index.html" target="_top">version at the new site</a>.
+	</font>
+	<br />
+        </p>
+</td>
+<td width="66" bgcolor="#FFFFFF"><br /></td>
+</tr>
+</table>
+<br />
+<!-- SUPERCEDED:END -->
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr >
+	<td>&nbsp</td>
+	<td>
+	<p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	The How To section provides some extended articles explaining in depth how to use Win32 techniques
+	from VB, packed full of sample code and (possibly) erudite VB knowledge.
+	You may have noticed, however, there aren't many here right now - too many <a href="javascript:window.alert(&quot;http://www.budvar.cz/\nThis link was not retrieved.&quot;)" target="vbamain">beers</a> and fine wines!
+	But hopefully more will come...
+	<br><br>
+
+	<!--//
+	<a name="secscc">
+	<b><a href="codelib/article/circular.htm" target="vbamain"><img src="images/minibulb.gif" width="20" height="32" border="0" hspace="2" alt="Article"><img src="images/isnew.gif" width="23" height="11" alt="New!" border=0" hspace="2">Defeat Circular References</a><br></b>
+	<menu>
+	Under general relativity, there is a theory called the Moebius theory; a twist in the fabric of space where time becomes a loop.
+	A similar but less dramatic problem occurs with VB when you try to create a control with an object model like the VB toolbar control.
+	<br><br>
+	The control contains a collection of button objects, and you can change the properties of the buttons by
+	modifying the properties of these child objects.  When you modify a property of the button that clearly 
+	affects the parent control, and so somehow the child object must communicate with the parent control.
+	<br><br>
+	This article demonstrates that if you attempt to do this the obvious, VB way (where the child object has a 
+	reference to its owner) then the control can no longer possibly work.  Instead you have to take a non-VB
+	route, using either object pointers or custom messages and subclassing.
+	</menu>
+	//-->
+
+	<a name="seclinkspoof"></a>
+	<b><a href="codelib\article\linkspf.htm" target="vbamain"><img src="images\minibulb.gif" width="20" height="32" border="0" hspace="2" alt="Article">LinkSpoof</a></b>
+	<menu>
+	No article as such, instead this is a sample from Robert Heinig, 
+	demonstrating how to override VB6's Linker to link in pre-compiled C++ or assembler 
+	code directly into your VB6 executable.  So now there can no longer be an excuse for not having
+	the fastest code on the planet! <br>
+
+	</menu>
+
+	<a name="secbaseaddr"></a>
+	<b><a href="codelib\article\baseaddr.htm" target="vbamain"><img src="images\minibulb.gif" width="20" height="32" border="0" hspace="2" alt="Article">Component Base Addresses</a></b>
+	<menu>
+	Covers the why and how of component Base Addresses, including a discussion of their performance and
+	how to determine the Base Address of existing objects.
+	</menu>
+
+	<a name="secobjstore"></a>
+	<b><a href="codelib\imalloc\objstore.htm" target="vbamain"><img src="images\minibulb.gif" width="20" height="32" border="0" hspace="2" alt="Article">Store Objects against a Control Item's Tag or ItemData property</a></b>
+	<menu>
+	Often in a control you want to associate more information with an item in the control than you
+	can fit into the provided <i>ItemData</i> or <i>Tag</i> property.  This article demonstrates three
+	techniques for storing objects against control items, demonstrating how you can write code which performs
+	100 times faster than the equivalent VB implementations.
+	</menu>
+
+	<a name="secscls"></a>
+	<b><a href="codelib\ssubtmr\ssubtmr.htm" target="vbamain"><img src="images\minibulb.gif" width="20" height="32" border="0" hspace="2" alt="Article">Subclassing Without The Crashes</a></b>
+	<menu>
+	The introduction of the AddressOf operator to VB5 now allows you to subclass, although it is not nearly as simple as it ought to be. 
+	<br><br>
+	The SSUBTMR component is a stable and consistent way of working around difficulties in subclassing. You can either use it as an external DLL to provide a (more) crash-proof way of 
+	debugging subclassed components, or by including one module and one interface class, you can compile it directly into your application once you are happy the subclassing is working. 
+	SSUBTMR is the basis for most of my controls.
+	</menu>
+	<b><a href="codelib\ssubtmr\startup.htm" target="vbamain"><img src="images\minibulb.gif" width="20" height="32" border="0" hspace="2" alt="Article">Associating File Types With Your Application</a></b>
+	<menu>
+	This article describes from start to finish what you need to do to:
+	<ul>
+	<li>Associate a file with your application, including setting a customised document icon and 
+	creating as many Explorer menu actions as you want for your association.
+	<li><i>Properly</i> detect whether an existing instance of your app is running or not
+	<li>Sending information cross-process from one instance to another.
+	</ul>
+	There's lots to think about to do this task properly and reliably.  But as you will see from 
+	the article, by judiciously using the Win32 API, and using the code in the
+	<a href="codelib\inireg\registry.htm">Registry</a> class and <a href="#secscls">
+	SSUBTMR</a> you end up with a fairly small code base to completely solve this task.  This
+	article describes code designed for the <a href="codelib\custclip\goldfish.htm">Goldfish</a>
+	demonstration application.
+	</menu>
+
+	</font>
+	</p>
+	<font color="#999999" face="verdana,arial,helvetica" size="2">
+	<b>Creating truly transparent owner-drawn controls</b><br>
+	Something I think is quite cool (although, as famous VB hacker Escher once said, 
+	this is because I've got a 'brain the size of a walnut'.  I'd give you a link to this great fun
+	article, but unfortunately it has been deleted from MSDN.  However, the article was called
+	'Slimy Windows Hacks for VB' and went on at some length about how the author was a rabbit and
+	therefore benefited from great vision due to eating carrots.) 
+	<br><br>
+	<a name="secexe">
+	<!---	<a href="articles/nodepend.htm">
+	--->
+	<b>Building Fully-Featured Applications with no dependencies other than VB runtimes</b>
+	<!---
+	</a>
+	--->
+	<br>
+	I'm afraid I have had to put this article is on hold due to technical difficulties.
+	<!---
+	Coming soon!  Now that you can build more controls all in VB, there's less need to ship
+	extra controls with your application.  Instead, just compile the control into your application
+	(and an all VB control is generally a <b>lot</b> smaller than the stand alone equivalent!).<br><br>
+	The big downside to this is that controls often require subclassing techniques which can make
+	the application impossible to debug successfully.  In this article I will provide my helper
+	application which allows you to develop with compiled controls but at compile time swap them
+	for the full control source.
+	--->
+	<br><br><br>
+	</p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999
+	</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

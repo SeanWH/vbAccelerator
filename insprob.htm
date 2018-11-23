@@ -1,0 +1,346 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="Notepad">
+<title>ActiveX Can't Create Object</title>
+</head>
+
+<body topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0"  background="images\legacy.html">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="home\index.html"><img src="home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="home\index.html"><img src="home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+<a name="sectop">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FF6633">
+	<td height="25">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="3"><strong>
+	&nbsp;Installing, Registering, COM and VB
+	</strong>
+	</font>
+	</td>
+	<td width="96">
+	<font color="#FFFFFF" face="verdana,arial,helvetica" size="2"><strong>
+	<a title="Back to Source Code" href="overview.htm"><img src="images\srccode.gif" height="12" width="96" border="0" valign="center"></a>
+	</strong>
+	</font>
+	</td>
+</tr>
+</table>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#EEEEEE">
+	<td>&nbsp;</td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>ActiveX Can't Create Object</b>
+	</font></td>
+	<td>&nbsp;</td></tr>
+<tr>
+	<td>&nbsp;</td>
+	<td><font color="#000099" face="verdana,arial,helvetica" size="1">
+	Solving this frequently encountered VB Installation problem
+	</font></td>
+	<td>&nbsp;</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="#FFFFFF">
+	<td>&nbsp</td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p>
+	<img src="images\instprob.gif" width="146" height="160" alt="Installation Problem"><br><br>
+	The most common problem people get with code on this site is VB's super friendly
+	error 429, "ActiveX Can't Create Object".  This might happen to you when you're running
+	in the VB IDE, or when you're trying to distribute a EXE using vbAccelerator controls to a 
+	new machine.<br><br>
+	<b>Don't Panic!</b><br>
+	Despite the mysterious appearance of this error message, you should find it pretty easy to
+	solve.  The error message itself can occur for one of four reasons (listed in order of
+	likeliness):
+	<ol>
+	<li>You do not have a required TLB or ActiveX DLL/OCX file.
+	<li>A TLB or ActiveX DLL/OCX needed by the project is present but not registered on your system.
+	<li>The VB runtimes are an earlier version than the one you need to run the project.
+	<li>A required TLB or ActiveX DLL/OCX file is corrupt.
+	</ol>
+	To solve the error is a process of elimination.  The first and most important step is to
+	make sure you know what the dependencies are for the project. 
+	<br><br>
+	<b>Know Your Dependencies</b><br>
+	This site lists all the 
+	dependencies for a project at the top of the sample in the section
+	<b>Before You Begin</b>.  Currently, this information is not
+	always included in the zips so I strongly recommend that you save a copy of the HTML
+	page from which you download a project from as well as downloading the project.
+	<br><br>
+	Here is a sample dependency list:
+	</p></font>
+	<p>
+	<table>
+	<tr>
+		<td>&nbsp</td>
+		<td colspan="2" bgcolor="#EEEEEE">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		<b>Before you Begin</b>
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+		<td valign="top"><img src="images\bullet.gif" border="0" hspace="2" width="8" height="8"></td>
+		<td valign="top">
+		<font color="#000000" face="verdana,arial,helvetica" size="1">
+		These projects require the <a href="codelib\ssubtmr\ssubtmr.htm">SSubTmr.DLL component</a>.  Make sure you have loaded and registered this before trying any project.
+		</font>
+		</td>
+		<td>&nbsp</td>
+	</tr>
+	</table>
+	</p>
+	</font>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This tells you which components you must have and any registration requirements for them;
+	in this case you must have SSubTmr.DLL on your system and it must have been registered.
+	If you try to run the executable with the project before you have done this, the executable
+	will fail at start up with Error 429.  If you try to run the project code in VB, it will fail 
+	as soon as you try to create the object.  With control projects, this is whenever you show
+	the form (whether at run-time or design-time), and with DLL projects this is whenever the first
+	method is called on the DLL.  
+	</p>
+	</font>
+	<p><table width = "100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td valign="top"><img src="images\minitip.gif" width="10" height="14" hspace="10"></td>
+	<td bgcolor="#99CCFF"><font color="#000099" face="verdana,arial,helvetica" size="2">
+	<b>Tip</b> Download and Register <a href="codelib\ssubtmr\ssubtmr.htm">SSubTmr.DLL</a> first<br>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+	<td></td>
+	<td><font color="#000000" face="verdana,arial,helvetica" size="2">
+	Almost all of the samples on this site need SSubTmr.DLL.  This DLL is the library
+	I use to get consistent	and reliable subclassing to work in VB.  Although VB5 and 6 allow
+	you to write subclassing code directly into your project, it is difficult, error-prone and
+	makes your code very difficult to debug.  I isolated the code into this DLL to make things
+	more managable.<br><br>
+	If you <a href="codelib\ssubtmr\ssubtmr.htm">download</a> and register this file on your system before trying anything else, you'll
+	almost certainly have an easier time!  Don't forget either to include this file and mark it for
+	registration in any setup kit you write if you include vbAccelerator controls.	
+	<br>
+	</font>
+	</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	<a name="secreg"></a>
+	<b>Registering ActiveX DLLs and OCXs</b><br>
+	There are various ways of registering a TLB or ActiveX DLL/OCX on your system, all of which
+	ultimately do the same thing, which is to call the <i>DLLRegisterServer</i> method exposed by
+	all in-process ActiveX components.<br><br>
+	The methods are:
+	<ol>
+	<li>Use VB as a registration tool.
+	<li>Run Regsvr32.exe.
+	<li>Call DLLRegisterServer from your own code.
+	</ol>
+	</p>
+	</font>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<a name="secvbreg"></a>
+	<tr>
+		<td width="8"><img src="images\pixel.gif" width="8" height="1"></td>
+		<td bgcolor="#FFFFCC" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>1. Using VB as a registration tool.</b>
+		</font>
+		</td>
+		<td width="8"><img src="images\pixel.gif" width="8" height="1"></td>
+	</tr>
+	<tr>
+		<td width="8"></td>
+		<td width="16"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		The dialog boxes you get when you choose <i>Project-Components</i> (Ctrl-T) 
+		for controls and <i>Project-References</i> for DLLs both
+		allow you to register components automatically.  Choose the appropriate
+		box, click <i>Browse...</i> and locate the OCX, DLL or TLB.  Click OK.  The 
+		component will be registered.  Note that you should do this before you
+		try to load a project which requires one of these components.<br><br>
+		<img src="images\instbrws.gif" width="225" height="200" border="0" alt="Project Component Dialog">
+		<br><br>
+		<small>Note: I have discovered that VB fails to register TLBs correctly through the Project-References
+		dialog.  Use the <a href="codelib\tlb\vbregtlb.htm">vbAccelerator TLB Registration Utility</a>
+		instead if you use Type Libraries frequently.
+		<br><br>
+		</font>
+		</td>
+		<td width="8"></td>
+	</tr>
+	<a name="secregsvr32"></a>
+	<tr>
+		<td width="8"><img src="images\pixel.gif" width="8" height="1"></td>
+		<td bgcolor="#FFFFCC" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>2. Run Regsvr32.exe</b>
+		</font>
+		</td>
+		<td width="8"><img src="images\pixel.gif" width="8" height="1"></td>
+	</tr>
+	<tr>
+		<td width="8"></td>
+		<td width="16"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		Regsvr32.exe is a small executable provided with Win95 and NT systems which
+		calls DLLRegisterServer on a specified file.  To use it, just click Start-Run,
+		type <i>regsvr32</i> and then drag the file you want to register from Explorer 
+		onto the Start-Run box.<br><br>
+		Click OK to do the registration.  If it succeeds, there will be a message box
+		saying registration succeeded, otherwise the message box will tell you it failed
+		with some uninterpretable COM error code.  If it fails, you have a bad VB runtime
+		or a corrupt file, or you have got the file name wrong.
+		<br><br>
+		<img src="images\regsvr.gif" width="347" height="163" border="0" alt="Start-Run Regsvr32">
+		<br><br>
+		Regsvr32 has a number of command line options which let you control what it does.
+		By default it registers a control or DLL and gives a message box saying what it
+		has done.  The following command options let you modify this behaviour:
+		<ul>
+		<li><b>/u</b> - Unregister server.
+		<li><b>/s</b> - Silent; display no message boxes
+		<li><b>/c</b> - Console output
+		</ul>
+		You can use these options when writing simple install scripts in batch files.
+		<br><br>		
+		</font>
+		</td>
+		<td width="8"></td>
+	</tr>
+	<tr>
+		<td width="8"></td>
+		<td bgcolor="#FFFFCC" colspan="2">
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		<b>3. Call DLLRegisterServer in code</b>
+		</font>
+		</td>
+		<td width="8"><img src="images\pixel.gif" width="8" height="1"></td>
+	</tr>
+	<tr>
+		<td width="8"></td>
+		<td width="16"></td>
+		<td>
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+		The code for the VB Setup Wizard shows you how to call DLLRegisterServer yourself,
+		albeit using the DLL supplied with the SetupKit (VB5STKIT.DLL for VB5).  Search for
+		<i>DLLSelfRegister</i> in the code to see how its done.		
+		<br><br>
+		</font>
+		</td>
+		<td width="8"></td>
+	</tr>
+	</table>
+	</p>
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<b>Registering ActiveX EXEs</b><br>
+	You can	register ActiveX EXEs on your system either using VB as registration tool (as described 
+	<a href="#secvbreg">above</a>) or by using the little documented command line switch <i>/REGSERVER</i>
+	(not case-sensitive) when you run the executable.
+	<br><br>
+	<b>Registering Type Libraries (TLB)</b><br>
+	You can register TLBs either by using VB as a registration tool (as described <a href="#secvbreg">above</a>)
+	or by using the <a href="codelib\tlb\vbregtlb.htm">VB TLB registration utility</a>, which comes with
+	complete source code.
+	<br><br>	
+	<img src="pixel.html" height="1" width="32"><a href="codelib\tlb\vbregtlb.htm"><img src="images\vbtlbreg.gif" width="269" height="256" alt="VB TLB registration utility" border="0"></a>
+	<br><br>
+
+	<b>If You Can't Register a File</b><br>
+	First thing is to check the <a href="install.htm">VB5 run-time files</a> to see if you have
+	the right version.  If this reveals the VB runtime version is ok, then you may have a corrupt
+	copy the file itself.  Download a fresh copy and try it again.  If you still don't have any
+	success, then there is something seriously wrong, and perhaps its time to perform that rebuild
+	you had been looking forward to for so long :)
+	<br><br>
+	<b>Conclusion</b><br>
+	By following these steps you should have no problem getting any code to run off this site.
+	Hope it helps!
+	<br><br>
+	</p>
+	<br><br><br>
+	<p><a href="#sectop"><img src="images\top.gif" border="0" width="8" height="12" hspace="4" alt="Top"></a>Back to <a href="#sectop">top</a><br>
+	<img src="images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back">Back to <a href="install.htm">Installation</a><br>
+	<img src="images\back.gif" border="0" width="8" height="12" hspace="4" alt="Back">Back to <a href="home.htm">Home</a></p>
+	</font>
+	</td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 15 November 1999</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
