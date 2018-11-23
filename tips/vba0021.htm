@@ -1,0 +1,574 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Forcing a local or remote NT system to reboot</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Forcing a local or remote NT system to reboot</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index17.htm">Windows</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>09/08/98</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	Under Windows NT, you can force a timed system shutdown on either the local machine
+	or a remote network machine.  This code tip shows how to do it.  You can specifiy
+	how long it will be before the machine will be shutdown in seconds (a zero value
+	shuts down immediately), how remorseless the shutdown process should be
+	(whether it allows any unsaved work to be saved) and whether the machine will be
+	rebooted.
+	<br><br>
+	Start a new project in VB.  Add a new module, then add the following
+	code to it:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' To Determine if we are running NT or not: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Type OSVERSIONINFO <br>
+&nbsp &nbsp dwOSVersionInfoSize As Long <br>
+&nbsp &nbsp dwMajorVersion As Long <br>
+&nbsp &nbsp dwMinorVersion As Long <br>
+&nbsp &nbsp dwBuildNumber As Long <br>
+&nbsp &nbsp dwPlatformId As Long <br>
+&nbsp &nbsp &nbsp &nbsp szCSDVersion As String * 128</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+  '  Maintenance string for PSS usage <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+End Type <br>
+Private Declare Function GetVersionEx Lib "kernel32" Alias "GetVersionExA" (lpVersionInformation As OSVERSIONINFO) As Long <br>
+Private Const VER_PLATFORM_WIN32_NT = 2 <br>
+Private Const VER_PLATFORM_WIN32_WINDOWS = 1 <br>
+Private Const VER_PLATFORM_WIN32s = 0 <br>
+ <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' To Report API errors: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Const FORMAT_MESSAGE_ALLOCATE_BUFFER = &H100 <br>
+Private Const FORMAT_MESSAGE_ARGUMENT_ARRAY = &H2000 <br>
+Private Const FORMAT_MESSAGE_FROM_HMODULE = &H800 <br>
+Private Const FORMAT_MESSAGE_FROM_STRING = &H400 <br>
+Private Const FORMAT_MESSAGE_FROM_SYSTEM = &H1000 <br>
+Private Const FORMAT_MESSAGE_IGNORE_INSERTS = &H200 <br>
+Private Const FORMAT_MESSAGE_MAX_WIDTH_MASK = &HFF <br>
+Private Declare Function FormatMessage Lib "kernel32" Alias "FormatMessageA" (ByVal dwFlags As Long, lpSource As Any, ByVal dwMessageId As Long, ByVal dwLanguageId As Long, ByVal lpBuffer As String, ByVal nSize As Long, Arguments As Long) As Long <br>
+ <br>
+ <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' ============================================================================================ <br>
+' NT Only <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Type LARGE_INTEGER <br>
+&nbsp &nbsp LowPart As Long <br>
+&nbsp &nbsp HighPart As Long <br>
+End Type <br>
+Private Type LUID <br>
+&nbsp &nbsp LowPart As Long <br>
+&nbsp &nbsp HighPart As Long <br>
+End Type <br>
+Private Type LUID_AND_ATTRIBUTES <br>
+&nbsp &nbsp pLuid As LUID <br>
+&nbsp &nbsp Attributes As Long <br>
+End Type <br>
+Private Type TOKEN_PRIVILEGES <br>
+&nbsp &nbsp PrivilegeCount As Long <br>
+&nbsp &nbsp Privileges(0 To 0) As LUID_AND_ATTRIBUTES <br>
+End Type <br>
+Private Declare Function GetCurrentProcess Lib "kernel32" () As Long <br>
+Private Declare Function OpenProcessToken Lib "advapi32.dll" (ByVal ProcessHandle As Long, ByVal DesiredAccess As Long, TokenHandle As Long) As Long <br>
+Private Declare Function CloseHandle Lib "kernel32" (ByVal hObject As Long) As Long <br>
+Private Declare Function GetTokenInformation Lib "advapi32.dll" (ByVal TokenHandle As Long, TokenInformationClass As Integer, TokenInformation As Any, ByVal TokenInformationLength As Long, ReturnLength As Long) As Long <br>
+Private Declare Function AdjustTokenPrivileges Lib "advapi32.dll" (ByVal TokenHandle As Long, ByVal DisableAllPrivileges As Long, NewState As TOKEN_PRIVILEGES, ByVal BufferLength As Long, PreviousState As TOKEN_PRIVILEGES, ReturnLength As Long) As Long <br>
+Private Declare Function LookupPrivilegeValue Lib "advapi32.dll" Alias "LookupPrivilegeValueA" (ByVal lpSystemName As String, ByVal lpName As String, lpLuid As LUID) As Long <br>
+Private Const SE_SHUTDOWN_NAME = "SeShutdownPrivilege" <br>
+Private Const SE_PRIVILEGE_ENABLED = &H2 <br>
+ <br>
+Private Const READ_CONTROL = &H20000 <br>
+Private Const STANDARD_RIGHTS_ALL = &H1F0000 <br>
+Private Const STANDARD_RIGHTS_EXECUTE = (READ_CONTROL) <br>
+Private Const STANDARD_RIGHTS_READ = (READ_CONTROL) <br>
+Private Const STANDARD_RIGHTS_REQUIRED = &HF0000 <br>
+Private Const STANDARD_RIGHTS_WRITE = (READ_CONTROL) <br>
+ <br>
+Private Const TOKEN_ASSIGN_PRIMARY = &H1 <br>
+Private Const TOKEN_DUPLICATE = (&H2) <br>
+Private Const TOKEN_IMPERSONATE = (&H4) <br>
+Private Const TOKEN_QUERY = (&H8) <br>
+Private Const TOKEN_QUERY_SOURCE = (&H10) <br>
+Private Const TOKEN_ADJUST_PRIVILEGES = (&H20) <br>
+Private Const TOKEN_ADJUST_GROUPS = (&H40) <br>
+Private Const TOKEN_ADJUST_DEFAULT = (&H80) <br>
+Private Const TOKEN_ALL_ACCESS = (STANDARD_RIGHTS_REQUIRED Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ASSIGN_PRIMARY Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_DUPLICATE Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_IMPERSONATE Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_QUERY Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_QUERY_SOURCE Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ADJUST_PRIVILEGES Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ADJUST_GROUPS Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ADJUST_DEFAULT) <br>
+Private Const TOKEN_READ = (STANDARD_RIGHTS_READ Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_QUERY) <br>
+Private Const TOKEN_WRITE = (STANDARD_RIGHTS_WRITE Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ADJUST_PRIVILEGES Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ADJUST_GROUPS Or _ <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   TOKEN_ADJUST_DEFAULT) <br>
+Private Const TOKEN_EXECUTE = (STANDARD_RIGHTS_EXECUTE) <br>
+ <br>
+Private Const TokenDefaultDacl = 6 <br>
+Private Const TokenGroups = 2 <br>
+Private Const TokenImpersonationLevel = 9 <br>
+Private Const TokenOwner = 4 <br>
+Private Const TokenPrimaryGroup = 5 <br>
+Private Const TokenPrivileges = 3 <br>
+Private Const TokenSource = 7 <br>
+Private Const TokenStatistics = 10 <br>
+Private Const TokenType = 8 <br>
+Private Const TokenUser = 1 <br>
+ <br>
+Private Declare Function InitiateSystemShutdown Lib "advapi32.dll" Alias "InitiateSystemShutdownA" (ByVal lpMachineName As String, ByVal lpMessage As String, ByVal dwTimeout As Long, ByVal bForceAppsClosed As Long, ByVal bRebootAfterShutdown As Long) As Long <br>
+Private Declare Function AbortSystemShutdown Lib "advapi32.dll" Alias "AbortSystemShutdownA" (ByVal lpMachineName As String) As Long <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' ============================================================================================ <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+ <br>
+Public Function WinError(ByVal lLastDLLError As Long) As String <br>
+Dim sBuff As String <br>
+Dim lCount As Long <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Return the error message associated with LastDLLError: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp sBuff = String$(256, 0) <br>
+&nbsp &nbsp lCount = FormatMessage( _ <br>
+&nbsp &nbsp   FORMAT_MESSAGE_FROM_SYSTEM Or FORMAT_MESSAGE_IGNORE_INSERTS, _ <br>
+&nbsp &nbsp   0, lLastDLLError, 0&, sBuff, Len(sBuff), ByVal 0) <br>
+&nbsp &nbsp If lCount Then <br>
+&nbsp &nbsp   WinError = Left$(sBuff, lCount) <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp  <br>
+End Function <br>
+ <br>
+Public Function IsNT() As Boolean <br>
+Static bOnce As Boolean <br>
+Static bValue As Boolean <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Return whether the system is running NT or not: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If Not (bOnce) Then <br>
+&nbsp &nbsp   Dim tVI As OSVERSIONINFO <br>
+&nbsp &nbsp   tVI.dwOSVersionInfoSize = Len(tVI) <br>
+&nbsp &nbsp   If (GetVersionEx(tVI) <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp  bValue = (tVI.dwPlatformId = VER_PLATFORM_WIN32_NT) <br>
+&nbsp &nbsp &nbsp &nbsp  bOnce = True <br>
+&nbsp &nbsp   End If <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp IsNT = bValue <br>
+&nbsp &nbsp  <br>
+End Function <br>
+ <br>
+Private Function NTEnableShutDown(ByRef sMsg As String) As Boolean <br>
+Dim tLUID As LUID <br>
+Dim hProcess As Long <br>
+Dim hToken As Long <br>
+Dim tTP As TOKEN_PRIVILEGES, tTPOld As TOKEN_PRIVILEGES <br>
+Dim lTpOld As Long <br>
+Dim lR As Long <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Under NT we must enable the SE_SHUTDOWN_NAME privilege in the <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' process we're trying to shutdown from, otherwise a call to <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' try to shutdown has no effect! <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Find the LUID of the Shutdown privilege token: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp lR = LookupPrivilegeValue(vbNullString, SE_SHUTDOWN_NAME, tLUID) <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' If we get it: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If (lR <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+  ' Get the current process handle: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   hProcess = GetCurrentProcess() <br>
+&nbsp &nbsp   If (hProcess <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+ ' Open the token for adjusting and querying (if we can - user may not have rights): <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp  lR = OpenProcessToken(hProcess, TOKEN_ADJUST_PRIVILEGES Or TOKEN_QUERY, hToken) <br>
+&nbsp &nbsp &nbsp &nbsp  If (lR <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Ok we can now adjust the shutdown priviledges: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp With tTP <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp .PrivilegeCount = 1 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp With .Privileges(0) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   .Attributes = SE_PRIVILEGE_ENABLED <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   .pLuid.HighPart = tLUID.HighPart <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   .pLuid.LowPart = tLUID.LowPart <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End With <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End With <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Now allow this process to shutdown the system: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lR = AdjustTokenPrivileges(hToken, 0, tTP, Len(tTP), tTPOld, lTpOld) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp If (lR <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp NTEnableShutDown = True <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Err.Raise eeSSDErrorBase + 6, App.EXEName & ".mShutDown", "Can't enable shutdown: You do not have the privileges to shutdown this system. [" & WinError(Err.LastDllError) & "]" <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Remember to close the handle when finished with it: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CloseHandle hToken <br>
+&nbsp &nbsp &nbsp &nbsp  Else <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Err.Raise eeSSDErrorBase + 6, App.EXEName & ".mShutDown", "Can't enable shutdown: You do not have the privileges to shutdown this system. [" & WinError(Err.LastDllError) & "]" <br>
+&nbsp &nbsp &nbsp &nbsp  End If <br>
+&nbsp &nbsp   Else <br>
+&nbsp &nbsp &nbsp &nbsp  Err.Raise eeSSDErrorBase + 5, App.EXEName & ".mShutDown", "Can't enable shutdown: Can't determine the current process. [" & WinError(Err.LastDllError) & "]" <br>
+&nbsp &nbsp   End If <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp   Err.Raise eeSSDErrorBase + 4, App.EXEName & ".mShutDown", "Can't enable shutdown: Can't find the SE_SHUTDOWN_NAME privilege value. [" & WinError(Err.LastDllError) & "]" <br>
+&nbsp &nbsp End If <br>
+ <br>
+End Function <br>
+ <br>
+Public Function NTForceTimedShutdown( _ <br>
+&nbsp &nbsp   Optional ByVal lTimeOut As Long = -1, _ <br>
+&nbsp &nbsp   Optional ByVal sMsg As String = "", _ <br>
+&nbsp &nbsp   Optional ByVal sMachineNetworkName As String = vbNullString, _ <br>
+&nbsp &nbsp   Optional ByVal bForceAppsToClose As Boolean = False, _ <br>
+&nbsp &nbsp   Optional ByVal bReboot As Boolean = False _ <br>
+&nbsp &nbsp ) As Boolean <br>
+Dim lR As Long <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp If IsNT Then <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+  ' Make sure we have enabled the privilege to shutdown <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+  ' for this process if we're running NT: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   If Not (NTEnableShutDown(sMsg)) Then <br>
+&nbsp &nbsp &nbsp &nbsp  Exit Function <br>
+&nbsp &nbsp   End If <br>
+&nbsp &nbsp    <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+  ' This is the code to do a timed shutdown: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp   lR = InitiateSystemShutdown(sMachineNetworkName, sMsg, lTimeOut, bForceAppsToClose, bReboot) <br>
+&nbsp &nbsp   If (lR = 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp  Err.Raise eeSSDErrorBase + 2, App.EXEName & ".mShutDown", "InitiateSystemShutdown failed: " & WinError(Err.LastDllError) <br>
+&nbsp &nbsp   End If <br>
+&nbsp &nbsp    <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp   Err.Raise eeSSDErrorBase + 1, App.EXEName & ".mShutDown", "Function only available under Windows NT." <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp  <br>
+End Function <br>
+ <br>
+Public Function NTAbortTimedShutdown( _ <br>
+&nbsp &nbsp   Optional ByVal sMachineNetworkName As String = vbNullString _ <br>
+   ) <br>
+   AbortSystemShutdown sMachineNetworkName <br>
+End Function <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	To try out a shutdown, add two Command buttons and a Text box to the project's form and then 
+	paste in the following code.  Note you should save your work before running it, because the
+	shutdown will kill VB without asking you to save any changes!  Clicking on the first Command
+	button will initiate a shutdown, with a timeout value set to the number of seconds entered
+	into the text box.  To stop the shutdown, click the second Command button.
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Command1_Click() <br>
+&nbsp &nbsp If (MsgBox("Are you sure you want to initiate a forced, timed shutdown?", vbYesNo Or vbQuestion) = vbYes) Then <br>
+&nbsp &nbsp   NTForceTimedShutdown CLng(Text1.Text), "You're gonna get shutdown in " & Text1.Text & " s..." <br>
+   End If <br>
+End Sub <br>
+ <br>
+Private Sub Command2_Click() <br>
+   NTAbortTimedShutdown <br>
+End Sub <br>
+ <br>
+Private Sub Form_Load() <br>
+   Text1.Text = 60 <br>
+End Sub <br>
+</font>
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0019.htm">How to Shutdown the System in Windows 9x <I>and</I> NT</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 09/08/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 09/08/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Create an API hFont from a VB StdFont object.</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Create an API hFont from a VB StdFont object.</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index3.htm">GDI</a>,<a href="index10.htm">Graphics</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>17/08/99</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	If you are working with API based controls you will find that to set fonts you 
+	need a GDI hFont handle to the font.  The <i>StdFont</i> object does not directly 
+	supply you with this handle.  Although it is possible to cast the <i>StdFont</i>
+	object as an <i>IFont</i> object which does have <i>hFont</i> handle property,
+	unfortunately you cannot be certain this handle is valid because you cannot
+	call the <i>AddRefhFont</i> method in VB. 
+	<br><br>
+	The alternative to this is to create a GDI font from first principles using the API
+	call <i>CreateFontIndirect</i>.  This takes a <i>LOGFONT</i> structure which
+	specifies the font to be created.  The <i>LOGFONT</i> structure's members are
+	quite closely related to the StdFont object's properties - but you need to be careful
+	when specifying the font name and size.  This tip contains a reliable function
+	to transform a StdFont object into a <i>LOGFONT</i> and briefly demonstrates using
+	a GDI font created by this method.
+	<br><br>
+	The demonstration is a bit pointless - it only does what could be done more simply 
+	using the  StdFont object and the Print method.  However, this code is really
+	useful if you are building a control using the API or you need to draw on a GDI
+	device context.
+	<br><br>
+	Start a new project in VB, and add a standard module.  Then add the following code	
+	to the module:
+	</p>
+</font>
+<p>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+<br>
+<br>
+<font color="#999999">
+' Font:<br>
+<font color="#000000">
+Private Const LF_FACESIZE = 32<br>
+Private Type LOGFONT<br>
+&nbsp;&nbsp;    lfHeight As Long<br>
+&nbsp;&nbsp;    lfWidth As Long<br>
+&nbsp;&nbsp;    lfEscapement As Long<br>
+&nbsp;&nbsp;    lfOrientation As Long<br>
+&nbsp;&nbsp;    lfWeight As Long<br>
+&nbsp;&nbsp;    lfItalic As Byte<br>
+&nbsp;&nbsp;    lfUnderline As Byte<br>
+&nbsp;&nbsp;    lfStrikeOut As Byte<br>
+&nbsp;&nbsp;    lfCharSet As Byte<br>
+&nbsp;&nbsp;    lfOutPrecision As Byte<br>
+&nbsp;&nbsp;    lfClipPrecision As Byte<br>
+&nbsp;&nbsp;    lfQuality As Byte<br>
+&nbsp;&nbsp;    lfPitchAndFamily As Byte<br>
+&nbsp;&nbsp;    lfFaceName(LF_FACESIZE) As Byte<br>
+End Type<br>
+Private Const FW_NORMAL = 400<br>
+Private Const FW_BOLD = 700<br>
+Private Const FF_DONTCARE = 0<br>
+Private Const DEFAULT_QUALITY = 0<br>
+Private Const DEFAULT_PITCH = 0<br>
+Private Const DEFAULT_CHARSET = 1<br>
+Private Declare Function CreateFontIndirect Lib "gdi32" Alias "CreateFontIndirectA" (lpLogFont As LOGFONT) As Long<br>
+Private Declare Function MulDiv Lib "kernel32" (ByVal nNumber As Long, ByVal nNumerator As Long, ByVal nDenominator As Long) As Long<br>
+Private Declare Function DeleteObject Lib "gdi32" (ByVal hObject As Long) As Long<br>
+Private Declare Function GetDeviceCaps Lib "gdi32" (ByVal hdc As Long, ByVal nIndex As Long) As Long<br>
+Private Const LOGPIXELSY = 90<br>
+<br>
+<font color="#999999">
+' Testing the font:<br>
+<font color="#000000">
+Private Type RECT<br>
+&nbsp;&nbsp;   Left As Long<br>
+&nbsp;&nbsp;   Top As Long<br>
+&nbsp;&nbsp;   Right As Long<br>
+&nbsp;&nbsp;   Bottom As Long<br>
+End Type<br>
+Private Declare Function DrawText Lib "user32" Alias "DrawTextA" (ByVal hdc As Long, ByVal lpStr As String, ByVal nCount As Long, lpRect As RECT, ByVal wFormat As Long) As Long<br>
+Private Const DT_CALCRECT = &H400<br>
+Private Declare Function SelectObject Lib "gdi32" (ByVal hdc As Long, ByVal hObject As Long) As Long<br>
+Private Declare Function OffsetRect Lib "user32" (lpRect As RECT, ByVal x As Long, ByVal y As Long) As Long<br>
+<br>
+Public Sub Test(ByVal hdc As Long, fntThis As StdFont)<br>
+Dim tLF As LOGFONT<br>
+Dim hFnt As Long<br>
+Dim hFntOld As Long<br>
+Dim tR As RECT<br>
+<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Create a LOGFONT structure equivalent to the<br>
+&nbsp;&nbsp;   ' StdFont font:<br>
+<font color="#000000">
+&nbsp;&nbsp;   pOLEFontToLogFont fntThis, hdc, tLF<br>
+   <br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Convert the LOGFONT into a font handle:<br>
+<font color="#000000">
+&nbsp;&nbsp;   hFnt = CreateFontIndirect(tLF)<br>
+   <br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Test the font out:<br>
+<font color="#000000">
+&nbsp;&nbsp;   hFntOld = SelectObject(hdc, hFnt)<br>
+&nbsp;&nbsp;   DrawText hdc, "This is a test", -1, tR, DT_CALCRECT<br>
+&nbsp;&nbsp;   OffsetRect tR, 32, 32<br>
+&nbsp;&nbsp;   DrawText hdc, "This is a test", -1, tR, 0&<br>
+&nbsp;&nbsp;   SelectObject hdc, hFntOld<br>
+   <br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Always remember to delete the font when finished<br>
+&nbsp;&nbsp;   ' with it:<br>
+<font color="#000000">
+&nbsp;&nbsp;   DeleteObject hFnt<br>
+   <br>
+End Sub<br>
+<br>
+Private Sub pOLEFontToLogFont(fntThis As StdFont, ByVal hdc As Long, tLF As LOGFONT)<br>
+Dim sFont As String<br>
+Dim iChar As Integer<br>
+Dim b() As Byte<br>
+<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Convert an OLE StdFont to a LOGFONT structure:<br>
+<font color="#000000">
+&nbsp;&nbsp;   With tLF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       sFont = fntThis.Name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       b = StrConv(sFont, vbFromUnicode)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       For iChar = 1 To Len(sFont)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           .lfFaceName(iChar - 1) = b(iChar - 1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       Next iChar<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;       ' Based on the Win32SDK documentation:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;       .lfHeight = -MulDiv((fntThis.Size), (GetDeviceCaps(hdc, LOGPIXELSY)), 72)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       .lfItalic = fntThis.Italic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       If (fntThis.Bold) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           .lfWeight = FW_BOLD<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           .lfWeight = FW_NORMAL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       End If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       .lfUnderline = fntThis.Underline<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       .lfStrikeOut = fntThis.Strikethrough<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       .lfCharSet = fntThis.Charset<br>
+&nbsp;&nbsp;   End With<br>
+<br>
+End Sub<br>
+<br>
+<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	To try out the code, add a Command Button to your test project's main form.  
+	Then add this code to the Button's <i>Click</i> event:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<br>
+Private Sub Command1_Click()<br>
+   <br>
+   Dim sFnt As New StdFont<br>
+   sFnt.Name = "Arial"<br>
+   sFnt.Size = 48<br>
+   Test Me.hdc, sFnt<br>
+   <br>
+End Sub<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+Run the project. It will draw the text "This is a Test" in 48 point Arial by selecting a GDI font
+into the form's device context.
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0034.htm">Get System Display Fonts and Non-Client Area Sizes</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 17/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 17/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

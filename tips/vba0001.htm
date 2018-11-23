@@ -1,0 +1,357 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Restrict Mouse Movement to an Area of the Desktop</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Restrict Mouse Movement to an Area of the Desktop</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index1.htm">Desktop</a>,<a href="index2.htm">Mouse</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>01/08/98</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	This tip shows you how to ensure a cursor remains within a certain rectangle on the screen.
+	Note that if the user uses Alt-Tab to switch to another application, the clipping cursor is
+	cleared.<br><br>
+	Start a new project in VB.  Add a new module, and add the following code:
+	</p>
+</font>
+<p>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' API Declarations: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Type POINTAPI <br>
+&nbsp &nbsp X As Long <br>
+&nbsp &nbsp Y As Long <br>
+End Type <br>
+Private Type RECT <br>
+&nbsp &nbsp eft As Long <br>
+&nbsp &nbsp op As Long <br>
+&nbsp &nbsp ight As Long <br>
+&nbsp &nbsp ottom As Long <br>
+End Type <br>
+Private Declare Sub ClipCursorRect Lib "user32" Alias "ClipCursor" (lpRect As RECT) <br>
+Private Declare Sub ClipCursorClear Lib "user32" Alias "ClipCursor" (ByVal lpRect As Long) <br>
+Private Declare Function ClientToScreen Lib "user32" (ByVal hWnd As Long, lpPoint As POINTAPI) As Long <br>
+ <br>
+Public Sub RestrictCursor( _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal lLeft As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal lTop As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal lWidth As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal lHeight As Long, _ <br>
+&nbsp &nbsp &nbsp &nbsp Optional ByRef oPositionTo As Object = Nothing _ <br>
+&nbsp &nbsp ) <br>
+Dim tR As RECT <br>
+Dim tP As POINTAPI <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Convert positions into a rectangle in pixels: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp tR.Left = lLeft \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp tR.Top = lTop \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp tR.Right = (lLeft + lWidth) \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp tR.Bottom = (lLeft + lHeight) \ Screen.TwipsPerPixelY <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Validate optional parameter: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If oPositionTo Is Nothing Then Set oPositionTo = Screen <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' If positions refer to an form or control, then <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' convert the coordinates to the screen position: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If Not oPositionTo Is Screen Then <br>
+&nbsp &nbsp &nbsp &nbsp tP.X = tR.Left <br>
+&nbsp &nbsp &nbsp &nbsp tP.Y = tR.Top <br>
+&nbsp &nbsp &nbsp &nbsp ClientToScreen oPositionTo.hWnd, tP <br>
+&nbsp &nbsp &nbsp &nbsp tR.Left = tP.X <br>
+&nbsp &nbsp &nbsp &nbsp tR.Top = tP.Y <br>
+&nbsp &nbsp &nbsp &nbsp tP.X = tR.Right <br>
+&nbsp &nbsp &nbsp &nbsp tP.Y = tR.Bottom <br>
+&nbsp &nbsp &nbsp &nbsp ClientToScreen oPositionTo.hWnd, tP <br>
+&nbsp &nbsp &nbsp &nbsp tR.Right = tP.X <br>
+&nbsp &nbsp &nbsp &nbsp tR.Bottom = tP.Y <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Set the cursor clipping rectangle: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp ClipCursorRect tR <br>
+&nbsp &nbsp  <br>
+End Sub <br>
+Public Sub ClearRestrictCursor() <br>
+&nbsp &nbsp ClipCursorClear 0<br>
+End Sub <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	Now you can create a test project.  Add a Picture Box to the form in your project, and
+	draw a Check Box inside the Picture Box (note: you must put the check box inside the 
+	picture otherwise you won't be able to get at it whilst the cursor is being restricted!).<br><br>
+	Add the following code to the Check box click event:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Check1_Click() <br>
+&nbsp &nbsp If (Check1.Value = Checked) Then <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Restrict the cursor so it can't move <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' out of the picture: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp RestrictCursor 0, 0, Picture1.Width, Picture1.Height, Picture1 <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Stop restricting the cursor: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp ClearRestrictCursor <br>
+&nbsp &nbsp End If<br>
+End Sub<br>
+
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+Run the project. You will find that when you click the Check Box you can't move the mouse pointer
+outside the Picture Box.
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	None.
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 01/08/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 01/08/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

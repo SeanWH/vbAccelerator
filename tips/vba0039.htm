@@ -1,0 +1,430 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - TextBox control - adding Cut, Copy, Paste, Undo and Delete command support</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>TextBox control - adding Cut, Copy, Paste, Undo and Delete command support</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index20.htm">Text Box</a>,<a href="index17.htm">Windows</a>,<a href="index15.htm">Windows Controls</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>18/08/99</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+	<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+This tip demonstrates how to simply add Cut/Copy/Paste and Undo support to a Visual Basic TextBox.
+<br><br>
+Start a new project and add a Class module.  Rename the Class module to <i>cTextBoxEdit</i> and then
+add the following code:
+</font>
+</p>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<br>
+Private Declare Function SendMessageLong Lib &quot;USER32&quot; Alias &quot;SendMessageA&quot; (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long<br>
+Private Declare Function SendMessageString Lib &quot;USER32&quot; Alias &quot;SendMessageA&quot; (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As String) As Long<br>
+Private Const WM_COMMAND = &H111<br>
+Private Const WM_CUT = &H300<br>
+Private Const WM_COPY = &H301<br>
+Private Const WM_PASTE = &H302<br>
+Private Const EM_UNDO = &HC7<br>
+Private Const EM_CANUNDO = &HC6<br>
+Private Const EM_REPLACESEL = &HC2<br>
+Private Declare Function IsClipboardFormatAvailable Lib &quot;USER32&quot; _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ByVal wFormat As Long) As Long<br>
+Private Const CF_TEXT = 1<br>
+Private Const CF_UNICODETEXT = 13<br>
+Private Const CF_OEMTEXT = 7<br>
+<br>
+Private m_txtThis As TextBox<br>
+<br>
+Public Property Let TextBox(ByRef txtThis As TextBox)<br>
+&nbsp;&nbsp;&nbsp;Set m_txtThis = txtThis<br>
+End Property<br>
+Public Sub Cut()<br>
+&nbsp;&nbsp;&nbsp;SendMessageLong m_txtThis.hWnd, WM_CUT, 0, 0<br>
+End Sub<br>
+Public Sub Copy()<br>
+&nbsp;&nbsp;&nbsp;SendMessageLong m_txtThis.hWnd, WM_COPY, 0, 0<br>
+End Sub<br>
+Public Sub Paste()<br>
+&nbsp;&nbsp;&nbsp;SendMessageLong m_txtThis.hWnd, WM_PASTE, 0, 0<br>
+End Sub<br>
+Public Sub Undo()<br>
+&nbsp;&nbsp;&nbsp;If (SendMessageLong(m_txtThis.hWnd, EM_CANUNDO, 0, 0) &lt;&gt; 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SendMessageLong m_txtThis.hWnd, EM_UNDO, 0, 0<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Sub<br>
+Public Property Get CanCut() As Boolean<br>
+&nbsp;&nbsp;&nbsp;CanCut = (Not (m_txtThis.Locked) And m_txtThis.SelLength &gt; 0)<br>
+End Property<br>
+Public Property Get CanCopy() As Boolean<br>
+&nbsp;&nbsp;&nbsp;CanCopy = (m_txtThis.SelLength &gt; 0)<br>
+End Property<br>
+Public Property Get CanPaste() As Boolean<br>
+&nbsp;&nbsp;&nbsp;If IsClipboardFormatAvailable(CF_TEXT) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CanPaste = True<br>
+&nbsp;&nbsp;&nbsp;ElseIf IsClipboardFormatAvailable(CF_UNICODETEXT) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CanPaste = True<br>
+&nbsp;&nbsp;&nbsp;ElseIf IsClipboardFormatAvailable(CF_OEMTEXT) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CanPaste = True<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Property<br>
+Public Property Get CanUndo() As Boolean<br>
+&nbsp;&nbsp;&nbsp;CanUndo = (SendMessageLong(m_txtThis.hWnd, EM_CANUNDO, 0, 0) &lt;&gt; 0)<br>
+End Property<br>
+Public Sub ReplaceSelection(ByRef sText As String, Optional ByVal bAllowUndo = True)<br>
+&nbsp;&nbsp;&nbsp;Dim lR As Long<br>
+&nbsp;&nbsp;&nbsp;If (m_txtThis.SelLength &gt; 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lR = Abs(bAllowUndo)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SendMessageString m_txtThis.hWnd, EM_REPLACESEL, lR, sText<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Sub<br>
+Public Sub Delete(Optional ByVal bAllowUndo = True)<br>
+&nbsp;&nbsp;&nbsp;Dim lR As Long<br>
+&nbsp;&nbsp;&nbsp;SendMessageString m_txtThis.hWnd, EM_REPLACESEL, lR, vbNullChar<br>
+End Sub<br>
+<br>
+
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+To test out the code, add a TextBox to your project's form.  Set the <i>MultiLine</i> property to True and 
+then set up an Edit menu as follows:
+</font>
+<br><br>
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td>&nbsp;</td>
+<td bgcolor="#EEEEEE"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Caption</b></font></td>
+<td bgcolor="#EEEEEE"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Name</b></font></td>
+<td bgcolor="#EEEEEE"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Index</b></font></td>
+<td bgcolor="#EEEEEE"><font color="#000000" face="verdana,arial,helvetica" size="2"><b>Shortcut</b></font></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">&Edit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEditTOP</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">&Undo</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEdit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">0</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">Ctrl+Z</font></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">-</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEdit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">1</font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">Cu&t</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEdit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">2</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">Ctrl+X</font></td>
+<td>&nbsp;</td>
+</tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">&Copy</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEdit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">3</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">Ctrl+C</font></td>
+<td>&nbsp;</td>
+</tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">&Paste</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEdit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">4</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">Ctrl+V</font></td>
+<td>&nbsp;</td>
+</tr>
+<td>&nbsp;</td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">&Delete</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">mnuEdit</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">5</font></td>
+<td><font color="#000000" face="verdana,arial,helvetica" size="2">Del</font></td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<br><br>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Finally, add this code to the form:
+</font>
+</p>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Option Explicit<br>
+<br>
+Private m_c As cTextBoxEdit<br>
+<br>
+Private Sub Form_Load()<br>
+&nbsp;&nbsp;&nbsp;Set m_c = New cTextBoxEdit<br>
+&nbsp;&nbsp;&nbsp;m_c.TextBox = Text1<br>
+End Sub<br>
+<br>
+Private Sub mnuEdit_Click(Index As Integer)<br>
+&nbsp;&nbsp;&nbsp;Select Case Index<br>
+&nbsp;&nbsp;&nbsp;Case 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_c.Undo<br>
+&nbsp;&nbsp;&nbsp;Case 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_c.Cut<br>
+&nbsp;&nbsp;&nbsp;Case 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_c.Copy<br>
+&nbsp;&nbsp;&nbsp;Case 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_c.Paste<br>
+&nbsp;&nbsp;&nbsp;Case 5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_c.Delete<br>
+&nbsp;&nbsp;&nbsp;End Select<br>
+End Sub<br>
+<br>
+Private Sub mnuEditTOP_Click()<br>
+&nbsp;&nbsp;&nbsp;mnuEdit(0).Enabled = m_c.CanUndo<br>
+<br>
+&nbsp;&nbsp;&nbsp;mnuEdit(2).Enabled = m_c.CanCut<br>
+&nbsp;&nbsp;&nbsp;mnuEdit(3).Enabled = m_c.CanCopy<br>
+&nbsp;&nbsp;&nbsp;mnuEdit(4).Enabled = m_c.CanPaste<br>
+&nbsp;&nbsp;&nbsp;mnuEdit(5).Enabled = m_c.CanCut<br>
+<br>
+End Sub<br>
+<br>
+<br>
+
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Run the project.  Undo, Cut, Copy, Paste and Delete functionality is available from the menu,
+and the menu items are enabled and disabled at the correct times.
+<br><br>
+If you also need to show the Undo, Cut, Copy and Paste buttons on a toolbar, then you need
+to add more code because you must update the status of the buttons in real time.  You can
+set the Undo button enable state by checking whenever the TextBox's <i>Change</i> event
+occurs.  To set the Cut, Copy and Paste states, check on the TextBox's <i>GotFocus</i>,
+<i>KeyUp</i> and <i>MouseUp</i> events.
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0029.htm">Set Left and Right Margin of Text Boxes and Combo Boxes</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

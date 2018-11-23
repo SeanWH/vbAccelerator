@@ -1,0 +1,431 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Change the drop-down width of a combo box</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Change the drop-down width of a combo box</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index18.htm">Combo Box</a>,<a href="index15.htm">Windows Controls</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>12/10/98</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	This tip shows you how to get and set the width of the drop down portion of
+	a combo box.  It also includes code to automatically set the drop down width
+	based on the contents of a combo box by measuring the size of the text in 
+	each combo box item.  
+	<br><br>
+	Start a new project and add a module.  Then add the following code to the module:
+</p>
+</font>
+<p>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' These functions required to set the drop-down width: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Declare Function SendMessageLong Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long <br>
+Private Const CB_GETDROPPEDWIDTH = &H15F <br>
+Private Const CB_SETDROPPEDWIDTH = &H160 <br>
+ <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' These are only required if you want to automatically <br>
+' calculate the drop-down width: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Type RECT <br>
+&nbsp &nbsp Left As Long <br>
+&nbsp &nbsp Top As Long <br>
+&nbsp &nbsp Right As Long <br>
+&nbsp &nbsp Bottom As Long <br>
+End Type <br>
+Private Declare Function DrawText Lib "user32" Alias "DrawTextA" (ByVal hdc As Long, ByVal lpStr As String, ByVal nCount As Long, lpRect As RECT, ByVal wFormat As Long) As Long <br>
+Private Const DT_CALCRECT = &H400 <br>
+ <br>
+Public Property Let DropDownWidth(ByRef cboThis As ComboBox, ByVal lWidth As Long) <br>
+&nbsp &nbsp SendMessageLong cboThis.hwnd, CB_SETDROPPEDWIDTH, lWidth, 0 <br>
+End Property <br>
+Public Property Get DropDownWidth(ByRef cboThis As ComboBox) As Long <br>
+Dim lW As Long <br>
+&nbsp &nbsp DropDownWidth = SendMessageLong(cboThis.hwnd, CB_GETDROPPEDWIDTH, 0, 0) <br>
+End Property <br>
+Public Sub DropDownWidthFromContents(ByRef cboThis As ComboBox, Optional ByVal lMaxWidth = -1) <br>
+Dim i As Long <br>
+Dim tR As RECT <br>
+Dim lW As Long <br>
+Dim lWidth As Long <br>
+Dim lHDC As Long <br>
+ <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Evaluate the width of each item in the <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' combo box: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' First set the combo's parent form font to the <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' combo font: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp With cboThis.Parent.Font <br>
+&nbsp &nbsp &nbsp &nbsp .Name = cboThis.Font.Name <br>
+&nbsp &nbsp &nbsp &nbsp .Size = cboThis.Font.Size <br>
+&nbsp &nbsp &nbsp &nbsp .Bold = cboThis.Font.Bold <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Surely you don't have a combo box with <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' italic font? <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp .Italic = cboThis.Font.Italic <br>
+&nbsp &nbsp End With <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Cache the HDC of the parent form for speed: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp lHDC = cboThis.Parent.hdc <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Loop through each combo box list item & get its <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' width, storing the largest: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp For i = 0 To cboThis.ListCount - 1 <br>
+&nbsp &nbsp &nbsp &nbsp DrawText lHDC, cboThis.List(i), -1, tR, DT_CALCRECT <br>
+&nbsp &nbsp &nbsp &nbsp lW = tR.Right - tR.Left + 8 <br>
+&nbsp &nbsp &nbsp &nbsp If (lW > lWidth) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lWidth = lW <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp Next i <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Don't allow width to exceed specified max <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' width, or the width of the screen: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If lMaxWidth <= 0 Then <br>
+&nbsp &nbsp &nbsp &nbsp lMaxWidth = Screen.Width \ Screen.TwipsPerPixelX - 16 <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp If (lWidth > lMaxWidth) Then <br>
+&nbsp &nbsp &nbsp &nbsp lWidth = lMaxWidth <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Combo box looks a bit strange when the <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' drop down portion is smaller than the <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' combo box itself: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp If (lWidth < cboThis.Width \ Screen.TwipsPerPixelX) Then <br>
+&nbsp &nbsp &nbsp &nbsp lWidth = cboThis.Width \ Screen.TwipsPerPixelX <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Set the drop down width: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp DropDownWidth(cboThis) = lWidth <br>
+End Sub <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	To try out a the function, add a Combo box, a Label and three Command buttons 
+	to your project's form.  Set the captions for the command buttons as follows:
+&nbsp &nbsp Command1 &nbsp &nbsp A&dd String<br>
+&nbsp &nbsp Command2 &nbsp &nbsp &Calc Width<br>
+&nbsp &nbsp Command3 &nbsp &nbsp &Set Width...<br>
+	Then add this code to the form:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Sub Command1_Click() <br>
+Dim sI As String <br>
+&nbsp &nbsp sI = InputBox("Enter string", , "New item") <br>
+&nbsp &nbsp If (sI <> "") Then <br>
+&nbsp &nbsp &nbsp &nbsp Combo1.AddItem sI <br>
+&nbsp &nbsp End If <br>
+End Sub <br>
+ <br>
+Private Sub Command2_Click() <br>
+&nbsp &nbsp DropDownWidthFromContents Combo1 <br>
+&nbsp &nbsp Label1.Caption = DropDownWidth(Combo1) <br>
+End Sub <br>
+ <br>
+Private Sub Command3_Click() <br>
+Dim sI As String <br>
+&nbsp &nbsp sI = InputBox("Enter width", , DropDownWidth(Combo1)) <br>
+&nbsp &nbsp If IsNumeric(sI) Then <br>
+&nbsp &nbsp &nbsp &nbsp DropDownWidth(Combo1) = CLng(sI) <br>
+&nbsp &nbsp &nbsp &nbsp Label1.Caption = DropDownWidth(Combo1) <br>
+&nbsp &nbsp End If <br>
+End Sub <br>
+ <br>
+Private Sub Form_Load() <br>
+&nbsp &nbsp Label1.Caption = DropDownWidth(Combo1) <br>
+End Sub <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+Start the project.  The width of the combo box wil lbe added to the label control.
+You can use the Add String button to add new items to the combo box, Calc Width to
+automatically set the drop down width to the control's contents and Set Width to
+set your own width.  Note that all widths are specified in pixels.
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0022.htm">Make a ComboBox drop down when you press the down arrow key</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 12/10/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 12/10/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

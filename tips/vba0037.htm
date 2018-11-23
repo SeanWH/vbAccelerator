@@ -1,0 +1,492 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Detecting Windows Settings Changes</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Detecting Windows Settings Changes</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index12.htm">Subclassing</a>,<a href="index17.htm">Windows</a>,<a href="index15.htm">Windows Controls</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>18/08/99</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+	<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+This tip demonstrates how to detect windows settings changes in your application.  You will need to have installed 
+and registered SSubTmr.DLL, available from this site at <a href="..\codelib\ssubtmr\ssubtmr.htm">Subclassing 
+without the crashes</a> to run this sample. 
+<br><br>
+Changes which can 
+be detected using this code include system colour changes, non-client metric sizes and a whole host
+of other changes (as you will see from the enum of possible changes in the source code below!).
+The code is invaluable if you are creating your own graphics or controls and want to ensure they
+display correctly through system settings changes (which is part of the Windows logo requirements!)
+<br><br>
+Start a new project and choose Project->References. Look for 
+"Subclassing and Timer Assistant (with multiple control support and timer bug fix)" 
+in the references list. If it is there, select it and click ok. If it isn't, choose 
+Browse, locate SSubTmr.DLL on your disk, then select that.
+<br><br>
+Once that is done, add a Class module.  Rename the Class module to <i>cSettingsChange</i> and then
+add the following code:
+</font>
+</p>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<br>
+Private Const WM_WININICHANGE = &H1A&<br>
+<font color="#999999" face="Lucida Console,Courier New" size="1">' Constant name changed only for 9x/NT4/2000 apps!</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Const WM_SETTINGCHANGE = WM_WININICHANGE<br>
+Private Const WM_DESTROY = &H2<br>
+<br>
+Implements ISubclass<br>
+<br>
+Private m_hWnd As Long<br>
+<br>
+Public Enum ESPISystemParamtersInfoConstants<br>
+&nbsp;&nbsp;&nbsp;SPI__NONSYSTEMPARAMETERSINFOCHANGE = 0<br>
+<br>
+&nbsp;&nbsp;&nbsp;SPI_GETBEEP = 1<br>
+&nbsp;&nbsp;&nbsp;SPI_SETBEEP = 2<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSE = 3<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSE = 4<br>
+&nbsp;&nbsp;&nbsp;SPI_GETBORDER = 5<br>
+&nbsp;&nbsp;&nbsp;SPI_SETBORDER = 6<br>
+&nbsp;&nbsp;&nbsp;SPI_GETKEYBOARDSPEED = 10<br>
+&nbsp;&nbsp;&nbsp;SPI_SETKEYBOARDSPEED = 11<br>
+&nbsp;&nbsp;&nbsp;SPI_LANGDRIVER = 12<br>
+&nbsp;&nbsp;&nbsp;SPI_ICONHORIZONTALSPACING = 13<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSCREENSAVETIMEOUT = 14<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSCREENSAVETIMEOUT = 15<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSCREENSAVEACTIVE = 16<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSCREENSAVEACTIVE = 17<br>
+&nbsp;&nbsp;&nbsp;SPI_GETGRIDGRANULARITY = 18<br>
+&nbsp;&nbsp;&nbsp;SPI_SETGRIDGRANULARITY = 19<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDESKWALLPAPER = 20<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDESKPATTERN = 21<br>
+&nbsp;&nbsp;&nbsp;SPI_GETKEYBOARDDELAY = 22<br>
+&nbsp;&nbsp;&nbsp;SPI_SETKEYBOARDDELAY = 23<br>
+&nbsp;&nbsp;&nbsp;SPI_ICONVERTICALSPACING = 24<br>
+&nbsp;&nbsp;&nbsp;SPI_GETICONTITLEWRAP = 25<br>
+&nbsp;&nbsp;&nbsp;SPI_SETICONTITLEWRAP = 26<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMENUDROPALIGNMENT = 27<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMENUDROPALIGNMENT = 28<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDOUBLECLKWIDTH = 29<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDOUBLECLKHEIGHT = 30<br>
+&nbsp;&nbsp;&nbsp;SPI_GETICONTITLELOGFONT = 31<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDOUBLECLICKTIME = 32<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSEBUTTONSWAP = 33<br>
+&nbsp;&nbsp;&nbsp;SPI_SETICONTITLELOGFONT = 34<br>
+&nbsp;&nbsp;&nbsp;SPI_GETFASTTASKSWITCH = 35<br>
+&nbsp;&nbsp;&nbsp;SPI_SETFASTTASKSWITCH = 36<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDRAGFULLWINDOWS = 37<br>
+&nbsp;&nbsp;&nbsp;SPI_GETDRAGFULLWINDOWS = 38<br>
+&nbsp;&nbsp;&nbsp;SPI_GETNONCLIENTMETRICS = 41<br>
+&nbsp;&nbsp;&nbsp;SPI_SETNONCLIENTMETRICS = 42<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMINIMIZEDMETRICS = 43<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMINIMIZEDMETRICS = 44<br>
+&nbsp;&nbsp;&nbsp;SPI_GETICONMETRICS = 45<br>
+&nbsp;&nbsp;&nbsp;SPI_SETICONMETRICS = 46<br>
+&nbsp;&nbsp;&nbsp;SPI_SETWORKAREA = 47<br>
+&nbsp;&nbsp;&nbsp;SPI_GETWORKAREA = 48<br>
+&nbsp;&nbsp;&nbsp;SPI_SETPENWINDOWS = 49<br>
+<br>
+&nbsp;&nbsp;&nbsp;SPI_GETHIGHCONTRAST = 66<br>
+&nbsp;&nbsp;&nbsp;SPI_SETHIGHCONTRAST = 67<br>
+&nbsp;&nbsp;&nbsp;SPI_GETKEYBOARDPREF = 68<br>
+&nbsp;&nbsp;&nbsp;SPI_SETKEYBOARDPREF = 69<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSCREENREADER = 70<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSCREENREADER = 71<br>
+&nbsp;&nbsp;&nbsp;SPI_GETANIMATION = 72<br>
+&nbsp;&nbsp;&nbsp;SPI_SETANIMATION = 73<br>
+&nbsp;&nbsp;&nbsp;SPI_GETFONTSMOOTHING = 74<br>
+&nbsp;&nbsp;&nbsp;SPI_SETFONTSMOOTHING = 75<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDRAGWIDTH = 76<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDRAGHEIGHT = 77<br>
+&nbsp;&nbsp;&nbsp;SPI_SETHANDHELD = 78<br>
+&nbsp;&nbsp;&nbsp;SPI_GETLOWPOWERTIMEOUT = 79<br>
+&nbsp;&nbsp;&nbsp;SPI_GETPOWEROFFTIMEOUT = 80<br>
+&nbsp;&nbsp;&nbsp;SPI_SETLOWPOWERTIMEOUT = 81<br>
+&nbsp;&nbsp;&nbsp;SPI_SETPOWEROFFTIMEOUT = 82<br>
+&nbsp;&nbsp;&nbsp;SPI_GETLOWPOWERACTIVE = 83<br>
+&nbsp;&nbsp;&nbsp;SPI_GETPOWEROFFACTIVE = 84<br>
+&nbsp;&nbsp;&nbsp;SPI_SETLOWPOWERACTIVE = 85<br>
+&nbsp;&nbsp;&nbsp;SPI_SETPOWEROFFACTIVE = 86<br>
+&nbsp;&nbsp;&nbsp;SPI_SETCURSORS = 87<br>
+&nbsp;&nbsp;&nbsp;SPI_SETICONS = 88<br>
+&nbsp;&nbsp;&nbsp;SPI_GETDEFAULTINPUTLANG = 89<br>
+&nbsp;&nbsp;&nbsp;SPI_SETDEFAULTINPUTLANG = 90<br>
+&nbsp;&nbsp;&nbsp;SPI_SETLANGTOGGLE = 91<br>
+&nbsp;&nbsp;&nbsp;SPI_GETWINDOWSEXTENSION = 92<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSETRAILS = 93<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSETRAILS = 94<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSCREENSAVERRUNNING = 97<br>
+&nbsp;&nbsp;&nbsp;SPI_SCREENSAVERRUNNING = SPI_SETSCREENSAVERRUNNING<br>
+&nbsp;&nbsp;&nbsp;SPI_GETFILTERKEYS = 50<br>
+&nbsp;&nbsp;&nbsp;SPI_SETFILTERKEYS = 51<br>
+&nbsp;&nbsp;&nbsp;SPI_GETTOGGLEKEYS = 52<br>
+&nbsp;&nbsp;&nbsp;SPI_SETTOGGLEKEYS = 53<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSEKEYS = 54<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSEKEYS = 55<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSHOWSOUNDS = 56<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSHOWSOUNDS = 57<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSTICKYKEYS = 58<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSTICKYKEYS = 59<br>
+&nbsp;&nbsp;&nbsp;SPI_GETACCESSTIMEOUT = 60<br>
+&nbsp;&nbsp;&nbsp;SPI_SETACCESSTIMEOUT = 61<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSERIALKEYS = 62<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSERIALKEYS = 63<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSOUNDSENTRY = 64<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSOUNDSENTRY = 65<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSNAPTODEFBUTTON = 95<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSNAPTODEFBUTTON = 96<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSEHOVERWIDTH = 98<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSEHOVERWIDTH = 99<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSEHOVERHEIGHT = 100<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSEHOVERHEIGHT = 101<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSEHOVERTIME = 102<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSEHOVERTIME = 103<br>
+&nbsp;&nbsp;&nbsp;SPI_GETWHEELSCROLLLINES = 104<br>
+&nbsp;&nbsp;&nbsp;SPI_SETWHEELSCROLLLINES = 105<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMENUSHOWDELAY = 106<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMENUSHOWDELAY = 107<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSHOWIMEUI = 110<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSHOWIMEUI = 111<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">' Win98/2000 only:</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+&nbsp;&nbsp;&nbsp;SPI_GETMOUSESPEED = 112<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMOUSESPEED = 113<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSCREENSAVERRUNNING = 114<br>
+<br>
+&nbsp;&nbsp;&nbsp;SPI_GETACTIVEWINDOWTRACKING = &H1000&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETACTIVEWINDOWTRACKING = &H1001&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMENUANIMATION = &H1002&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMENUANIMATION = &H1003&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETCOMBOBOXANIMATION = &H1004&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETCOMBOBOXANIMATION = &H1005&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETLISTBOXSMOOTHSCROLLING = &H1006&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETLISTBOXSMOOTHSCROLLING = &H1007&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETGRADIENTCAPTIONS = &H1008&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETGRADIENTCAPTIONS = &H1009&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETKEYBOARDCUES = &H100A&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETKEYBOARDCUES = &H100B&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMENUUNDERLINES = SPI_GETKEYBOARDCUES<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMENUUNDERLINES = SPI_SETKEYBOARDCUES<br>
+&nbsp;&nbsp;&nbsp;SPI_GETACTIVEWNDTRKZORDER = &H100C&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETACTIVEWNDTRKZORDER = &H100D&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETHOTTRACKING = &H100E&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETHOTTRACKING = &H100F&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETMENUFADE = &H1012&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETMENUFADE = &H1013&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETSELECTIONFADE = &H1014&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETSELECTIONFADE = &H1015&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETTOOLTIPANIMATION = &H1016&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETTOOLTIPANIMATION = &H1017&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETTOOLTIPFADE = &H1018&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETTOOLTIPFADE = &H1019&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETCURSORSHADOW = &H101A&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETCURSORSHADOW = &H101B&<br>
+<br>
+&nbsp;&nbsp;&nbsp;SPI_GETUIEFFECTS = &H103E&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETUIEFFECTS = &H103F&<br>
+<br>
+&nbsp;&nbsp;&nbsp;SPI_GETFOREGROUNDLOCKTIMEOUT = &H2000&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETFOREGROUNDLOCKTIMEOUT = &H2001&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETACTIVEWNDTRKTIMEOUT = &H2002&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETACTIVEWNDTRKTIMEOUT = &H2003&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETFOREGROUNDFLASHCOUNT = &H2004&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETFOREGROUNDFLASHCOUNT = &H2005&<br>
+&nbsp;&nbsp;&nbsp;SPI_GETCARETWIDTH = &H2006&<br>
+&nbsp;&nbsp;&nbsp;SPI_SETCARETWIDTH = &H2007&<br>
+End Enum<br>
+Public Event SettingsChange(ByVal wParam As ESPISystemParamtersInfoConstants)<br>
+<br>
+<br>
+Public Sub Attach(ByVal hWndA As Long)<br>
+&nbsp;&nbsp;&nbsp;Detach<br>
+&nbsp;&nbsp;&nbsp;m_hWnd = hWndA<br>
+&nbsp;&nbsp;&nbsp;AttachMessage Me, m_hWnd, WM_SETTINGCHANGE<br>
+&nbsp;&nbsp;&nbsp;AttachMessage Me, m_hWnd, WM_DESTROY<br>
+End Sub<br>
+Public Sub Detach()<br>
+&nbsp;&nbsp;&nbsp;If Not m_hWnd = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DetachMessage Me, m_hWnd, WM_SETTINGCHANGE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DetachMessage Me, m_hWnd, WM_DESTROY<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_hWnd = 0<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Sub<br>
+<br>
+Private Sub Class_Terminate()<br>
+&nbsp;&nbsp;&nbsp;Detach<br>
+End Sub<br>
+<br>
+Private Property Let ISubClass_MsgResponse(ByVal RHS As SSubTimer.EMsgResponse)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">'</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+End Property<br>
+<br>
+Private Property Get ISubClass_MsgResponse() As SSubTimer.EMsgResponse<br>
+&nbsp;&nbsp;&nbsp;ISubClass_MsgResponse = emrPreprocess<br>
+End Property<br>
+<br>
+Private Function ISubClass_WindowProc(ByVal hwnd As Long, ByVal iMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long<br>
+&nbsp;&nbsp;&nbsp;Select Case iMsg<br>
+&nbsp;&nbsp;&nbsp;Case WM_SETTINGCHANGE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RaiseEvent SettingsChange(wParam)<br>
+&nbsp;&nbsp;&nbsp;Case WM_DESTROY<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detach<br>
+&nbsp;&nbsp;&nbsp;End Select<br>
+End Function<br>
+<br>
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+To test the class, add a ListBox control to your project's form and then add the following code to
+the form:
+</font>
+</p>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Option Explicit<br>
+<br>
+Private WithEvents m_c As cSettingsChange<br>
+<br>
+Private Sub Form_Load()<br>
+&nbsp;&nbsp;&nbsp;Set m_c = New cSettingsChange<br>
+&nbsp;&nbsp;&nbsp;m_c.Attach Me.hwnd<br>
+End Sub<br>
+<br>
+Private Sub m_c_SettingsChange(ByVal wParam As ESPISystemParamtersInfoConstants)<br>
+&nbsp;&nbsp;&nbsp;If wParam &gt; SPI__NONSYSTEMPARAMETERSINFOCHANGE Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List1.AddItem &quot;SystemParametersInfo Change: &quot; & wParam<br>
+&nbsp;&nbsp;&nbsp;Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List1.AddItem &quot;Settings Change&quot;<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Sub<br>
+<br>
+
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Run the project.  Bring up the system display settings and change some of the colours on the appearance
+tab.  When you choose Apply or OK, an event will be generated and displayed in the ListBox.
+</font>
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0034.htm">Get System Display Fonts and Non-Client Area Sizes</a>
+<LI><a href="vba0038.htm">Detecting Display Size or System Colour Depth Changes</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - System Internet Connection - Determining  How and If Connected</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>System Internet Connection - Determining  How and If Connected</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index22.htm">Internet</a>,<a href="index17.htm">Windows</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>17/08/99</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	If you are designing a project which can use an Internet connection, it can be
+ 	useful to know whether the system is connected or not.  There are various 
+	methods of doing this, however the most informative and reliable method is to use the WinInet.DLL
+	<i>InternetGetConnectedStateEx()</i> API call.  The only problem with this call is
+	it is only implemented for the WinInet.DLL version shipped with Internet Explorer version 4.0 or
+	higher.
+	<br><br>
+	To test out this function, start a new project and add the following code:
+	</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<br>
+<br>
+Public Declare Function InternetGetConnectedStateEx Lib "wininet.dll" Alias "InternetGetConnectedStateExA" _<br>
+&nbsp;&nbsp;   (ByRef lpdwFlags As Long, _<br>
+&nbsp;&nbsp;    ByVal lpszConnectionName As String, _<br>
+&nbsp;&nbsp;    ByVal dwNameLen As Long, _<br>
+&nbsp;&nbsp;    ByVal dwReserved As Long _<br>
+&nbsp;&nbsp;    ) As Long<br>
+<br>
+Public Enum EIGCInternetConnectionState<br>
+&nbsp;&nbsp;   INTERNET_CONNECTION_MODEM = &H1&<br>
+&nbsp;&nbsp;   INTERNET_CONNECTION_LAN = &H2&<br>
+&nbsp;&nbsp;   INTERNET_CONNECTION_PROXY = &H4&<br>
+&nbsp;&nbsp;   INTERNET_RAS_INSTALLED = &H10&<br>
+&nbsp;&nbsp;   INTERNET_CONNECTION_OFFLINE = &H20&<br>
+&nbsp;&nbsp;   INTERNET_CONNECTION_CONFIGURED = &H40&<br>
+End Enum<br>
+<br>
+Public Property Get InternetConnected( _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Optional ByRef eConnectionInfo As EIGCInternetConnectionState, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Optional ByRef sConnectionName As String _<br>
+&nbsp;&nbsp;   ) As Boolean<br>
+Dim dwFlags As Long<br>
+Dim sNameBuf As String<br>
+Dim lR As Long<br>
+Dim iPos As Long<br>
+&nbsp;&nbsp;   sNameBuf = String$(513, 0)<br>
+&nbsp;&nbsp;   lR = InternetGetConnectedStateEx(dwFlags, sNameBuf, 512, 0&)<br>
+&nbsp;&nbsp;   eConnectionInfo = dwFlags<br>
+&nbsp;&nbsp;   iPos = InStr(sNameBuf, vbNullChar)<br>
+&nbsp;&nbsp;   If iPos > 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sConnectionName = Left$(sNameBuf, iPos - 1)<br>
+&nbsp;&nbsp;   ElseIf Not sNameBuf = String$(513, 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sConnectionName = sNameBuf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   InternetConnected = (lR = 1)<br>
+End Property<br>
+<br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	To try out the code, add a CommandButton and a Multi-Line TextBox to your 
+	test project's main form.  Then add the following code to try the function:
+	</p>
+	</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<br>
+Private Sub Command1_Click()<br>
+Dim eR As EIGCInternetConnectionState<br>
+Dim sMsg As String<br>
+Dim sName As String<br>
+Dim bConnected As Boolean<br>
+<br><font color="#999999">
+&nbsp;&nbsp;   ' Determine whether we have a connection:<br><font color="#000000">
+&nbsp;&nbsp;   bConnected = InternetConnected(eR, sName)<br>
+   <br><font color="#999999">
+&nbsp;&nbsp;   ' The connection state info parameter provides details<br>
+&nbsp;&nbsp;   ' about how we connect:<br><font color="#000000">
+&nbsp;&nbsp;   If (eR And INTERNET_CONNECTION_MODEM) = INTERNET_CONNECTION_MODEM Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "Connection uses a modem." & vbCrLf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;   If (eR And INTERNET_CONNECTION_LAN) = INTERNET_CONNECTION_LAN Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "Connection uses LAN." & vbCrLf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;   If (eR And INTERNET_CONNECTION_PROXY) = INTERNET_CONNECTION_PROXY Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "Connection is via Proxy." & vbCrLf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;   If (eR And INTERNET_CONNECTION_OFFLINE) = INTERNET_CONNECTION_OFFLINE Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "Connection is Off-line." & vbCrLf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;   If (eR And INTERNET_CONNECTION_CONFIGURED) = INTERNET_CONNECTION_CONFIGURED Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "Connection is Configured." & vbCrLf<br>
+&nbsp;&nbsp;   Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "Connection is Not Configured." & vbCrLf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;   If (eR And INTERNET_RAS_INSTALLED) = INTERNET_RAS_INSTALLED Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      sMsg = sMsg & "System has RAS installed." & vbCrLf<br>
+&nbsp;&nbsp;   End If<br>
+&nbsp;&nbsp;   <br><font color="#999999">
+&nbsp;&nbsp;   ' Display the connection name and info:<br><font color="#000000">
+&nbsp;&nbsp;   If bConnected Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Text1.Text = "Connected: " & sName & vbCrLf & vbCrLf & sMsg<br>
+&nbsp;&nbsp;   Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Text1.Text = "Not Connected: " & sName & vbCrLf & vbCrLf & sMsg<br>
+&nbsp;&nbsp;   End If<br>
+   <br>
+End Sub<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+Run the project. When you click the command button, the text box will be updated with the status
+of the current connection, the name of RAS dial-up connection used (if applicable) and also
+various information about how the connection is being achieved (i.e. by modem or LAN, via a proxy
+and whether the connection is configured or not).
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0033.htm">System Internet Connection - Determining  How and If Connected</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 17/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 17/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

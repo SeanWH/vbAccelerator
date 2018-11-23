@@ -1,0 +1,386 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Determine every format available on the clipboard, including custom formats</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Determine every format available on the clipboard, including custom formats</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index11.htm">Clipboard</a>,<a href="index8.htm">Interprocess Comms</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>01/08/98</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	Whilst VB allows you to determine if the standard, recognised clipboard formats
+	are on the clipboard, you can't determine if any other formats are present.  So,
+	for example, if you want to know if the clipboard contains data from Excel (which
+	always pastes at least its own customised format called 'Wk1'), or if you want to
+	determine whether Rich Text format is available to enable a Paste menu, you can't do it.
+	<br><br>
+	This tip shows how to determine all the formats currently available on the clipboard, 
+	including the customised formats.
+	<br><br>
+	Start a new project in VB.  Add a Command button and a ListBox to the project's form, then add the following
+	code:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Private Declare Function CountClipboardFormats Lib "USER32" () As Long <br>
+Private Declare Function EnumClipboardFormats Lib "USER32" (ByVal wFormat As Long) As Long <br>
+Private Declare Function OpenClipboard Lib "USER32" (ByVal hWnd As Long) As Long <br>
+Private Declare Function CloseClipboard Lib "USER32" () As Long <br>
+Private Declare Function GetClipboardFormatName Lib "USER32" Alias "GetClipboardFormatNameA" (ByVal wFormat As Long, ByVal lpString As String, ByVal nMaxCount As Long) As Long <br>
+Private Enum EPredefinedClipboardFormatConstants <br>
+&nbsp &nbsp [_First] = 1 <br>
+&nbsp &nbsp CF_TEXT = 1 <br>
+&nbsp &nbsp CF_BITMAP = 2 <br>
+&nbsp &nbsp CF_METAFILEPICT = 3 <br>
+&nbsp &nbsp CF_SYLK = 4 <br>
+&nbsp &nbsp CF_DIF = 5 <br>
+&nbsp &nbsp CF_TIFF = 6 <br>
+&nbsp &nbsp CF_OEMTEXT = 7 <br>
+&nbsp &nbsp CF_DIB = 8 <br>
+&nbsp &nbsp CF_PALETTE = 9 <br>
+&nbsp &nbsp CF_PENDATA = 10 <br>
+&nbsp &nbsp CF_RIFF = 11 <br>
+&nbsp &nbsp CF_WAVE = 12 <br>
+&nbsp &nbsp CF_UNICODETEXT = 13 <br>
+&nbsp &nbsp CF_ENHMETAFILE = 14 <br>
+&nbsp &nbsp CF_HDROP = 15 <br>
+&nbsp &nbsp CF_LOCALE = 16 <br>
+&nbsp &nbsp CF_MAX = 17 <br>
+&nbsp &nbsp [_Last] = 17 <br>
+End Enum <br>
+ <br>
+ <br>
+Private Property Get FormatName( _ <br>
+&nbsp &nbsp &nbsp &nbsp ByVal lFormatId As Long _ <br>
+&nbsp &nbsp ) As String <br>
+</font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' Returns the format name for a clipboard format id: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+Dim lSize As Long <br>
+Dim sBuf As String <br>
+Dim lR As Long <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp If (lFormatId >= EPredefinedClipboardFormatConstants.[_First] And lFormatId <= EPredefinedClipboardFormatConstants.[_Last]) Then <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' For pre-defined formats, we have to make the text <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' up ourselves: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp Select Case lFormatId <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_TEXT <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Text" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_BITMAP <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Bitmap Picture" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_METAFILEPICT <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Meta-File Picture" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_SYLK <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Microsoft Symbolic Link (SYLK) data." <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_DIF <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+FormatName = "Software Arts' Data Interchange information." <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp Case CF_TIFF = 6 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Tagged Image File Format (TIFF) Picture" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_OEMTEXT <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Text (OEM)" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_DIB <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "DIB Bitmap Picture" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_PALETTE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Colour Palette" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_PENDATA <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Pen Data" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_RIFF <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "RIFF Audio data" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_WAVE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Wave File" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_UNICODETEXT <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Text (Unicode)" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_ENHMETAFILE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Enhanced Meta-File Picture" <br>
+&nbsp &nbsp &nbsp &nbsp  Case CF_HDROP <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "File List" <br>
+&nbsp &nbsp &nbsp &nbsp Case CF_LOCALE <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = "Text Locale Identifier" <br>
+&nbsp &nbsp &nbsp &nbsp End Select <br>
+&nbsp &nbsp Else <br>
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' For custom formats, we can ask the Clipboard for <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp </font>
+<font color="#999999" face="Lucida Console,courier new" size="1">
+' the registered name: <br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp &nbsp &nbsp &nbsp lSize = 255 <br>
+&nbsp &nbsp &nbsp &nbsp sBuf = String$(lSize, 0) <br>
+&nbsp &nbsp &nbsp &nbsp lR = GetClipboardFormatName(lFormatId, sBuf, lSize) <br>
+&nbsp &nbsp &nbsp &nbsp If (lR <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp FormatName = Left$(sBuf, lR) <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End If <br>
+End Property <br>
+ <br>
+Private Sub Command1_Click() <br>
+Dim lR As Long <br>
+Dim iCount As Long <br>
+&nbsp &nbsp  <br>
+&nbsp &nbsp List1.Clear <br>
+ <br>
+&nbsp &nbsp If (OpenClipboard(Me.hWnd)) Then <br>
+&nbsp &nbsp &nbsp &nbsp lR = EnumClipboardFormats(0) <br>
+&nbsp &nbsp &nbsp &nbsp If (lR <> 0) Then <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Do <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp iCount = iCount + 1 <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp List1.AddItem FormatName(lR) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp List1.ItemData(List1.NewIndex) = lR <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp lR = EnumClipboardFormats(lR) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Loop While lR <> 0 <br>
+&nbsp &nbsp &nbsp &nbsp End If <br>
+&nbsp &nbsp End If <br>
+&nbsp &nbsp CloseClipboard <br>
+&nbsp &nbsp  <br>
+End Sub <br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	When you click the command button, the list box will be filled with a list of
+	available data formats.  The List field is set to the format name, and the item
+	data of each item is set to the clipboard format's ID.  To see custom formats in
+	the list, try copying something from Word, Write or Internet Explorer before clicking
+	the button.
+</p>
+</font>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0013.htm">Read a custom clipboard format</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 01/08/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 01/08/98</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

@@ -1,0 +1,393 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Detecting Display Size or System Colour Depth Changes</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Detecting Display Size or System Colour Depth Changes</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index9.htm">API</a>,<a href="index12.htm">Subclassing</a>,<a href="index17.htm">Windows</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>18/08/99</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+	<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+This tip demonstrates how to detect Windows display setting changes (i.e. screen size and display colour depth)
+from Visual Basic. You will need to have installed 
+and registered SSubTmr.DLL, available from this site at <a href="..\codelib\ssubtmr\ssubtmr.htm">Subclassing 
+without the crashes</a> to run this sample. 
+<br><br>
+Start a new project and choose Project->References. Look for 
+"Subclassing and Timer Assistant (with multiple control support and timer bug fix)" 
+in the references list. If it is there, select it and click ok. If it isn't, choose 
+Browse, locate SSubTmr.DLL on your disk, then select that.
+<br><br>
+Once that is done, add a Class module.  Rename the Class module to <i>cDisplayChange</i> and then
+add the following code:
+</font>
+</p>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+<br>
+Private Const WM_DISPLAYCHANGE = &H7E&<br>
+Private Const WM_DESTROY = &H2<br>
+<br>
+Private Declare Function GetDeviceCaps Lib &quot;gdi32&quot; (ByVal hdc As Long, ByVal nIndex As Long) As Long<br>
+Private Const BITSPIXEL = 12          <font color="#999999" face="Lucida Console,Courier New" size="1">'  Number of bits per pixel</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+Private Declare Function GetDC Lib &quot;user32&quot; (ByVal hwnd As Long) As Long<br>
+Private Declare Function ReleaseDC Lib &quot;user32&quot; (ByVal hwnd As Long, ByVal hdc As Long) As Long<br>
+Private Declare Function CreateDCAsNull Lib &quot;gdi32&quot; Alias &quot;CreateDCA&quot; (ByVal lpDriverName As String, _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lpDeviceName As Any, lpOutput As Any, lpInitData As Any) As Long<br>
+Private Declare Function DeleteDC Lib &quot;gdi32&quot; (ByVal hdc As Long) As Long<br>
+<br>
+Implements ISubclass<br>
+<br>
+Public Event ColourDepthChange(ByVal lNewBitsPixel As Long, ByVal lOldBitsPixel As Long)<br>
+Public Event WindowSizeChange(ByVal lNewWidth As Long, ByVal lNewHeight As Long, ByVal lOldWidth As Long, ByVal lOldHeight As Long)<br>
+<br>
+Private m_hWnd As Long<br>
+Private m_lBitsPixel As Long<br>
+Private m_lWidth As Long<br>
+Private m_lHeight As Long<br>
+<br>
+Public Sub Attach(ByVal hWndA As Long)<br>
+&nbsp;&nbsp;&nbsp;Dim hdc As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;Detach<br>
+&nbsp;&nbsp;&nbsp;m_hWnd = hWndA<br>
+&nbsp;&nbsp;&nbsp;AttachMessage Me, m_hWnd, WM_DISPLAYCHANGE<br>
+&nbsp;&nbsp;&nbsp;AttachMessage Me, m_hWnd, WM_DESTROY<br>
+&nbsp;&nbsp;&nbsp;hdc = GetDC(m_hWnd)<br>
+&nbsp;&nbsp;&nbsp;m_lBitsPixel = GetDeviceCaps(hdc, BITSPIXEL)<br>
+&nbsp;&nbsp;&nbsp;m_lWidth = Screen.Width \ Screen.TwipsPerPixelX<br>
+&nbsp;&nbsp;&nbsp;m_lHeight = Screen.Height \ Screen.TwipsPerPixelY<br>
+&nbsp;&nbsp;&nbsp;ReleaseDC hdc, m_hWnd<br>
+<br>
+End Sub<br>
+Public Sub Detach()<br>
+&nbsp;&nbsp;&nbsp;If Not m_hWnd = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DetachMessage Me, m_hWnd, WM_DISPLAYCHANGE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DetachMessage Me, m_hWnd, WM_DESTROY<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_hWnd = 0<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+End Sub<br>
+<br>
+Public Property Get ColourDepth() As Long<br>
+&nbsp;&nbsp;&nbsp;Dim hdc As Long<br>
+&nbsp;&nbsp;&nbsp;If m_hWnd = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hdc = CreateDCAsNull(&quot;DISPLAY&quot;, ByVal 0&, ByVal 0&, ByVal 0&)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lBitsPixel = GetDeviceCaps(hdc, BITSPIXEL)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeleteDC hdc<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;ColourDepth = m_lBitsPixel<br>
+End Property<br>
+Public Property Get DisplayWidth() As Long<br>
+&nbsp;&nbsp;&nbsp;If m_hWnd = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lWidth = Screen.Width \ Screen.TwipsPerPixelX<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;DisplayWidth = m_lWidth<br>
+End Property<br>
+Public Property Get DisplayHeight() As Long<br>
+&nbsp;&nbsp;&nbsp;If m_hWnd = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lHeight = Screen.Height \ Screen.TwipsPerPixelY<br>
+&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;DisplayHeight = m_lHeight<br>
+End Property<br>
+<br>
+Private Sub Class_Terminate()<br>
+&nbsp;&nbsp;&nbsp;Detach<br>
+End Sub<br>
+<br>
+Private Property Let ISubclass_MsgResponse(ByVal RHS As SSubTimer.EMsgResponse)<br>
+&nbsp;&nbsp;&nbsp;<font color="#999999" face="Lucida Console,Courier New" size="1">'</font><font color="#000000" face="Lucida Console,Courier New" size="1"><br>
+End Property<br>
+<br>
+Private Property Get ISubclass_MsgResponse() As SSubTimer.EMsgResponse<br>
+&nbsp;&nbsp;&nbsp;ISubclass_MsgResponse = emrPreprocess<br>
+End Property<br>
+<br>
+Private Function ISubclass_WindowProc(ByVal hwnd As Long, ByVal iMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long<br>
+&nbsp;&nbsp;&nbsp;Select Case iMsg<br>
+&nbsp;&nbsp;&nbsp;Case WM_DISPLAYCHANGE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim lOldBitsPixel As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim lWidth As Long, lHeight As Long<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim lOldWidth As Long, lOldHeight As Long<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lWidth = lParam And &HFFFF&<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lHeight = (lParam And &H7FFF0000) \ &H10000<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Not wParam = m_lBitsPixel Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lOldBitsPixel = m_lBitsPixel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lBitsPixel = wParam<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RaiseEvent ColourDepthChange(m_lBitsPixel, lOldBitsPixel)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If Not ((lWidth = m_lWidth) And (lHeight = m_lHeight)) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lOldWidth = m_lWidth<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lOldHeight = m_lHeight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lWidth = lWidth<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_lHeight = lHeight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RaiseEvent WindowSizeChange(m_lWidth, m_lHeight, lOldWidth, lOldHeight)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End If<br>
+<br>
+&nbsp;&nbsp;&nbsp;Case WM_DESTROY<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Detach<br>
+&nbsp;&nbsp;&nbsp;End Select<br>
+End Function<br>
+<br>
+<br>
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+To test out the project, add a Label control to your project's form.
+</font>
+</p>
+<p>
+<font color="#000000" face="Lucida Console,Courier New" size="1">
+Private WithEvents m_c As cDisplayChange<br>
+<br>
+Private Sub DisplayInfo()<br>
+&nbsp;&nbsp;&nbsp;Label1.AutoSize = True<br>
+&nbsp;&nbsp;&nbsp;Label1.Caption = &quot;Colour Depth: &quot; & m_c.ColourDepth & _<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vbCrLf & &quot;Size: &quot; & m_c.DisplayWidth & &quot; x &quot; & m_c.DisplayHeight<br>
+End Sub<br>
+<br>
+Private Sub Form_Load()<br>
+&nbsp;&nbsp;&nbsp;Set m_c = New cDisplayChange<br>
+&nbsp;&nbsp;&nbsp;m_c.Attach Me.hwnd<br>
+&nbsp;&nbsp;&nbsp;DisplayInfo<br>
+End Sub<br>
+<br>
+Private Sub m_c_ColourDepthChange(ByVal lNewBitsPixel As Long, ByVal lOldBitsPixel As Long)<br>
+&nbsp;&nbsp;&nbsp;DisplayInfo<br>
+End Sub<br>
+<br>
+Private Sub m_c_WindowSizeChange(ByVal lNewWidth As Long, ByVal lNewHeight As Long, ByVal lOldWidth As Long, ByVal lOldHeight As Long)<br>
+&nbsp;&nbsp;&nbsp;DisplayInfo<br>
+End Sub<br>
+<br>
+
+</font>
+</p>
+<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+Run the project.  Choose the Windows Display settings setup box.  Whenever you change the colour depth or size, 
+and event will fire and the Label on the form will be updated with the new colour depth and screen size.
+</font>
+</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0037.htm">Detecting Windows Settings Changes</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>

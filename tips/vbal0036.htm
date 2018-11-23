@@ -1,0 +1,491 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Steve McMahon">
+<meta name="KeyWords"
+content="VB, VB6, Visual Basic, Visual Basic 5, Visual Basic 6, Dynamic HTML, DHTML, IE4, Internet Explorer, Internet Explorer 4, Active X, Active X Controls, Visual Basic Controls">
+<meta name="GENERATOR" content="vbAccelerator Site Robot v0.5.1">
+<title>vbAccelerator Tips - Generating Long Sequences of Unique Numbers</title>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" link="#660000" vlink="#999966" LEFTMARGIN="0" TOPMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+
+<!-- AD:START -->
+<table bgcolor="#336699" border="0" cellpadding="0" cellspacing="0" width="100%" >
+<tr>
+<td width="468">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4690375644913255";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<noscript>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelad.png" width="468" height="60" 
+border="0" alt="vbAccelerator - Faster VB and .NET Code" /></a>
+</noscript>
+</td>
+<td>
+<a href="..\home\index.html"><img src="..\home\res\vbaccelnew.png" width="125" height="60" 
+border="0" alt="The new vbAccelerator Site - more VB and .NET Code and Controls" /></a>
+</td>
+</tr>
+</table>
+<!-- AD:END -->
+
+
+
+<a name="sectop"></a>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
+<tr bgcolor="#663333" height="25">
+	<td>
+	<img src="..\images\vbatips.gif" width="368" height="12" border="0">
+	</font>
+	</td>
+</tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4">
+<tr bgcolor="#FFFFFF">
+	<td width="72" rowspan="5" valign="top"><img src="..\images\vbatipim.gif" height="64" width="64" border="0" hspace="6" halign="center"></td>
+	<td colspan="3">
+	<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>
+	<p><b>Generating Long Sequences of Unique Numbers</b></p>
+	</font>
+	</td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\vbatipbt.gif" height="8" width="8" border="0" hspace="4" halign="center">Author: 
+	</td>
+	<td valign="top" width="100%">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<!-- AUTHORS: Begin -->
+	<p>Steve McMahon(<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>)</p>
+	<!-- AUTHORS: End -->
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Keywords: 
+	</td>
+	<td valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p><a href="index21.htm">Bit Manipulation</a></p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td  valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p><img src="..\images\pixel.gif" height="1" width="8" border="0" hspace="4" halign="center">Updated:
+	</td>
+	<td  valign="top">
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>18/08/99</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+</tr>
+<tr>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td valign="top">
+	<font face="verdana,arial,helvetica" size="1">
+	<p>
+	Other Tips<br>
+	<a href="index.htm">All Tips</a><br>
+	<a href="indexd.htm">By Date</a><br>
+	<a href="indext.htm">By Subject</a><br>
+	<br><br>
+	<a href="index9.htm">API (33)</a><br>
+<a href="index21.htm">Bit<br>Manipulation (3)</a><br>
+<a href="index11.htm">Clipboard (3)</a><br>
+<a href="index18.htm">Combo<br>Box (5)</a><br>
+<a href="index1.htm">Desktop (3)</a><br>
+<a href="index3.htm">GDI (13)</a><br>
+<a href="index10.htm">Graphics (13)</a><br>
+<a href="index22.htm">Internet (2)</a><br>
+<a href="index8.htm">Interprocess<br>Comms (3)</a><br>
+<a href="index6.htm">Keyboard (2)</a><br>
+<a href="index2.htm">Mouse (1)</a><br>
+<a href="index4.htm">Shell (1)</a><br>
+<a href="index14.htm">Sprites (1)</a><br>
+<a href="index12.htm">Subclassing (3)</a><br>
+<a href="index20.htm">Text<br>Box (2)</a><br>
+<a href="index17.htm">Windows (11)</a><br>
+<a href="index15.htm">Windows<br>Controls (10)</a><br>
+	<br><br>
+	<a href="submitt.htm">Submit</a><br>
+	</p>
+	</font>
+	</td>
+	<td colspan=3>
+	<br>
+	<!-- TIPHTML: Begin -->
+		<font color="#000000" face="verdana,arial,helvetica" size="2">
+<p>
+	Sometimes it is very useful to be able to generate a long sequence of unique numbers.	
+	This tip provides a method to generate long sequences which are not consecutive by
+	using a shift register approach.
+	<br><br>
+	As well as providing a sequence of widely spaced unique numbers, the code also generates 
+	a bit stream which can be used as a random bit generator, yielding an equally probable
+	but suitably &quot;random&quot; stream of 0s and 1s.
+	<br><br>
+	To try it out, start a new project. Then add a module and copy the following code into it:
+</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<br>
+Public Power2(0 To 31) As Long<br>
+Private m_lPoly(0 To 31) As Long<br>
+Private m_lMask(0 To 31) As Long<br>
+<br>
+Private m_lNum As Long<br>
+Private m_lLength As Long<br>
+<br>
+Public Property Get Number() As Long<br>
+&nbsp;&nbsp;   Number = m_lNum<br>
+End Property<br>
+<br>
+Public Property Let Number(ByVal lNumber As Long)<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Equivalent to seed in random numbers<br>
+<font color="#000000">
+&nbsp;&nbsp;   m_lNum = lNumber<br>
+End Property<br>
+<br>
+Public Property Get SequenceLength() As Long<br>
+&nbsp;&nbsp;   SequenceLength = m_lLength<br>
+End Property<br>
+<br>
+Public Property Let SequenceLength(ByVal lLength As Long)<br>
+&nbsp;&nbsp;   m_lLength = lLength<br>
+End Property<br>
+<br>
+Public Function NextNumber() As Long<br>
+&nbsp;&nbsp;   If m_lNum And Power2(m_lLength - 1) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      m_lNum = m_lNum Xor (m_lPoly(m_lLength))<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;      ' Shift and put 1 into lowest order bit:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;      m_lNum = RShift(m_lNum, 1) Or 1<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;      ' Return lowest order bit:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;      NextNumber = 1<br>
+&nbsp;&nbsp;   Else<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;      ' Shift and put 0 into lowest order bit:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;      m_lNum = RShift(m_lNum, 1)<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;      ' Return lowest order bit:<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;      NextNumber = 0<br>
+&nbsp;&nbsp;   End If<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Mask out > bits<br>
+<font color="#000000">
+&nbsp;&nbsp;   m_lNum = m_lNum And m_lMask(m_lLength)<br>
+End Function<br>
+<br>
+Public Function RShift(ByVal lThis As Long, ByVal lBits As Long) As Long<br>
+&nbsp;&nbsp;   If (lBits <= 0) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      RShift = lThis<br>
+&nbsp;&nbsp;   ElseIf (lBits > 63) Then<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;      ' .. error ...<br>
+<font color="#000000">
+&nbsp;&nbsp;   ElseIf (lBits > 31) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      RShift = 0<br>
+&nbsp;&nbsp;   Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      If (lThis And Power2(31 - lBits)) = Power2(31 - lBits) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         RShift = (lThis And (Power2(31 - lBits) - 1)) * Power2(lBits) Or Power2(31)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         RShift = (lThis And (Power2(31 - lBits) - 1)) * Power2(lBits)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      End If<br>
+&nbsp;&nbsp;   End If<br>
+End Function<br>
+<br>
+Public Sub Init()<br>
+&nbsp;&nbsp;   Power2(0) = &H1&<br>
+&nbsp;&nbsp;   Power2(1) = &H2&<br>
+&nbsp;&nbsp;   Power2(2) = &H4&<br>
+&nbsp;&nbsp;   Power2(3) = &H8&<br>
+&nbsp;&nbsp;   Power2(4) = &H10&<br>
+&nbsp;&nbsp;   Power2(5) = &H20&<br>
+&nbsp;&nbsp;   Power2(6) = &H40&<br>
+&nbsp;&nbsp;   Power2(7) = &H80&<br>
+&nbsp;&nbsp;   Power2(8) = &H100&<br>
+&nbsp;&nbsp;   Power2(9) = &H200&<br>
+&nbsp;&nbsp;   Power2(10) = &H400&<br>
+&nbsp;&nbsp;   Power2(11) = &H800&<br>
+&nbsp;&nbsp;   Power2(12) = &H1000&<br>
+&nbsp;&nbsp;   Power2(13) = &H2000&<br>
+&nbsp;&nbsp;   Power2(14) = &H4000&<br>
+&nbsp;&nbsp;   Power2(15) = &H8000&<br>
+&nbsp;&nbsp;   Power2(16) = &H10000<br>
+&nbsp;&nbsp;   Power2(17) = &H20000<br>
+&nbsp;&nbsp;   Power2(18) = &H40000<br>
+&nbsp;&nbsp;   Power2(19) = &H80000<br>
+&nbsp;&nbsp;   Power2(20) = &H100000<br>
+&nbsp;&nbsp;   Power2(21) = &H200000<br>
+&nbsp;&nbsp;   Power2(22) = &H400000<br>
+&nbsp;&nbsp;   Power2(23) = &H800000<br>
+&nbsp;&nbsp;   Power2(24) = &H1000000<br>
+&nbsp;&nbsp;   Power2(25) = &H2000000<br>
+&nbsp;&nbsp;   Power2(26) = &H4000000<br>
+&nbsp;&nbsp;   Power2(27) = &H8000000<br>
+&nbsp;&nbsp;   Power2(28) = &H10000000<br>
+&nbsp;&nbsp;   Power2(29) = &H20000000<br>
+&nbsp;&nbsp;   Power2(30) = &H40000000<br>
+&nbsp;&nbsp;   Power2(31) = &H80000000<br>
+   <br>   
+<font color="#999999">
+&nbsp;&nbsp;   ' Mod2 Polynomials for maximal length sequences:<br>
+<font color="#000000">
+&nbsp;&nbsp;   m_lPoly(1) = 0<br>
+&nbsp;&nbsp;   m_lPoly(2) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(3) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(4) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(5) = Power2(1)<br>
+&nbsp;&nbsp;   m_lPoly(6) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(7) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(8) = Power2(3) Or Power2(2) Or Power2(1)<br>
+&nbsp;&nbsp;   m_lPoly(9) = Power2(3)<br>
+&nbsp;&nbsp;   m_lPoly(10) = Power2(2)<br>
+&nbsp;&nbsp;   m_lPoly(11) = Power2(1)<br>
+&nbsp;&nbsp;   m_lPoly(12) = Power2(5) Or Power2(3) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(13) = Power2(3) Or Power2(2) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(14) = Power2(4) Or Power2(2) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(15) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(16) = Power2(4) Or Power2(2) Or Power2(1)<br>
+&nbsp;&nbsp;   m_lPoly(17) = Power2(2)<br>
+&nbsp;&nbsp;   m_lPoly(18) = Power2(4) Or Power2(1) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(19) = Power2(4) Or Power2(1) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(20) = Power2(2)<br>
+&nbsp;&nbsp;   m_lPoly(22) = Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(23) = Power2(4)<br>
+&nbsp;&nbsp;   m_lPoly(24) = Power2(3) Or Power2(2) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(25) = Power2(2)<br>
+&nbsp;&nbsp;   m_lPoly(26) = Power2(5) Or Power2(1) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(27) = Power2(4) Or Power2(1) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(28) = Power2(2)<br>
+&nbsp;&nbsp;   m_lPoly(29) = Power2(1)<br>
+&nbsp;&nbsp;   m_lPoly(30) = Power2(5) Or Power2(3) Or Power2(0)<br>
+&nbsp;&nbsp;   m_lPoly(31) = Power2(2)<br>
+<font color="#999999">
+&nbsp;&nbsp;   'm_lPoly(32) = Power2(6) Or Power2(4) Or Power2(2) Or Power2(1) Or Power2(0)<br>
+<font color="#000000">
+<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Masks:<br>
+<font color="#000000">
+&nbsp;&nbsp;   Dim i As Long<br>
+&nbsp;&nbsp;   For i = 0 To 30<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      m_lMask(i) = Power2(i) - 1<br>
+&nbsp;&nbsp;   Next i<br>
+&nbsp;&nbsp;   m_lMask(31) = &H7FFFFFFF<br>
+   <br>
+&nbsp;&nbsp;   m_lNum = 1<br>
+   <br>
+End Sub<br>
+ <br>
+</font>
+</p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<p>
+	To test this function out, add a CommandButton and a ListBox to the project's form.  Set
+	the <i>Sorted</i> property of the ListBox to True.   Then add the following code:
+	</p>
+</font>
+<p>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+<br>
+Private Sub TestSequence(ByVal lLength As Long)<br>
+Dim i As Long<br>
+<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Seed at 1:<br>
+<font color="#000000">
+&nbsp;&nbsp;   Number = 1<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Set a sequence length:<br>
+<font color="#000000">
+&nbsp;&nbsp;   SequenceLength = lLength<br>
+&nbsp;&nbsp;   <br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Show that the algorithm generates<br>
+&nbsp;&nbsp;   ' unique digits 2^Length-1:<br>
+<font color="#000000">
+&nbsp;&nbsp;   lstTest.Clear<br>
+&nbsp;&nbsp;   lstTest.AddItem Number<br>
+&nbsp;&nbsp;   For i = 1 To Power2(lLength) - 2
+&nbsp;&nbsp;&nbsp;&nbsp;      NextNumber<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      lstTest.AddItem Number<br>
+&nbsp;&nbsp;   Next i<br>
+      <br>
+&nbsp;&nbsp;   For i = 0 To lstTest.ListCount - 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      If lstTest.List(i) = lstTest.List(i + 1) Then<br>
+<font color="#999999">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 ' Does not occur!<br>
+<font color="#000000">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         lstTest.ListIndex = i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         MsgBox "Duplicate: " & lstTest.List(i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      End If<br>
+&nbsp;&nbsp;   Next i<br>
+<br>
+End Sub<br>
+<br>
+Private Sub Command1_Click()<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Test a 255 number sequence (2^8-1):<br>
+<font color="#000000">
+&nbsp;&nbsp;   TestSequence 8<br>
+End Sub<br>
+<br>
+Private Sub Form_Load()<br>
+<font color="#999999">
+&nbsp;&nbsp;   ' Must initialise to set up the precompiled Powers of 2<br>
+&nbsp;&nbsp;   ' and polynomials:<br>
+<font color="#000000">
+&nbsp;&nbsp;   Init<br>
+End Sub<br>
+<br>
+<br>
+</font>
+</p>
+	<p>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	Run the project.  When you click the button, the list box will be filled with the
+	sequence of 255 numbers.  Because the ListBox is sorted, the numbers will appear in
+	order - this is just to make the duplicate test simple.<br><br>
+	To see the numbers in the sequence they are generated, change the ListBox's <i>Sorted</i>
+	property to False and re-run the project.<br><br>
+	To check out the random bits generated by the routine, modify the line<br><br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;&nbsp;      NextNumber<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>To read:<br><br>
+</font>
+<font color="#000000" face="Lucida Console,courier new" size="1">
+&nbsp;&nbsp;&nbsp;&nbsp;      If NextNumber = 0 Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debug.Print "Tails"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debug.Print "Heads"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      End If<br>
+</font>
+<font color="#000000" face="verdana,arial,helvetica" size="2">
+	<br>This will then display a random sequence of Heads and Tails.
+	<br>
+</font>
+	</p>
+	<!-- TIPHTML: End -->
+	<br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan=3 bgcolor="#663333">
+	<!-- <img src="../images/bpixel.gif" width="100%" height="1" border="0"> -->
+	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>&nbsp</td>
+	<td valign="top">
+	<font color="#663333" face="verdana,arial,helvetica" size="1">
+	<p>Related Tips and Articles:
+	</td>
+	<td>
+	<font color="#000000" face="verdana,arial,helvetica" size="1">
+	<p>
+	<!-- RELATEDARTICLES: Begin -->
+	<UL><LI><a href="vba0031.htm">HiWords and LoWords from Long Values</a>
+<LI><a href="vba0030.htm">Implementing Unsigned Right and Left Shift Operators</a>
+</UL>
+	<!-- RELATEDARTICLES: End -->
+	</p>
+	</font>
+	</td>
+	<td><img src="..\images\pixel.gif" width="256" height="1" border="0"></td>
+	<td>&nbsp</td>
+</tr>
+</table>	
+
+<!-- BODY:END -->
+
+<!-- FOOTER:START -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
+g="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2">
+        <IMG SRC="..\images\grpixel.gif" height="1" width="100%" border="0" ALT="">
+        </td>
+    </tr>
+    <tr>
+	<td width="16">&nbsp;</td>
+        <td>
+	<font size="1" face="Verdana, Arial, Helvetica">
+	<p>
+	<a href="..\mission.htm">About</a>&nbsp;&nbsp;<a 
+	href="..\contrib.htm">Contribute</a>&nbsp;&nbsp;<a 
+	href="mailto:steve@vbaccelerator.com">Send Feedback</a>&nbsp;&nbsp;<a 
+	href="..\privacy.html">Privacy</a>
+	<br><br>
+        Copyright &copy; 1998-1999, Steve McMahon (
+	<a href="mailto:steve@vbaccelerator.com">steve@vbaccelerator.com</a>). All Rights Reserved.<br>
+	Last updated: 18/08/99</font></p>
+        </td>
+    </tr>
+</table>
+<!-- FOOTER:END -->
+
+</body>
+</html>
